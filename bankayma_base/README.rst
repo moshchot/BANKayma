@@ -1,2 +1,2 @@
-# BANKayma
-Sustain-a-bank
+## BANKayma//Sustain-a-bank
+By Bar Kayma && Moshchot Coop
