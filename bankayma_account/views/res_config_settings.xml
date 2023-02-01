@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="account_invoice_inter_company.res_config_settings_view_form"
+        />
+        <field name="arch" type="xml">
+            <div id="intercompany_invoice_user" position="after">
+            <div id="intercompany_sale_journal_id">
+                <label
+                        string="Intercompany sale journal"
+                        class="o_light_label"
+                        for="intercompany_sale_journal_id"
+                    />
+                            <field
+                        name="intercompany_sale_journal_id"
+                        class="oe_inline"
+                    />
+                        </div>
+            <div id="intercompany_purchase_journal_id">
+                <label
+                        string="Intercompany purchase journal"
+                        class="o_light_label"
+                        for="intercompany_purchase_journal_id"
+                    />
+                            <field
+                        name="intercompany_purchase_journal_id"
+                        class="oe_inline"
+                    />
+                        </div>
+            </div>
+        </field>
+    </record>
+
+</odoo>

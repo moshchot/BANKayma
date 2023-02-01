@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_bankayma_company_create_form" model="ir.ui.view">
+        <field name="model">bankayma.company.create</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="template_company_id" />
+                    <field name="user_file" />
+                </group>
+                <footer>
+                    <button
+                        name="action_create"
+                        type="object"
+                        string="Create"
+                        class="btn-primary"
+                    />
+                    <button special="cancel" string="Cancel" class="btn-secondary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bankayma_company_create" model="ir.actions.act_window">
+        <field name="name">Create Companies</field>
+        <field name="res_model">bankayma.company.create</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem
+        id="menu_bankayma_company_create"
+        action="action_bankayma_company_create"
+        parent="base.menu_users"
+    />
+
+</odoo>

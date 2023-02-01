@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_company_cascade_wizard_form" model="ir.ui.view">
+        <field name="model">company.cascade.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div>Create/Overwrite equivalent records of child companies?</div>
+                <footer>
+                    <button
+                        name="action_cascade"
+                        type="object"
+                        string="Cascade to child companies"
+                        class="btn-primary"
+                    />
+                    <button special="cancel" string="Cancel" class="btn-secondary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_company_cascade_wizard" model="ir.actions.act_window">
+        <field name="name">Cascade to child companies</field>
+        <field name="res_model">company.cascade.wizard</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>

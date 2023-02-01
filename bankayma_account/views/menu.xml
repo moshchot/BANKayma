@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <menuitem
+        id="menu_bankayma_income"
+        parent="bankayma_base.menu_bankayma_root"
+        name="Income"
+        action="account.action_move_out_invoice_type"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_bankayma_expense"
+        parent="bankayma_base.menu_bankayma_root"
+        name="Expense"
+        action="account.action_move_in_invoice_type"
+        sequence="20"
+    />
+
+    <record id="account.menu_finance" model="ir.ui.menu">
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('account.group_account_invoice'))]"
+        />
+    </record>
+    <record
+        id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        model="ir.ui.menu"
+    >
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
+        />
+    </record>
+
+</odoo>

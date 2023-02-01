@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record
+        id="user_child_comp1"
+        model="res.users"
+        context="{'no_reset_password': True}"
+    >
+        <field name="login">user_child_comp1</field>
+        <field name="name">User Child Company 1</field>
+        <field name="password">user_child_comp1</field>
+        <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
+        <field name="company_id" ref="child_comp1" />
+        <field name="groups_id" eval="[Command.link(ref('group_user'))]" />
+    </record>
+
+</odoo>

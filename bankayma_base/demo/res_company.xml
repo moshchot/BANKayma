@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="child_comp1" model="res.company">
+        <field name="name">Child Company 1</field>
+        <field name="parent_id" ref="base.main_company" />
+    </record>
+
+</odoo>
