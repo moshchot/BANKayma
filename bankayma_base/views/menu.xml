@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- add own main menu that other customization addons fill -->
+    <menuitem id="menu_bankayma_root" name="BANKayma" />
+
+    <!-- assign standard menus to debug user (= hide them) -->
+    <record id="mail.menu_root_discuss" model="ir.ui.menu">
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
+        />
+    </record>
+    <record id="base.menu_management" model="ir.ui.menu">
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
+        />
+    </record>
+    <record id="base.menu_board_root" model="ir.ui.menu">
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
+        />
+    </record>
+
+</odoo>

@@ -14,9 +14,18 @@ account-financial-tools:
     - oca 16.0
 account-invoicing:
   defaults:
-    depth: 1
+    depth: 100
   remotes:
     oca: https://github.com/OCA/account-invoicing.git
+    hbrunn: https://github.com/hbrunn/account-invoicing.git
+  merges:
+    - oca 16.0
+    - hbrunn 16.0-account_move_tier_validation
+account-payment:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/account-payment.git
   merges:
     - oca 16.0
 bank-payment:
@@ -46,10 +55,13 @@ multi-company:
   remotes:
     oca: https://github.com/OCA/multi-company.git
     legalsylvain: https://github.com/legalsylvain/multi-company.git
+    akretion: https://github.com/akretion/multi-company.git
+    hbrunn: https://github.com/hbrunn/multi-company.git
   merges:
     - oca 16.0
     - legalsylvain 16.0-mig-res_company_code
     - legalsylvain 16.0-ADD-res_company_search_view
+    - hbrunn 16.0-mig-account_invoice_inter_company
 server-auth:
   defaults:
     depth: 1
