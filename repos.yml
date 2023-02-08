@@ -1,0 +1,81 @@
+account-financial-reporting:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/account-financial-reporting.git
+  merges:
+    - oca 16.0
+account-financial-tools:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/account-financial-tools.git
+  merges:
+    - oca 16.0
+account-invoicing:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/account-invoicing.git
+  merges:
+    - oca 16.0
+bank-payment:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/bank-payment.git
+  merges:
+    - oca 16.0
+bank-statement-import:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/bank-statement-import.git
+  merges:
+    - oca 16.0
+bank-statement-reconcile:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/bank-statement-reconcile.git
+  merges:
+    - oca 16.0
+multi-company:
+  defaults:
+    depth: 100
+  remotes:
+    oca: https://github.com/OCA/multi-company.git
+    legalsylvain: https://github.com/legalsylvain/multi-company.git
+  merges:
+    - oca 16.0
+    - legalsylvain 16.0-mig-res_company_code
+server-auth:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/server-auth.git
+  merges:
+    - oca 16.0
+server-tools:
+  defaults:
+    depth: 100
+  remotes:
+    oca: https://github.com/OCA/server-tools.git
+    initOS: https://github.com/initOS/server-tools.git
+  merges:
+    - oca 16.0
+    - initOS 16.0-mig-module_auto_update
+server-ux:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/server-ux.git
+  merges:
+    - oca 16.0
+web:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/web.git
+  merges:
+    - oca 16.0
