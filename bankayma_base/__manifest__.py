@@ -8,6 +8,13 @@
     "license": "AGPL-3",
     "depends": [
         "base",
+        "res_company_code",
+        "module_auto_update",
     ],
     "website": "https://github.com/moshchot/BANKayma",
+    "external_dependencies": {
+        "python": [
+            "openupgradelib",
+        ]
+    },
 }
