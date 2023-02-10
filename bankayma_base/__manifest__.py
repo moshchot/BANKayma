@@ -7,9 +7,9 @@
     "author": "Moshchot Coop",
     "license": "AGPL-3",
     "depends": [
-        "base",
-        "res_company_code",
+        "base_technical_features",
         "module_auto_update",
+        "res_company_code",
     ],
     "website": "https://github.com/moshchot/BANKayma",
     "external_dependencies": {
