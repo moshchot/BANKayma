@@ -61,7 +61,6 @@ multi-company:
     - oca 16.0
     - legalsylvain 16.0-mig-res_company_code
     - legalsylvain 16.0-ADD-res_company_search_view
-    - hbrunn 16.0-mig-account_invoice_inter_company
 server-auth:
   defaults:
     depth: 1
