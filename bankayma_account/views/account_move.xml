@@ -82,7 +82,7 @@
             <field name="amount_total_signed" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-            <field name="amount_residual_signed" position="after">
+            <field name="amount_total_signed" position="after">
                 <field name="bankayma_amount_paid" />
             </field>
         </field>
