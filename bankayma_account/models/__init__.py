@@ -9,5 +9,6 @@ from . import account_payment_method
 from . import account_payment_mode
 from . import ir_actions_actions
 from . import ir_property
+from . import res_bank
 from . import res_company
 from . import res_config_settings
