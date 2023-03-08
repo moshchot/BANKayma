@@ -225,6 +225,13 @@ class CompanyCascadeMixin(models.AbstractModel):
             records += records.mapped("company_cascade_child_ids")
         return records
 
+    def _company_cascade_find_candidate(self, company, vals):
+        """
+        Find a record in company that's the equivalent of vals.
+        This is used before creating cascading record to avoid constraints failing
+        """
+        return self.browse([])
+
     def _company_cascade_create(self, values):
         result = self.browse([])
         create_in_companies = (
@@ -234,7 +241,13 @@ class CompanyCascadeMixin(models.AbstractModel):
         for create_in_company in create_in_companies:
             vals = self._company_cascade_values(create_in_company, values)
             vals["company_cascade_parent_id"] = self.id
-            result += self.sudo().with_company(create_in_company).create(vals)
+            candidate = self._company_cascade_find_candidate(create_in_company, vals)
+            if candidate:
+                candidate.write(vals)
+                result += candidate
+            else:
+                vals["__precomputed__"] = set(vals.keys())
+                result += self.sudo().with_company(create_in_company).create(vals)
         return result
 
     def _company_cascade_write(self, values):
