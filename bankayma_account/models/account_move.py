@@ -92,6 +92,7 @@ class AccountMove(models.Model):
         fraction=0.07,
         account_code="___10",
         post=True,
+        invoice_journal_id=None,
         payment_journal_id=None,
     ):
         """Create invoices for income of child companies"""
@@ -136,6 +137,10 @@ class AccountMove(models.Model):
                 "account.view_move_form",
             )
             invoice_form.partner_id = child.partner_id
+            if invoice_journal_id:
+                invoice_form.journal_id = self.env["account.journal"].browse(
+                    invoice_journal_id
+                )
             with invoice_form.invoice_line_ids.new() as invoice_line:
                 invoice_line.account_id = account
                 invoice_line.price_unit = sum(move_lines.mapped("credit")) * fraction
