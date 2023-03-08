@@ -26,7 +26,7 @@
         "views/menu.xml",
         "views/account_move.xml",
         "views/res_config_settings.xml",
-        "views/res_bank.xml",
+        "views/res_partner.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/company_cascade_wizard.xml",
     ],
