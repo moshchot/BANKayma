@@ -80,8 +80,19 @@ class AccountMove(models.Model):
                 result = to_send.action_invoice_sent()
         return result
 
+    def _inter_company_create_invoice(self, dest_company):
+        """Allow skipping creation of intercompany invoice"""
+        if self.env.context.get("skip_intercompany_invoice"):
+            return
+        return super()._inter_company_create_invoice(dest_company)
+
     def _bankayma_invoice_child_income(
-        self, company_id=None, fraction=0.07, account_code="___10", post=False
+        self,
+        company_id=None,
+        fraction=0.07,
+        account_code="___10",
+        post=True,
+        payment_journal_id=None,
     ):
         """Create invoices for income of child companies"""
         company = (
@@ -89,6 +100,7 @@ class AccountMove(models.Model):
             and self.env["res.company"].browse(company_id)
             or self.env.company
         )
+        invoices = self.browse([])
         for child in company.child_ids:
             move_lines = (
                 self.env["account.move.line"]
@@ -108,13 +120,19 @@ class AccountMove(models.Model):
             account = self.env["account.account"].search(
                 [
                     ("code", "like", account_code),
+                    ("company_id", "=", company.id),
                 ],
                 limit=1,
             )
             if not account:
                 continue
             invoice_form = Form(
-                self.env["account.move"].with_context(default_move_type="out_invoice"),
+                self.env["account.move"]
+                .with_context(
+                    default_move_type="out_invoice",
+                    skip_intercompany_invoice=True,
+                )
+                .with_company(company),
                 "account.view_move_form",
             )
             invoice_form.partner_id = child.partner_id
@@ -127,3 +145,19 @@ class AccountMove(models.Model):
             )
             if post:
                 invoice.action_post()
+                if payment_journal_id:
+                    payment_form = Form(
+                        self.env["account.payment.register"]
+                        .with_context(
+                            active_id=invoice.id,
+                            active_ids=invoice.ids,
+                            active_model=invoice._name,
+                        )
+                        .with_company(company)
+                    )
+                    payment_form.journal_id = self.env["account.journal"].browse(
+                        payment_journal_id
+                    )
+                    payment_form.save().action_create_payments()
+            invoices += invoice
+        return invoices
