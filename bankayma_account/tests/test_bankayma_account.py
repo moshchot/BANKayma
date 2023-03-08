@@ -130,6 +130,34 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.account_journal_payment_debit_account_id,
             self.child2.account_journal_payment_debit_account_id,
         )
+        payment_journal = self.env["account.journal"].search(
+            [
+                ("company_id", "=", self.parent.id),
+                ("type", "=", "bank"),
+            ],
+            limit=1,
+        )
+        sale_journal = self.env["account.journal"].search(
+            [
+                ("company_id", "=", self.parent.id),
+                ("type", "=", "sale"),
+            ],
+            limit=1,
+        )
+        invoices = self.env["account.move"]._bankayma_invoice_child_income(
+            self.parent.id,
+            account_code="200000",
+            payment_journal_id=payment_journal.id,
+            invoice_journal_id=sale_journal.id,
+        )
+        self.assertEqual(invoices.mapped("journal_id"), sale_journal)
+        self.assertEqual(
+            sum(invoices.mapped("amount_total")),
+            sum(invoices.mapped("bankayma_amount_paid")),
+        )
+        self.assertFalse(
+            self.env["account.move"].search([("auto_invoice_id", "in", invoices.ids)]),
+        )
 
     def _create_invoice(self, company, user, partner=None, post=True):
         invoice = (
