@@ -11,6 +11,7 @@
         "base_technical_features",
         "module_auto_update",
         "res_company_code",
+        "web_select_all_companies",
     ],
     "data": [
         "security/bankayma_base.xml",
