@@ -53,6 +53,7 @@ class TestBankaymaAccount(TransactionCase):
             )
         )
         self.parent_bank_account = bank_account_wizard.res_partner_bank_id
+        self.parent_bank_journal = bank_account_wizard.linked_journal_id
         self.child1 = Wizard._create_company(self.parent, "child1", "ch1")
         self.user_child1 = (
             Users.sudo()
@@ -169,6 +170,22 @@ class TestBankaymaAccount(TransactionCase):
         child2_bank_account = self.child2.partner_id.bank_ids
         self.assertEqual(child1_bank_account.acc_number, "424242")
         self.assertEqual(child2_bank_account.acc_number, "424242")
+        self.assertEqual(
+            self.child1.account_journal_payment_debit_account_id.company_cascade_parent_id,
+            self.parent.account_journal_payment_debit_account_id,
+        )
+        self.assertEqual(
+            set(
+                self.parent_bank_journal.mapped(
+                    "outbound_payment_method_line_ids"
+                ).mapped(lambda x: (x.name, x.code, x.payment_type))
+            ),
+            set(
+                self.parent_bank_journal.mapped(
+                    "company_cascade_child_ids.outbound_payment_method_line_ids"
+                ).mapped(lambda x: (x.name, x.code, x.payment_type))
+            ),
+        )
 
     def test_intercompany(self):
         invoice_child1 = self._create_invoice(
