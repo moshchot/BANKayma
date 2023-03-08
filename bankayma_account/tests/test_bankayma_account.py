@@ -150,6 +150,7 @@ class TestBankaymaAccount(TransactionCase):
             payment_journal_id=payment_journal.id,
             invoice_journal_id=sale_journal.id,
         )
+        self.assertEqual(invoices.mapped("journal_id"), sale_journal)
         self.assertEqual(
             sum(invoices.mapped("amount_total")),
             sum(invoices.mapped("bankayma_amount_paid")),

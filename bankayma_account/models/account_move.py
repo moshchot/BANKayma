@@ -63,7 +63,11 @@ class AccountMove(models.Model):
     def action_post(self):
         """Enforce intercompany journal on intercompany invoices"""
         for this in self:
-            if this.is_invoice() and this._find_company_from_invoice_partner():
+            if (
+                this.is_invoice()
+                and this._find_company_from_invoice_partner()
+                and self.env.context.get("bankayma_force_intercompany_journal", True)
+            ):
                 if this.is_sale_document():
                     journal = this.company_id.intercompany_sale_journal_id
                 else:
@@ -132,6 +136,7 @@ class AccountMove(models.Model):
                 .with_context(
                     default_move_type="out_invoice",
                     skip_intercompany_invoice=True,
+                    bankayma_force_intercompany_journal=False,
                 )
                 .with_company(company),
                 "account.view_move_form",
