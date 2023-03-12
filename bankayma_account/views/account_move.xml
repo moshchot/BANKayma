@@ -65,6 +65,9 @@
                 expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_note_control']"
                 position="replace"
             />
+            <field name="partner_id" position="after">
+                <field name="fiscal_position_id" position="move" />
+            </field>
         </field>
     </record>
 

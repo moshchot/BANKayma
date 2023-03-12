@@ -5,6 +5,7 @@ from . import account_journal
 from . import account_move
 from . import account_move_line
 from . import account_tax
+from . import account_payment_register
 from . import account_payment_method
 from . import account_payment_mode
 from . import ir_actions_actions

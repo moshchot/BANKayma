@@ -25,6 +25,7 @@
         "security/ir.model.access.csv",
         "views/menu.xml",
         "views/account_move.xml",
+        "views/account_payment_register.xml",
         "views/res_config_settings.xml",
         "views/res_partner.xml",
         "wizards/bankayma_company_create.xml",
