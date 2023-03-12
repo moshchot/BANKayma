@@ -18,6 +18,9 @@
         "bankayma_base",
         "l10n_il",
     ],
+    "demo": [
+        "demo/tier_definition.xml",
+    ],
     "data": [
         "data/account_payment_method.xml",
         "data/ir_cron.xml",
@@ -25,6 +28,7 @@
         "security/ir.model.access.csv",
         "views/menu.xml",
         "views/account_move.xml",
+        "views/account_payment_register.xml",
         "views/res_config_settings.xml",
         "views/res_partner.xml",
         "wizards/bankayma_company_create.xml",

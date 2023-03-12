@@ -10,6 +10,7 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     bankayma_amount_paid = fields.Monetary(
+        string="Total net paid",
         compute="_compute_amount",
         currency_field="company_currency_id",
         compute_sudo=True,
@@ -82,6 +83,12 @@ class AccountMove(models.Model):
             )
             if to_send:
                 result = to_send.action_invoice_sent()
+        return result
+
+    def _compute_hide_post_button(self):
+        result = super()._compute_hide_post_button()
+        for this in self:
+            this.hide_post_button |= this.need_validation
         return result
 
     def _inter_company_create_invoice(self, dest_company):
@@ -171,3 +178,10 @@ class AccountMove(models.Model):
                     payment_form.save().action_create_payments()
             invoices += invoice
         return invoices
+
+    def request_validation(self):
+        """Set invoice_date before rquesting validation"""
+        for this in self:
+            if this.is_invoice(include_receipts=True) and not this.invoice_date:
+                this.invoice_date = fields.Date.context_today(this)
+        return super().request_validation()

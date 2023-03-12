@@ -11,6 +11,14 @@
         sequence="10"
     />
 
+    <menuitem
+        id="menu_bankayma_income_all"
+        parent="menu_bankayma_income"
+        name="All"
+        action="account.action_move_out_invoice_type"
+        sequence="0"
+    />
+
     <record id="action_move_out_invoice_type_paid" model="ir.actions.act_window">
         <field name="name">Paid</field>
         <field name="res_model">account.move</field>
@@ -55,6 +63,14 @@
         name="Expense"
         action="account.action_move_in_invoice_type"
         sequence="20"
+    />
+
+    <menuitem
+        id="menu_bankayma_expense_all"
+        parent="menu_bankayma_expense"
+        name="All"
+        action="account.action_move_in_invoice_type"
+        sequence="0"
     />
 
     <record id="action_move_in_invoice_type_paid" model="ir.actions.act_window">
