@@ -180,6 +180,8 @@ class TestBankaymaAccount(TransactionCase):
                 line.product_id = product
                 line.quantity = 2
         if post:
+            if invoice.need_validation:
+                invoice.sudo().validate_tier()
             invoice.action_post()
         return invoice
 

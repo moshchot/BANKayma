@@ -65,6 +65,9 @@
                 expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_note_control']"
                 position="replace"
             />
+            <field name="partner_id" position="after">
+                <field name="fiscal_position_id" position="move" />
+            </field>
         </field>
     </record>
 
@@ -83,6 +86,24 @@
             </field>
         </field>
     </record>
+
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
+        </img>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        </div>
+        <div t-field="company.report_footer" position="after">
+            <div
+                t-field="company.parent_id.report_footer"
+                t-if="company.parent_id.report_footer"
+            />
+        </div>
+    </template>
 
 
 </odoo>
