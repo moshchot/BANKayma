@@ -53,6 +53,7 @@ class TestBankaymaAccount(TransactionCase):
             )
         )
         self.parent_bank_account = bank_account_wizard.res_partner_bank_id
+        self.parent_bank_journal = bank_account_wizard.linked_journal_id
         self.child1 = Wizard._create_company(self.parent, "child1", "ch1")
         self.user_child1 = (
             Users.sudo()
@@ -129,6 +130,34 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.account_journal_payment_debit_account_id,
             self.child2.account_journal_payment_debit_account_id,
         )
+        payment_journal = self.env["account.journal"].search(
+            [
+                ("company_id", "=", self.parent.id),
+                ("type", "=", "bank"),
+            ],
+            limit=1,
+        )
+        sale_journal = self.env["account.journal"].search(
+            [
+                ("company_id", "=", self.parent.id),
+                ("type", "=", "sale"),
+            ],
+            limit=1,
+        )
+        invoices = self.env["account.move"]._bankayma_invoice_child_income(
+            self.parent.id,
+            account_code="200000",
+            payment_journal_id=payment_journal.id,
+            invoice_journal_id=sale_journal.id,
+        )
+        self.assertEqual(invoices.mapped("journal_id"), sale_journal)
+        self.assertEqual(
+            sum(invoices.mapped("amount_total")),
+            sum(invoices.mapped("bankayma_amount_paid")),
+        )
+        self.assertFalse(
+            self.env["account.move"].search([("auto_invoice_id", "in", invoices.ids)]),
+        )
 
     def _create_invoice(self, company, user, partner=None, post=True):
         invoice = (
@@ -169,6 +198,22 @@ class TestBankaymaAccount(TransactionCase):
         child2_bank_account = self.child2.partner_id.bank_ids
         self.assertEqual(child1_bank_account.acc_number, "424242")
         self.assertEqual(child2_bank_account.acc_number, "424242")
+        self.assertEqual(
+            self.child1.account_journal_payment_debit_account_id.company_cascade_parent_id,
+            self.parent.account_journal_payment_debit_account_id,
+        )
+        self.assertEqual(
+            set(
+                self.parent_bank_journal.mapped(
+                    "outbound_payment_method_line_ids"
+                ).mapped(lambda x: (x.name, x.code, x.payment_type))
+            ),
+            set(
+                self.parent_bank_journal.mapped(
+                    "company_cascade_child_ids.outbound_payment_method_line_ids"
+                ).mapped(lambda x: (x.name, x.code, x.payment_type))
+            ),
+        )
 
     def test_intercompany(self):
         invoice_child1 = self._create_invoice(
