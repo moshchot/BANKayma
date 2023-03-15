@@ -29,11 +29,16 @@ git config --global init.defaultBranch main
 git config --global pull.rebase false
 
 # update custom repo for newest repos.yml/requirements.txt
-git -C $CUSTOM_REPO pull
+git -C $CUSTOM_REPO pull -X theirs
 
 # activate venv
 . $INSTANCE_ROOT/venv/bin/activate
 cd $CUSTOM_ADDONS
+
+# reset all repos
+for GITDIR in \$(find $CUSTOM_ADDONS -name .git); do
+    git -C \$(dirname \$GITDIR) reset --hard
+done
 
 # aggregate code from oca repos
 if [ -f $CUSTOM_REPO/repos.yml ]; then
