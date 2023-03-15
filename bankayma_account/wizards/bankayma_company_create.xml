@@ -10,6 +10,20 @@
                 <group>
                     <field name="template_company_id" />
                     <field name="user_file" />
+                    <separator string="or" />
+                    <field
+                        name="company_code"
+                        attrs="{'required': [('user_file', '=', False)]}"
+                    />
+                    <field
+                        name="company_name"
+                        attrs="{'required': [('user_file', '=', False)]}"
+                    />
+                    <field name="user_function" />
+                    <field name="user_login" />
+                    <field name="user_name" />
+                    <field name="user_email" />
+                    <field name="user_phone" />
                 </group>
                 <footer>
                     <button

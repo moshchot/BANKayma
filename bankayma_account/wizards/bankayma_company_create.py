@@ -21,6 +21,13 @@ class BankaymaCompanyCreate(models.TransientModel):
         string="Template company",
     )
     user_file = fields.Binary("Users")
+    company_code = fields.Char()
+    company_name = fields.Char()
+    user_function = fields.Char()
+    user_login = fields.Char()
+    user_name = fields.Char()
+    user_email = fields.Char()
+    user_phone = fields.Char()
 
     def action_create(self):
         self.ensure_one()
@@ -36,69 +43,92 @@ class BankaymaCompanyCreate(models.TransientModel):
                 )
             )
 
-        new_companies = {}
-        import_file = csv.reader(
-            io.StringIO(base64.b64decode(self.user_file).decode("utf8"))
-        )
-        next(import_file)
-        next(import_file)
-        next(import_file)
-        for line in import_file:
-            if not line[1]:
-                _logger.error("Company %s has no name, ignoring", line[0])
-                continue
-            company = new_companies.get(line[0])
-            if not company:
-                company = new_companies[line[0]] = self.sudo()._create_company(
-                    self.template_company_id,
-                    line[1],
-                    line[0],
-                )
-                _logger.info("Created company %s", company.name)
-            if not line[5]:
-                _logger.error("No email for %s - not creating user", line[0] or line[1])
-                continue
-            existing_user = (
-                self.env["res.users"]
-                .sudo()
-                .search([("login", "=", line[3] or line[5])])
+        if self.user_file:
+            import_file = csv.reader(
+                io.StringIO(base64.b64decode(self.user_file).decode("utf8"))
             )
-            if existing_user:
-                existing_user.company_ids += company
-                _logger.info(
-                    "Added user %s to company %s", existing_user.login, company.name
-                )
-            else:
-                self.env["res.users"].with_context(
+            next(import_file)
+            next(import_file)
+            next(import_file)
+            for line in import_file:
+                self.sudo()._create_company_and_user(*line)
+        else:
+            self.sudo()._create_company_and_user(
+                self.company_code,
+                self.company_name,
+                self.user_function,
+                self.user_login,
+                self.user_name,
+                self.user_email,
+                self.user_phone,
+            )
+
+    def _create_company_and_user(
+        self,
+        company_code,
+        company_name,
+        user_function,
+        user_login,
+        user_name,
+        user_email,
+        user_phone,
+    ):
+        if not company_name:
+            _logger.error("Company %s has no name, ignoring", company_code)
+            return self.env["res.company"]
+        company = self.env["res.company"].search([("code", "=", company_code)])
+        if not company:
+            company = self._create_company(
+                self.template_company_id,
+                company_name,
+                company_code,
+            )
+            _logger.info("Created company %s", company.name)
+        if not user_email:
+            _logger.error(
+                "No email for %s - not creating user", company_code or company_name
+            )
+            return self.env["res.company"]
+        existing_user = self.env["res.users"].search(
+            [("login", "=", user_login or user_email)]
+        )
+        if existing_user:
+            existing_user.company_ids += company
+            _logger.info(
+                "Added user %s to company %s", existing_user.login, company.name
+            )
+        else:
+            user = (
+                self.env["res.users"]
+                .with_context(
                     # don't invite users for now
                     no_reset_password=True,
-                ).sudo().create(
+                )
+                .create(
                     {
-                        "name": line[4] or line[3] or line[5],
-                        "login": line[3] or line[5],
-                        "email": line[5],
-                        "phone": line[6],
-                        "function": line[2],
+                        "name": user_name or user_login or user_email,
+                        "login": user_login or user_email,
+                        "email": user_email,
+                        "phone": user_phone,
+                        "function": user_function,
                         "company_id": company.id,
                         "company_ids": [(6, False, company.ids)],
                     }
                 )
-                _logger.info("Created user %s for company %s", line[4], company.name)
+            )
+            _logger.info("Created user %s for company %s", user.login, company.name)
+        return company
 
     def _create_company(self, template, name, code):
         """Duplicate template to name, while duplicating accounts/journals"""
-        new_company = (
-            self.env["res.company"]
-            .sudo()
-            .create(
-                {
-                    "name": name,
-                    "parent_id": template.id,
-                    "country_id": template.country_id.id,
-                    "code": code,
-                    "company_cascade_from_parent": True,
-                }
-            )
+        new_company = self.env["res.company"].create(
+            {
+                "name": name,
+                "parent_id": template.id,
+                "country_id": template.country_id.id,
+                "code": code,
+                "company_cascade_from_parent": True,
+            }
         )
 
         for model in (
