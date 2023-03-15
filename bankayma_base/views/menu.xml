@@ -4,7 +4,7 @@
 <odoo>
 
     <!-- add own main menu that other customization addons fill -->
-    <menuitem id="menu_bankayma_root" name="BANKayma" />
+    <menuitem id="menu_bankayma_root" name="BANKayma" sequence="100" />
 
     <!-- assign standard menus to debug user (= hide them) -->
     <record id="mail.menu_root_discuss" model="ir.ui.menu">

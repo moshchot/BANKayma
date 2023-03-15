@@ -33,4 +33,23 @@
         </xpath>
     </template>
 
+    <template id="portal_my_invoices" inherit_id="account.portal_my_invoices">
+        <t t-call="portal.portal_searchbar" position="after">
+            <nav
+                t-attf-class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
+            >
+                <a
+                    class="btn btn-primary"
+                    aria-label="New invoice"
+                    t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_out_invoice_new').id}}"
+                >New Invoice</a>
+                <a
+                    class="btn btn-primary"
+                    aria-label="New Vendor Bill"
+                    t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_in_invoice_new').id}}"
+                >New Vendor Bill</a>
+            </nav>
+        </t>
+    </template>
+
 </odoo>
