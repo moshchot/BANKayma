@@ -108,7 +108,8 @@ class CompanyCascadeMixin(models.AbstractModel):
             key: company.id
             if key == "company_id"
             else val
-            if self._fields[key].comodel_name not in self.env
+            if key not in self._fields
+            or self._fields[key].comodel_name not in self.env
             or "company_cascade_parent_id"
             not in self.env[self._fields[key].comodel_name]._fields
             else self._company_cascade_value(company, self._fields[key], val)

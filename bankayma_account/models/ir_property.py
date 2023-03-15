@@ -18,3 +18,12 @@ class IrProperty(models.Model):
                 company, None, self.get_by_record()
             )
         return result
+
+    def _company_cascade_find_candidate(self, company, vals):
+        return self.search(
+            [
+                ("fields_id", "=", vals.get("fields_id")),
+                ("res_id", "=", vals.get("res_id")),
+                ("company_id", "=", company.id),
+            ]
+        )
