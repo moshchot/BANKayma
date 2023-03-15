@@ -68,6 +68,13 @@ server-auth:
     oca: https://github.com/OCA/server-auth.git
   merges:
     - oca 16.0
+server-brand:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/server-brand.git
+  merges:
+    - oca 16.0
 server-tools:
   defaults:
     depth: 100
@@ -86,8 +93,10 @@ server-ux:
     - oca 16.0
 web:
   defaults:
-    depth: 1
+    depth: 100
   remotes:
     oca: https://github.com/OCA/web.git
+    initOS: https://github.com/initOS/web.git
   merges:
     - oca 16.0
+    - initOS 16.0-mig-web_company_color

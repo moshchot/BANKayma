@@ -8,9 +8,14 @@
     "license": "AGPL-3",
     "depends": [
         "mail",
+        "disable_odoo_online",
         "base_technical_features",
         "module_auto_update",
+        "portal_odoo_debranding",
+        "remove_odoo_enterprise",
         "res_company_code",
+        "web_company_color",
+        "web_responsive",
         "web_select_all_companies",
     ],
     "data": [
