@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <template
+        id="portal_my_details_fields"
+        inherit_id="portal.portal_my_details_fields"
+    >
+        <xpath expr="//div[./input[@name='phone']]" position="after">
+            <div
+                t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    class="col-form-label"
+                    for="property_account_position_id"
+                >Fiscal position</label>
+                <select
+                    name="property_account_position_id"
+                    t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''}"
+                >
+                    <option value="">Fiscal position...</option>
+                    <t t-foreach="fiscal_positions or []" t-as="fpos">
+                        <option
+                            t-att-value="fpos.id"
+                            t-att-selected="fpos.id == int(property_account_position_id) if property_account_position_id else fpos.id == partner.property_account_position_id.id"
+                        >
+                            <t t-esc="fpos.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

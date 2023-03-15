@@ -31,6 +31,7 @@
         "views/account_payment_register.xml",
         "views/res_config_settings.xml",
         "views/res_partner.xml",
+        "views/templates.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/company_cascade_wizard.xml",
     ],
