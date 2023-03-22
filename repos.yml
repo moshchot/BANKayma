@@ -91,6 +91,13 @@ server-ux:
     oca: https://github.com/OCA/server-ux.git
   merges:
     - oca 16.0
+spreadsheet:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/spreadsheet.git
+  merges:
+    - oca 16.0
 web:
   defaults:
     depth: 100
