@@ -3,6 +3,22 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
 
+    <template id="portal_layout" inherit_id="portal.portal_layout">
+        <div class="o_portal_my_details" position="inside">
+            <div style="position: relative">
+                <i
+                    class="fa fa-money fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-field="user_id.partner_id.property_account_position_id"
+                />
+            </div>
+        </div>
+    </template>
+
     <template
         id="portal_my_details_fields"
         inherit_id="portal.portal_my_details_fields"
@@ -36,18 +52,49 @@
     <template id="portal_my_invoices" inherit_id="account.portal_my_invoices">
         <t t-call="portal.portal_searchbar" position="after">
             <nav
-                t-attf-class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
+                class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
             >
                 <a
-                    class="btn btn-primary"
+                    class="btn btn-sm btn-primary"
                     aria-label="New invoice"
                     t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_out_invoice_new').id}}"
                 >New Invoice</a>
+                &#160;
                 <a
-                    class="btn btn-primary"
+                    class="btn btn-sm btn-primary"
                     aria-label="New Vendor Bill"
                     t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_in_invoice_new').id}}"
                 >New Vendor Bill</a>
+            </nav>
+            <nav
+                t-if="invoices"
+                class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
+            >
+                <t
+                    t-set="amount_in"
+                    t-value='sum(invoices.filtered(lambda x: x.move_type in ("in_refund", "out_invoice")).mapped("amount_total"))'
+                />
+                <t
+                    t-set="amount_out"
+                    t-value='sum(invoices.filtered(lambda x: x.move_type not in ("in_refund", "out_invoice")).mapped("amount_total"))'
+                />
+                <t t-set="currency" t-value='invoices[0].currency_id' />
+                <table class="table">
+                    <tr>
+                        <th>In:</th><th
+                            t-esc="amount_in"
+                            t-options='{"widget": "monetary", "display_currency": currency}'
+                        />
+                            <th>Out:</th><th
+                            t-esc="amount_out"
+                            t-options='{"widget": "monetary", "display_currency": currency}'
+                        />
+                        <th>Balance:</th><th
+                            t-esc="amount_in - amount_out"
+                            t-options='{"widget": "monetary", "display_currency": currency}'
+                        />
+                    </tr>
+                </table>
             </nav>
         </t>
     </template>
