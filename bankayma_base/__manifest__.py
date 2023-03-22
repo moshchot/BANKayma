@@ -17,6 +17,7 @@
         "web_company_color",
         "web_responsive",
         "web_select_all_companies",
+        "spreadsheet_dashboard_oca",
     ],
     "data": [
         "security/bankayma_base.xml",
