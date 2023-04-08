@@ -40,6 +40,31 @@ class TestBankaymaAccount(TransactionCase):
                 "sequence": 100,
             }
         )
+        self.parent.overhead_journal_id = self.env["account.journal"].create(
+            {
+                "name": "Overhead",
+                "code": "OVH",
+                "type": "sale",
+                "company_id": self.parent.id,
+                "sequence": 200,
+            }
+        )
+        self.parent.overhead_account_id = self.env["account.account"].create(
+            {
+                "name": "Overhead",
+                "company_id": self.parent.id,
+                "code": "4242420",
+            }
+        )
+        self.parent.overhead_payment_journal_id = self.env["account.journal"].create(
+            {
+                "name": "Overhead Payments",
+                "code": "OVHP",
+                "type": "bank",
+                "company_id": self.parent.id,
+                "sequence": 200,
+            }
+        )
         bank_account_wizard = (
             self.env["account.setup.bank.manual.config"]
             .with_company(self.parent)
@@ -130,33 +155,33 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.account_journal_payment_debit_account_id,
             self.child2.account_journal_payment_debit_account_id,
         )
-        payment_journal = self.env["account.journal"].search(
+        self._pay_invoice(invoice_child1)
+        self._pay_invoice(invoice_child2)
+        invoices = self.env["account.move"].search(
             [
-                ("company_id", "=", self.parent.id),
-                ("type", "=", "bank"),
-            ],
-            limit=1,
+                (
+                    "line_ids",
+                    "in",
+                    (invoice_child1 + invoice_child2)
+                    .sudo()
+                    .mapped("line_ids.bankayma_parent_move_line_id")
+                    .ids,
+                )
+            ]
         )
-        sale_journal = self.env["account.journal"].search(
-            [
-                ("company_id", "=", self.parent.id),
-                ("type", "=", "sale"),
-            ],
-            limit=1,
+        self.assertEqual(invoices.mapped("journal_id"), self.parent.overhead_journal_id)
+        self.assertIn(
+            self.parent.overhead_account_id, invoices.mapped("line_ids.account_id")
         )
-        invoices = self.env["account.move"]._bankayma_invoice_child_income(
-            self.parent.id,
-            account_code="200000",
-            payment_journal_id=payment_journal.id,
-            invoice_journal_id=sale_journal.id,
-        )
-        self.assertEqual(invoices.mapped("journal_id"), sale_journal)
-        self.assertEqual(
-            sum(invoices.mapped("amount_total")),
-            sum(invoices.mapped("bankayma_amount_paid")),
-        )
-        self.assertFalse(
-            self.env["account.move"].search([("auto_invoice_id", "in", invoices.ids)]),
+        self.assertItemsEqual(
+            self.env["account.move"]
+            .search([("auto_invoice_id", "in", invoices.ids)])
+            .mapped("journal_id")
+            .ids,
+            (
+                self.child1.intercompany_purchase_journal_id
+                + self.child2.intercompany_purchase_journal_id
+            ).ids,
         )
 
     def _create_invoice(self, company, user, partner=None, post=True):
@@ -184,6 +209,14 @@ class TestBankaymaAccount(TransactionCase):
                 invoice.sudo().validate_tier()
             invoice.action_post()
         return invoice
+
+    def _pay_invoice(self, invoice):
+        action = invoice.action_register_payment()
+        with Form(
+            self.env[action["res_model"]].with_context(**action["context"])
+        ) as payment_form:
+            payment = payment_form.save()
+        payment.action_create_payments()
 
     def test_cascade(self):
         account = self.env["account.account"].search(

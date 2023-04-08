@@ -24,7 +24,7 @@
     ],
     "data": [
         "data/account_payment_method.xml",
-        "data/ir_cron.xml",
+        "data/product_product.xml",
         "data/res_company.xml",
         "security/ir.model.access.csv",
         "views/menu.xml",

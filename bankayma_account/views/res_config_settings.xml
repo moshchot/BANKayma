@@ -18,7 +18,9 @@
                         for="intercompany_sale_journal_id"
                     />
                             <field
+                        required="True"
                         name="intercompany_sale_journal_id"
+                        domain="[('company_id', '=', company_id)]"
                         class="oe_inline"
                     />
                         </div>
@@ -29,10 +31,48 @@
                         for="intercompany_purchase_journal_id"
                     />
                             <field
+                        required="True"
                         name="intercompany_purchase_journal_id"
+                        domain="[('company_id', '=', company_id)]"
                         class="oe_inline"
                     />
                         </div>
+            <div id="overhead_journal_id">
+                <label
+                        string="Overhead journal"
+                        class="o_light_label"
+                        for="overhead_journal_id"
+                    />
+                            <field
+                        name="overhead_journal_id"
+                        domain="[('company_id', '=', company_id)]"
+                        class="oe_inline"
+                    />
+            </div>
+            <div id="overhead_account_id">
+                <label
+                        string="Overhead account"
+                        class="o_light_label"
+                        for="overhead_account_id"
+                    />
+                            <field
+                        name="overhead_account_id"
+                        domain="[('company_id', '=', company_id)]"
+                        class="oe_inline"
+                    />
+            </div>
+            <div id="overhead_payment_journal_id">
+                <label
+                        string="Overhead payment journal"
+                        class="o_light_label"
+                        for="overhead_payment_journal_id"
+                    />
+                            <field
+                        name="overhead_payment_journal_id"
+                        domain="[('company_id', '=', company_id)]"
+                        class="oe_inline"
+                    />
+            </div>
             </div>
         </field>
     </record>

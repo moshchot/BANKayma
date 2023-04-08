@@ -1,7 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.osv import expression
 from odoo.tests.common import Form
 
@@ -97,85 +97,81 @@ class AccountMove(models.Model):
             return
         return super()._inter_company_create_invoice(dest_company)
 
+    def _prepare_invoice_data(self, dest_company):
+        """Enforce the intercompany journals"""
+        result = super()._prepare_invoice_data(dest_company)
+        if result.get("move_type") in self.get_sale_types():
+            result["journal_id"] = dest_company.intercompany_sale_journal_id.id
+        elif result.get("move_type") in self.get_purchase_types():
+            result["journal_id"] = dest_company.intercompany_purchase_journal_id.id
+        return result
+
     def _bankayma_invoice_child_income(
         self,
-        company_id=None,
         fraction=0.07,
-        account_code="___10",
         post=True,
-        invoice_journal_id=None,
-        payment_journal_id=None,
+        pay=True,
     ):
-        """Create invoices for income of child companies"""
-        company = (
-            company_id
-            and self.env["res.company"].browse(company_id)
-            or self.env.company
-        )
+        """Create invoices for income if self is eligible"""
         invoices = self.browse([])
-        for child in company.child_ids:
-            move_lines = (
-                self.env["account.move.line"]
-                .with_company(child)
-                .search(
-                    [
-                        ("bankayma_parent_move_line_id", "=", False),
-                        ("move_id.move_type", "=", "out_invoice"),
-                        ("move_id.state", "=", "posted"),
-                        ("credit", ">", 0),
-                        ("company_id", "=", child.id),
-                    ]
-                )
-            )
-            if not move_lines:
+        for this in self.filtered(
+            lambda x: x.payment_state == "paid"
+            and x.move_type == "out_invoice"
+            and x.company_id.parent_id
+        ):
+            company = this.company_id.parent_id
+            if not company.overhead_journal_id or not company.overhead_account_id:
                 continue
-            account = self.env["account.account"].search(
-                [
-                    ("code", "like", account_code),
-                    ("company_id", "=", company.id),
-                ],
-                limit=1,
-            )
-            if not account:
-                continue
+            child = this.company_id
             invoice_form = Form(
                 self.env["account.move"]
                 .with_context(
                     default_move_type="out_invoice",
-                    skip_intercompany_invoice=True,
+                    default_journal_id=company.overhead_journal_id,
                     bankayma_force_intercompany_journal=False,
                 )
                 .with_company(company),
                 "account.view_move_form",
             )
             invoice_form.partner_id = child.partner_id
-            if invoice_journal_id:
-                invoice_form.journal_id = self.env["account.journal"].browse(
-                    invoice_journal_id
-                )
             with invoice_form.invoice_line_ids.new() as invoice_line:
-                invoice_line.account_id = account
-                invoice_line.price_unit = sum(move_lines.mapped("credit")) * fraction
+                invoice_line.product_id = self.env.ref(
+                    "bankayma_account.product_overhead"
+                )
+                invoice_line.account_id = company.overhead_account_id
+                invoice_line.price_unit = this.bankayma_amount_paid * fraction
             invoice = invoice_form.save()
-            move_lines.write(
+            this.line_ids.filtered("credit").write(
                 {"bankayma_parent_move_line_id": invoice.invoice_line_ids[:1].id}
             )
             if post:
                 invoice.action_post()
-                if payment_journal_id:
-                    payment_form = Form(
-                        self.env["account.payment.register"]
-                        .with_context(
-                            active_id=invoice.id,
-                            active_ids=invoice.ids,
-                            active_model=invoice._name,
-                        )
-                        .with_company(company)
+            invoice.message_post(
+                body=_(
+                    'Overhead invoice for <a data-oe-model="account.move" '
+                    'data-oe-id="%(id)s" href="#">%(name)s</a>'
+                )
+                % this
+            )
+            this.message_post(
+                body=_(
+                    'Overhead created in <a data-oe-model="account.move" '
+                    'data-oe-id="%(id)s" href="#">%(name)s</a>'
+                )
+                % invoice
+            )
+            if pay:
+                payment_form = Form(
+                    self.env["account.payment.register"]
+                    .with_context(
+                        active_id=invoice.id,
+                        active_ids=invoice.ids,
+                        active_model=invoice._name,
                     )
-                    payment_form.journal_id = self.env["account.journal"].browse(
-                        payment_journal_id
-                    )
-                    payment_form.save().action_create_payments()
+                    .with_company(company)
+                )
+                payment_form.journal_id = company.overhead_payment_journal_id
+                payment_form.save().action_create_payments()
             invoices += invoice
         return invoices
 
