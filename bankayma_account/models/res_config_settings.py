@@ -13,3 +13,12 @@ class ResConfigSettings(models.TransientModel):
     intercompany_purchase_journal_id = fields.Many2one(
         related="company_id.intercompany_purchase_journal_id", readonly=False
     )
+    overhead_journal_id = fields.Many2one(
+        related="company_id.overhead_journal_id", readonly=False
+    )
+    overhead_account_id = fields.Many2one(
+        related="company_id.overhead_account_id", readonly=False
+    )
+    overhead_payment_journal_id = fields.Many2one(
+        related="company_id.overhead_payment_journal_id", readonly=False
+    )

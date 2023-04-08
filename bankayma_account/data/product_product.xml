@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="product_overhead" model="product.product">
+        <field name="name">Overhead</field>
+        <field name="default_code">OVER</field>
+        <field name="active" eval="False" />
+        <field name="company_id" eval="False" />
+    </record>
+
+</odoo>

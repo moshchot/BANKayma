@@ -35,6 +35,23 @@ class ResCompany(models.Model):
         help="Intercompany invoices will be forced to this journal",
         domain=[("type", "=", "purchase")],
     )
+    overhead_journal_id = fields.Many2one(
+        "account.journal",
+        "Overhead journal",
+        help="Overhead invoices will be created in this journal",
+        domain=[("type", "=", "sale")],
+    )
+    overhead_account_id = fields.Many2one(
+        "account.account",
+        "Overhead account",
+        help="Overhead invoice lines will have this account",
+    )
+    overhead_payment_journal_id = fields.Many2one(
+        "account.journal",
+        "Overhead payment journal",
+        help="Overhead invoices will be paid in this journal",
+        domain=[("type", "=", "bank")],
+    )
 
     def _company_cascade_get_companies(self):
         return self.mapped("child_ids").filtered("company_cascade_from_parent")
