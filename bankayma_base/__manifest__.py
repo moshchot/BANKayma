@@ -22,6 +22,7 @@
     "data": [
         "security/bankayma_base.xml",
         "views/menu.xml",
+        "views/res_users.xml",
     ],
     "demo": [
         "demo/res_company.xml",
