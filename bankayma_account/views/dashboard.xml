@@ -115,21 +115,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <t
-                                t-foreach="records.mapped('line_ids.account_id').sorted('code')"
-                                t-as="account"
-                            >
-                            <tr t-if="account">
+                        <t t-foreach="records.mapped('company_id')" t-as="company">
+                            <tr>
+                                <t
+                                        t-set="moves"
+                                        t-value="incoming_ml.filtered(lambda x: x.company_id == company)"
+                                    />
                                 <t
                                         t-set="incoming"
-                                        t-value="sum(incoming_ml.filtered(lambda x: x.account_id == account).mapped('balance'))"
+                                        t-value="sum(moves.mapped('balance'))"
                                     />
                                 <t
                                         t-set="outgoing"
-                                        t-value="sum(outgoing_ml.filtered(lambda x: x.account_id == account).mapped('balance'))"
+                                        t-value="sum(moves.mapped('balance'))"
                                     />
-                                <td t-esc="account.code" />
-                                <td t-esc="account.name" />
+                                <td>
+                                    <a
+                                            type="action"
+                                            data-model="account.move"
+                                            t-att-data-domain="[('id', 'in', moves.ids)]"
+                                            t-esc="company.code"
+                                        />
+                                </td>
+                                <td t-esc="company.name" />
                                 <td
                                         t-esc="incoming"
                                         t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
@@ -164,7 +172,7 @@
                         </thead>
                         <tbody>
                         <t
-                                    t-foreach="records.mapped('line_ids.product_id').sorted('default_code')"
+                                    t-foreach="records.mapped('line_ids.product_id').sorted(lambda x: x.default_code or '')"
                                     t-as="product"
                                 >
                             <tr t-if="product">
