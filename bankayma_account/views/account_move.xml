@@ -82,7 +82,7 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="amount_total_signed" position="after">
-                <field name="bankayma_amount_paid" />
+                <field name="bankayma_amount_paid" sum="Total" />
             </field>
         </field>
     </record>
