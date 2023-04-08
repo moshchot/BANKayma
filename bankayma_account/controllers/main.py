@@ -1,4 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from odoo import _, fields
 from odoo.http import request
 
 from odoo.addons.portal.controllers import portal
@@ -29,3 +30,35 @@ class CustomerPortal(portal.CustomerPortal):
             except BaseException:
                 values[field_name] = False
         return values
+
+    def _get_account_searchbar_filters(self):
+        result = super()._get_account_searchbar_filters()
+        result.update(
+            paid={
+                "label": _("Paid"),
+                "domain": [
+                    ("state", "=", "posted"),
+                    ("payment_state", "in", ("in_payment", "paid")),
+                ],
+            },
+            unpaid={
+                "label": _("Unpaid"),
+                "domain": [
+                    ("state", "=", "posted"),
+                    ("payment_state", "in", ("not_paid", "partial")),
+                ],
+            },
+            late={
+                "label": _("Overdue"),
+                "domain": [
+                    (
+                        "invoice_date_due",
+                        "<",
+                        fields.Date.context_today(request.env.user),
+                    ),
+                    ("state", "=", "posted"),
+                    ("payment_state", "in", ("not_paid", "partial")),
+                ],
+            },
+        )
+        return result
