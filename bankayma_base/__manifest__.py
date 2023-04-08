@@ -35,4 +35,12 @@
             "odoo_test_helper",
         ]
     },
+    "assets": {
+        "web.assets_backend": [
+            "bankayma_base/static/src/css/*backend.css",
+        ],
+        "web.assets_frontend": [
+            "bankayma_base/static/src/css/*frontend.css",
+        ],
+    },
 }
