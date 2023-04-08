@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_res_users_form" model="ir.ui.view">
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <field name="action_id" position="after">
+                <field name="login_redirect" placeholder="/my/example" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
