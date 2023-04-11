@@ -15,8 +15,6 @@
         "account_payment_partner",
         "account_payment_mode",
         "account_usability",
-        "account-financial-reporting",
-        "account-financial-tools",
         "bankayma_base",
         "l10n_il",
     ],
