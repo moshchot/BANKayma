@@ -88,9 +88,11 @@ server-tools:
   remotes:
     oca: https://github.com/OCA/server-tools.git
     initOS: https://github.com/initOS/server-tools.git
+    hbrunn: https://github.com/hbrunn/server-tools.git
   merges:
     - oca 16.0
     - initOS 16.0-mig-module_auto_update
+    - hbrunn 16.0-mig-module_auto_update-shell
 server-ux:
   defaults:
     depth: 1
