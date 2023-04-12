@@ -33,6 +33,11 @@
     <field name="implied_ids" eval="[Command.link(ref('group_user'))]" />
 </record>
 
+<record id="group_vendor" model="res.groups">
+    <field name="name">Vendor</field>
+    <field name="category_id" ref="category" />
+</record>
+
 <record id="base.group_user" model="res.groups">
     <!-- enable multi-company globally -->
     <field name="implied_ids" eval="[Command.link(ref('base.group_multi_company'))]" />

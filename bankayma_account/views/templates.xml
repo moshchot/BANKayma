@@ -53,6 +53,7 @@
         <t t-call="portal.portal_searchbar" position="after">
             <nav
                 class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
+                groups="bankayma_base.group_user"
             >
                 <a
                     class="btn btn-sm btn-primary"
@@ -64,6 +65,16 @@
                     class="btn btn-sm btn-primary"
                     aria-label="New Vendor Bill"
                     t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_in_invoice_new').id}}"
+                >New Vendor Bill</a>
+            </nav>
+            <nav
+                class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
+                groups="bankayma_base.group_vendor"
+            >
+                <a
+                    class="btn btn-sm btn-primary"
+                    aria-label="New Vendor Bill"
+                    href="/my/invoices/new"
                 >New Vendor Bill</a>
             </nav>
             <nav
@@ -96,6 +107,45 @@
                     </tr>
                 </table>
             </nav>
+        </t>
+    </template>
+
+    <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
+        <ol position="inside">
+            <li
+                t-if="page_name == 'new_vendor_bill'"
+                class="breadcrumb-item"
+            >New vendor bill</li>
+        </ol>
+    </template>
+
+    <template id="portal_new_vendor_bill">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">Contact Details</t>
+            <form>
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+                <div class="mb-3 col-xl-6">
+                    <label class="col-form-label" for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" />
+                </div>
+                <div class="mb-3 col-xl-6">
+                    <label class="col-form-label" for="label">Label</label>
+                    <input type="text" class="form-control" id="label" />
+                </div>
+                <div class="clearfix" />
+                <div class="mb-1 col-xl-6">
+                    <label class="col-form-label" for="upload">Document</label>
+                    <input type="file" class="form-control" id="upload" />
+                </div>
+                <button type="submit" class="btn btn-primary float-end mb32 ">
+                    Confirm
+                    <span class="fa fa-long-arrow-right" />
+                </button>
+            </form>
         </t>
     </template>
 
