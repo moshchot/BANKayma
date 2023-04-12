@@ -1,6 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import _, fields
-from odoo.http import request
+from odoo.http import request, route
 
 from odoo.addons.portal.controllers import portal
 
@@ -62,3 +62,9 @@ class CustomerPortal(portal.CustomerPortal):
             },
         )
         return result
+
+    @route("/my/invoices/new", auth="user", website=True)
+    def new_vendor_bill(self):
+        vals = self._prepare_portal_layout_values()
+        vals["page_name"] = "new_vendor_bill"
+        return request.render("bankayma_account.portal_new_vendor_bill", vals)
