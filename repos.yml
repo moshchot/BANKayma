@@ -61,6 +61,13 @@ multi-company:
     - oca 16.0
     - legalsylvain 16.0-mig-res_company_code
     - legalsylvain 16.0-ADD-res_company_search_view
+reporting-engine:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/reporting-engine.git
+  merges:
+    - oca 16.0
 server-auth:
   defaults:
     depth: 1
@@ -107,3 +114,10 @@ web:
   merges:
     - oca 16.0
     - initOS 16.0-mig-web_company_color
+mis-builder:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/mis-builder.git
+  merges:
+    - oca 16.0
