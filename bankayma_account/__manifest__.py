@@ -18,6 +18,7 @@
         "account_usability",
         "bankayma_base",
         "l10n_il",
+        "mis_builder",
     ],
     "demo": [
         "demo/tier_definition.xml",
