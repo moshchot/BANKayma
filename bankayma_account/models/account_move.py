@@ -85,12 +85,6 @@ class AccountMove(models.Model):
                 result = to_send.action_invoice_sent()
         return result
 
-    def _compute_hide_post_button(self):
-        result = super()._compute_hide_post_button()
-        for this in self:
-            this.hide_post_button |= this.need_validation
-        return result
-
     def _inter_company_create_invoice(self, dest_company):
         """Allow skipping creation of intercompany invoice"""
         if self.env.context.get("skip_intercompany_invoice"):

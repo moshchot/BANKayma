@@ -95,11 +95,13 @@ server-tools:
     - hbrunn 16.0-mig-module_auto_update-shell
 server-ux:
   defaults:
-    depth: 1
+    depth: 100
   remotes:
     oca: https://github.com/OCA/server-ux.git
+    hbrunn: https://github.com/hbrunn/server-ux.git
   merges:
     - oca 16.0
+    - hbrunn 16.0-base_tier_validation-dynamic_validation_flag
 spreadsheet:
   defaults:
     depth: 1
