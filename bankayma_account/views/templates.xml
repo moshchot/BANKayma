@@ -133,7 +133,7 @@
                     <input type="number" class="form-control" id="amount" />
                 </div>
                 <div class="mb-3 col-xl-6">
-                    <label class="col-form-label" for="label">Label</label>
+                    <label class="col-form-label" for="label">Description</label>
                     <input type="text" class="form-control" id="label" />
                 </div>
                 <div class="clearfix" />
