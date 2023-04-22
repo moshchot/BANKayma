@@ -75,12 +75,12 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-            <field name="amount_untaxed_signed" position="attributes">
+            #<field name="amount_untaxed_signed" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="amount_total_signed" position="attributes">
                 <attribute name="invisible">1</attribute>
-            </field>
+            </field>#
             <field name="amount_total_signed" position="after">
                 <field name="bankayma_amount_paid" sum="Total" />
             </field>
@@ -88,12 +88,12 @@
     </record>
 
     <template id="external_layout_standard" inherit_id="web.external_layout_standard">
-        <img t-if="company.logo" position="attributes">
-            <attribute
-                name="t-att-src"
-            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
+        <div class="o_header_left">
+            <img t-if="company.parent_id.logo" t-att-src="image_data_uri(company.parent_id.logo)" />
+        </div>
+        <div class="o_header_right">
+            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" />
+         </div>
         <div t-field="company.report_footer" position="attributes">
             <attribute name="t-if">not company.parent_id.report_footer</attribute>
         </div>
