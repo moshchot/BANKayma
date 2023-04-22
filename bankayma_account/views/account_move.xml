@@ -75,12 +75,7 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-            #<field name="amount_untaxed_signed" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="amount_total_signed" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>#
+           
             <field name="amount_total_signed" position="after">
                 <field name="bankayma_amount_paid" sum="Total" />
             </field>
