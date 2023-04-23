@@ -94,8 +94,6 @@ server-tools:
     - initOS 16.0-mig-module_auto_update
     - hbrunn 16.0-mig-module_auto_update-shell
 server-ux:
-  defaults:
-    depth: 100
   remotes:
     oca: https://github.com/OCA/server-ux.git
     hbrunn: https://github.com/hbrunn/server-ux.git
