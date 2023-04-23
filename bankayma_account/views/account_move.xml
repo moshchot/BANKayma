@@ -75,7 +75,7 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-           
+
             <field name="amount_total_signed" position="after">
                 <field name="bankayma_amount_paid" sum="Total" />
             </field>
@@ -100,5 +100,49 @@
         </div>
     </template>
 
+    <template id="external_layout_striped" inherit_id="web.external_layout_striped">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
+        </img>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        </div>
+        <div t-field="company.report_footer" position="after">
+            <div
+                t-field="company.parent_id.report_footer"
+                t-if="company.parent_id.report_footer"
+            />
+        </div>
+    </template>
+
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
+        </img>
+    </template>
+
+    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
+        </img>
+        <span t-field="company.report_footer" position="attributes">
+            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        </span>
+        <span t-field="company.report_footer" position="after">
+            <span
+                t-field="company.parent_id.report_footer"
+                t-if="company.parent_id.report_footer"
+            />
+        </span>
+    </template>
 
 </odoo>
