@@ -100,7 +100,8 @@ server-ux:
     oca: https://github.com/OCA/server-ux.git
     hbrunn: https://github.com/hbrunn/server-ux.git
   merges:
-    - oca 16.0
+    # commit before https://github.com/OCA/server-ux/pull/637
+    - oca aa9809a20a48430dd7c921a981ed2c39d5232b51
     - hbrunn 16.0-base_tier_validation-dynamic_validation_flag
 spreadsheet:
   defaults:
