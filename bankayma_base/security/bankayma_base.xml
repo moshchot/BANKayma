@@ -17,7 +17,7 @@
     simplifies dumbing down the UI only for them but have full
     functionality for the users of the main company
     -->
-    <field name="name">User</field>
+    <field name="name">Project User</field>
     <field name="category_id" ref="category" />
     <field name="comment" />
     <field name="implied_ids" eval="[Command.link(ref('base.group_user'))]" />
@@ -25,12 +25,17 @@
 
 <record id="group_manager" model="res.groups">
     <!--
-    as org managers also should get a simplified UI, we make them
+    as project managers also should get a simplified UI, we make them
     their own group too
     -->
-    <field name="name">Manager</field>
+    <field name="name">Project Manager</field>
     <field name="category_id" ref="category" />
     <field name="implied_ids" eval="[Command.link(ref('group_user'))]" />
+</record>
+
+<record id="group_org_manager" model="res.groups">
+    <field name="name">Organization Manager</field>
+    <field name="category_id" ref="category" />
 </record>
 
 <record id="group_vendor" model="res.groups">
