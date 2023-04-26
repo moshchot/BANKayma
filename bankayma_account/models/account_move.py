@@ -134,6 +134,7 @@ class AccountMove(models.Model):
                 )
                 invoice_line.account_id = company.overhead_account_id
                 invoice_line.price_unit = this.bankayma_amount_paid * fraction
+                invoice_line.name = this.name
             invoice = invoice_form.save()
             this.line_ids.filtered("credit").write(
                 {"bankayma_parent_move_line_id": invoice.invoice_line_ids[:1].id}
