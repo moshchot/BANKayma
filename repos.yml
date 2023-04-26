@@ -75,6 +75,15 @@ server-auth:
     oca: https://github.com/OCA/server-auth.git
   merges:
     - oca 16.0
+server-backend:
+  defaults:
+    depth: 100
+  remotes:
+    oca: https://github.com/OCA/server-backend.git
+    hbrunn: https://github.com/hbrunn/server-backend.git
+  merges:
+    - oca 16.0
+    - hbrunn 16.0-base_portal_type
 server-brand:
   defaults:
     depth: 1
