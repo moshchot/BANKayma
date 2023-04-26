@@ -35,7 +35,7 @@
 
 <record id="group_vendor" model="res.groups">
     <field name="name">Vendor</field>
-    <field name="category_id" ref="category" />
+    <field name="category_id" ref="base_portal_type.category_portal_type" />
 </record>
 
 <record id="base.group_user" model="res.groups">
