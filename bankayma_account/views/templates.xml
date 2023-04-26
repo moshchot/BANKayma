@@ -121,25 +121,63 @@
 
     <template id="portal_new_vendor_bill">
         <t t-call="portal.portal_layout">
-            <t t-set="additional_title">Contact Details</t>
-            <form>
+            <t t-set="additional_title">New vendor bill</t>
+            <form action="/my/invoices/new" method="post" enctype="multipart/form-data">
                 <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                <div class="mb-3 col-xl-6">
-                    <label class="col-form-label" for="amount">Amount</label>
-                    <input type="number" class="form-control" id="amount" />
+                <div class="mb-3 col-xl-6" t-if="len(request.env.companies) > 1">
+                    <label class="col-form-label" for="company">Company</label>
+                    <select class="form-control" id="company">
+                        <t t-foreach="request.env.companies" t-as="company">
+                            <option
+                                t-att-selected="company.id == int(post.get('company', request.env.company))"
+                                t-att-value="company.id"
+                            ><t t-out="company.name" /></option>
+                        </t>
+                    </select>
                 </div>
-                <div class="mb-3 col-xl-6">
-                    <label class="col-form-label" for="label">Description</label>
-                    <input type="text" class="form-control" id="label" />
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="amount">Amount</label>
+                    <input
+                        type="number"
+                        min="0"
+                        t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
+                        required="required"
+                        name="amount"
+                        id="amount"
+                        t-att-value="post.get('amount')"
+                    />
+                </div>
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="description">Description</label>
+                    <input
+                        type="text"
+                        t-attf-class="form-control #{errors.get('description') and 'is-invalid' or ''}"
+                        required="required"
+                        name="description"
+                        id="description"
+                        t-att-value="post.get('description')"
+                    />
                 </div>
                 <div class="clearfix" />
-                <div class="mb-1 col-xl-6">
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
+                >
                     <label class="col-form-label" for="upload">Document</label>
-                    <input type="file" class="form-control" id="upload" />
+                    <input
+                        type="file"
+                        t-attf-class="form-control #{errors.get('upload') and 'is-invalid' or ''}"
+                        required="required"
+                        name="upload"
+                        id="upload"
+                    />
                 </div>
                 <button type="submit" class="btn btn-primary float-end mb32 ">
                     Confirm

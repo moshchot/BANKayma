@@ -16,4 +16,21 @@
         <field name="groups_id" eval="[Command.link(ref('group_user'))]" />
     </record>
 
+    <record
+        id="vendor_child_comp1"
+        model="res.users"
+        context="{'no_reset_password': True}"
+    >
+        <field name="login">vendor_child_comp1</field>
+        <field name="name">Vendor Child Company 1</field>
+        <field name="password">vendor_child_comp1</field>
+        <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
+        <field name="company_id" ref="child_comp1" />
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('base.group_portal')), Command.link(ref('group_vendor'))]"
+        />
+    </record>
+
+
 </odoo>

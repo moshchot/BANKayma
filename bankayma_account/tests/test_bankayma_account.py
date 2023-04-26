@@ -7,67 +7,66 @@ from odoo.tools.misc import mute_logger
 
 
 class TestBankaymaAccount(TransactionCase):
+    @classmethod
     @mute_logger(
         "odoo.models.unlink", "odoo.addons.mail.models.mail_mail", "odoo.tests"
     )
-    def setUp(self):
-        super().setUp()
-        Wizard = self.env["bankayma.company.create"]
-        Users = self.env["res.users"].with_context(no_reset_password=True)
-        self.parent = self.env.ref("bankayma_base.child_comp1")
-        if not self.parent.chart_template_id:
-            self.env.ref("l10n_il.il_chart_template").try_loading(self.parent)
-        if not self.parent.country_id:
-            self.parent.country_id = self.env.ref("base.il")
-        self.parent.code = "4242"
-        self.parent.intercompany_sale_journal_id = self.env["account.journal"].create(
+    def setUpClass(cls):
+        super().setUpClass()
+        Wizard = cls.env["bankayma.company.create"]
+        Users = cls.env["res.users"].with_context(no_reset_password=True)
+        cls.parent = cls.env.ref("bankayma_base.child_comp1")
+        if not cls.parent.chart_template_id:
+            cls.env.ref("l10n_il.il_chart_template").try_loading(cls.parent)
+        if not cls.parent.country_id:
+            cls.parent.country_id = cls.env.ref("base.il")
+        cls.parent.code = "4242"
+        cls.parent.intercompany_sale_journal_id = cls.env["account.journal"].create(
             {
                 "name": "Intercompany sales",
                 "code": "INS",
                 "type": "sale",
-                "company_id": self.parent.id,
+                "company_id": cls.parent.id,
                 "sequence": 100,
             }
         )
-        self.parent.intercompany_purchase_journal_id = self.env[
-            "account.journal"
-        ].create(
+        cls.parent.intercompany_purchase_journal_id = cls.env["account.journal"].create(
             {
                 "name": "Intercompany purchases",
                 "code": "INP",
                 "type": "purchase",
-                "company_id": self.parent.id,
+                "company_id": cls.parent.id,
                 "sequence": 100,
             }
         )
-        self.parent.overhead_journal_id = self.env["account.journal"].create(
+        cls.parent.overhead_journal_id = cls.env["account.journal"].create(
             {
                 "name": "Overhead",
                 "code": "OVH",
                 "type": "sale",
-                "company_id": self.parent.id,
+                "company_id": cls.parent.id,
                 "sequence": 200,
             }
         )
-        self.parent.overhead_account_id = self.env["account.account"].create(
+        cls.parent.overhead_account_id = cls.env["account.account"].create(
             {
                 "name": "Overhead",
-                "company_id": self.parent.id,
+                "company_id": cls.parent.id,
                 "code": "4242420",
             }
         )
-        self.parent.overhead_payment_journal_id = self.env["account.journal"].create(
+        cls.parent.overhead_payment_journal_id = cls.env["account.journal"].create(
             {
                 "name": "Overhead Payments",
                 "code": "OVHP",
                 "type": "bank",
-                "company_id": self.parent.id,
+                "company_id": cls.parent.id,
                 "sequence": 200,
             }
         )
         bank_account_wizard = (
-            self.env["account.setup.bank.manual.config"]
-            .with_company(self.parent)
+            cls.env["account.setup.bank.manual.config"]
+            .with_company(cls.parent)
             .create(
                 {
                     "acc_number": "424242",
@@ -77,53 +76,53 @@ class TestBankaymaAccount(TransactionCase):
                 }
             )
         )
-        self.parent_bank_account = bank_account_wizard.res_partner_bank_id
-        self.parent_bank_journal = bank_account_wizard.linked_journal_id
-        self.child1 = Wizard._create_company(self.parent, "child1", "ch1")
-        self.user_child1 = (
+        cls.parent_bank_account = bank_account_wizard.res_partner_bank_id
+        cls.parent_bank_journal = bank_account_wizard.linked_journal_id
+        cls.child1 = Wizard._create_company(cls.parent, "child1", "ch1")
+        cls.user_child1 = (
             Users.sudo()
-            .with_company(self.child1)
+            .with_company(cls.child1)
             .create(
                 {
                     "name": "user_child1",
                     "login": "user_child1",
-                    "company_id": self.child1.id,
-                    "company_ids": [Command.set(self.child1.ids)],
+                    "company_id": cls.child1.id,
+                    "company_ids": [Command.set(cls.child1.ids)],
                     "groups_id": [
                         Command.set(
                             [
-                                self.env.ref("account.group_account_invoice").id,
-                                self.env.ref("bankayma_base.group_user").id,
+                                cls.env.ref("account.group_account_invoice").id,
+                                cls.env.ref("bankayma_base.group_user").id,
                             ]
                         )
                     ],
                 }
             )
         )
-        self.child2 = Wizard._create_company(self.parent, "child2", "ch2")
-        self.user_child2 = (
+        cls.child2 = Wizard._create_company(cls.parent, "child2", "ch2")
+        cls.user_child2 = (
             Users.sudo()
-            .with_company(self.child2)
+            .with_company(cls.child2)
             .create(
                 {
                     "name": "user_child2",
                     "login": "user_child2",
-                    "company_id": self.child2.id,
-                    "company_ids": [Command.set(self.child2.ids)],
+                    "company_id": cls.child2.id,
+                    "company_ids": [Command.set(cls.child2.ids)],
                     "groups_id": [
                         Command.set(
                             [
-                                self.env.ref("account.group_account_invoice").id,
-                                self.env.ref("bankayma_base.group_user").id,
+                                cls.env.ref("account.group_account_invoice").id,
+                                cls.env.ref("bankayma_base.group_user").id,
                             ]
                         )
                     ],
                 }
             )
         )
-        self.product = (
-            self.env["product.product"]
-            .with_company(self.parent)
+        cls.product = (
+            cls.env["product.product"]
+            .with_company(cls.parent)
             .create({"name": "Testproduct", "sale_ok": True, "lst_price": 42})
         )
 

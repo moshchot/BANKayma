@@ -1,6 +1,8 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from base64 import b64encode
+
 from odoo import _, api, fields, models
 from odoo.osv import expression
 from odoo.tests.common import Form
@@ -176,3 +178,26 @@ class AccountMove(models.Model):
             if this.is_invoice(include_receipts=True) and not this.invoice_date:
                 this.invoice_date = fields.Date.context_today(this)
         return super().request_validation()
+
+    def _portal_create_vendor_bill(self, post_data):
+        company = self.env["res.company"].browse(
+            int(post_data.get("company", self.env.company.id))
+        )
+        with Form(
+            self.with_context(default_move_type="in_invoice").with_company(company)
+        ) as invoice_form:
+            invoice_form.partner_id = self.env.user.partner_id
+            with invoice_form.invoice_line_ids.new() as invoice_line:
+                invoice_line.name = post_data.get("description")
+                invoice_line.price_unit = post_data.get("amount")
+            invoice = invoice_form.save()
+        self.env["ir.attachment"].create(
+            {
+                "res_model": self._name,
+                "res_id": invoice.id,
+                "datas": b64encode(post_data["upload"].stream.read()),
+                "store_fname": post_data["upload"].filename,
+                "name": post_data["upload"].filename,
+            }
+        )
+        return invoice

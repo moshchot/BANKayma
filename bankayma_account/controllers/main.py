@@ -64,7 +64,16 @@ class CustomerPortal(portal.CustomerPortal):
         return result
 
     @route("/my/invoices/new", auth="user", website=True)
-    def new_vendor_bill(self):
+    def new_vendor_bill(self, **post):
         vals = self._prepare_portal_layout_values()
         vals["page_name"] = "new_vendor_bill"
+        vals["post"] = post
+        vals["errors"] = {}
+        if post and request.httprequest.method == "POST":
+            for field_name in ("amount", "description", "upload"):
+                if not post.get(field_name):
+                    vals["errors"][field_name] = True
+            if not vals["errors"]:
+                request.env["account.move"].sudo()._portal_create_vendor_bill(post)
+                return request.redirect("/my/invoices")
         return request.render("bankayma_account.portal_new_vendor_bill", vals)
