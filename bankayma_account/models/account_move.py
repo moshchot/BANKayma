@@ -191,6 +191,7 @@ class AccountMove(models.Model):
                 invoice_line.name = post_data.get("description")
                 invoice_line.price_unit = post_data.get("amount")
             invoice = invoice_form.save()
+        invoice.invoice_line_ids.write({"bankayma_immutable": True})
         self.env["ir.attachment"].create(
             {
                 "res_model": self._name,
