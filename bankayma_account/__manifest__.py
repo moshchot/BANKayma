@@ -29,6 +29,7 @@
         "data/res_company.xml",
         "security/ir.model.access.csv",
         "views/menu.xml",
+        "views/account_fiscal_position.xml",
         "views/account_move.xml",
         "views/account_payment_register.xml",
         "views/dashboard.xml",

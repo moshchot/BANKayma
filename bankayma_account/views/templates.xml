@@ -28,7 +28,7 @@
                 t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''} col-xl-6"
             >
                 <label
-                    class="col-form-label"
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
                     for="property_account_position_id"
                 >Fiscal position</label>
                 <select
@@ -45,6 +45,63 @@
                         </option>
                     </t>
                 </select>
+            </div>
+        </xpath>
+        <xpath expr="//label[@for='vat']" position="attributes">
+            <attribute name="class" />
+            <attribute
+                name="t-attf-class"
+            >col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}</attribute>
+        </xpath>
+        <xpath expr="//label[@for='city']" position="attributes">
+            <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//label[@for='street']" position="attributes">
+            <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//label[@for='country_id']" position="attributes">
+            <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//div[./select[@name='state_id']]" position="after">
+            <div class="clearfix" />
+            <div
+                t-attf-class="mb-3 #{error.get('bank_name') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                    for="bank_name"
+                >Bank</label>
+                <input
+                    name="bank_name"
+                    t-attf-class="form-control #{error.get('bank_name') and 'is-invalid' or ''}"
+                    t-att-value="bank_name or partner.bank_ids[:1].bank_id.name"
+                />
+            </div>
+            <div
+                t-attf-class="mb-3 #{error.get('bank_branch_code') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                    for="bank_branch_code"
+                >Branch</label>
+                <input
+                    name="bank_branch_code"
+                    t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
+                    t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
+                />
+            </div>
+            <div
+                t-attf-class="mb-3 #{error.get('bank_acc_number') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                    for="bank_acc_number"
+                >Account number</label>
+                <input
+                    name="bank_acc_number"
+                    t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
+                    t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
+                />
             </div>
         </xpath>
     </template>
@@ -174,9 +231,12 @@
                     <input
                         type="file"
                         t-attf-class="form-control #{errors.get('upload') and 'is-invalid' or ''}"
-                        required="required"
+                        t-att-required="'required' if request.env.user.partner_id.property_account_position_id.vendor_doc_mandatory else None"
                         name="upload"
                         id="upload"
+                    />
+                    <div
+                        t-out="request.env.user.partner_id.property_account_position_id.vendor_doc_description"
                     />
                 </div>
                 <button type="submit" class="btn btn-primary float-end mb32 ">
