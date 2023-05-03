@@ -130,9 +130,9 @@
             >
                 <a
                     class="btn btn-lg btn-primary"
-                    aria-label="Pay Me"
+                    aria-label="New Vendor Bill"
                     href="/my/account?redirect=/my/invoices/new"
-                >New Vendor Bill</a>
+                >Pay Me</a>
             </nav>
             <nav
                 t-if="invoices"
