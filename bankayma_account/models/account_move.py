@@ -17,6 +17,10 @@ class AccountMove(models.Model):
         currency_field="company_currency_id",
         compute_sudo=True,
     )
+    bankayma_payment_method_id = fields.Many2one(
+        related="payment_id.payment_method_line_id.payment_method_id",
+        readonly=True,
+    )
 
     def _compute_amount(self):
         """

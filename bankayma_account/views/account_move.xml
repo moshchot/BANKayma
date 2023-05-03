@@ -78,6 +78,7 @@
 
             <field name="amount_total_signed" position="after">
                 <field name="bankayma_amount_paid" sum="Total" />
+                <field name="bankayma_payment_method_id" />
             </field>
         </field>
     </record>
