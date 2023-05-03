@@ -7,6 +7,7 @@
     "author": "Moshchot Coop",
     "license": "AGPL-3",
     "depends": [
+        "contacts",
         "mail",
         "disable_odoo_online",
         "base_portal_type",
