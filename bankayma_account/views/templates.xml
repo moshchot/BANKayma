@@ -129,8 +129,8 @@
                 groups="bankayma_base.group_vendor"
             >
                 <a
-                    class="btn btn-sm btn-primary"
-                    aria-label="New Vendor Bill"
+                    class="btn btn-lg btn-primary"
+                    aria-label="Pay Me"
                     href="/my/account?redirect=/my/invoices/new"
                 >New Vendor Bill</a>
             </nav>
