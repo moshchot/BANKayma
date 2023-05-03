@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import _, fields
 from odoo.http import request, route
+from odoo.osv import expression
 
 from odoo.addons.portal.controllers import portal
 
@@ -16,6 +17,17 @@ class CustomerPortal(portal.CustomerPortal):
             if optional_field not in self.OPTIONAL_BILLING_FIELDS:
                 self.OPTIONAL_BILLING_FIELDS.append(optional_field)
         super().__init__()
+
+    def _get_invoices_domain(self):
+        result = super()._get_invoices_domain()
+        return [
+            leaf
+            if not expression.is_leaf(leaf) or leaf[0] not in ("state", "is_move_sent")
+            else ("state", "!=", "cancel")
+            if leaf[0] == "state"
+            else expression.TRUE_LEAF
+            for leaf in result
+        ]
 
     def _prepare_portal_layout_values(self):
         result = super()._prepare_portal_layout_values()

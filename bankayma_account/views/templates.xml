@@ -131,7 +131,7 @@
                 <a
                     class="btn btn-sm btn-primary"
                     aria-label="New Vendor Bill"
-                    href="/my/invoices/new"
+                    href="/my/account?redirect=/my/invoices/new"
                 >New Vendor Bill</a>
             </nav>
             <nav
@@ -185,10 +185,10 @@
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                <div class="mb-3 col-xl-6" t-if="len(request.env.companies) > 1">
+                <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
                     <label class="col-form-label" for="company">Company</label>
                     <select class="form-control" id="company">
-                        <t t-foreach="request.env.companies" t-as="company">
+                        <t t-foreach="request.env.user.company_ids" t-as="company">
                             <option
                                 t-att-selected="company.id == int(post.get('company', request.env.company))"
                                 t-att-value="company.id"

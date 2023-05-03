@@ -26,6 +26,7 @@
     "data": [
         "data/account_payment_method.xml",
         "data/product_product.xml",
+        "data/mail_template.xml",
         "data/res_company.xml",
         "security/ir.model.access.csv",
         "views/menu.xml",
@@ -37,6 +38,7 @@
         "views/res_partner.xml",
         "views/templates.xml",
         "wizards/bankayma_company_create.xml",
+        "wizards/bankayma_vendor_invite.xml",
         "wizards/company_cascade_wizard.xml",
     ],
     "website": "https://github.com/moshchot/BANKayma",
