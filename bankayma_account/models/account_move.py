@@ -154,12 +154,13 @@ class AccountMove(models.Model):
                 )
                 % this
             )
+            child_invoice = self.search([("auto_invoice_id", "=", invoice.id)])
             this.message_post(
                 body=_(
                     'Overhead created in <a data-oe-model="account.move" '
                     'data-oe-id="%(id)s" href="#">%(name)s</a>'
                 )
-                % invoice
+                % child_invoice
             )
             if pay:
                 payment_form = Form(
@@ -172,7 +173,28 @@ class AccountMove(models.Model):
                     .with_company(company)
                 )
                 payment_form.journal_id = company.overhead_payment_journal_id
+                payment_form.communication = "%s: %s" % (
+                    this.name,
+                    " ".join(this.mapped("invoice_line_ids.name")),
+                )
                 payment_form.save().action_create_payments()
+                if child.overhead_payment_journal_id:
+                    payment_form = Form(
+                        self.env["account.payment.register"]
+                        .with_context(
+                            active_id=child_invoice.id,
+                            active_ids=child_invoice.ids,
+                            active_model=child_invoice._name,
+                        )
+                        .with_company(child)
+                    )
+                    payment_form.journal_id = child.overhead_payment_journal_id
+                    payment_form.communication = "%s: %s" % (
+                        this.name,
+                        " ".join(this.mapped("invoice_line_ids.name")),
+                    )
+                    payment_form.save().action_create_payments()
+
             invoices += invoice
         return invoices
 

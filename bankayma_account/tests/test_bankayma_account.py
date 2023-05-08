@@ -172,6 +172,10 @@ class TestBankaymaAccount(TransactionCase):
         self.assertIn(
             self.parent.overhead_account_id, invoices.mapped("line_ids.account_id")
         )
+        child_invoices = self.env["account.move"].search(
+            [("auto_invoice_id", "in", invoices.ids)]
+        )
+        self.assertEqual(child_invoices.mapped("payment_state"), ["paid", "paid"])
         self.assertItemsEqual(
             self.env["account.move"]
             .search([("auto_invoice_id", "in", invoices.ids)])
