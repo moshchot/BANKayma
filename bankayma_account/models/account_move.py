@@ -18,8 +18,9 @@ class AccountMove(models.Model):
         compute_sudo=True,
     )
     bankayma_payment_method_id = fields.Many2one(
-        related="payment_id.payment_method_line_id.payment_method_id",
-        readonly=True,
+        "account.payment.method",
+        compute="_compute_bankayma_payment_method_id",
+        store=True,
     )
 
     def _compute_amount(self):
@@ -33,6 +34,17 @@ class AccountMove(models.Model):
                 this.amount_total_signed - this.amount_residual_signed
             )
         return result
+
+    @api.depends(
+        "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
+        "payment_method_line_id.payment_method_id"
+    )
+    def _compute_bankayma_payment_method_id(self):
+        for this in self:
+            this.bankayma_payment_method_id = this.mapped(
+                "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
+                "payment_method_line_id.payment_method_id"
+            )[:1]
 
     @api.model
     def search(self, domain, offset=0, limit=None, order=None, count=False):
