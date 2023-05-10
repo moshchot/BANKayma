@@ -75,10 +75,23 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-
             <field name="amount_total_signed" position="after">
+                <field name="bankayma_move_line_product_id" />
+                <field name="bankayma_move_line_name" />
                 <field name="bankayma_amount_paid" sum="Total" />
                 <field name="bankayma_payment_method_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_in_invoice_bill_tree" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_in_invoice_bill_tree" />
+        <field name="arch" type="xml">
+            <field name="amount_total_signed" position="before">
+                <field name="fiscal_position_id" />
+                <field name="bankayma_partner_vat" />
+                <field name="bankayma_attachment_ids" />
             </field>
         </field>
     </record>

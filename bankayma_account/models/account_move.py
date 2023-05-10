@@ -22,6 +22,14 @@ class AccountMove(models.Model):
         compute="_compute_bankayma_payment_method_id",
         store=True,
     )
+    bankayma_move_line_name = fields.Char(related="invoice_line_ids.name")
+    bankayma_move_line_product_id = fields.Many2one(
+        related="invoice_line_ids.product_id"
+    )
+    bankayma_partner_vat = fields.Char(related="partner_id.vat")
+    bankayma_attachment_ids = fields.One2many(
+        "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
+    )
 
     def _compute_amount(self):
         """
