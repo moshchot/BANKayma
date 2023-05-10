@@ -49,6 +49,13 @@ bank-statement-reconcile:
     oca: https://github.com/OCA/bank-statement-reconcile.git
   merges:
     - oca 16.0
+project:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/project.git
+  merges:
+    - oca 16.0
 multi-company:
   defaults:
     depth: 100
