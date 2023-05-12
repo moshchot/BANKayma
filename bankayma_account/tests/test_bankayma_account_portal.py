@@ -22,6 +22,7 @@ class TestBankaymaAccountPortal(TransactionCase):
                     "company": self.env.company,
                     "amount": "42",
                     "description": "hello world",
+                    "fpos": self.env["account.fiscal.position"].search([], limit=1).id,
                 },
                 MultiDict(
                     [
