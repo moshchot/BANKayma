@@ -132,7 +132,7 @@
                 <a
                     class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
-                    href="/my/account?redirect=/my/invoices/new"
+                    href="/my/invoices/new"
                 >Pay Me</a>
             </nav>
             <nav
