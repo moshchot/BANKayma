@@ -25,6 +25,7 @@
     >
         <xpath expr="//div[./input[@name='phone']]" position="after">
             <div
+                t-if="user_id.has_group('bankayma_base.group_vendor')"
                 t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''} col-xl-6"
             >
                 <label
@@ -197,6 +198,25 @@
                     </select>
                 </div>
                 <div
+                    t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-6"
+                >
+                    <label class="col-form-label" for="fpos">Fiscal position</label>
+                    <select
+                        name="fpos"
+                        t-attf-class="form-select #{errors.get('fpos') and 'is-invalid' or ''}"
+                    >
+                        <option value="">Fiscal position...</option>
+                        <t t-foreach="fiscal_positions or []" t-as="fpos">
+                            <option
+                                t-att-value="fpos.id"
+                                t-att-selected="fpos.id == int(post['fpos']) if post.get('fpos') else fpos.id == request.env.user.partner_id.property_account_position_id.id"
+                            >
+                                <t t-esc="fpos.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="amount">Amount</label>
@@ -231,7 +251,6 @@
                     <input
                         type="file"
                         t-attf-class="form-control #{errors.get('upload') and 'is-invalid' or ''}"
-                        t-att-required="'required' if request.env.user.partner_id.property_account_position_id.vendor_doc_mandatory else None"
                         name="upload"
                         id="upload"
                         multiple="multiple"

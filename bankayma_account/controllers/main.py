@@ -134,10 +134,17 @@ class CustomerPortal(portal.CustomerPortal):
         vals["post"] = post
         vals["errors"] = {}
         if post and request.httprequest.method == "POST":
-            for field_name in ("amount", "description"):
+            for field_name in ("amount", "description", "fpos"):
                 if not post.get(field_name):
                     vals["errors"][field_name] = True
-            fpos = request.env.user.partner_id.property_account_position_id
+            fpos = (
+                request.env["account.fiscal.position"]
+                .sudo()
+                .browse(
+                    int(post.get("fpos") or 0)
+                    or request.env.user.partner_id.property_account_position_id.id
+                )
+            )
             if not post.get("upload") and fpos.vendor_doc_mandatory:
                 vals["errors"]["upload"] = True
             if not vals["errors"]:

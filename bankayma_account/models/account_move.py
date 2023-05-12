@@ -233,6 +233,9 @@ class AccountMove(models.Model):
             self.with_context(default_move_type="in_invoice").with_company(company)
         ) as invoice_form:
             invoice_form.partner_id = self.env.user.partner_id
+            invoice_form.fiscal_position_id = self.env[
+                "account.fiscal.position"
+            ].browse(int(post_data.get("fpos")))
             with invoice_form.invoice_line_ids.new() as invoice_line:
                 invoice_line.name = post_data.get("description")
                 invoice_line.price_unit = post_data.get("amount")
