@@ -20,10 +20,8 @@ class TestBankaymaAccountPortal(TransactionCase):
                     "company": self.env.company,
                     "amount": "42",
                     "description": "hello world",
-                    "upload": fake_upload(
-                        io.BytesIO(b"hello world"), "hello_world.txt"
-                    ),
-                }
+                },
+                (fake_upload(io.BytesIO(b"hello world"), "hello_world.txt"),),
             )
         )
         self.assertTrue(invoice)

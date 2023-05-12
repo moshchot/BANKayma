@@ -225,7 +225,7 @@ class AccountMove(models.Model):
                 this.invoice_date = fields.Date.context_today(this)
         return super().request_validation()
 
-    def _portal_create_vendor_bill(self, post_data):
+    def _portal_create_vendor_bill(self, post_data, uploaded_files):
         company = self.env["res.company"].browse(
             int(post_data.get("company", self.env.company.id))
         )
@@ -238,13 +238,14 @@ class AccountMove(models.Model):
                 invoice_line.price_unit = post_data.get("amount")
             invoice = invoice_form.save()
         invoice.invoice_line_ids.write({"bankayma_immutable": True})
-        self.env["ir.attachment"].create(
-            {
-                "res_model": self._name,
-                "res_id": invoice.id,
-                "datas": b64encode(post_data["upload"].stream.read()),
-                "store_fname": post_data["upload"].filename,
-                "name": post_data["upload"].filename,
-            }
-        )
+        for uploaded_file in uploaded_files:
+            self.env["ir.attachment"].create(
+                {
+                    "res_model": self._name,
+                    "res_id": invoice.id,
+                    "datas": b64encode(uploaded_file.stream.read()),
+                    "store_fname": uploaded_file.filename,
+                    "name": uploaded_file.filename,
+                }
+            )
         return invoice

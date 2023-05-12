@@ -234,6 +234,7 @@
                         t-att-required="'required' if request.env.user.partner_id.property_account_position_id.vendor_doc_mandatory else None"
                         name="upload"
                         id="upload"
+                        multiple="multiple"
                     />
                     <div
                         t-out="request.env.user.partner_id.property_account_position_id.vendor_doc_description"
