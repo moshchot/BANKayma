@@ -4,6 +4,8 @@
 import io
 from collections import namedtuple
 
+from werkzeug.datastructures import MultiDict
+
 from odoo.tests.common import TransactionCase
 
 
@@ -21,7 +23,14 @@ class TestBankaymaAccountPortal(TransactionCase):
                     "amount": "42",
                     "description": "hello world",
                 },
-                (fake_upload(io.BytesIO(b"hello world"), "hello_world.txt"),),
+                MultiDict(
+                    [
+                        (
+                            "upload",
+                            fake_upload(io.BytesIO(b"hello world"), "hello_world.txt"),
+                        )
+                    ]
+                ),
             )
         )
         self.assertTrue(invoice)
