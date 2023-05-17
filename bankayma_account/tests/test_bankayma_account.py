@@ -86,6 +86,7 @@ class TestBankaymaAccount(TransactionCase):
                 {
                     "name": "user_child1",
                     "login": "user_child1",
+                    "email": "user@child1",
                     "company_id": cls.child1.id,
                     "company_ids": [Command.set(cls.child1.ids)],
                     "groups_id": [
@@ -107,6 +108,7 @@ class TestBankaymaAccount(TransactionCase):
                 {
                     "name": "user_child2",
                     "login": "user_child2",
+                    "email": "user@child2",
                     "company_id": cls.child2.id,
                     "company_ids": [Command.set(cls.child2.ids)],
                     "groups_id": [

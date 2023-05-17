@@ -6,6 +6,12 @@
     <record id="child_comp1" model="res.company">
         <field name="name">Child Company 1</field>
         <field name="parent_id" ref="base.main_company" />
+        <field
+            name="logo"
+            type="base64"
+            file="bankayma_base/static/description/icon.png"
+        />
+        <field name="external_report_layout_id" ref="web.external_layout_standard" />
     </record>
 
 </odoo>
