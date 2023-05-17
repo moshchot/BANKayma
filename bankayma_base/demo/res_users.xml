@@ -9,6 +9,7 @@
         context="{'no_reset_password': True}"
     >
         <field name="login">user_child_comp1</field>
+        <field name="email">user@child_comp1</field>
         <field name="name">User Child Company 1</field>
         <field name="password">user_child_comp1</field>
         <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
@@ -22,6 +23,7 @@
         context="{'no_reset_password': True}"
     >
         <field name="login">vendor_child_comp1</field>
+        <field name="email">vendor@child_comp1</field>
         <field name="name">Vendor Child Company 1</field>
         <field name="password">vendor_child_comp1</field>
         <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
