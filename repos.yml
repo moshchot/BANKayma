@@ -3,7 +3,7 @@ account-analytic:
     depth: 100
   remotes:
     oca: https://github.com/OCA/account-analytic.git
-    hbrunn: https://github.com/OCA/account-analytic.git
+    hbrunn: https://github.com/hbrunn/account-analytic.git
   merges:
     - oca 16.0
     - hbrunn 16.0-account_analytic_plan_applicability_product
