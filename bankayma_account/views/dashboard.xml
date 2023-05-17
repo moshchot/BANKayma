@@ -245,8 +245,4 @@
         <field name="view_id" ref="view_dashboard_qweb" />
     </record>
 
-    <record id="bankayma_base.menu_bankayma_root" model="ir.ui.menu">
-        <field name="action" ref="action_dashboard" />
-    </record>
-
 </odoo>

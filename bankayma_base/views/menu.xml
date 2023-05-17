@@ -4,7 +4,12 @@
 <odoo>
 
     <!-- add own main menu that other customization addons fill -->
-    <menuitem id="menu_bankayma_root" name="BANKayma" sequence="100" />
+    <menuitem
+        id="menu_bankayma_root"
+        name="BANKayma"
+        sequence="100"
+        action="board.open_board_my_dash_action"
+    />
     <record
         id="contacts.action_contacts_view_kanban"
         model="ir.actions.act_window.view"
