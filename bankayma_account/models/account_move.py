@@ -108,7 +108,17 @@ class AccountMove(models.Model):
                 in ("in_invoice", "out_invoice", "in_refund", "out_refund")
             )
             if to_send:
-                result = to_send.action_invoice_sent()
+                action = to_send.action_invoice_sent()
+                with Form(
+                    self.env[action["res_model"]].with_context(**action["context"]),
+                    action["view_id"],
+                ) as send_form:
+                    send_form.save().send_and_print_action()
+                result = {
+                    "type": "ir.actions.act_url",
+                    "target": "self",
+                    "url": to_send[:1].get_portal_url(),
+                }
         return result
 
     def _inter_company_create_invoice(self, dest_company):

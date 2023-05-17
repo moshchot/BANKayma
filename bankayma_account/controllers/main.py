@@ -148,9 +148,13 @@ class CustomerPortal(portal.CustomerPortal):
             if not post.get("upload") and fpos.vendor_doc_mandatory:
                 vals["errors"]["upload"] = True
             if not vals["errors"]:
-                request.env["account.move"].sudo()._portal_create_vendor_bill(
-                    post,
-                    request.httprequest.files,
+                bill = (
+                    request.env["account.move"]
+                    .sudo()
+                    ._portal_create_vendor_bill(
+                        post,
+                        request.httprequest.files,
+                    )
                 )
-                return request.redirect("/my/invoices")
+                return request.redirect("/my/invoices/%d" % bill.id)
         return request.render("bankayma_account.portal_new_vendor_bill", vals)
