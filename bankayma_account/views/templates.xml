@@ -204,18 +204,22 @@
                     <select
                         name="fpos"
                         t-attf-class="form-select #{errors.get('fpos') and 'is-invalid' or ''}"
+                        onchange="jQuery('#vendor_doc_description').html(jQuery(this.selectedOptions).data('vendor_doc_description')); jQuery('#upload').prop('required', jQuery(this.selectedOptions).data('vendor_doc_mandatory') == 'True')"
                     >
                         <option value="">Fiscal position...</option>
                         <t t-foreach="fiscal_positions or []" t-as="fpos">
                             <option
                                 t-att-value="fpos.id"
                                 t-att-selected="fpos.id == int(post['fpos']) if post.get('fpos') else fpos.id == request.env.user.partner_id.property_account_position_id.id"
+                                t-att-data-vendor_doc_description="fpos.vendor_doc_description"
+                                t-att-data-vendor_doc_mandatory="fpos.vendor_doc_mandatory"
                             >
                                 <t t-esc="fpos.name" />
                             </option>
                         </t>
                     </select>
                 </div>
+                <div id="vendor_doc_description" />
                 <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
                 >
