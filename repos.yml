@@ -7,6 +7,7 @@ account-analytic:
   merges:
     - oca 16.0
     - hbrunn 16.0-account_analytic_plan_applicability_product
+    - hbrunn 16.0-account_move_update_analytic
 account-financial-reporting:
   defaults:
     depth: 1
