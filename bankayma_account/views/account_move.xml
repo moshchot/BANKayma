@@ -65,8 +65,24 @@
                 expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_note_control']"
                 position="replace"
             />
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']"
+                position="after"
+            >
+                <field name="bankayma_product_domain" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']"
+                position="attributes"
+            >
+                <attribute name="domain">bankayma_product_domain</attribute>
+            </xpath>
             <field name="partner_id" position="after">
                 <field name="fiscal_position_id" position="move" />
+                <field name="bankayma_partner_domain" invisible="1" />
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="domain">bankayma_partner_domain</attribute>
             </field>
         </field>
     </record>

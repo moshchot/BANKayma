@@ -33,6 +33,7 @@
         "security/bankayma_account.xml",
         "views/menu.xml",
         "views/account_fiscal_position.xml",
+        "views/account_journal.xml",
         "views/account_move.xml",
         "views/account_payment_register.xml",
         "views/dashboard.xml",

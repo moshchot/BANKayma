@@ -30,6 +30,7 @@ class AccountMove(models.Model):
     bankayma_attachment_ids = fields.One2many(
         "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
     )
+    bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
 
     def _compute_amount(self):
         """
@@ -53,6 +54,18 @@ class AccountMove(models.Model):
                 "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
                 "payment_method_line_id.payment_method_id"
             )[:1]
+
+    @api.depends("journal_id.bankayma_restrict_intercompany_partner")
+    def _compute_bankayma_partner_domain(self):
+        for this in self:
+            if this.journal_id.bankayma_restrict_intercompany_partner:
+                this.bankayma_partner_domain = [
+                    ("id", "in", this.company_id.mapped("child_ids.partner_id.id"))
+                ]
+            else:
+                this.bankayma_partner_domain = [
+                    ("company_id", "in", (False, this.company_id.id))
+                ]
 
     @api.model
     def search(self, domain, offset=0, limit=None, order=None, count=False):
