@@ -149,3 +149,10 @@ mis-builder:
     oca: https://github.com/OCA/mis-builder.git
   merges:
     - oca 16.0
+currency:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/currency.git
+  merges:
+    - oca 16.0   
