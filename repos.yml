@@ -155,4 +155,4 @@ currency:
   remotes:
     oca: https://github.com/OCA/currency.git
   merges:
-    - oca 16.0   
+    - oca 16.0
