@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+
+    <record id="template_vendor_invite" model="mail.template" forcecreate="1">
+        <field name="name">Invitation to vendor portal</field>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="subject">Invitation to vendor portal</field>
+        <field name="partner_to">{{object.id}}</field>
+        <field name="body_html" type="html">
+            <h1>Invitation</h1>
+            <div>Here is the <a
+                    t-attf-href="{{ object.signup_url }}&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew"
+                >link</a></div>
+        </field>
+    </record>
+
+</odoo>

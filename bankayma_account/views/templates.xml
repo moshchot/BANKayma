@@ -25,10 +25,11 @@
     >
         <xpath expr="//div[./input[@name='phone']]" position="after">
             <div
+                t-if="user_id.has_group('bankayma_base.group_vendor')"
                 t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''} col-xl-6"
             >
                 <label
-                    class="col-form-label"
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
                     for="property_account_position_id"
                 >Fiscal position</label>
                 <select
@@ -45,6 +46,63 @@
                         </option>
                     </t>
                 </select>
+            </div>
+        </xpath>
+        <xpath expr="//label[@for='vat']" position="attributes">
+            <attribute name="class" />
+            <attribute
+                name="t-attf-class"
+            >col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}</attribute>
+        </xpath>
+        <xpath expr="//label[@for='city']" position="attributes">
+            <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//label[@for='street']" position="attributes">
+            <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//label[@for='country_id']" position="attributes">
+            <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//div[./select[@name='state_id']]" position="after">
+            <div class="clearfix" />
+            <div
+                t-attf-class="mb-3 #{error.get('bank_name') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                    for="bank_name"
+                >Bank</label>
+                <input
+                    name="bank_name"
+                    t-attf-class="form-control #{error.get('bank_name') and 'is-invalid' or ''}"
+                    t-att-value="bank_name or partner.bank_ids[:1].bank_id.name"
+                />
+            </div>
+            <div
+                t-attf-class="mb-3 #{error.get('bank_branch_code') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                    for="bank_branch_code"
+                >Branch</label>
+                <input
+                    name="bank_branch_code"
+                    t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
+                    t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
+                />
+            </div>
+            <div
+                t-attf-class="mb-3 #{error.get('bank_acc_number') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label
+                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                    for="bank_acc_number"
+                >Account number</label>
+                <input
+                    name="bank_acc_number"
+                    t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
+                    t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
+                />
             </div>
         </xpath>
     </template>
@@ -72,10 +130,10 @@
                 groups="bankayma_base.group_vendor"
             >
                 <a
-                    class="btn btn-sm btn-primary"
+                    class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
                     href="/my/invoices/new"
-                >New Vendor Bill</a>
+                >Pay Me</a>
             </nav>
             <nav
                 t-if="invoices"
@@ -93,15 +151,15 @@
                 <table class="table">
                     <tr>
                         <th>In:</th><th
-                            t-esc="amount_in"
+                            t-esc="amount_in if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_out"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
                             <th>Out:</th><th
-                            t-esc="amount_out"
+                            t-esc="amount_out if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_in"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
                         <th>Balance:</th><th
-                            t-esc="amount_in - amount_out"
+                            t-esc="amount_in - amount_out * (-1 if invoices.env.user.has_group('bankayma_base.group_vendor') else 1)"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
                     </tr>
@@ -121,25 +179,89 @@
 
     <template id="portal_new_vendor_bill">
         <t t-call="portal.portal_layout">
-            <t t-set="additional_title">Contact Details</t>
-            <form>
+            <t t-set="additional_title">New vendor bill</t>
+            <form action="/my/invoices/new" method="post" enctype="multipart/form-data">
                 <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                <div class="mb-3 col-xl-6">
-                    <label class="col-form-label" for="amount">Amount</label>
-                    <input type="number" class="form-control" id="amount" />
+                <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
+                    <label class="col-form-label" for="company">Company</label>
+                    <select class="form-control" id="company">
+                        <t t-foreach="request.env.user.company_ids" t-as="company">
+                            <option
+                                t-att-selected="company.id == int(post.get('company', request.env.company))"
+                                t-att-value="company.id"
+                            ><t t-out="company.name" /></option>
+                        </t>
+                    </select>
                 </div>
-                <div class="mb-3 col-xl-6">
-                    <label class="col-form-label" for="label">Description</label>
-                    <input type="text" class="form-control" id="label" />
+                <div
+                    t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-6"
+                >
+                    <label class="col-form-label" for="fpos">Fiscal position</label>
+                    <select
+                        name="fpos"
+                        t-attf-class="form-select #{errors.get('fpos') and 'is-invalid' or ''}"
+                        onchange="jQuery('#vendor_doc_description').html(jQuery(this.selectedOptions).data('vendor_doc_description')); jQuery('#upload').prop('required', jQuery(this.selectedOptions).data('vendor_doc_mandatory') == 'True')"
+                    >
+                        <option value="">Fiscal position...</option>
+                        <t t-foreach="fiscal_positions or []" t-as="fpos">
+                            <option
+                                t-att-value="fpos.id"
+                                t-att-selected="fpos.id == int(post['fpos']) if post.get('fpos') else fpos.id == request.env.user.partner_id.property_account_position_id.id"
+                                t-att-data-vendor_doc_description="fpos.vendor_doc_description"
+                                t-att-data-vendor_doc_mandatory="fpos.vendor_doc_mandatory"
+                            >
+                                <t t-esc="fpos.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div id="vendor_doc_description" />
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="amount">Amount</label>
+                    <input
+                        type="number"
+                        min="0"
+                        t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
+                        required="required"
+                        name="amount"
+                        id="amount"
+                        t-att-value="post.get('amount')"
+                    />
+                </div>
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="description">Description</label>
+                    <input
+                        type="text"
+                        t-attf-class="form-control #{errors.get('description') and 'is-invalid' or ''}"
+                        required="required"
+                        name="description"
+                        id="description"
+                        t-att-value="post.get('description')"
+                    />
                 </div>
                 <div class="clearfix" />
-                <div class="mb-1 col-xl-6">
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
+                >
                     <label class="col-form-label" for="upload">Document</label>
-                    <input type="file" class="form-control" id="upload" />
+                    <input
+                        type="file"
+                        t-attf-class="form-control #{errors.get('upload') and 'is-invalid' or ''}"
+                        name="upload"
+                        id="upload"
+                        multiple="multiple"
+                    />
+                    <div
+                        t-out="request.env.user.partner_id.property_account_position_id.vendor_doc_description"
+                    />
                 </div>
                 <button type="submit" class="btn btn-primary float-end mb32 ">
                     Confirm

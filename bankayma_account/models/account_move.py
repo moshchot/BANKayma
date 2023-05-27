@@ -1,6 +1,8 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from base64 import b64encode
+
 from odoo import _, api, fields, models
 from odoo.osv import expression
 from odoo.tests.common import Form
@@ -15,6 +17,20 @@ class AccountMove(models.Model):
         currency_field="company_currency_id",
         compute_sudo=True,
     )
+    bankayma_payment_method_id = fields.Many2one(
+        "account.payment.method",
+        compute="_compute_bankayma_payment_method_id",
+        store=True,
+    )
+    bankayma_move_line_name = fields.Char(related="invoice_line_ids.name")
+    bankayma_move_line_product_id = fields.Many2one(
+        related="invoice_line_ids.product_id"
+    )
+    bankayma_partner_vat = fields.Char(related="partner_id.vat")
+    bankayma_attachment_ids = fields.One2many(
+        "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
+    )
+    bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
 
     def _compute_amount(self):
         """
@@ -27,6 +43,29 @@ class AccountMove(models.Model):
                 this.amount_total_signed - this.amount_residual_signed
             )
         return result
+
+    @api.depends(
+        "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
+        "payment_method_line_id.payment_method_id"
+    )
+    def _compute_bankayma_payment_method_id(self):
+        for this in self:
+            this.bankayma_payment_method_id = this.mapped(
+                "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
+                "payment_method_line_id.payment_method_id"
+            )[:1]
+
+    @api.depends("journal_id.bankayma_restrict_intercompany_partner")
+    def _compute_bankayma_partner_domain(self):
+        for this in self:
+            if this.journal_id.bankayma_restrict_intercompany_partner:
+                this.bankayma_partner_domain = [
+                    ("id", "in", this.company_id.mapped("child_ids.partner_id.id"))
+                ]
+            else:
+                this.bankayma_partner_domain = [
+                    ("company_id", "in", (False, this.company_id.id))
+                ]
 
     @api.model
     def search(self, domain, offset=0, limit=None, order=None, count=False):
@@ -82,7 +121,17 @@ class AccountMove(models.Model):
                 in ("in_invoice", "out_invoice", "in_refund", "out_refund")
             )
             if to_send:
-                result = to_send.action_invoice_sent()
+                action = to_send.action_invoice_sent()
+                with Form(
+                    self.env[action["res_model"]].with_context(**action["context"]),
+                    action["view_id"],
+                ) as send_form:
+                    send_form.save().send_and_print_action()
+                result = {
+                    "type": "ir.actions.act_url",
+                    "target": "self",
+                    "url": to_send[:1].get_portal_url(),
+                }
         return result
 
     def _inter_company_create_invoice(self, dest_company):
@@ -134,6 +183,7 @@ class AccountMove(models.Model):
                 )
                 invoice_line.account_id = company.overhead_account_id
                 invoice_line.price_unit = this.bankayma_amount_paid * fraction
+                invoice_line.name = this.name
             invoice = invoice_form.save()
             this.line_ids.filtered("credit").write(
                 {"bankayma_parent_move_line_id": invoice.invoice_line_ids[:1].id}
@@ -147,12 +197,13 @@ class AccountMove(models.Model):
                 )
                 % this
             )
+            child_invoice = self.search([("auto_invoice_id", "=", invoice.id)])
             this.message_post(
                 body=_(
                     'Overhead created in <a data-oe-model="account.move" '
                     'data-oe-id="%(id)s" href="#">%(name)s</a>'
                 )
-                % invoice
+                % child_invoice
             )
             if pay:
                 payment_form = Form(
@@ -165,7 +216,28 @@ class AccountMove(models.Model):
                     .with_company(company)
                 )
                 payment_form.journal_id = company.overhead_payment_journal_id
+                payment_form.communication = "%s: %s" % (
+                    this.name,
+                    " ".join(this.mapped("invoice_line_ids.name")),
+                )
                 payment_form.save().action_create_payments()
+                if child.overhead_payment_journal_id:
+                    payment_form = Form(
+                        self.env["account.payment.register"]
+                        .with_context(
+                            active_id=child_invoice.id,
+                            active_ids=child_invoice.ids,
+                            active_model=child_invoice._name,
+                        )
+                        .with_company(child)
+                    )
+                    payment_form.journal_id = child.overhead_payment_journal_id
+                    payment_form.communication = "%s: %s" % (
+                        this.name,
+                        " ".join(this.mapped("invoice_line_ids.name")),
+                    )
+                    payment_form.save().action_create_payments()
+
             invoices += invoice
         return invoices
 
@@ -175,3 +247,31 @@ class AccountMove(models.Model):
             if this.is_invoice(include_receipts=True) and not this.invoice_date:
                 this.invoice_date = fields.Date.context_today(this)
         return super().request_validation()
+
+    def _portal_create_vendor_bill(self, post_data, uploaded_files):
+        company = self.env["res.company"].browse(
+            int(post_data.get("company", self.env.company.id))
+        )
+        with Form(
+            self.with_context(default_move_type="in_invoice").with_company(company)
+        ) as invoice_form:
+            invoice_form.partner_id = self.env.user.partner_id
+            invoice_form.fiscal_position_id = self.env[
+                "account.fiscal.position"
+            ].browse(int(post_data.get("fpos")))
+            with invoice_form.invoice_line_ids.new() as invoice_line:
+                invoice_line.name = post_data.get("description")
+                invoice_line.price_unit = post_data.get("amount")
+            invoice = invoice_form.save()
+        invoice.invoice_line_ids.write({"bankayma_immutable": True})
+        for uploaded_file in uploaded_files.getlist("upload"):
+            self.env["ir.attachment"].create(
+                {
+                    "res_model": self._name,
+                    "res_id": invoice.id,
+                    "datas": b64encode(uploaded_file.stream.read()),
+                    "store_fname": uploaded_file.filename,
+                    "name": uploaded_file.filename,
+                }
+            )
+        return invoice

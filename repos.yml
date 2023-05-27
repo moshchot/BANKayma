@@ -1,3 +1,13 @@
+account-analytic:
+  defaults:
+    depth: 100
+  remotes:
+    oca: https://github.com/OCA/account-analytic.git
+    hbrunn: https://github.com/hbrunn/account-analytic.git
+  merges:
+    - oca 16.0
+    - hbrunn 16.0-account_analytic_plan_applicability_product
+    - hbrunn 16.0-account_move_update_analytic
 account-financial-reporting:
   defaults:
     depth: 1
@@ -47,6 +57,13 @@ bank-statement-reconcile:
     depth: 1
   remotes:
     oca: https://github.com/OCA/bank-statement-reconcile.git
+  merges:
+    - oca 16.0
+project:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/project.git
   merges:
     - oca 16.0
 multi-company:
@@ -131,5 +148,12 @@ mis-builder:
     depth: 1
   remotes:
     oca: https://github.com/OCA/mis-builder.git
+  merges:
+    - oca 16.0
+currency:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/currency.git
   merges:
     - oca 16.0
