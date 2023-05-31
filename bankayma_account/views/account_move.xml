@@ -16,7 +16,7 @@
                 <attribute name="create">false</attribute>
             </xpath>
             <button name="action_register_payment" position="attributes">
-                <attribute name="groups">bankayma_base.group_manager</attribute>
+                <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </button>
             <button
                 name="%(account.action_view_account_move_reversal)d"
