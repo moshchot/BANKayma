@@ -8,8 +8,8 @@ class AccountJournal(models.Model):
     _inherit = "account.journal"
 
     bankayma_restrict_intercompany_partner = fields.Boolean(
-        "Allow only child companies",
-        help="When this checkbox is activated, only child companies of this journals company "
+        "Allow only companies",
+        help="When this checkbox is activated, only partners of companies in the system "
         "may be used as partner on invoices",
     )
     bankayma_restrict_product_ids = fields.Many2many(

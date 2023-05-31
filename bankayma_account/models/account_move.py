@@ -60,7 +60,14 @@ class AccountMove(models.Model):
         for this in self:
             if this.journal_id.bankayma_restrict_intercompany_partner:
                 this.bankayma_partner_domain = [
-                    ("id", "in", this.company_id.mapped("child_ids.partner_id.id"))
+                    (
+                        "id",
+                        "in",
+                        self.env["res.company"]
+                        .sudo()
+                        .search([])
+                        .mapped("partner_id.id"),
+                    )
                 ]
             else:
                 this.bankayma_partner_domain = [
