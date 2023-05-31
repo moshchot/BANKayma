@@ -25,15 +25,56 @@ class TestCompanyCascade(TransactionCase):
             }
         )
 
+    def _apply_cascade_wizard(self, record, field_names=None):
+        self.env["company.cascade.wizard"].with_context(
+            active_model=record._name,
+            active_id=record.id,
+            active_ids=record.ids,
+        ).create(
+            {
+                "field_ids": [
+                    (
+                        6,
+                        0,
+                        self.env["ir.model.fields"]
+                        .search(
+                            [
+                                ("model_id.model", "=", record._name),
+                                ("name", "in", field_names),
+                            ]
+                        )
+                        .mapped("id"),
+                    ),
+                ],
+            }
+        ).action_cascade()
+
     def test_cascade(self):
         """Test basic cascading function"""
         self.assertFalse(self.account.company_cascade_child_ids)
-        self.env["company.cascade.wizard"].with_context(
-            active_model=self.account._name,
-            active_id=self.account.id,
-            active_ids=self.account.ids,
-        ).create({}).action_cascade()
+        self._apply_cascade_wizard(self.account)
         self.assertEqual(
             self.account.code,
             self.account.company_cascade_child_ids[:1].code,
         )
+
+    def test_cascade_translations(self):
+        """Test that we propagate translations correctly"""
+        self.env["res.lang"]._activate_lang("fr_FR")
+        tax = self.env["account.tax"].create({"name": "tax"})
+        tax.with_context(lang="fr_FR").name = "impôt"
+        self._apply_cascade_wizard(tax)
+        child_tax = tax.company_cascade_child_ids[:1]
+        self.assertEqual(
+            child_tax.name,
+            "tax",
+        )
+        self.assertEqual(
+            child_tax.with_context(lang="fr_FR").name,
+            "impôt",
+        )
+        tax.name = "another tax"
+        tax.with_context(lang="fr_FR").name = "autre impôt"
+        self._apply_cascade_wizard(tax, ["name"])
+        self.assertEqual(child_tax.name, "another tax")
+        self.assertEqual(child_tax.with_context(lang="fr_FR").name, "autre impôt")

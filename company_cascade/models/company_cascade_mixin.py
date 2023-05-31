@@ -81,6 +81,8 @@ class CompanyCascadeMixin(models.AbstractModel):
             )[0]
             result += this._company_cascade_write(values)
             result += this._company_cascade_create(values)
+            for result_record in result:
+                this.copy_translations(result_record)
 
         # second step: write x2many fields that cascade themselves
         field_names = [
