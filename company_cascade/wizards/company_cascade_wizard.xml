@@ -7,7 +7,18 @@
         <field name="model">company.cascade.wizard</field>
         <field name="arch" type="xml">
             <form>
-                <div>Create/Overwrite equivalent records of child companies?</div>
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                >Create/Overwrite equivalent records of child companies?</div>
+                <field name="model_id" invisible="True" />
+                <group groups="base.group_no_one">
+                    <field
+                        name="field_ids"
+                        widget="many2many_tags"
+                        placeholder="Select fields to cascade"
+                    />
+                </group>
                 <footer>
                     <button
                         name="action_cascade"

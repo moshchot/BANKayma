@@ -57,17 +57,18 @@ class CompanyCascadeMixin(models.AbstractModel):
             self.mapped("company_cascade_child_ids").unlink()
         return super().unlink()
 
-    def _company_cascade(self):
+    def _company_cascade(self, fields=None):
         """Overwrite/create equivalent records in child companies"""
         result = self.browse([])
         # TODO: sort by self._company_cascade_order?
+        # first step: exclude x2many fields that cascade themselves
         for this in self:
-            # first step: exclude x2many fields that cascade themselves
             values = this.read(
                 [
                     field_name
                     for field_name, field in self._fields.items()
                     if field.store
+                    and field_name in (fields or self._fields)
                     and field_name not in models.MAGIC_COLUMNS
                     and not (
                         field.relational
@@ -81,21 +82,22 @@ class CompanyCascadeMixin(models.AbstractModel):
             result += this._company_cascade_write(values)
             result += this._company_cascade_create(values)
 
+        # second step: write x2many fields that cascade themselves
+        field_names = [
+            field_name
+            for field_name, field in self._fields.items()
+            if field.store
+            and field_name in (fields or self._fields)
+            and field_name not in models.MAGIC_COLUMNS + ["company_cascade_child_ids"]
+            and (
+                field.relational
+                and field.type != "many2one"
+                and "company_cascade_parent_id" in self.env[field.comodel_name]._fields
+            )
+        ]
+        if not field_names:
+            return result
         for this in self:
-            # second step: write x2many fields that cascade themselves
-            field_names = [
-                field_name
-                for field_name, field in self._fields.items()
-                if field.store
-                and field_name
-                not in models.MAGIC_COLUMNS + ["company_cascade_child_ids"]
-                and (
-                    field.relational
-                    and field.type != "many2one"
-                    and "company_cascade_parent_id"
-                    in self.env[field.comodel_name]._fields
-                )
-            ]
             values = this.read(field_names, load="_classic_write")[0]
             for field in field_names:
                 this[field]._company_cascade()
