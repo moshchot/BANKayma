@@ -14,7 +14,9 @@
             <t t-set="incoming" t-value="model.browse([])" />
             <t t-set="outgoing" t-value="model.browse([])" />
             <t t-foreach="records" t-as="record">
-                <t t-if="record.auto_generated">
+                <t
+                    t-if="record.auto_generated or model.search([('auto_invoice_id', '=', record.id)])"
+                >
                     <t t-set="internal" t-value="internal + record" />
                     <t
                         t-set="internal_ml"
