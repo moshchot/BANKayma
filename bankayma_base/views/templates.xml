@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath
+            expr="//div[@t-field='company.report_header']/parent::div"
+            position="attributes"
+        >
+            <attribute name="t-if">not company.parent_id</attribute>
+        </xpath>
+        <xpath
+            expr="//div[@t-field='company.report_header']/parent::div"
+            position="after"
+        >
+            <div class="row" t-if="company.parent_id">
+                <div class="col-3 mb4">
+                    <img
+                        t-if="company.parent_id.logo"
+                        t-att-src="image_data_uri(company.parent_id.logo)"
+                        style="max-height: 45px;"
+                        alt="Logo"
+                    />
+                </div>
+                <div
+                    class="col-3 text-start"
+                    style="margin-top:22px;"
+                    t-field="company.parent_id.report_header"
+                    name="moto"
+                />
+                <div
+                    class="col-3 text-end"
+                    style="margin-top:22px;"
+                    t-field="company.report_header"
+                    name="moto"
+                />
+                <div class="col-3 mb4">
+                    <img
+                        t-if="company.logo"
+                        t-att-src="image_data_uri(company.logo)"
+                        style="max-height: 45px;"
+                        alt="Child logo"
+                    />
+                </div>
+            </div>
+        </xpath>
+        <div t-field="company.report_header" position="attributes">
+            <attribute name="class" />
+            <attribute
+                name="t-att-class"
+            >'col-9 text-end' if not company.parent_id else 'col-3 text-start'</attribute>
+        </div>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        </div>
+        <div t-field="company.report_footer" position="after">
+            <div
+                t-field="company.parent_id.report_footer"
+                t-if="company.parent_id.report_footer"
+            />
+        </div>
+    </template>
+
+    <template id="external_layout_striped" inherit_id="web.external_layout_striped">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
+        </img>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        </div>
+        <div t-field="company.report_footer" position="after">
+            <div
+                t-field="company.parent_id.report_footer"
+                t-if="company.parent_id.report_footer"
+            />
+        </div>
+    </template>
+
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
+        </img>
+    </template>
+
+    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
+        <img t-if="company.logo" position="attributes">
+            <attribute
+                name="t-att-src"
+            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
+            </img>
+        <span t-field="company.report_footer" position="attributes">
+            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        </span>
+        <span t-field="company.report_footer" position="after">
+            <span
+                t-field="company.parent_id.report_footer"
+                t-if="company.parent_id.report_footer"
+            />
+        </span>
+    </template>
+
+</odoo>
