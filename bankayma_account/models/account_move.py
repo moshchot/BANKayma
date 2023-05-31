@@ -122,7 +122,7 @@ class AccountMove(models.Model):
                 if journal and this.journal_id != journal:
                     this.journal_id = journal
         result = super().action_post()
-        if self.env.user.has_group("bankayma_base.group_user"):
+        if self.env.user.has_group("bankayma_base.group_org_manager"):
             to_send = self.filtered(
                 lambda x: x.move_type
                 in ("in_invoice", "out_invoice", "in_refund", "out_refund")
