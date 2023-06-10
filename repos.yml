@@ -164,3 +164,17 @@ currency:
     oca: https://github.com/OCA/currency.git
   merges:
     - oca 16.0
+partner-contact:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/partner-contact.git
+  merges:
+    - oca 16.0
+knowledge:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/knowledge.git
+  merges:
+    - oca 16.0   
