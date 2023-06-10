@@ -177,4 +177,4 @@ knowledge:
   remotes:
     oca: https://github.com/OCA/knowledge.git
   merges:
-    - oca 16.0   
+    - oca 16.0
