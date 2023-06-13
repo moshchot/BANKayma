@@ -271,8 +271,9 @@ class AccountMove(models.Model):
             int(post_data.get("fpos"))
         )
         invoice.invoice_line_ids.write({"bankayma_immutable": True})
+        attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
-            self.env["ir.attachment"].create(
+            attachments += self.env["ir.attachment"].create(
                 {
                     "res_model": self._name,
                     "res_id": invoice.id,
@@ -280,5 +281,12 @@ class AccountMove(models.Model):
                     "store_fname": uploaded_file.filename,
                     "name": uploaded_file.filename,
                 }
+            )
+        if attachments:
+            invoice.with_context(no_new_invoice=True).message_post(
+                body=_("Attachments"),
+                message_type="comment",
+                subtype_xmlid="mail.mt_comment",
+                attachment_ids=attachments.ids,
             )
         return invoice
