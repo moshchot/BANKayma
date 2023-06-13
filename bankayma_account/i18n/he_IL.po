@@ -324,7 +324,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Description"
-msgstr ",תיאור"
+msgstr "תיאור"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__display_name
@@ -581,14 +581,14 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New Invoice"
-msgstr ""
+msgstr "דרישת תשלום חדשה"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_new
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_new
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New Vendor Bill"
-msgstr ""
+msgstr "חשבונית ספק חדשה"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_new
@@ -601,7 +601,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_breadcrumbs
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "New vendor bill"
-msgstr ""
+msgstr "חשבונית ספק חדשה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__notify
@@ -684,7 +684,8 @@ msgstr ""
 msgid ""
 "Overhead created in <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
 "href=\"#\">%(name)s</a>"
-msgstr ""
+msgstr "תקורה נוצרה ב <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
+"href=\"#\">%(name)s</a>"
 
 #. module: bankayma_account
 #. odoo-python
@@ -693,7 +694,8 @@ msgstr ""
 msgid ""
 "Overhead invoice for <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\""
 " href=\"#\">%(name)s</a>"
-msgstr ""
+msgstr "חשבונית תקורה עבור <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\""
+" href=\"#\">%(name)s</a>"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_res_company__overhead_account_id
