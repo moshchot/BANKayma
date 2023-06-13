@@ -182,5 +182,17 @@
             eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
         />
     </record>
+    <menuitem
+        id="menu_bankayma_config_analytic_accounts"
+        action="analytic.action_account_analytic_account_form"
+        parent="bankayma_base.menu_bankayma_config"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_bankayma_config_analytic_plans"
+        action="analytic.account_analytic_plan_action"
+        parent="bankayma_base.menu_bankayma_config"
+        sequence="20"
+    />
 
 </odoo>
