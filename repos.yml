@@ -146,10 +146,8 @@ web:
     depth: 100
   remotes:
     oca: https://github.com/OCA/web.git
-    initOS: https://github.com/initOS/web.git
   merges:
     - oca 16.0
-    - initOS 16.0-mig-web_company_color
 mis-builder:
   defaults:
     depth: 1
