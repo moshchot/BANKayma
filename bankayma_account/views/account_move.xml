@@ -37,7 +37,9 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="fiscal_position_id" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute
+                    name="attrs"
+                >{'invisible': [('move_type', '!=', 'in_invoice')]}</attribute>
             </field>
             <xpath
                 expr="//group[@id='header_right_group']/field[@name='date']"
