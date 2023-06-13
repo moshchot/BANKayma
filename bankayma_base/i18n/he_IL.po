@@ -1,0 +1,97 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bankayma_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-13 17:58+0000\n"
+"PO-Revision-Date: 2023-06-13 17:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bankayma_base
+#: model_terms:res.company,report_footer:bankayma_base.child_comp1
+msgid "+1 (650) 555-0111  info@yourcompany.com http://www.example.com"
+msgstr ""
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_res_users_form
+msgid "/my/example"
+msgstr ""
+
+#. module: bankayma_base
+#: model_terms:res.company,invoice_terms:bankayma_base.child_comp1
+msgid "A note from the parent company<br>"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model.fields,help:bankayma_base.field_res_users__login_redirect
+msgid ""
+"After login, the user will be redirected to this page instead of /web or /my"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.ui.menu,name:bankayma_base.menu_bankayma_root
+msgid "BANKayma"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.module.category,name:bankayma_base.category
+msgid "Bankayma"
+msgstr ""
+
+#. module: bankayma_base
+#: model:res.company,name:bankayma_base.child_comp1
+msgid "Child Company 1"
+msgstr ""
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.external_layout_standard
+msgid "Child logo"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.ui.menu,name:bankayma_base.menu_bankayma_contacts
+msgid "Contacts"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__login_redirect
+msgid "Login Redirect"
+msgstr ""
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.external_layout_standard
+msgid "Logo"
+msgstr ""
+
+#. module: bankayma_base
+#: model:res.groups,name:bankayma_base.group_org_manager
+msgid "Organization Manager"
+msgstr ""
+
+#. module: bankayma_base
+#: model:res.groups,name:bankayma_base.group_manager
+msgid "Project Manager"
+msgstr ""
+
+#. module: bankayma_base
+#: model:res.groups,name:bankayma_base.group_user
+msgid "Project User"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_res_users
+msgid "User"
+msgstr ""
+
+#. module: bankayma_base
+#: model:res.groups,name:bankayma_base.group_vendor
+msgid "Vendor"
+msgstr ""
