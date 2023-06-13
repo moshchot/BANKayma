@@ -271,4 +271,12 @@
         </t>
     </template>
 
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <p t-if="not is_html_empty(o.fiscal_position_id.note)" position="attributes">
+            <attribute
+                name="t-if"
+            >not is_html_empty(o.fiscal_position_id.note) and o.is_purchase_document(True)</attribute>
+        </p>
+    </template>
+
 </odoo>
