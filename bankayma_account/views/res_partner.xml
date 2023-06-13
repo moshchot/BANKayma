@@ -13,6 +13,19 @@
             >
                 <field name="branch_code" />
             </xpath>
+            <field name="vat" position="after">
+                <xpath
+                    expr="//group[@name='fiscal_information']/field[@name='property_account_position_id']"
+                    position="move"
+                />
+                <field name="bank_ids" position="move" />
+            </field>
+            <group name="fiscal_information" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
+            <group name="banks" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
         </field>
     </record>
 
