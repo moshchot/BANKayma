@@ -60,7 +60,14 @@ class AccountMove(models.Model):
         for this in self:
             if this.journal_id.bankayma_restrict_intercompany_partner:
                 this.bankayma_partner_domain = [
-                    ("id", "in", this.company_id.mapped("child_ids.partner_id.id"))
+                    (
+                        "id",
+                        "in",
+                        self.env["res.company"]
+                        .sudo()
+                        .search([])
+                        .mapped("partner_id.id"),
+                    )
                 ]
             else:
                 this.bankayma_partner_domain = [
@@ -115,7 +122,7 @@ class AccountMove(models.Model):
                 if journal and this.journal_id != journal:
                     this.journal_id = journal
         result = super().action_post()
-        if self.env.user.has_group("bankayma_base.group_user"):
+        if self.env.user.has_group("bankayma_base.group_org_manager"):
             to_send = self.filtered(
                 lambda x: x.move_type
                 in ("in_invoice", "out_invoice", "in_refund", "out_refund")

@@ -5,8 +5,7 @@ from odoo import models
 
 
 class AccountAccount(models.Model):
-    _inherit = ["account.account", "company.cascade.mixin"]
-    _name = "account.account"
+    _inherit = "account.account"
 
     def _company_cascade_values(self, company, vals):
         """Add prefix company code if appliccable"""

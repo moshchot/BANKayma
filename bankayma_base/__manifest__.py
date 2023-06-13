@@ -25,6 +25,7 @@
         "security/bankayma_base.xml",
         "views/menu.xml",
         "views/res_users.xml",
+        "views/templates.xml",
     ],
     "demo": [
         "demo/res_company.xml",

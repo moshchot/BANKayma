@@ -19,6 +19,7 @@
         "account_payment_mode",
         "account_usability",
         "bankayma_base",
+        "company_cascade",
         "l10n_il",
         "mis_builder",
     ],
@@ -43,7 +44,6 @@
         "views/templates.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/bankayma_vendor_invite.xml",
-        "wizards/company_cascade_wizard.xml",
     ],
     "website": "https://github.com/moshchot/BANKayma",
 }

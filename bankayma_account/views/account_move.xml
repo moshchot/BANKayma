@@ -16,7 +16,7 @@
                 <attribute name="create">false</attribute>
             </xpath>
             <button name="action_register_payment" position="attributes">
-                <attribute name="groups">bankayma_base.group_manager</attribute>
+                <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </button>
             <button
                 name="%(account.action_view_account_move_reversal)d"
@@ -111,68 +111,5 @@
             </field>
         </field>
     </record>
-
-    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
-        <img t-if="company.logo" position="attributes">
-            <attribute
-                name="t-att-src"
-            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
-        <div t-field="company.report_footer" position="attributes">
-            <attribute name="t-if">not company.parent_id.report_footer</attribute>
-        </div>
-        <div t-field="company.report_footer" position="after">
-            <div
-                t-field="company.parent_id.report_footer"
-                t-if="company.parent_id.report_footer"
-            />
-        </div>
-    </template>
-
-    <template id="external_layout_striped" inherit_id="web.external_layout_striped">
-        <img t-if="company.logo" position="attributes">
-            <attribute
-                name="t-att-src"
-            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
-        <div t-field="company.report_footer" position="attributes">
-            <attribute name="t-if">not company.parent_id.report_footer</attribute>
-        </div>
-        <div t-field="company.report_footer" position="after">
-            <div
-                t-field="company.parent_id.report_footer"
-                t-if="company.parent_id.report_footer"
-            />
-        </div>
-    </template>
-
-    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
-        <img t-if="company.logo" position="attributes">
-            <attribute
-                name="t-att-src"
-            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
-    </template>
-
-    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
-        <img t-if="company.logo" position="attributes">
-            <attribute
-                name="t-att-src"
-            >image_data_uri(company.parent_id.logo or company.logo)</attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
-        <span t-field="company.report_footer" position="attributes">
-            <attribute name="t-if">not company.parent_id.report_footer</attribute>
-        </span>
-        <span t-field="company.report_footer" position="after">
-            <span
-                t-field="company.parent_id.report_footer"
-                t-if="company.parent_id.report_footer"
-            />
-        </span>
-    </template>
 
 </odoo>

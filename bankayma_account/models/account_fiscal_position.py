@@ -5,8 +5,7 @@ from odoo import fields, models
 
 
 class AccountFiscalPosition(models.Model):
-    _inherit = ["account.fiscal.position", "company.cascade.mixin"]
-    _name = "account.fiscal.position"
+    _inherit = "account.fiscal.position"
 
     vendor_doc_mandatory = fields.Boolean(
         "Mandatory document upload",
@@ -14,8 +13,3 @@ class AccountFiscalPosition(models.Model):
         "upload a document for every invoice",
     )
     vendor_doc_description = fields.Html()
-
-
-class AccountFiscalPositionTax(models.Model):
-    _inherit = ["account.fiscal.position.tax", "company.cascade.mixin"]
-    _name = "account.fiscal.position.tax"

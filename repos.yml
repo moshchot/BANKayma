@@ -22,6 +22,13 @@ account-financial-tools:
     oca: https://github.com/OCA/account-financial-tools.git
   merges:
     - oca 16.0
+account-reconcile:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/account-reconcile.git
+  merges:
+    - oca 16.0
 account-invoicing:
   defaults:
     depth: 100
@@ -139,10 +146,8 @@ web:
     depth: 100
   remotes:
     oca: https://github.com/OCA/web.git
-    initOS: https://github.com/initOS/web.git
   merges:
     - oca 16.0
-    - initOS 16.0-mig-web_company_color
 mis-builder:
   defaults:
     depth: 1
@@ -155,5 +160,19 @@ currency:
     depth: 1
   remotes:
     oca: https://github.com/OCA/currency.git
+  merges:
+    - oca 16.0
+partner-contact:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/partner-contact.git
+  merges:
+    - oca 16.0
+knowledge:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/knowledge.git
   merges:
     - oca 16.0

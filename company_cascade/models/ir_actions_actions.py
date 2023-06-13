@@ -10,9 +10,9 @@ class IrActionsActions(models.Model):
     @api.model
     def get_bindings(self, model_name):
         result = super().get_bindings(model_name)
-        if "company.cascade.mixin" in self.env[model_name]._inherit:
+        if "company_cascade_parent_id" in self.env[model_name]._fields:
             action = self.env.ref(
-                "bankayma_account.action_company_cascade_wizard"
+                "company_cascade.action_company_cascade_wizard"
             ).read()[0]
             result.setdefault("action", []).append(action)
         return result

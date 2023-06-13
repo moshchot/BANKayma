@@ -14,7 +14,9 @@
             <t t-set="incoming" t-value="model.browse([])" />
             <t t-set="outgoing" t-value="model.browse([])" />
             <t t-foreach="records" t-as="record">
-                <t t-if="record.auto_generated">
+                <t
+                    t-if="record.auto_generated or model.search([('auto_invoice_id', '=', record.id)])"
+                >
                     <t t-set="internal" t-value="internal + record" />
                     <t
                         t-set="internal_ml"
@@ -52,6 +54,25 @@
                 t-value="sum(internal.mapped('bankayma_amount_paid'))"
             />
             <div class="container text-center p-3">
+                <div class="row">
+                    Here links to the moves being used to calculate the different values:
+                    <a
+                        type="action"
+                        data-model="account.move"
+                        t-att-data-domain="[('id', 'in', incoming.ids)]"
+                    >Incoming</a>
+                    <a
+                        type="action"
+                        data-model="account.move"
+                        t-att-data-domain="[('id', 'in', outgoing.ids)]"
+                    >Outgoing</a>
+
+                    <a
+                        type="action"
+                        data-model="account.move"
+                        t-att-data-domain="[('id', 'in', internal.ids)]"
+                    >Internal</a>
+                </div>
                 <div class="row">
                     <div class="col border bg-light">
                         <h1>Balance</h1>
@@ -243,6 +264,10 @@
         <field name="res_model">account.move</field>
         <field name="view_mode">qweb</field>
         <field name="view_id" ref="view_dashboard_qweb" />
+    </record>
+
+    <record id="bankayma_base.menu_bankayma_root" model="ir.ui.menu">
+        <field name="action" ref="action_dashboard" />
     </record>
 
 </odoo>
