@@ -1,0 +1,18 @@
+<odoo>
+    <record id="spreadsheet_dashboard_view_list" model="ir.ui.view">
+        <field
+            name="inherit_id"
+            ref="spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view"
+        />
+        <field name="model">spreadsheet.dashboard</field>
+        <field name="arch" type="xml">
+            <button name="open_spreadsheet" position="after">
+                <button
+                    name="action_add_to_board"
+                    type="object"
+                    string="Add to My Dashboard"
+                />
+            </button>
+        </field>
+    </record>
+</odoo>

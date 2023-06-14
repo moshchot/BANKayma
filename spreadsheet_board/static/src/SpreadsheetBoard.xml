@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_board.SpreadsheetBoard" owl="1">
+        <t t-if="data" t-component="spreadsheet_component" model="spreadsheet_model" />
+        <div t-else="">Invalid spreadsheet</div>
+    </t>
+</templates>

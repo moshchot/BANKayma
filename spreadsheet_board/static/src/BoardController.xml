@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="board.Content" t-inherit-mode="extension">
+        <xpath expr="//BoardAction" position="attributes">
+            <attribute
+                name="t-if"
+            >!action.isFolded &amp;&amp; action.viewMode != 'spreadsheet_board'</attribute>
+        </xpath>
+        <xpath expr="//BoardAction" position="after">
+            <SpreadsheetBoard
+                t-if="!action.isFolded &amp;&amp; action.viewMode == 'spreadsheet_board'"
+                action="action"
+            />
+        </xpath>
+    </t>
+</templates>
