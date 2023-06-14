@@ -20,6 +20,7 @@
         "web_responsive",
         "web_select_all_companies",
         "spreadsheet_dashboard_oca",
+        "spreadsheet_board",
     ],
     "data": [
         "security/bankayma_base.xml",
