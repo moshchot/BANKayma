@@ -19,6 +19,7 @@
         id="menu_bankayma_income_new"
         action="action_move_out_invoice_new"
         sequence="110"
+        web_icon="bankayma_account,static/img/odoo_icon_bk_in.png"
     />
 
     <record id="action_move_in_invoice_new" model="ir.actions.act_window">
@@ -37,6 +38,7 @@
         id="menu_bankayma_expense_new"
         action="action_move_in_invoice_new"
         sequence="120"
+        web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
     />
 
 
@@ -186,13 +188,13 @@
         id="menu_bankayma_config_analytic_accounts"
         action="analytic.action_account_analytic_account_form"
         parent="bankayma_base.menu_bankayma_config"
-        sequence="10"
+        sequence="110"
     />
     <menuitem
         id="menu_bankayma_config_analytic_plans"
         action="analytic.account_analytic_plan_action"
         parent="bankayma_base.menu_bankayma_config"
-        sequence="20"
+        sequence="120"
     />
 
 </odoo>

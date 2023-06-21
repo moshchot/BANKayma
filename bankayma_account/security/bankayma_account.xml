@@ -10,4 +10,37 @@
         />
 </record>
 
+<record id="rule_account_analytic_account" model="ir.rule">
+    <field name="name">Restrict editing Analytic accounts to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_account" />
+    <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+</record>
+
+<record id="rule_account_analytic_plan" model="ir.rule">
+    <field name="name">Restrict editing Analytic plans to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_plan" />
+    <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+</record>
+
+<record id="rule_account_analytic_distribution_model" model="ir.rule">
+    <field name="name">Restrict editing Analytic plans to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_distribution_model" />
+    <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+</record>
+
 </odoo>
