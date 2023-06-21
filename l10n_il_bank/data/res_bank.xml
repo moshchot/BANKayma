@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data noupdate="1">
+    <record id="bank_4" model="res.bank">
+        <field name="name">Bank Yahav for Government Employees Ltd</field>
+        <field name="bank_code">4</field>
+        <field name="bic">BYAHILI1XXX</field>
+        <field name="street">ירמיהו 80; ת"ד 36333; ירושלים</field>
+        <field name="city">ירושלים</field>
+        <field name="zip">9446759</field>
+        <field name="phone">02-5009911</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_9" model="res.bank">
+        <field name="name">Postal Bank Company Ltd</field>
+        <field name="bank_code">9</field>
+        <field name="bic">IPOAILIJ </field>
+        <field name="phone">02-5005303</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_10" model="res.bank">
+        <field name="name">Bank Leumi Le-Israel B.M</field>
+        <field name="bank_code">10</field>
+        <field name="bic">LUMIILITXXX</field>
+        <field name="street">יהודה הלוי 34; ת"ד 2; תל אביב</field>
+        <field name="city">תל אביב -יפו</field>
+        <field name="zip">6513616</field>
+        <field name="phone">076-8858111</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_11" model="res.bank">
+        <field name="name">Israel Discount Bank Ltd</field>
+        <field name="bank_code">11</field>
+        <field name="bic">IDBLILITXXX</field>
+        <field name="street">מגדל דיסקונט; יהודה הלוי 23; ת"ד 456; תל אביב</field>
+        <field name="zip">6513601</field>
+        <field name="phone">03-5145555</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_12" model="res.bank">
+        <field name="name">Bank Hapoalim B.M</field>
+        <field name="bank_code">12</field>
+        <field name="bic">POALILITXXX</field>
+        <field name="street">שד' רוטשילד 50</field>
+        <field name="city">תל אביב</field>
+        <field name="zip">6688314</field>
+        <field name="phone">03-5673333</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_13" model="res.bank">
+        <field name="name">Union Bank of Israel Ltd</field>
+        <field name="bank_code">13</field>
+        <field name="bic">UNBKILITXXX</field>
+        <field name="street">אחוזת בית 6-8; ת"ד 2428; תל אביב</field>
+        <field name="city">תל אביב -יפו</field>
+        <field name="zip">6102401</field>
+        <field name="phone">03-5191111</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_17" model="res.bank">
+        <field name="name">Mercantile Discount Bank ltd</field>
+        <field name="bank_code">17</field>
+        <field name="bic">BARTILTXXX</field>
+        <field name="street">Menachem Begin</field>
+        <field name="city">תל אביב -יפו</field>
+        <field name="zip">6701201</field>
+        <field name="phone">076-8044530</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_18" model="res.bank">
+        <field name="name">One Zero Digital Bank Ltd</field>
+        <field name="bank_code">18</field>
+        <field name="bic">DIGIILITXXX</field>
+        <field name="city">תל אביב -יפו</field>
+        <field name="zip">6706703</field>
+        <field name="phone">03-5188988</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_20" model="res.bank">
+        <field name="name">Mizrahi Tefahot Bank Ltd</field>
+        <field name="bank_code">20</field>
+        <field name="bic">MIZBILITXXX</field>
+        <field name="street">ז'בוטינסקי 7</field>
+        <field name="city"> רמת גן</field>
+        <field name="zip">5252007</field>
+        <field name="phone">03-7559000</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_26" model="res.bank">
+        <field name="name">U Bank Ltd</field>
+        <field name="bank_code">26</field>
+        <field name="bic">IGBTILITXXX</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_31" model="res.bank">
+        <field name="name">The First International Bank of Israel Ltd</field>
+        <field name="bank_code">31</field>
+        <field name="bic">FIRBILITXXX</field>
+        <field name="street">שד' רוטשילד 42</field>
+        <field name="city">תל אביב</field>
+        <field name="zip">6688310</field>
+        <field name="phone">03-5196111</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_46" model="res.bank">
+        <field name="name">Bank Massad Ltd</field>
+        <field name="bank_code">46</field>
+        <field name="bic">MASBILITXXX</field>
+        <field name="street">אבא הילל 12 רמת גן</field>
+        <field name="city">רמת גן</field>
+        <field name="zip">5250606</field>
+        <field name="phone">03-5641333</field>
+        <field name="country" ref="base.il" />
+    </record>
+    <record id="bank_54" model="res.bank">
+        <field name="name">Bank of Jerusalem Ltd</field>
+        <field name="bank_code">54</field>
+        <field name="bic">JERSILITXXX</field>
+        <field name="street">הנגב 2 קרית תעופה</field>
+        <field name="city">אזור רמלה של"ש</field>
+        <field name="zip">7019900</field>
+        <field name="phone">076-8096001</field>
+        <field name="country" ref="base.il" />
+    </record>
+</data>

@@ -9,12 +9,6 @@
         <field name="arch" type="xml">
             <xpath
                 expr="//field[@name='bank_ids']//field[@name='bank_id']"
-                position="after"
-            >
-                <field name="branch_code" />
-            </xpath>
-            <xpath
-                expr="//field[@name='bank_ids']//field[@name='bank_id']"
                 position="before"
             >
                 <field name="acc_number" position="move" />
