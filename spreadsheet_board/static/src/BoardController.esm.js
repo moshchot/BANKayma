@@ -18,6 +18,7 @@ patch(BoardArchParser.prototype, "parse spreadsheet_board properties", {
             switch (node.tagName) {
                 case "column":
                     columnIndex++;
+                    rowIndex = -1;
                     break;
                 case "action": {
                     rowIndex++;
