@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="spreadsheet_board.SpreadsheetBoard" owl="1">
-        <t t-if="data" t-component="spreadsheet_component" model="spreadsheet_model" />
+        <div t-if="data" t-att-style="props.action.style || 'height: 1000px'">
+            <t
+                t-component="spreadsheet_filter_component"
+                t-foreach="spreadsheet_filters"
+                t-as="filter"
+                t-key="filter.id"
+                filter="filter"
+                model="spreadsheet_model"
+            />
+            <t t-component="spreadsheet_component" model="spreadsheet_model" />
+        </div>
         <div t-else="">Invalid spreadsheet</div>
     </t>
 </templates>

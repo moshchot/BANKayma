@@ -36,6 +36,9 @@ export class SpreadsheetBoard extends Component {
         return window.o_spreadsheet.Spreadsheet;
     }
     get spreadsheet_model() {
+        if (this.model) {
+            return this.model;
+        }
         const model = new window.o_spreadsheet.Model(this.data, {
             evalContext: {env: this.env, orm: this.orm},
             mode: "dashboard",
@@ -44,7 +47,16 @@ export class SpreadsheetBoard extends Component {
         this.data_sources.addEventListener("data-source-updated", () =>
             model.dispatch("EVALUATE_CELLS")
         );
+        this.model = model;
         return model;
+    }
+    get spreadsheet_filters() {
+        return this.spreadsheet_model.getters.getGlobalFilters();
+    }
+    get spreadsheet_filter_component() {
+        return odoo.__DEBUG__.services[
+            "@spreadsheet/global_filters/components/filter_value/filter_value"
+        ].FilterValue;
     }
 }
 
