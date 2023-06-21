@@ -263,16 +263,17 @@ class AccountMove(models.Model):
             self.with_context(default_move_type="in_invoice").with_company(company)
         ) as invoice_form:
             invoice_form.partner_id = self.env.user.partner_id
-            invoice_form.fiscal_position_id = self.env[
-                "account.fiscal.position"
-            ].browse(int(post_data.get("fpos")))
             with invoice_form.invoice_line_ids.new() as invoice_line:
                 invoice_line.name = post_data.get("description")
                 invoice_line.price_unit = post_data.get("amount")
             invoice = invoice_form.save()
+        invoice.fiscal_position_id = self.env["account.fiscal.position"].browse(
+            int(post_data.get("fpos"))
+        )
         invoice.invoice_line_ids.write({"bankayma_immutable": True})
+        attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
-            self.env["ir.attachment"].create(
+            attachments += self.env["ir.attachment"].create(
                 {
                     "res_model": self._name,
                     "res_id": invoice.id,
@@ -280,5 +281,12 @@ class AccountMove(models.Model):
                     "store_fname": uploaded_file.filename,
                     "name": uploaded_file.filename,
                 }
+            )
+        if attachments:
+            invoice.with_context(no_new_invoice=True).message_post(
+                body=_("Attachments"),
+                message_type="comment",
+                subtype_xmlid="mail.mt_comment",
+                attachment_ids=attachments.ids,
             )
         return invoice

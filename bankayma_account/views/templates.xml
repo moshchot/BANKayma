@@ -258,6 +258,7 @@
                         name="upload"
                         id="upload"
                         multiple="multiple"
+                        accept=".pdf,.jpg,.png"
                     />
                     <div
                         t-out="request.env.user.partner_id.property_account_position_id.vendor_doc_description"
@@ -269,6 +270,14 @@
                 </button>
             </form>
         </t>
+    </template>
+
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <p t-if="not is_html_empty(o.fiscal_position_id.note)" position="attributes">
+            <attribute
+                name="t-if"
+            >not is_html_empty(o.fiscal_position_id.note) and o.is_purchase_document(True)</attribute>
+        </p>
     </template>
 
 </odoo>

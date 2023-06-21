@@ -13,6 +13,36 @@
             >
                 <field name="branch_code" />
             </xpath>
+            <xpath
+                expr="//field[@name='bank_ids']//field[@name='bank_id']"
+                position="before"
+            >
+                <field name="acc_number" position="move" />
+            </xpath>
+            <field name="vat" position="after">
+                <xpath
+                    expr="//group[@name='fiscal_information']/field[@name='property_account_position_id']"
+                    position="move"
+                />
+                <field name="bank_ids" position="move" />
+            </field>
+            <xpath
+                expr="//field[@name='bank_ids']/tree/field[@name='allow_out_payment']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="bank_ids" position="attributes">
+                <attribute
+                    name="context"
+                >{'default_allow_out_payment': True}</attribute>
+            </field>
+            <group name="fiscal_information" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
+            <group name="banks" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
         </field>
     </record>
 

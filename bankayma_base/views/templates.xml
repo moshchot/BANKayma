@@ -42,6 +42,7 @@
                         style="max-height: 45px;"
                         alt="Child logo"
                     />
+                    <div t-field="company.name" />
                 </div>
             </div>
         </xpath>
