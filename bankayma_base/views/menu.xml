@@ -9,6 +9,7 @@
         name="BANKayma"
         sequence="100"
         action="board.open_board_my_dash_action"
+        web_icon="bankayma_base,static/description/icon.png"
     />
     <record
         id="contacts.action_contacts_view_kanban"
@@ -27,6 +28,21 @@
         parent="menu_bankayma_root"
         sequence="1000"
         name="Configuration"
+    />
+    <record id="base.action_res_company_form" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <menuitem
+        id="menu_bankayma_companies"
+        parent="menu_bankayma_config"
+        sequence="10"
+        action="base.action_res_company_form"
+    />
+    <menuitem
+        id="menu_bankayma_users"
+        parent="menu_bankayma_config"
+        sequence="20"
+        action="base.action_res_users"
     />
 
     <!-- assign standard menus to debug user (= hide them) -->
