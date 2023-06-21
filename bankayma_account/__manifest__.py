@@ -21,6 +21,7 @@
         "bankayma_base",
         "company_cascade",
         "l10n_il",
+        "l10n_il_bank",
         "mis_builder",
     ],
     "demo": [
