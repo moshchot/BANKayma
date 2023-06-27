@@ -7,6 +7,7 @@
     "author": "Moshchot Coop",
     "license": "AGPL-3",
     "depends": [
+        "board",
         "contacts",
         "mail",
         "disable_odoo_online",
@@ -42,6 +43,8 @@
     "assets": {
         "web.assets_backend": [
             "bankayma_base/static/src/css/*backend.css",
+            "bankayma_base/static/src/js/BoardController.esm.js",
+            "bankayma_base/static/src/xml/BoardController.xml",
         ],
         "web.assets_frontend": [
             "bankayma_base/static/src/css/*frontend.css",

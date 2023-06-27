@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="board.Content" t-inherit-mode="extension">
+        <Dropdown position="after">
+            <button
+                t-if="this.show_button_impose_all_users"
+                class="btn btn-secondary p-2 m-2"
+                t-on-click="() => this.button_impose_all_users()"
+            ><i class="fa fa-users" /> Impose on all users</button>
+        </Dropdown>
+    </t>
+</templates>
