@@ -16,12 +16,10 @@
     "preloadable": True,
     "depends": [
         "account",
-        # TODO migrate this and depend on it
-        # "partner_bank_code",
+        "partner_bank_code",
     ],
     "data": [
         "data/res_bank.xml",
-        "views/res_bank.xml",
         "views/res_partner.xml",
     ],
     "demo": [],

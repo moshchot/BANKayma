@@ -7,4 +7,4 @@ from odoo import fields, models
 class ResPartnerBank(models.Model):
     _inherit = "res.partner.bank"
 
-    branch_code = fields.Char()
+    branch_code = fields.Char(related="bank_id.bank_branch_code", readonly=True)
