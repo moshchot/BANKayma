@@ -28,10 +28,12 @@
             <button name="action_reverse" position="attributes">
                 <attribute name="groups">account.group_account_manager</attribute>
             </button>
-            <button name="button_cancel" position="attributes">
-                <!-- the first cancel button is the one we want here -->
+            <xpath expr="//button[@name='button_cancel'][1]" position="attributes">
                 <attribute name="invisible">1</attribute>
-            </button>
+            </xpath>
+            <xpath expr="//button[@name='button_cancel'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
             <button name="button_cancel" position="before">
                 <button
                     name="button_cancel_unlink"
