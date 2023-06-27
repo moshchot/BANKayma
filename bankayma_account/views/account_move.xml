@@ -28,7 +28,7 @@
             <button name="action_reverse" position="attributes">
                 <attribute name="groups">account.group_account_manager</attribute>
             </button>
-            <xpath expr="//header" position="after">
+            <xpath expr="//sheet/*[1]" position="before">
                 <h5>
                     <field
                         name="company_id"
