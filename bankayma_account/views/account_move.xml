@@ -15,10 +15,10 @@
             <xpath expr="//header" position="before">
             <h5>
                  <field
-                       name="company_id"
-                       widget="many2one"
-                       options="{'no_open': True, 'no_create': True}"
-                   />
+                        name="company_id"
+                        widget="many2one"
+                        options="{'no_open': True, 'no_create': True}"
+                    />
             </h5>
             </xpath>
             <xpath expr="." position="attributes">
