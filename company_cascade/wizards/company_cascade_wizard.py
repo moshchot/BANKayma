@@ -24,7 +24,32 @@ class CompanyCascadeWizard(models.TransientModel):
     def action_cascade(self):
         if not self.env.user.has_group("base.group_system"):
             raise exceptions.AccessError(_("Only admin can cascade companies"))
-        for record in self.env[self.env.context["active_model"]].browse(
-            self.env.context["active_ids"]
+        for record in (
+            self.env[self.env.context["active_model"]]
+            .browse(self.env.context["active_ids"])
+            .sudo()
         ):
-            record.sudo()._company_cascade(fields=self.field_ids.mapped("name") or None)
+            field_names = self.field_ids.mapped("name")
+            if hasattr(record, "_company_cascade"):
+                record._company_cascade(fields=field_names or None)
+            else:
+                for field_name in field_names or record._fields:
+                    field = record._fields[field_name]
+                    model = self.env.get(field.comodel_name)
+                    if (
+                        model is None
+                        or "company_cascade_parent_id" not in model._fields
+                        or field.company_dependent
+                        or model._name == "res.company"
+                    ):
+                        continue
+                    record.write(
+                        {
+                            field_name: [
+                                fields.Command.clear(),
+                                fields.Command.set(
+                                    record[field_name]._company_cascade_get_all().ids
+                                ),
+                            ]
+                        }
+                    )
