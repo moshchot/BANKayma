@@ -12,11 +12,15 @@
             better hide stuff instead of removing, otherwise
             you can break stuff when new modules expect some fields to exist
             -->
-             <xpath expr="//header" position="before">
+            <xpath expr="//header" position="before">
             <h5>
-                <field name="company_id" widget="many2one" options="{'no_open': True, 'no_create': True}" />
+                 <field
+                       name="company_id"
+                       widget="many2one"
+                       options="{'no_open': True, 'no_create': True}"
+                   />
             </h5>
-        </xpath>
+            </xpath>
             <xpath expr="." position="attributes">
                 <attribute name="create">false</attribute>
             </xpath>
