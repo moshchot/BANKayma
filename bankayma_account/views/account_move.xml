@@ -28,6 +28,19 @@
             <button name="action_reverse" position="attributes">
                 <attribute name="groups">account.group_account_manager</attribute>
             </button>
+            <button name="button_cancel" position="attributes">
+                <!-- the first cancel button is the one we want here -->
+                <attribute name="invisible">1</attribute>
+            </button>
+            <button name="button_cancel" position="before">
+                <button
+                    name="button_cancel_unlink"
+                    string="Delete"
+                    type="object"
+                    groups="account.group_account_invoice"
+                    attrs="{'invisible': [('state', '!=', 'draft')]}"
+                />
+            </button>
             <xpath expr="//sheet/*[1]" position="before">
                 <h5>
                     <field
