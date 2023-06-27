@@ -29,14 +29,14 @@
                 <attribute name="groups">account.group_account_manager</attribute>
             </button>
             <xpath expr="//header" position="before">
-            <h5>
-                 <field
+                <h5>
+                    <field
                         name="company_id"
                         widget="many2one"
                         options="{'no_open': True, 'no_create': True}"
                     />
-            </h5>
-            </xpath>            
+                </h5>
+            </xpath>
             <field name="payment_reference" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
