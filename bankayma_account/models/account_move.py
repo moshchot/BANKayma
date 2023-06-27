@@ -290,3 +290,7 @@ class AccountMove(models.Model):
                 attachment_ids=attachments.ids,
             )
         return invoice
+
+    def button_cancel_unlink(self):
+        self.button_cancel()
+        self.unlink()

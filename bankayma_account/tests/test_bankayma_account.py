@@ -188,6 +188,8 @@ class TestBankaymaAccount(TransactionCase):
                 + self.child2.intercompany_purchase_journal_id
             ).ids,
         )
+        draft_invoice = self._create_invoice(self.child1, self.user_child1)
+        draft_invoice.button_cancel_unlink()
 
     def _create_invoice(self, company, user, partner=None, post=True):
         invoice = (
