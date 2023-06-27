@@ -8,4 +8,3 @@ class ResBank(models.Model):
     _inherit = "res.bank"
 
     name = fields.Char(translate=True)
-    bank_code = fields.Char()

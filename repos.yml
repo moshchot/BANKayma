@@ -164,11 +164,13 @@ currency:
     - oca 16.0
 partner-contact:
   defaults:
-    depth: 1
+    depth: 100
   remotes:
     oca: https://github.com/OCA/partner-contact.git
+    hbrunn: https://github.com/hbrunn/partner-contact.git
   merges:
     - oca 16.0
+    - hbrunn 16.0-partner_bank_code
 knowledge:
   defaults:
     depth: 1
