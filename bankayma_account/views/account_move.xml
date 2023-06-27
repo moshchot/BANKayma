@@ -47,6 +47,7 @@
                         name="company_id"
                         widget="many2one"
                         options="{'no_open': True, 'no_create': True}"
+                        readonly="1"
                     />
                 </h5>
             </xpath>
