@@ -146,8 +146,10 @@ web:
     depth: 100
   remotes:
     oca: https://github.com/OCA/web.git
+    hbrunn: https://github.com/hbrunn/web.git
   merges:
     - oca 16.0
+    - hbrunn 16.0-web_ir_actions_act_window_page
 mis-builder:
   defaults:
     depth: 1

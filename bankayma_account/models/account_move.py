@@ -294,3 +294,4 @@ class AccountMove(models.Model):
     def button_cancel_unlink(self):
         self.button_cancel()
         self.unlink()
+        return {"type": "ir.actions.act_window.page.next"}

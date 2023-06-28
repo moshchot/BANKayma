@@ -23,6 +23,7 @@
         "l10n_il",
         "l10n_il_bank",
         "mis_builder",
+        "web_ir_actions_act_window_page",
     ],
     "demo": [
         "demo/tier_definition.xml",
