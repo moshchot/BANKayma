@@ -13,9 +13,6 @@
             you can break stuff when new modules expect some fields to exist
             -->
 
-            <xpath expr="." position="attributes">
-                <attribute name="create">false</attribute>
-            </xpath>
             <button name="action_register_payment" position="attributes">
                 <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </button>
