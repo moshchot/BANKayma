@@ -10,4 +10,7 @@ class Home(_Home):
         user = http.request.env["res.users"].sudo().browse(uid)
         if not redirect and user.login_redirect:
             redirect = user.login_redirect
-        return super()._login_redirect(uid, redirect=redirect)
+        response = super()._login_redirect(uid, redirect=redirect)
+        if isinstance(response, str) and "#" not in response:
+            response += "#cids=" + ",".join(map(str, user.company_ids.ids))
+        return response
