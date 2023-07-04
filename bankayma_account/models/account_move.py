@@ -108,7 +108,10 @@ class AccountMove(models.Model):
         return where_string, param
 
     def action_post(self):
-        """Enforce intercompany journal on intercompany invoices"""
+        """
+        Enforce intercompany journal on intercompany invoices,
+        mail non-intercompany invoices on post
+        """
         for this in self:
             if (
                 this.is_invoice()
@@ -126,6 +129,8 @@ class AccountMove(models.Model):
             to_send = self.filtered(
                 lambda x: x.move_type
                 in ("in_invoice", "out_invoice", "in_refund", "out_refund")
+                and not x.auto_invoice_id
+                and not self.search([("auto_invoice_id", "=", x.id)])
             )
             if to_send:
                 action = to_send.action_invoice_sent()
