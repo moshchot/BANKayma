@@ -19,6 +19,7 @@ class AccountMove(models.Model):
     )
     bankayma_payment_method_id = fields.Many2one(
         "account.payment.method",
+        string="Payment method",
         compute="_compute_bankayma_payment_method_id",
         store=True,
     )

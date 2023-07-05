@@ -10,6 +10,7 @@
         sequence="100"
         action="board.open_board_my_dash_action"
         web_icon="bankayma_base,static/description/icon.png"
+        groups="group_future"
     />
     <record
         id="contacts.action_contacts_view_kanban"
@@ -45,24 +46,62 @@
         action="base.action_res_users"
     />
 
+    <!-- temp bk root menu for income launch -->
+    <menuitem
+        id="menu_bankayma_simplified_income"
+        name="BANKayma"
+        web_icon="bankayma_base,static/description/icon.png"
+        sequence="10"
+        groups="group_user"
+    />
+
+    <record id="action_simplified_income_company_config" model="ir.actions.act_window">
+        <field name="name">Organization config</field>
+        <field name="res_model">res.company</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+
+    <record
+        id="action_simplified_income_company_config_tree"
+        model="ir.actions.act_window.view"
+    >
+            <field name="sequence">1</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="base.view_res_company_kanban" />
+            <field name="act_window_id" ref="action_simplified_income_company_config" />
+    </record>
+
+    <record
+        id="action_simplified_income_company_config_form"
+        model="ir.actions.act_window.view"
+    >
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_company_form_manager" />
+            <field name="act_window_id" ref="action_simplified_income_company_config" />
+    </record>
+
+    <menuitem
+        id="menu_bankayma_simplified_income_config"
+        parent="menu_bankayma_simplified_income"
+        sequence="10"
+        groups="group_manager"
+        action="action_simplified_income_company_config"
+    />
+
+
     <!-- assign standard menus to debug user (= hide them) -->
     <record id="mail.menu_root_discuss" model="ir.ui.menu">
-        <field
-            name="groups_id"
-            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
-        />
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
     <record id="base.menu_management" model="ir.ui.menu">
-        <field
-            name="groups_id"
-            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
-        />
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
     <record id="base.menu_board_root" model="ir.ui.menu">
-        <field
-            name="groups_id"
-            eval="[Command.link(ref('base.group_no_one')), Command.unlink(ref('base.group_user'))]"
-        />
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
 
 </odoo>
