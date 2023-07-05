@@ -150,6 +150,7 @@ web:
   merges:
     - oca 16.0
     - hbrunn 16.0-web_ir_actions_act_window_page
+    - hbrunn 16.0-web_tree_duplicate
 mis-builder:
   defaults:
     depth: 1
