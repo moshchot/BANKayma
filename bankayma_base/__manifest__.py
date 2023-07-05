@@ -25,9 +25,11 @@
     ],
     "data": [
         "security/bankayma_base.xml",
-        "views/menu.xml",
+        "security/ir.model.access.csv",
+        "views/res_company.xml",
         "views/res_users.xml",
         "views/templates.xml",
+        "views/menu.xml",
     ],
     "demo": [
         "demo/res_company.xml",
