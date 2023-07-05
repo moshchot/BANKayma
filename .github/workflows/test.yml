@@ -36,9 +36,9 @@ jobs:
       matrix:
         include:
           - container: ghcr.io/oca/oca-ci/py3.10-odoo16.0:latest
-            makepot: "false"
             name: test with Odoo
           - container: ghcr.io/oca/oca-ci/py3.10-ocb16.0:latest
+            makepo: "true"
             name: test with OCB
     services:
       postgres:
@@ -50,13 +50,11 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v3
       - name: Install addons and dependencies
         run: |
-          git config --global user.email "CI@nowhere"
-          git config --global user.name "CI"
+          git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "$GITHUB_ACTOR"
           pip install git-aggregator
           gitaggregate -c repos.yml
           pip install -r requirements.txt
@@ -73,6 +71,30 @@ jobs:
       - name: Run tests
         run: oca_run_tests
       - uses: codecov/codecov-action@v3
-      - name: Update .pot files
-        run: oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN }}@github.com/${{ github.repository }}
-        if: ${{ matrix.makepot == 'true' && github.event_name == 'push' && github.repository_owner == 'moshchot' }}
+      - name: Update .po files
+        run: |
+          apt install gettext
+          git config --global --add safe.directory $(pwd)
+          LANG=he_IL
+          ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} list --separator=,)
+          for module in $(echo $ADDONS | tr ',' ' '); do
+            mkdir -p $module/i18n
+            /opt/odoo-venv/bin/odoo -d ${PGDATABASE} --i18n-export=/tmp/$module.pot --modules=$module --logfile=/dev/null
+            if [ -f $module/i18n/$LANG.po ]; then
+              TMPFILE=$(mktemp)
+              msgmerge --lang=$LANG --no-fuzzy-matching $module/i18n/$LANG.po /tmp/$module.pot --output-file=$TMPFILE
+              msgattrib --no-obsolete $TMPFILE > $module/i18n/$LANG.po
+            else
+              msginit --input /tmp/$module.pot --locale $LANG --no-translator -o $module/i18n/$LANG.po
+            fi
+            git add $module/i18n/$LANG.po
+          done
+          if git commit -m '[UPD] translations' --dry-run; then
+            git fetch origin $GITHUB_HEAD_REF
+            git checkout $GITHUB_HEAD_REF
+            git commit -m '[UPD] translations'
+            git push origin $GITHUB_HEAD_REF
+          else
+            echo No changes, doing nothing
+          fi
+        if: ${{ matrix.makepo == 'true' }}
