@@ -20,6 +20,7 @@
         action="action_move_out_invoice_new"
         sequence="110"
         web_icon="bankayma_account,static/img/odoo_icon_bk_in.png"
+        groups="bankayma_base.group_user,base.group_user"
     />
 
     <record id="action_move_in_invoice_new" model="ir.actions.act_window">
@@ -39,8 +40,8 @@
         action="action_move_in_invoice_new"
         sequence="120"
         web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
+        groups="bankayma_base.group_user,base.group_user"
     />
-
 
     <menuitem
         id="menu_bankayma_income"
@@ -195,6 +196,30 @@
         action="analytic.account_analytic_plan_action"
         parent="bankayma_base.menu_bankayma_config"
         sequence="120"
+    />
+
+    <record
+        id="action_bankayma_income_group_move_out_invoice_type"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Income</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="account.view_out_invoice_tree" />
+        <field name="search_view_id" ref="account.view_account_invoice_filter" />
+        <field name="domain">[('move_type', '=', 'out_invoice')]</field>
+        <field
+            name="context"
+        >{'default_move_type': 'out_invoice', 'search_default_open': True}</field>
+    </record>
+
+    <menuitem
+        id="menu_bankayma_income_group_income"
+        name="BANKayma"
+        action="action_bankayma_income_group_move_out_invoice_type"
+        sequence="10"
+        web_icon="bankayma_base,static/description/icon.png"
+        groups="bankayma_base.group_income"
     />
 
 </odoo>

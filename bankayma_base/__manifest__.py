@@ -25,6 +25,7 @@
     ],
     "data": [
         "security/bankayma_base.xml",
+        "security/ir.model.access.csv",
         "views/menu.xml",
         "views/res_users.xml",
         "views/templates.xml",

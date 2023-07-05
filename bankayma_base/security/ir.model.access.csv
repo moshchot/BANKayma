@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_income_ir_ui_menu,access_income_ir_ui_menu,base.model_ir_ui_menu,group_income,1,0,0,0
+access_income_res_company,access_income_res_company,base.model_res_company,group_income,1,0,0,0
+access_income_mail_activity,access_income_mail_activity,mail.model_mail_activity,group_income,1,1,1,1
+access_income_mail_activity_type,access_income_mail_activity_type,mail.model_mail_activity_type,group_income,1,0,0,0
+access_income_mail_notification,access_income_mail_notification,mail.model_mail_notification,group_income,1,1,1,0
+access_income_mail_channel,access_income_mail_channel,mail.model_mail_channel,group_income,1,1,1,0
+access_income_mail_channel_member,access_income_mail_channel_member,mail.model_mail_channel_member,group_income,1,1,1,0
+access_income_bus_presence,access_income_bus_presence,bus.model_bus_presence,group_income,1,1,1,1
+access_income_res_partner,access_income_res_partner,base.model_res_partner,group_income,1,1,1,1
+access_income_res_partner_bank,access_income_res_partner_bank,base.model_res_partner_bank,group_income,1,1,1,1
+access_income_ir_filters,access_income_ir_filters,base.model_ir_filters,group_income,1,1,1,1

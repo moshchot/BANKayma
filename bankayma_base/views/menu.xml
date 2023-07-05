@@ -10,6 +10,7 @@
         sequence="100"
         action="board.open_board_my_dash_action"
         web_icon="bankayma_base,static/description/icon.png"
+        groups="group_user,base.group_user"
     />
     <record
         id="contacts.action_contacts_view_kanban"

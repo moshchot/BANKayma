@@ -34,5 +34,18 @@
         />
     </record>
 
+    <record
+        id="income_child_comp1"
+        model="res.users"
+        context="{'no_reset_password': True}"
+    >
+        <field name="login">income_child_comp1</field>
+        <field name="email">income@child_comp1</field>
+        <field name="name">Income Child Company 1</field>
+        <field name="password">income_child_comp1</field>
+        <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
+        <field name="company_id" ref="child_comp1" />
+        <field name="groups_id" eval="[Command.link(ref('group_income'))]" />
+    </record>
 
 </odoo>
