@@ -278,6 +278,28 @@
                 name="t-if"
             >not is_html_empty(o.fiscal_position_id.note) and o.is_purchase_document(True)</attribute>
         </p>
+        <div name="address_same_as_shipping" position="before">
+            <div class="col-6">
+                <t t-set="information_block">
+                    <div t-out="o.user_id.name" />
+                    <div t-out="o.user_id.email" />
+                </t>
+            </div>
+        </div>
+        <div name="address_same_as_shipping" position="attributes">
+            <attribute name="class" remove="offset-col-6" separator=" " />
+        </div>
+        <div name="no_shipping" position="before">
+            <div class="col-6">
+                <t t-set="information_block">
+                    <div t-out="o.user_id.name" />
+                    <div t-out="o.user_id.email" />
+                </t>
+            </div>
+        </div>
+        <div name="no_shipping" position="attributes">
+            <attribute name="class" remove="offset-col-6" separator=" " />
+        </div>
     </template>
 
 </odoo>
