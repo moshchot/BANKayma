@@ -6,6 +6,13 @@ from odoo import fields, models
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"
+    _company_cascade_exclude_fields = tuple(
+        [
+            "intercompany_sale_company_id",
+            "intercompany_purchase_company_id",
+            "intercompany_overhead_company_id",
+        ]
+    )
 
     bankayma_restrict_intercompany_partner = fields.Boolean(
         "Allow only companies",
