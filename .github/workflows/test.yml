@@ -75,11 +75,11 @@ jobs:
         run: |
           git clone https://github.com/odoo/odoo -b 16.0 --depth 1
           . /opt/odoo-venv/bin/activate
-          odoo/odoo-bin -c ${ODOO_RC} -d odoo -u all --load-language=he_IL --i18n-overwrite --stop-after-init
           git config --global --add safe.directory $(pwd)
-          for path in $(find . -maxdepth 2 -mindepth 2 -name __manifest__.py); do
-            module=$(basename $(dirname $path))
-            echo $module
+          dropdb ${PGDATABASE}
+          ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} list --separator=,)
+          /opt/odoo-venv/bin/odoo -d ${PGDATABASE} -i $ADDONS --load-language=he_IL --stop-after-init
+          for module in $(echo $ADDONS | tr ',' ' '); do
             mkdir -p $module/i18n
             odoo/odoo-bin -c ${ODOO_RC} -d odoo -l he_IL --i18n-export=$module/i18n/he_IL.po --modules=$module --logfile=/dev/null
             git add $module/i18n/he_IL.po
