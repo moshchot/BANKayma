@@ -3,9 +3,10 @@
 
 from base64 import b64encode
 
-from odoo import _, api, fields, models
+from odoo import _, api, exceptions, fields, models
 from odoo.osv import expression
 from odoo.tests.common import Form
+from odoo.tools import float_utils
 
 
 class AccountMove(models.Model):
@@ -126,6 +127,12 @@ class AccountMove(models.Model):
         mail non-intercompany invoices on post
         """
         for this in self:
+            if float_utils.float_is_zero(
+                this.amount_total, precision_rounding=self.currency_id.rounding
+            ):
+                raise exceptions.UserError(
+                    _("You cannot post an item with amount zero")
+                )
             if (
                 this.is_invoice()
                 and this._find_company_from_invoice_partner()
