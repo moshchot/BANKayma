@@ -17,13 +17,6 @@
         />
 </record>
 
-<record id="bankayma_base.group_manager" model="res.groups">
-    <field
-            name="implied_ids"
-            eval="[Command.link(ref('account.group_account_manager'))]"
-        />
-</record>
-
 <record id="rule_account_analytic_account" model="ir.rule">
     <field name="name">Restrict editing Analytic accounts to own and children</field>
     <field name="model_id" ref="analytic.model_account_analytic_account" />
