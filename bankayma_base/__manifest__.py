@@ -7,6 +7,7 @@
     "author": "Moshchot Coop",
     "license": "AGPL-3",
     "depends": [
+        "base_user_effective_permissions",
         "board",
         "contacts",
         "mail",

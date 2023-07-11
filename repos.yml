@@ -108,6 +108,7 @@ server-backend:
   merges:
     - oca 16.0
     - hbrunn 16.0-base_portal_type
+    - hbrunn 16.0-base_user_effective_permissions
 server-brand:
   defaults:
     depth: 1
