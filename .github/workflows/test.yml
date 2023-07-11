@@ -77,7 +77,7 @@ jobs:
           git config --global --add safe.directory $(pwd)
           dropdb ${PGDATABASE}
           ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} list --separator=,)
-          /opt/odoo-venv/bin/odoo -d ${PGDATABASE} -i l10n_il --load-language=he_IL --stop-after-init
+          /opt/odoo-venv/bin/odoo -d ${PGDATABASE} -i $(manifestoo --select-addons-dir ${ADDONS_DIR} --select-exclude "${EXCLUDE}" list-depends --separator=,) --stop-after-init
           /opt/odoo-venv/bin/odoo -d ${PGDATABASE} -i $ADDONS --load-language=he_IL --stop-after-init
           for module in $(echo $ADDONS | tr ',' ' '); do
             mkdir -p $module/i18n
