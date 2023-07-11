@@ -132,6 +132,7 @@ class BankaymaCompanyCreate(models.TransientModel):
         )
 
         for model in (
+            "ir.sequence",
             "account.account",
             "account.journal",
             "account.payment.mode",

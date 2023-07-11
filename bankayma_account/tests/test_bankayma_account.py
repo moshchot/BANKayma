@@ -191,12 +191,14 @@ class TestBankaymaAccount(TransactionCase):
         draft_invoice = self._create_invoice(self.child1, self.user_child1)
         draft_invoice.button_cancel_unlink()
 
-    def _create_invoice(self, company, user, partner=None, post=True):
+    def _create_invoice(
+        self, company, user, partner=None, post=True, extra_context=None
+    ):
         invoice = (
             self.env["account.move"]
             .with_user(user)
             .with_company(company)
-            .with_context(default_move_type="out_invoice")
+            .with_context(default_move_type="out_invoice", **(extra_context or {}))
             .create({})
         )
         partner = partner or (
@@ -284,3 +286,57 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.intercompany_purchase_journal_id,
             invoice_child2_inverse.journal_id,
         )
+
+    def test_same_sequence(self):
+        journal_parent = self.env["account.journal"].create(
+            {
+                "name": "Test sale journal",
+                "code": "JNL",
+                "type": "sale",
+                "company_id": self.parent.id,
+                "sequence_id": self.env["ir.sequence"]
+                .create(
+                    {
+                        "name": "Shared sequence",
+                        "prefix": "shared",
+                        "padding": 5,
+                        "company_id": False,
+                    }
+                )
+                .id,
+            }
+        )
+        journal_parent.refund_sequence_id._company_cascade()
+        journal_parent._company_cascade()
+        journal_child1 = journal_parent.company_cascade_child_ids.filtered(
+            lambda x: x.company_id == self.child1
+        )
+        journal_child2 = journal_parent.company_cascade_child_ids.filtered(
+            lambda x: x.company_id == self.child2
+        )
+        self.assertEqual(journal_parent.sequence_id, journal_child1.sequence_id)
+        self.assertEqual(journal_child1.sequence_id, journal_child2.sequence_id)
+        invoice_parent = self._create_invoice(
+            self.parent,
+            self.env.user,
+            extra_context={"default_journal_id": journal_parent.id},
+        )
+        invoice_child1 = self._create_invoice(
+            self.child1,
+            self.user_child1,
+            extra_context={"default_journal_id": journal_child1.id},
+        )
+        invoice_child2 = self._create_invoice(
+            self.child2,
+            self.user_child2,
+            extra_context={"default_journal_id": journal_child2.id},
+        )
+        self.assertEqual(invoice_parent.name, "shared00001")
+        self.assertEqual(invoice_child1.name, "shared00002")
+        self.assertEqual(invoice_child2.name, "shared00003")
+        invoice_parent = self._create_invoice(
+            self.parent,
+            self.env.user,
+            extra_context={"default_journal_id": journal_parent.id},
+        )
+        self.assertEqual(invoice_parent.name, "shared00004")

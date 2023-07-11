@@ -12,6 +12,7 @@
         "account_due_list",
         "account_fiscal_position_vat_check",
         "account_template_active",
+        "account_move_name_sequence",
         "account_move_tier_validation",
         "account_move_update_analytic",
         "account_invoice_inter_company",

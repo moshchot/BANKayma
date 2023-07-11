@@ -35,3 +35,8 @@ class AccountJournal(models.Model):
         "res.company",
         "overhead_journal_id",
     )
+
+    def _check_journal_sequence(self):
+        """
+        Defuse constraint from account_move_name_sequence pertaining to squences' companies
+        """

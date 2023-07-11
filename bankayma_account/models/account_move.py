@@ -4,7 +4,6 @@
 from base64 import b64encode
 
 from odoo import _, api, exceptions, fields, models
-from odoo.osv import expression
 from odoo.tests.common import Form
 from odoo.tools import float_utils
 
@@ -34,7 +33,7 @@ class AccountMove(models.Model):
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
-    validated = fields.Boolean(store=True)
+    validated = fields.Boolean(store=True, compute_sudo=True)
 
     def _compute_amount(self):
         """
@@ -87,39 +86,6 @@ class AccountMove(models.Model):
     @api.depends("review_ids.status")
     def _compute_validated_rejected(self):
         return super()._compute_validated_rejected()
-
-    @api.model
-    def search(self, domain, offset=0, limit=None, order=None, count=False):
-        """Search for moves of all company journals when asked"""
-        if self.env.context.get("company_cascade_search_all_journals"):
-            AccountJournal = self.env["account.journal"].sudo()
-            domain = [
-                token
-                if not expression.is_leaf(token)
-                else token
-                if token[0] != "journal_id" or token[1] not in ("=", "in")
-                else (
-                    "journal_id",
-                    "in",
-                    AccountJournal.browse(token[2])._company_cascade_get_all().ids,
-                )
-                for token in domain
-            ]
-        return super().search(
-            domain, offset=offset, limit=limit, order=order, count=count
-        )
-
-    def _get_last_sequence_domain(self, relaxed=False):
-        """Derive sequence from all moves from sibling/parent companies"""
-        where_string, param = super(
-            AccountMove,
-            self.with_context(company_cascade_search_all_journals=True),
-        )._get_last_sequence_domain(relaxed=relaxed)
-        if param.get("journal_id"):
-            journal = self.env["account.journal"].sudo().browse(param["journal_id"])
-            where_string = where_string.replace("journal_id = ", "journal_id in ")
-            param["journal_id"] = tuple(journal._company_cascade_get_all().ids)
-        return where_string, param
 
     def action_post(self):
         """
