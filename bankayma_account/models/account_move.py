@@ -32,6 +32,7 @@ class AccountMove(models.Model):
         "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
+    auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
 
     def _compute_amount(self):
         """

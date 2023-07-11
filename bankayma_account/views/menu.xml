@@ -217,6 +217,31 @@
         >{'default_move_type': 'out_invoice', 'group_by': 'payment_state'}</field>
     </record>
 
+    <record
+        id="action_bankayma_group_income_move_internal"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Internal</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="account.view_out_invoice_tree" />
+        <field name="search_view_id" ref="account.view_account_invoice_filter" />
+        <field
+            name="domain"
+        >['|', ('auto_invoice_id', '!=', False), ('auto_invoice_ids', '!=', False)]</field>
+        <field
+            name="context"
+        >{'default_move_type': 'out_invoice', 'group_by': 'payment_state'}</field>
+    </record>
+
+    <menuitem
+        id="menu_bankayma_group_income_move_internal"
+        parent="bankayma_base.menu_bankayma_simplified_income"
+        action="action_bankayma_group_income_move_internal"
+        groups="bankayma_base.group_manager"
+        sequence="2"
+    />
+
     <record id="bankayma_base.menu_bankayma_simplified_income" model="ir.ui.menu">
         <field name="action" ref="action_bankayma_group_income_move_out_invoice" />
     </record>
