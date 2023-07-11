@@ -16,3 +16,15 @@ class AccountJournal(models.Model):
         "product.product",
         string="Allowed products",
     )
+    intercompany_sale_company_id = fields.One2many(
+        "res.company",
+        "intercompany_sale_journal_id",
+    )
+    intercompany_purchase_company_id = fields.One2many(
+        "res.company",
+        "intercompany_purchase_journal_id",
+    )
+    intercompany_overhead_company_id = fields.One2many(
+        "res.company",
+        "overhead_journal_id",
+    )

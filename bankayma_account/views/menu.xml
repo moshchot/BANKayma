@@ -228,10 +228,10 @@
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field
             name="domain"
-        >['|', ('auto_invoice_id', '!=', False), ('auto_invoice_ids', '!=', False)]</field>
+        >['|', '|', ('journal_id.intercompany_sale_company_id', '!=', False), ('journal_id.intercompany_purchase_company_id', '!=', False), ('journal_id.intercompany_overhead_company_id', '!=', False)]</field>
         <field
             name="context"
-        >{'default_move_type': 'out_invoice', 'group_by': 'payment_state'}</field>
+        >{'bankayma_internal_move': True, 'default_move_type': 'out_invoice', 'group_by': ['validated', 'payment_state']}</field>
     </record>
 
     <menuitem

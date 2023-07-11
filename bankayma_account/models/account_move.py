@@ -33,6 +33,7 @@ class AccountMove(models.Model):
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
+    validated = fields.Boolean(store=True)
 
     def _compute_amount(self):
         """
@@ -45,6 +46,12 @@ class AccountMove(models.Model):
                 this.amount_total_signed - this.amount_residual_signed
             )
         return result
+
+    def _search_default_journal(self):
+        """React on a context key to choose company's intercompany sale journal"""
+        if self.env.context.get("bankayma_internal_move"):
+            return self.env.company.intercompany_sale_journal_id
+        return super()._search_default_journal()
 
     @api.depends(
         "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
@@ -75,6 +82,10 @@ class AccountMove(models.Model):
                 this.bankayma_partner_domain = [
                     ("company_id", "in", (False, this.company_id.id))
                 ]
+
+    @api.depends("review_ids.status")
+    def _compute_validated_rejected(self):
+        return super()._compute_validated_rejected()
 
     @api.model
     def search(self, domain, offset=0, limit=None, order=None, count=False):
