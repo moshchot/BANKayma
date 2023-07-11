@@ -7,4 +7,5 @@ from . import account_payment_mode
 from . import account_tax
 from . import ir_actions_actions
 from . import ir_property
+from . import ir_sequence
 from . import res_company
