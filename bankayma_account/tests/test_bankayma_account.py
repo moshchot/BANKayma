@@ -1,6 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from odoo import exceptions
 from odoo.fields import Command
 from odoo.tests.common import Form, TransactionCase
 from odoo.tools.misc import mute_logger
@@ -21,6 +22,7 @@ class TestBankaymaAccount(TransactionCase):
         if not cls.parent.country_id:
             cls.parent.country_id = cls.env.ref("base.il")
         cls.parent.code = "4242"
+        cls.parent.invoice_auto_validation = False
         cls.parent.intercompany_sale_journal_id = cls.env["account.journal"].create(
             {
                 "name": "Intercompany sales",
@@ -64,6 +66,9 @@ class TestBankaymaAccount(TransactionCase):
                 "sequence": 200,
             }
         )
+        cls.env["account.journal"].search(
+            [("company_id", "=", cls.parent.id), ("type", "=", "sale")], limit=1
+        ).bankayma_charge_overhead = True
         bank_account_wizard = (
             cls.env["account.setup.bank.manual.config"]
             .with_company(cls.parent)
@@ -92,8 +97,7 @@ class TestBankaymaAccount(TransactionCase):
                     "groups_id": [
                         Command.set(
                             [
-                                cls.env.ref("account.group_account_invoice").id,
-                                cls.env.ref("bankayma_base.group_user").id,
+                                cls.env.ref("bankayma_base.group_manager").id,
                             ]
                         )
                     ],
@@ -114,8 +118,7 @@ class TestBankaymaAccount(TransactionCase):
                     "groups_id": [
                         Command.set(
                             [
-                                cls.env.ref("account.group_account_invoice").id,
-                                cls.env.ref("bankayma_base.group_user").id,
+                                cls.env.ref("bankayma_base.group_manager").id,
                             ]
                         )
                     ],
@@ -156,9 +159,9 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.account_journal_payment_debit_account_id,
             self.child2.account_journal_payment_debit_account_id,
         )
-        self._pay_invoice(invoice_child1)
-        self._pay_invoice(invoice_child2)
-        invoices = self.env["account.move"].search(
+        invoice_child1._bankayma_pay()
+        invoice_child2._bankayma_pay()
+        overhead_invoices = self.env["account.move"].search(
             [
                 (
                     "line_ids",
@@ -170,24 +173,29 @@ class TestBankaymaAccount(TransactionCase):
                 )
             ]
         )
-        self.assertEqual(invoices.mapped("journal_id"), self.parent.overhead_journal_id)
+        self.assertEqual(
+            overhead_invoices.mapped("journal_id"), self.parent.overhead_journal_id
+        )
         self.assertIn(
-            self.parent.overhead_account_id, invoices.mapped("line_ids.account_id")
+            self.parent.overhead_account_id,
+            overhead_invoices.mapped("line_ids.account_id"),
         )
-        child_invoices = self.env["account.move"].search(
-            [("auto_invoice_id", "in", invoices.ids)]
+        child_overhead_invoices = overhead_invoices.mapped("auto_invoice_ids")
+        self.assertEqual(
+            child_overhead_invoices.mapped("need_validation"), [True, True]
         )
-        self.assertEqual(child_invoices.mapped("payment_state"), ["paid", "paid"])
         self.assertItemsEqual(
-            self.env["account.move"]
-            .search([("auto_invoice_id", "in", invoices.ids)])
-            .mapped("journal_id")
-            .ids,
-            (
-                self.child1.intercompany_purchase_journal_id
-                + self.child2.intercompany_purchase_journal_id
-            ).ids,
+            child_overhead_invoices.mapped("journal_id"),
+            self.child1.intercompany_purchase_journal_id
+            + self.child2.intercompany_purchase_journal_id,
         )
+        child_overhead_invoices.request_validation()
+        child1_overhead_invoice = child_overhead_invoices.filtered(
+            lambda x: x.company_id == self.child1
+        ).with_user(self.user_child1)
+        self.assertTrue(child1_overhead_invoice.can_review)
+        child1_overhead_invoice.validate_tier()
+        self.assertEqual(child1_overhead_invoice.payment_state, "paid")
         draft_invoice = self._create_invoice(self.child1, self.user_child1)
         draft_invoice.button_cancel_unlink()
 
@@ -219,13 +227,9 @@ class TestBankaymaAccount(TransactionCase):
             invoice.action_post()
         return invoice
 
-    def _pay_invoice(self, invoice):
-        action = invoice.action_register_payment()
-        with Form(
-            self.env[action["res_model"]].with_context(**action["context"])
-        ) as payment_form:
-            payment = payment_form.save()
-        payment.action_create_payments()
+    def test_constraints(self):
+        with self.assertRaises(exceptions.ValidationError):
+            self.parent.overhead_payment_journal_id.bankayma_charge_overhead = True
 
     def test_cascade(self):
         account = self.env["account.account"].search(
