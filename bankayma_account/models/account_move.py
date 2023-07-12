@@ -35,7 +35,11 @@ class AccountMove(models.Model):
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
     validated = fields.Boolean(store=True, compute_sudo=False)
     validated_state = fields.Selection(
-        [("needs_validation", "Needs validation"), ("validated", "Validated")],
+        [
+            ("needs_validation", "Needs validation"),
+            ("validated", "Validated"),
+            ("paid", "Paid"),
+        ],
         store=True,
         default="needs_validation",
     )
@@ -95,11 +99,17 @@ class AccountMove(models.Model):
                     ("company_id", "in", (False, this.company_id.id))
                 ]
 
-    @api.depends("review_ids.status")
+    @api.depends("review_ids.status", "payment_state")
     def _compute_validated_rejected(self):
         result = super()._compute_validated_rejected()
         for this in self:
-            this.validated_state = "validated" if this.validated else "needs_validation"
+            this.validated_state = (
+                "paid"
+                if this.payment_state == "paid"
+                else "validated"
+                if this.validated
+                else "needs_validation"
+            )
         return result
 
     def action_post(self):

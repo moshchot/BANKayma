@@ -244,6 +244,28 @@
         sequence="2"
     />
 
+    <record id="action_bankayma_group_expense_move" model="ir.actions.act_window">
+        <field name="name">Expenses</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="account.view_in_invoice_tree" />
+        <field name="search_view_id" ref="account.view_account_invoice_filter" />
+        <field
+            name="domain"
+        >[('move_type', '=', 'in_invoice'), ('journal_id.intercompany_sale_company_id', '=', False), ('journal_id.intercompany_purchase_company_id', '=', False), ('journal_id.intercompany_overhead_company_id', '=', False)]</field>
+        <field
+            name="context"
+        >{'default_move_type': 'in_invoice', 'group_by': ['validated_state']}</field>
+    </record>
+
+    <menuitem
+        id="menu_bankayma_group_expense_move"
+        parent="bankayma_base.menu_bankayma_simplified_income"
+        action="action_bankayma_group_expense_move"
+        groups="bankayma_base.group_manager"
+        sequence="3"
+    />
+
     <record id="bankayma_base.menu_bankayma_simplified_income" model="ir.ui.menu">
         <field name="action" ref="action_bankayma_group_income_move_out_invoice" />
     </record>
