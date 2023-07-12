@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 17:53+0000\n"
+"POT-Creation-Date: 2023-07-12 09:38+0000\n"
 "PO-Revision-Date: 2023-06-13 17:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -19,7 +20,9 @@ msgstr ""
 #: model:mail.template,body_html:bankayma_account.template_vendor_invite
 msgid ""
 "<h1>Invitation</h1>\n"
-"            <div>Here is the <a t-attf-href=\"{{ object.signup_url }}&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">link</a></div>\n"
+"            <div>Here is the <a t-attf-href=\"{{ object.signup_url }}&amp;"
+"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">link</a></"
+"div>\n"
 "        "
 msgstr ""
 
@@ -71,7 +74,20 @@ msgid "Amount"
 msgstr "סכום לתשלום"
 
 #. module: bankayma_account
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_accounts
+msgid "Analytic Accounts"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_plans
+msgid "Analytic Plans"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__attachment_ids
+#, python-format
 msgid "Attachments"
 msgstr "צרופות"
 
@@ -83,8 +99,15 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__author_id
 msgid ""
-"Author of the message. If not set, email_from may hold an email address that"
-" did not match any partner."
+"Author of the message. If not set, email_from may hold an email address that "
+"did not match any partner."
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__auto_invoice_ids
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__auto_invoice_ids
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__auto_invoice_ids
+msgid "Auto Invoice"
 msgstr ""
 
 #. module: bankayma_account
@@ -101,11 +124,6 @@ msgstr "מאזן:"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Bank"
 msgstr "בנק"
-
-#. module: bankayma_account
-#: model:ir.model,name:bankayma_account.model_res_partner_bank
-msgid "Bank Accounts"
-msgstr "חשבון בנק"
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_bank_in
@@ -138,21 +156,12 @@ msgid "Bankayma Partner Domain"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_method_id
-#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_method_id
-msgid "Bankayma Payment Method"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_product_domain
 msgid "Bankayma Product Domain"
 msgstr ""
 
 #. module: bankayma_account
 #. odoo-python
-#: code:addons/bankayma_account/controllers/main.py:0
-#: code:addons/bankayma_account/controllers/main.py:0
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "Banking information is mandatory for vendors"
@@ -162,12 +171,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Branch"
 msgstr "סניף"
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_setup_bank_manual_config__branch_code
-#: model:ir.model.fields,field_description:bankayma_account.field_res_partner_bank__branch_code
-msgid "Branch Code"
-msgstr "קוד סניף"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__can_edit_body
@@ -188,8 +191,8 @@ msgstr "מזומן"
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_fiscal_position__vendor_doc_mandatory
 msgid ""
-"Check this field to have vendors with this fiscal position upload a document"
-" for every invoice"
+"Check this field to have vendors with this fiscal position upload a document "
+"for every invoice"
 msgstr ""
 
 #. module: bankayma_account
@@ -311,6 +314,11 @@ msgid "Defrayal"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "Delete"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__auto_delete
 msgid "Delete Emails"
 msgstr ""
@@ -414,6 +422,7 @@ msgid "In:"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Income"
@@ -423,6 +432,21 @@ msgstr "הכנסה"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Incoming"
 msgstr "הכנסות"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__intercompany_overhead_company_id
+msgid "Intercompany Overhead Company"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__intercompany_purchase_company_id
+msgid "Intercompany Purchase Company"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__intercompany_sale_company_id
+msgid "Intercompany Sale Company"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_res_company__intercompany_purchase_journal_id
@@ -447,6 +471,8 @@ msgid "Intercompany sale journal"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_internal
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_move_internal
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Internal"
 msgstr "פנימיות"
@@ -625,15 +651,17 @@ msgstr ""
 msgid ""
 "Optional translation language (ISO code) to select when sending out an "
 "email. If not set, the english version will be used. This should usually be "
-"a placeholder expression that provides the appropriate language, e.g. {{ "
-"object.partner_id.lang }}."
+"a placeholder expression that provides the appropriate language, e.g. "
+"{{ object.partner_id.lang }}."
 msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__reply_to_mode
 msgid ""
-"Original Discussion: Answers go in the original document discussion thread. \n"
-" Another Email Address: Answers go to the email address mentioned in the tracking message-id instead of original document discussion thread. \n"
+"Original Discussion: Answers go in the original document discussion "
+"thread. \n"
+" Another Email Address: Answers go to the email address mentioned in the "
+"tracking message-id instead of original document discussion thread. \n"
 " This has an impact on the generated message-id."
 msgstr ""
 
@@ -684,18 +712,20 @@ msgstr "חשבון תקורה"
 msgid ""
 "Overhead created in <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
 "href=\"#\">%(name)s</a>"
-msgstr "תקורה נוצרה ב <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
-"href=\"#\">%(name)s</a>"
+msgstr ""
+"תקורה נוצרה ב <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" href="
+"\"#\">%(name)s</a>"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid ""
-"Overhead invoice for <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\""
-" href=\"#\">%(name)s</a>"
-msgstr "חשבונית תקורה עבור <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\""
-" href=\"#\">%(name)s</a>"
+"Overhead invoice for <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
+"href=\"#\">%(name)s</a>"
+msgstr ""
+"חשבונית תקורה עבור <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
+"href=\"#\">%(name)s</a>"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_res_company__overhead_account_id
@@ -765,6 +795,13 @@ msgstr "פייפאל"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_method
 msgid "Payment Methods"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_method_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_method_id
+msgid "Payment method"
 msgstr ""
 
 #. module: bankayma_account
@@ -847,6 +884,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subtype_id
 msgid "Subtype"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "Tag"
 msgstr ""
 
 #. module: bankayma_account
@@ -970,6 +1012,9 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_validated
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_validated
 msgid "Validated"
 msgstr "מאושר"
@@ -994,6 +1039,13 @@ msgstr "ספקים"
 msgid ""
 "When this checkbox is activated, only partners of companies in the system "
 "may be used as partner on invoices"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "You cannot post an item with amount zero"
 msgstr ""
 
 #. module: bankayma_account
