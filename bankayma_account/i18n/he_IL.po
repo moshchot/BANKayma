@@ -379,6 +379,8 @@ msgid "Expense"
 msgstr "הוצאה"
 
 #. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_expense_move
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_expense_move
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Expenses"
 msgstr "הוצאות"
@@ -768,6 +770,7 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_paid
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_paid
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__paid
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_paid
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_paid
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -841,6 +844,20 @@ msgstr ""
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
 msgstr "רישום תשלום"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__rejected
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__rejected
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__rejected
+msgid "Rejected"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__rejected_message
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__rejected_message
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__rejected_message
+msgid "Rejected Message"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__res_id
@@ -940,6 +957,13 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__to_validate_message
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__to_validate_message
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__to_validate_message
+msgid "To Validate Message"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_tree_invoice
 msgid "Total"
 msgstr "עלות"
@@ -1023,6 +1047,13 @@ msgstr ""
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_validated
 msgid "Validated"
 msgstr "מאושר"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_message
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated_message
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated_message
+msgid "Validated Message"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_state
