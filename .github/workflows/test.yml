@@ -87,6 +87,7 @@ jobs:
             else
               msginit --input /tmp/$module.pot --locale $LANG --no-translator -o $module/i18n/$LANG.po
             fi
+            sed -i '/^"POT-Creation-Date:/d' $module/i18n/$LANG.po
             git add $module/i18n/$LANG.po
           done
           if git commit -m '[UPD] translations' --dry-run; then
