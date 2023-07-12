@@ -73,17 +73,21 @@ jobs:
       - uses: codecov/codecov-action@v3
       - name: Update .po files
         run: |
-          . /opt/odoo-venv/bin/activate
+          apt install gettext
           git config --global --add safe.directory $(pwd)
-          git clone --depth 1 https://github.com/odoo/odoo -b 16.0
+          LANG=he_IL
           ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} list --separator=,)
-          . /opt/odoo-venv/bin/activate
-          odoo/odoo-bin -d translations -i $(manifestoo --select-addons-dir ${ADDONS_DIR} --select-exclude "${EXCLUDE}" list-depends --separator=,) --stop-after-init --logfile=/dev/null
-          odoo/odoo-bin -d translations -i $ADDONS --load-language=he_IL --stop-after-init --logfile=/dev/null
           for module in $(echo $ADDONS | tr ',' ' '); do
             mkdir -p $module/i18n
-            odoo/odoo-bin -d ${PGDATABASE} -l he_IL --i18n-export=$module/i18n/he_IL.po --modules=$module --logfile=/dev/null
-            git add $module/i18n/he_IL.po
+            /opt/odoo-venv/bin/odoo -d ${PGDATABASE} --i18n-export=/tmp/$module.pot --modules=$module --logfile=/dev/null
+            if [ -f $module/i18n/$LANG.po ]; then
+              TMPFILE=$(mktemp)
+              msgmerge --lang=$LANG --no-fuzzy-matching $module/i18n/$LANG.po /tmp/$module.pot --output-file=$TMPFILE
+              msgattrib --no-obsolete $TMPFILE > $module/i18n/$LANG.po
+            else
+              msginit --input /tmp/$module.pot --lang $LANG --no-translator -o $module/i18n/$LANG.po
+            fi
+            git add $module/i18n/$LANG.po
           done
           if git commit -m '[UPD] translations' --dry-run; then
             git fetch origin $GITHUB_HEAD_REF
