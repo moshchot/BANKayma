@@ -8,6 +8,7 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     name = fields.Char(translate=True)
+    invoice_auto_validation = fields.Boolean(default=False)
     intercompany_sale_journal_id = fields.Many2one(
         "account.journal",
         "Intercompany sale journal",

@@ -10,5 +10,10 @@ class AccountPaymentRegister(models.TransientModel):
     def _create_payments(self):
         """Create invoice from parent company for paid invoices"""
         result = super()._create_payments()
-        self.line_ids.mapped("move_id").sudo()._bankayma_invoice_child_income()
+        for move in self.line_ids.mapped("move_id").sudo():
+            if move.journal_id.company_cascade_parent_id.bankayma_charge_overhead:
+                parent_journal = move.journal_id.company_cascade_parent_id
+                move._bankayma_invoice_child_income(
+                    fraction=parent_journal.bankayma_overhead_percentage / 100
+                )
         return result

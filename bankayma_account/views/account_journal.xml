@@ -11,6 +11,20 @@
                 <field name="bankayma_restrict_product_ids" widget="many2many_tags" />
                 <field name="bankayma_restrict_intercompany_partner" />
             </field>
+            <xpath expr="//page[@name='advanced_settings']/group" position="inside">
+                <group
+                    name="bankayma_overhead"
+                    string="Overhead"
+                    attrs="{'invisible': [('company_cascade_child_ids', '=', [])]}"
+                >
+                    <field name="company_cascade_child_ids" invisible="1" />
+                    <field name="bankayma_charge_overhead" />
+                    <field
+                        name="bankayma_overhead_percentage"
+                        attrs="{'invisible': [('bankayma_charge_overhead', '=', False)]}"
+                    />
+                </group>
+            </xpath>
         </field>
     </record>
 

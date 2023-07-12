@@ -33,11 +33,6 @@ class AccountMove(models.Model):
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
-    validated = fields.Boolean(store=True, compute_sudo=True)
-    to_validate_message = fields.Html(compute_sudo=True)
-    validated_message = fields.Html(compute_sudo=True)
-    rejected = fields.Boolean(compute_sudo=True)
-    rejected_message = fields.Html(compute_sudo=True)
     validated_state = fields.Selection(
         [
             ("needs_validation", "Needs validation"),
@@ -46,6 +41,8 @@ class AccountMove(models.Model):
         ],
         store=True,
         default="needs_validation",
+        compute="_compute_validated_state",
+        compute_sudo=True,
     )
 
     def _compute_amount(self):
@@ -103,9 +100,8 @@ class AccountMove(models.Model):
                     ("company_id", "in", (False, this.company_id.id))
                 ]
 
-    @api.depends("review_ids.status", "payment_state")
-    def _compute_validated_rejected(self):
-        result = super()._compute_validated_rejected()
+    @api.depends("review_ids.status", "payment_state", "state")
+    def _compute_validated_state(self):
         for this in self:
             this.validated_state = (
                 "paid"
@@ -114,7 +110,6 @@ class AccountMove(models.Model):
                 if this.validated
                 else "needs_validation"
             )
-        return result
 
     def action_post(self):
         """
@@ -150,7 +145,9 @@ class AccountMove(models.Model):
                 and not self.search([("auto_invoice_id", "=", x.id)])
             )
             if to_send:
-                action = to_send.action_invoice_sent()
+                action = to_send.with_company(
+                    to_send[:1].company_id
+                ).action_invoice_sent()
                 with Form(
                     self.env[action["res_model"]].with_context(**action["context"]),
                     action["view_id"],
@@ -182,7 +179,6 @@ class AccountMove(models.Model):
         self,
         fraction=0.07,
         post=True,
-        pay=True,
     ):
         """Create invoices for income if self is eligible"""
         invoices = self.browse([])
@@ -230,45 +226,28 @@ class AccountMove(models.Model):
             this.message_post(
                 body=_(
                     'Overhead created in <a data-oe-model="account.move" '
-                    'data-oe-id="%(id)s" href="#">%(name)s</a>'
+                    'data-oe-id="%(id)s" href="#">%(ref)s</a>'
                 )
                 % child_invoice
             )
-            if pay:
-                payment_form = Form(
-                    self.env["account.payment.register"]
-                    .with_context(
-                        active_id=invoice.id,
-                        active_ids=invoice.ids,
-                        active_model=invoice._name,
-                    )
-                    .with_company(company)
-                )
-                payment_form.journal_id = company.overhead_payment_journal_id
-                payment_form.communication = "%s: %s" % (
-                    this.name,
-                    " ".join(this.mapped("invoice_line_ids.name")),
-                )
-                payment_form.save().action_create_payments()
-                if child.overhead_payment_journal_id:
-                    payment_form = Form(
-                        self.env["account.payment.register"]
-                        .with_context(
-                            active_id=child_invoice.id,
-                            active_ids=child_invoice.ids,
-                            active_model=child_invoice._name,
-                        )
-                        .with_company(child)
-                    )
-                    payment_form.journal_id = child.overhead_payment_journal_id
-                    payment_form.communication = "%s: %s" % (
-                        this.name,
-                        " ".join(this.mapped("invoice_line_ids.name")),
-                    )
-                    payment_form.save().action_create_payments()
 
             invoices += invoice
         return invoices
+
+    def _bankayma_pay(self, journal=None, payment_communication=None):
+        """Pay an invoice with the payment register wizard"""
+        for this in self:
+            action = this.action_register_payment()
+            payment_form = Form(
+                self.env[action["res_model"]]
+                .with_context(**action["context"])
+                .with_company(this.company_id)
+            )
+            if journal:
+                payment_form.journal_id = journal
+            if payment_communication:
+                payment_form.communication = payment_communication
+            payment_form.save().action_create_payments()
 
     def request_validation(self):
         """Set invoice_date before rquesting validation"""
@@ -317,3 +296,6 @@ class AccountMove(models.Model):
         self.button_cancel()
         self.unlink()
         return {"type": "ir.actions.act_window.page.list"}
+
+    def _get_under_validation_exceptions(self):
+        return super()._get_under_validation_exceptions() + ["validated_state"]
