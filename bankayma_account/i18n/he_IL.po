@@ -188,6 +188,11 @@ msgid "Cash"
 msgstr "מזומן"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_charge_overhead
+msgid "Charge overhead"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_fiscal_position__vendor_doc_mandatory
 msgid ""
 "Check this field to have vendors with this fiscal position upload a document "
@@ -440,6 +445,11 @@ msgid "Intercompany Overhead Company"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__intercompany_overhead_payment_company_id
+msgid "Intercompany Overhead Payment Company"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__intercompany_purchase_company_id
 msgid "Intercompany Purchase Company"
 msgstr ""
@@ -462,6 +472,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_res_config_settings__intercompany_purchase_journal_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.res_config_settings_view_form
 msgid "Intercompany purchase journal"
+msgstr ""
+
+#. module: bankayma_account
+#: model:tier.definition,name:bankayma_account.tier_definition_intercompany_purchase
+msgid "Intercompany purchases"
 msgstr ""
 
 #. module: bankayma_account
@@ -493,6 +508,11 @@ msgstr "הזמנה לפורטל ספקים"
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_vendor_invite_form
 msgid "Invite vendors"
 msgstr "הזמנת ספקים"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_company__invoice_auto_validation
+msgid "Invoice Auto Validation"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__is_mail_template_editor
@@ -701,6 +721,7 @@ msgstr "באיחור"
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_overhead_product_template
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
 msgid "Overhead"
 msgstr "תקורה"
 
@@ -717,10 +738,8 @@ msgstr "חשבון תקורה"
 #, python-format
 msgid ""
 "Overhead created in <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
-"href=\"#\">%(name)s</a>"
+"href=\"#\">%(ref)s</a>"
 msgstr ""
-"תקורה נוצרה ב <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" href="
-"\"#\">%(name)s</a>"
 
 #. module: bankayma_account
 #. odoo-python
@@ -766,6 +785,11 @@ msgid "Overhead payment journal"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_overhead_percentage
+msgid "Overhead percentage"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_paid
@@ -791,6 +815,11 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Pay Me"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_validation_intercompany_purchase
+msgid "Pay overhead invoices"
 msgstr ""
 
 #. module: bankayma_account
@@ -844,20 +873,6 @@ msgstr ""
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
 msgstr "רישום תשלום"
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__rejected
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move__rejected
-#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__rejected
-msgid "Rejected"
-msgstr ""
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__rejected_message
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move__rejected_message
-#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__rejected_message
-msgid "Rejected Message"
-msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__res_id
@@ -949,18 +964,16 @@ msgid "The fiscal position is mandatory for vendors"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_overhead_percentage
+msgid "The percentage of the amount to be charged as overhead"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete
 msgid ""
 "This option permanently removes any track of email after it's been sent, "
 "including from the Technical menu in the Settings, in order to preserve "
 "storage space of your Odoo database."
-msgstr ""
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__to_validate_message
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move__to_validate_message
-#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__to_validate_message
-msgid "To Validate Message"
 msgstr ""
 
 #. module: bankayma_account
@@ -1040,20 +1053,10 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_validated
-#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated
-#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_validated
 msgid "Validated"
 msgstr "מאושר"
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_message
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated_message
-#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated_message
-msgid "Validated Message"
-msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_state
@@ -1078,10 +1081,31 @@ msgid "Vendors"
 msgstr "ספקים"
 
 #. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_res_company__invoice_auto_validation
+msgid ""
+"When an invoice is created by a multi company rule for this company, it will "
+"automatically validate it"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_restrict_intercompany_partner
 msgid ""
 "When this checkbox is activated, only partners of companies in the system "
 "may be used as partner on invoices"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_charge_overhead
+msgid ""
+"When this is checked, payments for moves in child journals will create an "
+"overhead invoice for the child company"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_journal.py:0
+#, python-format
+msgid "You cannot charge overhead on the company's overhead payment journal"
 msgstr ""
 
 #. module: bankayma_account
