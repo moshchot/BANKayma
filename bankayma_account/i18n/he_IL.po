@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-12 09:38+0000\n"
+"POT-Creation-Date: 2023-07-12 10:06+0000\n"
 "PO-Revision-Date: 2023-06-13 17:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -599,6 +599,11 @@ msgid "Name"
 msgstr "שם"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
+msgid "Needs validation"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_draft
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_draft
 msgid "New"
@@ -1015,9 +1020,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_validated
 msgid "Validated"
 msgstr "מאושר"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_state
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated_state
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated_state
+msgid "Validated State"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__vendor_doc_description
