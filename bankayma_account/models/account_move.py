@@ -33,7 +33,12 @@ class AccountMove(models.Model):
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
-    validated = fields.Boolean(store=True, compute_sudo=True)
+    validated = fields.Boolean(store=True, compute_sudo=False)
+    validated_state = fields.Selection(
+        [("needs_validation", "Needs validation"), ("validated", "Validated")],
+        store=True,
+        default="needs_validation",
+    )
 
     def _compute_amount(self):
         """
@@ -85,7 +90,10 @@ class AccountMove(models.Model):
 
     @api.depends("review_ids.status")
     def _compute_validated_rejected(self):
-        return super()._compute_validated_rejected()
+        result = super()._compute_validated_rejected()
+        for this in self:
+            this.validated_state = "validated" if this.validated else "needs_validation"
+        return result
 
     def action_post(self):
         """
