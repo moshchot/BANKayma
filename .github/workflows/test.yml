@@ -85,7 +85,7 @@ jobs:
               msgmerge --lang=$LANG --no-fuzzy-matching $module/i18n/$LANG.po /tmp/$module.pot --output-file=$TMPFILE
               msgattrib --no-obsolete $TMPFILE > $module/i18n/$LANG.po
             else
-              msginit --input /tmp/$module.pot --lang $LANG --no-translator -o $module/i18n/$LANG.po
+              msginit --input /tmp/$module.pot --locale $LANG --no-translator -o $module/i18n/$LANG.po
             fi
             git add $module/i18n/$LANG.po
           done
