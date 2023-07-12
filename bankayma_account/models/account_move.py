@@ -58,6 +58,13 @@ class AccountMove(models.Model):
             return self.env.company.intercompany_sale_journal_id
         return super()._search_default_journal()
 
+    @api.depends("payment_state")
+    def _compute_show_reset_to_draft_button(self):
+        result = super()._compute_show_reset_to_draft_button()
+        for this in self:
+            this.show_reset_to_draft_button &= this.payment_state != "paid"
+        return result
+
     @api.depends(
         "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
         "payment_method_line_id.payment_method_id"
