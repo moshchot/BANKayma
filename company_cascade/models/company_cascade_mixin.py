@@ -236,6 +236,10 @@ class CompanyCascadeMixin(models.AbstractModel):
         Find a record in company that's the equivalent of vals.
         This is used before creating cascading record to avoid constraints failing
         """
+        if "code" in self._fields and self._fields["code"].required:
+            return self.search(
+                [("code", "=", vals.get("code")), ("company_id", "=", company.id)]
+            )
         return self.browse([])
 
     def _company_cascade_create(self, values):
