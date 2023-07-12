@@ -1,0 +1,206 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* company_cascade
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-12 09:26+0000\n"
+"PO-Revision-Date: 2023-07-12 09:26+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: he\n"
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_ir_actions_actions
+msgid "Actions"
+msgstr ""
+
+#. module: company_cascade
+#: model_terms:ir.ui.view,arch_db:company_cascade.view_company_cascade_wizard_form
+msgid "Cancel"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_res_company__company_cascade_from_parent
+msgid "Cascade from parent"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_company_cascade_wizard
+msgid "Cascade records to child companies"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.actions.act_window,name:company_cascade.action_company_cascade_wizard
+#: model_terms:ir.ui.view,arch_db:company_cascade.view_company_cascade_wizard_form
+msgid "Cascade to child companies"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_company_cascade_mixin
+msgid "Cascade values to child companies"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_id
+#: model:ir.model.fields,field_description:company_cascade.field_res_company__company_id
+msgid "Company"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_account_account__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_tax__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_mode__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_tax__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_tax_repartition_line__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_mixin__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_ir_property__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_res_company__company_cascade_child_ids
+msgid "Company Cascade Child"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_account_account__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_tax__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_mode__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_tax__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_tax_repartition_line__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_mixin__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_ir_property__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_res_company__company_cascade_parent_id
+msgid "Company Cascade Parent"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_ir_property
+msgid "Company Property"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,help:company_cascade.field_account_payment_method_line__company_id
+msgid "Company related to this journal"
+msgstr ""
+
+#. module: company_cascade
+#: model_terms:ir.ui.view,arch_db:company_cascade.view_company_cascade_wizard_form
+msgid "Create/Overwrite equivalent records of child companies?"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__field_ids
+msgid "Fields to cascade"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_fiscal_position
+msgid "Fiscal Position"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_company_cascade_wizard__model_id
+msgid "Model"
+msgstr ""
+
+#. module: company_cascade
+#. odoo-python
+#: code:addons/company_cascade/wizards/company_cascade_wizard.py:0
+#, python-format
+msgid "Only admin can cascade companies"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_payment_method_line
+msgid "Payment Methods"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_payment_mode
+msgid "Payment Modes"
+msgstr ""
+
+#. module: company_cascade
+#: model_terms:ir.ui.view,arch_db:company_cascade.view_company_cascade_wizard_form
+msgid "Select fields to cascade"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,help:company_cascade.field_company_cascade_wizard__field_ids
+msgid "Select fields to cascade, otherwise all fields will be cascaded"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_tax
+msgid "Tax"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_fiscal_position_tax
+msgid "Tax Mapping of Fiscal Position"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_tax_repartition_line
+msgid "Tax Repartition Line"
+msgstr ""
