@@ -18,4 +18,4 @@ msgstr ""
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Invoice"
-msgstr ""
+msgstr "דרישת תשלום"
