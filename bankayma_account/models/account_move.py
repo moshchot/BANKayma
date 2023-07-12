@@ -33,7 +33,11 @@ class AccountMove(models.Model):
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
-    validated = fields.Boolean(store=True, compute_sudo=False)
+    validated = fields.Boolean(store=True, compute_sudo=True)
+    to_validate_message = fields.Html(compute_sudo=True)
+    validated_message = fields.Html(compute_sudo=True)
+    rejected = fields.Boolean(compute_sudo=True)
+    rejected_message = fields.Html(compute_sudo=True)
     validated_state = fields.Selection(
         [
             ("needs_validation", "Needs validation"),
