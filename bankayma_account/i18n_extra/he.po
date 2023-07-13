@@ -19,3 +19,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Invoice"
 msgstr "דרישת תשלום"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__account_account_invoice_report__move_type__in_invoice
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "Vendor bill"
+msgstr "חשבונית ספק"
