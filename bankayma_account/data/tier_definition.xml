@@ -12,6 +12,8 @@
                 for this in (records or record):
                     this.action_post()
                     this._bankayma_pay(journal=this.company_id.overhead_payment_journal_id)
+                    for invoice in this.auto_invoice_id:
+                        invoice._bankayma_pay(journal=invoice.company_id.overhead_payment_journal_id)
             </field>
     </record>
 

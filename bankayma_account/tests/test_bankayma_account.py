@@ -197,7 +197,7 @@ class TestBankaymaAccount(TransactionCase):
         child1_overhead_invoice.validate_tier()
         self.assertEqual(child1_overhead_invoice.payment_state, "paid")
         draft_invoice = self._create_invoice(self.child1, self.user_child1)
-        draft_invoice.button_cancel_unlink()
+        draft_invoice.with_context(force_delete=True).button_cancel_unlink()
 
     def _create_invoice(
         self, company, user, partner=None, post=True, extra_context=None
