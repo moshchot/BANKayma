@@ -11,6 +11,7 @@ class AccountJournal(models.Model):
             "intercompany_sale_company_id",
             "intercompany_purchase_company_id",
             "intercompany_overhead_company_id",
+            "intercompany_overhead_payment_company_id",
         ]
     )
 

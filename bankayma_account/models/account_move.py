@@ -107,7 +107,7 @@ class AccountMove(models.Model):
                 "paid"
                 if this.payment_state == "paid"
                 else "validated"
-                if this.validated
+                if this.validated or not this.need_validation
                 else "needs_validation"
             )
 
