@@ -75,7 +75,11 @@ jobs:
         run: oca_init_test_database
       - name: Run tests
         run: oca_run_tests
+      - name: Generate coverage.xml
+        run: coverage xml --include '*.py'
       - uses: codecov/codecov-action@v3
+        with:
+          files: coverage.xml
       - name: Update .po files
         run: |
           apt install gettext
