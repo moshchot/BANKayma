@@ -847,6 +847,11 @@ msgid "Pending payment"
 msgstr ""
 
 #. module: bankayma_account
+#: model:product.template,name:bankayma_account.product_portal_product_template
+msgid "Portal"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_id
