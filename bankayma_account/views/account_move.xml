@@ -138,6 +138,7 @@
                 <attribute name="domain">bankayma_product_domain</attribute>
                 <attribute name="string">Item</attribute>
                 <attribute name="options">{'no_open': True}</attribute>
+                <attribute name="required">True</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='name']"
