@@ -265,6 +265,9 @@ class AccountMove(models.Model):
         ) as invoice_form:
             invoice_form.partner_id = self.env.user.partner_id
             with invoice_form.invoice_line_ids.new() as invoice_line:
+                invoice_line.product_id = self.env.ref(
+                    "bankayma_account.product_portal"
+                )
                 invoice_line.name = post_data.get("description")
                 invoice_line.price_unit = post_data.get("amount")
             invoice = invoice_form.save()
