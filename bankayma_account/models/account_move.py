@@ -81,11 +81,12 @@ class AccountMove(models.Model):
                 "payment_method_line_id.payment_method_id"
             )[:1]
 
-    @api.depends("journal_id.bankayma_restrict_intercompany_partner")
+    @api.depends("journal_id.bankayma_restrict_partner")
     def _compute_bankayma_partner_domain(self):
         for this in self:
-            if this.journal_id.bankayma_restrict_intercompany_partner:
-                this.bankayma_partner_domain = [
+            domain = [("company_id", "in", (False, this.company_id.id))]
+            if this.journal_id.bankayma_restrict_partner == "intercompany":
+                domain += [
                     (
                         "id",
                         "in",
@@ -95,10 +96,18 @@ class AccountMove(models.Model):
                         .mapped("partner_id.id"),
                     )
                 ]
-            else:
-                this.bankayma_partner_domain = [
-                    ("company_id", "in", (False, this.company_id.id))
+            elif this.journal_id.bankayma_restrict_partner == "no_intercompany":
+                domain += [
+                    (
+                        "id",
+                        "not in",
+                        self.env["res.company"]
+                        .sudo()
+                        .search([])
+                        .mapped("partner_id.id"),
+                    )
                 ]
+            this.bankayma_partner_domain = domain
 
     @api.depends("review_ids.status", "payment_state", "state")
     def _compute_validated_state(self):
