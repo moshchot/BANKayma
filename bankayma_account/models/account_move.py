@@ -188,6 +188,7 @@ class AccountMove(models.Model):
         self,
         fraction=0.07,
         post=True,
+        pay=True,
     ):
         """Create invoices for income if self is eligible"""
         invoices = self.browse([])
@@ -224,6 +225,10 @@ class AccountMove(models.Model):
             )
             if post:
                 invoice.action_post()
+                if pay:
+                    invoice._bankayma_pay(
+                        journal=invoice.company_id.overhead_payment_journal_id
+                    )
             invoice.message_post(
                 body=_(
                     'Overhead invoice for <a data-oe-model="account.move" '
@@ -239,6 +244,12 @@ class AccountMove(models.Model):
                 )
                 % child_invoice
             )
+            if post:
+                child_invoice.action_post()
+                if pay:
+                    child_invoice._bankayma_pay(
+                        journal=child_invoice.company_id.overhead_payment_journal_id
+                    )
 
             invoices += invoice
         return invoices
