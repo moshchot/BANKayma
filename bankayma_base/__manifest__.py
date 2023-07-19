@@ -31,7 +31,6 @@
         "hr_contract",
         "hr_hourly_cost",
         "hr_org_chart",
-        "hr_timesheet",
         "partner_contact_access_link",
         "partner_contact_lang",
         "portal_rating",
