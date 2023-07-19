@@ -15,10 +15,11 @@ class AccountJournal(models.Model):
         ]
     )
 
-    bankayma_restrict_intercompany_partner = fields.Boolean(
-        "Allow only companies",
-        help="When this checkbox is activated, only partners of companies in the system "
-        "may be used as partner on invoices",
+    bankayma_restrict_partner = fields.Selection(
+        [("no_intercompany", "No intercompany"), ("intercompany", "Only intercompany")],
+        "Restrict partners",
+        help="Choose one of the values to either force intercompany partners or no "
+        "intercompany partners",
     )
     bankayma_restrict_product_ids = fields.Many2many(
         "product.product",

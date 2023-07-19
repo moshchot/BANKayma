@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <field name="account_control_ids" position="after">
                 <field name="bankayma_restrict_product_ids" widget="many2many_tags" />
-                <field name="bankayma_restrict_intercompany_partner" />
+                <field name="bankayma_restrict_partner" />
             </field>
             <xpath expr="//page[@name='advanced_settings']/group" position="inside">
                 <group

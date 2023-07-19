@@ -30,6 +30,7 @@ class TestBankaymaAccount(TransactionCase):
                 "type": "sale",
                 "company_id": cls.parent.id,
                 "sequence": 100,
+                "bankayma_restrict_partner": "intercompany",
             }
         )
         cls.parent.intercompany_purchase_journal_id = cls.env["account.journal"].create(
@@ -39,6 +40,7 @@ class TestBankaymaAccount(TransactionCase):
                 "type": "purchase",
                 "company_id": cls.parent.id,
                 "sequence": 100,
+                "bankayma_restrict_partner": "intercompany",
             }
         )
         cls.parent.overhead_journal_id = cls.env["account.journal"].create(
@@ -48,6 +50,7 @@ class TestBankaymaAccount(TransactionCase):
                 "type": "sale",
                 "company_id": cls.parent.id,
                 "sequence": 200,
+                "bankayma_restrict_partner": "intercompany",
             }
         )
         cls.parent.overhead_account_id = cls.env["account.account"].create(
@@ -68,7 +71,12 @@ class TestBankaymaAccount(TransactionCase):
         )
         cls.env["account.journal"].search(
             [("company_id", "=", cls.parent.id), ("type", "=", "sale")], limit=1
-        ).bankayma_charge_overhead = True
+        ).write(
+            {
+                "bankayma_charge_overhead": True,
+                "bankayma_restrict_partner": "no_intercompany",
+            }
+        )
         bank_account_wizard = (
             cls.env["account.setup.bank.manual.config"]
             .with_company(cls.parent)
