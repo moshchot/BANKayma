@@ -11,6 +11,9 @@
             <field name="code" position="attributes">
                 <attribute name="readonly">1</attribute>
             </field>
+            <field name="company_cascade_from_parent" position="attributes">
+                <attribute name="groups">base.group_system</attribute>
+            </field>
             <field name="parent_id" position="attributes">
                 <attribute name="groups">base.group_system</attribute>
             </field>
