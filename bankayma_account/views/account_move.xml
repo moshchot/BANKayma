@@ -141,6 +141,12 @@
                 <attribute name="required">True</attribute>
             </xpath>
             <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']"
+                position="attributes"
+            >
+                <attribute name="groups" />
+            </xpath>
+            <xpath
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='name']"
                 position="attributes"
             >
