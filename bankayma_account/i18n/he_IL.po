@@ -429,6 +429,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_out_invoice
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Income"
