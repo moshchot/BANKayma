@@ -63,6 +63,11 @@ msgid "Configuration"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_contacts
 msgid "Contacts"
 msgstr ""
