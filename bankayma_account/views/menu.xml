@@ -219,6 +219,13 @@
         >{'default_move_type': 'out_invoice', 'group_by': 'payment_state'}</field>
     </record>
 
+    <menuitem
+        id="menu_bankayma_group_income_out_invoice"
+        parent="bankayma_base.menu_bankayma_simplified_income"
+        action="action_bankayma_group_income_move_out_invoice"
+        sequence="1"
+    />
+
     <record
         id="action_bankayma_group_income_move_internal"
         model="ir.actions.act_window"
