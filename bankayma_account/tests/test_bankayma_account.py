@@ -190,20 +190,16 @@ class TestBankaymaAccount(TransactionCase):
         )
         child_overhead_invoices = overhead_invoices.mapped("auto_invoice_ids")
         self.assertEqual(
-            child_overhead_invoices.mapped("need_validation"), [True, True]
+            child_overhead_invoices.mapped("need_validation"), [False, False]
+        )
+        self.assertEqual(
+            child_overhead_invoices.mapped("payment_state"), ["paid", "paid"]
         )
         self.assertItemsEqual(
             child_overhead_invoices.mapped("journal_id"),
             self.child1.intercompany_purchase_journal_id
             + self.child2.intercompany_purchase_journal_id,
         )
-        child_overhead_invoices.request_validation()
-        child1_overhead_invoice = child_overhead_invoices.filtered(
-            lambda x: x.company_id == self.child1
-        ).with_user(self.user_child1)
-        self.assertTrue(child1_overhead_invoice.can_review)
-        child1_overhead_invoice.validate_tier()
-        self.assertEqual(child1_overhead_invoice.payment_state, "paid")
         draft_invoice = self._create_invoice(self.child1, self.user_child1)
         draft_invoice.with_context(force_delete=True).button_cancel_unlink()
 
@@ -298,6 +294,15 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.intercompany_purchase_journal_id,
             invoice_child2_inverse.journal_id,
         )
+        self.assertTrue(invoice_child1_inverse.need_validation)
+        invoice_child1_inverse.request_validation()
+        invoice_child1_inverse_child2 = invoice_child1_inverse.with_user(
+            self.user_child2
+        )
+        self.assertTrue(invoice_child1_inverse_child2.can_review)
+        invoice_child1_inverse_child2.validate_tier()
+        self.assertEqual(invoice_child1.payment_state, "paid")
+        self.assertEqual(invoice_child1_inverse.payment_state, "paid")
 
     def test_same_sequence(self):
         journal_parent = self.env["account.journal"].create(
