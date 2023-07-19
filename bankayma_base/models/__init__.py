@@ -2,3 +2,4 @@
 from . import board_board
 from . import ir_module
 from . import res_users
+from . import res_partner
