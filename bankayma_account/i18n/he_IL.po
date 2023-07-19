@@ -58,11 +58,6 @@ msgid "All"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_intercompany_partner
-msgid "Allow only companies"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_product_ids
 msgid "Allowed products"
 msgstr ""
@@ -204,6 +199,13 @@ msgstr ""
 #: model:account.payment.method,name:bankayma_account.payment_method_cheque_out
 msgid "Cheque"
 msgstr "שק"
+
+#. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_restrict_partner
+msgid ""
+"Choose one of the values to either force intercompany partners or no "
+"intercompany partners"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -657,6 +659,11 @@ msgid "New vendor bill"
 msgstr "חשבונית ספק חדשה"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_journal__bankayma_restrict_partner__no_intercompany
+msgid "No intercompany"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__notify
 msgid "Notify followers"
 msgstr ""
@@ -671,6 +678,11 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/bankayma_company_create.py:0
 #, python-format
 msgid "Only admin can cascade companies"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_journal__bankayma_restrict_partner__intercompany
+msgid "Only intercompany"
 msgstr ""
 
 #. module: bankayma_account
@@ -913,6 +925,11 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_partner
+msgid "Restrict partners"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_group_ids
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_group_ids
 msgid "Signup Group"
@@ -1091,13 +1108,6 @@ msgstr "ספקים"
 msgid ""
 "When an invoice is created by a multi company rule for this company, it will "
 "automatically validate it"
-msgstr ""
-
-#. module: bankayma_account
-#: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_restrict_intercompany_partner
-msgid ""
-"When this checkbox is activated, only partners of companies in the system "
-"may be used as partner on invoices"
 msgstr ""
 
 #. module: bankayma_account
