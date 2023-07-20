@@ -322,7 +322,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Delete"
-msgstr ""
+msgstr "ביטול"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__auto_delete
@@ -411,7 +411,7 @@ msgstr "מעמד פיסקלי"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
 msgid "From"
-msgstr ""
+msgstr "מאת"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -422,12 +422,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
-msgstr ""
+msgstr "מזהה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "In:"
-msgstr ""
+msgstr "ב:"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
@@ -435,7 +435,7 @@ msgstr ""
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Income"
-msgstr "הכנסה"
+msgstr "הכנסות"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -625,7 +625,7 @@ msgstr "שם"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
 msgid "Needs validation"
-msgstr ""
+msgstr "לאישור"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_draft
@@ -818,7 +818,7 @@ msgstr "שולם"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_base_document_layout__parent_id
 msgid "Parent Company"
-msgstr ""
+msgstr "חברת אם"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__parent_id
@@ -857,12 +857,12 @@ msgstr ""
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_open
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_open
 msgid "Pending payment"
-msgstr ""
+msgstr "בתשלום"
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template
 msgid "Portal"
-msgstr ""
+msgstr "פורטל"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_id
@@ -870,17 +870,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Product"
-msgstr ""
+msgstr "סעיף"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Products"
-msgstr ""
+msgstr "סעיפים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Projects"
-msgstr ""
+msgstr "פרוייקטים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -1022,12 +1022,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 #, python-format
 msgid "Unpaid"
-msgstr ""
+msgstr "לתשלום"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Unpaid:"
-msgstr ""
+msgstr "לתשלום:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__use_active_domain
@@ -1079,14 +1079,14 @@ msgstr ""
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_validated
 msgid "Validated"
-msgstr "מאושר"
+msgstr "צפוי"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_state
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__validated_state
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated_state
 msgid "Validated State"
-msgstr ""
+msgstr "סטטוס אישור"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__vendor_doc_description
@@ -1148,9 +1148,9 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "expected"
-msgstr ""
+msgstr "צפוי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 msgid "or"
-msgstr ""
+msgstr "או"
