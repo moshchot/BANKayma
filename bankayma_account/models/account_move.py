@@ -44,6 +44,7 @@ class AccountMove(models.Model):
         compute="_compute_validated_state",
         compute_sudo=True,
     )
+    need_validation = fields.Boolean(compute_sudo=True)
 
     def _compute_amount(self):
         """
