@@ -623,6 +623,13 @@ msgid "Name"
 msgstr "שם"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__need_validation
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
+msgid "Need Validation"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
 msgid "Needs validation"
 msgstr "לאישור"
