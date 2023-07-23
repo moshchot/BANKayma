@@ -107,6 +107,15 @@
         </xpath>
     </template>
 
+    <template id="portal_invoice_page" inherit_id="account.portal_invoice_page">
+        <t t-set="backend_url" position="after">
+            <t
+                t-set="backend_url"
+                t-value="backend_url.replace('action=%s' % invoice.env.ref('account.action_move_out_invoice_type').id, 'action=%s' % invoice.env.ref('bankayma_account.action_bankayma_group_income_move_out_invoice').id)"
+            />
+        </t>
+    </template>
+
     <template id="portal_my_invoices" inherit_id="account.portal_my_invoices">
         <t t-call="portal.portal_searchbar" position="after">
             <nav
