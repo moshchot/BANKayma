@@ -216,7 +216,7 @@
         >[('move_type', '=', 'out_invoice'), ('journal_id.intercompany_sale_company_id', '=', False), ('journal_id.intercompany_purchase_company_id', '=', False), ('journal_id.intercompany_overhead_company_id', '=', False)]</field>
         <field
             name="context"
-        >{'default_move_type': 'out_invoice', 'group_by': 'payment_state'}</field>
+        >{'default_move_type': 'out_invoice', 'group_by': ['bankayma_payment_state']}</field>
     </record>
 
     <menuitem

@@ -7,6 +7,8 @@ from odoo import _, api, exceptions, fields, models
 from odoo.tests.common import Form
 from odoo.tools import float_utils
 
+from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
+
 
 class AccountMove(models.Model):
     _inherit = "account.move"
@@ -43,6 +45,11 @@ class AccountMove(models.Model):
         default="needs_validation",
         compute="_compute_validated_state",
         compute_sudo=True,
+    )
+    bankayma_payment_state = fields.Selection(
+        [("draft", "Draft")] + PAYMENT_STATE_SELECTION,
+        store=True,
+        compute="_compute_payment_state",
     )
     need_validation = fields.Boolean(compute_sudo=True)
 
@@ -120,6 +127,15 @@ class AccountMove(models.Model):
                 if this.validated or not this.need_validation
                 else "needs_validation"
             )
+
+    @api.depends()
+    def _compute_payment_state(self):
+        result = super()._compute_payment_state()
+        for this in self:
+            this.bankayma_payment_state = (
+                "draft" if this.state == "draft" else this.payment_state
+            )
+        return result
 
     def action_post(self):
         """

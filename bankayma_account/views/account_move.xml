@@ -193,4 +193,20 @@
         </field>
     </record>
 
+    <record id="view_account_invoice_filter" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <filter name="open" position="before">
+                <filter
+                    name="no_draft"
+                    string="Not Draft"
+                    domain="[('state', '!=', 'draft')]"
+                />
+            </filter>
+        </field>
+    </record>
+
+
+
 </odoo>
