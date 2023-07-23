@@ -56,7 +56,7 @@
         "website_partner",
         "website_payment",
         "web_theme_classic",
-        "web_timeline",        
+        "web_timeline", 
     ],
     "data": [
         "security/bankayma_base.xml",
