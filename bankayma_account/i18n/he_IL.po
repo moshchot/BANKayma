@@ -150,6 +150,13 @@ msgid "Bankayma Partner Domain"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_state
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_state
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_state
+msgid "Bankayma Payment State"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_product_domain
 msgid "Bankayma Product Domain"
 msgstr ""
@@ -359,6 +366,11 @@ msgid "Document"
 msgstr "מסמך"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
 msgid "Email Add Signature"
 msgstr ""
@@ -423,6 +435,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
 msgstr "מזהה"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__in_payment
+msgid "In Payment"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -515,6 +532,11 @@ msgstr "הזמנת ספקים"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_company__invoice_auto_validation
 msgid "Invoice Auto Validation"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__invoicing_legacy
+msgid "Invoicing App Legacy"
 msgstr ""
 
 #. module: bankayma_account
@@ -671,6 +693,16 @@ msgid "No intercompany"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
+msgid "Not Draft"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__not_paid
+msgid "Not Paid"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__notify
 msgid "Notify followers"
 msgstr ""
@@ -814,6 +846,7 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_paid
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_paid
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__paid
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_paid
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_paid
@@ -830,6 +863,11 @@ msgstr "חברת אם"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__parent_id
 msgid "Parent Message"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__partial
+msgid "Partially Paid"
 msgstr ""
 
 #. module: bankayma_account
@@ -934,6 +972,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_partner
 msgid "Restrict partners"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__reversed
+msgid "Reversed"
 msgstr ""
 
 #. module: bankayma_account
