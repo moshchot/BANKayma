@@ -339,3 +339,8 @@ class AccountMove(models.Model):
 
     def _get_under_validation_exceptions(self):
         return super()._get_under_validation_exceptions() + ["validated_state"]
+
+    def action_register_payment(self):
+        result = super().action_register_payment()
+        result.get("context", {})["dont_redirect_to_payments"] = True
+        return result
