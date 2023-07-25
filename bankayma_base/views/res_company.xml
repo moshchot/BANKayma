@@ -17,6 +17,9 @@
             <field name="parent_id" position="attributes">
                 <attribute name="groups">base.group_system</attribute>
             </field>
+            <group name="social_media" position="attributes">
+                <attribute name="groups" />
+            </group>
         </field>
     </record>
 
