@@ -84,6 +84,7 @@ class TestBankaymaAccount(TransactionCase):
                 {
                     "acc_number": "424242",
                     "new_journal_name": "424242",
+                    "linked_journal_id": False,
                     "bank_id": None,
                     "bank_bic": None,
                 }
