@@ -34,6 +34,7 @@
         "web_ir_actions_act_window_page",
     ],
     "demo": [
+        "demo/account_journal.xml",
         "demo/tier_definition.xml",
     ],
     "data": [
