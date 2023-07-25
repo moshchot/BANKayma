@@ -222,7 +222,7 @@ msgstr "קוד"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__comment
 msgid "Comment"
-msgstr ""
+msgstr "הערה"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_company
@@ -275,7 +275,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "איש קשר"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__body
@@ -313,12 +313,12 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Customers/Suppliers"
-msgstr ""
+msgstr "לקוחות/ ספקים"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_dashboard
 msgid "Dashboard"
-msgstr ""
+msgstr "לוח בקרה"
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_defrayal_in
@@ -368,7 +368,7 @@ msgstr "מסמך"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 msgid "Draft"
-msgstr ""
+msgstr "טיוטא"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
@@ -439,7 +439,7 @@ msgstr "מזהה"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__in_payment
 msgid "In Payment"
-msgstr ""
+msgstr "בתשלום"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -597,7 +597,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__is_log
 msgid "Log as Internal Note"
-msgstr ""
+msgstr "הערות פנימיות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mail_activity_type_id
@@ -649,7 +649,7 @@ msgstr "שם"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
 msgid "Need Validation"
-msgstr ""
+msgstr "לאישור"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
@@ -660,7 +660,7 @@ msgstr "לאישור"
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_draft
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_draft
 msgid "New"
-msgstr "חדש"
+msgstr "חשבונית ספק חדשה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -700,7 +700,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__not_paid
 msgid "Not Paid"
-msgstr ""
+msgstr "תשלומים צפויים"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__notify
@@ -752,12 +752,12 @@ msgstr "אחר"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Out:"
-msgstr ""
+msgstr "הכנסה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Outgoing"
-msgstr ""
+msgstr "נכנס"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mail_server_id
@@ -889,14 +889,14 @@ msgstr "פייפאל"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_method
 msgid "Payment Methods"
-msgstr ""
+msgstr "אמצעי תשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_method_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_method_id
 msgid "Payment method"
-msgstr ""
+msgstr "אמצעי תשלום"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_open
@@ -1193,7 +1193,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_bankayma_vendor_invite
 msgid "bankayma.vendor.invite"
-msgstr ""
+msgstr "הזמנת ספקים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
