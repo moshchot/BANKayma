@@ -145,6 +145,9 @@
                 position="attributes"
             >
                 <attribute name="groups" />
+                <attribute
+                    name="invisible"
+                >context.get('bankayma_hide_account_id', False)</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='name']"
