@@ -495,6 +495,7 @@ msgid "Intercompany purchase journal"
 msgstr ""
 
 #. module: bankayma_account
+#: model:account.journal,name:bankayma_account.journal_intercompany_purchases
 #: model:tier.definition,name:bankayma_account.tier_definition_intercompany_purchase
 msgid "Intercompany purchases"
 msgstr ""
@@ -504,6 +505,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_res_config_settings__intercompany_sale_journal_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.res_config_settings_view_form
 msgid "Intercompany sale journal"
+msgstr ""
+
+#. module: bankayma_account
+#: model:account.journal,name:bankayma_account.journal_intercompany_sales
+msgid "Intercompany sales"
 msgstr ""
 
 #. module: bankayma_account
@@ -772,6 +778,7 @@ msgid "Overdue"
 msgstr "באיחור"
 
 #. module: bankayma_account
+#: model:account.journal,name:bankayma_account.journal_overhead
 #: model:product.template,name:bankayma_account.product_overhead_product_template
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
 msgid "Overhead"
@@ -834,6 +841,11 @@ msgstr "יומן תקורה"
 #: model:ir.model.fields,field_description:bankayma_account.field_res_config_settings__overhead_payment_journal_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.res_config_settings_view_form
 msgid "Overhead payment journal"
+msgstr ""
+
+#. module: bankayma_account
+#: model:account.journal,name:bankayma_account.journal_overhead_payment
+msgid "Overhead payments"
 msgstr ""
 
 #. module: bankayma_account
