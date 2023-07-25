@@ -876,6 +876,7 @@ msgid "Pay Me"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_reject_intercompany_purchase
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_intercompany_purchase
 msgid "Pay overhead invoices"
 msgstr ""
