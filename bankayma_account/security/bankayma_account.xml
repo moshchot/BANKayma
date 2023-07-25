@@ -24,6 +24,8 @@
         />
 </record>
 
+<!-- project user restrictions -->
+
 <record id="rule_account_analytic_account" model="ir.rule">
     <field name="name">Restrict editing Analytic accounts to own and children</field>
     <field name="model_id" ref="analytic.model_account_analytic_account" />
@@ -79,7 +81,6 @@
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
 
-
 <record id="rule_account_bank_statement" model="ir.rule">
     <field name="name">Restrict editing bank statements to own and children</field>
     <field name="model_id" ref="account.model_account_bank_statement" />
@@ -90,7 +91,6 @@
     <field name="perm_write" eval="True" />
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
-
 
 <record id="rule_account_bank_statement_line" model="ir.rule">
     <field name="name">Restrict editing bank statement lines to own and children</field>
@@ -103,7 +103,6 @@
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
 
-
 <record id="rule_account_fiscal_position" model="ir.rule">
     <field name="name">Restrict editing fiscal positions to own and children</field>
     <field name="model_id" ref="account.model_account_fiscal_position" />
@@ -114,7 +113,6 @@
     <field name="perm_write" eval="True" />
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
-
 
 <record id="rule_account_group" model="ir.rule">
     <field name="name">Restrict editing account groups to own and children</field>
@@ -139,7 +137,6 @@
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
 
-
 <record id="rule_account_journal_group" model="ir.rule">
     <field name="name">Restrict editing journal groups to own and children</field>
     <field name="model_id" ref="account.model_account_journal_group" />
@@ -150,7 +147,6 @@
     <field name="perm_write" eval="True" />
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
-
 
 <record id="rule_account_payment_mode" model="ir.rule">
     <field name="name">Restrict editing payment modes to own and children</field>
@@ -220,6 +216,272 @@
     <field name="perm_unlink" eval="True" />
     <field name="perm_write" eval="True" />
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+</record>
+
+<!-- organization manager lifts restrictions above -->
+
+<record id="rule_account_analytic_account" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing Analytic accounts to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_account" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_analytic_plan" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing Analytic plans to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_plan" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_analytic_distribution_model" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing Analytic plans to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_distribution_model" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_account" model="ir.rule">
+    <field name="name">Lift restricting editing accounts to own and children</field>
+    <field name="model_id" ref="account.model_account_account" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_analytic_line" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing analytic lines to own and children</field>
+    <field name="model_id" ref="analytic.model_account_analytic_line" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_bank_statement" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing bank statements to own and children</field>
+    <field name="model_id" ref="account.model_account_bank_statement" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_bank_statement_line" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing bank statement lines to own and children</field>
+    <field name="model_id" ref="account.model_account_bank_statement_line" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_fiscal_position" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing fiscal positions to own and children</field>
+    <field name="model_id" ref="account.model_account_fiscal_position" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_group" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing account groups to own and children</field>
+    <field name="model_id" ref="account.model_account_group" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_journal" model="ir.rule">
+    <field name="name">Lift restricting editing journals to own and children</field>
+    <field name="model_id" ref="account.model_account_journal" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_journal_group" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing journal groups to own and children</field>
+    <field name="model_id" ref="account.model_account_journal_group" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_payment_mode" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing payment modes to own and children</field>
+    <field name="model_id" ref="account_payment_mode.model_account_payment_mode" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_payment_term" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing payment terms to own and children</field>
+    <field name="model_id" ref="account.model_account_payment_term" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_reconcile_model" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing reconciliation models to own and children</field>
+    <field name="model_id" ref="account.model_account_reconcile_model" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_reconcile_model_line" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing reconciliation model lines to own and children</field>
+    <field name="model_id" ref="account.model_account_reconcile_model_line" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_tax" model="ir.rule">
+    <field name="name">Lift restricting editing taxes to own and children</field>
+    <field name="model_id" ref="account.model_account_tax" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+</record>
+
+<record id="rule_account_tax_repartition_line" model="ir.rule">
+    <field name="name">Lift restricting editing tax lines to own and children</field>
+    <field name="model_id" ref="account.model_account_tax_repartition_line" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
 </record>
 
 </odoo>
