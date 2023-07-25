@@ -184,13 +184,19 @@ class AccountMove(models.Model):
                     "target": "self",
                     "url": to_send[:1].get_portal_url(),
                 }
-            # request a review for counterpart of intercompany sales invoice
             intercompany = len(self) == 1 and self._find_company_from_invoice_partner()
             if intercompany:
+                # request a review for counterpart of intercompany sales invoice
                 self.with_company(intercompany).sudo().filtered(
                     lambda x: x.move_type == "out_invoice"
                     and x.auto_invoice_ids.need_validation
                 ).mapped("auto_invoice_ids").request_validation()
+                self.filtered(lambda x: not x.is_move_sent).write(
+                    {"is_move_sent": True}
+                )
+                result = self.env.ref(
+                    "bankayma_account.action_bankayma_group_income_move_out_invoice"
+                )._get_action_dict()
         return result
 
     def _inter_company_create_invoice(self, dest_company):
@@ -351,3 +357,7 @@ class AccountMove(models.Model):
         result = super().action_register_payment()
         result.get("context", {})["dont_redirect_to_payments"] = True
         return result
+
+    def validate_tier(self):
+        super().validate_tier()
+        return {"type": "ir.actions.act_window.page.list"}
