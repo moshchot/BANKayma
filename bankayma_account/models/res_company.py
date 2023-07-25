@@ -32,6 +32,8 @@ class ResCompany(models.Model):
         "Overhead account",
         help="Overhead invoice lines will have this account",
     )
+    # TODO this journal is used for all (semi-)automatic intercompany
+    # payments, so this should be renamed to intercompany_payment_journal_id
     overhead_payment_journal_id = fields.Many2one(
         "account.journal",
         "Overhead payment journal",

@@ -271,38 +271,35 @@ class TestBankaymaAccount(TransactionCase):
         invoice_child1 = self._create_invoice(
             self.child1, self.user_child1, self.child2.partner_id
         )
-        invoice_child1_inverse = self.env["account.move"].search(
+        invoice_child2 = self.env["account.move"].search(
             [("auto_invoice_id", "=", invoice_child1.id)]
-        )
-        invoice_child2 = self._create_invoice(
-            self.child2, self.user_child2, self.child1.partner_id
-        )
-        invoice_child2_inverse = self.env["account.move"].search(
-            [("auto_invoice_id", "=", invoice_child2.id)]
         )
         self.assertEqual(
             self.child1.intercompany_sale_journal_id, invoice_child1.journal_id
         )
         self.assertEqual(
             self.child2.intercompany_purchase_journal_id,
-            invoice_child1_inverse.journal_id,
+            invoice_child2.journal_id,
         )
-        self.assertEqual(
-            self.child2.intercompany_sale_journal_id, invoice_child2.journal_id
-        )
-        self.assertEqual(
-            self.child1.intercompany_purchase_journal_id,
-            invoice_child2_inverse.journal_id,
-        )
-        self.assertTrue(invoice_child1_inverse.need_validation)
-        invoice_child1_inverse.request_validation()
-        invoice_child1_inverse_child2 = invoice_child1_inverse.with_user(
-            self.user_child2
-        )
-        self.assertTrue(invoice_child1_inverse_child2.can_review)
-        invoice_child1_inverse_child2.validate_tier()
+        invoice_child2_as_child2 = invoice_child2.with_user(self.user_child2)
+        invoice_child2_as_child2.review_ids.invalidate_model()
+        self.assertTrue(invoice_child2_as_child2.need_validation)
+        self.assertTrue(invoice_child2_as_child2.can_review)
+        invoice_child2_as_child2.validate_tier()
         self.assertEqual(invoice_child1.payment_state, "paid")
-        self.assertEqual(invoice_child1_inverse.payment_state, "paid")
+        self.assertEqual(invoice_child2.payment_state, "paid")
+        invoice_child1 = invoice_child1.copy()
+        invoice_child1.action_post()
+        invoice_child2 = self.env["account.move"].search(
+            [("auto_invoice_id", "=", invoice_child1.id)]
+        )
+        invoice_child2_as_child2 = invoice_child2.with_user(self.user_child2)
+        invoice_child2_as_child2.review_ids.invalidate_model()
+        self.assertTrue(invoice_child2_as_child2.need_validation)
+        self.assertTrue(invoice_child2_as_child2.can_review)
+        invoice_child2_as_child2.reject_tier()
+        self.assertEqual(invoice_child1.state, "draft")
+        self.assertEqual(invoice_child2.state, "cancel")
 
     def test_same_sequence(self):
         journal_parent = self.env["account.journal"].create(

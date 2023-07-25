@@ -184,6 +184,13 @@ class AccountMove(models.Model):
                     "target": "self",
                     "url": to_send[:1].get_portal_url(),
                 }
+            # request a review for counterpart of intercompany sales invoice
+            intercompany = len(self) == 1 and self._find_company_from_invoice_partner()
+            if intercompany:
+                self.with_company(intercompany).sudo().filtered(
+                    lambda x: x.move_type == "out_invoice"
+                    and x.auto_invoice_ids.need_validation
+                ).mapped("auto_invoice_ids").request_validation()
         return result
 
     def _inter_company_create_invoice(self, dest_company):

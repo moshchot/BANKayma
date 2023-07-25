@@ -17,6 +17,18 @@
             </field>
     </record>
 
+    <record id="action_post_reject_intercompany_purchase" model="ir.actions.server">
+            <field name="name">Pay overhead invoices</field>
+            <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
+            <field name="model_id" ref="account.model_account_move" />
+            <field name="state">code</field>
+            <field name="code">
+                for this in (records or record):
+                    this.sudo().auto_invoice_id.button_draft()
+                    this.button_cancel()
+            </field>
+    </record>
+
     <record id="tier_definition_intercompany_purchase" model="tier.definition">
         <field name="name">Intercompany purchases</field>
         <field name="model_id" ref="account.model_account_move" />
@@ -29,6 +41,10 @@
         <field
             name="server_action_id"
             ref="action_post_validation_intercompany_purchase"
+        />
+        <field
+            name="rejected_server_action_id"
+            ref="action_post_reject_intercompany_purchase"
         />
     </record>
 
