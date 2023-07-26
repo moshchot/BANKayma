@@ -53,9 +53,15 @@ msgid "Child logo"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_res_company
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_companies
 msgid "Companies"
 msgstr "יוזמות"
+
+#. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_company__name
+msgid "Company Name"
+msgstr ""
 
 #. module: bankayma_base
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_config
