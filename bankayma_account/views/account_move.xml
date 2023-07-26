@@ -167,6 +167,16 @@
             </field>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">bankayma_partner_domain</attribute>
+                <attribute name="context">{
+                    'res_partner_search_mode': (context.get('default_move_type', 'entry') in ('out_invoice', 'out_refund', 'out_receipt') and 'customer') or (context.get('default_move_type', 'entry') in ('in_invoice', 'in_refund', 'in_receipt') and 'supplier') or False,
+                    'show_address': False,
+                    'default_is_company': True,
+                    'show_vat': False,
+                    'bankayma_partner_address_email': True,
+                    'bankayma_partner_address_vat': context.get('default_move_type', 'entry') in ('in_invoice', 'in_refund', 'in_receipt'),
+                    'bankayma_partner_address_language': context.get('default_move_type', 'entry') in ('out_invoice', 'out_refund', 'out_receipt'),
+                }
+                </attribute>
             </field>
         </field>
     </record>

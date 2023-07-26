@@ -8,12 +8,3 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     signup_group_ids = fields.Many2many("res.groups")
-
-    def _get_name(self):
-        if self.env.context.get("show_vat"):
-            self = self.with_context(
-                bankayma_partner_address_vat=True,
-                show_vat=False,
-                bankayma_partner_address_email=True,
-            )
-        return super(ResPartner, self)._get_name()
