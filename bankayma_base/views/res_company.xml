@@ -8,6 +8,9 @@
         <field name="mode">primary</field>
         <field name="model">res.company</field>
         <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="widget">char</attribute>
+            </field>
             <field name="code" position="attributes">
                 <attribute name="readonly">1</attribute>
             </field>
