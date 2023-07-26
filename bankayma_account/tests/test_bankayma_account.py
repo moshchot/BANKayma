@@ -185,6 +185,13 @@ class TestBankaymaAccount(TransactionCase):
         self.assertEqual(
             overhead_invoices.mapped("journal_id"), self.parent.overhead_journal_id
         )
+        self.assertItemsEqual(
+            overhead_invoices.mapped("invoice_line_ids.name"),
+            [
+                "%s %s" % (invoice_child1.name, invoice_child1.partner_id.name),
+                "%s %s" % (invoice_child2.name, invoice_child2.partner_id.name),
+            ],
+        )
         self.assertIn(
             self.parent.overhead_account_id,
             overhead_invoices.mapped("line_ids.account_id"),
@@ -200,6 +207,13 @@ class TestBankaymaAccount(TransactionCase):
             child_overhead_invoices.mapped("journal_id"),
             self.child1.intercompany_purchase_journal_id
             + self.child2.intercompany_purchase_journal_id,
+        )
+        self.assertItemsEqual(
+            child_overhead_invoices.mapped("invoice_line_ids.name"),
+            [
+                "%s %s" % (invoice_child1.name, invoice_child1.partner_id.name),
+                "%s %s" % (invoice_child2.name, invoice_child2.partner_id.name),
+            ],
         )
         draft_invoice = self._create_invoice(self.child1, self.user_child1)
         draft_invoice.with_context(force_delete=True).button_cancel_unlink()
