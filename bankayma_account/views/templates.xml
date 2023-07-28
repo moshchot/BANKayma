@@ -290,6 +290,7 @@
         <div name="address_same_as_shipping" position="before">
             <div class="col-6">
                 <t t-set="information_block">
+                    <div>From:</div>
                     <div t-out="o.user_id.name" />
                     <div t-out="o.user_id.email" />
                 </t>
@@ -301,6 +302,7 @@
         <div name="no_shipping" position="before">
             <div class="col-6">
                 <t t-set="information_block">
+                    <div>From:</div>
                     <div t-out="o.user_id.name" />
                     <div t-out="o.user_id.email" />
                 </t>
@@ -309,6 +311,21 @@
         <div name="no_shipping" position="attributes">
             <attribute name="class" remove="offset-col-6" separator=" " />
         </div>
+        <xpath
+            expr="//div[@name='address_not_same_as_shipping']//address"
+            position="before"
+        >
+            <div>To:</div>
+        </xpath>
+        <xpath
+            expr="//div[@name='address_same_as_shipping']//address"
+            position="before"
+        >
+            <div>To:</div>
+        </xpath>
+        <xpath expr="//div[@name='no_shipping']//address" position="before">
+            <div>To:</div>
+        </xpath>
     </template>
 
 </odoo>
