@@ -183,3 +183,10 @@ knowledge:
     oca: https://github.com/OCA/knowledge.git
   merges:
     - oca 16.0
+../libreerp:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/OCB.git
+  merges:
+    - oca 16.0
