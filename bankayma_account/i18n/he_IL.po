@@ -426,6 +426,11 @@ msgid "From"
 msgstr "מאת"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
+msgid "From:"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Here links to the moves being used to calculate the different values:"
 msgstr ""
@@ -1060,6 +1065,11 @@ msgid ""
 "This option permanently removes any track of email after it's been sent, "
 "including from the Technical menu in the Settings, in order to preserve "
 "storage space of your Odoo database."
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
+msgid "To:"
 msgstr ""
 
 #. module: bankayma_account
