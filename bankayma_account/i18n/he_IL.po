@@ -428,7 +428,7 @@ msgstr "מאת"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
 msgid "From:"
-msgstr ""
+msgstr "מאת:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -1070,7 +1070,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
 msgid "To:"
-msgstr ""
+msgstr "לכבוד:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_tree_invoice
