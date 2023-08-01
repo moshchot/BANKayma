@@ -57,5 +57,10 @@
         "wizards/bankayma_company_create.xml",
         "wizards/bankayma_vendor_invite.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "bankayma_account/static/src/*.xml",
+        ],
+    },
     "website": "https://github.com/moshchot/BANKayma",
 }
