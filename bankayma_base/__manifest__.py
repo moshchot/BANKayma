@@ -17,7 +17,6 @@
         "mail",
         "disable_odoo_online",
         "base_portal_type",
-        "base_technical_features",
         "module_auto_update",
         "portal_odoo_debranding",
         "remove_odoo_enterprise",
