@@ -60,10 +60,14 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="fiscal_position_id" position="attributes">
-                <attribute
-                    name="attrs"
-                >{'invisible': [('move_type', '!=', 'in_invoice')]}</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
+            <field name="invoice_vendor_bill_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
+            <label for="invoice_vendor_bill_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </label>
             <xpath
                 expr="//group[@id='header_right_group']/field[@name='date']"
                 position="attributes"
