@@ -194,9 +194,7 @@ class AccountMove(models.Model):
                 self.filtered(lambda x: not x.is_move_sent).write(
                     {"is_move_sent": True}
                 )
-                result = self.env.ref(
-                    "bankayma_account.action_bankayma_group_income_move_out_invoice"
-                )._get_action_dict()
+                result = {"type": "ir.actions.act_window.page.list"}
         return result
 
     def _inter_company_create_invoice(self, dest_company):
