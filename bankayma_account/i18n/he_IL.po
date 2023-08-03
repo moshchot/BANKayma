@@ -953,7 +953,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
-msgstr "רישום תשלום"
+msgstr "אישור קבלת תשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__res_id
