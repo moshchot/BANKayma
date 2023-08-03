@@ -14,3 +14,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: mail
+#: model:ir.actions.act_window,name:mail.action_partner_mass_mail
+msgid "Send email"
+msgstr "שליחת דוא\"ל"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/components/chatter_topbar/chatter_topbar.xml:0
+#, python-format
+msgid "Send message"
+msgstr " הודעות"
+
+#. module: mail
+#: model:ir.model.fields,help:mail.field_mail_template_preview__email_from
+msgid "Sender address"
+msgstr "מייל השולח"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/models/composer_view.js:0
+#: code:addons/mail/static/src/xml/web_kanban_activity.xml:0
+#: code:addons/mail/static/src/xml/web_kanban_activity.xml:0
+#: model_terms:ir.ui.view,arch_db:mail.email_compose_message_wizard_form
+#, python-format
+msgid "Log"
+msgstr "כתוב"
+
+#. module: mail
+#: model_terms:ir.ui.view,arch_db:mail.mail_activity_view_form_popup
+#: model_terms:ir.ui.view,arch_db:mail.view_server_action_form_template
+msgid "Log a note..."
+msgstr "הוספת הערה..."
+
+#. module: mail
+#: model_terms:ir.ui.view,arch_db:mail.mail_activity_view_form_popup
+msgid "Log an Activity"
+msgstr "הוספת פעילות"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/models/composer.js:0
+#, python-format
+msgid "Log an internal note..."
+msgstr "כתיבת הערה פנימית..."
+
+#. module: mail
+#: model:ir.model.fields,field_description:mail.field_mail_compose_message__is_log
+msgid "Log as Internal Note"
+msgstr "רישום כהערה פנימית"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/components/chatter_topbar/chatter_topbar.xml:0
+#: code:addons/mail/static/src/models/composer_view.js:0
+#, python-format
+msgid "Log note"
+msgstr "הערות פנימיות"
