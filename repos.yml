@@ -183,12 +183,15 @@ knowledge:
     oca: https://github.com/OCA/knowledge.git
   merges:
     - oca 16.0
-# TODO this doesn't work because the archive yunohost installs
-# is not a git folder
-#../libreerp:
-#  defaults:
-#    depth: 1
-#  remotes:
-#    oca: https://github.com/OCA/OCB.git
-#  merges:
-#    - oca 16.0
+../libreerp-git:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/OCB.git
+  merges:
+    - oca 16.0
+  shell_command_after: |
+    if [ ! -L ../libreerp ]; then
+      mv ../libreerp ../libreerp-default
+      ln -s libreerp-git ../libreerp
+    fi
