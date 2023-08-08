@@ -218,6 +218,19 @@
     <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
 
+<record id="rule_account_fiscal_position_tax_deduction" model="ir.rule">
+    <field name="name">Restrict editing tax deduction lines to own and children</field>
+    <field name="model_id" ref="model_account_fiscal_position_tax_deduction" />
+    <field
+            name="domain_force"
+        >[('fiscal_position_id.company_id', 'in', company_ids)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+</record>
+
 <!-- organization manager lifts restrictions above -->
 
 <record id="rule_account_analytic_account_manager" model="ir.rule">
@@ -482,6 +495,19 @@
             name="groups"
             eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
         />
+</record>
+
+<record id="rule_account_fiscal_position_tax_deduction" model="ir.rule">
+    <field
+            name="name"
+        >Lift restricting editing tax deduction lines to own and children</field>
+    <field name="model_id" ref="model_account_fiscal_position_tax_deduction" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="perm_create" eval="True" />
+    <field name="perm_read" eval="False" />
+    <field name="perm_unlink" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
 </record>
 
 </odoo>

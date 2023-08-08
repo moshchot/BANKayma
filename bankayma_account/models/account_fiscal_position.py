@@ -13,3 +13,11 @@ class AccountFiscalPosition(models.Model):
         "upload a document for every invoice",
     )
     vendor_doc_description = fields.Html()
+    bankayma_tax_id = fields.Many2one(
+        "account.tax", string="Impose tax", domain=[("type_tax_use", "=", "purchase")]
+    )
+    bankayma_deduction_ids = fields.One2many(
+        "account.fiscal.position.tax.deduction",
+        "fiscal_position_id",
+        string="Tax deductions",
+    )

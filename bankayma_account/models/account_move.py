@@ -335,7 +335,14 @@ class AccountMove(models.Model):
         invoice.fiscal_position_id = self.env["account.fiscal.position"].browse(
             int(post_data.get("fpos"))
         )
-        invoice.invoice_line_ids.write({"bankayma_immutable": True})
+        line_vals = {
+            "bankayma_immutable": True,
+        }
+        if invoice.fiscal_position_id.bankayma_tax_id:
+            line_vals["tax_ids"] = [
+                (6, 0, invoice.fiscal_position_id.bankayma_tax_id.ids)
+            ]
+        invoice.invoice_line_ids.write(line_vals)
         attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
             attachments += self.env["ir.attachment"].create(
