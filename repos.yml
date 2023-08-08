@@ -185,12 +185,12 @@ knowledge:
   merges:
     - oca 16.0
 ../libreerp-git:
-  defaults:
-    depth: 1
   remotes:
     oca: https://github.com/OCA/OCB.git
+    hbrunn: https://github.com/hbrunn/OCB.git
   merges:
     - oca 16.0
+    - hbrunn 16.0-res.users-context_get-disable-prefetch
   shell_command_after: |
     if [ ! -L ../libreerp ]; then
       mv ../libreerp ../libreerp-default
