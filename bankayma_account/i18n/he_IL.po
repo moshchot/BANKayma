@@ -998,6 +998,13 @@ msgid "Reversed"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__show_fiscal_position_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__show_fiscal_position_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__show_fiscal_position_id
+msgid "Show Fiscal Position"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_group_ids
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_group_ids
 msgid "Signup Group"
