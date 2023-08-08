@@ -497,7 +497,7 @@
         />
 </record>
 
-<record id="rule_account_fiscal_position_tax_deduction" model="ir.rule">
+<record id="rule_account_fiscal_position_tax_deduction_manager" model="ir.rule">
     <field
             name="name"
         >Lift restricting editing tax deduction lines to own and children</field>
