@@ -85,6 +85,7 @@ multi-company:
     - oca 16.0
     - legalsylvain 16.0-mig-res_company_code
     - legalsylvain 16.0-ADD-res_company_search_view
+    - legalsylvain 16.0-mig-res_company_category
 reporting-engine:
   defaults:
     depth: 1
