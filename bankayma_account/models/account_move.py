@@ -52,6 +52,7 @@ class AccountMove(models.Model):
         compute="_compute_payment_state",
     )
     need_validation = fields.Boolean(compute_sudo=True)
+    show_fiscal_position_id = fields.Boolean(compute="_compute_show_fiscal_position_id")
 
     def _compute_amount(self):
         """
@@ -136,6 +137,15 @@ class AccountMove(models.Model):
                 "draft" if this.state == "draft" else this.payment_state
             )
         return result
+
+    @api.depends("journal_id")
+    def _compute_show_fiscal_position_id(self):
+        for this in self:
+            this.show_fiscal_position_id = (
+                not this.journal_id.intercompany_sale_company_id
+                and not this.journal_id.intercompany_purchase_company_id
+                and not this.journal_id.intercompany_overhead_company_id
+            )
 
     def action_post(self):
         """
