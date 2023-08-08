@@ -190,7 +190,7 @@ knowledge:
     hbrunn: https://github.com/hbrunn/OCB.git
   merges:
     - oca 16.0
-    - hbrunn 16.0-res.users-context_get-disable-prefetch
+    - hbrunn 16.0-res.users-context_get-disable-prefetch-ocb
   shell_command_after: |
     if [ ! -L ../libreerp ]; then
       mv ../libreerp ../libreerp-default
