@@ -17,6 +17,20 @@
                         placeholder="Mandatory vendor document description"
                     />
                 </page>
+                <page name="tax_deduction" string="Default tax and deductions">
+                    <group>
+                        <field
+                            name="bankayma_tax_id"
+                            domain="[('company_id', '=', company_id), ('type_tax_use', '=', 'purchase')]"
+                        />
+                    </group>
+                        <field name="bankayma_deduction_ids">
+                            <tree editable="bottom">
+                                <field name="amount" />
+                                <field name="deduction_percentpoints" />
+                            </tree>
+                        </field>
+                </page>
             </notebook>
         </field>
     </record>

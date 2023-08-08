@@ -13,6 +13,10 @@ class TestBankaymaAccountPortal(TransactionCase):
     def test_vendor_bill(self):
         fake_upload = namedtuple("fake_upload", ["stream", "filename"])
         user = self.env.ref("bankayma_base.vendor_child_comp1")
+        fpos = self.env["account.fiscal.position"].search([], limit=1)
+        fpos.bankayma_tax_id = self.env["account.tax"].search(
+            [("type_tax_use", "=", "purchase")], limit=1
+        )
         invoice = (
             self.env["account.move"]
             .with_user(user)
@@ -22,7 +26,7 @@ class TestBankaymaAccountPortal(TransactionCase):
                     "company": self.env.company,
                     "amount": "42",
                     "description": "hello world",
-                    "fpos": self.env["account.fiscal.position"].search([], limit=1).id,
+                    "fpos": fpos.id,
                 },
                 MultiDict(
                     [
@@ -42,3 +46,5 @@ class TestBankaymaAccountPortal(TransactionCase):
             ]
         )
         self.assertTrue(attachment)
+        self.assertTrue(invoice.invoice_line_ids.tax_ids)
+        self.assertEqual(invoice.invoice_line_ids.tax_ids, fpos.bankayma_tax_id)
