@@ -104,19 +104,19 @@
                 >base.group_user,!bankayma_base.group_user,bankayma_base.group_manager</attribute>
             </xpath>
             <page id="aml_tab" position="attributes">
-                <attribute name="groups">!bankayma_base.group_user</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
             <page id="other_tab" position="attributes">
-                <attribute name="groups">!bankayma_base.group_user</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
             <label for="journal_id" position="attributes">
-                <attribute name="groups">!bankayma_base.group_user</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </label>
             <div name="journal_div" position="attributes">
-                <attribute name="groups">!bankayma_base.group_user</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </div>
             <field name="partner_bank_id" position="attributes">
-                <attribute name="groups">!bankayma_base.group_user</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <xpath
                 expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_section_control']"
