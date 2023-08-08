@@ -59,9 +59,6 @@
             <field name="narration" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-            <field name="fiscal_position_id" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </field>
             <field name="invoice_vendor_bill_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
@@ -168,6 +165,14 @@
             <field name="partner_id" position="after">
                 <field name="fiscal_position_id" position="move" />
                 <field name="bankayma_partner_domain" invisible="1" />
+            </field>
+            <field name="fiscal_position_id" position="before">
+                <field name="show_fiscal_position_id" invisible="1" />
+            </field>
+            <field name="fiscal_position_id" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('show_fiscal_position_id', '=', False)]}</attribute>
             </field>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">bankayma_partner_domain</attribute>
