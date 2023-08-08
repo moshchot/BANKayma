@@ -23,13 +23,13 @@
                             name="bankayma_tax_id"
                             domain="[('company_id', '=', company_id), ('type_tax_use', '=', 'purchase')]"
                         />
+                        <field name="bankayma_deduct_tax" />
+                        <field
+                            name="bankayma_deduct_tax_account_id"
+                            attrs="{'invisible': [('bankayma_deduct_tax', '=', False)], 'required': [('bankayma_deduct_tax', '!=', False)]}"
+                            domain="[('company_id', '=', company_id)]"
+                        />
                     </group>
-                        <field name="bankayma_deduction_ids">
-                            <tree editable="bottom">
-                                <field name="amount" />
-                                <field name="deduction_percentpoints" />
-                            </tree>
-                        </field>
                 </page>
             </notebook>
         </field>
