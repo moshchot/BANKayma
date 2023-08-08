@@ -147,6 +147,14 @@ class CustomerPortal(portal.CustomerPortal):
             )
             if not post.get("upload") and fpos.vendor_doc_mandatory:
                 vals["errors"]["upload"] = True
+            if fpos.bankayma_deduct_tax:
+                if (
+                    float(post.get("tax_percentage", 0)) <= 0
+                    or float(post.get("tax_percentage", 100)) >= 100
+                ):
+                    vals["errors"]["tax_percentage"] = True
+                if float(post.get("max_amount", 0)) <= 0:
+                    vals["errors"]["max_amount"] = True
             if not vals["errors"]:
                 bill = (
                     request.env["account.move"]

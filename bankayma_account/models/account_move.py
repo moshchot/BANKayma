@@ -342,6 +342,18 @@ class AccountMove(models.Model):
             line_vals["tax_ids"] = [
                 (6, 0, invoice.fiscal_position_id.bankayma_tax_id.ids)
             ]
+        if invoice.fiscal_position_id.bankayma_deduct_tax:
+            line_vals.setdefault("tax_ids", []).append(
+                (4, self._portal_get_or_create_tax(post_data).id),
+            )
+            self.env.user.partner_id.write(
+                {
+                    "bankayma_vendor_tax_percentage": float(
+                        post_data.get("tax_percentage")
+                    ),
+                    "bankayma_vendor_max_amount": float(post_data.get("max_amount")),
+                }
+            )
         invoice.invoice_line_ids.write(line_vals)
         attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
@@ -362,6 +374,42 @@ class AccountMove(models.Model):
                 attachment_ids=attachments.ids,
             )
         return invoice
+
+    def _portal_get_or_create_tax(self, post_data):
+        company = self.env["res.company"].browse(
+            int(post_data.get("company", self.env.company.id))
+        )
+        fpos = self.env["account.fiscal.position"].browse(int(post_data.get("fpos")))
+        AccountTax = self.env["account.tax"].with_company(company)
+        tax_percentage = float(post_data.get("tax_percentage") or 0)
+        return AccountTax.search(
+            [
+                ("type_tax_use", "=", "purchase"),
+                ("amount", "=", tax_percentage),
+                ("price_include", "=", True),
+                ("company_id", "=", company.id),
+            ]
+        ) or AccountTax.create(
+            {
+                "name": _("Vendor-specific tax %d%%") % tax_percentage,
+                "type_tax_use": "purchase",
+                "amount": tax_percentage,
+                "price_include": True,
+                "is_base_affected": False,
+                "include_base_amount": False,
+                "invoice_repartition_line_ids": [
+                    (0, 0, {"repartition_type": "base"}),
+                    (
+                        0,
+                        0,
+                        {
+                            "repartition_type": "tax",
+                            "account_id": fpos.bankayma_deduct_tax_account_id.id,
+                        },
+                    ),
+                ],
+            }
+        )
 
     def button_cancel_unlink(self):
         self.button_cancel()

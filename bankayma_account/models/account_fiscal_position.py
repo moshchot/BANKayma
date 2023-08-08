@@ -16,8 +16,7 @@ class AccountFiscalPosition(models.Model):
     bankayma_tax_id = fields.Many2one(
         "account.tax", string="Impose tax", domain=[("type_tax_use", "=", "purchase")]
     )
-    bankayma_deduction_ids = fields.One2many(
-        "account.fiscal.position.tax.deduction",
-        "fiscal_position_id",
-        string="Tax deductions",
+    bankayma_deduct_tax = fields.Boolean("Tax deduction")
+    bankayma_deduct_tax_account_id = fields.Many2one(
+        "account.account", string="Tax account"
     )
