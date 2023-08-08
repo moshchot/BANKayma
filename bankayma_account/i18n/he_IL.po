@@ -63,7 +63,6 @@ msgid "Allowed products"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__amount
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Amount"
 msgstr "סכום לתשלום"
@@ -160,6 +159,18 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_product_domain
 msgid "Bankayma Product Domain"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_max_amount
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_max_amount
+msgid "Bankayma Vendor Max Amount"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_tax_percentage
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_tax_percentage
+msgid "Bankayma Vendor Tax Percentage"
 msgstr ""
 
 #. module: bankayma_account
@@ -300,14 +311,12 @@ msgid "Create companies in bulk"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_date
 msgid "Created on"
@@ -322,11 +331,6 @@ msgstr "לקוחות/ ספקים"
 #: model:ir.actions.act_window,name:bankayma_account.action_dashboard
 msgid "Dashboard"
 msgstr "לוח בקרה"
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__deduction_percentpoints
-msgid "Deduction %"
-msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
@@ -361,7 +365,6 @@ msgid "Description"
 msgstr "תיאור"
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__display_name
 msgid "Display Name"
@@ -425,7 +428,6 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_fiscal_position
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__fiscal_position_id
 msgid "Fiscal Position"
 msgstr "מעמד פיסקלי"
 
@@ -451,7 +453,6 @@ msgid "Here links to the moves being used to calculate the different values:"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
@@ -609,21 +610,18 @@ msgid "Language"
 msgstr "שפה"
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax_deduction__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_date
 msgid "Last Updated on"
@@ -661,6 +659,11 @@ msgstr ""
 #: model:account.payment.method,name:bankayma_account.payment_method_masav_out
 msgid "Masav"
 msgstr "מסב"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
+msgid "Maximum amount"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__record_name
@@ -1050,6 +1053,11 @@ msgid "Tag"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
+msgid "Tax"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_partner_vat
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_partner_vat
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_partner_vat
@@ -1057,13 +1065,13 @@ msgid "Tax ID"
 msgstr "מס ח״פ"
 
 #. module: bankayma_account
-#: model:ir.model,name:bankayma_account.model_account_fiscal_position_tax_deduction
-msgid "Tax decution for fiscal position"
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_account_id
+msgid "Tax account"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduction_ids
-msgid "Tax deductions"
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax
+msgid "Tax deduction"
 msgstr ""
 
 #. module: bankayma_account
@@ -1210,6 +1218,13 @@ msgstr ""
 #. module: bankayma_account
 #: model:tier.definition,name:bankayma_account.tier_definition_move_in
 msgid "Vendor's docs Validation"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "Vendor-specific tax %d%%"
 msgstr ""
 
 #. module: bankayma_account
