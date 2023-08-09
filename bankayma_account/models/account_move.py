@@ -145,7 +145,7 @@ class AccountMove(models.Model):
                 not this.journal_id.intercompany_sale_company_id
                 and not this.journal_id.intercompany_purchase_company_id
                 and not this.journal_id.intercompany_overhead_company_id
-                and not this.move_type != "out_invoice"
+                and this.move_type != "out_invoice"
             )
 
     def action_post(self):
