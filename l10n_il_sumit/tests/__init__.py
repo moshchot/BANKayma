@@ -1,2 +1,1 @@
-from . import test_abstract_something
-from . import test_something
+from . import test_l10n_il_sumit
