@@ -14,7 +14,7 @@
         "contacts",
         "document_knowledge",
         "document_page_approval",
-        "mail",
+        "mail_debrand",
         "disable_odoo_online",
         "base_portal_type",
         "module_auto_update",

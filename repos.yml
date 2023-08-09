@@ -137,6 +137,13 @@ server-ux:
     - oca f30063c9218764f22aadd1f3f4ec99c832539b83
     - hbrunn 16.0-base_tier_validation-dynamic_validation_flag
     - hbrunn 16.0-base_tier_validation_server_action
+social:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/social.git
+  merges:
+    - oca 16.0
 spreadsheet:
   defaults:
     depth: 1
