@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="model_sumit_account_form" model="ir.ui.view">
+        <field name="model">sumit.account</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="company_code" />
+                    <field name="key" />
+                    <field name="company_id" groups="base.group_multi_company" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="model_sumit_account_tree" model="ir.ui.view">
+        <field name="model">sumit.account</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="company_code" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_sumit_account" model="ir.actions.act_window">
+        <field name="res_model">sumit.account</field>
+        <field name="name">Sumit accounts</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Sumit" id="menu_sumit" parent="base.menu_custom" />
+
+    <menuitem
+        id="menu_sumit_account"
+        action="action_sumit_account"
+        parent="menu_sumit"
+    />
+</data>
