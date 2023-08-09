@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 
 
-from odoo.tests.common import HttpCase, TransactionCase
+from odoo.tests.common import TransactionCase
 
 
 class SomethingCase(TransactionCase):
@@ -33,17 +33,3 @@ class SomethingCase(TransactionCase):
 
         Any method starting with ``test_`` will be tested.
         """
-
-
-class UICase(HttpCase):
-    def test_ui_web(self):
-        """Test backend tests."""
-        self.browser_js(
-            "/web/tests?debug=assets&module=module_name",
-            "",
-            login="admin",
-        )
-
-    def test_ui_website(self):
-        """Test frontend tour (v13)."""
-        self.start_tour("/shop", "tour_name", login="admin")
