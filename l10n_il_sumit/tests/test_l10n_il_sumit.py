@@ -17,13 +17,7 @@ class SomethingCase(TransactionCase):
     def setUp(self):
         super().setUp()
 
-        # TODO Replace this for something useful or delete this method
-        self.do_something_before_all_tests()
-
     def tearDown(self):
-        # TODO Replace this for something useful or delete this method
-        self.do_something_after_all_tests()
-
         return super().tearDown()
 
     def test_something(self):
