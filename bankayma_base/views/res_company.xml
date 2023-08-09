@@ -13,6 +13,15 @@
             </field>
             <field name="code" position="attributes">
                 <attribute name="readonly">1</attribute>
+                <attribute
+                    name="groups"
+                >!bankayma_base.group_org_manager,!bankayma_base.group_full</attribute>
+            </field>
+            <field name="code" position="before">
+                <field
+                    name="code"
+                    groups="bankayma_base.group_org_manager,bankayma_base.group_full"
+                />
             </field>
             <field name="company_cascade_from_parent" position="attributes">
                 <attribute name="groups">base.group_system</attribute>
