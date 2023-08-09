@@ -388,6 +388,7 @@ class AccountMove(models.Model):
                 ("type_tax_use", "=", "purchase"),
                 ("amount", "=", tax_percentage),
                 ("price_include", "=", True),
+                ("include_base_amount", "=", True),
                 ("company_id", "=", company.id),
             ]
         ) or AccountTax.create(
@@ -397,7 +398,7 @@ class AccountMove(models.Model):
                 "amount": tax_percentage,
                 "price_include": True,
                 "is_base_affected": False,
-                "include_base_amount": False,
+                "include_base_amount": True,
                 "invoice_repartition_line_ids": [
                     (0, 0, {"repartition_type": "base"}),
                     (
@@ -409,6 +410,7 @@ class AccountMove(models.Model):
                         },
                     ),
                 ],
+                "sequence": -1,
             }
         )
 
