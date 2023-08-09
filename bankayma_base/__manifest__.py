@@ -24,6 +24,7 @@
         "web_company_color",
         "web_responsive",
         "web_select_all_companies",
+        "res_company_code",
         "spreadsheet_dashboard_oca",
         "spreadsheet_board",
         "hr",
