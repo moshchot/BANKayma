@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="view_account_payment_form" model="ir.ui.view">
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form" />
+        <field name="arch" type="xml">
+            <field name="ref" position="after">
+                <field
+                    name="sumit_document_url"
+                    attrs="{'invisible': [('sumit_document_url', '=', False)]}"
+                    widget="url"
+                />
+            </field>
+        </field>
+    </record>
+</data>
