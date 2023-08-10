@@ -29,7 +29,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "<option value=\"\">Fiscal position...</option>"
-msgstr ""
+msgstr "<option value=\"\">מעמד פיסקלי...</option>"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -70,12 +70,12 @@ msgstr "סכום לתשלום"
 #. module: bankayma_account
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_accounts
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "טאגים אנליטיים"
 
 #. module: bankayma_account
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_plans
 msgid "Analytic Plans"
-msgstr ""
+msgstr "תכניות אנליטיות"
 
 #. module: bankayma_account
 #. odoo-python
@@ -165,13 +165,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_max_amount
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_max_amount
 msgid "Bankayma Vendor Max Amount"
-msgstr ""
+msgstr "סכום מקסימום"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_tax_percentage
 msgid "Bankayma Vendor Tax Percentage"
-msgstr ""
+msgstr "אחוז ניכוי מס"
 
 #. module: bankayma_account
 #. odoo-python
@@ -270,7 +270,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "הגדרות תצורה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
@@ -341,7 +341,7 @@ msgstr ""
 #: model:account.payment.method,name:bankayma_account.payment_method_defrayal_in
 #: model:account.payment.method,name:bankayma_account.payment_method_defrayal_out
 msgid "Defrayal"
-msgstr ""
+msgstr "סליקה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
@@ -663,7 +663,7 @@ msgstr "מסב"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Maximum amount"
-msgstr ""
+msgstr "סכום מקסימלי לשנה הנוכחית"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__record_name
@@ -912,12 +912,12 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__partial
 msgid "Partially Paid"
-msgstr ""
+msgstr "שולם חלקית"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Pay Me"
-msgstr ""
+msgstr "פיי מי"
 
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_reject_intercompany_purchase
@@ -1054,8 +1054,8 @@ msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
-msgid "Tax"
-msgstr ""
+msgid "% Tax deduction"
+msgstr "אחוז ניכוי מס %"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_partner_vat
@@ -1072,7 +1072,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax
 msgid "Tax deduction"
-msgstr ""
+msgstr "ניכוי מס"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__template_company_id
@@ -1218,14 +1218,14 @@ msgstr ""
 #. module: bankayma_account
 #: model:tier.definition,name:bankayma_account.tier_definition_move_in
 msgid "Vendor's docs Validation"
-msgstr ""
+msgstr "אישור מסמכי ספק"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "Vendor-specific tax %d%%"
-msgstr ""
+msgstr "ניכוי מס ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
