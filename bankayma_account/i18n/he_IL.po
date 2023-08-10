@@ -1225,7 +1225,7 @@ msgstr "אישור מסמכי ספק"
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "Vendor-specific tax %d%%"
-msgstr "ניכוי מס ספק"
+msgstr " %d%% ניכוי מס ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
