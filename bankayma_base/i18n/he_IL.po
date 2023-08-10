@@ -61,7 +61,7 @@ msgstr "יוזמות"
 #. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_company__name
 msgid "Company Name"
-msgstr ""
+msgstr "שם יוזמה"
 
 #. module: bankayma_base
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_config
