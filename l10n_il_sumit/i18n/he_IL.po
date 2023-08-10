@@ -9,11 +9,11 @@ msgstr ""
 "PO-Revision-Date: 2023-08-09 18:06+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: he\n"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__key
