@@ -183,6 +183,7 @@ class AccountMove(models.Model):
                 and not this.journal_id.intercompany_purchase_company_id
                 and not this.journal_id.intercompany_overhead_company_id
                 and this.move_type != "out_invoice"
+                or self.env.context.get("default_show_fiscal_position_id")
             )
 
     def action_post(self):
@@ -359,10 +360,21 @@ class AccountMove(models.Model):
         company = self.env["res.company"].browse(
             int(post_data.get("company", self.env.company.id))
         )
+        fpos = self.env["account.fiscal.position"].browse(int(post_data.get("fpos")))
+        fpos = (
+            fpos.company_cascade_parent_id.company_cascade_child_ids.filtered(
+                lambda x: x.company_id == company
+            )
+            or fpos
+        )
         with Form(
-            self.with_context(default_move_type="in_invoice").with_company(company)
+            self.with_context(
+                default_move_type="in_invoice",
+                default_show_fiscal_position_id=True,
+            ).with_company(company)
         ) as invoice_form:
             invoice_form.partner_id = self.env.user.partner_id
+            invoice_form.fiscal_position_id = fpos
             with invoice_form.invoice_line_ids.new() as invoice_line:
                 invoice_line.product_id = self.env.ref(
                     "bankayma_account.product_portal"
@@ -370,9 +382,6 @@ class AccountMove(models.Model):
                 invoice_line.name = post_data.get("description")
                 invoice_line.price_unit = post_data.get("amount")
             invoice = invoice_form.save()
-        invoice.fiscal_position_id = self.env["account.fiscal.position"].browse(
-            int(post_data.get("fpos"))
-        )
         line_vals = {
             "bankayma_immutable": True,
         }
