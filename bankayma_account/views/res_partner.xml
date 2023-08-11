@@ -46,7 +46,7 @@
             <page name="accounting" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
-            <field name="category_id" position="after">
+            <field name="property_account_position_id" position="after">
                 <field name="bankayma_vendor_tax_percentage" />
                 <field name="bankayma_vendor_max_amount" />
             </field>
