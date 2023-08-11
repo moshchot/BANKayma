@@ -37,6 +37,28 @@
             <group name="banks" position="attributes">
                 <attribute name="invisible">1</attribute>
             </group>
+            <xpath
+                expr="//field[@name='property_account_position_id']/parent::em/parent::div"
+                position="attributes"
+            >
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </xpath>
+            <xpath
+                expr="//button[@name='action_view_partner_with_same_bank']/parent::bold/parent::div"
+                position="attributes"
+            >
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </xpath>
+            <page name="sales_purchases" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </page>
+            <page name="accounting" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </page>
+            <field name="category_id" position="after">
+                <field name="bankayma_vendor_tax_percentage" />
+                <field name="bankayma_vendor_max_amount" />
+            </field>
         </field>
     </record>
 

@@ -7,10 +7,19 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
+            <form position="inside">
+                <field name="user_id" invisible="True" />
+            </form>
             <span name="address_name" position="before">
                 <xpath expr="//label[@for='email']" position="move" />
                 <xpath expr="//field[@name='email']/parent::div" position="move" />
             </span>
+            <page name="accounting_disabled" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </page>
+            <page name="internal_notes" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </page>
         </field>
     </record>
 
