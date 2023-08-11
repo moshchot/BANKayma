@@ -266,7 +266,6 @@
                     />
                 </div>
                 <div class="clearfix" />
-                
                 <div id="vendor_doc_description" />
                 <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
@@ -295,7 +294,6 @@
                         t-att-value="post.get('description')"
                     />
                 </div>
-                
                 <div class="clearfix" />
                 <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
