@@ -64,6 +64,7 @@ class TestBankaymaAccountPortal(TransactionCase):
         self.assertEqual(fpos.bankayma_tax_id, invoice.invoice_line_ids.tax_ids[-1:])
         self.assertEqual(invoice.invoice_line_ids.tax_ids[:1].sequence, -1)
         self.assertTrue(invoice.partner_id.bankayma_vendor_max_amount, 424242)
+        self.assertTrue(invoice.invoice_line_ids.bankayma_immutable)
         with Form(invoice) as invoice_form:
             invoice_form.invoice_line_ids.product_id = self.env[
                 "product.product"
@@ -72,6 +73,11 @@ class TestBankaymaAccountPortal(TransactionCase):
                     ("id", "!=", invoice.invoice_line_ids.product_id.id),
                 ]
             )
+        self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
+        invoice.invoice_line_ids._compute_tax_ids()
+        self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
+        invoice.invoice_line_ids.bankayma_immutable = False
+        invoice.invoice_line_ids._compute_tax_ids()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_date = fields.Date.context_today(invoice)
         invoice.action_post()
