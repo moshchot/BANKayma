@@ -6,7 +6,8 @@ from collections import namedtuple
 
 from werkzeug.datastructures import MultiDict
 
-from odoo.tests.common import TransactionCase
+from odoo import fields
+from odoo.tests.common import Form, TransactionCase
 
 
 class TestBankaymaAccountPortal(TransactionCase):
@@ -17,7 +18,7 @@ class TestBankaymaAccountPortal(TransactionCase):
             [("company_id", "=", self.env.company.id)], limit=1
         )
         fpos.bankayma_tax_id = self.env["account.tax"].search(
-            [("type_tax_use", "=", "purchase")], limit=1
+            [("type_tax_use", "=", "purchase"), ("sequence", ">=", 0)], limit=1
         )
         fpos.bankayma_deduct_tax = True
         invoice = (
@@ -51,6 +52,20 @@ class TestBankaymaAccountPortal(TransactionCase):
             ]
         )
         self.assertTrue(attachment)
-        self.assertEqual(len(invoice.invoice_line_ids.tax_ids), 2)
-        self.assertIn(fpos.bankayma_tax_id, invoice.invoice_line_ids.tax_ids)
+        taxes = invoice.invoice_line_ids.tax_ids
+        self.assertEqual(len(taxes), 2)
+        self.assertEqual(fpos.bankayma_tax_id, invoice.invoice_line_ids.tax_ids[-1:])
+        self.assertEqual(invoice.invoice_line_ids.tax_ids[:1].sequence, -1)
         self.assertTrue(invoice.partner_id.bankayma_vendor_max_amount, 424242)
+        with Form(invoice) as invoice_form:
+            invoice_form.invoice_line_ids.product_id = self.env[
+                "product.product"
+            ].search(
+                [
+                    ("id", "!=", invoice.invoice_line_ids.product_id.id),
+                ]
+            )
+        self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
+        invoice.invoice_date = fields.Date.context_today(invoice)
+        invoice.action_post()
+        self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
