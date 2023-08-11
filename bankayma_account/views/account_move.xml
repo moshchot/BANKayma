@@ -173,6 +173,18 @@
                 <attribute
                     name="attrs"
                 >{'invisible': [('show_fiscal_position_id', '=', False)]}</attribute>
+                <attribute name="options">{'no_open': True}</attribute>
+            </field>
+            <field name="fiscal_position_id" position="after">
+                <field name="bankayma_deduct_tax" invisible="True" />
+                <field
+                    name="bankayma_vendor_tax_percentage"
+                    attrs="{'invisible': [('bankayma_deduct_tax', '=', False)]}"
+                />
+                <field
+                    name="bankayma_vendor_max_amount"
+                    attrs="{'invisible': [('bankayma_deduct_tax', '=', False)]}"
+                />
             </field>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">bankayma_partner_domain</attribute>

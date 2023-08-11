@@ -53,6 +53,15 @@ class AccountMove(models.Model):
     )
     need_validation = fields.Boolean(compute_sudo=True)
     show_fiscal_position_id = fields.Boolean(compute="_compute_show_fiscal_position_id")
+    bankayma_deduct_tax = fields.Boolean(
+        related="fiscal_position_id.bankayma_deduct_tax"
+    )
+    bankayma_vendor_max_amount = fields.Float(
+        related="partner_id.bankayma_vendor_max_amount", readonly=False
+    )
+    bankayma_vendor_tax_percentage = fields.Float(
+        related="partner_id.bankayma_vendor_tax_percentage", readonly=False
+    )
 
     def _compute_amount(self):
         """
