@@ -8,5 +8,5 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     signup_group_ids = fields.Many2many("res.groups")
-    bankayma_vendor_tax_percentage = fields.Float()
-    bankayma_vendor_max_amount = fields.Float()
+    bankayma_vendor_tax_percentage = fields.Float("Custom vendor tax", readonly=True)
+    bankayma_vendor_max_amount = fields.Float("Max amount", readonly=True)
