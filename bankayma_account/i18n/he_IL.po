@@ -266,6 +266,8 @@ msgid ""
 "Confirm\n"
 "                    <span class=\"fa fa-long-arrow-right\"/>"
 msgstr ""
+"אישור\n"
+"                    <span class=\"fa fa-long-arrow-right\"/>"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -275,7 +277,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_partner
 msgid "Contact"
-msgstr "איש קשר"
+msgstr "אנשי קשר"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__body
@@ -317,7 +319,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_tax_percentage
 msgid "Custom vendor tax"
-msgstr ""
+msgstr "ניכוי מס ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -421,7 +423,7 @@ msgstr "הוצאות"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_payment_form
 msgid "Fill in a comment..."
-msgstr ""
+msgstr "הערה..."
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_fiscal_position
@@ -468,7 +470,7 @@ msgstr "בתשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "In:"
-msgstr "ב:"
+msgstr "-"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
@@ -664,7 +666,7 @@ msgstr "מסב"
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_max_amount
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_max_amount
 msgid "Max amount"
-msgstr ""
+msgstr "סכום מקסימלי לשנה הנוכחית"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
@@ -1061,7 +1063,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Tax"
-msgstr ""
+msgstr "אחוז ניכוי מס"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_partner_vat
