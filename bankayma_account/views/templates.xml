@@ -197,8 +197,11 @@
                 />
                 <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
                     <label class="col-form-label" for="company">Company</label>
-                    <select class="form-control" id="company">
-                        <t t-foreach="request.env.user.company_ids" t-as="company">
+                    <select class="form-control" id="company" name="company">
+                        <t
+                            t-foreach="request.env['res.company'].sudo().search([])"
+                            t-as="company"
+                        >
                             <option
                                 t-att-selected="company.id == int(post.get('company', request.env.company))"
                                 t-att-value="company.id"

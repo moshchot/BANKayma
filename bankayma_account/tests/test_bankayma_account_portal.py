@@ -14,11 +14,17 @@ class TestBankaymaAccountPortal(TransactionCase):
     def test_vendor_bill(self):
         fake_upload = namedtuple("fake_upload", ["stream", "filename"])
         user = self.env.ref("bankayma_base.vendor_child_comp1")
+        user.company_ids += self.env.ref("l10n_il.demo_company_il")
+        company = self.env.ref("l10n_il.demo_company_il")
         fpos = self.env["account.fiscal.position"].search(
-            [("company_id", "=", self.env.company.id)], limit=1
+            [("company_id", "=", company.id)], limit=1
         )
-        fpos.bankayma_tax_id = self.env["account.tax"].search(
-            [("type_tax_use", "=", "purchase"), ("sequence", ">=", 0)], limit=1
+        fpos.bankayma_tax_id = self.env["account.tax"].create(
+            {
+                "name": "Imposed tax",
+                "type_tax_use": "purchase",
+                "company_id": company.id,
+            }
         )
         fpos.bankayma_deduct_tax = True
         invoice = (
@@ -27,10 +33,10 @@ class TestBankaymaAccountPortal(TransactionCase):
             .sudo()
             ._portal_create_vendor_bill(
                 {
-                    "company": self.env.company,
+                    "company": company,
                     "amount": "42",
                     "description": "hello world",
-                    "fpos": fpos.id,
+                    "fpos": str(fpos.id),
                     "tax_percentage": "42",
                     "max_amount": "424242",
                 },
@@ -52,6 +58,7 @@ class TestBankaymaAccountPortal(TransactionCase):
             ]
         )
         self.assertTrue(attachment)
+        self.assertEqual(invoice.company_id, company)
         taxes = invoice.invoice_line_ids.tax_ids
         self.assertEqual(len(taxes), 2)
         self.assertEqual(fpos.bankayma_tax_id, invoice.invoice_line_ids.tax_ids[-1:])
