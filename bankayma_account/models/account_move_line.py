@@ -27,6 +27,14 @@ class AccountMoveLine(models.Model):
                 super(AccountMoveLine, this)._compute_price_unit()
         return None
 
+    def _compute_tax_ids(self):
+        for this in self:
+            if this.bankayma_immutable:
+                this.tax_ids = getattr(this, "_origin", this).tax_ids
+            else:
+                super()._compute_tax_ids()
+        return None
+
     @api.depends("move_id.journal_id.bankayma_restrict_product_ids")
     def _compute_bankayma_product_domain(self):
         for this in self:

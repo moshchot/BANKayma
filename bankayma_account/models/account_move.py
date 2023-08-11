@@ -356,6 +356,7 @@ class AccountMove(models.Model):
                 }
             )
         invoice.invoice_line_ids.write(line_vals)
+        invoice.invoice_line_ids.invalidate_recordset()
         attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
             attachments += self.env["ir.attachment"].create(
