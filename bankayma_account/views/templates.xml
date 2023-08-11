@@ -236,34 +236,6 @@
                         </t>
                     </select>
                 </div>
-                <div id="vendor_doc_description" />
-                <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
-                >
-                    <label class="col-form-label" for="amount">Amount</label>
-                    <input
-                        type="number"
-                        min="0"
-                        t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
-                        required="required"
-                        name="amount"
-                        id="amount"
-                        t-att-value="post.get('amount')"
-                    />
-                </div>
-                <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
-                >
-                    <label class="col-form-label" for="description">Description</label>
-                    <input
-                        type="text"
-                        t-attf-class="form-control #{errors.get('description') and 'is-invalid' or ''}"
-                        required="required"
-                        name="description"
-                        id="description"
-                        t-att-value="post.get('description')"
-                    />
-                </div>
                 <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('tax_percentage') and 'o_has_error' or ''}"
                 >
@@ -293,6 +265,37 @@
                         t-att-value="post.get('max_amount', request.env.user.partner_id.bankayma_vendor_max_amount)"
                     />
                 </div>
+                <div class="clearfix" />
+                
+                <div id="vendor_doc_description" />
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="amount">Amount</label>
+                    <input
+                        type="number"
+                        min="0"
+                        t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
+                        required="required"
+                        name="amount"
+                        id="amount"
+                        t-att-value="post.get('amount')"
+                    />
+                </div>
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="description">Description</label>
+                    <input
+                        type="text"
+                        t-attf-class="form-control #{errors.get('description') and 'is-invalid' or ''}"
+                        required="required"
+                        name="description"
+                        id="description"
+                        t-att-value="post.get('description')"
+                    />
+                </div>
+                
                 <div class="clearfix" />
                 <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
