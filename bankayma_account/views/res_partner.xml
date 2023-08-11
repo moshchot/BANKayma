@@ -53,9 +53,15 @@
         </field>
     </record>
 
-    <record id="view_res_bank_form" model="ir.ui.view">
+    <record
+        id="view_partner_property_form_account_fiscal_position_vat_check"
+        model="ir.ui.view"
+    >
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="account.view_partner_property_form" />
+        <field
+            name="inherit_id"
+            ref="account_fiscal_position_vat_check.view_partner_property_form"
+        />
         <field name="arch" type="xml">
             <xpath
                 expr="//field[@name='property_account_position_id']/parent::em/parent::div"
