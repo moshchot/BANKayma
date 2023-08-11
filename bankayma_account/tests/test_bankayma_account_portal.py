@@ -79,6 +79,8 @@ class TestBankaymaAccountPortal(TransactionCase):
         invoice.invoice_line_ids.bankayma_immutable = False
         invoice.invoice_line_ids._compute_tax_ids()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
+        invoice._bankayma_onchange_partner_id()
+        self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_date = fields.Date.context_today(invoice)
         invoice.action_post()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
