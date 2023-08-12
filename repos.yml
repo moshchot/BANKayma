@@ -196,7 +196,7 @@ knowledge:
     oca: https://github.com/OCA/OCB.git
     hbrunn: https://github.com/hbrunn/OCB.git
   merges:
-    - oca 16.0
+    - oca 10fc74f17d7b9a2fb9f232d40e3b5ad4fa83627b
     - hbrunn 16.0-res.users-context_get-disable-prefetch-ocb
   shell_command_after: |
     if [ ! -L ../libreerp ]; then
