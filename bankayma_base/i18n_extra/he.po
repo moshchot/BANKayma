@@ -76,7 +76,7 @@ msgstr "הערות פנימיות"
 #. module: base_tier_validation
 #: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
 msgid "Request Validation"
-msgstr "שליחה לאישור מנהל"
+msgstr "<button class=\"btn-odoo\">שליחה לאישור מנהל</button>"
 
 #. module: base_tier_validation
 #: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
