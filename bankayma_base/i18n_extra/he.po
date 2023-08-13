@@ -72,3 +72,20 @@ msgstr "רישום כהערה פנימית"
 #, python-format
 msgid "Log note"
 msgstr "הערות פנימיות"
+
+#. module: base_tier_validation
+#: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
+msgid "Request Validation"
+msgstr "שליחה לאישור מנהל"
+
+#. module: base_tier_validation
+#: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
+msgid "Restart Validation"
+msgstr "אתחול שליחה לאישור"
+
+#. module: base_tier_validation
+#. odoo-python
+#: code:addons/base_tier_validation/models/tier_validation.py:0
+#, python-format
+msgid "The operation is under validation."
+msgstr "הבקשה לאישור בטיפול"
