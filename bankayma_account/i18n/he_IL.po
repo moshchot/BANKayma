@@ -162,6 +162,11 @@ msgid "Bankayma Product Domain"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_tax__bankayma_vendor_specific
+msgid "Bankayma Vendor Specific"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
@@ -1061,6 +1066,7 @@ msgid "Tag"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_account_tax
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Tax"
 msgstr "אחוז ניכוי מס"
