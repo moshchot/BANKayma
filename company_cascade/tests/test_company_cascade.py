@@ -126,3 +126,32 @@ class TestCompanyCascade(TransactionCase):
                 lambda x: x.company_id == self.cascading_child
             ),
         )
+
+    def test_cascade_no_company(self):
+        """
+        Test that cascading many2one fields linking to a record with company_id unset
+        doesn't duplucate this record
+        """
+        sequence = self.env["ir.sequence"].create(
+            {"name": "Cross company sequence", "company_id": False}
+        )
+        find_all_global_sequences = (
+            self.env["ir.sequence"].sudo().search([("company_id", "=", False)])
+        )
+        all_sequences = find_all_global_sequences()
+        self._apply_cascade_wizard(sequence)
+        self.assertEqual(all_sequences, find_all_global_sequences())
+        journal = self.env["account.journal"].create(
+            {
+                "name": "Journal with cross company sequence",
+                "code": "CROSS",
+                "secure_sequence_id": sequence.id,
+                "type": "general",
+            }
+        )
+        journal._company_cascade(recursive=True)
+        self.assertTrue(journal.company_cascade_child_ids)
+        self.assertEqual(
+            journal._company_cascade_get_all().mapped("secure_sequence_id"), sequence
+        )
+        self.assertEqual(all_sequences, find_all_global_sequences())
