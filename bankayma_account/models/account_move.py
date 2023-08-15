@@ -60,7 +60,8 @@ class AccountMove(models.Model):
         related="partner_id.bankayma_vendor_max_amount", readonly=False
     )
     bankayma_vendor_tax_percentage = fields.Float(
-        related="partner_id.bankayma_vendor_tax_percentage", readonly=False
+        related="partner_id.bankayma_vendor_tax_percentage",
+        readonly=False,
     )
 
     def _compute_amount(self):
@@ -367,6 +368,15 @@ class AccountMove(models.Model):
             )
             or fpos
         )
+        if fpos.bankayma_deduct_tax:
+            self.env.user.partner_id.write(
+                {
+                    "bankayma_vendor_tax_percentage": float(
+                        post_data.get("tax_percentage")
+                    ),
+                    "bankayma_vendor_max_amount": float(post_data.get("max_amount")),
+                }
+            )
         with Form(
             self.with_context(
                 default_move_type="in_invoice",
@@ -385,38 +395,18 @@ class AccountMove(models.Model):
         line_vals = {
             "bankayma_immutable": True,
         }
-        if invoice.fiscal_position_id.bankayma_tax_id:
-            line_vals["tax_ids"] = [
-                (6, 0, invoice.fiscal_position_id.bankayma_tax_id.ids)
-            ]
-        if invoice.fiscal_position_id.bankayma_deduct_tax:
-            line_vals.setdefault("tax_ids", []).append(
-                (
-                    4,
-                    self._portal_get_or_create_tax(
-                        company,
-                        invoice.fiscal_position_id,
-                        float(post_data.get("tax_percentage") or 0),
-                    ).id,
-                ),
-            )
-            self.env.user.partner_id.write(
-                {
-                    "bankayma_vendor_tax_percentage": float(
-                        post_data.get("tax_percentage")
-                    ),
-                    "bankayma_vendor_max_amount": float(post_data.get("max_amount")),
-                }
-            )
         invoice.invoice_line_ids.write(line_vals)
         invoice.invoice_line_ids.invalidate_recordset()
         attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
+            datas = uploaded_file.stream.read()
+            if not datas:
+                continue
             attachments += self.env["ir.attachment"].create(
                 {
                     "res_model": self._name,
                     "res_id": invoice.id,
-                    "datas": b64encode(uploaded_file.stream.read()),
+                    "datas": b64encode(datas),
                     "store_fname": uploaded_file.filename,
                     "name": uploaded_file.filename,
                 }
@@ -463,6 +453,7 @@ class AccountMove(models.Model):
                         ),
                     ],
                     "sequence": -1,
+                    "bankayma_vendor_specific": True,
                 }
             )
             or AccountTax
