@@ -219,7 +219,7 @@ class CompanyCascadeMixin(models.AbstractModel):
     def _company_cascade_get_children(self):
         return self.sudo().company_cascade_child_ids
 
-    def _company_cascade_get_all(self):
+    def _company_cascade_get_all(self, company=None):
         """Return all records that are the equivalent to self in some company"""
         if not self:
             return self.browse([])
@@ -229,7 +229,7 @@ class CompanyCascadeMixin(models.AbstractModel):
         records = record
         while records.mapped("company_cascade_child_ids") - records:
             records += records.mapped("company_cascade_child_ids")
-        return records
+        return records.filtered(lambda x: x.company_id == company if company else True)
 
     def _company_cascade_find_candidate(self, company, vals):
         """

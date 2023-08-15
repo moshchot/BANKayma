@@ -361,12 +361,10 @@ class AccountMove(models.Model):
         company = self.env["res.company"].browse(
             int(post_data.get("company", self.env.company.id))
         )
-        fpos = self.env["account.fiscal.position"].browse(int(post_data.get("fpos")))
         fpos = (
-            fpos.company_cascade_parent_id.company_cascade_child_ids.filtered(
-                lambda x: x.company_id == company
-            )
-            or fpos
+            self.env["account.fiscal.position"]
+            .browse(int(post_data.get("fpos")))
+            ._company_cascade_get_all(company=company)
         )
         if fpos.bankayma_deduct_tax:
             self.env.user.partner_id.write(
