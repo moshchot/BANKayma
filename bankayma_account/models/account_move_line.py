@@ -31,15 +31,16 @@ class AccountMoveLine(models.Model):
         for this in self:
             if this.bankayma_immutable:
                 this.tax_ids = getattr(this, "_origin", this).tax_ids
-            elif (
-                this.move_id.bankayma_deduct_tax
-                and this.move_id.bankayma_vendor_tax_percentage
+            elif this.move_id.bankayma_deduct_tax and (
+                this.move_id.bankayma_vendor_tax_percentage
+                or this.move_id.partner_id.bankayma_vendor_tax_percentage
             ):
                 super()._compute_tax_ids()
                 tax = this.move_id._portal_get_or_create_tax(
                     this.company_id,
                     this.move_id.fiscal_position_id,
-                    this.move_id.bankayma_vendor_tax_percentage,
+                    this.move_id.bankayma_vendor_tax_percentage
+                    or this.move_id.partner_id.bankayma_vendor_tax_percentage,
                 )
                 this.tax_ids = tax + (
                     this.move_id.fiscal_position_id.bankayma_tax_id
