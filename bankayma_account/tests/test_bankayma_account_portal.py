@@ -27,6 +27,13 @@ class TestBankaymaAccountPortal(TransactionCase):
             }
         )
         fpos.bankayma_deduct_tax = True
+        fpos.bankayma_deduct_tax_account_id = self.env["account.account"].search(
+            [
+                ("company_id", "=", company.id),
+                ("account_type", "=", "asset_current"),
+            ],
+            limit=1,
+        )
         invoice = (
             self.env["account.move"]
             .with_user(user)
