@@ -130,13 +130,14 @@ class TestCompanyCascade(TransactionCase):
     def test_cascade_no_company(self):
         """
         Test that cascading many2one fields linking to a record with company_id unset
-        doesn't duplucate this record
+        doesn't duplicate this record
         """
+
+        def find_all_global_sequences():
+            return self.env["ir.sequence"].sudo().search([("company_id", "=", False)])
+
         sequence = self.env["ir.sequence"].create(
             {"name": "Cross company sequence", "company_id": False}
-        )
-        find_all_global_sequences = (
-            self.env["ir.sequence"].sudo().search([("company_id", "=", False)])
         )
         all_sequences = find_all_global_sequences()
         self._apply_cascade_wizard(sequence)
