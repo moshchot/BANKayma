@@ -57,12 +57,31 @@ class CompanyCascadeMixin(models.AbstractModel):
             self.mapped("company_cascade_child_ids").unlink()
         return super().unlink()
 
-    def _company_cascade(self, fields=None):
+    def _company_cascade(self, fields=None, recursive=False, recursive_seen=None):
         """Overwrite/create equivalent records in child companies"""
         result = self.browse([])
         # TODO: sort by self._company_cascade_order?
+        if recursive:
+            seen = recursive_seen or []
+            for field_name, field in self._fields.items():
+                if fields and field_name not in fields or not field.comodel_name:
+                    continue
+                if "company_cascade_parent_id" not in self.env[
+                    field.comodel_name
+                ] or field.comodel_name in (self._name, "res.company"):
+                    continue
+                for this in self:
+                    seen.append(this)
+                    if this[field_name] in seen or not this[field_name]:
+                        continue
+                    seen.append(this[field_name])
+                    this[field_name]._company_cascade(
+                        recursive=True, recursive_seen=seen
+                    )
         # first step: exclude x2many fields that cascade themselves
         for this in self:
+            if not this.company_id:
+                continue
             values = this.read(
                 [
                     field_name
@@ -100,6 +119,8 @@ class CompanyCascadeMixin(models.AbstractModel):
         if not field_names:
             return result
         for this in self:
+            if not this.company_id:
+                continue
             values = this.read(field_names, load="_classic_write")[0]
             for field in field_names:
                 this[field]._company_cascade()
@@ -147,9 +168,15 @@ class CompanyCascadeMixin(models.AbstractModel):
     def _company_cascade_value_many2one(self, company, field, value):
         record = self.env[field.comodel_name].browse(value)
         return (
-            record.company_cascade_child_ids.filtered(lambda x: x.company_id == company)
-            or record
-        ).id
+            (
+                record.company_cascade_child_ids.filtered(
+                    lambda x: x.company_id == company
+                )
+                or record
+            ).id
+            if record.company_id
+            else record.id
+        )
 
     def _company_cascade_value_reference(self, company, field, value):
         if isinstance(value, str):
