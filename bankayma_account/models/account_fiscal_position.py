@@ -14,9 +14,14 @@ class AccountFiscalPosition(models.Model):
     )
     vendor_doc_description = fields.Html()
     bankayma_tax_id = fields.Many2one(
-        "account.tax", string="Impose tax", domain=[("type_tax_use", "=", "purchase")]
+        "account.tax",
+        string="Impose tax",
+        domain=[("type_tax_use", "=", "purchase")],
+        check_company=True,
     )
     bankayma_deduct_tax = fields.Boolean("Tax deduction")
     bankayma_deduct_tax_account_id = fields.Many2one(
-        "account.account", string="Tax account"
+        "account.account",
+        string="Tax account",
+        check_company=True,
     )
