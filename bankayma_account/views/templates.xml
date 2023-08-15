@@ -215,7 +215,7 @@
                     <label class="col-form-label" for="fpos">Fiscal position</label>
                     <select
                         name="fpos"
-                        t-attf-class="form-select #{errors.get('fpos') and 'is-invalid' or ''}"
+                        t-attf-class="form-control #{errors.get('fpos') and 'is-invalid' or ''}"
                         onchange="
                             jQuery('#vendor_doc_description').html(jQuery(this.selectedOptions).data('vendor_doc_description'));
                             jQuery('#upload').prop('required', jQuery(this.selectedOptions).data('vendor_doc_mandatory') == 'True');
@@ -319,6 +319,14 @@
                     <span class="fa fa-long-arrow-right" />
                 </button>
             </form>
+            <t t-call-assets="web.assets_common" />
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    jQuery('select[name="fpos"]').change();
+                    jQuery('select[name="company"]').select2();
+                    jQuery('select[name="fpos"]').select2();
+                });
+            </script>
         </t>
     </template>
 
