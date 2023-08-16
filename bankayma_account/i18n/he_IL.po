@@ -431,6 +431,20 @@ msgid "Fill in a comment..."
 msgstr "הערה..."
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/controllers/main.py:0
+#, python-format
+msgid "Fill in a percentage between 0 and 100"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/controllers/main.py:0
+#, python-format
+msgid "Fill in a positive amount"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_fiscal_position
 msgid "Fiscal Position"
 msgstr "מעמד פיסקלי"
@@ -674,7 +688,7 @@ msgid "Max amount"
 msgstr "סכום מקסימלי לשנה הנוכחית"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Maximum amount"
 msgstr "סכום מקסימלי לשנה הנוכחית"
 
@@ -1067,7 +1081,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax
-#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Tax"
 msgstr "אחוז ניכוי מס"
 
