@@ -10,8 +10,14 @@ class CustomerPortal(portal.CustomerPortal):
     BANKAYMA_EXTRA_FIELDS = ["bank", "bank_branch_code", "bank_acc_number"]
 
     def __init__(self):
-        self.OPTIONAL_BILLING_FIELDS.append("property_account_position_id")
-        for optional_field in ("street", "city", "country_id"):
+        self.OPTIONAL_BILLING_FIELDS.extend(
+            [
+                "property_account_position_id",
+                "bankayma_vendor_tax_percentage",
+                "bankayma_vendor_max_amount",
+            ]
+        )
+        for optional_field in ("street", "city", "zip", "country_id"):
             if optional_field in self.MANDATORY_BILLING_FIELDS:
                 self.MANDATORY_BILLING_FIELDS.remove(optional_field)
             if optional_field not in self.OPTIONAL_BILLING_FIELDS:
@@ -86,6 +92,21 @@ class CustomerPortal(portal.CustomerPortal):
             if not data.get("bank_acc_number"):
                 error["bank_acc_number"] = "error"
                 error_message.append(_("Banking information is mandatory for vendors"))
+        fpos = (
+            request.env["account.fiscal.position"]
+            .browse(int(data.get("property_account_position_id") or 0))
+            .exists()
+        )
+        if fpos.bankayma_deduct_tax:
+            if (
+                float(data.get("bankayma_vendor_tax_percentage", 0)) <= 0
+                or float(data.get("bankayma_vendor_tax_percentage", 100)) >= 100
+            ):
+                error["bankayma_vendor_tax_percentage"] = "error"
+                error_message.append(_("Fill in a percentage between 0 and 100"))
+            if float(data.get("bankayma_vendor_max_amount", 0)) <= 0:
+                error["bankayma_vendor_max_amount"] = "error"
+                error_message.append(_("Fill in a positive amount"))
         return error, error_message
 
     def _get_account_searchbar_filters(self):
@@ -140,14 +161,6 @@ class CustomerPortal(portal.CustomerPortal):
             )
             if not post.get("upload") and fpos.vendor_doc_mandatory:
                 vals["errors"]["upload"] = True
-            if fpos.bankayma_deduct_tax:
-                if (
-                    float(post.get("tax_percentage", 0)) <= 0
-                    or float(post.get("tax_percentage", 100)) >= 100
-                ):
-                    vals["errors"]["tax_percentage"] = True
-                if float(post.get("max_amount", 0)) <= 0:
-                    vals["errors"]["max_amount"] = True
             if not vals["errors"]:
                 bill = (
                     request.env["account.move"]
