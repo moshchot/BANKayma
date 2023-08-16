@@ -366,15 +366,6 @@ class AccountMove(models.Model):
             .browse(int(post_data.get("fpos")))
             ._company_cascade_get_all(company=company)
         )
-        if fpos.bankayma_deduct_tax:
-            self.env.user.partner_id.write(
-                {
-                    "bankayma_vendor_tax_percentage": float(
-                        post_data.get("tax_percentage")
-                    ),
-                    "bankayma_vendor_max_amount": float(post_data.get("max_amount")),
-                }
-            )
         with Form(
             self.with_context(
                 default_move_type="in_invoice",
