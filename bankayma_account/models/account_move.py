@@ -452,6 +452,7 @@ class AccountMove(models.Model):
                     ],
                     "sequence": -1,
                     "bankayma_vendor_specific": True,
+                    "company_id": company.id,
                 }
             )
             or AccountTax
