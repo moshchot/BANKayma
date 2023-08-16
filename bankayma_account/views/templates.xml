@@ -23,6 +23,26 @@
         id="portal_my_details_fields"
         inherit_id="portal.portal_my_details_fields"
     >
+        <xpath expr="//div[./input[@name='street']]" position="attributes">
+            <attribute
+                name="t-if"
+            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+        </xpath>
+        <xpath expr="//div[./input[@name='city']]" position="attributes">
+            <attribute
+                name="t-if"
+            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+        </xpath>
+        <xpath expr="//div[./input[@name='zipcode']]" position="attributes">
+            <attribute
+                name="t-if"
+            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+        </xpath>
+        <xpath expr="//div[./select[@name='country_id']]" position="attributes">
+            <attribute
+                name="t-if"
+            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+        </xpath>
         <xpath expr="//div[./input[@name='phone']]" position="after">
             <div
                 t-if="user_id.has_group('bankayma_base.group_vendor')"
