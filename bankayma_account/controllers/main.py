@@ -7,7 +7,7 @@ from odoo.addons.portal.controllers import portal
 
 
 class CustomerPortal(portal.CustomerPortal):
-    BANKAYMA_EXTRA_FIELDS = ["bank_name", "bank_branch_code", "bank_acc_number"]
+    BANKAYMA_EXTRA_FIELDS = ["bank", "bank_branch_code", "bank_acc_number"]
 
     def __init__(self):
         self.OPTIONAL_BILLING_FIELDS.append("property_account_position_id")
@@ -48,20 +48,13 @@ class CustomerPortal(portal.CustomerPortal):
                 values[field_name] = int(values[field_name])
             except BaseException:
                 values[field_name] = False
-        bank_account_fields = ("bank_name", "bank_branch_code", "bank_acc_number")
+        bank_account_fields = ("bank", "bank_branch_code", "bank_acc_number")
         bank_vals = {
             key[len("bank_") :]: request.httprequest.form.get(key)
             for key in bank_account_fields
         }
         if all(bank_vals.values()):
-            bank_name = bank_vals.pop("name")
-            bank = request.env["res.bank"].sudo().search([("name", "=", bank_name)])
-            if bank:
-                bank_vals["bank_id"] = bank.id
-            else:
-                bank_vals["bank_id"] = (
-                    request.env["res.bank"].sudo().create({"name": bank_name}).id
-                )
+            bank_vals["bank_id"] = int(bank_vals.pop(""))
             accounts = request.env.user.partner_id.sudo().bank_ids
             if accounts:
                 values["bank_ids"] = [(1, accounts[:1].id, bank_vals)]
@@ -84,8 +77,8 @@ class CustomerPortal(portal.CustomerPortal):
             if not data.get("property_account_position_id"):
                 error["property_account_position_id"] = "error"
                 error_message.append(_("The fiscal position is mandatory for vendors"))
-            if not data.get("bank_name"):
-                error["bank_name"] = "error"
+            if not data.get("bank"):
+                error["bank"] = "error"
                 error_message.append(_("Banking information is mandatory for vendors"))
             if not data.get("bank_branch_code"):
                 error["bank_branch_code"] = "error"

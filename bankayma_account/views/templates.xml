@@ -72,17 +72,26 @@
         <xpath expr="//div[./select[@name='state_id']]" position="after">
             <div class="clearfix" />
             <div
-                t-attf-class="mb-3 #{error.get('bank_name') and 'o_has_error' or ''} col-xl-6"
+                t-attf-class="mb-3 #{error.get('bank') and 'o_has_error' or ''} col-xl-6"
             >
                 <label
                     t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
-                    for="bank_name"
+                    for="bank"
                 >Bank</label>
-                <input
-                    name="bank_name"
-                    t-attf-class="form-control #{error.get('bank_name') and 'is-invalid' or ''}"
-                    t-att-value="bank_name or partner.bank_ids[:1].bank_id.name"
-                />
+                <select
+                    name="bank"
+                    t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''} o-select2"
+                >
+                    <t
+                        t-foreach="request.env['res.bank'].sudo().search([])"
+                        t-as="_bank"
+                    >
+                        <option
+                            t-att-selected="_bank.id == int(bank or partner.bank_ids[:1].bank_id.id or -1)"
+                            t-att-value="_bank.id"
+                        ><t t-out="_bank.name" /></option>
+                    </t>
+                </select>
             </div>
             <div
                 t-attf-class="mb-3 #{error.get('bank_branch_code') and 'o_has_error' or ''} col-xl-6"
