@@ -34,6 +34,12 @@ class TestBankaymaAccountPortal(TransactionCase):
             ],
             limit=1,
         )
+        user.partner_id.write(
+            {
+                "bankayma_vendor_tax_percentage": 42,
+                "bankayma_vendor_max_amount": 424242,
+            }
+        )
         invoice = (
             self.env["account.move"]
             .with_user(user)
@@ -44,8 +50,6 @@ class TestBankaymaAccountPortal(TransactionCase):
                     "amount": "42",
                     "description": "hello world",
                     "fpos": str(fpos.id),
-                    "tax_percentage": "42",
-                    "max_amount": "424242",
                 },
                 MultiDict(
                     [
