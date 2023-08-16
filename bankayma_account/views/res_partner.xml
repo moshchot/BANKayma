@@ -50,6 +50,20 @@
                 <field name="bankayma_vendor_tax_percentage" />
                 <field name="bankayma_vendor_max_amount" />
             </field>
+            <span name="address_name" position="before">
+                <field name="type" />
+            </span>
+            <span name="address_name" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </span>
+            <div class="o_address_format" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </div>
+            <field name="child_ids" position="attributes">
+                <attribute
+                    name="context"
+                >{'default_parent_id': active_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type': 'other'}</attribute>
+            </field>
         </field>
     </record>
 
