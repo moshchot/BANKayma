@@ -60,8 +60,14 @@
         <xpath expr="//label[@for='street']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
         </xpath>
+        <xpath expr="//select[@name='country_id']" position="attributes">
+            <attribute name="t-attf-class" add="o-select2" separator=" " />
+        </xpath>
         <xpath expr="//label[@for='country_id']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
+        </xpath>
+        <xpath expr="//select[@name='state_id']" position="attributes">
+            <attribute name="t-attf-class" add="o-select2" separator=" " />
         </xpath>
         <xpath expr="//div[./select[@name='state_id']]" position="after">
             <div class="clearfix" />
@@ -197,7 +203,7 @@
                 />
                 <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
                     <label class="col-form-label" for="company">Company</label>
-                    <select class="form-control" id="company" name="company">
+                    <select class="form-select o-select2" id="company" name="company">
                         <t
                             t-foreach="request.env['res.company'].sudo().search([])"
                             t-as="company"
@@ -215,7 +221,7 @@
                     <label class="col-form-label" for="fpos">Fiscal position</label>
                     <select
                         name="fpos"
-                        t-attf-class="form-control #{errors.get('fpos') and 'is-invalid' or ''}"
+                        t-attf-class="form-select #{errors.get('fpos') and 'is-invalid' or ''}"
                         onchange="
                             jQuery('#vendor_doc_description').html(jQuery(this.selectedOptions).data('vendor_doc_description'));
                             jQuery('#upload').prop('required', jQuery(this.selectedOptions).data('vendor_doc_mandatory') == 'True');
@@ -319,14 +325,6 @@
                     <span class="fa fa-long-arrow-right" />
                 </button>
             </form>
-            <t t-call-assets="web.assets_common" />
-            <script type="text/javascript">
-                jQuery(document).ready(function() {
-                    jQuery('select[name="fpos"]').change();
-                    jQuery('select[name="company"]').select2();
-                    jQuery('select[name="fpos"]').select2();
-                });
-            </script>
         </t>
     </template>
 
