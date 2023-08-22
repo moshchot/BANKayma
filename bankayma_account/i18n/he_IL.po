@@ -16,6 +16,31 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "(with reference:"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "<br/><br/>/"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "<br/><br/>Do not hesitate to contact us if you have any questions."
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "<br/><br/>Here is your"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "<br/><br/>Please use the following communication for your payment:"
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,body_html:bankayma_account.template_vendor_invite
 msgid ""
 "<h1>Invitation</h1>\n"
@@ -340,6 +365,11 @@ msgstr "לקוחות/ ספקים"
 #: model:ir.actions.act_window,name:bankayma_account.action_dashboard
 msgid "Dashboard"
 msgstr "לוח בקרה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "Dear"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
@@ -976,10 +1006,20 @@ msgid "Payment method"
 msgstr "אמצעי תשלום"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "Payment will be remitted in next round"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_open
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_open
 msgid "Pending payment"
 msgstr "בתשלום"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "Please remit payment at your earliest convenience."
+msgstr ""
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template
@@ -1145,6 +1185,11 @@ msgid "The percentage of the amount to be charged as overhead"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "This invoice is already paid."
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete
 msgid ""
 "This option permanently removes any track of email after it's been sent, "
@@ -1306,14 +1351,34 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "amounting in"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_bankayma_vendor_invite
 msgid "bankayma.vendor.invite"
 msgstr "הזמנת ספקים"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "bill"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "expected"
 msgstr "צפוי"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "from"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "invoice"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
