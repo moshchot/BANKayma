@@ -230,6 +230,11 @@ msgid "Comment"
 msgstr "הערה"
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_comment_wizard
+msgid "Comment Wizard"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_company
 msgid "Companies"
 msgstr "יוזמות"
