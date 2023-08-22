@@ -369,3 +369,14 @@ class TestBankaymaAccount(TransactionCase):
             extra_context={"default_journal_id": journal_parent.id},
         )
         self.assertEqual(invoice_parent.name, "shared00004")
+
+    def test_individual_il_vat(self):
+        """Test that the system accepts vats from individials in IL"""
+        partner = self.env["res.partner"].create(
+            {
+                "name": "individual",
+                "country_id": self.env.ref("base.il").id,
+                "is_company": False,
+            }
+        )
+        partner.vat = "555"
