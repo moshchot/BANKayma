@@ -94,6 +94,7 @@ class CustomerPortal(portal.CustomerPortal):
                 error_message.append(_("Banking information is mandatory for vendors"))
         fpos = (
             request.env["account.fiscal.position"]
+            .sudo()
             .browse(int(data.get("property_account_position_id") or 0))
             .exists()
         )
