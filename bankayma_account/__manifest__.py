@@ -2,7 +2,7 @@
 {
     "name": "BANKayma (account)",
     "summary": "BANKayma accounting customizations",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
@@ -28,6 +28,7 @@
         "bankayma_base",
         "company_cascade",
         "currency_rate_update",
+        "email_template_qweb",
         "l10n_il",
         "l10n_il_bank",
         "mis_builder",
@@ -40,6 +41,7 @@
     "data": [
         "data/account_payment_method.xml",
         "data/product_product.xml",
+        "data/mail_template_views.xml",
         "data/mail_template.xml",
         "data/res_company.xml",
         "data/tier_definition.xml",
