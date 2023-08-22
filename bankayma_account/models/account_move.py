@@ -418,6 +418,8 @@ class AccountMove(models.Model):
                     ("amount", "=", tax_percentage),
                     ("price_include", "=", True),
                     ("include_base_amount", "=", True),
+                    ("is_base_affected", "=", False),
+                    ("amount_type", "=", "division"),
                     ("company_id", "=", company.id),
                 ]
             )
@@ -430,6 +432,7 @@ class AccountMove(models.Model):
                     "price_include": True,
                     "is_base_affected": False,
                     "include_base_amount": True,
+                    "amount_type": "division",
                     "invoice_repartition_line_ids": [
                         (0, 0, {"repartition_type": "base"}),
                         (
