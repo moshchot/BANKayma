@@ -9,7 +9,7 @@
             <field name="model_id" ref="account.model_account_move" />
             <field name="state">code</field>
             <field name="code">
-                for this in (records or record):
+                for this in (records or record).with_context(skip_validation_check=True):
                     this.action_post()
                     this._bankayma_pay(journal=this.company_id.overhead_payment_journal_id)
                     for invoice in this.auto_invoice_id:
@@ -38,6 +38,7 @@
         <field
             name="definition_domain"
         >[("move_type", "=", "in_invoice"), ("journal_id.intercompany_purchase_company_id", "!=", False), ("auto_invoice_id.journal_id.intercompany_overhead_company_id", "=", False)]</field>
+        <field name="has_comment" eval="True" />
         <field
             name="server_action_id"
             ref="action_post_validation_intercompany_purchase"
