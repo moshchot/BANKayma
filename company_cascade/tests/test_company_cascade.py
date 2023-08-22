@@ -17,6 +17,12 @@ class TestCompanyCascade(TransactionCase):
                 "code": "cascade.code",
             }
         )
+        cls.journal = cls.env["account.journal"].create(
+            {
+                "name": "Bank journal",
+                "type": "bank",
+            }
+        )
         cls.cascading_child = cls.env["res.company"].create(
             {
                 "name": "Cascading child",
@@ -65,6 +71,13 @@ class TestCompanyCascade(TransactionCase):
             self.account.code,
             self.account.company_cascade_child_ids[:1].code,
         )
+        self._apply_cascade_wizard(self.journal.default_account_id)
+        self._apply_cascade_wizard(self.journal.suspense_account_id)
+        self._apply_cascade_wizard(self.journal.profit_account_id)
+        self._apply_cascade_wizard(self.journal.loss_account_id)
+        self._apply_cascade_wizard(self.journal.sequence_id)
+        self._apply_cascade_wizard(self.journal)
+        self.assertTrue(self.journal.outbound_payment_method_line_ids)
 
     def test_cascade_translations(self):
         """Test that we propagate translations correctly"""
