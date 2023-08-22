@@ -466,5 +466,8 @@ class AccountMove(models.Model):
         return result
 
     def validate_tier(self):
-        super().validate_tier()
-        return {"type": "ir.actions.act_window.page.list"}
+        result = super().validate_tier()
+        if result:
+            return result
+        else:
+            return {"type": "ir.actions.act_window.page.list"}
