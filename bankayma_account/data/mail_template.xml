@@ -16,4 +16,9 @@
         </field>
     </record>
 
+    <record id="account.email_template_edi_invoice" model="mail.template">
+        <field name="body_type">qweb_view</field>
+        <field name="body_view_id" ref="qweb_template_edi_invoice" />
+    </record>
+
 </odoo>
