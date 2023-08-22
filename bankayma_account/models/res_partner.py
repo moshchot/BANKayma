@@ -10,3 +10,10 @@ class ResPartner(models.Model):
     signup_group_ids = fields.Many2many("res.groups")
     bankayma_vendor_tax_percentage = fields.Float("Custom vendor tax")
     bankayma_vendor_max_amount = fields.Float("Max amount")
+
+    def check_vat(self):
+        """Defuse vat check for individuals in IL"""
+        il = self.env.ref("base.il")
+        return super(
+            ResPartner, self.filtered(lambda x: x.is_company or x.country_id != il)
+        ).check_vat()
