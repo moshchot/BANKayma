@@ -89,6 +89,11 @@ msgid "Future features"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_ir_http
+msgid "HTTP Routing"
+msgstr ""
+
+#. module: bankayma_base
 #. odoo-javascript
 #: code:addons/bankayma_base/static/src/xml/BoardController.xml:0
 #, python-format
