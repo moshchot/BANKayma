@@ -1167,8 +1167,8 @@ msgstr "טאג"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
-msgid "Tax deduction %"
-msgstr "אחוז ניכוי מס"
+msgid "Tax"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_partner_vat
