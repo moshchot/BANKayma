@@ -192,6 +192,13 @@ msgid "Bankayma Vendor Specific"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_vendor_tax_exists
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_vendor_tax_exists
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_vendor_tax_exists
+msgid "Bankayma Vendor Tax Exists"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
@@ -320,6 +327,7 @@ msgid "Contents"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 msgid "Create"
 msgstr ""
@@ -1300,6 +1308,11 @@ msgstr ""
 #: model:tier.definition,name:bankayma_account.tier_definition_move_in
 msgid "Vendor's docs Validation"
 msgstr "אישור מסמכי ספק"
+
+#. module: bankayma_account
+#: model:account.tax.group,name:bankayma_account.tax_group_vendor_specific
+msgid "Vendor-specific tax"
+msgstr ""
 
 #. module: bankayma_account
 #. odoo-python
