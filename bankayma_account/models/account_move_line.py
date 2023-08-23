@@ -8,7 +8,7 @@ class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     bankayma_parent_move_line_id = fields.Many2one("account.move.line")
-    bankayma_immutable = fields.Boolean()
+    bankayma_immutable = fields.Boolean(copy=False)
     bankayma_product_domain = fields.Binary(compute="_compute_bankayma_product_domain")
 
     def _compute_name(self):
@@ -36,6 +36,7 @@ class AccountMoveLine(models.Model):
         ):
             return (
                 super()._get_computed_taxes()
+                + self.move_id.fiscal_position_id.bankayma_tax_id
                 + self.move_id._portal_get_or_create_tax(
                     self.move_id.company_id,
                     self,
