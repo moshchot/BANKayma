@@ -25,12 +25,12 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "(with reference:"
-msgstr ""
+msgstr "(סימוכין:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<br/><br/>/"
-msgstr ""
+msgstr "<br/><br/>/"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -1167,7 +1167,7 @@ msgstr "טאג"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
-msgid "Tax"
+msgid "Tax deduction %"
 msgstr "אחוז ניכוי מס"
 
 #. module: bankayma_account
