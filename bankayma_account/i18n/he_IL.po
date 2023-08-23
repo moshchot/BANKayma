@@ -28,12 +28,12 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<br/><br/>Do not hesitate to contact us if you have any questions."
-msgstr ""
+msgstr "<br/><br/לכל דבר ועניין <br/><br/ *ביל"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<br/><br/>Here is your"
-msgstr ""
+msgstr "לצפייה ב"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -49,6 +49,11 @@ msgid ""
 "div>\n"
 "        "
 msgstr ""
+"<h1>הזמנה לפורטל הספקים שלנו</h1>\n"
+"            <div>לדרישות תשלום <a t-attf-href=\"{{ object.signup_url }}&amp;"
+"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">פה בלינק</a></"
+"div>\n"
+"        "
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -113,7 +118,7 @@ msgstr "צרופות"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__author_id
 msgid "Author"
-msgstr ""
+msgstr "מאת"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__author_id
@@ -203,7 +208,7 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "Banking information is mandatory for vendors"
-msgstr ""
+msgstr "יש למלא פרטי בנק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -309,7 +314,7 @@ msgid ""
 "                    <span class=\"fa fa-long-arrow-right\"/>"
 msgstr ""
 "אישור\n"
-"                    <span class=\"fa fa-long-arrow-right\"/>"
+"                    <span class=\"fa fa-long-arrow-left\"/>"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -330,7 +335,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 msgid "Create"
-msgstr ""
+msgstr "חדש"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_company_create
@@ -377,7 +382,7 @@ msgstr "לוח בקרה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Dear"
-msgstr ""
+msgstr "אהלן"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
@@ -478,7 +483,7 @@ msgstr "הערה..."
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "Fill in a percentage between 0 and 100"
-msgstr ""
+msgstr "מספר בין 1 ל 100"
 
 #. module: bankayma_account
 #. odoo-python
@@ -532,7 +537,7 @@ msgstr "בתשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "In:"
-msgstr "-"
+msgstr "נכנס:"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
@@ -1016,7 +1021,7 @@ msgstr "אמצעי תשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Payment will be remitted in next round"
-msgstr ""
+msgstr "התשלום יועבר בסבב התשלומים הקרוב"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_open
@@ -1027,7 +1032,7 @@ msgstr "בתשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Please remit payment at your earliest convenience."
-msgstr ""
+msgstr "תודה על העברת התשלום בהקדם או כפי שסוכם"
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template
@@ -1130,7 +1135,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Tag"
-msgstr ""
+msgstr "טאג"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax
@@ -1178,14 +1183,14 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "The VAT is mandatory for vendors"
-msgstr ""
+msgstr "יש למלא מספר ח"פ"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "The fiscal position is mandatory for vendors"
-msgstr ""
+msgstr "יש למלא מעמד פיסקלי"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_overhead_percentage
@@ -1195,7 +1200,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "This invoice is already paid."
-msgstr ""
+msgstr "חשבונית זו שולמה במלואה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete
@@ -1312,7 +1317,7 @@ msgstr "אישור מסמכי ספק"
 #. module: bankayma_account
 #: model:account.tax.group,name:bankayma_account.tax_group_vendor_specific
 msgid "Vendor-specific tax"
-msgstr ""
+msgstr "ניכויי מס ספק"
 
 #. module: bankayma_account
 #. odoo-python
@@ -1366,7 +1371,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "amounting in"
-msgstr ""
+msgstr "על סך"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_bankayma_vendor_invite
@@ -1376,7 +1381,7 @@ msgstr "הזמנת ספקים"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "bill"
-msgstr ""
+msgstr "דרישת תשלום ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -1386,12 +1391,12 @@ msgstr "צפוי"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "from"
-msgstr ""
+msgstr "מ"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "invoice"
-msgstr ""
+msgstr "דרישת תשלום"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
