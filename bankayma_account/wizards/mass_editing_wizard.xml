@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_mass_editing_wizard_form" model="ir.ui.view">
+        <field name="model">mass.editing.wizard</field>
+        <field
+            name="inherit_id"
+            ref="server_action_mass_edit.view_mass_editing_wizard_form"
+        />
+        <field name="arch" type="xml">
+            <form position="inside">
+                <field name="default_account_id" invisible="True" />
+            </form>
+        </field>
+    </record>
+
+</odoo>

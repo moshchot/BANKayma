@@ -59,6 +59,7 @@
         "views/templates.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/bankayma_vendor_invite.xml",
+        "wizards/mass_editing_wizard.xml",
     ],
     "assets": {
         "web.assets_backend": [

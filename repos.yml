@@ -133,10 +133,9 @@ server-ux:
     oca: https://github.com/OCA/server-ux.git
     hbrunn: https://github.com/hbrunn/server-ux.git
   merges:
-    # commit before https://github.com/OCA/server-ux/pull/637
-    - oca f30063c9218764f22aadd1f3f4ec99c832539b83
     - hbrunn 16.0-base_tier_validation-dynamic_validation_flag
     - hbrunn 16.0-base_tier_validation_server_action
+    - hbrunn 16.0-server_action_mass_edit-o2m
 social:
   defaults:
     depth: 1

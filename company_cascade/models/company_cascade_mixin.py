@@ -42,6 +42,12 @@ class CompanyCascadeMixin(models.AbstractModel):
         return result
 
     def write(self, vals):
+        if self.env.context.get("mass_edit"):
+            result = True
+            for this in self:
+                write_vals = self._company_cascade_values(this.company_id, vals)
+                result &= this.with_context(mass_edit=None).write(write_vals)
+            return result
         result = super().write(vals)
         if self._company_cascade_cascade_write and self.env.context.get(
             "company_cascade", True
