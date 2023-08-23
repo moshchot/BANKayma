@@ -16,6 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "%(name)s %(percentage)d%%"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "(with reference:"
 msgstr ""
@@ -106,6 +113,11 @@ msgstr "טאגים אנליטיים"
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_plans
 msgid "Analytic Plans"
 msgstr "תכניות אנליטיות"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
+msgid "Apply default tax"
+msgstr ""
 
 #. module: bankayma_account
 #. odoo-python
@@ -366,8 +378,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_tax_percentage
-msgid "Custom vendor tax"
-msgstr "ניכוי מס ספק"
+msgid "Custom tax"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -532,6 +544,16 @@ msgstr "מזהה"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_id
 msgid "Impose tax"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_id_label
+msgid "Imposed tax label"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_id_optional
+msgid "Imposed tax optional"
 msgstr ""
 
 #. module: bankayma_account
@@ -1169,6 +1191,11 @@ msgid "Tax deduction"
 msgstr "ניכוי מס"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_group_id
+msgid "Tax group"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__template_company_id
 msgid "Template company"
 msgstr ""
@@ -1206,6 +1233,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "This invoice is already paid."
 msgstr "חשבונית זו שולמה במלואה"
+
+#. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_fiscal_position__bankayma_tax_id_label
+msgid "This is the label users will see in the portal and invoice forms"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete
@@ -1253,6 +1285,20 @@ msgstr "לתשלום:"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__use_active_domain
 msgid "Use active domain"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_apply_default_tax
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_apply_default_tax
+msgid "Use imposed tax"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_deduct_tax_use_max_amount
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_use_max_amount
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_deduct_tax_use_max_amount
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_deduct_tax_use_max_amount
+msgid "Use max amount"
 msgstr ""
 
 #. module: bankayma_account
@@ -1318,18 +1364,6 @@ msgstr ""
 #: model:tier.definition,name:bankayma_account.tier_definition_move_in
 msgid "Vendor's docs Validation"
 msgstr "אישור מסמכי ספק"
-
-#. module: bankayma_account
-#: model:account.tax.group,name:bankayma_account.tax_group_vendor_specific
-msgid "Vendor-specific tax"
-msgstr "ניכויי מס ספק"
-
-#. module: bankayma_account
-#. odoo-python
-#: code:addons/bankayma_account/models/account_move.py:0
-#, python-format
-msgid "Vendor-specific tax %d%%"
-msgstr " %d%% ניכוי מס ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
