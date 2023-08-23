@@ -1183,7 +1183,7 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "The VAT is mandatory for vendors"
-msgstr "יש למלא מספר ח"פ"
+msgstr "יש למלא מספר עוסק"
 
 #. module: bankayma_account
 #. odoo-python
