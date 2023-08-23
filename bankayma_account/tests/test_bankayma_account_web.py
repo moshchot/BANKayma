@@ -21,3 +21,9 @@ class TestBankaymaAccountWeb(HttpCase):
         )
         self.assertEqual(response.status_code, 303)
         self.assertIn("action", response.headers.get("location", ""))
+
+    def test_profile(self):
+        self.authenticate("demo", "demo")
+        self.url_open("/my/account")
+        self.url_open("/my/invoices/new")
+        # TODO: actually do something useful here, run a tour or similar
