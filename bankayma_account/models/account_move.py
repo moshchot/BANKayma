@@ -56,6 +56,9 @@ class AccountMove(models.Model):
     bankayma_deduct_tax = fields.Boolean(
         related="fiscal_position_id.bankayma_deduct_tax"
     )
+    bankayma_deduct_tax_use_max_amount = fields.Boolean(
+        related="fiscal_position_id.bankayma_deduct_tax_use_max_amount"
+    )
     bankayma_vendor_max_amount = fields.Float(
         related="partner_id.bankayma_vendor_max_amount", readonly=False
     )
@@ -406,7 +409,7 @@ class AccountMove(models.Model):
 
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):
         AccountTax = self.env["account.tax"].with_company(company)
-        tax_group = self.env.ref("bankayma_account.tax_group_vendor_specific")
+        tax_group = fpos.bankayma_deduct_tax_group_id
         return (
             AccountTax.search(
                 [
@@ -424,7 +427,8 @@ class AccountMove(models.Model):
             or create
             and AccountTax.create(
                 {
-                    "name": _("Vendor-specific tax %d%%") % tax_percentage,
+                    "name": _("%(name)s %(percentage)d%%")
+                    % {"name": tax_group.name, "percentage": tax_percentage},
                     "type_tax_use": "purchase",
                     "amount": tax_percentage,
                     "price_include": True,

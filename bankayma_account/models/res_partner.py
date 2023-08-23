@@ -8,8 +8,9 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     signup_group_ids = fields.Many2many("res.groups")
-    bankayma_vendor_tax_percentage = fields.Float("Custom vendor tax")
+    bankayma_vendor_tax_percentage = fields.Float("Custom tax")
     bankayma_vendor_max_amount = fields.Float("Max amount")
+    bankayma_vendor_apply_default_tax = fields.Boolean("Use imposed tax")
 
     @api.constrains("vat", "country_id")
     def check_vat(self):

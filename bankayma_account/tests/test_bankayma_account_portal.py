@@ -34,6 +34,10 @@ class TestBankaymaAccountPortal(TransactionCase):
             ],
             limit=1,
         )
+        fpos.bankayma_deduct_tax_group_id = self.env["account.tax.group"].search(
+            [],
+            limit=1,
+        )
         user.partner_id.write(
             {
                 "bankayma_vendor_tax_percentage": 42,
@@ -76,7 +80,7 @@ class TestBankaymaAccountPortal(TransactionCase):
         self.assertEqual(imposed_tax, fpos.bankayma_tax_id)
         self.assertEqual(
             vendor_tax.tax_group_id,
-            self.env.ref("bankayma_account.tax_group_vendor_specific"),
+            fpos.bankayma_deduct_tax_group_id,
         )
         self.assertEqual(vendor_tax.amount, 42)
         self.assertTrue(invoice.bankayma_vendor_max_amount, 424242)

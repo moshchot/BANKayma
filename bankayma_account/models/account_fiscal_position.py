@@ -19,13 +19,19 @@ class AccountFiscalPosition(models.Model):
         domain=[("type_tax_use", "=", "purchase")],
         check_company=True,
     )
+    bankayma_tax_id_optional = fields.Boolean("Imposed tax optional")
+    bankayma_tax_id_label = fields.Char(
+        "Imposed tax label",
+        translate=True,
+        help="This is the label users will see in the portal and invoice forms",
+    )
     bankayma_deduct_tax = fields.Boolean("Tax deduction")
+    bankayma_deduct_tax_use_max_amount = fields.Boolean("Use max amount")
     bankayma_deduct_tax_account_id = fields.Many2one(
         "account.account",
         string="Tax account",
         check_company=True,
     )
-
-    def map_tax(self, taxes):
-        """Add imposed taxes"""
-        return self.bankayma_tax_id or super().map_tax(taxes)
+    bankayma_deduct_tax_group_id = fields.Many2one(
+        "account.tax.group", string="Tax group"
+    )

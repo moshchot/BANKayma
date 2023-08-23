@@ -28,6 +28,14 @@ class AccountMoveLine(models.Model):
         return None
 
     def _get_computed_taxes(self):
+        imposed_tax = (
+            (
+                not self.move_id.fiscal_position_id.bankayma_tax_id_optional
+                or self.move_id.partner_id.bankayma_vendor_apply_default_tax
+            )
+            and self.move_id.fiscal_position_id.bankayma_tax_id
+            or self.env["account.tax"]
+        )
         if self.bankayma_immutable:
             return getattr(self, "_origin", self).tax_ids
         elif (
@@ -35,17 +43,15 @@ class AccountMoveLine(models.Model):
             and self.move_id.bankayma_vendor_tax_percentage
         ):
             return (
-                super()._get_computed_taxes()
-                + self.move_id.fiscal_position_id.bankayma_tax_id
-                + self.move_id._portal_get_or_create_tax(
-                    self.move_id.company_id,
-                    self,
-                    self.move_id.bankayma_vendor_tax_percentage,
-                    create=False,
-                )
+                imposed_tax or super()._get_computed_taxes()
+            ) + self.move_id._portal_get_or_create_tax(
+                self.move_id.company_id,
+                self.move_id.fiscal_position_id,
+                self.move_id.bankayma_vendor_tax_percentage,
+                create=False,
             )
         else:
-            return super()._get_computed_taxes()
+            return imposed_tax or super()._get_computed_taxes()
 
     @api.depends("move_id.journal_id.bankayma_restrict_product_ids")
     def _compute_bankayma_product_domain(self):

@@ -23,11 +23,27 @@
                             name="bankayma_tax_id"
                             domain="[('company_id', '=', company_id), ('type_tax_use', '=', 'purchase')]"
                         />
+                        <field
+                            name="bankayma_tax_id_optional"
+                            attrs="{'invisible': [('bankayma_tax_id', '=', False)]}"
+                        />
+                        <field
+                            name="bankayma_tax_id_label"
+                            attrs="{'invisible': [('bankayma_tax_id_optional', '=', False)]}"
+                        />
                         <field name="bankayma_deduct_tax" />
                         <field
                             name="bankayma_deduct_tax_account_id"
                             attrs="{'invisible': [('bankayma_deduct_tax', '=', False)], 'required': [('bankayma_deduct_tax', '!=', False)]}"
                             domain="[('company_id', '=', company_id)]"
+                        />
+                        <field
+                            name="bankayma_deduct_tax_group_id"
+                            attrs="{'invisible': [('bankayma_deduct_tax', '=', False)], 'required': [('bankayma_deduct_tax', '!=', False)]}"
+                        />
+                        <field
+                            name="bankayma_deduct_tax_use_max_amount"
+                            attrs="{'invisible': [('bankayma_deduct_tax', '=', False)]}"
                         />
                     </group>
                 </page>
