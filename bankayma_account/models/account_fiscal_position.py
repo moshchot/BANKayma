@@ -25,3 +25,7 @@ class AccountFiscalPosition(models.Model):
         string="Tax account",
         check_company=True,
     )
+
+    def map_tax(self, taxes):
+        """Add imposed taxes"""
+        return self.bankayma_tax_id or super().map_tax(taxes)

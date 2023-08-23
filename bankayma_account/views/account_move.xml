@@ -177,10 +177,22 @@
             </field>
             <field name="fiscal_position_id" position="after">
                 <field name="bankayma_deduct_tax" invisible="True" />
+                <label for="bankayma_vendor_tax_percentage" />
+                <span>
                 <field
-                    name="bankayma_vendor_tax_percentage"
-                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
-                />
+                        name="bankayma_vendor_tax_percentage"
+                        attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
+                    />
+                <button
+                        name="button_bankayma_vendor_tax_create"
+                        type="object"
+                        string="Create"
+                        attrs="{'invisible': ['|', '|', '|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice'), ('bankayma_vendor_tax_exists', '=', True), ('bankayma_vendor_tax_percentage', '&lt;=', 0)]}"
+                        class="btn btn-secondary"
+                        colspan="2"
+                    />
+                </span>
+                <field name="bankayma_vendor_tax_exists" invisible="True" />
                 <field
                     name="bankayma_vendor_max_amount"
                     attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"

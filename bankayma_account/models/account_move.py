@@ -63,6 +63,9 @@ class AccountMove(models.Model):
         related="partner_id.bankayma_vendor_tax_percentage",
         readonly=False,
     )
+    bankayma_vendor_tax_exists = fields.Boolean(
+        compute="_compute_bankayma_vendor_tax_exists"
+    )
 
     def _compute_amount(self):
         """
@@ -99,34 +102,6 @@ class AccountMove(models.Model):
                 "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
                 "payment_method_line_id.payment_method_id"
             )[:1]
-
-    @api.onchange("bankayma_vendor_tax_percentage")
-    def _onchange_bankayma_vendor_tax_percentage(self):
-        if (
-            self.fiscal_position_id.bankayma_deduct_tax
-            and self.bankayma_vendor_tax_percentage
-        ):
-            tax = self._portal_get_or_create_tax(
-                self.company_id,
-                self.fiscal_position_id,
-                self.bankayma_vendor_tax_percentage,
-            )
-            for line in self.invoice_line_ids:
-                line.tax_ids = tax + line.tax_ids.filtered(lambda x: x.sequence != -1)
-
-    @api.onchange("partner_id", "fiscal_position_id")
-    def _bankayma_onchange_partner_id(self):
-        if self.fiscal_position_id.bankayma_deduct_tax:
-            tax = self._portal_get_or_create_tax(
-                self.company_id,
-                self.fiscal_position_id,
-                self.bankayma_vendor_tax_percentage,
-            )
-            for line in self.invoice_line_ids:
-                line.tax_ids = tax + (
-                    self.fiscal_position_id.bankayma_tax_id
-                    or line.tax_ids.filtered(lambda x: x.sequence != -1)
-                )
 
     @api.depends("journal_id.bankayma_restrict_partner")
     def _compute_bankayma_partner_domain(self):
@@ -186,6 +161,22 @@ class AccountMove(models.Model):
                 and this.move_type != "out_invoice"
                 or self.env.context.get("default_show_fiscal_position_id")
             )
+
+    @api.depends("bankayma_vendor_tax_percentage")
+    def _compute_bankayma_vendor_tax_exists(self):
+        for this in self:
+            this.bankayma_vendor_tax_exists = self._portal_get_or_create_tax(
+                this.company_id,
+                this.fiscal_position_id,
+                this.bankayma_vendor_tax_percentage,
+                create=False,
+            )
+
+    def write(self, vals):
+        result = super().write(vals)
+        if "bankayma_vendor_tax_percentage" in vals:
+            self.button_bankayma_vendor_tax_create()
+        return result
 
     def action_post(self):
         """
@@ -381,10 +372,14 @@ class AccountMove(models.Model):
                 invoice_line.name = post_data.get("description")
                 invoice_line.price_unit = post_data.get("amount")
             invoice = invoice_form.save()
-        line_vals = {
-            "bankayma_immutable": True,
-        }
-        invoice.invoice_line_ids.write(line_vals)
+
+        if invoice.bankayma_vendor_tax_percentage:
+            invoice.button_bankayma_vendor_tax_create()
+        invoice.invoice_line_ids.write(
+            {
+                "bankayma_immutable": True,
+            }
+        )
         invoice.invoice_line_ids.invalidate_recordset()
         attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
@@ -411,6 +406,7 @@ class AccountMove(models.Model):
 
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):
         AccountTax = self.env["account.tax"].with_company(company)
+        tax_group = self.env.ref("bankayma_account.tax_group_vendor_specific")
         return (
             AccountTax.search(
                 [
@@ -421,6 +417,8 @@ class AccountMove(models.Model):
                     ("is_base_affected", "=", False),
                     ("amount_type", "=", "division"),
                     ("company_id", "=", company.id),
+                    ("tax_group_id", "=", tax_group.id),
+                    ("bankayma_vendor_specific", "=", True),
                 ]
             )
             or create
@@ -447,6 +445,7 @@ class AccountMove(models.Model):
                     "sequence": -1,
                     "bankayma_vendor_specific": True,
                     "company_id": company.id,
+                    "tax_group_id": tax_group.id,
                 }
             )
             or AccountTax
@@ -456,6 +455,17 @@ class AccountMove(models.Model):
         self.button_cancel()
         self.unlink()
         return {"type": "ir.actions.act_window.page.list"}
+
+    def button_bankayma_vendor_tax_create(self):
+        self._portal_get_or_create_tax(
+            self.company_id,
+            self.fiscal_position_id,
+            self.bankayma_vendor_tax_percentage,
+        )
+        for line in self.invoice_line_ids.filtered(
+            lambda x: x.display_type == "product"
+        ):
+            line._compute_tax_ids()
 
     def _get_under_validation_exceptions(self):
         return super()._get_under_validation_exceptions() + ["validated_state"]
