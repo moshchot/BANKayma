@@ -27,28 +27,24 @@ class AccountMoveLine(models.Model):
                 super(AccountMoveLine, this)._compute_price_unit()
         return None
 
-    def _compute_tax_ids(self):
-        for this in self:
-            if this.bankayma_immutable:
-                this.tax_ids = getattr(this, "_origin", this).tax_ids
-            elif this.move_id.bankayma_deduct_tax and (
-                this.move_id.bankayma_vendor_tax_percentage
-                or this.move_id.partner_id.bankayma_vendor_tax_percentage
-            ):
-                super()._compute_tax_ids()
-                tax = this.move_id._portal_get_or_create_tax(
-                    this.company_id,
-                    this.move_id.fiscal_position_id,
-                    this.move_id.bankayma_vendor_tax_percentage
-                    or this.move_id.partner_id.bankayma_vendor_tax_percentage,
+    def _get_computed_taxes(self):
+        if self.bankayma_immutable:
+            return getattr(self, "_origin", self).tax_ids
+        elif (
+            self.move_id.fiscal_position_id.bankayma_deduct_tax
+            and self.move_id.bankayma_vendor_tax_percentage
+        ):
+            return (
+                super()._get_computed_taxes()
+                + self.move_id._portal_get_or_create_tax(
+                    self.move_id.company_id,
+                    self,
+                    self.move_id.bankayma_vendor_tax_percentage,
+                    create=False,
                 )
-                this.tax_ids = tax + (
-                    this.move_id.fiscal_position_id.bankayma_tax_id
-                    or this.tax_ids.filtered(lambda x: x.sequence != -1)
-                )
-            else:
-                super()._compute_tax_ids()
-        return None
+            )
+        else:
+            return super()._get_computed_taxes()
 
     @api.depends("move_id.journal_id.bankayma_restrict_product_ids")
     def _compute_bankayma_product_domain(self):

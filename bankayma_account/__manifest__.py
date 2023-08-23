@@ -40,6 +40,7 @@
     ],
     "data": [
         "data/account_payment_method.xml",
+        "data/account_tax_group.xml",
         "data/product_product.xml",
         "data/mail_template_views.xml",
         "data/mail_template.xml",
