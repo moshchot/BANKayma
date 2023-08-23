@@ -385,6 +385,11 @@ msgid "Dear"
 msgstr "אהלן"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_mass_editing_wizard__default_account_id
+msgid "Default Account"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
 msgid "Default tax and deductions"
 msgstr ""
@@ -1343,6 +1348,11 @@ msgstr ""
 msgid ""
 "When this is checked, payments for moves in child journals will create an "
 "overhead invoice for the child company"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_mass_editing_wizard
+msgid "Wizard for mass edition"
 msgstr ""
 
 #. module: bankayma_account
