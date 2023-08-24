@@ -3,7 +3,6 @@
 
     <template id="qweb_template_edi_invoice">
          <div style="margin: 0px; padding: 0px;">
-         
                 <h1> Dear
                 <t t-if="object.partner_id.parent_id">
                       <t
@@ -62,7 +61,7 @@
                       <t t-out="object.invoice_user_id.signature or ''" t-translation="off">--Mitchell Admin</t>
                     </t></p>
                 
-            <p style="margin:0px 0 12px 0;box-sizing:border-box;"/>
+            <p>
         </div>
     </template>
 
