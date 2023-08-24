@@ -11,7 +11,7 @@
                  <p></p><p>Here is your
                 <t t-if="object.move_type == 'out_invoice'">invoice <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span>
                 </t>
-                <t t-else="">bill <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span>&nbsp;&nbsp; </t><t t-if="object.invoice_origin">(with reference: <t t-out="object.invoice_origin or ''" t-translation="off">SUB003</t>)&nbsp;&nbsp;&nbsp; </t>amounting in <span style="font-weight:bold;" t-out="object.currency_id.format(object.amount_total) or ''" t-translation="off">$ 143,750.00</span>
+                <t t-else="">bill <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span> </t><t t-if="object.invoice_origin">(with reference: <t t-out="object.invoice_origin or ''" t-translation="off">SUB003</t>)&nbsp;&nbsp;&nbsp; </t>amounting in <span style="font-weight:bold;" t-out="object.currency_id.format(object.amount_total) or ''" t-translation="off">$ 143,750.00</span>
                 from <t t-out="object.company_id.name or ''" t-translation="off">YourCompany</t>.</p><p style="margin:0px 0 12px 0;box-sizing:border-box;"><strong style="box-sizing:border-box;font-weight:500;">For:&nbsp; </strong><t t-out="object.bankayma_move_line_name"></t><br></p>
                 <p style="margin:0px 0 12px 0;box-sizing:border-box;"><t t-if="object.payment_state in ('paid', 'in_payment')">This invoice is already paid.</t>
                 <t t-else="">
