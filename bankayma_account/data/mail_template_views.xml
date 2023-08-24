@@ -15,9 +15,9 @@
                 </t>
                  <t t-else="">
                      <t
-+                        t-out="object.partner_id.name or ''"
-+                        t-translation="off"
-+                    >Brandon Freeman</t>,
+                         t-out="object.partner_id.name or ''"
+                         t-translation="off"
+                     >Brandon Freeman</t>,
                  </t>
                  </h1>
                  <p/><p>Here is your
