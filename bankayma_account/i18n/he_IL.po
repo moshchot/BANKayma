@@ -37,8 +37,8 @@ msgid ""
 "        "
 msgstr ""
 "<h1>ברוכים הבאים לפורטל הספקים של בנקיימא:)</h1>\n"
-"            <div>לחיצה על<a t-attf-href=\"{{ object.signup_url }}"
-"&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">הלינק</a> "
+"            <div>לחיצה על<a t-attf-href=\"{{ object.signup_url }}&amp;"
+"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">הלינק</a> "
 "לדרישת תשלום 🤑</div>\n"
 "        "
 
@@ -51,7 +51,8 @@ msgstr "<option value=\"\">מעמד פיסקלי...</option>"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For: </strong>"
-msgstr "<strong style=\"box-sizing:border-box;font-weight:500;\">עבור: </strong>"
+msgstr ""
+"<strong style=\"box-sizing:border-box;font-weight:500;\">עבור: </strong>"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
