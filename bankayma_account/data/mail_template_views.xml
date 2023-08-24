@@ -60,8 +60,6 @@
                     <t t-if="object.invoice_user_id.signature">
                       <t t-out="object.invoice_user_id.signature or ''" t-translation="off">--Mitchell Admin</t>
                     </t></p>
-                
-            <p>
         </div>
     </template>
 
