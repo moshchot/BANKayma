@@ -2,17 +2,22 @@
 <odoo>
 
     <template id="qweb_template_edi_invoice">
-        <div style="margin: 0px; padding: 0px;">
+         <div style="margin: 0px; padding: 0px;">
             <p style="box-sizing:border-box;margin: 0px; padding: 0px; font-size: 13px;">
                </p>
                 <h1> Dear
-                 <t t-if="object.partner_id.parent_id">
-                    <t t-out="object.partner_id.name or ''" t-translation="off">Brandon Freeman</t> (<t t-out="object.partner_id.parent_id.name or ''" t-translation="off">Azure Interior</t>), </t></h1>
-                 <p></p><p>Here is your
+                <t t-if="object.partner_id.parent_id">
+                     <t t-out="object.partner_id.name or ''" t-translation="off">Brandon Freeman</t> (<t t-out="object.partner_id.parent_id.name or ''" t-translation="off">Azure Interior</t>),
+                 </t>
+                 <t t-else="">
+                     <t t-out="object.partner_id.name or ''" t-translation="off">Brandon Freeman</t>,
+                 </t>
+                 </h1>
+                 <p/><p>Here is your
                 <t t-if="object.move_type == 'out_invoice'">invoice <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span>
                 </t>
-                <t t-else="">bill <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span> </t><t t-if="object.invoice_origin">(with reference: <t t-out="object.invoice_origin or ''" t-translation="off">SUB003</t>)    </t>amounting in <span style="font-weight:bold;" t-out="object.currency_id.format(object.amount_total) or ''" t-translation="off">$ 143,750.00</span>
-                from <t t-out="object.company_id.name or ''" t-translation="off">YourCompany</t>.</p><p style="margin:0px 0 12px 0;box-sizing:border-box;"><strong style="box-sizing:border-box;font-weight:500;">For: </strong><t t-out="object.bankayma_move_line_name"></t><br></p>
+                <t t-else="">bill <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span> </t><t t-if="object.invoice_origin">(with reference: <t t-out="object.invoice_origin or ''" t-translation="off">SUB003</t>)    </t> amounting in <span style="font-weight:bold;" t-out="object.currency_id.format(object.amount_total) or ''" t-translation="off">$ 143,750.00</span>
+                from <t t-out="object.company_id.name or ''" t-translation="off">YourCompany</t>.</p><p style="margin:0px 0 12px 0;box-sizing:border-box;"><strong style="box-sizing:border-box;font-weight:500;">For: </strong><t t-out="object.bankayma_move_line_name"/></p>
                 <p style="margin:0px 0 12px 0;box-sizing:border-box;"><t t-if="object.payment_state in ('paid', 'in_payment')">This invoice is already paid.</t>
                 <t t-else="">
                     <t t-if="object.move_type == 'out_invoice'">
@@ -22,11 +27,12 @@
                         </t>
                     </t>
                     <t t-else="">Payment will be remitted in next round</t></t></p>
-                    <p style="margin:0px 0 12px 0;box-sizing:border-box;">Do not hesitate to contact us if you have any questions.
-                    <t t-if="object.invoice_user_id.signature"> <br><br><t t-out="object.invoice_user_id.signature or ''" t-translation="off">--<br>Mitchell Admin</t>
+                    <p>Do not hesitate to contact us if you have any questions.
+                    <t t-if="object.invoice_user_id.signature">
+                      <t t-out="object.invoice_user_id.signature or ''" t-translation="off">--Mitchell Admin</t>
                     </t></p>
                 
-            <p style="margin:0px 0 12px 0;box-sizing:border-box;"></p>
+            <p style="margin:0px 0 12px 0;box-sizing:border-box;"/>
         </div>
     </template>
 
