@@ -20,7 +20,7 @@
                      >Brandon Freeman</t>,
                  </t>
                  </h1>
-                 <p/><p>Here is your
+                 <p>Here is your
                 <t t-if="object.move_type == 'out_invoice'">invoice <span style="font-weight:bold;" t-out="object.name or ''" t-translation="off">INV/2021/05/0005</span>
                 </t>
                  <t t-else="">bill <span
@@ -40,12 +40,11 @@
                  from <t
                      t-out="object.company_id.name or ''"
                      t-translation="off"
-                 >YourCompany</t>.</p><p
-                 style="margin:0px 0 12px 0;box-sizing:border-box;"
-             ><strong style="box-sizing:border-box;font-weight:500;">For: </strong><t
+                 >YourCompany</t>.</p>
+            <p><strong style="box-sizing:border-box;font-weight:500;">For: </strong><t
                      t-out="object.bankayma_move_line_name"
                  /></p>
-                 <p style="margin:0px 0 12px 0;box-sizing:border-box;"><t
+                 <p><t
                      t-if="object.payment_state in ('paid', 'in_payment')"
                  >This invoice is already paid.</t>
                 <t t-else="">
@@ -60,7 +59,6 @@
                     <t t-if="object.invoice_user_id.signature">
                       <t t-out="object.invoice_user_id.signature or ''" t-translation="off">--Mitchell Admin</t>
                     </t></p>
-             <p>
         </div>
     </template>
 
