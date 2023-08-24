@@ -36,6 +36,11 @@ msgid ""
 "and get paid 🤑</div>\n"
 "        "
 msgstr ""
+"<h1>ברוכים הבאים לפורטל הספקים של בנקיימא:)</h1>\n"
+"            <div>לחיצה על<a t-attf-href=\"{{ object.signup_url }}"
+"&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">הלינק</a> "
+"לדרישת תשלום 🤑</div>\n"
+"        "
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -46,7 +51,7 @@ msgstr "<option value=\"\">מעמד פיסקלי...</option>"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For: </strong>"
-msgstr ""
+msgstr "<strong style=\"box-sizing:border-box;font-weight:500;\">עבור: </strong>"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -359,7 +364,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_tax_percentage
 msgid "Custom tax"
-msgstr ""
+msgstr "ניכוי מס הכנסה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -422,7 +427,7 @@ msgstr "שם תצוגה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Do not hesitate to contact us if you have any questions."
-msgstr ""
+msgstr "לכל דבר ועניין"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete_message
@@ -518,7 +523,7 @@ msgstr "מאת:"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Here is your"
-msgstr ""
+msgstr "להלן"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -772,7 +777,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Name"
-msgstr "שם"
+msgstr "שם עוסק"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__need_validation
@@ -1440,4 +1445,4 @@ msgstr "או"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "with following communication for your payment:"
-msgstr ""
+msgstr "עם הסימוכין:"
