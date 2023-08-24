@@ -50,17 +50,12 @@ msgstr ""
 #. module: bankayma_account
 #: model:mail.template,body_html:bankayma_account.template_vendor_invite
 msgid ""
-"<h1>Invitation</h1>\n"
-"            <div>Here is the <a t-attf-href=\"{{ object.signup_url }}&amp;"
-"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">link</a></"
-"div>\n"
+"<h1>Welcome aboard our BANKayma vendors portal:)</h1>\n"
+"            <div>Please follow this <a t-attf-href=\"{{ object.signup_url }}"
+"&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">link</a> "
+"and get paid 🤑</div>\n"
 "        "
 msgstr ""
-"<h1>הזמנה לפורטל הספקים שלנו</h1>\n"
-"            <div>לדרישות תשלום <a t-attf-href=\"{{ object.signup_url }}&amp;"
-"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">פה בלינק</a></"
-"div>\n"
-"        "
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
