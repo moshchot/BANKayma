@@ -9,10 +9,10 @@
         <field name="subject">Invitation to vendor portal</field>
         <field name="partner_to">{{object.id}}</field>
         <field name="body_html" type="html">
-            <h1>Invitation</h1>
-            <div>Here is the <a
+            <h1>Welcome aboard our BANKayma vendors portal:)</h1>
+            <div>Please follow this <a
                     t-attf-href="{{ object.signup_url }}&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew"
-                >link</a></div>
+                >link</a> and get paid 🤑</div>
         </field>
     </record>
 
