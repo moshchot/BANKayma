@@ -28,26 +28,6 @@ msgid "(with reference:"
 msgstr "(סימוכין:"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<br/><br/>/"
-msgstr "<br/><br/>/"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<br/><br/>Do not hesitate to contact us if you have any questions."
-msgstr "<br/><br/לכל דבר ועניין <br/><br/ *ביל"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<br/><br/>Here is your"
-msgstr "לצפייה ב"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<br/><br/>Please use the following communication for your payment:"
-msgstr ""
-
-#. module: bankayma_account
 #: model:mail.template,body_html:bankayma_account.template_vendor_invite
 msgid ""
 "<h1>Welcome aboard our BANKayma vendors portal:)</h1>\n"
@@ -62,6 +42,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "<option value=\"\">Fiscal position...</option>"
 msgstr "<option value=\"\">מעמד פיסקלי...</option>"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For: </strong>"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -435,6 +420,11 @@ msgid "Display Name"
 msgstr "שם תצוגה"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "Do not hesitate to contact us if you have any questions."
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete_message
 msgid ""
 "Do not keep a copy of the email in the document communication history (mass "
@@ -524,6 +514,11 @@ msgstr "מאת"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
 msgid "From:"
 msgstr "מאת:"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "Here is your"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
@@ -1441,3 +1436,8 @@ msgstr "דרישת תשלום"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 msgid "or"
 msgstr "או"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "with following communication for your payment:"
+msgstr ""
