@@ -13,17 +13,21 @@ class AccountFiscalPosition(models.Model):
         "upload a document for every invoice",
     )
     vendor_doc_description = fields.Html()
-    bankayma_tax_id = fields.Many2one(
+    bankayma_tax_ids = fields.Many2many(
         "account.tax",
+        "account_fiscal_position_bankayma_tax",
+        "fiscal_position_id",
+        "tax_id",
         string="Impose tax",
         domain=[("type_tax_use", "=", "purchase")],
         check_company=True,
     )
-    bankayma_tax_id_optional = fields.Boolean("Imposed tax optional")
-    bankayma_tax_id_label = fields.Char(
-        "Imposed tax label",
-        translate=True,
-        help="This is the label users will see in the portal and invoice forms",
+    optional_tax_ids = fields.Many2many(
+        "account.tax",
+        "account_fiscal_position_optional_tax",
+        "fiscal_position_id",
+        "tax_id",
+        check_company=True,
     )
     bankayma_deduct_tax = fields.Boolean("Tax deduction")
     bankayma_deduct_tax_use_max_amount = fields.Boolean("Use max amount")

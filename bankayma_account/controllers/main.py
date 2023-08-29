@@ -17,6 +17,12 @@ class CustomerPortal(portal.CustomerPortal):
                 "bankayma_vendor_max_amount",
                 "bankayma_vendor_apply_default_tax",
             ]
+            + [
+                "tax_%d" % tax.id
+                for tax in self._bankayma_get_fiscal_positions().mapped(
+                    "optional_tax_ids"
+                )
+            ]
         )
         for optional_field in ("street", "city", "zip", "country_id"):
             if optional_field in self.MANDATORY_BILLING_FIELDS:
@@ -36,9 +42,8 @@ class CustomerPortal(portal.CustomerPortal):
             for leaf in result
         ]
 
-    def _prepare_portal_layout_values(self):
-        result = super()._prepare_portal_layout_values()
-        result["fiscal_positions"] = (
+    def _bankayma_get_fiscal_positions(self):
+        return (
             request.env["account.fiscal.position"]
             .sudo()
             .search(
@@ -47,6 +52,10 @@ class CustomerPortal(portal.CustomerPortal):
                 ]
             )
         )
+
+    def _prepare_portal_layout_values(self):
+        result = super()._prepare_portal_layout_values()
+        result["fiscal_positions"] = self._bankayma_get_fiscal_positions()
         return result
 
     def on_account_update(self, values, partner):
@@ -55,6 +64,20 @@ class CustomerPortal(portal.CustomerPortal):
                 values[field_name] = int(values[field_name])
             except BaseException:
                 values[field_name] = False
+        fpos = (
+            request.env["account.fiscal.position"]
+            .sudo()
+            .browse(values["property_account_position_id"])
+            & self._bankayma_get_fiscal_positions()
+        )
+        vendor_taxes = request.env["account.tax"].sudo()
+        for field_name in values.copy():
+            if field_name.startswith("tax_"):
+                vendor_taxes += (
+                    vendor_taxes.browse(int(values.pop(field_name)))
+                    & fpos.optional_tax_ids
+                )
+        values["purchase_tax_ids"] = [(6, 0, vendor_taxes.ids)]
         bank_account_fields = ("bank", "bank_branch_code", "bank_acc_number")
         bank_vals = {
             key[len("bank_") :]: request.httprequest.form.get(key)

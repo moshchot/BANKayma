@@ -19,7 +19,7 @@ class TestBankaymaAccountPortal(TransactionCase):
         fpos = self.env["account.fiscal.position"].search(
             [("company_id", "=", company.id)], limit=1
         )
-        fpos.bankayma_tax_id = self.env["account.tax"].create(
+        fpos.bankayma_tax_ids = self.env["account.tax"].create(
             {
                 "name": "Imposed tax",
                 "type_tax_use": "purchase",
@@ -42,6 +42,7 @@ class TestBankaymaAccountPortal(TransactionCase):
             {
                 "bankayma_vendor_tax_percentage": 42,
                 "bankayma_vendor_max_amount": 424242,
+                "purchase_tax_ids": [(6, 0, fpos.bankayma_tax_ids.ids)],
             }
         )
         invoice = (
@@ -77,7 +78,7 @@ class TestBankaymaAccountPortal(TransactionCase):
         taxes = invoice.invoice_line_ids.tax_ids
         self.assertEqual(len(taxes), 2)
         vendor_tax, imposed_tax = taxes
-        self.assertEqual(imposed_tax, fpos.bankayma_tax_id)
+        self.assertEqual(imposed_tax, fpos.bankayma_tax_ids)
         self.assertEqual(
             vendor_tax.tax_group_id,
             fpos.bankayma_deduct_tax_group_id,

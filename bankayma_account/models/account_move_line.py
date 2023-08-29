@@ -28,20 +28,13 @@ class AccountMoveLine(models.Model):
         return None
 
     def _get_computed_taxes(self):
-        imposed_tax = (
-            (
-                not self.move_id.fiscal_position_id.bankayma_tax_id_optional
-                or self.move_id.partner_id.bankayma_vendor_apply_default_tax
-            )
-            and self.move_id.fiscal_position_id.bankayma_tax_id
-            or self.env["account.tax"]
+        fpos = self.move_id.fiscal_position_id
+        imposed_tax = fpos.bankayma_tax_ids + (
+            fpos.optional_tax_ids & self.move_id.partner_id.purchase_tax_ids
         )
         if self.bankayma_immutable:
             return getattr(self, "_origin", self).tax_ids
-        elif (
-            self.move_id.fiscal_position_id.bankayma_deduct_tax
-            and self.move_id.bankayma_vendor_tax_percentage
-        ):
+        elif fpos.bankayma_deduct_tax and self.move_id.bankayma_vendor_tax_percentage:
             return (
                 imposed_tax or super()._get_computed_taxes()
             ) + self.move_id._portal_get_or_create_tax(

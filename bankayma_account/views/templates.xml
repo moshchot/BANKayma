@@ -59,8 +59,8 @@
                     jQuery('#bankayma_vendor_tax_percentage').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax') == 'True');
                     jQuery('#bankayma_vendor_max_amount').prop('required', jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
                     jQuery('#bankayma_vendor_max_amount').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
-                    jQuery('#bankayma_vendor_apply_default_tax').parent().parent().children('label').text(jQuery(this.selectedOptions).data('optional_default_tax_label'));
-                    jQuery('#bankayma_vendor_apply_default_tax').parent().parent().toggle(jQuery(this.selectedOptions).data('optional_default_tax') == 'True');
+                    jQuery('.optional-tax').hide();
+                    jQuery(this.selectedOptions).data('optional_taxes').forEach(function(tax_id) { jQuery('#tax_' + tax_id).parent().parent().show() });
                     "
                 >
                     <option value="">Fiscal position...</option>
@@ -70,9 +70,7 @@
                             t-att-selected="fpos.id == int(property_account_position_id) if property_account_position_id else fpos.id == partner.property_account_position_id.id"
                             t-att-data-deduct_tax="fpos.bankayma_deduct_tax"
                             t-att-data-deduct_tax_use_max_amount="fpos.bankayma_deduct_tax_use_max_amount"
-                            t-att-data-optional_default_tax="fpos.bankayma_tax_id_optional"
-                            t-att-data-optional_default_tax_label="fpos.bankayma_tax_id_label"
-                            t-att-data-=""
+                            t-att-data-optional_taxes="json.dumps(fpos.optional_tax_ids.ids)"
                         >
                             <t t-esc="fpos.name" />
                         </option>
@@ -112,19 +110,21 @@
                 />
             </div>
             <div
-                t-attf-class="mb-3 col-xl-6 #{error.get('bankayma_vendor_apply_default_tax') and 'o_has_error' or ''}"
+                t-attf-class="mb-3 col-xl-6 optional-tax"
+                t-foreach="fiscal_positions.mapped('optional_tax_ids')"
+                t-as="tax"
             >
-                <label
-                    class="col-form-label"
-                    for="bankayma_vendor_apply_default_tax"
-                >Apply default tax</label>
+                <label class="col-form-label" for="bankayma_vendor_apply_default_tax"><t
+                        t-out="tax.description or tax.name"
+                    /></label>
                 <div class="form-check form-switch">
                 <input
                         type="checkbox"
-                        t-attf-class="form-check-input #{error.get('bankayma_vendor_apply_default_tax') and 'is-invalid' or ''}"
-                        name="bankayma_vendor_apply_default_tax"
-                        id="bankayma_vendor_apply_default_tax"
-                        t-att-checked="bankayma_vendor_apply_default_tax or request.env.user.partner_id.bankayma_vendor_apply_default_tax"
+                        t-attf-class="form-check-input #{error.get('tax_%d' % tax.id) and 'is-invalid' or ''}"
+                        t-attf-name="tax_#{tax.id}"
+                        t-attf-id="tax_#{tax.id}"
+                        t-att-value="tax.id"
+                        t-att-checked="'tax_%d' % tax.id in request.httprequest.form or tax in request.env.user.partner_id.purchase_tax_ids"
                     />
                 </div>
             </div>

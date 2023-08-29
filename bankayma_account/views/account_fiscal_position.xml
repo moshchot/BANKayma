@@ -20,16 +20,14 @@
                 <page name="tax_deduction" string="Default tax and deductions">
                     <group>
                         <field
-                            name="bankayma_tax_id"
-                            domain="[('company_id', '=', company_id), ('type_tax_use', '=', 'purchase')]"
+                            name="bankayma_tax_ids"
+                            widget="many2many_tags"
+                            domain="[('company_id', '=', company_id), ('type_tax_use', '=', type_position_use)]"
                         />
                         <field
-                            name="bankayma_tax_id_optional"
-                            attrs="{'invisible': [('bankayma_tax_id', '=', False)]}"
-                        />
-                        <field
-                            name="bankayma_tax_id_label"
-                            attrs="{'invisible': [('bankayma_tax_id_optional', '=', False)]}"
+                            name="optional_tax_ids"
+                            widget="many2many_tags"
+                            domain="[('company_id', '=', company_id), ('type_tax_use', '=', type_position_use)]"
                         />
                         <field name="bankayma_deduct_tax" />
                         <field
