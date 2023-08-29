@@ -163,6 +163,7 @@ class AccountMove(models.Model):
                 and not this.journal_id.intercompany_overhead_company_id
                 and this.move_type != "out_invoice"
                 or self.env.context.get("default_show_fiscal_position_id")
+                or self.env.user.has_group("bankayma_base.group_full")
             )
 
     @api.depends("bankayma_vendor_tax_percentage")
