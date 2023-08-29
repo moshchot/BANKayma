@@ -13,6 +13,7 @@
         "account_due_list_payment_mode",
         "account_financial_report",
         "account_fiscal_position_vat_check",
+        "account_fiscal_position_type",
         "account_template_active",
         "account_mass_reconcile",
         "account_move_name_sequence",
