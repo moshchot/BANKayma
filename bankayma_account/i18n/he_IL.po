@@ -101,11 +101,6 @@ msgid "Analytic Plans"
 msgstr "תכניות אנליטיות"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
-msgid "Apply default tax"
-msgstr ""
-
-#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__attachment_ids
@@ -538,18 +533,8 @@ msgid "ID"
 msgstr "מזהה"
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_ids
 msgid "Impose tax"
-msgstr ""
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_id_label
-msgid "Imposed tax label"
-msgstr ""
-
-#. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_id_optional
-msgid "Imposed tax optional"
 msgstr ""
 
 #. module: bankayma_account
@@ -861,6 +846,11 @@ msgid "Only intercompany"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__optional_tax_ids
+msgid "Optional Tax"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__lang
 msgid ""
 "Optional translation language (ISO code) to select when sending out an "
@@ -1081,6 +1071,12 @@ msgid "Projects"
 msgstr "פרוייקטים"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__purchase_tax_ids
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__purchase_tax_ids
+msgid "Purchase taxes"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Rank"
 msgstr ""
@@ -1229,11 +1225,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "This invoice is already paid."
 msgstr "חשבונית זו שולמה במלואה"
-
-#. module: bankayma_account
-#: model:ir.model.fields,help:bankayma_account.field_account_fiscal_position__bankayma_tax_id_label
-msgid "This is the label users will see in the portal and invoice forms"
-msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete
