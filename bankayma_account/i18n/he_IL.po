@@ -354,6 +354,41 @@ msgid "Created on"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__14
+msgid "Credit Donation Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__20
+msgid "Credit Expense Invoice"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__19
+msgid "Credit Expense Invoice Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__21
+msgid "Credit Expense Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__5
+msgid "Credit Invoice"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__6
+msgid "Credit Invoice And Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__7
+msgid "Credit Receipt"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_vendor_tax_percentage
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_vendor_tax_percentage
@@ -409,6 +444,11 @@ msgid "Delete Message Copy"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__9
+msgid "Delivery Note"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Description"
@@ -436,6 +476,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Document"
 msgstr "מסמך"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__4
+msgid "Donation Receipt"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
@@ -468,6 +513,26 @@ msgstr ""
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense
 msgid "Expense"
 msgstr "הוצאה"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
+msgid "Expense Invoice"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__15
+msgid "Expense Invoice Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__17
+msgid "Expense Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__18
+msgid "Expense Request"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_expense_move
@@ -517,6 +582,11 @@ msgid "From:"
 msgstr "מאת:"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__10
+msgid "Goods Return Note"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Here is your"
 msgstr "להלן"
@@ -531,6 +601,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
 msgstr "מזהה"
+
+#. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_product_product__sumit_type
+#: model:ir.model.fields,help:bankayma_account.field_product_template__sumit_type
+msgid ""
+"If you set a value here, it will override the journal's sumit type for "
+"invoices with this product"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_tax_ids
@@ -635,6 +713,16 @@ msgstr "הזמנה לפורטל ספקים"
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_vendor_invite_form
 msgid "Invite vendors"
 msgstr "הזמנת ספקים"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__0
+msgid "Invoice"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__1
+msgid "Invoice And Receipt"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_company__invoice_auto_validation
@@ -860,6 +948,11 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__8
+msgid "Order"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__reply_to_mode
 msgid ""
 "Original Discussion: Answers go in the original document discussion "
@@ -974,6 +1067,12 @@ msgid "Overhead percentage"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_product_product__sumit_type
+#: model:ir.model.fields,field_description:bankayma_account.field_product_template__sumit_type
+msgid "Override sumit type"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_paid
@@ -1025,6 +1124,11 @@ msgid "Payment Methods"
 msgstr "אמצעי תשלום"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__13
+msgid "Payment Request"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_method_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_method_id
@@ -1053,6 +1157,12 @@ msgid "Portal"
 msgstr "פורטל"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__12
+msgid "Price Quotation"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_product_template
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_id
@@ -1066,6 +1176,11 @@ msgid "Products"
 msgstr "סעיפים"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__3
+msgid "Proforma Invoice"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Projects"
 msgstr "פרוייקטים"
@@ -1077,8 +1192,18 @@ msgid "Purchase taxes"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__11
+msgid "Purchasing Order"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Rank"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__2
+msgid "Receipt"
 msgstr ""
 
 #. module: bankayma_account
@@ -1149,6 +1274,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subtype_id
 msgid "Subtype"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.product_template_form_view
+msgid "Sumit"
 msgstr ""
 
 #. module: bankayma_account
