@@ -25,4 +25,9 @@
         "views/account_payment_method.xml",
     ],
     "demo": [],
+    "external_dependencies": {
+        "python": [
+            "strenum",
+        ],
+    },
 }
