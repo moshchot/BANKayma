@@ -75,7 +75,6 @@ class TestCompanyCascade(TransactionCase):
         self._apply_cascade_wizard(self.journal.suspense_account_id)
         self._apply_cascade_wizard(self.journal.profit_account_id)
         self._apply_cascade_wizard(self.journal.loss_account_id)
-        self._apply_cascade_wizard(self.journal.sequence_id)
         self._apply_cascade_wizard(self.journal)
         self.assertTrue(self.journal.outbound_payment_method_line_ids)
 
@@ -138,6 +137,38 @@ class TestCompanyCascade(TransactionCase):
             + tax.company_cascade_child_ids.filtered(
                 lambda x: x.company_id == self.cascading_child
             ),
+        )
+
+    def test_cascade_one2many(self):
+        """
+        Test that cascading of one2many fields works while finding equivalent records
+        """
+        tax = self.env["account.tax"].create(
+            {
+                "name": "testtax",
+            }
+        )
+        fpos = self.env["account.fiscal.position"].create(
+            {
+                "name": "test",
+                "tax_ids": [
+                    (0, 0, {"tax_src_id": tax.id}),
+                    (0, 0, {"tax_src_id": tax.id, "tax_dest_id": tax.id}),
+                ],
+            }
+        )
+        self._apply_cascade_wizard(tax)
+        self._apply_cascade_wizard(fpos)
+        child = fpos.company_cascade_child_ids
+        self.assertEqual(child.company_id, self.cascading_child)
+        self.assertItemsEqual(
+            child.tax_ids.mapped("company_cascade_parent_id"), fpos.tax_ids
+        )
+        # break connection, cascading should find it again
+        child.tax_ids.write({"company_cascade_parent_id": False})
+        self._apply_cascade_wizard(fpos, [])
+        self.assertItemsEqual(
+            child.tax_ids.mapped("company_cascade_parent_id"), fpos.tax_ids
         )
 
     def test_cascade_no_company(self):
