@@ -2,7 +2,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 
 
-import enum
+try:
+    from enum import StrEnum
+except ImportError:
+    from strenum import StrEnum
+
 import logging
 from urllib.parse import urljoin
 
@@ -40,7 +44,7 @@ SUMIT_DOCUMENT_TYPE_SELECTION = [
 
 
 # pylint: disable=class-camelcase
-class SUMIT_PAYMENT_TYPE(enum.StrEnum):
+class SUMIT_PAYMENT_TYPE(StrEnum):
     AUTOMATIC = "0"
     GENERAL = "1"
     CASH = "2"
