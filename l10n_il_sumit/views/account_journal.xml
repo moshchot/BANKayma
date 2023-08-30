@@ -13,6 +13,10 @@
                     attrs="{'invisible': [('type', 'not in', ('sale', 'purchase'))]}"
                 >
                     <field name="use_sumit" />
+                    <field
+                        name="sumit_type"
+                        attrs="{'invisible': [('use_sumit', '=', False)], 'required': [('use_sumit', '=', True)]}"
+                    />
                 </group>
             </xpath>
         </field>

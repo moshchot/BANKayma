@@ -5,25 +5,18 @@
 from odoo.tests.common import TransactionCase
 
 
-class SomethingCase(TransactionCase):
+class TestL10nIlSumit(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.invoice = cls.env["account.move"].search(
+            [("move_type", "=", "out_invoice")], limit=1
+        )
 
-    @classmethod
-    def tearDownClass(cls):
-        super().tearDownClass()
-
-    def setUp(self):
-        super().setUp()
-
-    def tearDown(self):
-        return super().tearDown()
-
-    def test_something(self):
-        """First line of docstring appears in test logs.
-
-        Other lines do not.
-
-        Any method starting with ``test_`` will be tested.
-        """
+    def test_sumit_vals(self):
+        """Test we translate Odoo objects to sumit correctly"""
+        sumit_vals = self.invoice._to_sumit_vals()
+        # TODO: add much more assertions
+        self.assertEqual(
+            sumit_vals["Details"]["Type"], self.invoice.journal_id.sumit_type
+        )
