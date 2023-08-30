@@ -12,6 +12,9 @@ class AccountMoveLine(models.Model):
     bankayma_product_domain = fields.Binary(compute="_compute_bankayma_product_domain")
 
     def _compute_name(self):
+        """
+        Don't touch name if line comes from portal
+        """
         for this in self:
             if this.bankayma_immutable:
                 this.name = getattr(this, "_origin", this).name
@@ -20,6 +23,9 @@ class AccountMoveLine(models.Model):
         return None
 
     def _compute_price_unit(self):
+        """
+        Don't touch unit price if line comes from portal
+        """
         for this in self:
             if this.bankayma_immutable:
                 this.price_unit = getattr(this, "_origin", this).price_unit
@@ -28,6 +34,14 @@ class AccountMoveLine(models.Model):
         return None
 
     def _get_computed_taxes(self):
+        """
+        Impose taxes on invoices and bills
+        """
+        if not (
+            self.move_id.is_sale_document(include_receipts=True)
+            or self.move_id.is_purchase_document(include_receipts=True)
+        ):
+            return super()._get_computed_taxes()
         fpos = self.move_id.fiscal_position_id
         imposed_tax = fpos.bankayma_tax_ids + (
             fpos.optional_tax_ids & self.move_id.partner_id.purchase_tax_ids
