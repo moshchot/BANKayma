@@ -16,6 +16,7 @@
     "preloadable": True,
     "depends": [
         "account",
+        "account_payment_mode",
     ],
     "data": [
         "security/ir.model.access.csv",
