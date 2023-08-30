@@ -12,6 +12,7 @@ class AccountMove(models.Model):
 
     def _to_sumit_vals(self):
         """Return a dict describing this invoice for sumit"""
+        self.ensure_one()
         return {
             "Details": {
                 "IsDraft": False,
@@ -39,59 +40,20 @@ class AccountMove(models.Model):
                     self.partner_id.lang
                 ),
                 "Currency": self.env["sumit.account"].sumit_currency(self.currency_id),
-                "Type": "1",
+                "Type": self.journal_id.sumit_type,
                 "Description": self.name,
                 "ExternalReference": None,
                 "OpeningTextHTML": None,
                 "OpeningText": None,
                 "ClosingTextHTML": None,
                 "ClosingText": None,
-                "DueDate": None,
+                "DueDate": self.invoice_date_due.isoformat()
+                if self.invoice_date_due
+                else None,
             },
-            "Items": [
-                {
-                    "Quantity": line.quantity,
-                    "UnitPrice": line.price_unit,
-                    "TotalPrice": line.price_subtotal,
-                    "DocumentCurrency_UnitPrice": None,
-                    "DocumentCurrency_TotalPrice": None,
-                    "Description": line.name or None,
-                    "Item": {
-                        "ID": None,
-                        "Name": line.product_id.name or None,
-                        "Description": None,
-                        "Price": line.product_id.list_price,
-                        "Currency": self.env["sumit.account"].sumit_currency(
-                            self.env.company.currency_id
-                        ),
-                        "Cost": line.product_id.standard_price,
-                        "ExternalIdentifier": None,
-                        "SKU": line.product_id.default_code or None,
-                        "SearchMode": 0,
-                    },
-                }
-                for line in self.invoice_line_ids
-            ],
+            "Items": [line._to_sumit_vals() for line in self.invoice_line_ids],
             "Payments": [
-                {
-                    "Amount": payment.amount,
-                    "DocumentCurrency_Amount": None,
-                    "Type": None,
-                    "Details_General": None,
-                    "Details_Cash": None,
-                    "Details_BankTransfer": None,
-                    "Details_Cheque": None,
-                    "Details_CreditCard": {
-                        "CardBrand": None,
-                        "Last4Digits": None,
-                        "FirstPayment": None,
-                        "EachPayment": None,
-                        "Payments": None,
-                    },
-                    "Details_Other": None,
-                    "Details_Digital": None,
-                    "Details_TaxWithholding": None,
-                }
+                payment._to_sumit_vals()
                 for payment in self.line_ids.mapped(
                     "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
                 )

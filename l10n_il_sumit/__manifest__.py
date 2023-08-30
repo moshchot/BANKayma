@@ -14,6 +14,7 @@
     "application": True,
     "depends": [
         "account",
+        "account_payment_mode",
     ],
     "data": [
         "security/ir.model.access.csv",
@@ -21,6 +22,7 @@
         "views/sumit_account.xml",
         "views/account_journal.xml",
         "views/account_payment.xml",
+        "views/account_payment_method.xml",
     ],
     "demo": [],
 }
