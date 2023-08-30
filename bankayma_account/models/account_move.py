@@ -219,6 +219,9 @@ class AccountMove(models.Model):
                 action = to_send.with_company(
                     to_send[:1].company_id
                 ).action_invoice_sent()
+                if not isinstance(action["view_id"], int):
+                    # this happens if the document layout isn't configured yet
+                    return action
                 with Form(
                     self.env[action["res_model"]].with_context(**action["context"]),
                     action["view_id"],
@@ -486,3 +489,10 @@ class AccountMove(models.Model):
             return result
         else:
             return {"type": "ir.actions.act_window.page.list"}
+
+    def _to_sumit_vals(self):
+        result = super()._to_sumit_vals()
+        product_sumit_types = self.invoice_line_ids.mapped("product_id.sumit_type")
+        if len(product_sumit_types) == 1:
+            result["Details"]["Type"] = product_sumit_types[0]
+        return result
