@@ -71,7 +71,13 @@ class TestCompanyCascade(TransactionCase):
             self.account.code,
             self.account.company_cascade_child_ids[:1].code,
         )
-        self.journal._company_cascade(recursive=True)
+        self._apply_cascade_wizard(self.journal.default_account_id)
+        self._apply_cascade_wizard(self.journal.suspense_account_id)
+        self._apply_cascade_wizard(self.journal.profit_account_id)
+        self._apply_cascade_wizard(self.journal.loss_account_id)
+        if "sequence_id" in self.journal._fields:
+            self._apply_cascade_wizard(self.journal.sequence_id)
+        self._apply_cascade_wizard(self.journal)
         self.assertTrue(self.journal.outbound_payment_method_line_ids)
 
     def test_cascade_translations(self):
