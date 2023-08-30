@@ -7,71 +7,85 @@
         <field name="name">Bank transfer</field>
         <field name="code">sumit_bank</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">3</field>
     </record>
     <record id="payment_method_bank_out" model="account.payment.method">
         <field name="name">Bank transfer</field>
         <field name="code">sumit_bank</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">3</field>
     </record>
     <record id="payment_method_cheque_in" model="account.payment.method">
         <field name="name">Cheque</field>
         <field name="code">sumit_cheque</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">4</field>
     </record>
     <record id="payment_method_cheque_out" model="account.payment.method">
         <field name="name">Cheque</field>
         <field name="code">sumit_cheque</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">4</field>
     </record>
     <record id="payment_method_cash_in" model="account.payment.method">
         <field name="name">Cash</field>
         <field name="code">sumit_cash</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">2</field>
     </record>
     <record id="payment_method_cash_out" model="account.payment.method">
         <field name="name">Cash</field>
         <field name="code">sumit_cash</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">2</field>
     </record>
     <record id="payment_method_defrayal_in" model="account.payment.method">
         <field name="name">Defrayal</field>
         <field name="code">sumit_defrayal</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_defrayal_out" model="account.payment.method">
         <field name="name">Defrayal</field>
         <field name="code">sumit_defrayal</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_paypal_in" model="account.payment.method">
         <field name="name">PayPal</field>
         <field name="code">sumit_paypal</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_paypal_out" model="account.payment.method">
         <field name="name">PayPal</field>
         <field name="code">sumit_paypal</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_masav_in" model="account.payment.method">
         <field name="name">Masav</field>
         <field name="code">sumit_masav</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_masav_out" model="account.payment.method">
         <field name="name">Masav</field>
         <field name="code">sumit_masav</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_other_in" model="account.payment.method">
         <field name="name">Other</field>
         <field name="code">sumit_other</field>
         <field name="payment_type">inbound</field>
+        <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_other_out" model="account.payment.method">
         <field name="name">Other</field>
         <field name="code">sumit_other</field>
         <field name="payment_type">outbound</field>
+        <field name="sumit_type">8</field>
     </record>
 
 </odoo>

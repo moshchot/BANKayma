@@ -78,3 +78,16 @@ class AccountMoveLine(models.Model):
                     or ("purchase_ok", "=", True),
                     ("company_id", "in", (False, this.move_id.company_id.id)),
                 ]
+
+    def _to_sumit_vals(self):
+        return dict(
+            super()._to_sumit_vals(),
+            Description="%s, %s, %s, [%s%s]"
+            % (
+                self.move_id.company_id.name,
+                self.name,
+                self.move_id.name,
+                self.company_id.code,
+                self.product_id.code,
+            ),
+        )
