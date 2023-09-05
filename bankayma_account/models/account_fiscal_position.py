@@ -22,12 +22,12 @@ class AccountFiscalPosition(models.Model):
         domain=[("type_tax_use", "=", "purchase")],
         check_company=True,
     )
-    optional_tax_ids = fields.Many2many(
-        "account.tax",
-        "account_fiscal_position_optional_tax",
+    optional_tax_group_ids = fields.Many2many(
+        "account.tax.group",
+        "account_fiscal_position_optional_tax_group",
         "fiscal_position_id",
-        "tax_id",
-        check_company=True,
+        "tax_group_id",
+        string="Optional tax groups",
     )
     bankayma_deduct_tax = fields.Boolean("Tax deduction")
     bankayma_deduct_tax_use_max_amount = fields.Boolean("Use max amount")

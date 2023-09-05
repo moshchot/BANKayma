@@ -24,11 +24,7 @@
                             widget="many2many_tags"
                             domain="[('company_id', '=', company_id), ('type_tax_use', '=', type_position_use)]"
                         />
-                        <field
-                            name="optional_tax_ids"
-                            widget="many2many_tags"
-                            domain="[('company_id', '=', company_id), ('type_tax_use', '=', type_position_use)]"
-                        />
+                        <field name="optional_tax_group_ids" widget="many2many_tags" />
                         <field name="bankayma_deduct_tax" />
                         <field
                             name="bankayma_deduct_tax_account_id"

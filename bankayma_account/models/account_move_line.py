@@ -44,7 +44,10 @@ class AccountMoveLine(models.Model):
             return super()._get_computed_taxes()
         fpos = self.move_id.fiscal_position_id
         imposed_tax = fpos.bankayma_tax_ids + (
-            fpos.optional_tax_ids & self.move_id.partner_id.purchase_tax_ids
+            fpos.optional_tax_group_ids.mapped("tax_ids")
+            & self.move_id.partner_id.bankayma_tax_group_ids.mapped("tax_ids").filtered(
+                lambda x: x.company_id == self.move_id.company_id
+            )
         )
         if self.bankayma_immutable:
             return getattr(self, "_origin", self).tax_ids

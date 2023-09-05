@@ -44,90 +44,6 @@
             >request.env.user.has_group('bankayma_base.group_full')</attribute>
         </xpath>
         <xpath expr="//div[./input[@name='phone']]" position="after">
-            <div
-                t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''} col-xl-6"
-            >
-                <label
-                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
-                    for="property_account_position_id"
-                >Fiscal position</label>
-                <select
-                    name="property_account_position_id"
-                    t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''}"
-                    onchange="
-                    jQuery('#bankayma_vendor_tax_percentage').prop('required', jQuery(this.selectedOptions).data('deduct_tax') == 'True');
-                    jQuery('#bankayma_vendor_tax_percentage').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax') == 'True');
-                    jQuery('#bankayma_vendor_max_amount').prop('required', jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
-                    jQuery('#bankayma_vendor_max_amount').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
-                    jQuery('.optional-tax').hide();
-                    jQuery(this.selectedOptions).data('optional_taxes').forEach(function(tax_id) { jQuery('#tax_' + tax_id).parent().parent().show() });
-                    "
-                >
-                    <option value="">Fiscal position...</option>
-                    <t t-foreach="fiscal_positions or []" t-as="fpos">
-                        <option
-                            t-att-value="fpos.id"
-                            t-att-selected="fpos.id == int(property_account_position_id) if property_account_position_id else fpos.id == partner.property_account_position_id.id"
-                            t-att-data-deduct_tax="fpos.bankayma_deduct_tax"
-                            t-att-data-deduct_tax_use_max_amount="fpos.bankayma_deduct_tax_use_max_amount"
-                            t-att-data-optional_taxes="json.dumps(fpos.optional_tax_ids.ids)"
-                        >
-                            <t t-esc="fpos.name" />
-                        </option>
-                    </t>
-                </select>
-            </div>
-            <div
-                t-attf-class="mb-3 col-xl-6 #{error.get('bankayma_vendor_tax_percentage') and 'o_has_error' or ''}"
-            >
-                <label
-                    class="col-form-label"
-                    for="bankayma_vendor_tax_percentage"
-                >Tax</label>
-                <input
-                    type="number"
-                    min="0"
-                    t-attf-class="form-control #{error.get('bankayma_vendor_tax_percentage') and 'is-invalid' or ''}"
-                    name="bankayma_vendor_tax_percentage"
-                    id="bankayma_vendor_tax_percentage"
-                    t-att-value="bankayma_vendor_tax_percentage or request.env.user.partner_id.bankayma_vendor_tax_percentage"
-                />
-            </div>
-            <div
-                t-attf-class="mb-3 col-xl-6 #{error.get('bankayma_vendor_max_amount') and 'o_has_error' or ''}"
-            >
-                <label
-                    class="col-form-label"
-                    for="bankayma_vendor_max_amount"
-                >Maximum amount</label>
-                <input
-                    type="number"
-                    min="0"
-                    t-attf-class="form-control #{error.get('bankayma_vendor_max_amount') and 'is-invalid' or ''}"
-                    name="bankayma_vendor_max_amount"
-                    id="bankayma_vendor_max_amount"
-                    t-att-value="bankayma_vendor_max_amount or request.env.user.partner_id.bankayma_vendor_max_amount"
-                />
-            </div>
-            <div
-                t-attf-class="mb-3 col-xl-6 optional-tax"
-                t-foreach="fiscal_positions.mapped('optional_tax_ids')"
-                t-as="tax"
-            >
-                <label class="col-form-label" for="bankayma_vendor_apply_default_tax"><t
-                        t-out="tax.description or tax.name"
-                    /></label>
-                <div class="form-check form-switch">
-                <input
-                        type="checkbox"
-                        t-attf-class="form-check-input #{error.get('tax_%d' % tax.id) and 'is-invalid' or ''}"
-                        t-attf-name="tax_#{tax.id}"
-                        t-attf-id="tax_#{tax.id}"
-                        t-att-value="tax.id"
-                        t-att-checked="'tax_%d' % tax.id in request.httprequest.form or tax in request.env.user.partner_id.purchase_tax_ids"
-                    />
-                </div>
-            </div>
         </xpath>
         <xpath expr="//label[@for='vat']" position="attributes">
             <attribute name="class" />
@@ -152,53 +68,155 @@
         </xpath>
         <xpath expr="//div[./select[@name='state_id']]" position="after">
             <div class="clearfix" />
-            <div
-                t-attf-class="mb-3 #{error.get('bank') and 'o_has_error' or ''} col-xl-6"
-            >
+            <div class="row m-0 p-0">
+            <div class="col-xl-6">
+            <div t-attf-class="mb-3 #{error.get('bank') and 'o_has_error' or ''} col">
                 <label
-                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
-                    for="bank"
-                >Bank</label>
+                            t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                            for="bank"
+                        >Bank</label>
                 <select
-                    name="bank"
-                    t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''} o-select2"
-                >
+                            name="bank"
+                            t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''} o-select2"
+                        >
                     <t
-                        t-foreach="request.env['res.bank'].sudo().search([])"
-                        t-as="_bank"
-                    >
+                                t-foreach="request.env['res.bank'].sudo().search([])"
+                                t-as="_bank"
+                            >
                         <option
-                            t-att-selected="_bank.id == int(bank or partner.bank_ids[:1].bank_id.id or -1)"
-                            t-att-value="_bank.id"
-                        ><t t-out="_bank.name" /></option>
+                                    t-att-selected="_bank.id == int(bank or partner.bank_ids[:1].bank_id.id or -1)"
+                                    t-att-value="_bank.id"
+                                ><t t-out="_bank.name" /></option>
                     </t>
                 </select>
             </div>
             <div
-                t-attf-class="mb-3 #{error.get('bank_branch_code') and 'o_has_error' or ''} col-xl-6"
-            >
+                        t-attf-class="mb-3 #{error.get('bank_branch_code') and 'o_has_error' or ''} col"
+                    >
                 <label
-                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
-                    for="bank_branch_code"
-                >Branch</label>
+                            t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                            for="bank_branch_code"
+                        >Branch</label>
                 <input
-                    name="bank_branch_code"
-                    t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
-                    t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
-                />
+                            name="bank_branch_code"
+                            t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
+                            t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
+                        />
             </div>
             <div
-                t-attf-class="mb-3 #{error.get('bank_acc_number') and 'o_has_error' or ''} col-xl-6"
-            >
+                        t-attf-class="mb-3 #{error.get('bank_acc_number') and 'o_has_error' or ''} col"
+                    >
                 <label
-                    t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
-                    for="bank_acc_number"
-                >Account number</label>
+                            t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                            for="bank_acc_number"
+                        >Account number</label>
                 <input
-                    name="bank_acc_number"
-                    t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
-                    t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
-                />
+                            name="bank_acc_number"
+                            t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
+                            t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
+                        />
+            </div>
+            </div>
+            <div class="col-xl-6">
+            <div
+                        t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''}"
+                    >
+                <label
+                            t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
+                            for="property_account_position_id"
+                        >Fiscal position</label>
+                <select
+                            name="property_account_position_id"
+                            t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''}"
+                            onchange="
+                    jQuery('#bankayma_vendor_tax_percentage').prop('required', jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
+                    jQuery('#bankayma_vendor_tax_percentage').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax') == 'True');
+                    jQuery('#bankayma_vendor_max_amount').prop('required', jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
+                    jQuery('#bankayma_vendor_max_amount').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
+                    jQuery('#bankayma_vendor_tax_deduction').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') != 'True');
+                    jQuery('.optional-tax-group').hide();
+                    (jQuery(this.selectedOptions).data('optional_tax_groups') || []).forEach(function(tax_group_id) { jQuery('#tax_group_' + tax_group_id).parent().parent().show() });
+                    "
+                        >
+                    <option value="">Fiscal position...</option>
+                    <t t-foreach="fiscal_positions or []" t-as="fpos">
+                        <option
+                                    t-att-value="fpos.id"
+                                    t-att-selected="fpos.id == int(property_account_position_id) if property_account_position_id else fpos.id == partner.property_account_position_id.id"
+                                    t-att-data-deduct_tax="fpos.bankayma_deduct_tax"
+                                    t-att-data-deduct_tax_use_max_amount="fpos.bankayma_deduct_tax_use_max_amount"
+                                    t-att-data-optional_tax_groups="json.dumps(fpos.optional_tax_group_ids.ids)"
+                                >
+                            <t t-esc="fpos.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+            <div
+                        t-attf-class="mb-3 #{error.get('bankayma_vendor_tax_percentage') and 'o_has_error' or ''}"
+                    >
+                <label
+                            class="col-form-label"
+                            for="bankayma_vendor_tax_percentage"
+                        >Tax deduction</label>
+                <div class="form-check form-switch">
+                <input
+                                type="checkbox"
+                                t-attf-class="form-check-input"
+                                value=""
+                                id="bankayma_vendor_tax_deduction"
+                                t-att-checked="(bankayma_vendor_tax_percentage or request.env.user.partner_id.bankayma_vendor_tax_percentage) and True or False"
+                                onchange="
+                    jQuery('#bankayma_vendor_tax_percentage').toggle(jQuery(this).is(':visible') ? jQuery(this).prop('checked') : true);
+                    jQuery('#bankayma_vendor_tax_percentage').val(jQuery(this).prop('checked') ? jQuery('#bankayma_vendor_tax_percentage').val() : 0);
+                    "
+                            />
+                </div>
+                <input
+                            type="number"
+                            min="0"
+                            t-attf-class="form-control #{error.get('bankayma_vendor_tax_percentage') and 'is-invalid' or ''}"
+                            name="bankayma_vendor_tax_percentage"
+                            id="bankayma_vendor_tax_percentage"
+                            t-att-value="bankayma_vendor_tax_percentage or request.env.user.partner_id.bankayma_vendor_tax_percentage"
+                        />
+            </div>
+            <div
+                        t-attf-class="mb-3 #{error.get('bankayma_vendor_max_amount') and 'o_has_error' or ''}"
+                    >
+                <label
+                            class="col-form-label"
+                            for="bankayma_vendor_max_amount"
+                        >Maximum amount</label>
+                <input
+                            type="number"
+                            min="0"
+                            t-attf-class="form-control #{error.get('bankayma_vendor_max_amount') and 'is-invalid' or ''}"
+                            name="bankayma_vendor_max_amount"
+                            id="bankayma_vendor_max_amount"
+                            t-att-value="bankayma_vendor_max_amount or request.env.user.partner_id.bankayma_vendor_max_amount"
+                        />
+            </div>
+            <div
+                        t-attf-class="mb-3 optional-tax-group"
+                        t-foreach="fiscal_positions.mapped('optional_tax_group_ids')"
+                        t-as="tax_group"
+                    >
+                <label class="col-form-label" t-attf-for="tax_group_#{tax_group.id}"><t
+                                t-out="tax_group.name"
+                            /></label>
+                <div class="form-check form-switch">
+                <input
+                                type="checkbox"
+                                t-attf-class="form-check-input #{error.get('tax_group%d' % tax_group.id) and 'is-invalid' or ''}"
+                                t-attf-name="tax_group_#{tax_group.id}"
+                                t-attf-id="tax_group_#{tax_group.id}"
+                                t-att-value="tax_group.id"
+                                t-att-checked="'tax_group_%d' % tax_group.id in request.httprequest.form or tax_group in request.env.user.partner_id.bankayma_tax_group_ids"
+                            />
+                </div>
+            </div>
+            </div>
             </div>
         </xpath>
     </template>

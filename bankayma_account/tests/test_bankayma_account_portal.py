@@ -42,7 +42,13 @@ class TestBankaymaAccountPortal(TransactionCase):
             {
                 "bankayma_vendor_tax_percentage": 42,
                 "bankayma_vendor_max_amount": 424242,
-                "purchase_tax_ids": [(6, 0, fpos.bankayma_tax_ids.ids)],
+                "bankayma_tax_group_ids": [
+                    (
+                        6,
+                        0,
+                        self.env.ref("bankayma_account.tax_group_social_security").ids,
+                    )
+                ],
             }
         )
         invoice = (
