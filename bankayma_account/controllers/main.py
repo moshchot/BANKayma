@@ -18,9 +18,9 @@ class CustomerPortal(portal.CustomerPortal):
                 "bankayma_vendor_apply_default_tax",
             ]
             + [
-                "tax_%d" % tax.id
-                for tax in self._bankayma_get_fiscal_positions().mapped(
-                    "optional_tax_ids"
+                "tax_group_%d" % tax_group.id
+                for tax_group in self._bankayma_get_fiscal_positions().mapped(
+                    "optional_tax_group_ids"
                 )
             ]
         )
@@ -70,14 +70,14 @@ class CustomerPortal(portal.CustomerPortal):
             .browse(values["property_account_position_id"])
             & self._bankayma_get_fiscal_positions()
         )
-        vendor_taxes = request.env["account.tax"].sudo()
+        tax_groups = request.env["account.tax.group"].sudo()
         for field_name in values.copy():
-            if field_name.startswith("tax_"):
-                vendor_taxes += (
-                    vendor_taxes.browse(int(values.pop(field_name)))
-                    & fpos.optional_tax_ids
+            if field_name.startswith("tax_group_"):
+                tax_groups += (
+                    tax_groups.browse(int(values.pop(field_name)))
+                    & fpos.optional_tax_group_ids
                 )
-        values["purchase_tax_ids"] = [(6, 0, vendor_taxes.ids)]
+        values["bankayma_tax_group_ids"] = [(6, 0, tax_groups.ids)]
         bank_account_fields = ("bank", "bank_branch_code", "bank_acc_number")
         bank_vals = {
             key[len("bank_") :]: request.httprequest.form.get(key)
@@ -126,7 +126,7 @@ class CustomerPortal(portal.CustomerPortal):
         )
         if fpos.bankayma_deduct_tax:
             if (
-                float(data.get("bankayma_vendor_tax_percentage", 0)) <= 0
+                float(data.get("bankayma_vendor_tax_percentage", 0)) < 0
                 or float(data.get("bankayma_vendor_tax_percentage", 100)) >= 100
             ):
                 error["bankayma_vendor_tax_percentage"] = "error"

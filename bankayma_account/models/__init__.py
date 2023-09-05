@@ -6,6 +6,7 @@ from . import account_move_line
 from . import account_payment_register
 from . import account_payment_method
 from . import account_tax
+from . import account_tax_group
 from . import mail_template
 from . import product_template
 from . import res_company

@@ -24,6 +24,7 @@
         "account_payment_partner",
         "account_payment_mode",
         "account_statement_base",
+        "account_tax_python",
         "account_usability",
         "base_tier_validation_server_action",
         "bankayma_base",
@@ -42,6 +43,8 @@
     ],
     "data": [
         "data/account_payment_method.xml",
+        "data/account_tax_group.xml",
+        "data/account_tax.xml",
         "data/product_product.xml",
         "data/mail_template_views.xml",
         "data/mail_template.xml",

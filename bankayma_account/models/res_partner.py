@@ -11,12 +11,12 @@ class ResPartner(models.Model):
     bankayma_vendor_tax_percentage = fields.Float("Custom tax")
     bankayma_vendor_max_amount = fields.Float("Max amount")
     bankayma_vendor_apply_default_tax = fields.Boolean("Use imposed tax")
-    purchase_tax_ids = fields.Many2many(
-        "account.tax",
-        "res_partner_purchase_tax",
+    bankayma_tax_group_ids = fields.Many2many(
+        "account.tax.group",
+        "res_partner_bankayma_tax_group",
         "partner_id",
-        "tax_id",
-        string="Purchase taxes",
+        "tax_group_id",
+        string="Tax groups",
     )
 
     @api.constrains("vat", "country_id")

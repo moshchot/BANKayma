@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="tax_social_security_50inc" model="account.tax">
+        <field name="name">-5%</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">code</field>
+        <field name="price_include" eval="True" />
+        <field name="include_base_amount" eval="False" />
+        <field name="is_base_affected" eval="False" />
+        <field name="tax_group_id" ref="tax_group_social_security" />
+        <field name="python_compute">result = quantity * price_unit * 0.05</field>
+    </record>
+
+    <record id="tax_social_security_70inc" model="account.tax">
+        <field name="name">-7%</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">code</field>
+        <field name="price_include" eval="True" />
+        <field name="include_base_amount" eval="False" />
+        <field name="is_base_affected" eval="False" />
+        <field name="tax_group_id" ref="tax_group_social_security" />
+        <field name="python_compute">result = quantity * price_unit * 0.07</field>
+    </record>
+
+    <record id="tax_social_security_76ex" model="account.tax">
+        <field name="name">7.6%</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">code</field>
+        <field name="price_include" eval="False" />
+        <field name="include_base_amount" eval="False" />
+        <field name="is_base_affected" eval="False" />
+        <field name="tax_group_id" ref="tax_group_social_security" />
+        <field name="python_compute">result = quantity * price_unit * 0.076</field>
+    </record>
+
+</odoo>
