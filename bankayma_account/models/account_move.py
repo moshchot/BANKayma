@@ -420,9 +420,9 @@ class AccountMove(models.Model):
                     ("type_tax_use", "=", "purchase"),
                     ("amount", "=", tax_percentage),
                     ("price_include", "=", True),
-                    ("include_base_amount", "=", True),
+                    ("include_base_amount", "=", False),
                     ("is_base_affected", "=", False),
-                    ("amount_type", "=", "division"),
+                    ("amount_type", "=", "code"),
                     ("company_id", "=", company.id),
                     ("tax_group_id", "=", tax_group.id),
                     ("bankayma_vendor_specific", "=", True),
@@ -436,9 +436,9 @@ class AccountMove(models.Model):
                     "type_tax_use": "purchase",
                     "amount": tax_percentage,
                     "price_include": True,
+                    "include_base_amount": False,
                     "is_base_affected": False,
-                    "include_base_amount": True,
-                    "amount_type": "division",
+                    "amount_type": "code",
                     "invoice_repartition_line_ids": [
                         (0, 0, {"repartition_type": "base"}),
                         (
@@ -454,6 +454,8 @@ class AccountMove(models.Model):
                     "bankayma_vendor_specific": True,
                     "company_id": company.id,
                     "tax_group_id": tax_group.id,
+                    "python_compute": "result = quantity * price_unit * %f"
+                    % (tax_percentage / 100),
                 }
             )
             or AccountTax

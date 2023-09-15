@@ -90,6 +90,7 @@ class TestBankaymaAccountPortal(TransactionCase):
             fpos.bankayma_deduct_tax_group_id,
         )
         self.assertEqual(vendor_tax.amount, 42)
+        self.assertEqual(vendor_tax.amount_type, "code")
         self.assertTrue(invoice.bankayma_vendor_max_amount, 424242)
         self.assertTrue(invoice.invoice_line_ids.bankayma_immutable)
         with Form(invoice) as invoice_form:
