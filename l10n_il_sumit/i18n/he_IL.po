@@ -287,6 +287,14 @@ msgid "Sumit document"
 msgstr ""
 
 #. module: l10n_il_sumit
+#. odoo-python
+#: code:addons/l10n_il_sumit/models/account_move.py:0
+#, python-format
+msgid ""
+"Sumit document: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_payment_method__sumit_type__7
 msgid "Tax Withholding"
 msgstr ""
