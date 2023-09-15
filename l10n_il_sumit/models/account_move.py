@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 
 
-from odoo import fields, models
+from odoo import _, fields, models
 
 
 class AccountMove(models.Model):
@@ -79,6 +79,12 @@ class AccountMove(models.Model):
                     "ref": result.get("DocumentNumber"),
                     "sumit_document_url": result.get("DocumentDownloadURL"),
                 }
+            )
+            self.message_post(
+                body=_(
+                    'Sumit document: <a href="%(DocumentDownloadURL)s">%(DocumentNumber)s</a>'
+                )
+                % result
             )
 
         return super()._invoice_paid_hook()
