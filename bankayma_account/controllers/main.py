@@ -126,12 +126,12 @@ class CustomerPortal(portal.CustomerPortal):
         )
         if fpos.bankayma_deduct_tax:
             if (
-                float(data.get("bankayma_vendor_tax_percentage", 0)) < 0
-                or float(data.get("bankayma_vendor_tax_percentage", 100)) >= 100
+                float(data.get("bankayma_vendor_tax_percentage", 0) or 0) < 0
+                or float(data.get("bankayma_vendor_tax_percentage", 100) or 100) >= 100
             ):
                 error["bankayma_vendor_tax_percentage"] = "error"
                 error_message.append(_("Fill in a percentage between 0 and 100"))
-            if float(data.get("bankayma_vendor_max_amount", 0)) <= 0:
+            if float(data.get("bankayma_vendor_max_amount", 0) or 0) <= 0:
                 error["bankayma_vendor_max_amount"] = "error"
                 error_message.append(_("Fill in a positive amount"))
         return error, error_message
