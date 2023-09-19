@@ -173,6 +173,7 @@
                     {'invisible': [('show_fiscal_position_id', '=', False)]}
                 </attribute>
                 <attribute name="options">{'no_open': True}</attribute>
+                <attribute name="readonly">True</attribute>
             </field>
             <field name="fiscal_position_id" position="after">
                 <field name="bankayma_deduct_tax" invisible="True" />
@@ -184,7 +185,7 @@
                 <span
                     attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
                 >
-                    <field name="bankayma_vendor_tax_percentage" />
+                    <field name="bankayma_vendor_tax_percentage" readonly="True" />
                     <button
                         name="button_bankayma_vendor_tax_create"
                         type="object"
@@ -197,6 +198,7 @@
                 <field name="bankayma_vendor_tax_exists" invisible="True" />
                 <field
                     name="bankayma_vendor_max_amount"
+                    readonly="True"
                     attrs="{'invisible': ['|', '|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice'), ('bankayma_deduct_tax_use_max_amount', '=', False)]}"
                 />
             </field>
