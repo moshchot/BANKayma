@@ -95,6 +95,7 @@
                 "bankayma_account/static/lib/select2-bootstrap-5-theme.min.css",
             ),
             "bankayma_account/static/src/select2-bootstrap.js",
+            "bankayma_account/static/src/bankayma-frontend.js",
         ],
     },
     "website": "https://github.com/moshchot/BANKayma",
