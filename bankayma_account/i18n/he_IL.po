@@ -36,16 +36,16 @@ msgstr ""
 #: model:mail.template,body_html:bankayma_account.template_vendor_invite
 msgid ""
 "<h1>Welcome aboard our BANKayma vendors portal:)</h1>\n"
-"            <div>Please follow this <a t-attf-href=\"{{ object.signup_url }}"
-"&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">link</a> "
-"and get paid 🤑</div>\n"
+"            <div>\n"
+"                Please follow this\n"
+"                <a t-attf-href=\"{{ object.signup_url }}&amp;redirect=%2Fmy"
+"%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">\n"
+"                    link\n"
+"                </a>\n"
+"                and get paid 🤑\n"
+"            </div>\n"
 "        "
 msgstr ""
-"<h1>ברוכים הבאים לפורטל הספקים של בנקיימא:)</h1>\n"
-"            <div>לחיצה על<a t-attf-href=\"{{ object.signup_url }}&amp;"
-"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">הלינק</a> "
-"לדרישת תשלום 🤑</div>\n"
-"        "
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -55,9 +55,8 @@ msgstr "<option value=\"\">מעמד פיסקלי...</option>"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For: </strong>"
+msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">עבור: </strong>"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -598,7 +597,9 @@ msgstr "להלן"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Here links to the moves being used to calculate the different values:"
+msgid ""
+"Here links to the moves being used to calculate the different\n"
+"                    values:"
 msgstr ""
 
 #. module: bankayma_account
