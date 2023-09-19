@@ -14,6 +14,6 @@ class PaymentProvider(models.Model):
 
     def _should_build_inline_form(self, is_validation=False):
         if self.code == "sumit":
-            return True
+            return False
         else:
             return super()._should_build_inline_form(is_validation=is_validation)

@@ -14,8 +14,8 @@
     "application": True,
     "depends": [
         "account",
+        "account_payment",
         "account_payment_mode",
-        "payment",
     ],
     "data": [
         "views/templates.xml",

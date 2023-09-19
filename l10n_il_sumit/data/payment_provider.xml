@@ -14,6 +14,7 @@
         <field
             name="payment_icon_ids"
             eval="[(6, 0, [
+                   ref('payment.payment_icon_cc_american_express'),
                    ref('payment.payment_icon_cc_mastercard'),
                    ref('payment.payment_icon_cc_visa'),
                ])]"
