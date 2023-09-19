@@ -41,6 +41,11 @@ msgid "Cheque"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__code
+msgid "Code"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__company_id
 msgid "Company"
 msgstr ""
@@ -217,8 +222,18 @@ msgid "Payment Methods"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model,name:l10n_il_sumit.model_payment_provider
+msgid "Payment Provider"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__13
 msgid "Payment Request"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model,name:l10n_il_sumit.model_payment_transaction
+msgid "Payment Transaction"
 msgstr ""
 
 #. module: l10n_il_sumit
@@ -257,9 +272,16 @@ msgid "Sequence"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__payment_provider__code__sumit
 #: model:ir.ui.menu,name:l10n_il_sumit.menu_sumit
+#: model:payment.provider,name:l10n_il_sumit.payment_provider_sumit
 #: model_terms:ir.ui.view,arch_db:l10n_il_sumit.view_account_journal_form
 msgid "Sumit"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_account_id
+msgid "Sumit Account"
 msgstr ""
 
 #. module: l10n_il_sumit
@@ -297,4 +319,30 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_payment_method__sumit_type__7
 msgid "Tax Withholding"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_payment_provider__code
+msgid "The technical code of this payment provider."
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model_terms:payment.provider,auth_msg:l10n_il_sumit.payment_provider_sumit
+msgid "Your payment has been authorized."
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model_terms:payment.provider,cancel_msg:l10n_il_sumit.payment_provider_sumit
+msgid "Your payment has been cancelled."
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model_terms:payment.provider,pending_msg:l10n_il_sumit.payment_provider_sumit
+msgid ""
+"Your payment has been successfully processed but is waiting for approval."
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model_terms:payment.provider,done_msg:l10n_il_sumit.payment_provider_sumit
+msgid "Your payment has been successfully processed. Thank you!"
 msgstr ""
