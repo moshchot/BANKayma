@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record
         id="user_child_comp1"
         model="res.users"
@@ -33,6 +32,4 @@
             eval="[Command.link(ref('base.group_portal')), Command.link(ref('group_vendor'))]"
         />
     </record>
-
-
 </odoo>

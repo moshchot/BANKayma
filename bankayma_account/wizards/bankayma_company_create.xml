@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="view_bankayma_company_create_form" model="ir.ui.view">
         <field name="model">bankayma.company.create</field>
         <field name="arch" type="xml">
@@ -50,5 +49,4 @@
         action="action_bankayma_company_create"
         parent="base.menu_users"
     />
-
 </odoo>

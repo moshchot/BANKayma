@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
-
     <record id="template_vendor_invite" model="mail.template" forcecreate="1">
         <field name="name">Invitation to vendor portal</field>
         <field name="model_id" ref="base.model_res_partner" />
@@ -10,9 +9,15 @@
         <field name="partner_to">{{object.id}}</field>
         <field name="body_html" type="html">
             <h1>Welcome aboard our BANKayma vendors portal:)</h1>
-            <div>Please follow this <a
+            <div>
+                Please follow this
+                <a
                     t-attf-href="{{ object.signup_url }}&amp;redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew"
-                >link</a> and get paid 🤑</div>
+                >
+                    link
+                </a>
+                and get paid 🤑
+            </div>
         </field>
     </record>
 
@@ -20,5 +25,4 @@
         <field name="body_type">qweb_view</field>
         <field name="body_view_id" ref="qweb_template_edi_invoice" />
     </record>
-
 </odoo>

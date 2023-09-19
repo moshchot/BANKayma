@@ -15,7 +15,7 @@
     <record id="bank_9" model="res.bank">
         <field name="name">Postal Bank Company Ltd</field>
         <field name="bank_code">9</field>
-        <field name="bic">IPOAILIJ </field>
+        <field name="bic">IPOAILIJ</field>
         <field name="phone">02-5005303</field>
         <field name="country" ref="base.il" />
     </record>
@@ -82,7 +82,7 @@
         <field name="bank_code">20</field>
         <field name="bic">MIZBILITXXX</field>
         <field name="street">ז'בוטינסקי 7</field>
-        <field name="city"> רמת גן</field>
+        <field name="city">רמת גן</field>
         <field name="zip">5252007</field>
         <field name="phone">03-7559000</field>
         <field name="country" ref="base.il" />

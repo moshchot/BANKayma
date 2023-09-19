@@ -2,15 +2,13 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="view_company_cascade_wizard_form" model="ir.ui.view">
         <field name="model">company.cascade.wizard</field>
         <field name="arch" type="xml">
             <form>
-                <div
-                    class="alert alert-danger"
-                    role="alert"
-                >Create/Overwrite equivalent records of child companies?</div>
+                <div class="alert alert-danger" role="alert">
+                    Create/Overwrite equivalent records of child companies?
+                </div>
                 <field name="model_id" invisible="True" />
                 <group groups="base.group_no_one">
                     <field
@@ -38,5 +36,4 @@
         <field name="target">new</field>
         <field name="view_mode">form</field>
     </record>
-
 </odoo>

@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <!-- add own main menu that other customization addons fill -->
     <menuitem
         id="menu_bankayma_root"
@@ -65,20 +64,20 @@
         id="action_simplified_income_company_config_tree"
         model="ir.actions.act_window.view"
     >
-            <field name="sequence">1</field>
-            <field name="view_mode">kanban</field>
-            <field name="view_id" ref="base.view_res_company_kanban" />
-            <field name="act_window_id" ref="action_simplified_income_company_config" />
+        <field name="sequence">1</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="base.view_res_company_kanban" />
+        <field name="act_window_id" ref="action_simplified_income_company_config" />
     </record>
 
     <record
         id="action_simplified_income_company_config_form"
         model="ir.actions.act_window.view"
     >
-            <field name="sequence">2</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_company_form_manager" />
-            <field name="act_window_id" ref="action_simplified_income_company_config" />
+        <field name="sequence">2</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_company_form_manager" />
+        <field name="act_window_id" ref="action_simplified_income_company_config" />
     </record>
 
     <menuitem
@@ -88,7 +87,6 @@
         groups="group_manager"
         action="action_simplified_income_company_config"
     />
-
 
     <!-- assign standard menus to debug user (= hide them) -->
     <record id="mail.menu_root_discuss" model="ir.ui.menu">
@@ -103,5 +101,4 @@
     <record id="contacts.menu_contacts" model="ir.ui.menu">
         <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
-
 </odoo>
