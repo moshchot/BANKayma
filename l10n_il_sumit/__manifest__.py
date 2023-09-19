@@ -15,14 +15,18 @@
     "depends": [
         "account",
         "account_payment_mode",
+        "payment",
     ],
     "data": [
+        "views/templates.xml",
+        "data/payment_provider.xml",
         "security/ir.model.access.csv",
         "security/l10n_il_sumit_security.xml",
         "views/sumit_account.xml",
         "views/account_journal.xml",
         "views/account_payment.xml",
         "views/account_payment_method.xml",
+        "views/payment_provider.xml",
     ],
     "demo": [],
     "external_dependencies": {

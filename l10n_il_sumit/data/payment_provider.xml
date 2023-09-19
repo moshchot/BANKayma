@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="payment_provider_sumit" model="payment.provider">
+        <field name="name">Sumit</field>
+        <field name="code">sumit</field>
+        <field name="redirect_form_view_id" ref="sumit_payment_redirect" />
+        <field
+            name="image_128"
+            type="base64"
+            file="l10n_il_sumit/static/description/icon.png"
+        />
+        <field
+            name="payment_icon_ids"
+            eval="[(6, 0, [
+                   ref('payment.payment_icon_cc_mastercard'),
+                   ref('payment.payment_icon_cc_visa'),
+               ])]"
+        />
+    </record>
+</data>

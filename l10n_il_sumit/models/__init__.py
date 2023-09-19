@@ -3,4 +3,6 @@ from . import account_move_line
 from . import account_payment
 from . import account_payment_method
 from . import account_journal
+from . import payment_provider
+from . import payment_transaction
 from . import sumit_account
