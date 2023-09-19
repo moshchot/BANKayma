@@ -52,6 +52,13 @@ account-payment:
     oca: https://github.com/OCA/account-payment.git
   merges:
     - oca 16.0
+donation:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/donation.git
+  merges:
+    - oca 16.0
 bank-payment:
   defaults:
     depth: 1
