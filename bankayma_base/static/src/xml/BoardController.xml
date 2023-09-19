@@ -6,7 +6,10 @@
                 t-if="this.show_button_impose_all_users"
                 class="btn btn-secondary p-2 m-2"
                 t-on-click="() => this.button_impose_all_users()"
-            ><i class="fa fa-users" /> Impose on all users</button>
+            >
+                <i class="fa fa-users" />
+                Impose on all users
+            </button>
         </Dropdown>
     </t>
 </templates>

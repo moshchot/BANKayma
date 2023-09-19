@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="journal_intercompany_sales" model="account.journal">
         <field name="name">Intercompany sales</field>
         <field name="code">INS</field>
@@ -47,5 +46,4 @@
         <field name="overhead_journal_id" ref="journal_overhead" />
         <field name="overhead_payment_journal_id" ref="journal_overhead_payment" />
     </record>
-
 </odoo>

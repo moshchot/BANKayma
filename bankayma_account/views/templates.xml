@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <template id="portal_layout" inherit_id="portal.portal_layout">
         <div class="o_portal_my_details" position="inside">
             <div style="position: relative">
@@ -24,32 +23,32 @@
         inherit_id="portal.portal_my_details_fields"
     >
         <xpath expr="//div[./input[@name='street']]" position="attributes">
-            <attribute
-                name="t-if"
-            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+            <attribute name="t-if">
+                request.env.user.has_group('bankayma_base.group_full')
+            </attribute>
         </xpath>
         <xpath expr="//div[./input[@name='city']]" position="attributes">
-            <attribute
-                name="t-if"
-            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+            <attribute name="t-if">
+                request.env.user.has_group('bankayma_base.group_full')
+            </attribute>
         </xpath>
         <xpath expr="//div[./input[@name='zipcode']]" position="attributes">
-            <attribute
-                name="t-if"
-            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+            <attribute name="t-if">
+                request.env.user.has_group('bankayma_base.group_full')
+            </attribute>
         </xpath>
         <xpath expr="//div[./select[@name='country_id']]" position="attributes">
-            <attribute
-                name="t-if"
-            >request.env.user.has_group('bankayma_base.group_full')</attribute>
+            <attribute name="t-if">
+                request.env.user.has_group('bankayma_base.group_full')
+            </attribute>
         </xpath>
-        <xpath expr="//div[./input[@name='phone']]" position="after">
-        </xpath>
+        <xpath expr="//div[./input[@name='phone']]" position="after" />
         <xpath expr="//label[@for='vat']" position="attributes">
             <attribute name="class" />
-            <attribute
-                name="t-attf-class"
-            >col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}</attribute>
+            <attribute name="t-attf-class">
+                col-form-label #{not
+                env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}
+            </attribute>
         </xpath>
         <xpath expr="//label[@for='city']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
@@ -69,63 +68,75 @@
         <xpath expr="//div[./select[@name='state_id']]" position="after">
             <div class="clearfix" />
             <div class="row m-0 p-0">
-            <div class="col-xl-6">
-            <div t-attf-class="mb-3 #{error.get('bank') and 'o_has_error' or ''} col">
-                <label
+                <div class="col-xl-6">
+                    <div
+                        t-attf-class="mb-3 #{error.get('bank') and 'o_has_error' or ''} col"
+                    >
+                        <label
                             t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
                             for="bank"
-                        >Bank</label>
-                <select
+                        >
+                            Bank
+                        </label>
+                        <select
                             name="bank"
                             t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''} o-select2"
                         >
-                    <t
+                            <t
                                 t-foreach="request.env['res.bank'].sudo().search([])"
                                 t-as="_bank"
                             >
-                        <option
+                                <option
                                     t-att-selected="_bank.id == int(bank or partner.bank_ids[:1].bank_id.id or -1)"
                                     t-att-value="_bank.id"
-                                ><t t-out="_bank.name" /></option>
-                    </t>
-                </select>
-            </div>
-            <div
+                                >
+                                    <t t-out="_bank.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div
                         t-attf-class="mb-3 #{error.get('bank_branch_code') and 'o_has_error' or ''} col"
                     >
-                <label
+                        <label
                             t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
                             for="bank_branch_code"
-                        >Branch</label>
-                <input
+                        >
+                            Branch
+                        </label>
+                        <input
                             name="bank_branch_code"
                             t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
                             t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
                         />
-            </div>
-            <div
+                    </div>
+                    <div
                         t-attf-class="mb-3 #{error.get('bank_acc_number') and 'o_has_error' or ''} col"
                     >
-                <label
+                        <label
                             t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
                             for="bank_acc_number"
-                        >Account number</label>
-                <input
+                        >
+                            Account number
+                        </label>
+                        <input
                             name="bank_acc_number"
                             t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
                             t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
                         />
-            </div>
-            </div>
-            <div class="col-xl-6">
-            <div
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div
                         t-attf-class="mb-3 #{error.get('property_account_position_id') and 'o_has_error' or ''}"
                     >
-                <label
+                        <label
                             t-attf-class="col-form-label #{not env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}"
                             for="property_account_position_id"
-                        >Fiscal position</label>
-                <select
+                        >
+                            Fiscal position
+                        </label>
+                        <select
                             name="property_account_position_id"
                             t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''}"
                             onchange="
@@ -138,29 +149,31 @@
                     (jQuery(this.selectedOptions).data('optional_tax_groups') || []).forEach(function(tax_group_id) { jQuery('#tax_group_' + tax_group_id).parent().parent().show() });
                     "
                         >
-                    <option value="">Fiscal position...</option>
-                    <t t-foreach="fiscal_positions or []" t-as="fpos">
-                        <option
+                            <option value="">Fiscal position...</option>
+                            <t t-foreach="fiscal_positions or []" t-as="fpos">
+                                <option
                                     t-att-value="fpos.id"
                                     t-att-selected="fpos.id == int(property_account_position_id) if property_account_position_id else fpos.id == partner.property_account_position_id.id"
                                     t-att-data-deduct_tax="fpos.bankayma_deduct_tax"
                                     t-att-data-deduct_tax_use_max_amount="fpos.bankayma_deduct_tax_use_max_amount"
                                     t-att-data-optional_tax_groups="json.dumps(fpos.optional_tax_group_ids.ids)"
                                 >
-                            <t t-esc="fpos.name" />
-                        </option>
-                    </t>
-                </select>
-            </div>
-            <div
+                                    <t t-esc="fpos.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div
                         t-attf-class="mb-3 #{error.get('bankayma_vendor_tax_percentage') and 'o_has_error' or ''}"
                     >
-                <label
+                        <label
                             class="col-form-label"
                             for="bankayma_vendor_tax_percentage"
-                        >Tax deduction</label>
-                <div class="form-check form-switch">
-                <input
+                        >
+                            Tax deduction
+                        </label>
+                        <div class="form-check form-switch">
+                            <input
                                 type="checkbox"
                                 t-attf-class="form-check-input"
                                 value=""
@@ -171,8 +184,8 @@
                     jQuery('#bankayma_vendor_tax_percentage').val(jQuery(this).prop('checked') ? jQuery('#bankayma_vendor_tax_percentage').val() : 0);
                     "
                             />
-                </div>
-                <input
+                        </div>
+                        <input
                             type="number"
                             min="0"
                             t-attf-class="form-control #{error.get('bankayma_vendor_tax_percentage') and 'is-invalid' or ''}"
@@ -180,15 +193,14 @@
                             id="bankayma_vendor_tax_percentage"
                             t-att-value="bankayma_vendor_tax_percentage or request.env.user.partner_id.bankayma_vendor_tax_percentage"
                         />
-            </div>
-            <div
+                    </div>
+                    <div
                         t-attf-class="mb-3 #{error.get('bankayma_vendor_max_amount') and 'o_has_error' or ''}"
                     >
-                <label
-                            class="col-form-label"
-                            for="bankayma_vendor_max_amount"
-                        >Maximum amount</label>
-                <input
+                        <label class="col-form-label" for="bankayma_vendor_max_amount">
+                            Maximum amount
+                        </label>
+                        <input
                             type="number"
                             min="0"
                             t-attf-class="form-control #{error.get('bankayma_vendor_max_amount') and 'is-invalid' or ''}"
@@ -196,17 +208,20 @@
                             id="bankayma_vendor_max_amount"
                             t-att-value="bankayma_vendor_max_amount or request.env.user.partner_id.bankayma_vendor_max_amount"
                         />
-            </div>
-            <div
+                    </div>
+                    <div
                         t-attf-class="mb-3 optional-tax-group"
                         t-foreach="fiscal_positions.mapped('optional_tax_group_ids')"
                         t-as="tax_group"
                     >
-                <label class="col-form-label" t-attf-for="tax_group_#{tax_group.id}"><t
-                                t-out="tax_group.name"
-                            /></label>
-                <div class="form-check form-switch">
-                <input
+                        <label
+                            class="col-form-label"
+                            t-attf-for="tax_group_#{tax_group.id}"
+                        >
+                            <t t-out="tax_group.name" />
+                        </label>
+                        <div class="form-check form-switch">
+                            <input
                                 type="checkbox"
                                 t-attf-class="form-check-input #{error.get('tax_group%d' % tax_group.id) and 'is-invalid' or ''}"
                                 t-attf-name="tax_group_#{tax_group.id}"
@@ -214,9 +229,9 @@
                                 t-att-value="tax_group.id"
                                 t-att-checked="'tax_group_%d' % tax_group.id in request.httprequest.form or tax_group in request.env.user.partner_id.bankayma_tax_group_ids"
                             />
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
             </div>
         </xpath>
     </template>
@@ -240,13 +255,17 @@
                     class="btn btn-sm btn-primary"
                     aria-label="New invoice"
                     t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_out_invoice_new').id}}"
-                >New Invoice</a>
+                >
+                    New Invoice
+                </a>
                 &#160;
                 <a
                     class="btn btn-sm btn-primary"
                     aria-label="New Vendor Bill"
                     t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_in_invoice_new').id}}"
-                >New Vendor Bill</a>
+                >
+                    New Vendor Bill
+                </a>
             </nav>
             <nav
                 class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
@@ -256,7 +275,9 @@
                     class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
                     href="/my/invoices/new"
-                >Pay Me</a>
+                >
+                    Pay Me
+                </a>
             </nav>
             <nav
                 t-if="invoices"
@@ -273,15 +294,18 @@
                 <t t-set="currency" t-value='invoices[0].currency_id' />
                 <table class="table">
                     <tr>
-                        <th>In:</th><th
+                        <th>In:</th>
+                        <th
                             t-esc="amount_in if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_out"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
-                            <th>Out:</th><th
+                        <th>Out:</th>
+                        <th
                             t-esc="amount_out if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_in"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
-                        <th>Balance:</th><th
+                        <th>Balance:</th>
+                        <th
                             t-esc="amount_in - amount_out * (-1 if invoices.env.user.has_group('bankayma_base.group_vendor') else 1)"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
@@ -293,10 +317,9 @@
 
     <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
         <ol position="inside">
-            <li
-                t-if="page_name == 'new_vendor_bill'"
-                class="breadcrumb-item"
-            >New vendor bill</li>
+            <li t-if="page_name == 'new_vendor_bill'" class="breadcrumb-item">
+                New vendor bill
+            </li>
         </ol>
     </template>
 
@@ -319,7 +342,9 @@
                             <option
                                 t-att-selected="company.id == int(post.get('company', request.env.company))"
                                 t-att-value="company.id"
-                            ><t t-out="company.name" /></option>
+                            >
+                                <t t-out="company.name" />
+                            </option>
                         </t>
                     </select>
                 </div>
@@ -405,9 +430,10 @@
 
     <template id="report_invoice_document" inherit_id="account.report_invoice_document">
         <p t-if="not is_html_empty(o.fiscal_position_id.note)" position="attributes">
-            <attribute
-                name="t-if"
-            >not is_html_empty(o.fiscal_position_id.note) and o.is_purchase_document(True)</attribute>
+            <attribute name="t-if">
+                not is_html_empty(o.fiscal_position_id.note) and
+                o.is_purchase_document(True)
+            </attribute>
         </p>
         <div name="address_same_as_shipping" position="before">
             <div class="col-6">
@@ -449,5 +475,4 @@
             <div>To:</div>
         </xpath>
     </template>
-
 </odoo>

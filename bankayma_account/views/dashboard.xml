@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="view_dashboard_qweb" model="ir.ui.view">
         <field name="model">account.move</field>
         <field name="type">qweb</field>
@@ -55,23 +54,30 @@
             />
             <div class="container text-center p-3">
                 <div class="row">
-                    Here links to the moves being used to calculate the different values:
+                    Here links to the moves being used to calculate the different
+                    values:
                     <a
                         type="action"
                         data-model="account.move"
                         t-att-data-domain="[('id', 'in', incoming.ids)]"
-                    >Incoming</a>
+                    >
+                        Incoming
+                    </a>
                     <a
                         type="action"
                         data-model="account.move"
                         t-att-data-domain="[('id', 'in', outgoing.ids)]"
-                    >Outgoing</a>
+                    >
+                        Outgoing
+                    </a>
 
                     <a
                         type="action"
                         data-model="account.move"
                         t-att-data-domain="[('id', 'in', internal.ids)]"
-                    >Internal</a>
+                    >
+                        Internal
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col border bg-light">
@@ -83,10 +89,13 @@
                             t-esc="all_paid_incoming - all_paid_outgoing"
                             t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                         />
-                        <div><t
+                        <div>
+                            <t
                                 t-esc="all_incoming - all_outgoing"
                                 t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
-                            /> expected</div>
+                            />
+                            expected
+                        </div>
                     </div>
                     <div class="col border bg-light">
                         <h1>Income</h1>
@@ -94,10 +103,13 @@
                             t-esc="all_paid_incoming"
                             t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                         />
-                        <div>Unpaid: <t
+                        <div>
+                            Unpaid:
+                            <t
                                 t-esc="all_incoming - all_paid_incoming"
                                 t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
-                            /></div>
+                            />
+                        </div>
                     </div>
                     <div class="col border bg-light">
                         <h1>Expenses</h1>
@@ -105,10 +117,13 @@
                             t-esc="all_paid_outgoing"
                             t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                         />
-                        <div>Unpaid: <t
+                        <div>
+                            Unpaid:
+                            <t
                                 t-esc="all_outgoing - all_paid_outgoing"
                                 t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
-                            /></div>
+                            />
+                        </div>
                     </div>
                     <div class="col border bg-light">
                         <h1>Internal</h1>
@@ -116,10 +131,13 @@
                             t-esc="all_paid_internal"
                             t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                         />
-                        <div>Unpaid: <t
+                        <div>
+                            Unpaid:
+                            <t
                                 t-esc="all_internal - all_paid_internal"
                                 t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
-                            /></div>
+                            />
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -136,123 +154,123 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <t t-foreach="records.mapped('company_id')" t-as="company">
-                            <tr>
-                                <t
+                            <t t-foreach="records.mapped('company_id')" t-as="company">
+                                <tr>
+                                    <t
                                         t-set="moves"
                                         t-value="incoming_ml.filtered(lambda x: x.company_id == company)"
                                     />
-                                <t
+                                    <t
                                         t-set="incoming"
                                         t-value="sum(moves.mapped('balance'))"
                                     />
-                                <t
+                                    <t
                                         t-set="outgoing"
                                         t-value="sum(moves.mapped('balance'))"
                                     />
-                                <td>
-                                    <a
+                                    <td>
+                                        <a
                                             type="action"
                                             data-model="account.move"
                                             t-att-data-domain="[('id', 'in', moves.ids)]"
                                             t-esc="company.code"
                                         />
-                                </td>
-                                <td t-esc="company.name" />
-                                <td
+                                    </td>
+                                    <td t-esc="company.name" />
+                                    <td
                                         t-esc="incoming"
                                         t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                                     />
-                                <td
+                                    <td
                                         t-esc="outgoing"
                                         t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                                     />
-                                <td
+                                    <td
                                         t-esc="sum(internal_ml.filtered(lambda x: x.product_id == product).mapped('balance'))"
                                         t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                                     />
-                                <td
+                                    <td
                                         t-esc="incoming - outgoing"
                                         t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                                     />
-                            </tr>
-                        </t>
+                                </tr>
+                            </t>
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
                     <div class="col">
-                    <h1>Products</h1>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Paid</th>
-                                <th>Unpaid</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <t
+                        <h1>Products</h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Paid</th>
+                                    <th>Unpaid</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t
                                     t-foreach="records.mapped('line_ids.product_id').sorted(lambda x: x.default_code or '')"
                                     t-as="product"
                                 >
-                            <tr t-if="product">
-                                <t
+                                    <tr t-if="product">
+                                        <t
                                             t-set="amount"
                                             t-value="sum(incoming_ml.filtered(lambda x: x.product_id == product).mapped('balance'))"
                                         />
-                                <t
+                                        <t
                                             t-set="amount_paid"
                                             t-value="sum(incoming_ml.filtered(lambda x: x.product_id == product and x.reconciled).mapped('balance'))"
                                         />
-                                <t
+                                        <t
                                             t-set="amount_unpaid"
                                             t-value="amount - amount_paid"
                                         />
-                                <td t-esc="product.display_name" />
-                                <td
+                                        <td t-esc="product.display_name" />
+                                        <td
                                             t-esc="amount_paid"
                                             t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                                         />
-                                <td
+                                        <td
                                             t-esc="amount_unpaid"
                                             t-options='{"widget": "monetary", "display_currency": res_company.currency_id}'
                                         />
-                            </tr>
-                        </t>
-                        </tbody>
-                    </table>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="col">
                         <h1>Customers/Suppliers</h1>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Rank</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <t
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rank</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t
                                     t-foreach="records.mapped('line_ids.partner_id').sorted(lambda x: -x.customer_rank - x.supplier_rank)"
                                     t-as="partner"
                                 >
-                            <tr t-if="partner">
-                                <td>
-                                    <a
+                                    <tr t-if="partner">
+                                        <td>
+                                            <a
                                                 type="action"
                                                 t-att-data-model="partner._name"
                                                 t-att-data-res-id="partner.id"
                                                 t-esc="partner.name"
                                             />
-                                </td>
-                                <td
+                                        </td>
+                                        <td
                                             t-esc="partner.customer_rank + partner.supplier_rank"
                                         />
-                            </tr>
-                        </t>
-                        </tbody>
-                    </table>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -269,5 +287,4 @@
     <record id="bankayma_base.menu_bankayma_root" model="ir.ui.menu">
         <field name="action" ref="action_dashboard" />
     </record>
-
 </odoo>

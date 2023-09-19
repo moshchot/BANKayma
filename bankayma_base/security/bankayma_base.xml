@@ -2,64 +2,65 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
-<record id="category" model="ir.module.category">
-    <!--
+    <record id="category" model="ir.module.category">
+        <!--
     add module category to use it for groups, this groups them
     together on the user config screen
     -->
-    <field name="name">Bankayma</field>
-</record>
+        <field name="name">Bankayma</field>
+    </record>
 
-<record id="group_user" model="res.groups">
-    <!--
+    <record id="group_user" model="res.groups">
+        <!--
     define an own user group for users of child companies, that
     simplifies dumbing down the UI only for them but have full
     functionality for the users of the main company
     -->
-    <field name="name">Project User</field>
-    <field name="category_id" ref="category" />
-    <field name="comment" />
-    <field name="implied_ids" eval="[Command.link(ref('base.group_user'))]" />
-</record>
+        <field name="name">Project User</field>
+        <field name="category_id" ref="category" />
+        <field name="comment" />
+        <field name="implied_ids" eval="[Command.link(ref('base.group_user'))]" />
+    </record>
 
-<record id="group_manager" model="res.groups">
-    <!--
+    <record id="group_manager" model="res.groups">
+        <!--
     as project managers also should get a simplified UI, we make them
     their own group too
     -->
-    <field name="name">Project Manager</field>
-    <field name="category_id" ref="category" />
-    <field name="implied_ids" eval="[Command.link(ref('group_user'))]" />
-</record>
+        <field name="name">Project Manager</field>
+        <field name="category_id" ref="category" />
+        <field name="implied_ids" eval="[Command.link(ref('group_user'))]" />
+    </record>
 
-<record id="group_org_manager" model="res.groups">
-    <field name="name">Organization Manager</field>
-    <field name="category_id" ref="category" />
-</record>
+    <record id="group_org_manager" model="res.groups">
+        <field name="name">Organization Manager</field>
+        <field name="category_id" ref="category" />
+    </record>
 
-<record id="group_future" model="res.groups">
-    <field name="name">Future features</field>
-    <field name="category_id" ref="category" />
-</record>
+    <record id="group_future" model="res.groups">
+        <field name="name">Future features</field>
+        <field name="category_id" ref="category" />
+    </record>
 
-<record id="group_full" model="res.groups">
-    <field name="name">Full Odoo functionality</field>
-    <field name="category_id" ref="category" />
-</record>
+    <record id="group_full" model="res.groups">
+        <field name="name">Full Odoo functionality</field>
+        <field name="category_id" ref="category" />
+    </record>
 
-<record id="group_vendor" model="res.groups">
-    <field name="name">Vendor</field>
-    <field name="category_id" ref="base_portal_type.category_portal_type" />
-</record>
+    <record id="group_vendor" model="res.groups">
+        <field name="name">Vendor</field>
+        <field name="category_id" ref="base_portal_type.category_portal_type" />
+    </record>
 
-<record id="base.group_user" model="res.groups">
-    <!-- enable multi-company globally -->
-    <field name="implied_ids" eval="[Command.link(ref('base.group_multi_company'))]" />
-</record>
+    <record id="base.group_user" model="res.groups">
+        <!-- enable multi-company globally -->
+        <field
+            name="implied_ids"
+            eval="[Command.link(ref('base.group_multi_company'))]"
+        />
+    </record>
 
-<record id="base.user_admin" model="res.users">
-    <field name="groups_id" eval="[Command.link(ref('group_full'))]" />
-</record>
-
+    <record id="base.user_admin" model="res.users">
+        <field name="groups_id" eval="[Command.link(ref('group_full'))]" />
+    </record>
 </odoo>

@@ -2,31 +2,30 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="action_post_validation_intercompany_purchase" model="ir.actions.server">
-            <field name="name">Pay overhead invoices</field>
-            <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
-            <field name="model_id" ref="account.model_account_move" />
-            <field name="state">code</field>
-            <field name="code">
-                for this in (records or record).with_context(skip_validation_check=True):
+        <field name="name">Pay overhead invoices</field>
+        <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">
+            for this in (records or record).with_context(skip_validation_check=True):
                     this.action_post()
                     this._bankayma_pay(journal=this.company_id.overhead_payment_journal_id)
                     for invoice in this.auto_invoice_id:
                         invoice._bankayma_pay(journal=invoice.company_id.overhead_payment_journal_id)
-            </field>
+        </field>
     </record>
 
     <record id="action_post_reject_intercompany_purchase" model="ir.actions.server">
-            <field name="name">Pay overhead invoices</field>
-            <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
-            <field name="model_id" ref="account.model_account_move" />
-            <field name="state">code</field>
-            <field name="code">
-                for this in (records or record):
+        <field name="name">Pay overhead invoices</field>
+        <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">
+            for this in (records or record):
                     this.sudo().auto_invoice_id.button_draft()
                     this.button_cancel()
-            </field>
+        </field>
     </record>
 
     <record id="tier_definition_intercompany_purchase" model="tier.definition">
@@ -35,9 +34,9 @@
         <field name="company_id" eval="False" />
         <field name="review_type">group</field>
         <field name="reviewer_group_id" ref="bankayma_base.group_manager" />
-        <field
-            name="definition_domain"
-        >[("move_type", "=", "in_invoice"), ("journal_id.intercompany_purchase_company_id", "!=", False), ("auto_invoice_id.journal_id.intercompany_overhead_company_id", "=", False)]</field>
+        <field name="definition_domain">
+            [("move_type", "=", "in_invoice"), ("journal_id.intercompany_purchase_company_id", "!=", False), ("auto_invoice_id.journal_id.intercompany_overhead_company_id", "=", False)]
+        </field>
         <field name="has_comment" eval="True" />
         <field
             name="server_action_id"
@@ -48,5 +47,4 @@
             ref="action_post_reject_intercompany_purchase"
         />
     </record>
-
 </odoo>

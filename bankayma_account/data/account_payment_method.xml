@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="payment_method_bank_in" model="account.payment.method">
         <field name="name">Bank transfer</field>
         <field name="code">sumit_bank</field>
@@ -87,5 +86,4 @@
         <field name="payment_type">outbound</field>
         <field name="sumit_type">8</field>
     </record>
-
 </odoo>

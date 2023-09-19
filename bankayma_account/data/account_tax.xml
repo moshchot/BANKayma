@@ -2,7 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="tax_social_security_50inc" model="account.tax">
         <field name="name">-5%</field>
         <field name="type_tax_use">purchase</field>
@@ -35,5 +34,4 @@
         <field name="tax_group_id" ref="tax_group_social_security" />
         <field name="python_compute">result = quantity * price_unit * 0.076</field>
     </record>
-
 </odoo>
