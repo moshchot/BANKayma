@@ -138,16 +138,7 @@
                         </label>
                         <select
                             name="property_account_position_id"
-                            t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''}"
-                            onchange="
-                    jQuery('#bankayma_vendor_tax_percentage').prop('required', jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
-                    jQuery('#bankayma_vendor_tax_percentage').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax') == 'True');
-                    jQuery('#bankayma_vendor_max_amount').prop('required', jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
-                    jQuery('#bankayma_vendor_max_amount').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') == 'True');
-                    jQuery('#bankayma_vendor_tax_deduction').parent().toggle(jQuery(this.selectedOptions).data('deduct_tax_use_max_amount') != 'True');
-                    jQuery('.optional-tax-group').hide();
-                    (jQuery(this.selectedOptions).data('optional_tax_groups') || []).forEach(function(tax_group_id) { jQuery('#tax_group_' + tax_group_id).parent().parent().show() });
-                    "
+                            t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''} bk-onchange"
                         >
                             <option value="">Fiscal position...</option>
                             <t t-foreach="fiscal_positions or []" t-as="fpos">
@@ -175,14 +166,10 @@
                         <div class="form-check form-switch">
                             <input
                                 type="checkbox"
-                                t-attf-class="form-check-input"
+                                t-attf-class="form-check-input bk-onchange"
                                 value=""
                                 id="bankayma_vendor_tax_deduction"
                                 t-att-checked="(bankayma_vendor_tax_percentage or request.env.user.partner_id.bankayma_vendor_tax_percentage) and True or False"
-                                onchange="
-                    jQuery('#bankayma_vendor_tax_percentage').toggle(jQuery(this).is(':visible') ? jQuery(this).prop('checked') : true);
-                    jQuery('#bankayma_vendor_tax_percentage').val(jQuery(this).prop('checked') ? jQuery('#bankayma_vendor_tax_percentage').val() : 0);
-                    "
                             />
                         </div>
                         <input
