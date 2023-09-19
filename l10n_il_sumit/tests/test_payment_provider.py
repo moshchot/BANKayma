@@ -6,13 +6,13 @@ from unittest.mock import Mock, patch
 
 from odoo.tests import tagged
 
-from odoo.addons.account_payment.tests.common import AccountPaymentCommon
+from odoo.addons.payment.tests.common import PaymentCommon
 
 from ..models.sumit_account import requests
 
 
 @tagged("-at_install", "post_install")
-class TestPaymentProvider(AccountPaymentCommon):
+class TestPaymentProvider(PaymentCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -28,6 +28,13 @@ class TestPaymentProvider(AccountPaymentCommon):
                 )
                 .id,
             },
+        )
+        cls.invoice = cls.env["account.move"].search(
+            [
+                ("move_type", "=", "out_invoice"),
+                ("payment_state", "=", "not_paid"),
+            ],
+            limit=1,
         )
 
     def test_transaction(self):
