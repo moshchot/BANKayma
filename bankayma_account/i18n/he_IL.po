@@ -1135,6 +1135,11 @@ msgid "Payment Request"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_payment_transaction
+msgid "Payment Transaction"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_method_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_method_id
