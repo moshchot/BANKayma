@@ -32,7 +32,8 @@ class TestPaymentProvider(PaymentCommon):
                     [
                         ("company_id", "=", cls.env.company.id),
                         ("type", "=", "bank"),
-                    ]
+                    ],
+                    limit=1,
                 )
                 .id,
             },
