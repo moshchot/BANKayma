@@ -67,7 +67,15 @@ class AccountMove(models.Model):
         }
 
     def _invoice_paid_hook(self):
-        if self.journal_id.use_sumit:
+        """
+        Create sumit document if journal is configured for it, but only if
+        the payment isn't done via sumit anyways
+        """
+        payment = self.line_ids.mapped(
+            "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+        )
+        payment_provider = payment.payment_transaction_id.provider_id
+        if self.journal_id.use_sumit and payment_provider.code != "sumit":
             result = self.env["sumit.account"]._request(
                 "/accounting/documents/create",
                 self._to_sumit_vals(),

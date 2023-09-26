@@ -17,6 +17,7 @@
     "depends": [
         "account",
         "account_payment_mode",
+        "payment",
     ],
     "data": [
         "security/ir.model.access.csv",

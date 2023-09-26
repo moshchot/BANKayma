@@ -8,6 +8,7 @@ from . import account_payment_method
 from . import account_tax
 from . import account_tax_group
 from . import mail_template
+from . import payment_transaction
 from . import product_template
 from . import res_company
 from . import res_config_settings
