@@ -495,6 +495,6 @@ class AccountMove(models.Model):
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
         product_sumit_types = self.invoice_line_ids.mapped("product_id.sumit_type")
-        if len(product_sumit_types) == 1:
+        if len(product_sumit_types) == 1 and all(product_sumit_types):
             result["Details"]["Type"] = product_sumit_types[0]
         return result
