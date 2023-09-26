@@ -74,6 +74,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:company_cascade.field_company_cascade_mixin__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_ir_property__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_ir_sequence__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_payment_provider__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_res_company__company_cascade_child_ids
 msgid "Company Cascade Child"
 msgstr ""
@@ -90,6 +91,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:company_cascade.field_company_cascade_mixin__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_ir_property__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_ir_sequence__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_payment_provider__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_res_company__company_cascade_parent_id
 msgid "Company Cascade Parent"
 msgstr ""
@@ -179,6 +181,11 @@ msgstr ""
 #. module: company_cascade
 #: model:ir.model,name:company_cascade.model_account_payment_mode
 msgid "Payment Modes"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_payment_provider
+msgid "Payment Provider"
 msgstr ""
 
 #. module: company_cascade
