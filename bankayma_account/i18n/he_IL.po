@@ -48,6 +48,13 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_back_in_edit_mode
+msgid ""
+"<i class=\"fa fa-arrow-right me-1\"/>\n"
+"                back to my bankayma/dashboard"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "<option value=\"\">Fiscal position...</option>"
@@ -124,11 +131,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__auto_invoice_ids
 msgid "Auto Invoice"
 msgstr ""
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Balance"
-msgstr "מאזן"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -246,11 +248,6 @@ msgid ""
 "Choose one of the values to either force intercompany partners or no "
 "intercompany partners"
 msgstr ""
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Code"
-msgstr "קוד"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__comment
@@ -396,16 +393,6 @@ msgid "Custom tax"
 msgstr "ניכוי מס הכנסה"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Customers/Suppliers"
-msgstr "לקוחות/ ספקים"
-
-#. module: bankayma_account
-#: model:ir.actions.act_window,name:bankayma_account.action_dashboard
-msgid "Dashboard"
-msgstr "לוח בקרה"
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Dear"
 msgstr "אהלן"
@@ -530,7 +517,6 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_expense_move
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_expense_move
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Expenses"
 msgstr "הוצאות"
 
@@ -585,13 +571,6 @@ msgid "Here is your"
 msgstr "להלן"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid ""
-"Here links to the moves being used to calculate the different\n"
-"                    values:"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
@@ -623,13 +602,7 @@ msgstr "נכנס:"
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_out_invoice
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Income"
-msgstr "הכנסות"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Incoming"
 msgstr "הכנסות"
 
 #. module: bankayma_account
@@ -688,7 +661,6 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_internal
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_move_internal
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Internal"
 msgstr "פנימיות"
 
@@ -843,11 +815,6 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Name"
-msgstr "שם עוסק"
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
@@ -962,11 +929,6 @@ msgid "Out:"
 msgstr "הכנסה"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Outgoing"
-msgstr "נכנס"
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mail_server_id
 msgid "Outgoing mail server"
 msgstr ""
@@ -1065,7 +1027,6 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__paid
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 #, python-format
 msgid "Paid"
 msgstr "שולם"
@@ -1149,14 +1110,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_id
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Product"
 msgstr "סעיף"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Products"
-msgstr "סעיפים"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__3
@@ -1164,18 +1119,8 @@ msgid "Proforma Invoice"
 msgstr ""
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Projects"
-msgstr "פרוייקטים"
-
-#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__11
 msgid "Purchasing Order"
-msgstr ""
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Rank"
 msgstr ""
 
 #. module: bankayma_account
@@ -1387,15 +1332,9 @@ msgstr ""
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 #, python-format
 msgid "Unpaid"
 msgstr "לתשלום"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "Unpaid:"
-msgstr "לתשלום:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__use_active_domain
@@ -1539,11 +1478,6 @@ msgstr "הזמנת ספקים"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "bill"
 msgstr "דרישת תשלום ספק"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
-msgid "expected"
-msgstr "צפוי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
