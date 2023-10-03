@@ -9,7 +9,7 @@
         sequence="100"
         action="board.open_board_my_dash_action"
         web_icon="bankayma_base,static/description/icon.png"
-        groups="group_future"
+        groups="group_user"
     />
     <record
         id="contacts.action_contacts_view_kanban"
@@ -27,6 +27,7 @@
         id="menu_bankayma_config"
         parent="menu_bankayma_root"
         sequence="1000"
+        groups="group_manager"
         name="Configuration"
     />
     <record id="base.action_res_company_form" model="ir.actions.act_window">
@@ -43,15 +44,6 @@
         parent="menu_bankayma_config"
         sequence="20"
         action="base.action_res_users"
-    />
-
-    <!-- temp bk root menu for income launch -->
-    <menuitem
-        id="menu_bankayma_simplified_income"
-        name="BANKayma"
-        web_icon="bankayma_base,static/description/icon.png"
-        sequence="10"
-        groups="group_user"
     />
 
     <record id="action_simplified_income_company_config" model="ir.actions.act_window">
@@ -80,15 +72,7 @@
         <field name="act_window_id" ref="action_simplified_income_company_config" />
     </record>
 
-    <menuitem
-        id="menu_bankayma_simplified_income_config"
-        parent="menu_bankayma_simplified_income"
-        sequence="10"
-        groups="group_manager"
-        action="action_simplified_income_company_config"
-    />
-
-    <!-- assign standard menus to debug user (= hide them) -->
+    <!-- assign standard menus to group_full (= hide them) -->
     <record id="mail.menu_root_discuss" model="ir.ui.menu">
         <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
@@ -99,6 +83,24 @@
         <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
     <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="spreadsheet_oca.spreadsheet_spreadsheet_menu" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="project.menu_main_pm" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="document_knowledge.menu_document_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="hr.menu_hr_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
+    </record>
+    <record id="website.menu_website_configuration" model="ir.ui.menu">
         <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
 </odoo>
