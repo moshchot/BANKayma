@@ -227,9 +227,21 @@
         <t t-set="backend_url" position="after">
             <t
                 t-set="backend_url"
-                t-value="backend_url.replace('action=%s' % invoice.env.ref('account.action_move_out_invoice_type').id, 'action=%s' % invoice.env.ref('bankayma_account.action_bankayma_group_income_move_out_invoice').id)"
+                t-value="backend_url.replace('action=%s' % invoice.env.ref('account.action_move_out_invoice_type').id, 'action=%s&amp;menu_id=%s' % (invoice.env.ref('board.open_board_my_dash_action').id, invoice.env.ref('bankayma_base.menu_bankayma_root').id))"
             />
         </t>
+    </template>
+
+    <template
+        id="portal_back_in_edit_mode"
+        inherit_id="portal.portal_back_in_edit_mode"
+    >
+        <xpath expr="//a" position="replace">
+            <a t-att-href="backend_url">
+                <i class="fa fa-arrow-right me-1" />
+                back to my bankayma/dashboard
+            </a>
+        </xpath>
     </template>
 
     <template id="portal_my_invoices" inherit_id="account.portal_my_invoices">
