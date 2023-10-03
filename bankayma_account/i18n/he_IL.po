@@ -79,12 +79,6 @@ msgid "Additional Contacts"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_all
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_all
-msgid "All"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_product_ids
 msgid "Allowed products"
 msgstr ""
@@ -514,11 +508,6 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense
-msgid "Expense"
-msgstr "הוצאה"
-
-#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
 msgid "Expense Invoice"
 msgstr ""
@@ -634,7 +623,6 @@ msgstr "נכנס:"
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_out_invoice
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 msgid "Income"
 msgstr "הכנסות"
@@ -872,12 +860,6 @@ msgid "Needs validation"
 msgstr "לאישור"
 
 #. module: bankayma_account
-#: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_draft
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_draft
-msgid "New"
-msgstr "חשבונית ספק חדשה"
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New Invoice"
 msgstr "דרישת תשלום חדשה"
@@ -1081,12 +1063,8 @@ msgstr ""
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
-#: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_paid
-#: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__paid
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_paid
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_paid
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_dashboard_qweb
 #, python-format
 msgid "Paid"
@@ -1150,12 +1128,6 @@ msgstr "אמצעי תשלום"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Payment will be remitted in next round"
 msgstr "התשלום יועבר בסבב התשלומים הקרוב"
-
-#. module: bankayma_account
-#: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_type_open
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_open
-msgid "Pending payment"
-msgstr "בתשלום"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -1485,9 +1457,7 @@ msgid "Users"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_type_validated
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_validated
 msgid "Validated"
 msgstr "צפוי"
 
