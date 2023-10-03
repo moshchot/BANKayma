@@ -235,6 +235,7 @@
     <template
         id="portal_back_in_edit_mode"
         inherit_id="portal.portal_back_in_edit_mode"
+        priority="100"
     >
         <xpath expr="//a" position="replace">
             <a t-att-href="backend_url">
