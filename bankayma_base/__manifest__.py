@@ -50,6 +50,7 @@
         "web_advanced_search",
         "web_chatter_position",
         "web_dark_mode",
+        "web_dashboard_open_action",
         "website_blog",
         "website_form_project",
         "website_mail",
