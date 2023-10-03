@@ -28,7 +28,6 @@ msgstr ""
 
 #. module: bankayma_base
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_root
-#: model:ir.ui.menu,name:bankayma_base.menu_bankayma_simplified_income
 msgid "BANKayma"
 msgstr "בנקיימא"
 
@@ -122,7 +121,6 @@ msgstr "מנהל ארגון"
 
 #. module: bankayma_base
 #: model:ir.actions.act_window,name:bankayma_base.action_simplified_income_company_config
-#: model:ir.ui.menu,name:bankayma_base.menu_bankayma_simplified_income_config
 msgid "Organization config"
 msgstr "הגדרות יוזמה"
 
