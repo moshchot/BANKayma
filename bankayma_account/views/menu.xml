@@ -65,12 +65,6 @@
         parent="bankayma_base.menu_bankayma_config"
         sequence="110"
     />
-    <menuitem
-        id="menu_bankayma_config_analytic_plans"
-        action="analytic.account_analytic_plan_action"
-        parent="bankayma_base.menu_bankayma_config"
-        sequence="120"
-    />
 
     <!-- bankayma_base.group_income -->
 
