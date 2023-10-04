@@ -63,7 +63,7 @@ msgstr "<option value=\"\">מעמד פיסקלי...</option>"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
-msgstr ""
+msgstr "<strong style=\"box-sizing:border-box;font-weight:500;\">עבור:</strong>"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -83,7 +83,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__partner_ids
 msgid "Additional Contacts"
-msgstr ""
+msgstr "אנשי קשר נוספים"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_product_ids
@@ -227,7 +227,7 @@ msgstr "מזומן"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_charge_overhead
 msgid "Charge overhead"
-msgstr ""
+msgstr "חיוב תקורה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_fiscal_position__vendor_doc_mandatory
@@ -302,7 +302,7 @@ msgid ""
 "                    <span class=\"fa fa-long-arrow-right\"/>"
 msgstr ""
 "אישור\n"
-"                    <span class=\"fa fa-long-arrow-left\"/>"
+"                    <span class=\"fa fa-long-arrow-right\"/>"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -465,7 +465,7 @@ msgstr "מסמך"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__4
 msgid "Donation Receipt"
-msgstr ""
+msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
@@ -497,7 +497,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
 msgid "Expense Invoice"
-msgstr ""
+msgstr "חשבונית ספק"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__15
@@ -683,12 +683,12 @@ msgstr "הזמנת ספקים"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__0
 msgid "Invoice"
-msgstr ""
+msgstr "דרישת תשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__1
 msgid "Invoice And Receipt"
-msgstr ""
+msgstr "חשבונית וקבלה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_company__invoice_auto_validation
@@ -1126,7 +1126,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__2
 msgid "Receipt"
-msgstr ""
+msgstr "קבלה"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_register
@@ -1191,7 +1191,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:account.tax.group,name:bankayma_account.tax_group_social_security
 msgid "Social security"
-msgstr ""
+msgstr "ביטוח לאומי"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subject
@@ -1258,7 +1258,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_tax_group__tax_ids
 msgid "Taxes"
-msgstr ""
+msgstr "ניכויים"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__template_company_id
