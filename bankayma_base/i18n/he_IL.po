@@ -147,11 +147,6 @@ msgid "User"
 msgstr "חבר"
 
 #. module: bankayma_base
-#: model:ir.ui.menu,name:bankayma_base.menu_bankayma_users
-msgid "Users"
-msgstr "חברים"
-
-#. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_vendor
 msgid "Vendor"
 msgstr "ספק"
