@@ -39,12 +39,6 @@
         sequence="10"
         action="base.action_res_company_form"
     />
-    <menuitem
-        id="menu_bankayma_users"
-        parent="menu_bankayma_config"
-        sequence="20"
-        action="base.action_res_users"
-    />
 
     <record id="action_simplified_income_company_config" model="ir.actions.act_window">
         <field name="name">Organization config</field>
