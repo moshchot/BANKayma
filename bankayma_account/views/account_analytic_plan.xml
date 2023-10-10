@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_account_analytic_account_form" model="ir.ui.view">
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+        <field name="arch" type="xml">
+            <field name="plan_id" position="after">
+                <field
+                    name="plan_id"
+                    attrs="{'readonly': [('plan_id', '!=', False)]}"
+                    groups="bankayma_base.group_user,!bankayma_base.group_org_manager,!bankayma_base.group_full"
+                    domain="[('company_id', '=', company_id)]"
+                />
+            </field>
+            <field name="plan_id" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

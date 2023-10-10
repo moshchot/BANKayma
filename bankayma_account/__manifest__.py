@@ -53,6 +53,7 @@
         "security/ir.model.access.csv",
         "security/bankayma_account.xml",
         "views/menu.xml",
+        "views/account_analytic_plan.xml",
         "views/account_fiscal_position.xml",
         "views/account_journal.xml",
         "views/account_move.xml",

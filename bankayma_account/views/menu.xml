@@ -2,8 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <!-- bankayma_base.group_user -->
-
     <record id="action_move_out_invoice_new" model="ir.actions.act_window">
         <field name="name">New invoice</field>
         <field name="res_model">account.move</field>
@@ -59,14 +57,24 @@
             eval="[Command.set([ref('bankayma_base.group_full')])]"
         />
     </record>
+    <record id="action_analytic_accounts" model="ir.actions.act_window">
+        <field name="name">Analytic Accounts</field>
+        <field name="res_model">account.analytic.account</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field
+            name="search_view_id"
+            ref="analytic.view_account_analytic_account_search"
+        />
+        <field name="context">{'search_default_active':1}</field>
+        <field name="domain">[('plan_id.company_id', 'in', allowed_company_ids)]</field>
+        <field name="view_id" ref="analytic.view_account_analytic_account_list" />
+    </record>
     <menuitem
         id="menu_bankayma_config_analytic_accounts"
-        action="analytic.action_account_analytic_account_form"
+        action="action_analytic_accounts"
         parent="bankayma_base.menu_bankayma_config"
         sequence="110"
     />
-
-    <!-- bankayma_base.group_income -->
 
     <record
         id="action_bankayma_group_income_move_out_invoice"
