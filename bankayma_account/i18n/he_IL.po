@@ -97,14 +97,15 @@ msgid "Amount"
 msgstr "סכום לתשלום"
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_analytic_accounts
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_accounts
 msgid "Analytic Accounts"
 msgstr "טאגים אנליטיים"
-
-#. module: bankayma_account
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_plans
-msgid "Analytic Plans"
-msgstr "תכניות אנליטיות"
 
 #. module: bankayma_account
 #. odoo-python
@@ -1090,6 +1091,11 @@ msgstr "אמצעי תשלום"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Payment will be remitted in next round"
 msgstr "התשלום יועבר בסבב התשלומים הקרוב"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_account__plan_id
+msgid "Plan"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
