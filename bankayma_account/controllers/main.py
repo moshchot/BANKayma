@@ -15,7 +15,6 @@ class CustomerPortal(portal.CustomerPortal):
                 "property_account_position_id",
                 "bankayma_vendor_tax_percentage",
                 "bankayma_vendor_max_amount",
-                "bankayma_vendor_apply_default_tax",
             ]
             + [
                 "tax_group_%d" % tax_group.id
@@ -90,8 +89,6 @@ class CustomerPortal(portal.CustomerPortal):
                 values["bank_ids"] = [(1, accounts[:1].id, bank_vals)]
             else:
                 values["bank_ids"] = [(0, 0, bank_vals)]
-        if "bankayma_vendor_apply_default_tax" not in values:
-            values["bankayma_vendor_apply_default_tax"] = False
         return values
 
     def details_form_validate(self, data, partner_creation=False):
