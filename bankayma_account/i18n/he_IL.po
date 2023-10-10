@@ -553,6 +553,11 @@ msgid "Fiscal position"
 msgstr "מעמד פיסקלי"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "Fiscal position:"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
 msgid "From"
 msgstr "מאת"
@@ -798,6 +803,11 @@ msgstr "מסב"
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_max_amount
 msgid "Max amount"
 msgstr "סכום מקסימלי לשנה הנוכחית"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "Max amount:"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -1136,6 +1146,17 @@ msgid "Receipt"
 msgstr "קבלה"
 
 #. module: bankayma_account
+#: model:mail.template,name:bankayma_account.mail_template_account_move_draft
+#: model:mail.template,subject:bankayma_account.mail_template_account_move_draft
+msgid "Reception of request text + fields"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "Reception of request text + fields:"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
 msgstr "אישור קבלת תשלום"
@@ -1250,6 +1271,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Tax deduction"
 msgstr "ניכוי מס"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "Tax deduction:"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_group_id
@@ -1497,6 +1523,11 @@ msgid "invoice"
 msgstr "דרישת תשלום"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "no"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 msgid "or"
 msgstr "או"
@@ -1505,3 +1536,8 @@ msgstr "או"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "with following communication for your payment:"
 msgstr "עם הסימוכין:"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "yes"
+msgstr ""
