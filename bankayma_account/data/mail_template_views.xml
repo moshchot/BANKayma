@@ -106,4 +106,36 @@
             </p>
         </div>
     </template>
+    <template id="qweb_template_account_move_draft">
+        <div>Reception of request text + fields:</div>
+        <table>
+            <tr>
+                <th>Fiscal position:</th>
+                <td t-out="object.fiscal_position_id.name" />
+            </tr>
+            <tr>
+                <th>Tax deduction:</th>
+                <td>
+                    <t t-if="object.bankayma_vendor_tax_percentage">yes</t>
+                    <t t-else="">no</t>
+                </td>
+            </tr>
+            <tr t-if="object.bankayma_deduct_tax_use_max_amount">
+                <th>Max amount:</th>
+                <td t-out="object.bankayma_vendor_max_amount" />
+            </tr>
+            <tr
+                t-foreach="object.mapped('invoice_line_ids.tax_ids.tax_group_id').sorted('name')"
+                t-as="tax_group"
+            >
+                <th>
+                    <span t-out="tax_group.name" />
+                    :
+                </th>
+                <td
+                    t-out="', '.join(object.mapped('invoice_line_ids.tax_ids').filtered(lambda x: x.tax_group_id == tax_group).mapped('name'))"
+                />
+            </tr>
+        </table>
+    </template>
 </odoo>
