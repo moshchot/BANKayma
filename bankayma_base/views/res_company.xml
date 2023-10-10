@@ -31,6 +31,16 @@
             <group name="social_media" position="attributes">
                 <attribute name="groups" />
             </group>
+            <field name="vat" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </field>
+            <field name="company_registry" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </field>
         </field>
     </record>
 </odoo>
