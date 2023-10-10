@@ -49,10 +49,26 @@
                 expr="//sheet//field[@name='property_account_position_id']"
                 position="after"
             >
-                <field name="bankayma_vendor_tax_percentage" />
-                <field name="bankayma_vendor_max_amount" />
-                <field name="bankayma_vendor_apply_default_tax" />
-                <field name="bankayma_tax_group_ids" widget="many2many_tags" />
+                <field name="bankayma_deduct_tax" invisible="True" />
+                <field
+                    name="bankayma_show_tax_deduction"
+                    attrs="{'invisible': [('bankayma_deduct_tax', '=', False)]}"
+                />
+                <field
+                    name="bankayma_vendor_tax_percentage"
+                    attrs="{'invisible': [('bankayma_show_tax_deduction', '=', False)]}"
+                />
+                <field
+                    name="bankayma_vendor_max_amount"
+                    attrs="{'invisible': [('bankayma_show_tax_deduction', '=', False)]}"
+                />
+                <field name="bankayma_available_tax_group_ids" invisible="True" />
+                <field
+                    name="bankayma_tax_group_ids"
+                    widget="many2many_checkboxes"
+                    domain="[('id', 'in', bankayma_available_tax_group_ids)]"
+                    attrs="{'invisible': [('bankayma_available_tax_group_ids', '=', [])]}"
+                />
             </xpath>
             <span name="address_name" position="before">
                 <field name="type" />
