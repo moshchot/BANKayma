@@ -348,6 +348,24 @@ class AccountMove(models.Model):
                 payment_form.communication = payment_communication
             payment_form.save().action_create_payments()
 
+    def _bankayma_send_draft_invoice(self):
+        """Send an invoice using the draft invoice template"""
+        template = self.env.ref("bankayma_account.mail_template_account_move_draft")
+        for this in self:
+            template.send_mail(
+                this.id,
+                email_values={
+                    "attachment_ids": self.env["ir.attachment"]
+                    .search(
+                        [
+                            ("res_model", "=", this._name),
+                            ("res_id", "=", this.id),
+                        ]
+                    )
+                    .ids,
+                },
+            )
+
     def request_validation(self):
         """Set invoice_date before rquesting validation"""
         for this in self:
@@ -409,6 +427,7 @@ class AccountMove(models.Model):
                 subtype_xmlid="mail.mt_comment",
                 attachment_ids=attachments.ids,
             )
+        invoice._bankayma_send_draft_invoice()
         return invoice
 
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):

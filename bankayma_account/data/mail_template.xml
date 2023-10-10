@@ -25,4 +25,15 @@
         <field name="body_type">qweb_view</field>
         <field name="body_view_id" ref="qweb_template_edi_invoice" />
     </record>
+
+    <record id="mail_template_account_move_draft" model="mail.template">
+        <field name="name">Reception of request text + fields</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="subject">Reception of request text + fields</field>
+        <field name="partner_to">
+            {{','.join(map(str, object.message_partner_ids.ids))}}
+        </field>
+        <field name="body_type">qweb_view</field>
+        <field name="body_view_id" ref="qweb_template_account_move_draft" />
+    </record>
 </odoo>
