@@ -44,7 +44,6 @@ account-invoicing:
     hbrunn: https://github.com/hbrunn/account-invoicing.git
   merges:
     - oca 16.0
-    - hbrunn 16.0-account_move_tier_validation
 account-payment:
   defaults:
     depth: 1
