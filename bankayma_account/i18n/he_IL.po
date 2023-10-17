@@ -1148,17 +1148,6 @@ msgid "Receipt"
 msgstr "קבלה"
 
 #. module: bankayma_account
-#: model:mail.template,name:bankayma_account.mail_template_account_move_draft
-#: model:mail.template,subject:bankayma_account.mail_template_account_move_draft
-msgid "Reception of request text + fields"
-msgstr ""
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-msgid "Reception of request text + fields:"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
 msgstr "אישור קבלת תשלום"
@@ -1259,6 +1248,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_partner_vat
 msgid "Tax ID"
 msgstr "מס ח״פ"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "Tax ID:"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_account_id
@@ -1511,6 +1505,11 @@ msgstr "הזמנת ספקים"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "bill"
 msgstr "דרישת תשלום ספק"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "for"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
