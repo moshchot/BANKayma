@@ -106,9 +106,17 @@
             </p>
         </div>
     </template>
-    <template id="qweb_template_account_move_draft">
-        <div>Reception of request text + fields:</div>
+    <template id="qweb_template_account_move_draft" name="Move tier validation request">
+        <div>
+            <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
+            for
+            <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
+        </div>
         <table>
+            <tr>
+                <th>Tax ID:</th>
+                <td t-out="object.partner_id.vat" />
+            </tr>
             <tr>
                 <th>Fiscal position:</th>
                 <td t-out="object.fiscal_position_id.name" />
@@ -116,7 +124,9 @@
             <tr>
                 <th>Tax deduction:</th>
                 <td>
-                    <t t-if="object.bankayma_vendor_tax_percentage">yes</t>
+                    <t t-if="object.bankayma_vendor_tax_percentage">
+                        <t t-out="object.bankayma_vendor_tax_percentage" />
+                    </t>
                     <t t-else="">no</t>
                 </td>
             </tr>
@@ -132,9 +142,7 @@
                     <span t-out="tax_group.name" />
                     :
                 </th>
-                <td
-                    t-out="', '.join(object.mapped('invoice_line_ids.tax_ids').filtered(lambda x: x.tax_group_id == tax_group).mapped('name'))"
-                />
+                <td>yes</td>
             </tr>
         </table>
     </template>

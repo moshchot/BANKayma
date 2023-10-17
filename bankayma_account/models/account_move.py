@@ -348,24 +348,6 @@ class AccountMove(models.Model):
                 payment_form.communication = payment_communication
             payment_form.save().action_create_payments()
 
-    def _bankayma_send_draft_invoice(self):
-        """Send an invoice using the draft invoice template"""
-        template = self.env.ref("bankayma_account.mail_template_account_move_draft")
-        for this in self:
-            template.send_mail(
-                this.id,
-                email_values={
-                    "attachment_ids": self.env["ir.attachment"]
-                    .search(
-                        [
-                            ("res_model", "=", this._name),
-                            ("res_id", "=", this.id),
-                        ]
-                    )
-                    .ids,
-                },
-            )
-
     def request_validation(self):
         """Set invoice_date before rquesting validation"""
         for this in self:
@@ -427,7 +409,6 @@ class AccountMove(models.Model):
                 subtype_xmlid="mail.mt_comment",
                 attachment_ids=attachments.ids,
             )
-        invoice._bankayma_send_draft_invoice()
         return invoice
 
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):
@@ -510,6 +491,13 @@ class AccountMove(models.Model):
             return result
         else:
             return {"type": "ir.actions.act_window.page.list"}
+
+    def _notify_requested_review_body(self):
+        return self.env["mail.template"]._render_template_qweb_view(
+            "bankayma_account.qweb_template_account_move_draft",
+            self._name,
+            self.ids,
+        )[self.id]
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
