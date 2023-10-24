@@ -578,6 +578,11 @@ msgid "Here is your"
 msgstr "להלן"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
+msgid "I agree that the amount will be withdrawn periodically"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
@@ -710,6 +715,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__is_mail_template_editor
 msgid "Is Editor"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_payment_transaction__is_recurrent
+msgid "Is Recurrent"
 msgstr ""
 
 #. module: bankayma_account
@@ -1148,6 +1158,11 @@ msgid "Receipt"
 msgstr "קבלה"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.s_donation_options
+msgid "Recurrent payment"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
 msgstr "אישור קבלת תשלום"
@@ -1435,6 +1450,13 @@ msgid "Validated State"
 msgstr "סטטוס אישור"
 
 #. module: bankayma_account
+#. odoo-javascript
+#: code:addons/bankayma_account/static/src/website_payment_form.esm.js:0
+#, python-format
+msgid "Validation Error"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__vendor_doc_description
 msgid "Vendor Doc Description"
 msgstr ""
@@ -1480,6 +1502,13 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "You cannot post an item with amount zero"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-javascript
+#: code:addons/bankayma_account/static/src/website_payment_form.esm.js:0
+#, python-format
+msgid "You need to agree to periodic withdrawals."
 msgstr ""
 
 #. module: bankayma_account
