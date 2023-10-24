@@ -2,6 +2,7 @@
 from odoo import _, fields
 from odoo.http import request, route
 from odoo.osv import expression
+from odoo.tools.json import scriptsafe as json_safe
 
 from odoo.addons.portal.controllers import portal
 
@@ -197,3 +198,47 @@ class CustomerPortal(portal.CustomerPortal):
                 )
                 return request.redirect("/my/invoices/%d" % bill.id)
         return request.render("bankayma_account.portal_new_vendor_bill", vals)
+
+    @route()
+    def donation_pay(self, **kwargs):
+        """Support recurring payments"""
+        options = json_safe.loads(kwargs.get("donation_options", "{}"))
+        kwargs["is_recurrent"] = options.get("recurrentPayment") == "true"
+        return super().donation_pay(**kwargs)
+
+    def _get_custom_rendering_context_values(self, is_recurrent=False, **kwargs):
+        result = super()._get_custom_rendering_context_values(**kwargs)
+        result["is_recurrent"] = is_recurrent
+        return result
+
+    def _create_transaction(
+        self,
+        payment_option_id,
+        reference_prefix,
+        amount,
+        currency_id,
+        partner_id,
+        flow,
+        tokenization_requested,
+        landing_route,
+        is_validation=False,
+        custom_create_values=None,
+        **kwargs
+    ):
+        result = super()._create_transaction(
+            payment_option_id,
+            reference_prefix,
+            amount,
+            currency_id,
+            partner_id,
+            flow,
+            tokenization_requested,
+            landing_route,
+            is_validation=False,
+            custom_create_values=custom_create_values,
+            **kwargs
+        )
+
+        result.is_recurrent = kwargs.get("is_recurrent")
+
+        return result

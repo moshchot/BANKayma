@@ -1,11 +1,13 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models
+from odoo import fields, models
 
 
 class PaymentTransaction(models.Model):
     _inherit = "payment.transaction"
+
+    is_recurrent = fields.Boolean()
 
     def _process_notification_data(self, notification_data):
         """Coerce current company to provider's company for further processing"""

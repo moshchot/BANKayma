@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="s_donation_options" inherit_id="website_payment.s_donation_options">
+        <we-checkbox data-name="display_options_opt" position="before">
+            <we-checkbox
+                string="Recurrent payment"
+                data-name="recurrent_payment"
+                data-select-data-attribute="true"
+                data-attribute-name="recurrentPayment"
+            />
+        </we-checkbox>
+    </template>
+</odoo>

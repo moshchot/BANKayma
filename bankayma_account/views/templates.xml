@@ -475,4 +475,21 @@
             <div>To:</div>
         </xpath>
     </template>
+    <template id="payment_checkout" inherit_id="website_payment.payment_checkout">
+        <xpath expr="//div[hasclass('o_donation_payment_form')]" position="inside">
+            <div class="col-lg-12 px-0" t-if="is_recurrent">
+                <div class="form-check mt-3">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="recurrency_confirmation"
+                    />
+                    <label class="form-check-label" for="recurrency_confirmation">
+                        I agree that the amount will be withdrawn periodically
+                    </label>
+                </div>
+            </div>
+        </xpath>
+    </template>
 </odoo>
