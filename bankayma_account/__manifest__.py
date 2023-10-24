@@ -36,6 +36,7 @@
         "l10n_il_sumit",
         "mis_builder",
         "web_ir_actions_act_window_page",
+        "website_payment",
     ],
     "demo": [
         "demo/account_journal.xml",
@@ -61,6 +62,7 @@
         "views/product_template.xml",
         "views/res_config_settings.xml",
         "views/res_partner.xml",
+        "views/snippets.xml",
         "views/templates.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/bankayma_vendor_invite.xml",
@@ -96,6 +98,7 @@
             ),
             "bankayma_account/static/src/select2-bootstrap.js",
             "bankayma_account/static/src/bankayma-frontend.js",
+            "bankayma_account/static/src/website_payment_form.esm.js",
         ],
     },
     "website": "https://github.com/moshchot/BANKayma",

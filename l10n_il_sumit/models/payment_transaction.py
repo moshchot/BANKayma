@@ -19,10 +19,28 @@ class PaymentTransaction(models.Model):
         return super()._get_specific_rendering_values(processing_values)
 
     def _to_sumit_vals(self):
-        invoice_sumit_vals = self.invoice_ids._to_sumit_vals()
+        invoice_sumit_vals = (
+            self.invoice_ids and self.invoice_ids._to_sumit_vals() or {}
+        )
         base_url = urlparse(self.provider_id.get_base_url())
         return {
-            "Customer": invoice_sumit_vals.get("Details", {}).get("Customer", {}),
+            "Customer": invoice_sumit_vals.get("Details", {}).get("Customer", {})
+            if invoice_sumit_vals
+            else {
+                # TODO: use partner_id._to_sumit_vals() if not partner_id.is_public?
+                "ExternalIdentifier": None,
+                "NoVAT": None,
+                "SearchMode": 0,
+                "Name": self.partner_name,
+                "Phone": self.partner_phone or None,
+                "EmailAddress": self.partner_email or None,
+                "City": self.partner_city or None,
+                "Address": self.partner_address or None,
+                "ZipCode": self.partner_zip or None,
+                "CompanyNumber": None,
+                "ID": None,
+                "Folder": None,
+            },
             "Items": [
                 {
                     "Quantity": 1,
@@ -31,10 +49,33 @@ class PaymentTransaction(models.Model):
                     "Item": item["Item"],
                     "Description": item["Description"],
                 }
-                for item in invoice_sumit_vals.get("Items", [])
+                for item in invoice_sumit_vals.get(
+                    "Items",
+                    [
+                        {
+                            "TotalPrice": self.amount,
+                            "Item": {
+                                "ID": None,
+                                "Name": self.display_name or None,
+                                "Description": None,
+                                "Price": self.amount,
+                                "Currency": None,
+                                "Cost": None,
+                                "ExternalIdentifier": None,
+                                "SKU": None,
+                                "SearchMode": 0,
+                            },
+                            "Description": self.display_name,
+                        }
+                    ],
+                )
             ],
             "VATIncluded": invoice_sumit_vals.get("VATIncluded", False),
-            "DocumentType": invoice_sumit_vals.get("Details", {}).get("Type", None),
+            "DocumentType": invoice_sumit_vals.get("Details", {}).get(
+                # TODO: this goes to bankayma_account
+                "Type",
+                self.is_donation and "4" or "0",
+            ),
             "RedirectURL": urlunparse(
                 (
                     base_url.scheme,
@@ -50,7 +91,8 @@ class PaymentTransaction(models.Model):
             "SendUpdateByEmailAddress": False,
             "ExpirationHours": None,
             "Theme": None,
-            "Language": invoice_sumit_vals.get("Details", {}).get("Language", None),
+            "Language": invoice_sumit_vals.get("Details", {}).get("Language")
+            or self.env["sumit.account"].sumit_language(self.env.lang),
             "Header": None,
             "UpdateOrganizationOnSuccess": None,
             "UpdateOrganizationOnFailure": None,
@@ -77,4 +119,27 @@ class PaymentTransaction(models.Model):
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             self.provider_reference = notification_data["OG-PaymentID"]
             self._set_done()
+            # TODO: this goes to bankayma_account
+            if self.is_recurrent:
+                result = self.provider_id.sumit_account_id._request(
+                    "/billing/recurring/charge",
+                    {
+                        "Customer": {
+                            "ID": notification_data["OG-CustomerID"],
+                        },
+                        "PaymentMethod": None,
+                        "Items": [
+                            {
+                                "Item": {
+                                    "Name": self.display_name,
+                                    "Duration_Months": 1,
+                                },
+                                "Date_Start": None,
+                                "Duration_Days": 0,
+                                "Duration_Months": 1,
+                                "Recurrence": 0,
+                            }
+                        ],
+                    },
+                )
         return result
