@@ -22,6 +22,12 @@
         id="portal_my_details_fields"
         inherit_id="portal.portal_my_details_fields"
     >
+        <xpath expr="//div[./input[@name='name']]" position="before">
+            <xpath expr="//div[./input[@name='company_name']]" position="move" />
+        </xpath>
+        <xpath expr="//div[./input[@name='name']]" position="before">
+            <xpath expr="//div[./input[@name='email']]" position="move" />
+        </xpath>
         <xpath expr="//div[./input[@name='street']]" position="attributes">
             <attribute name="t-if">
                 request.env.user.has_group('bankayma_base.group_full')
