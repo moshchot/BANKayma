@@ -1236,6 +1236,12 @@ msgid "Show Fiscal Position"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_company_ids
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_company_ids
+msgid "Signup Company"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_group_ids
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_group_ids
 msgid "Signup Group"
@@ -1372,6 +1378,13 @@ msgid ""
 "This option permanently removes any track of email after it's been sent, "
 "including from the Technical menu in the Settings, in order to preserve "
 "storage space of your Odoo database."
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/bankayma_vendor_invite.py:0
+#, python-format
+msgid "This partner already has a user!"
 msgstr ""
 
 #. module: bankayma_account
