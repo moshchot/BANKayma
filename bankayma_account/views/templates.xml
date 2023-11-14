@@ -96,7 +96,9 @@
                                     t-att-selected="_bank.id == int(bank or partner.bank_ids[:1].bank_id.id or -1)"
                                     t-att-value="_bank.id"
                                 >
-                                    <t t-out="_bank.name" />
+                                    <t
+                                        t-out="'%s%s%s' % (_bank.bank_code or '', _bank.bank_code and ' - ' or '', _bank.name)"
+                                    />
                                 </option>
                             </t>
                         </select>
