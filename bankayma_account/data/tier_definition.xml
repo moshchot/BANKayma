@@ -17,7 +17,7 @@
     </record>
 
     <record id="action_post_reject_intercompany_purchase" model="ir.actions.server">
-        <field name="name">Pay overhead invoices</field>
+        <field name="name">Cancel overhead invoices</field>
         <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
         <field name="model_id" ref="account.model_account_move" />
         <field name="state">code</field>
@@ -46,5 +46,48 @@
             name="rejected_server_action_id"
             ref="action_post_reject_intercompany_purchase"
         />
+    </record>
+
+    <record id="action_post_validation_vendor_bill_confirm" model="ir.actions.server">
+        <field name="name">Confirm vendor bills</field>
+        <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">
+            for this in (records or record).with_context(skip_validation_check=True):
+                    this.action_post()
+        </field>
+    </record>
+
+    <record id="action_post_validation_vendor_bill_email" model="ir.actions.server">
+        <field name="name">Mail about validated vendor bill</field>
+        <field name="state">mail_post</field>
+        <field name="mail_post_method">email</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="template_id" ref="template_vendor_bill_validated" />
+    </record>
+
+    <record id="action_post_validation_vendor_bill" model="ir.actions.server">
+        <field name="name">Validate vendor bills</field>
+        <field name="state">multi</field>
+        <field name="model_id" ref="hr.model_hr_employee" />
+        <field
+            name="child_ids"
+            eval="[(6, 0, [ref('action_post_validation_vendor_bill_confirm'), ref('action_post_validation_vendor_bill_email')])]"
+        />
+    </record>
+
+    <record id="tier_definition_vendor_bill" model="tier.definition">
+        <field name="name">Vendor bills</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="company_id" eval="False" />
+        <field name="review_type">group</field>
+        <field name="reviewer_group_id" ref="bankayma_base.group_org_manager" />
+        <field
+            name="definition_domain"
+        >["&amp;", ("move_type", "=", "in_invoice"), ("auto_invoice_id", "=", False)]</field>
+        <field name="has_comment" eval="True" />
+        <field name="comment_required_reject" eval="True" />
+        <field name="server_action_id" ref="action_post_validation_vendor_bill" />
     </record>
 </odoo>
