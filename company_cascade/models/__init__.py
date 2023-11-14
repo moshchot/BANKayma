@@ -1,5 +1,7 @@
 from . import company_cascade_mixin
 from . import account_account
+from . import account_analytic_account
+from . import account_analytic_plan
 from . import account_fiscal_position
 from . import account_journal
 from . import account_payment_method_line
