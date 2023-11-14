@@ -38,8 +38,8 @@ msgid ""
 "<h1>Welcome aboard our BANKayma vendors portal:)</h1>\n"
 "            <div>\n"
 "                Please follow this\n"
-"                <a t-attf-href=\"{{ object.signup_url }}&amp;redirect=%2Fmy"
-"%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">\n"
+"                <a t-attf-href=\"{{ object.signup_url }}&amp;"
+"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">\n"
 "                    link\n"
 "                </a>\n"
 "                and get paid 🤑\n"
@@ -65,6 +65,11 @@ msgstr "<option value=\"\">מעמד פיסקלי...</option>"
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
 "<strong style=\"box-sizing:border-box;font-weight:500;\">עבור:</strong>"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
+msgid "A bill was validated"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -221,6 +226,11 @@ msgid "Cancel"
 msgstr "ביטול"
 
 #. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_reject_intercompany_purchase
+msgid "Cancel overhead invoices"
+msgstr ""
+
+#. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_cash_in
 #: model:account.payment.method,name:bankayma_account.payment_method_cash_out
 msgid "Cash"
@@ -305,6 +315,11 @@ msgid ""
 msgstr ""
 "אישור\n"
 "                    <span class=\"fa fa-long-arrow-right\"/>"
+
+#. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_confirm
+msgid "Confirm vendor bills"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -783,6 +798,11 @@ msgid "Mail Activity Type"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_email
+msgid "Mail about validated vendor bill"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
 msgid ""
 "Manage answers as new incoming emails instead of replies going to the same "
@@ -1076,7 +1096,6 @@ msgid "Pay Me"
 msgstr "פיי מי"
 
 #. module: bankayma_account
-#: model:ir.actions.server,name:bankayma_account.action_post_reject_intercompany_purchase
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_intercompany_purchase
 msgid "Pay overhead invoices"
 msgstr ""
@@ -1438,6 +1457,11 @@ msgid "Users"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill
+msgid "Validate vendor bills"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
 msgid "Validated"
 msgstr "צפוי"
@@ -1462,9 +1486,15 @@ msgid "Vendor Doc Description"
 msgstr ""
 
 #. module: bankayma_account
-#: model:tier.definition,name:bankayma_account.tier_definition_move_in
-msgid "Vendor's docs Validation"
-msgstr "אישור מסמכי ספק"
+#: model:mail.template,name:bankayma_account.template_vendor_bill_validated
+#: model:mail.template,subject:bankayma_account.template_vendor_bill_validated
+msgid "Vendor bill validated"
+msgstr ""
+
+#. module: bankayma_account
+#: model:tier.definition,name:bankayma_account.tier_definition_vendor_bill
+msgid "Vendor bills"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
