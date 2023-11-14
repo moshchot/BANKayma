@@ -26,6 +26,16 @@ msgid "Actions"
 msgstr ""
 
 #. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_analytic_plan
+msgid "Analytic Plans"
+msgstr ""
+
+#. module: company_cascade
 #: model_terms:ir.ui.view,arch_db:company_cascade.view_company_cascade_wizard_form
 msgid "Cancel"
 msgstr ""
@@ -64,6 +74,8 @@ msgstr ""
 
 #. module: company_cascade
 #: model:ir.model.fields,field_description:company_cascade.field_account_account__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_analytic_account__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_analytic_plan__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_tax__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_child_ids
@@ -81,6 +93,8 @@ msgstr ""
 
 #. module: company_cascade
 #: model:ir.model.fields,field_description:company_cascade.field_account_account__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_analytic_account__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_analytic_plan__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_tax__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_parent_id
