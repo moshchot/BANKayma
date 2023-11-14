@@ -9,6 +9,15 @@ class ResUsers(models.Model):
 
     def _create_user_from_template(self, values):
         result = super()._create_user_from_template(values)
+        vals = {}
         if result.partner_id.signup_group_ids:
-            result.groups_id += result.partner_id.signup_group_ids
+            vals["groups_id"] = [
+                (4, _id) for _id in result.partner_id.signup_group_ids.ids
+            ]
+        if result.partner_id.signup_company_ids:
+            vals.update(
+                company_id=result.partner_id.signup_company_ids[0].id,
+                company_ids=[(6, 0, result.partner_id.signup_company_ids.ids)],
+            )
+        result.write(vals)
         return result

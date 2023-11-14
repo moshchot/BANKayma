@@ -8,6 +8,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     signup_group_ids = fields.Many2many("res.groups")
+    signup_company_ids = fields.Many2many("res.company")
     bankayma_vendor_tax_percentage = fields.Float("Custom tax")
     bankayma_vendor_max_amount = fields.Float("Max amount")
     bankayma_tax_group_ids = fields.Many2many(
