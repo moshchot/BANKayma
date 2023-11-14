@@ -12,6 +12,7 @@
                     attrs="{'readonly': [('plan_id', '!=', False)]}"
                     groups="bankayma_base.group_user,!bankayma_base.group_org_manager,!bankayma_base.group_full"
                     domain="[('company_id', '=', company_id)]"
+                    options="{'no_open': True, 'no_create': True}"
                 />
             </field>
             <field name="plan_id" position="attributes">
