@@ -146,4 +146,10 @@
             </tr>
         </table>
     </template>
+    <template
+        id="qweb_template_vendor_bill_validated"
+        name="Move tier validation request"
+    >
+        <h1>A bill was validated</h1>
+    </template>
 </odoo>

@@ -176,6 +176,13 @@ class AccountMove(models.Model):
                 create=False,
             )
 
+    @api.depends("reviewer_ids", "state")
+    def _compute_hide_post_button(self):
+        result = super()._compute_hide_post_button()
+        for this in self:
+            this.hide_post_button |= this.state == "draft" and bool(this.reviewer_ids)
+        return result
+
     def write(self, vals):
         result = super().write(vals)
         if "bankayma_vendor_tax_percentage" in vals:
