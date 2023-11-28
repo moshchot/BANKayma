@@ -703,6 +703,11 @@ msgid "Invitation to vendor portal"
 msgstr "הזמנה לפורטל ספקים"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
+msgid "Invite Vendor"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_vendor_invite_form
 msgid "Invite vendors"
 msgstr "הזמנת ספקים"
