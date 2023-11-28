@@ -512,3 +512,13 @@ class AccountMove(models.Model):
         if len(product_sumit_types) == 1 and all(product_sumit_types):
             result["Details"]["Type"] = product_sumit_types[0]
         return result
+
+    def _invoice_paid_hook(self):
+        """Invoice overhead if necessary"""
+        for this in self.sudo().with_context(skip_invoice_sync=False):
+            if this.journal_id.company_cascade_parent_id.bankayma_charge_overhead:
+                parent_journal = this.journal_id.company_cascade_parent_id
+                this.with_company(this.company_id)._bankayma_invoice_child_income(
+                    fraction=parent_journal.bankayma_overhead_percentage / 100
+                )
+        return super()._invoice_paid_hook()
