@@ -9,6 +9,8 @@ class AccountPaymentRegister(models.TransientModel):
 
     def _create_payments(self):
         """Create invoice from parent company for paid invoices"""
+        if self.env.user.has_group("bankayma_base.group_org_manager"):
+            self = self.with_company(self.mapped("company_id"))
         result = super()._create_payments()
         for move in self.line_ids.mapped("move_id").sudo():
             if move.journal_id.company_cascade_parent_id.bankayma_charge_overhead:
