@@ -77,7 +77,6 @@
         "python": [
             "openupgradelib",
             "odoo_test_helper",
-            "pdfminer.six",
         ]
     },
     "assets": {
