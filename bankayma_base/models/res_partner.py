@@ -17,3 +17,6 @@ class ResPartner(models.Model):
         if self.env.context.get("bankayma_partner_address_vat") and self.vat:
             result = "%s\n%s" % (result, self.vat)
         return result
+
+    def action_reset_password(self):
+        return self.mapped("user_ids").action_reset_password()
