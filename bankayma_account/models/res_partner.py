@@ -53,3 +53,8 @@ class ResPartner(models.Model):
         return super(
             ResPartner, self.filtered(lambda x: x.is_company or x.country_id != il)
         ).check_vat()
+
+    def action_invite_vendor(self):
+        return self.env["ir.actions.actions"]._for_xml_id(
+            "bankayma_account.action_bankayma_vendor_invite_form",
+        )
