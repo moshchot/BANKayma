@@ -13,5 +13,11 @@ class CommentWizard(models.TransientModel):
         """Switch to list view after posting comment"""
         result = super().add_comment()
         if not result and self.res_model == "account.move":
-            return {"type": "ir.actions.act_window.page.list"}
+            return {
+                "type": "ir.actions.act_multi",
+                "actions": [
+                    {"type": "ir.actions.act_window_close"},
+                    {"type": "ir.actions.act_window.page.list"},
+                ],
+            }
         return result

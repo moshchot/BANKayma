@@ -309,7 +309,7 @@ class TestBankaymaAccount(TransactionCase):
             .create({"comment": "hello world"})
             .add_comment()
         )
-        self.assertEqual(list_action.get("type"), "ir.actions.act_window.page.list")
+        self.assertEqual(list_action.get("type"), "ir.actions.act_multi")
         self.assertEqual(invoice_child1.payment_state, "paid")
         self.assertEqual(invoice_child2.payment_state, "paid")
         invoice_child1 = invoice_child1.copy()
