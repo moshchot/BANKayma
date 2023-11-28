@@ -72,7 +72,6 @@ class PaymentTransaction(models.Model):
             ],
             "VATIncluded": invoice_sumit_vals.get("VATIncluded", False),
             "DocumentType": invoice_sumit_vals.get("Details", {}).get(
-                # TODO: this goes to bankayma_account
                 "Type",
                 self.is_donation and "4" or "0",
             ),
@@ -119,27 +118,4 @@ class PaymentTransaction(models.Model):
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             self.provider_reference = notification_data["OG-PaymentID"]
             self._set_done()
-            # TODO: this goes to bankayma_account
-            if self.is_recurrent:
-                result = self.provider_id.sumit_account_id._request(
-                    "/billing/recurring/charge",
-                    {
-                        "Customer": {
-                            "ID": notification_data["OG-CustomerID"],
-                        },
-                        "PaymentMethod": None,
-                        "Items": [
-                            {
-                                "Item": {
-                                    "Name": self.display_name,
-                                    "Duration_Months": 1,
-                                },
-                                "Date_Start": None,
-                                "Duration_Days": 0,
-                                "Duration_Months": 1,
-                                "Recurrence": 0,
-                            }
-                        ],
-                    },
-                )
         return result

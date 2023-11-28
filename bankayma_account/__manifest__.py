@@ -29,6 +29,7 @@
         "base_tier_validation_server_action",
         "bankayma_base",
         "company_cascade",
+        "contract",
         "currency_rate_update",
         "email_template_qweb",
         "l10n_il",

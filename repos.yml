@@ -72,6 +72,13 @@ bank-statement-import:
     oca: https://github.com/OCA/bank-statement-import.git
   merges:
     - oca 16.0
+contract-repo:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/contract.git
+  merges:
+    - oca 16.0
 bank-statement-reconcile:
   defaults:
     depth: 1
