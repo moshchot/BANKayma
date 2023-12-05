@@ -209,6 +209,8 @@ class CustomerPortal(portal.CustomerPortal):
     def _get_custom_rendering_context_values(self, is_recurrent=False, **kwargs):
         result = super()._get_custom_rendering_context_values(**kwargs)
         result["is_recurrent"] = is_recurrent
+        if "partner_details" in result:
+            result["partner_details"]["country_id"] = request.env.ref("base.il").id
         return result
 
     def _create_transaction(
