@@ -17,9 +17,9 @@ class L10nIlSystem1000Export(models.TransientModel):
         self.export_file = b64encode(
             (
                 self._export_header()
-                + "\n"
+                + "\r\n"
                 + self._export_lines()
-                + "\n"
+                + "\r\n"
                 + self._export_footer()
             ).encode("ISO-8859-8")
         )
@@ -34,7 +34,7 @@ class L10nIlSystem1000Export(models.TransientModel):
         return "A{:>9}".format(self.env.company.l10n_il_tax_deduction_id)
 
     def _export_lines(self):
-        return "\n".join(
+        return "\r\n".join(
             self._export_line(line)
             for line in self.env["account.move"].browse(
                 self.env.context.get("active_ids", [])
