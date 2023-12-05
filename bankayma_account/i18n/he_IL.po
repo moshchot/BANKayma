@@ -1177,6 +1177,11 @@ msgid "Purchasing Order"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__use_sumit_this_payment
+msgid "Push to sumit"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__2
 msgid "Receipt"
 msgstr "קבלה"
@@ -1420,6 +1425,11 @@ msgstr ""
 #, python-format
 msgid "Unpaid"
 msgstr "לתשלום"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__use_sumit_journal
+msgid "Use Sumit Journal"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__use_active_domain
