@@ -53,6 +53,8 @@ msgid ""
 "<i class=\"fa fa-arrow-right me-1\"/>\n"
 "                back to my bankayma/dashboard"
 msgstr ""
+"<i class=\"fa fa-arrow-right me-1\"/>\n"
+"                חזרה לבנקיימא שלי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -69,7 +71,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "A bill was validated"
-msgstr ""
+msgstr "חשבונית ספק אושרה לתשלום"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -104,7 +106,7 @@ msgstr "סכום לתשלום"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "טאג אנליטי"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_analytic_accounts
@@ -570,7 +572,7 @@ msgstr "מעמד פיסקלי"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "Fiscal position:"
-msgstr ""
+msgstr "מעמד פיסקלי:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
@@ -595,7 +597,7 @@ msgstr "להלן"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
 msgid "I agree that the amount will be withdrawn periodically"
-msgstr ""
+msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
@@ -705,7 +707,7 @@ msgstr "הזמנה לפורטל ספקים"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
 msgid "Invite Vendor"
-msgstr ""
+msgstr "הזמנת ספק"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_vendor_invite_form
@@ -740,7 +742,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_payment_transaction__is_recurrent
 msgid "Is Recurrent"
-msgstr ""
+msgstr "מנוי/הוראת קבע"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
@@ -842,7 +844,7 @@ msgstr "סכום מקסימלי לשנה הנוכחית"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "Max amount:"
-msgstr ""
+msgstr "סכום מקסימלי לשנה הנוכחית:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -1189,7 +1191,7 @@ msgstr "קבלה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.s_donation_options
 msgid "Recurrent payment"
-msgstr ""
+msgstr "הוראת קבע"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_register
@@ -1285,7 +1287,7 @@ msgstr "טאג"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax
 msgid "Tax"
-msgstr ""
+msgstr "ניכויים"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax_group
@@ -1302,12 +1304,12 @@ msgstr "מס ח״פ"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "Tax ID:"
-msgstr ""
+msgstr "מספר עוסק:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_account_id
 msgid "Tax account"
-msgstr ""
+msgstr "חשבון ניכויים"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_deduct_tax
@@ -1325,7 +1327,7 @@ msgstr "ניכוי מס"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "Tax deduction:"
-msgstr ""
+msgstr "ניכוי מס:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_group_id
@@ -1506,23 +1508,23 @@ msgstr "סטטוס אישור"
 #: code:addons/bankayma_account/static/src/website_payment_form.esm.js:0
 #, python-format
 msgid "Validation Error"
-msgstr ""
+msgstr "טעות אישור"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__vendor_doc_description
 msgid "Vendor Doc Description"
-msgstr ""
+msgstr "תיאור מסמכי ספק"
 
 #. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_vendor_bill_validated
 #: model:mail.template,subject:bankayma_account.template_vendor_bill_validated
 msgid "Vendor bill validated"
-msgstr ""
+msgstr "חשבונית ספק מאושרת"
 
 #. module: bankayma_account
 #: model:tier.definition,name:bankayma_account.tier_definition_vendor_bill
 msgid "Vendor bills"
-msgstr ""
+msgstr "חשבוניות ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
@@ -1567,7 +1569,7 @@ msgstr ""
 #: code:addons/bankayma_account/static/src/website_payment_form.esm.js:0
 #, python-format
 msgid "You need to agree to periodic withdrawals."
-msgstr ""
+msgstr "עלייך לאשר הוראת קבע חודשית"
 
 #. module: bankayma_account
 #. odoo-python
@@ -1596,7 +1598,7 @@ msgstr "דרישת תשלום ספק"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "for"
-msgstr ""
+msgstr "עבור"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -1611,7 +1613,7 @@ msgstr "דרישת תשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "no"
-msgstr ""
+msgstr "לא"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
@@ -1626,4 +1628,4 @@ msgstr "עם הסימוכין:"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "yes"
-msgstr ""
+msgstr "כן"
