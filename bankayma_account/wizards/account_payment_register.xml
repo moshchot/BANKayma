@@ -6,6 +6,13 @@
         <field name="model">account.payment.register</field>
         <field name="inherit_id" ref="account.view_account_payment_register_form" />
         <field name="arch" type="xml">
+            <xpath expr="./group/group" position="inside">
+                <field name="use_sumit_journal" invisible="True" />
+                <field
+                    name="use_sumit_this_payment"
+                    attrs="{'invisible': [('use_sumit_journal', '=', False)]}"
+                />
+            </xpath>
             <xpath expr="./group" position="after">
                 <field name="comment" placeholder="Fill in a comment..." />
             </xpath>
