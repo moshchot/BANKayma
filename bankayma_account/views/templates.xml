@@ -499,5 +499,8 @@
                 </div>
             </div>
         </xpath>
+        <xpath expr="//select[@id='country_id']/.." position="attributes">
+            <attribute name="style">display: none</attribute>
+        </xpath>
     </template>
 </odoo>
