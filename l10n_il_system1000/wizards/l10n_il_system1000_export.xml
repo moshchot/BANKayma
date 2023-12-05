@@ -15,12 +15,20 @@
                 </div>
                 <footer>
                     <button
+                        attrs="{'invisible': [('export_file_name', '=', False)]}"
+                        special="cancel"
+                        string="Close"
+                        class="btn btn-primary"
+                    />
+                    <button
+                        attrs="{'invisible': [('export_file_name', '!=', False)]}"
                         type="object"
                         name="button_export"
                         string="Export"
                         class="btn btn-primary"
                     />
                     <button
+                        attrs="{'invisible': [('export_file_name', '!=', False)]}"
                         special="cancel"
                         string="Cancel"
                         class="btn btn-secondary"
