@@ -181,6 +181,9 @@ msgstr "מנוי"
 #: model_terms:ir.ui.view,arch_db:contract.portal_my_contracts
 msgid "Contract #"
 msgstr "מנוי #"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.portal_contract_page
 msgid "<strong>Customer:</strong>"
 msgstr "<strong>מנוי:</strong>"
 
