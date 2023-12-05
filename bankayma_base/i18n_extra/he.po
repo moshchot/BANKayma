@@ -106,7 +106,6 @@ msgid "Contracts"
 msgstr "מנויים"
 
 #. module: contract
-#: model_terms:ir.ui.view,arch_db:contract.portal_contract_page#. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.portal_contract_page
 msgid "<strong>Date of Next Invoice</strong>"
 msgstr "<strong>מועד התשלום הבא<br/></strong>"
