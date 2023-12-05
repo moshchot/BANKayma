@@ -35,6 +35,7 @@
         "l10n_il",
         "l10n_il_bank",
         "l10n_il_sumit",
+        "l10n_il_system1000",
         "mis_builder",
         "web_ir_actions_act_multi",
         "web_ir_actions_act_window_page",
