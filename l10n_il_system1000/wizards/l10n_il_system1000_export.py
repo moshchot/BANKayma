@@ -3,7 +3,9 @@
 
 from base64 import b64encode
 
-from odoo import fields, models
+from odoo import _, api, fields, models
+
+from ..system1000_file import System1000FileImport
 
 
 class L10nIlSystem1000Export(models.TransientModel):
@@ -12,6 +14,27 @@ class L10nIlSystem1000Export(models.TransientModel):
 
     export_file = fields.Binary(readonly=True)
     export_file_name = fields.Char(readonly=True)
+    import_file_valid = fields.Binary()
+    import_file_valid_name = fields.Char(default="valid.txt")
+    import_file_invalid = fields.Binary()
+    import_file_invalid_name = fields.Char(default="invalid.txt")
+    import_date = fields.Datetime()
+    state = fields.Selection(
+        [("draft", "Draft"), ("upload", "Upload Results"), ("done", "Done")],
+        compute="_compute_state",
+    )
+
+    @api.depends("export_file", "import_file_valid", "import_file_invalid")
+    def _compute_state(self):
+        for this in self:
+            if not any(
+                (this.export_file, this.import_file_valid, this.import_file_invalid)
+            ):
+                this.state = "draft"
+            elif this.export_file and not this.import_date:
+                this.state = "upload"
+            else:
+                this.state = "done"
 
     def button_export(self):
         self.export_file = b64encode(
@@ -27,7 +50,7 @@ class L10nIlSystem1000Export(models.TransientModel):
         action_dict = self.env["ir.actions.actions"]._for_xml_id(
             "l10n_il_system1000.action_l10n_il_system1000_export"
         )
-        action_dict["res_id"] = self.id
+        action_dict.update(res_id=self.id, name=_("Upload results"))
         return action_dict
 
     def _export_header(self):
@@ -55,3 +78,11 @@ class L10nIlSystem1000Export(models.TransientModel):
             self.env.company.l10n_il_tax_deduction_id,
             len(self.env.context.get("active_ids", [])),
         )
+
+    def button_import(self):
+        valid_data = System1000FileImport(self.import_file_valid)
+        for data in valid_data:
+            move = self.env["account.move"].search([("name", "=", data.move_name)])
+            if move:
+                move.message_post(body=repr(data))
+        System1000FileImport(self.import_file_invalid)

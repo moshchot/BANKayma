@@ -6,29 +6,56 @@
         <field name="model">l10n.il.system1000.export</field>
         <field name="arch" type="xml">
             <form>
-                <group attrs="{'invisible': [('export_file_name', '=', False)]}">
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <group attrs="{'invisible': [('state', '=', 'draft')]}">
                     <field name="export_file" filename="export_file_name" />
                     <field name="export_file_name" invisible="1" />
                 </group>
-                <div attrs="{'invisible': [('export_file_name', '!=', False)]}">
+                <div attrs="{'invisible': [('state', '!=', 'draft')]}">
                     Click below to export your marked moves to system 1000
                 </div>
+                <div attrs="{'invisible': [('state', '!=', 'upload')]}">
+                    Please upload the resulting files
+                </div>
+                <group attrs="{'invisible': [('state', '!=', 'upload')]}">
+                    <field
+                        name="import_file_valid"
+                        filename="import_file_name_valid"
+                        attrs="{'required': [('state', '=', 'upload')]}"
+                    />
+                    <field name="import_file_valid_name" invisible="1" />
+                    <field
+                        name="import_file_invalid"
+                        filename="import_file_name_invalid"
+                        attrs="{'required': [('state', '=', 'upload')]}"
+                    />
+                    <field name="import_file_invalid_name" invisible="1" />
+                </group>
                 <footer>
                     <button
-                        attrs="{'invisible': [('export_file_name', '=', False)]}"
+                        attrs="{'invisible': [('state', '!=', 'done')]}"
                         special="cancel"
                         string="Close"
                         class="btn btn-primary"
                     />
                     <button
-                        attrs="{'invisible': [('export_file_name', '!=', False)]}"
+                        attrs="{'invisible': [('state', '!=', 'draft')]}"
                         type="object"
                         name="button_export"
                         string="Export"
                         class="btn btn-primary"
                     />
                     <button
-                        attrs="{'invisible': [('export_file_name', '!=', False)]}"
+                        attrs="{'invisible': [('state', '!=', 'upload')]}"
+                        type="object"
+                        name="button_import"
+                        string="Import results"
+                        class="btn btn-primary"
+                    />
+                    <button
+                        attrs="{'invisible': [('state', '=', 'done')]}"
                         special="cancel"
                         string="Cancel"
                         class="btn btn-secondary"
