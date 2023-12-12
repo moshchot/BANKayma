@@ -39,11 +39,12 @@ class L10nIlSystem1000Export(models.TransientModel):
             for line in self.env["account.move"].browse(
                 self.env.context.get("active_ids", [])
             )
+            if line.state == "posted"
         )
 
     def _export_line(self, line):
         return "B{:>15}{:0>9}{:0>9}{:0>9}".format(
-            line.partner_id.property_account_payable_id.code,
+            line.name,
             line.partner_id.vat,
             line.partner_id.vat,
             line.partner_id.vat,
