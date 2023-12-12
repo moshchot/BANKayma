@@ -138,8 +138,6 @@ server-brand:
   merges:
     - oca 16.0
 server-tools:
-  defaults:
-    depth: 100
   remotes:
     oca: https://github.com/OCA/server-tools.git
     initOS: https://github.com/initOS/server-tools.git
