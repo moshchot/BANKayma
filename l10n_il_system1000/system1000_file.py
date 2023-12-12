@@ -4,6 +4,7 @@
 
 from base64 import b64decode
 from collections import namedtuple
+from datetime import date
 
 System1000Field = namedtuple(
     "System1000Field", ("start", "length", "name", "type"), defaults=(str,)
@@ -32,22 +33,32 @@ class System1000File(object):
                 }
             )
 
+    def _parse_date(self, date_string):
+        if date_string == "00000000":
+            return date.min
+        else:
+            return date.strptime("%Y%m%d")
+
 
 class System1000FileImport(System1000File):
     def __init__(self, b64_data):
         F = System1000Field
         data_fields = [
-            F(1, 15, "move_name", str.lstrip),
+            F(1, 15, "document_id", str.lstrip),
             F(16, 9, "tax_id_sent"),
             F(25, 9, "vat_id_sent"),
             F(34, 9, "tax_id_received"),
             F(43, 9, "vat_id_received"),
             F(52, 22, "name", str.lstrip),
             F(74, 1, "tax_papers", int),
-            F(75, 10, "tax_deduction"),
-            F(85, 8, "date_from"),
-            F(93, 8, "date_to"),
-            F(101, 8, "date_checked"),
+            F(75, 2, "tax_deduction_income", int),
+            F(77, 2, "tax_deduction_agriculture", int),
+            F(79, 2, "tax_deduction_insurance", int),
+            F(81, 2, "tax_deduction_regulations", int),
+            F(83, 2, "tax_deduction_stocks", int),
+            F(85, 8, "date_from", self._parse_date),
+            F(93, 8, "date_to", self._parse_date),
+            F(101, 8, "date_checked", self._parse_date),
             F(109, 3, "deduction_restriction_code"),
             F(112, 9, "deduction_id"),
             F(121, 10, "max_amount"),
