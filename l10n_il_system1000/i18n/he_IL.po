@@ -36,6 +36,13 @@ msgid "Companies"
 msgstr ""
 
 #. module: l10n_il_system1000
+#. odoo-python
+#: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Created a new tax, should replace old vendor specific tax"
+msgstr ""
+
+#. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__create_uid
 msgid "Created by"
 msgstr ""
@@ -48,6 +55,20 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: l10n_il_system1000
+#. odoo-python
+#: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Doing nothing because #74 is 0"
+msgstr ""
+
+#. module: l10n_il_system1000
+#. odoo-python
+#: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Doing nothing because move date is out of validity interval"
 msgstr ""
 
 #. module: l10n_il_system1000
@@ -148,6 +169,13 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_res_company__l10n_il_tax_deduction_id
 msgid "Tax deduction ID"
+msgstr ""
+
+#. module: l10n_il_system1000
+#. odoo-python
+#: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "This should be auto submitted"
 msgstr ""
 
 #. module: l10n_il_system1000
