@@ -4,7 +4,7 @@
 
 from base64 import b64decode
 from collections import namedtuple
-from datetime import date
+from datetime import date, datetime
 
 System1000Field = namedtuple(
     "System1000Field", ("start", "length", "name", "type"), defaults=(str,)
@@ -37,7 +37,7 @@ class System1000File(object):
         if date_string == "00000000":
             return date.min
         else:
-            return date.strptime("%Y%m%d")
+            return datetime.strptime(date_string, "%Y%m%d").date()
 
 
 class System1000FileImport(System1000File):
