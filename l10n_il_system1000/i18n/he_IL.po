@@ -51,6 +51,16 @@ msgid "Display Name"
 msgstr ""
 
 #. module: l10n_il_system1000
+#: model:ir.model.fields.selection,name:l10n_il_system1000.selection__l10n_il_system1000_export__state__done
+msgid "Done"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields.selection,name:l10n_il_system1000.selection__l10n_il_system1000_export__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Export"
 msgstr ""
@@ -76,6 +86,36 @@ msgid "ID"
 msgstr ""
 
 #. module: l10n_il_system1000
+#: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_date
+msgid "Import Date"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_invalid
+msgid "Import File Invalid"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_invalid_name
+msgid "Import File Invalid Name"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_valid
+msgid "Import File Valid"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_valid_name
+msgid "Import File Valid Name"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
+msgid "Import results"
+msgstr ""
+
+#. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -91,6 +131,16 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: l10n_il_system1000
+#: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
+msgid "Please upload the resulting files"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__state
+msgid "State"
+msgstr ""
+
+#. module: l10n_il_system1000
 #: model:ir.model,name:l10n_il_system1000.model_l10n_il_system1000_export
 msgid "System 1000 export"
 msgstr ""
@@ -98,4 +148,16 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_res_company__l10n_il_tax_deduction_id
 msgid "Tax deduction ID"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model:ir.model.fields.selection,name:l10n_il_system1000.selection__l10n_il_system1000_export__state__upload
+msgid "Upload Results"
+msgstr ""
+
+#. module: l10n_il_system1000
+#. odoo-python
+#: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Upload results"
 msgstr ""
