@@ -13,6 +13,7 @@
                         type="object"
                         name="action_reset_password"
                         attrs="{'invisible': [('user_ids', '=', [])]}"
+                        groups="base.group_erp_manager,bankayma_base.group_manager,bankayma_base.group_org_manager"
                     />
                 </header>
             </sheet>
