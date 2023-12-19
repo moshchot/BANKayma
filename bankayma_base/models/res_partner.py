@@ -19,4 +19,9 @@ class ResPartner(models.Model):
         return result
 
     def action_reset_password(self):
+        has = self.env.user.has_group
+        if (
+            has("bankayma_base.group_manager") or has("bankayma_base.group_org_manager")
+        ) and not has("base.group_erp_manager"):
+            self = self.sudo()
         return self.mapped("user_ids").action_reset_password()
