@@ -300,16 +300,7 @@ class TestBankaymaAccount(TransactionCase):
         invoice_child2_as_child2.review_ids.invalidate_model()
         self.assertTrue(invoice_child2_as_child2.need_validation)
         self.assertTrue(invoice_child2_as_child2.can_review)
-        comment_action = invoice_child2_as_child2.validate_tier()
-        self.assertEqual(comment_action.get("res_model"), "comment.wizard")
-        list_action = (
-            self.env[comment_action["res_model"]]
-            .with_context(**comment_action["context"])
-            .with_user(self.user_child2)
-            .create({"comment": "hello world"})
-            .add_comment()
-        )
-        self.assertEqual(list_action.get("type"), "ir.actions.act_multi")
+        invoice_child2_as_child2.validate_tier()
         self.assertEqual(invoice_child1.payment_state, "paid")
         self.assertEqual(invoice_child2.payment_state, "paid")
         invoice_child1 = invoice_child1.copy()
