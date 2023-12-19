@@ -38,6 +38,8 @@
         <field name="definition_domain">[("move_type", "=", "in_invoice"), ("journal_id.intercompany_purchase_company_id", "!=", False), ("auto_invoice_id.journal_id.intercompany_overhead_company_id", "=", False)]</field>
         <!-- prettier-ignore-end -->
         <field name="has_comment" eval="True" />
+        <field name="comment_required_reject" eval="True" />
+        <field name="comment_required_validate" eval="False" />
         <field
             name="server_action_id"
             ref="action_post_validation_intercompany_purchase"
@@ -88,6 +90,7 @@
         >["&amp;", ("move_type", "=", "in_invoice"), ("auto_invoice_id", "=", False)]</field>
         <field name="has_comment" eval="True" />
         <field name="comment_required_reject" eval="True" />
+        <field name="comment_required_validate" eval="False" />
         <field name="server_action_id" ref="action_post_validation_vendor_bill" />
     </record>
 </odoo>
