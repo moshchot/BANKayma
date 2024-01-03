@@ -118,13 +118,13 @@
                     <t 
                         t-out="object.partner_id.parent_id.name or ''" 
                         t-translation="off" 
-                        >
+                    >
                         Azure Interior
                     </t>
                     ),
                 </t>
                 <t t-else="">
-                    <t t-out="object.partner_id.name or ''" t-translation="off" >
+                    <t t-out="object.partner_id.name or ''" t-translation="off">
                         Brandon Freeman
                     </t>
                     ,
@@ -174,14 +174,11 @@
         <p>
             Do not hesitate to contact us if you have any questions.
             <t t-if="object.invoice_user_id.signature">
-                    <t
-                        t-out="object.invoice_user_id.signature or ''"
-                        t-translation="off"
-                    >
-                        --Bill Bot
-                    </t>
+                <t t-out="object.invoice_user_id.signature or ''" t-translation="off">
+                    --Bill Bot
                 </t>
-            </p>
+                </t>
+        </p>
     </template>
     <template
         id="qweb_template_vendor_bill_validated"
@@ -221,7 +218,8 @@
                 <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                 for
                 <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
-                is delayed due to  <t t-out="object.partner_id.name or ''" t-translation="off">
+                is delayed due to
+                <t t-out="object.partner_id.name or ''" t-translation="off">
                         insufficient documents
                 </t>
             </p>
