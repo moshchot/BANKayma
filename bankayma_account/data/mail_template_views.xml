@@ -108,31 +108,35 @@
     </template>
     <template id="qweb_template_account_move_draft" name="Move tier validation request">
         <div>
-          <h1>
+            <h1>
                 Dear
                 <t t-if="object.partner_id.parent_id">
                     <t t-out="object.partner_id.name or ''" t-translation="off">
                         Brandon Freeman
                     </t>
                     (
-                    <t t-out="object.partner_id.parent_id.name or ''" t-translation="off">
+                    <t 
+                        t-out="object.partner_id.parent_id.name or ''" 
+                        t-translation="off" 
+                        >
                         Azure Interior
                     </t>
                     ),
                 </t>
                 <t t-else="">
-                    <t t-out="object.partner_id.name or ''" t-translation="off">
+                    <t t-out="object.partner_id.name or ''" t-translation="off" >
                         Brandon Freeman
                     </t>
                     ,
                 </t>
             </h1>
-             <p>
+            <p>
                 Your payment request of 
-            <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))"/>
-            for
-            <t t-out="', '.join(object.mapped('invoice_line_ids.name'))"/>
-            was recieved with this tax info:</p>
+                <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
+                for
+                <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
+                was recieved with this tax info:
+            </p>
         </div>
         <table>
             <tr>
@@ -167,9 +171,9 @@
                 <td>yes</td>
             </tr>
         </table>
-         <p>
-                Do not hesitate to contact us if you have any questions.
-                <t t-if="object.invoice_user_id.signature">
+        <p>
+            Do not hesitate to contact us if you have any questions.
+            <t t-if="object.invoice_user_id.signature">
                     <t
                         t-out="object.invoice_user_id.signature or ''"
                         t-translation="off"
@@ -185,19 +189,22 @@
     >
         <h1>A bill was validated</h1>
     </template>
-        <template
+    <template
         id="qweb_template_vendor_bill_rejected"
         name="Move tier validation request"
     >
-         <div>
-          <h1>
+        <div>
+            <h1>
                 Dear
                 <t t-if="object.partner_id.parent_id">
                     <t t-out="object.partner_id.name or ''" t-translation="off">
                         Brandon Freeman
                     </t>
                     (
-                    <t t-out="object.partner_id.parent_id.name or ''" t-translation="off">
+                    <t 
+                        t-out="object.partner_id.parent_id.name or ''" 
+                        t-translation="off"
+                        >
                         Azure Interior
                     </t>
                     ),
@@ -209,41 +216,44 @@
                     ,
                 </t>
             </h1>
-             <p>
+            <p>
                 Your payment request of 
-            <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))"/>
-            for
-            <t t-out="', '.join(object.mapped('invoice_line_ids.name'))"/>
-            is delayed due to  <t t-out="object.partner_id.name or ''" t-translation="off">
+                <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
+                for
+                <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
+                is delayed due to  <t t-out="object.partner_id.name or ''" t-translation="off">
                         insufficient documents
-                    </t>
-             </p>
+                </t>
+            </p>
         </div>
         <table>
             <tr>
                 <th>Tax ID:</th>
-                <td t-out="object.partner_id.vat"/>
+                <td t-out="object.partner_id.vat" />
             </tr>
             <tr>
                 <th>Fiscal position:</th>
-                <td t-out="object.fiscal_position_id.name"/>
+                <td t-out="object.fiscal_position_id.name" />
             </tr>
             <tr>
                 <th>Tax deduction:</th>
                 <td>
                     <t t-if="object.bankayma_vendor_tax_percentage">
-                        <t t-out="object.bankayma_vendor_tax_percentage"/>
+                        <t t-out="object.bankayma_vendor_tax_percentage" />
                     </t>
                     <t t-else="">no</t>
                 </td>
             </tr>
             <tr t-if="object.bankayma_deduct_tax_use_max_amount">
                 <th>Max amount:</th>
-                <td t-out="object.bankayma_vendor_max_amount"/>
+                <td t-out="object.bankayma_vendor_max_amount" />
             </tr>
-            <tr t-foreach="object.mapped('invoice_line_ids.tax_ids.tax_group_id').sorted('name')" t-as="tax_group">
+            <tr 
+                t-foreach="object.mapped('invoice_line_ids.tax_ids.tax_group_id').sorted('name')" 
+                t-as="tax_group"
+            >
                 <th>
-                    <span t-out="tax_group.name"/>
+                    <span t-out="tax_group.name" />
                     :
                 </th>
                 <td>yes</td>
