@@ -412,7 +412,9 @@ msgid "Custom tax"
 msgstr "ניכוי מס הכנסה"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Dear"
 msgstr "אהלן"
 
@@ -465,6 +467,7 @@ msgid "Display Name"
 msgstr "שם תצוגה"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Do not hesitate to contact us if you have any questions."
 msgstr "לכל דבר ועניין"
@@ -571,6 +574,7 @@ msgstr "מעמד פיסקלי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Fiscal position:"
 msgstr "מעמד פיסקלי:"
 
@@ -843,6 +847,7 @@ msgstr "סכום מקסימלי לשנה הנוכחית"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Max amount:"
 msgstr "סכום מקסימלי לשנה הנוכחית:"
 
@@ -1303,6 +1308,7 @@ msgstr "מס ח״פ"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Tax ID:"
 msgstr "מספר עוסק:"
 
@@ -1326,6 +1332,7 @@ msgstr "ניכוי מס"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Tax deduction:"
 msgstr "ניכוי מס:"
 
@@ -1581,6 +1588,12 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
+msgid "Your payment request of"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "amounting in"
 msgstr "על סך"
@@ -1597,6 +1610,7 @@ msgstr "דרישת תשלום ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "for"
 msgstr "עבור"
 
@@ -1611,7 +1625,13 @@ msgid "invoice"
 msgstr "דרישת תשלום"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
+msgid "is delayed due to"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "no"
 msgstr "לא"
 
@@ -1621,11 +1641,17 @@ msgid "or"
 msgstr "או"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "was recieved with this tax info:"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "with following communication for your payment:"
 msgstr "עם הסימוכין:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "yes"
 msgstr "כן"
