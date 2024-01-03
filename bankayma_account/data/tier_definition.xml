@@ -62,11 +62,11 @@
     </record>
 
     <record id="action_post_validation_vendor_bill_email" model="ir.actions.server">
-        <field name="name">Mail about validated vendor bill</field>
+        <field name="name">Mail about rejected vendor bill</field>
         <field name="state">mail_post</field>
         <field name="mail_post_method">email</field>
         <field name="model_id" ref="account.model_account_move" />
-        <field name="template_id" ref="template_vendor_bill_validated" />
+        <field name="template_id" ref="template_vendor_bill_rejected" />
     </record>
 
     <record id="action_post_validation_vendor_bill" model="ir.actions.server">
