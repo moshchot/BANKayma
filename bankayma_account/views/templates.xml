@@ -282,7 +282,7 @@
                 <a
                     class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
-                    href="/my/invoices/new"
+                    href="redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew"
                 >
                     Pay Me
                 </a>
@@ -364,6 +364,35 @@
                     </select>
                 </div>
                 <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="description">Description</label>
+                    <input
+                        type="text"
+                        t-attf-class="form-control #{errors.get('description') and 'is-invalid' or ''}"
+                        required="required"
+                        name="description"
+                        id="description"
+                        t-att-value="post.get('description')"
+                    />
+                </div>
+                <div class="clearfix" />
+                <div
+                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
+                >
+                    <label class="col-form-label" for="amount">Amount</label>
+                    <input
+                        type="number"
+                        min="0"
+                        t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
+                        required="required"
+                        name="amount"
+                        id="amount"
+                        t-att-value="post.get('amount')"
+                    />
+                </div>
+                
+                <div
                     t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-6"
                 >
                     <label class="col-form-label" for="fpos">Fiscal position</label>
@@ -391,34 +420,6 @@
                 </div>
                 <div class="clearfix" />
                 <div id="vendor_doc_description" />
-                <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
-                >
-                    <label class="col-form-label" for="amount">Amount</label>
-                    <input
-                        type="number"
-                        min="0"
-                        t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
-                        required="required"
-                        name="amount"
-                        id="amount"
-                        t-att-value="post.get('amount')"
-                    />
-                </div>
-                <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
-                >
-                    <label class="col-form-label" for="description">Description</label>
-                    <input
-                        type="text"
-                        t-attf-class="form-control #{errors.get('description') and 'is-invalid' or ''}"
-                        required="required"
-                        name="description"
-                        id="description"
-                        t-att-value="post.get('description')"
-                    />
-                </div>
-                <div class="clearfix" />
                 <div
                     t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
                 >
