@@ -391,7 +391,7 @@
                         t-att-value="post.get('amount')"
                     />
                 </div>
-                
+
                 <div
                     t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-6"
                 >
