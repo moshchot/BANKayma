@@ -342,13 +342,20 @@
                 />
                 <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
                     <label class="col-form-label" for="company">Company</label>
-                    <select class="form-select o-select2" id="company" name="company">
+                    <select
+                        class="form-select o-select2"
+                        id="company"
+                        name="company"
+                        required="required"
+                        data-placeholder="Please select a project"
+                    >
+                        <option />
                         <t
                             t-foreach="request.env['res.company'].sudo().search([])"
                             t-as="company"
                         >
                             <option
-                                t-att-selected="company.id == int(post.get('company', request.env.company))"
+                                t-att-selected="company.id == int(post.get('company', -1))"
                                 t-att-value="company.id"
                             >
                                 <t t-out="company.name" />
