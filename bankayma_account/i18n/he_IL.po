@@ -142,6 +142,13 @@ msgid "Auto Invoice"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Auto submitting from System1000 import"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Balance:"
 msgstr "מאזן:"
@@ -213,6 +220,11 @@ msgid "Banking information is mandatory for vendors"
 msgstr "יש למלא פרטי בנק"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
+msgid "Book keeping"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Branch"
 msgstr "סניף"
@@ -248,6 +260,11 @@ msgstr "חיוב תקורה"
 msgid ""
 "Check this field to have vendors with this fiscal position upload a document "
 "for every invoice"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
+msgid "Checked with 1000:"
 msgstr ""
 
 #. module: bankayma_account
@@ -483,6 +500,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Document"
 msgstr "מסמך"
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Doing nothing because move date is out of validity interval"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__4
@@ -921,6 +945,13 @@ msgid "Not Paid"
 msgstr "תשלומים צפויים"
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Not touching non-draft record"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__notify
 msgid "Notify followers"
 msgstr ""
@@ -1219,6 +1250,13 @@ msgid "Rendering Model"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Replaced existing tax %(taxes)s with %(tax)s from System1000"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_mode
 msgid "Replies"
 msgstr ""
@@ -1285,6 +1323,11 @@ msgid "Sumit"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_l10n_il_system1000_export
+msgid "System 1000 export"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Tag"
 msgstr "טאג"
@@ -1329,6 +1372,16 @@ msgstr "חשבון ניכויים"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Tax deduction"
 msgstr "ניכוי מס"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
+msgid "Tax deduction %"
+msgstr ""
+
+#. module: bankayma_account
+#: model:account.fiscal.position,name:bankayma_account.fpos_tax_deduction_artist
+msgid "Tax deduction for Artists Fee"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
@@ -1523,6 +1576,16 @@ msgid "Vendor Doc Description"
 msgstr "תיאור מסמכי ספק"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
+msgid "Vendor ID"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
+msgid "Vendor Name"
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_vendor_bill_validated
 #: model:mail.template,subject:bankayma_account.template_vendor_bill_validated
 msgid "Vendor bill validated"
@@ -1532,6 +1595,11 @@ msgstr "חשבונית ספק מאושרת"
 #: model:tier.definition,name:bankayma_account.tier_definition_vendor_bill
 msgid "Vendor bills"
 msgstr "חשבוניות ספק"
+
+#. module: bankayma_account
+#: model:account.tax.group,name:bankayma_account.tax_group_vendor_specific_tax
+msgid "Vendor specific tax"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
@@ -1632,6 +1700,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "no"
 msgstr "לא"
 
@@ -1653,5 +1722,6 @@ msgstr "עם הסימוכין:"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
+#: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
