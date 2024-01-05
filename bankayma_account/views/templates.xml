@@ -511,4 +511,29 @@
             <attribute name="style">display: none</attribute>
         </xpath>
     </template>
+
+    <template id="system1000_validation_summary">
+        <div>Checked with 1000:</div>
+        <table>
+            <tr>
+                <th>Vendor ID</th>
+                <td t-out="validation.tax_id_received" />
+            </tr>
+            <tr>
+                <th>Vendor Name</th>
+                <td t-out="validation.name" />
+            </tr>
+            <tr>
+                <th>Book keeping</th>
+                <td>
+                    <t t-if="validation.tax_papers">yes</t>
+                    <t t-else="">no</t>
+                </td>
+            </tr>
+            <tr>
+                <th>Tax deduction %</th>
+                <td t-out="validation.tax_deduction_income" />
+            </tr>
+        </table>
+    </template>
 </odoo>

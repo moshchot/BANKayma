@@ -5,8 +5,6 @@ from base64 import b64encode
 
 from odoo import _, api, fields, models
 
-from ..system1000_file import System1000FileImport
-
 
 class L10nIlSystem1000Export(models.TransientModel):
     _name = "l10n.il.system1000.export"
@@ -80,44 +78,4 @@ class L10nIlSystem1000Export(models.TransientModel):
         )
 
     def button_import(self):
-        valid_data = System1000FileImport(self.import_file_valid)
-        # TODO all this is heavily bankayma specific, move there
-        for data in valid_data:
-            move = (
-                self.env["account.move"]
-                .search([("id", "=", int(data.document_id))])
-                .exists()
-            )
-            if not move or move.state != "draft":
-                continue
-            # TODO: remove
-            move.message_post(body=repr(data))
-            if not data.tax_papers:
-                move.message_post(body=_("Doing nothing because #74 is 0"))
-                continue
-            if data.tax_deduction_income and data.tax_deduction_income != 99:
-                if move.date <= data.date_to and move.date >= data.date_from:
-                    taxes = move.mapped("invoice_line_ids.tax_ids")
-                    tax = move._portal_get_or_create_tax(
-                        move.company_id,
-                        move.fiscal_position_id,
-                        data.tax_deduction_income,
-                    )
-                    if tax in taxes:
-                        # TODO actually do it
-                        move.message_post(body=_("This should be auto submitted"))
-                    else:
-                        # TODO actually do it
-                        move.message_post(
-                            body=_(
-                                "Created a new tax, should replace old vendor specific tax"
-                            )
-                        )
-                else:
-                    move.message_post(
-                        body=_(
-                            "Doing nothing because move date is out of validity interval"
-                        )
-                    )
-
-        System1000FileImport(self.import_file_invalid)
+        raise NotImplementedError()

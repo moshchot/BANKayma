@@ -12,12 +12,13 @@ System1000Field = namedtuple(
 
 
 class System1000File(object):
+    encoding = "ISO-8859-8"
     lines = None
     intro_line = None
     outro_line = None
 
     def __init__(self, b64_data, data_fields, result_type):
-        self.lines = b64decode(b64_data).decode("ISO-8859-8").strip().split("\r\n")
+        self.lines = b64decode(b64_data).decode(self.encoding).strip().split("\r\n")
         self.data_fields = data_fields
         self.result_type = result_type
 

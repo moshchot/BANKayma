@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="fpos_tax_deduction_artist" model="account.fiscal.position">
+        <field name="name">Tax deduction for Artists Fee</field>
+        <field name="bankayma_deduct_tax" eval="True" />
+        <field
+            name="bankayma_deduct_tax_group_id"
+            ref="tax_group_vendor_specific_tax"
+        />
+    </record>
+</odoo>
