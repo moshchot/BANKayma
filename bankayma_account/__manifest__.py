@@ -43,6 +43,8 @@
     ],
     "demo": [
         "demo/account_journal.xml",
+        "demo/account_tax_group.xml",
+        "demo/account_fiscal_position.xml",
         "demo/tier_definition.xml",
     ],
     "data": [
