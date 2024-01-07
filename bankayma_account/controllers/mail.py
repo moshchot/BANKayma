@@ -16,7 +16,7 @@ class MailController(mail.MailController):
             and response.status_code == 303
             and "action" not in response.headers.get("location", "action")
         ):
-            move = request.env[model].browse(res_id)
+            move = request.env[model].sudo().browse(res_id)
             action = (
                 request.env.ref(
                     "bankayma_account.action_bankayma_group_income_move_internal"
