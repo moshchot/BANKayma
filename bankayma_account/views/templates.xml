@@ -248,7 +248,7 @@
         <xpath expr="//a" position="replace">
             <a t-att-href="backend_url">
                 <i class="fa fa-arrow-right me-1" />
-                back to my bankayma/dashboard
+                back to my bankayma dashboard
             </a>
         </xpath>
     </template>
