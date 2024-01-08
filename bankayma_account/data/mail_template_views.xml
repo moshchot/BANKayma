@@ -141,9 +141,7 @@
         <table>
             <tr>
                 <th>Recipient Bank info:</th>
-                <td t-out="object.partner_id.acc_number" />
-                <td t-out="object.partner_id.branch_code" />
-                <td t-out="object.partner_id.bank_id" />
+                <td t-out="object.partner_bank_id" />
             </tr>
             <tr>
                 <th>Tax ID:</th>
