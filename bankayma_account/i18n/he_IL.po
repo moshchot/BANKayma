@@ -46,7 +46,7 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
-"<div style="direction:rtl">\n"
+"         <div style="direction:rtl">\n"
 "<h1>ברוכים הבאים לפורטל הספקים של בנקיימא:)</h1>\n"
 "            <div>\n"
 "                <t t-out="user.name"></t> מ- <t t-out="user.company_id.name"></t> הזמין אותך להירשם כספק לקבלת תשלומים.
