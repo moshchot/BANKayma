@@ -15,10 +15,10 @@
                 </group>
                 <div>
                     <button
-                        attrs="{'invisible': [('state', '=', 'upload')]}"
-                        name="taxes_gov_il"
-                        href="https://secapp.taxes.gov.il/gmm1000/firstPage.aspx"
-                        class="btn btn-secondary"
+                        attrs="{'invisible': [('state', '=', 'upload')], 'href': 'https://secapp.taxes.gov.il/gmm1000/firstPage.aspx'}"
+                        string="taxes.gov.il"
+                        type="object"
+                        class="oe_highlight"
                     />
                 </div>    
                 <div attrs="{'invisible': [('state', '!=', 'draft')]}">
