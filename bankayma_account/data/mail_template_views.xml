@@ -141,7 +141,7 @@
         <table>
             <tr>
                 <th>Recipient Bank info:</th>
-                <td t-out="object.partner_bank_id" />
+                <td t-out="object.partner_id.partner_bank_id" />
             </tr>
             <tr>
                 <th>Tax ID:</th>
