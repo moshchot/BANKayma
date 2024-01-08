@@ -20,7 +20,6 @@
                     <button
                         attrs="{'invisible': [('state', '=', 'upload')], 'href': 'https://secapp.taxes.gov.il/gmm1000/firstPage.aspx', 'target': '_blank'}"
                         string="taxes.gov.il"
-                        name="button_1000"
                         type="object"
                         class="oe_highlight"
                     />
