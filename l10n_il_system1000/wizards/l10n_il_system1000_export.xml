@@ -13,12 +13,14 @@
                     <field name="export_file" filename="export_file_name" />
                     <field name="export_file_name" invisible="1" />
                 </group>
+                <div>
                     <button
-                        attrs="{'invisible': [('state', '=', 'draft')]}"
-                        special="taxes.gov.il"
+                        attrs="{'invisible': [('state', '=', 'upload')]}"
+                        name="taxes_gov_il"
                         href="https://secapp.taxes.gov.il/gmm1000/firstPage.aspx"
-                        class="btn btn-secondary reference external"
+                        class="btn btn-secondary"
                     />
+                </div>    
                 <div attrs="{'invisible': [('state', '!=', 'draft')]}">
                     Click below to export your marked moves to system 1000
                 </div>
