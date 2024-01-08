@@ -13,16 +13,17 @@
                     <field name="export_file" filename="export_file_name" />
                     <field name="export_file_name" invisible="1" />
                 </group>
+                <div attrs="{'invisible': [('state', '!=', 'draft')]}">
+                    Click below to export your marked moves to system 1000
+                </div>
                 <div>
                     <button
-                        attrs="{'invisible': [('state', '=', 'upload')], 'href': 'https://secapp.taxes.gov.il/gmm1000/firstPage.aspx'}"
+                        attrs="{'invisible': [('state', '=', 'upload')], 'href': 'https://secapp.taxes.gov.il/gmm1000/firstPage.aspx', 'target': '_blank'}"
                         string="taxes.gov.il"
+                        name="1000"
                         type="object"
                         class="oe_highlight"
                     />
-                </div>    
-                <div attrs="{'invisible': [('state', '!=', 'draft')]}">
-                    Click below to export your marked moves to system 1000
                 </div>
                 <div attrs="{'invisible': [('state', '!=', 'upload')]}">
                     Please upload the resulting files
