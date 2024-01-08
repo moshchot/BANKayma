@@ -51,10 +51,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_back_in_edit_mode
 msgid ""
 "<i class=\"fa fa-arrow-right me-1\"/>\n"
-"                back to my bankayma/dashboard"
+"                back to my bankayma dashboard"
 msgstr ""
-"<i class=\"fa fa-arrow-right me-1\"/>\n"
-"                חזרה לבנקיימא שלי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -1225,6 +1223,11 @@ msgid "Receipt"
 msgstr "קבלה"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+msgid "Recipient Bank info:"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.s_donation_options
 msgid "Recurrent payment"
 msgstr "הוראת קבע"
@@ -1711,8 +1714,8 @@ msgstr "או"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-msgid "was recieved with this tax info:"
-msgstr "התקבלה עם הפרטים האלו:"
+msgid "was recieved with this info:"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
