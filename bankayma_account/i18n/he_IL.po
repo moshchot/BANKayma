@@ -1578,7 +1578,7 @@ msgstr "תיאור מסמכי ספק"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "Vendor ID"
-msgstr "ח"פ ספק"
+msgstr "ח.פ. ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
