@@ -6,7 +6,7 @@
         <div class="o_portal_my_details" position="inside">
             <div style="position: relative">
                 <i
-                    class="fa fa-money fa-fw"
+                    class="fa fa-transgender-alt fa-fw"
                     style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
                     role="img"
                 />
@@ -282,7 +282,7 @@
                 <a
                     class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
-                    href="redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew"
+                    href="/my/account?redirect=/my/invoices/new"
                 >
                     Pay Me
                 </a>
