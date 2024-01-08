@@ -46,18 +46,7 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
-"         <div style="direction:rtl">\n"
-"<h1>ברוכים הבאים לפורטל הספקים של בנקיימא:)</h1>\n"
-"            <div>\n"
-"                <t t-out="user.name"></t> מ- <t t-out="user.company_id.name"></t> הזמין אותך להירשם כספק לקבלת תשלומים.
-<br>יש ללחוץ ה <button><a t-attf-href=\"{{ object.signup_url }}&amp;"
-"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">\n"
-"                    קישור\n"
-"                </a></button>\n"
-"                ולקבל תשלום 🤑\n"
-"            </div>\n"
-"          </div>\n"
-"        "
+
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_back_in_edit_mode
 msgid ""
