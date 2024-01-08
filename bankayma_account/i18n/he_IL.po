@@ -46,7 +46,18 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
-
+"<div style="direction:rtl">\n"
+"<h1>ברוכים הבאים לפורטל הספקים של בנקיימא:)</h1>\n"
+"            <div>\n"
+"                <t t-out="user.name"></t> מ- <t t-out="user.company_id.name"></t> הזמין אותך להירשם כספק לקבלת תשלומים.
+<br>יש ללחוץ ה <button><a t-attf-href=\"{{ object.signup_url }}&amp;"
+"redirect=%2Fmy%2Faccount%3Fredirect%3D%2Fmy%2Finvoices%2Fnew\">\n"
+"                    קישור\n"
+"                </a></button>\n"
+"                ולקבל תשלום 🤑\n"
+"            </div>\n"
+"          </div>\n"
+"        "
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_back_in_edit_mode
 msgid ""
@@ -222,7 +233,7 @@ msgstr "יש למלא פרטי בנק"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "Book keeping"
-msgstr ""
+msgstr "ניהול ספרים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -265,7 +276,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "Checked with 1000:"
-msgstr ""
+msgstr "נבדק במערכת 1000!"
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_cheque_in
@@ -835,7 +846,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_email
 msgid "Mail about validated vendor bill"
-msgstr ""
+msgstr "הודעה אודות אישור חשבונית ספק"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -1013,7 +1024,7 @@ msgstr "אחר"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Out:"
-msgstr "הכנסה"
+msgstr "יוצא:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mail_server_id
@@ -1096,12 +1107,12 @@ msgstr ""
 #. module: bankayma_account
 #: model:account.journal,name:bankayma_account.journal_overhead_payment
 msgid "Overhead payments"
-msgstr ""
+msgstr "תשלומי תקורה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_overhead_percentage
 msgid "Overhead percentage"
-msgstr ""
+msgstr "אחוז תקורה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_product_product__sumit_type
@@ -1162,7 +1173,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_payment_transaction
 msgid "Payment Transaction"
-msgstr ""
+msgstr "העברת תשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
@@ -1253,8 +1264,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
-msgid "Replaced existing tax %(taxes)s with %(tax)s from System1000"
-msgstr ""
+msgid "Replaced existing tax %(taxes)s with %(tax)מs from System1000"
+msgstr "אחוזי הניכוי %(taxes)s עודכנו ל %(tax)s ממערכת 1000 "
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_mode
@@ -1376,12 +1387,12 @@ msgstr "ניכוי מס"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "Tax deduction %"
-msgstr ""
+msgstr "אחוז ניכוי מס"
 
 #. module: bankayma_account
 #: model:account.fiscal.position,name:bankayma_account.fpos_tax_deduction_artist
 msgid "Tax deduction for Artists Fee"
-msgstr ""
+msgstr "ניכוי מס לשכר אמנים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
@@ -1578,12 +1589,12 @@ msgstr "תיאור מסמכי ספק"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "Vendor ID"
-msgstr ""
+msgstr "ח"פ ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "Vendor Name"
-msgstr ""
+msgstr "שם עוסק"
 
 #. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_vendor_bill_validated
@@ -1659,7 +1670,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Your payment request of"
-msgstr ""
+msgstr "בקשת התשלום שלך"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -1695,7 +1706,7 @@ msgstr "דרישת תשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "is delayed due to"
-msgstr ""
+msgstr "מעוקב עקב"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
@@ -1712,7 +1723,7 @@ msgstr "או"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "was recieved with this tax info:"
-msgstr ""
+msgstr "התקבלה עם הפרטים האלו:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
