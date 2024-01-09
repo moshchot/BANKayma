@@ -132,7 +132,7 @@ msgstr ""
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
-msgid "Please upload the resulting files"
+msgid "Please go to"
 msgstr ""
 
 #. module: l10n_il_system1000
@@ -160,4 +160,16 @@ msgstr ""
 #: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Upload results"
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
+msgid ""
+"and submit your file,\n"
+"                    then upload the resulting files."
+msgstr ""
+
+#. module: l10n_il_system1000
+#: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
+msgid "https://secapp.taxes.gov.il"
 msgstr ""
