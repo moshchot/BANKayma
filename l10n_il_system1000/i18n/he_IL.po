@@ -18,22 +18,22 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Click below to export your marked moves to system 1000"
-msgstr ""
+msgstr "קליק למטה ליצוא התנועות המסומנות למערכת 1000 "
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Close"
-msgstr ""
+msgstr "סגירה"
 
 #. module: l10n_il_system1000
 #: model:ir.model,name:l10n_il_system1000.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "יוזמות"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__create_uid
@@ -58,27 +58,27 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model:ir.model.fields.selection,name:l10n_il_system1000.selection__l10n_il_system1000_export__state__draft
 msgid "Draft"
-msgstr ""
+msgstr "טיוטת ייצוא"
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Export"
-msgstr ""
+msgstr "ייצוא"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__export_file
 msgid "Export File"
-msgstr ""
+msgstr "קובץ ייצוא להורדה"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__export_file_name
 msgid "Export File Name"
-msgstr ""
+msgstr "שם קובץ הייצוא"
 
 #. module: l10n_il_system1000
 #: model:ir.actions.act_window,name:l10n_il_system1000.action_l10n_il_system1000_export
 msgid "Export to system 1000"
-msgstr ""
+msgstr "ייצוא למערכת 1000"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__id
@@ -88,32 +88,32 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_date
 msgid "Import Date"
-msgstr ""
+msgstr "תאריך ייבוא"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_invalid
-msgid "Import File Invalid"
-msgstr ""
+msgid "Import File SHAGUI"
+msgstr "ייבוא קובץ שגוי"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_invalid_name
 msgid "Import File Invalid Name"
-msgstr ""
+msgstr "שם קובץ ייבוא שגוי"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_valid
-msgid "Import File Valid"
-msgstr ""
+msgid "Import File TAKIN"
+msgstr "ייבוא קובץ תקין"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_valid_name
 msgid "Import File Valid Name"
-msgstr ""
+msgstr "שם קובץ ייבוא תקין"
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Import results"
-msgstr ""
+msgstr "ייבוא תוצאות"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export____last_update
@@ -133,12 +133,12 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid "Please go to"
-msgstr ""
+msgstr "יש להעלות את קובץ הייצוא כאן בלינק"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__state
 msgid "State"
-msgstr ""
+msgstr "סטטוס"
 
 #. module: l10n_il_system1000
 #: model:ir.model,name:l10n_il_system1000.model_l10n_il_system1000_export
@@ -148,26 +148,26 @@ msgstr ""
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_res_company__l10n_il_tax_deduction_id
 msgid "Tax deduction ID"
-msgstr ""
+msgstr "מזהה ניכוי מס"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields.selection,name:l10n_il_system1000.selection__l10n_il_system1000_export__state__upload
 msgid "Upload Results"
-msgstr ""
+msgstr "העלאת תוצאות"
 
 #. module: l10n_il_system1000
 #. odoo-python
 #: code:addons/l10n_il_system1000/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Upload results"
-msgstr ""
+msgstr "העלאת תוצאות"
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
 msgid ""
 "and submit your file,\n"
 "                    then upload the resulting files."
-msgstr ""
+msgstr "ואז להעלות את קבצי הייבוא בהתאם"
 
 #. module: l10n_il_system1000
 #: model_terms:ir.ui.view,arch_db:l10n_il_system1000.view_l10n_il_system1000_export_form
