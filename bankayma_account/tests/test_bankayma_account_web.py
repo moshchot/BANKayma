@@ -14,7 +14,7 @@ class TestBankaymaAccountWeb(HttpCase):
             .search([], limit=1)
         )
         response = self.url_open("/mail/view?model=account.move&res_id=%d" % move.id)
-        self.assertEqual(response.status_code, 403)
+        self.assertIn("/web/login", response.url)
         self.authenticate("demo", "demo")
         response = self.url_open(
             "/mail/view?model=account.move&res_id=%d" % move.id, allow_redirects=False
