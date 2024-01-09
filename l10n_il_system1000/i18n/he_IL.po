@@ -92,8 +92,8 @@ msgstr "תאריך ייבוא"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_invalid
-msgid "Import File SHAGUI"
-msgstr "ייבוא קובץ שגוי"
+msgid "Import File Invalid"
+msgstr ""
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_invalid_name
@@ -102,8 +102,8 @@ msgstr "שם קובץ ייבוא שגוי"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_valid
-msgid "Import File TAKIN"
-msgstr "ייבוא קובץ תקין"
+msgid "Import File Valid"
+msgstr ""
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_l10n_il_system1000_export__import_file_valid_name
