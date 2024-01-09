@@ -312,11 +312,6 @@
                             t-esc="amount_out if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_in"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
-                        <th>Balance:</th>
-                        <th
-                            t-esc="amount_in - amount_out * (-1 if invoices.env.user.has_group('bankayma_base.group_vendor') else 1)"
-                            t-options='{"widget": "monetary", "display_currency": currency}'
-                        />
                     </tr>
                 </table>
             </nav>

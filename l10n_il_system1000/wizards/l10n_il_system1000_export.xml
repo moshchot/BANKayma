@@ -27,6 +27,7 @@
                     and submit your file,
                     then upload the resulting files.
                 </div>
+                <br>
                 <group attrs="{'invisible': [('state', '!=', 'upload')]}">
                     <field
                         name="import_file_valid"
