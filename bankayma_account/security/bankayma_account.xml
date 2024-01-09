@@ -9,6 +9,13 @@
         />
     </record>
 
+    <record id="base.user_admin" model="res.users">
+        <field
+            name="groups_id"
+            eval="[Command.link(ref('bankayma_base.group_manager')), Command.link(ref('bankayma_base.group_org_manager')), Command.link(ref('bankayma_base.group_full'))]"
+        />
+    </record>
+
     <record id="base.group_user" model="res.groups">
         <field
             name="implied_ids"
