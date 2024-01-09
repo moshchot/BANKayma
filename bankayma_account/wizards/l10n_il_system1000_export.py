@@ -15,6 +15,20 @@ class L10nIlSystem1000Export(models.TransientModel):
         if self.import_file_invalid:
             self._import_invalid_file()
 
+    def _validate_confirm(self, move):
+        """Confirm a move, or validate it if under validation"""
+        if move.need_validation:
+            if not move.review_ids:
+                move.request_validation()
+                move.invalidate_recordset()
+            return move.validate_tier()
+        else:
+            return move.action_post()
+
+    def _reject_cancel(self, move):
+        """Cancel a move, or reject it if under validation"""
+        return move.button_cancel()
+
     def _import_valid_file(self):
         valid_data = System1000FileImport(self.import_file_valid)
         for data in valid_data:
@@ -32,8 +46,8 @@ class L10nIlSystem1000Export(models.TransientModel):
             )
             if not data.tax_papers:
                 continue
-            if data.tax_deduction_income and data.tax_deduction_income != 99:
-                if move.date <= data.date_to and move.date >= data.date_from:
+            if move.date <= data.date_to and move.date >= data.date_from:
+                if data.tax_deduction_income and data.tax_deduction_income != 99:
                     taxes = move.mapped("invoice_line_ids.tax_ids").filtered(
                         "bankayma_vendor_specific"
                     )
@@ -46,8 +60,7 @@ class L10nIlSystem1000Export(models.TransientModel):
                         move.message_post(
                             body=_("Auto submitting from System1000 import")
                         )
-                        move._cache["need_validation"] = False
-                        move.action_post()
+                        self._validate_confirm(move)
                     else:
                         move.invoice_line_ids.write(
                             {
@@ -66,9 +79,30 @@ class L10nIlSystem1000Export(models.TransientModel):
                                 "tax": tax.name,
                             }
                         )
-                else:
+                elif data.tax_deduction_income == 99:
                     move.message_post(
                         body=_(
-                            "Doing nothing because move date is out of validity interval"
+                            "Auto submitting from System1000 import, no tax deduction"
                         )
                     )
+                    self._validate_confirm(move)
+            else:
+                move.message_post(
+                    body=_("Cancelling because move date is out of validity interval")
+                )
+                self._reject_cancel(move)
+
+    def _import_invalid_file(self):
+        invalid_data = System1000FileImport(self.import_file_invalid)
+        for data in invalid_data:
+            move = (
+                self.env["account.move"]
+                .search([("id", "=", int(data.document_id))])
+                .exists()
+            )
+            if not move or move.state != "draft":
+                move.message_post(body=_("Not touching non-draft record"))
+            move.message_post(
+                body=_("Cancelling because move is listed in invalid file")
+            )
+            self._reject_cancel(move)
