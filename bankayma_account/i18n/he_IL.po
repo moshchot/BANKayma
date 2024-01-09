@@ -147,11 +147,6 @@ msgid "Auto submitting from System1000 import"
 msgstr ""
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
-msgid "Balance:"
-msgstr "מאזן:"
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Bank"
 msgstr "בנק"
