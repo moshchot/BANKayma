@@ -135,10 +135,14 @@
                 <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                 for
                 <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
-                was recieved with this tax info:
+                was recieved with this info:
             </p>
         </div>
         <table>
+            <tr>
+                <th>Recipient Bank info:</th>
+                <td t-out="object.partner_bank_id.acc_number" />
+            </tr>
             <tr>
                 <th>Tax ID:</th>
                 <td t-out="object.partner_id.vat" />

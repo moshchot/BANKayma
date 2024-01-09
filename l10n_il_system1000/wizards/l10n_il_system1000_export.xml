@@ -16,6 +16,14 @@
                 <div attrs="{'invisible': [('state', '!=', 'draft')]}">
                     Click below to export your marked moves to system 1000
                 </div>
+                <div>
+                    <button
+                        attrs="{'invisible': [('state', '=', 'upload')], 'href': 'https://secapp.taxes.gov.il/gmm1000/firstPage.aspx', 'target': '_blank'}"
+                        string="taxes.gov.il"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                </div>
                 <div attrs="{'invisible': [('state', '!=', 'upload')]}">
                     Please upload the resulting files
                 </div>
