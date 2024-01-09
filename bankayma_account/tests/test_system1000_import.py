@@ -103,8 +103,16 @@ class TestSystem1000Import(TransactionCase):
         self._run_import(import_file_valid=self._import_file_valid(self.bill.id))
         self.assertEqual(self.bill.state, "cancel")
 
+    def test_import_valid_file_auto_confirm_tier_validation_running(self):
+        """Test that we confirm moves when everything matches without tier validation"""
+        self.bill.with_user(self.env.ref("base.user_demo")).request_validation()
+        self.bill.invalidate_recordset()
+        self.test_import_valid_file_auto_confirm()
+
     def test_import_invalid_file(self):
         """Test that we autoreject invalid files"""
+        self.bill.with_user(self.env.ref("base.user_demo")).request_validation()
+        self.bill.invalidate_recordset()
         wizard = self.env["l10n.il.system1000.export"].create(
             {
                 "export_file": b64encode(b"irrelevant"),
