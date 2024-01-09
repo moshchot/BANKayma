@@ -147,6 +147,13 @@ msgid "Auto submitting from System1000 import"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Auto submitting from System1000 import, no tax deduction"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Bank"
 msgstr "בנק"
@@ -235,6 +242,20 @@ msgstr "ביטול"
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_reject_intercompany_purchase
 msgid "Cancel overhead invoices"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Cancelling because move date is out of validity interval"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Cancelling because move is listed in invalid file"
 msgstr ""
 
 #. module: bankayma_account
@@ -493,13 +514,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Document"
 msgstr "מסמך"
-
-#. module: bankayma_account
-#. odoo-python
-#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
-#, python-format
-msgid "Doing nothing because move date is out of validity interval"
-msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__4
