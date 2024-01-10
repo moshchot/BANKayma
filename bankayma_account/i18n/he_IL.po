@@ -352,7 +352,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_confirm
 msgid "Confirm vendor bills"
-msgstr ""
+msgstr "אישור חשבוניות ספק"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -1056,6 +1056,8 @@ msgid ""
 "Overhead created in <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
 "href=\"#\">%(ref)s</a>"
 msgstr ""
+"תקורה נוצרה ב <a data-oe-model=\"account.move\" data-oe-id=\"%(id)s\" "
+"href=\"#\">%(ref)s</a>"
 
 #. module: bankayma_account
 #. odoo-python
@@ -1234,7 +1236,7 @@ msgstr "קבלה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "Recipient Bank info:"
-msgstr ""
+msgstr "פרטי בנק המקבל"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.s_donation_options
@@ -1332,7 +1334,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.product_template_form_view
 msgid "Sumit"
-msgstr ""
+msgstr "סאמיט"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_l10n_il_system1000_export
@@ -1561,7 +1563,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill
 msgid "Validate vendor bills"
-msgstr ""
+msgstr "אשר חשבוניות ספק"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
@@ -1611,7 +1613,7 @@ msgstr "חשבוניות ספק"
 #. module: bankayma_account
 #: model:account.tax.group,name:bankayma_account.tax_group_vendor_specific_tax
 msgid "Vendor specific tax"
-msgstr ""
+msgstr "ניכוי מס ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
@@ -1724,7 +1726,7 @@ msgstr "או"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 msgid "was recieved with this info:"
-msgstr ""
+msgstr "התקבלה עם הפרטים הבאים:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
