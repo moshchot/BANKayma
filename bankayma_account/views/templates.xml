@@ -428,7 +428,7 @@
                         accept=".pdf,.jpg,.png"
                     />
                     <div
-                        t-out="request.env.user.partner_id.property_account_position_id.vendor_doc_description"
+                        t-out="request.env.user.partner_id.property_account_position_id"
                     />
                 </div>
                 <button type="submit" class="btn btn-primary float-end mb32 ">
