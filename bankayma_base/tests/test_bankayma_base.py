@@ -9,3 +9,6 @@ class TestBankaymaBase(TransactionCase):
             self.env["board.board"].with_user(
                 self.env.ref("base.user_demo")
             ).action_impose_all_users()
+
+    def test_edit_vat(self):
+        self.assertTrue(self.env.ref("bankayma_base.projman").partner_id.can_edit_vat())
