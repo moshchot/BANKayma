@@ -30,7 +30,26 @@ class L10nIlSystem1000Export(models.TransientModel):
 
     def _reject_cancel(self, move):
         """Cancel a move, or reject it if under validation"""
-        return move.button_cancel()
+        if move.need_validation or move.review_ids:
+            if not move.review_ids:
+                move.request_validation()
+                move.invalidate_recordset()
+            result = move.reject_tier()
+            if result and result.get("type") == "ir.actions.act_window":
+                return (
+                    self.env[result["res_model"]]
+                    .with_context(**result["context"])
+                    .create(
+                        {
+                            "comment": _("Rejected by System1000"),
+                        }
+                    )
+                    .add_comment()
+                )
+            else:
+                return result
+        else:
+            return move.button_cancel()
 
     def _import_valid_file(self):
         valid_data = System1000FileImport(self.import_file_valid)
@@ -50,6 +69,7 @@ class L10nIlSystem1000Export(models.TransientModel):
                 values={"validation": data},
             )
             if not data.tax_papers:
+                self._reject_cancel(move)
                 continue
             if move.date <= data.date_to and move.date >= data.date_from:
                 if data.tax_deduction_income and data.tax_deduction_income != 99:
@@ -86,10 +106,9 @@ class L10nIlSystem1000Export(models.TransientModel):
                         )
                 elif data.tax_deduction_income == 99:
                     move.message_post(
-                        body=_(
-                            "Auto submitting from System1000 import, no tax deduction"
-                        )
+                        body=_("Auto submitting from System1000 import, removed taxes")
                     )
+                    move._portal_remove_tax()
                     self._validate_confirm(move)
             else:
                 move.message_post(
@@ -111,6 +130,6 @@ class L10nIlSystem1000Export(models.TransientModel):
                 move.message_post(body=_("Not touching non-draft record"))
                 continue
             move.message_post(
-                body=_("Cancelling because move is listed in invalid file")
+                body=_("Cancelling because of error: %s") % data.error_comment
             )
             self._reject_cancel(move)

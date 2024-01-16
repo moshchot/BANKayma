@@ -39,6 +39,7 @@ class AccountMove(models.Model):
         [
             ("needs_validation", "Needs validation"),
             ("validated", "Validated"),
+            ("rejected", "Rejected"),
             ("paid", "Paid"),
         ],
         store=True,
@@ -141,7 +142,9 @@ class AccountMove(models.Model):
                 "paid"
                 if this.payment_state == "paid"
                 else "validated"
-                if this.validated or not this.need_validation
+                if this.validated
+                else "rejected"
+                if this.rejected
                 else "needs_validation"
             )
 
@@ -417,6 +420,19 @@ class AccountMove(models.Model):
                 attachment_ids=attachments.ids,
             )
         return invoice
+
+    def _portal_remove_tax(self):
+        """Remove custom taxes from all lines"""
+        self.mapped("invoice_line_ids").write(
+            {
+                "tax_ids": [
+                    (3, tax.id)
+                    for tax in self.mapped("invoice_line_ids.tax_ids").filtered(
+                        "bankayma_vendor_specific"
+                    )
+                ],
+            }
+        )
 
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):
         AccountTax = self.env["account.tax"].with_company(company)

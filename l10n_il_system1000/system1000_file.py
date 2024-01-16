@@ -82,8 +82,8 @@ class System1000FileImportInvalid(System1000File):
             F(1, 15, "document_id", str.lstrip),
             F(16, 9, "tax_id_sent"),
             F(25, 9, "vat_id_sent"),
-            F(34, 2, "unknown", int),
-            F(36, 50, "comment"),
+            F(34, 2, "error_code", int),
+            F(36, 50, "error_comment"),
         ]
         super().__init__(
             b64_data,
