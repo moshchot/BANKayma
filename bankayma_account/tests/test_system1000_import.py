@@ -54,7 +54,7 @@ class TestSystem1000Import(TransactionCase):
             (
                 "Airrelevant\r\n"
                 "B{:>15}taxidsentvatidsent00"
-                "                                               name"
+                "                                               name\r\n"
                 "Zirrelevant\r\n"
             )
             .format(self.bill.id)
