@@ -32,4 +32,22 @@
             eval="[Command.link(ref('base.group_portal')), Command.link(ref('group_vendor'))]"
         />
     </record>
+
+    <record id="projman" model="res.users" context="{'no_reset_password': True}">
+        <field name="login">projman</field>
+        <field name="email">projman@main_comp</field>
+        <field name="name">Project manager</field>
+        <field name="password">projman</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="groups_id" eval="[Command.link(ref('group_manager'))]" />
+    </record>
+
+    <record id="orgman" model="res.users" context="{'no_reset_password': True}">
+        <field name="login">orgman</field>
+        <field name="email">orgman@main_comp</field>
+        <field name="name">Organization manager</field>
+        <field name="password">orgman</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="groups_id" eval="[Command.link(ref('group_manager'))]" />
+    </record>
 </odoo>
