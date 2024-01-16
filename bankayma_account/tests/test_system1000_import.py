@@ -49,6 +49,18 @@ class TestSystem1000Import(TransactionCase):
             .encode(System1000File.encoding)
         )
 
+    def _import_file_invalid(self, move_id):
+        return b64encode(
+            (
+                "Airrelevant\r\n"
+                "B{:>15}taxidsentvatidsent00"
+                "                                               name"
+                "Zirrelevant\r\n"
+            )
+            .format(self.bill.id)
+            .encode(System1000File.encoding)
+        )
+
     def _run_import(self, **wizard_kwargs):
         """Run the wizard and return it"""
         create_args = {}
@@ -116,7 +128,7 @@ class TestSystem1000Import(TransactionCase):
         wizard = self.env["l10n.il.system1000.export"].create(
             {
                 "export_file": b64encode(b"irrelevant"),
-                "import_file_invalid": self._import_file_valid(self.bill.id),
+                "import_file_invalid": self._import_file_invalid(self.bill.id),
             }
         )
         wizard.button_import()
