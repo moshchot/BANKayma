@@ -249,14 +249,14 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Cancelling because move date is out of validity interval"
-msgstr ""
+msgstr "לאחר בדיקה עם מערכת 1000 אישור המס שלך אינו בתוקף לשנה הנוכחית - הבקשה מעוכבת עד לעדכון פרטים או מסמכים"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Cancelling because of error: %s"
-msgstr ""
+msgstr "לאחר בדיקה עם מערכת 1000: %s הבקשה מעוכבת עד לעדכון פרטים או מסמכים "
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_cash_in
@@ -595,19 +595,19 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_fiscal_position
 msgid "Fiscal Position"
-msgstr "מעמד פיסקלי"
+msgstr "סוג עוסק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Fiscal position"
-msgstr "מעמד פיסקלי"
+msgstr "סוג עוסק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "Fiscal position:"
-msgstr "מעמד פיסקלי:"
+msgstr "סוג עוסק:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
@@ -1251,14 +1251,14 @@ msgstr "אישור קבלת תשלום"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__rejected
 msgid "Rejected"
-msgstr ""
+msgstr "מעוכב"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Rejected by System1000"
-msgstr ""
+msgstr "נדחה אוטומטית ע"י מערכת 1000"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__res_id
@@ -1351,7 +1351,7 @@ msgstr "סאמיט"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_l10n_il_system1000_export
 msgid "System 1000 export"
-msgstr ""
+msgstr "ייצוא למערכת 1000"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
@@ -1458,7 +1458,7 @@ msgstr "יש למלא מספר עוסק"
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "The fiscal position is mandatory for vendors"
-msgstr "יש למלא מעמד פיסקלי"
+msgstr "יש למלא סוג עוסק"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_overhead_percentage
@@ -1500,7 +1500,7 @@ msgstr "עלות"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_amount_paid
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_amount_paid
 msgid "Total net paid"
-msgstr "סכום לתשלום"
+msgstr "שולם"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__message_type
@@ -1721,7 +1721,7 @@ msgstr "דרישת תשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "is delayed due to"
-msgstr "מעוקב עקב"
+msgstr "מעוכב עקב"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
