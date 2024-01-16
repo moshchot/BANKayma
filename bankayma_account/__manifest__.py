@@ -64,6 +64,7 @@
         "views/account_journal.xml",
         "views/account_move.xml",
         "views/product_template.xml",
+        "views/res_company.xml",
         "views/res_config_settings.xml",
         "views/res_partner.xml",
         "views/snippets.xml",

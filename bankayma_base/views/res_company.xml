@@ -36,6 +36,11 @@
                     bankayma_base.group_org_manager,bankayma_base.group_full
                 </attribute>
             </field>
+            <field name="currency_id" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </field>
             <field name="company_registry" position="attributes">
                 <attribute name="groups">
                     bankayma_base.group_org_manager,bankayma_base.group_full
