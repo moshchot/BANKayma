@@ -25,3 +25,7 @@ class ResPartner(models.Model):
         ) and not has("base.group_erp_manager"):
             self = self.sudo()
         return self.mapped("user_ids").action_reset_password()
+
+    def can_edit_vat(self):
+        """Allow editing vat if there's no vat"""
+        return not bool(self.vat) or super().can_edit_vat()
