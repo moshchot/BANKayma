@@ -151,8 +151,10 @@ server-ux:
     oca: https://github.com/OCA/server-ux.git
     hbrunn: https://github.com/hbrunn/server-ux.git
   merges:
+    - oca 16.0
     - hbrunn 16.0-base_tier_validation-dynamic_validation_flag
-    - hbrunn 16.0-base_tier_validation_server_action
+      # https://github.com/OCA/server-ux/pull/805
+    - 16.0-base_tier_validation_server_action-active_ids
       # https://github.com/OCA/server-ux/pull/712
     - hbrunn 16.0-base_tier_validation_comment_required
     - hbrunn 16.0-server_action_mass_edit-o2m
