@@ -249,7 +249,9 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Cancelling because move date is out of validity interval"
-msgstr "לאחר בדיקה עם מערכת 1000 אישור המס שלך אינו בתוקף לשנה הנוכחית - הבקשה מעוכבת עד לעדכון פרטים או מסמכים"
+msgstr ""
+"לאחר בדיקה עם מערכת 1000 אישור המס שלך אינו בתוקף לשנה הנוכחית - הבקשה "
+"מעוכבת עד לעדכון פרטים או מסמכים"
 
 #. module: bankayma_account
 #. odoo-python
