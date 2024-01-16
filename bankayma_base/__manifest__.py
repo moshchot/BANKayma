@@ -66,6 +66,7 @@
         "views/res_partner.xml",
         "views/res_users.xml",
         "views/templates.xml",
+        "views/mail_compose_message.xml",
         "views/menu.xml",
     ],
     "demo": [
