@@ -1258,7 +1258,7 @@ msgstr "מעוכב"
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Rejected by System1000"
-msgstr "נדחה אוטומטית ע"י מערכת 1000"
+msgstr "נדחה אוטומטית על ידי מערכת 1000"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__res_id
