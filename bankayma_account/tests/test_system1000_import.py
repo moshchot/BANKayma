@@ -36,16 +36,23 @@ class TestSystem1000Import(TransactionCase):
             }
         )
 
-    def _import_file_valid(self, move_id, from_date="20230101", to_date="20231231"):
+    def _import_file_valid(
+        self,
+        move_id,
+        tax_papers=1,
+        deduction=42,
+        from_date="20230101",
+        to_date="20231231",
+    ):
         # TODO: just implement a writer for System1000File
         return b64encode(
             (
                 "Airrelevant\r\n"
                 "B{:>15}taxidsentvatidsenttaxidrecvvatidrecv                  name"
-                "14200000000{:>8}{:>8}20231230XXX1234567899999999999111111111\r\n"
+                "{}{:>2}00000000{:>8}{:>8}20231230XXX1234567899999999999111111111\r\n"
                 "Zirrelevant\r\n"
             )
-            .format(self.bill.id, from_date, to_date)
+            .format(self.bill.id, tax_papers, deduction, from_date, to_date)
             .encode(System1000File.encoding)
         )
 
@@ -77,7 +84,9 @@ class TestSystem1000Import(TransactionCase):
         """
         self.bill.date = "2024-01-01"
         self._run_import(import_file_valid=self._import_file_valid(self.bill.id))
-        self.assertEqual(self.bill.state, "cancel")
+        self.assertEqual(self.bill.state, "draft")
+        self.assertEqual(self.bill.validated_state, "rejected")
+        self.assertTrue(self.bill.rejected)
 
     def test_import_valid_file_new_tax(self):
         """
@@ -120,16 +129,39 @@ class TestSystem1000Import(TransactionCase):
         self.bill.with_user(self.env.ref("base.user_demo")).request_validation()
         self.bill.invalidate_recordset()
         self.test_import_valid_file_auto_confirm()
+        self.assertEqual(self.bill.validated_state, "validated")
+
+    def test_import_valid_file_no_tax_papers(self):
+        """Test that we reject moves coming back as no tax papers"""
+        self._run_import(
+            import_file_valid=self._import_file_valid(self.bill.id, tax_papers=0)
+        )
+        self.assertEqual(self.bill.state, "draft")
+        self.assertTrue(self.bill.rejected)
+        self.assertEqual(self.bill.validated_state, "rejected")
+
+    def test_import_valid_file_no_reduction(self):
+        """Test that we reject moves coming back as no reduction"""
+        self._run_import(
+            import_file_valid=self._import_file_valid(self.bill.id, deduction=99)
+        )
+        self.assertEqual(self.bill.state, "posted")
+        self.assertFalse(self.bill.mapped("invoice_line_ids.tax_ids"))
 
     def test_import_invalid_file(self):
         """Test that we autoreject invalid files"""
         self.bill.with_user(self.env.ref("base.user_demo")).request_validation()
         self.bill.invalidate_recordset()
-        wizard = self.env["l10n.il.system1000.export"].create(
-            {
-                "export_file": b64encode(b"irrelevant"),
-                "import_file_invalid": self._import_file_invalid(self.bill.id),
-            }
+        wizard = (
+            self.env["l10n.il.system1000.export"]
+            .create(
+                {
+                    "export_file": b64encode(b"irrelevant"),
+                    "import_file_invalid": self._import_file_invalid(self.bill.id),
+                }
+            )
+            .with_user(self.env.ref("base.user_admin"))
         )
         wizard.button_import()
-        self.assertEqual(self.bill.state, "cancel")
+        self.assertEqual(self.bill.state, "draft")
+        self.assertTrue(self.bill.rejected)
