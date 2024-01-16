@@ -150,7 +150,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
-msgid "Auto submitting from System1000 import, no tax deduction"
+msgid "Auto submitting from System1000 import, removed taxes"
 msgstr ""
 
 #. module: bankayma_account
@@ -255,7 +255,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
-msgid "Cancelling because move is listed in invalid file"
+msgid "Cancelling because of error: %s"
 msgstr ""
 
 #. module: bankayma_account
@@ -1247,6 +1247,18 @@ msgstr "הוראת קבע"
 #: model:ir.model,name:bankayma_account.model_account_payment_register
 msgid "Register Payment"
 msgstr "אישור קבלת תשלום"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__rejected
+msgid "Rejected"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Rejected by System1000"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__res_id
