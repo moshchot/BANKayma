@@ -31,13 +31,13 @@
                 <group attrs="{'invisible': [('state', '!=', 'upload')]}">
                     <field
                         name="import_file_valid"
-                        filename="import_file_name_valid"
+                        filename="import_file_valid_name"
                         attrs="{'required': [('state', '=', 'upload'), ('import_file_invalid', '=', False)]}"
                     />
                     <field name="import_file_valid_name" invisible="1" />
                     <field
                         name="import_file_invalid"
-                        filename="import_file_name_invalid"
+                        filename="import_file_invalid_name"
                         attrs="{'required': [('state', '=', 'upload'), ('import_file_valid', '=', False)]}"
                     />
                     <field name="import_file_invalid_name" invisible="1" />

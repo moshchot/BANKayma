@@ -13,9 +13,9 @@ class L10nIlSystem1000Export(models.TransientModel):
     export_file = fields.Binary(readonly=True)
     export_file_name = fields.Char(readonly=True)
     import_file_valid = fields.Binary()
-    import_file_valid_name = fields.Char(default="valid.txt")
+    import_file_valid_name = fields.Char(default="valid.txt", readonly=True)
     import_file_invalid = fields.Binary()
-    import_file_invalid_name = fields.Char(default="invalid.txt")
+    import_file_invalid_name = fields.Char(default="invalid.txt", readonly=True)
     import_date = fields.Datetime()
     state = fields.Selection(
         [("draft", "Draft"), ("upload", "Upload Results"), ("done", "Done")],

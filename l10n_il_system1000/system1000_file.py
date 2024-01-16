@@ -73,3 +73,23 @@ class System1000FileImport(System1000File):
                 [data_field.name for data_field in data_fields],
             ),
         )
+
+
+class System1000FileImportInvalid(System1000File):
+    def __init__(self, b64_data):
+        F = System1000Field
+        data_fields = [
+            F(1, 15, "document_id", str.lstrip),
+            F(16, 9, "tax_id_sent"),
+            F(25, 9, "vat_id_sent"),
+            F(34, 2, "unknown", int),
+            F(36, 50, "comment"),
+        ]
+        super().__init__(
+            b64_data,
+            data_fields,
+            namedtuple(
+                "System1000FileImportInvalidData",
+                [data_field.name for data_field in data_fields],
+            ),
+        )

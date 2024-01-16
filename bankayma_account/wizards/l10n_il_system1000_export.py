@@ -3,7 +3,10 @@
 
 from odoo import _, fields, models
 
-from odoo.addons.l10n_il_system1000.system1000_file import System1000FileImport
+from odoo.addons.l10n_il_system1000.system1000_file import (
+    System1000FileImport,
+    System1000FileImportInvalid,
+)
 
 
 class L10nIlSystem1000Export(models.TransientModel):
@@ -37,7 +40,9 @@ class L10nIlSystem1000Export(models.TransientModel):
                 .search([("id", "=", int(data.document_id))])
                 .exists()
             )
-            if not move or move.state != "draft":
+            if not move:
+                continue
+            if move.state != "draft":
                 move.message_post(body=_("Not touching non-draft record"))
                 continue
             move.message_post_with_view(
@@ -93,15 +98,18 @@ class L10nIlSystem1000Export(models.TransientModel):
                 self._reject_cancel(move)
 
     def _import_invalid_file(self):
-        invalid_data = System1000FileImport(self.import_file_invalid)
+        invalid_data = System1000FileImportInvalid(self.import_file_invalid)
         for data in invalid_data:
             move = (
                 self.env["account.move"]
                 .search([("id", "=", int(data.document_id))])
                 .exists()
             )
-            if not move or move.state != "draft":
+            if not move:
+                continue
+            if move.state != "draft":
                 move.message_post(body=_("Not touching non-draft record"))
+                continue
             move.message_post(
                 body=_("Cancelling because move is listed in invalid file")
             )
