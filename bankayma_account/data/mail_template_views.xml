@@ -141,7 +141,15 @@
         <table>
             <tr>
                 <th>Recipient Bank info:</th>
-                <td t-out="object.partner_bank_id.acc_number" />
+                <td t-foreach="object.partner_id.bank_ids[:1]" t-as="bank_account">
+                    <span t-out="bank_account.acc_number" />
+                    ,
+                    <span t-out="bank_account.branch_code" />
+                    ,
+                    <span t-out="bank_account.bank_id.bank_code" />
+                    ,
+                    <span t-out="bank_account.bank_id.name" />
+                </td>
             </tr>
             <tr>
                 <th>Tax ID:</th>
