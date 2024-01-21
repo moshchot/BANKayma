@@ -143,7 +143,7 @@ msgstr "סטטוס"
 #. module: l10n_il_system1000
 #: model:ir.model,name:l10n_il_system1000.model_l10n_il_system1000_export
 msgid "System 1000 export"
-msgstr ""
+msgstr "ייצוא למערכת 1000"
 
 #. module: l10n_il_system1000
 #: model:ir.model.fields,field_description:l10n_il_system1000.field_res_company__l10n_il_tax_deduction_id
