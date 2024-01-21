@@ -76,7 +76,7 @@ msgstr "הערות פנימיות"
 #. module: base_tier_validation
 #: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
 msgid "Request Validation"
-msgstr "שליחה לאישור מנהל"
+msgstr "שליחה לאישור תשלום"
 
 #. module: base_tier_validation
 #: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
@@ -88,7 +88,7 @@ msgstr "אתחול שליחה לאישור"
 #: code:addons/base_tier_validation/models/tier_validation.py:0
 #, python-format
 msgid "The operation is under validation."
-msgstr "הבקשה לאישור בטיפול"
+msgstr "הבקשה לאישור תשלום בטיפול"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.portal_contract_page

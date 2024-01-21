@@ -52,13 +52,13 @@ msgstr ""
 msgid ""
 "<i class=\"fa fa-arrow-right me-1\"/>\n"
 "                back to my bankayma dashboard"
-msgstr ""
+msgstr "בחזרה לבנקיימא שלי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "<option value=\"\">Fiscal position...</option>"
-msgstr "<option value=\"\">מעמד פיסקלי...</option>"
+msgstr "<option value=\"\">סוג עוסק...</option>"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -69,7 +69,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "A bill was validated"
-msgstr "חשבונית ספק אושרה לתשלום"
+msgstr "הזמנת רכש אושרה לתשלום"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -354,7 +354,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_confirm
 msgid "Confirm vendor bills"
-msgstr "אישור חשבוניות ספק"
+msgstr "אישור הזמנות רכש"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -552,7 +552,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
 msgid "Expense Invoice"
-msgstr "חשבונית ספק"
+msgstr "הזמנת רכש"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__15
@@ -754,7 +754,7 @@ msgstr "הזמנת ספקים"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__0
 msgid "Invoice"
-msgstr "דרישת תשלום"
+msgstr "חשבון"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__1
@@ -844,7 +844,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_email
 msgid "Mail about validated vendor bill"
-msgstr "הודעה אודות אישור חשבונית ספק"
+msgstr "הודעה אודות אישור הזמנת רכש"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__reply_to_force_new
@@ -916,27 +916,27 @@ msgstr "לאישור"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New Invoice"
-msgstr "דרישת תשלום חדשה"
+msgstr "חשבון חדשה"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_new
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_new
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New Vendor Bill"
-msgstr "חשבונית ספק חדשה"
+msgstr "הזמנת רכש חדשה"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_new
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_new
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New invoice"
-msgstr "דרישת תשלום חדשה"
+msgstr "חשבון חדשה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_breadcrumbs
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "New vendor bill"
-msgstr "חשבונית ספק חדשה"
+msgstr "הזמנת רכש חדשה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_journal__bankayma_restrict_partner__no_intercompany
@@ -1577,7 +1577,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill
 msgid "Validate vendor bills"
-msgstr "אשר חשבוניות ספק"
+msgstr "אישור הזמנות רכש"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
@@ -1617,12 +1617,12 @@ msgstr "שם עוסק"
 #: model:mail.template,name:bankayma_account.template_vendor_bill_validated
 #: model:mail.template,subject:bankayma_account.template_vendor_bill_validated
 msgid "Vendor bill validated"
-msgstr "חשבונית ספק מאושרת"
+msgstr "הזמנת רכש מאושרת"
 
 #. module: bankayma_account
 #: model:tier.definition,name:bankayma_account.tier_definition_vendor_bill
 msgid "Vendor bills"
-msgstr "חשבוניות ספק"
+msgstr "הזמנות רכש"
 
 #. module: bankayma_account
 #: model:account.tax.group,name:bankayma_account.tax_group_vendor_specific_tax
@@ -1702,7 +1702,7 @@ msgstr "הזמנת ספקים"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "bill"
-msgstr "דרישת תשלום ספק"
+msgstr "הזמנת רכש ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
@@ -1718,7 +1718,7 @@ msgstr "מ"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "invoice"
-msgstr "דרישת תשלום"
+msgstr "חשבון"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
