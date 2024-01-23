@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account
-#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
-msgid "Invoice"
-msgstr "חשבון"
-
-#. module: account
 #. odoo-python
 #: code:addons/account/wizard/account_tour_upload_bill.py:0
 #: model_terms:ir.ui.view,arch_db:account.account_resequence_view
