@@ -140,3 +140,40 @@ msgstr "טיוטת חשבון"
 #: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search__move_type__out_invoice
 msgid "Draft Invoices"
 msgstr "טיוטת חשבונות"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__res_config_settings__show_line_subtotals_tax_selection__tax_excluded
+#: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
+msgid "Tax Excluded"
+msgstr "סכום העברה"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#: model:ir.model.fields,field_description:account.field_res_partner__invoice_warn
+#: model:ir.model.fields,field_description:account.field_res_users__invoice_warn
+#: model:ir.model.fields.selection,name:account.selection__account_analytic_applicability__business_domain__invoice
+#: model:ir.model.fields.selection,name:account.selection__account_payment__reconciled_invoices_type__invoice
+#: model:ir.model.fields.selection,name:account.selection__account_tax_repartition_line__document_type__invoice
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+#, python-format
+msgid "Invoice"
+msgstr "חשבון"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid "Draft Bill"
+msgstr "טיוטת הזמנת רכש"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid "Vendor Bill Created"
+msgstr "הזמנת רכש נוצרה"
+
