@@ -169,7 +169,7 @@ msgstr "העברה בנקאית"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_attachment_ids
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_attachment_ids
 msgid "Bankayma Attachment"
-msgstr ""
+msgstr "מסמכים מצורפים"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_immutable
