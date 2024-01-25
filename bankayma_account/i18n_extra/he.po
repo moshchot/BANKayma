@@ -192,3 +192,4 @@ msgstr "הזמנת רכש נוצרה"
 #: model_terms:ir.ui.view,arch_db:account.view_account_position_tree
 msgid "Fiscal Position"
 msgstr "סוג עוסק"
+
