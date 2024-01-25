@@ -1,1 +1,5 @@
 /* here css classes for the backend go */
+.o-spreadsheet .o-scorecard .o-scorecard-content .o-key-text {
+    /*rtl:ignore*/
+    direction: ltr;
+}
