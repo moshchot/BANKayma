@@ -204,7 +204,10 @@
                         Brandon Freeman
                     </t>
                     (
-                    <t t-out="object.partner_id.parent_id.name or ''" t-translation="off">
+                    <t
+                        t-out="object.partner_id.parent_id.name or ''"
+                        t-translation="off"
+                    >
                         Azure Interior
                     </t>
                     ),
@@ -218,9 +221,9 @@
             </h1>
             <p>
                 Your payment request of
-                <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))"/>
+                <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                 for
-                <t t-out="', '.join(object.mapped('invoice_line_ids.name'))"/>
+                <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
                 is delayed due to
                 <t t-out="object.partner_id.name or ''" t-translation="off">
                     insufficient documents
@@ -230,28 +233,31 @@
         <table>
             <tr>
                 <th>Tax ID:</th>
-                <td t-out="object.partner_id.vat"/>
+                <td t-out="object.partner_id.vat" />
             </tr>
             <tr>
                 <th>Fiscal position:</th>
-                <td t-out="object.fiscal_position_id.name"/>
+                <td t-out="object.fiscal_position_id.name" />
             </tr>
             <tr>
                 <th>Tax deduction:</th>
                 <td>
                     <t t-if="object.bankayma_vendor_tax_percentage">
-                        <t t-out="object.bankayma_vendor_tax_percentage"/>
+                        <t t-out="object.bankayma_vendor_tax_percentage" />
                     </t>
                     <t t-else="">no</t>
                 </td>
             </tr>
             <tr t-if="object.bankayma_deduct_tax_use_max_amount">
                 <th>Max amount:</th>
-                <td t-out="object.bankayma_vendor_max_amount"/>
+                <td t-out="object.bankayma_vendor_max_amount" />
             </tr>
-            <tr t-foreach="object.mapped('invoice_line_ids.tax_ids.tax_group_id').sorted('name')" t-as="tax_group">
+            <tr
+                t-foreach="object.mapped('invoice_line_ids.tax_ids.tax_group_id').sorted('name')"
+                t-as="tax_group"
+            >
                 <th>
-                    <span t-out="tax_group.name"/>
+                    <span t-out="tax_group.name" />
                     :
                 </th>
                 <td>yes</td>

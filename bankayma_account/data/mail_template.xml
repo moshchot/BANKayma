@@ -28,7 +28,7 @@
             [BanKayma]
             <t t-out="object.company_id.name" />
             - payment postponed for insufficient documents
-            </field>
+        </field>
         <field name="partner_to">
             {{','.join(map(str, (object.partner_id + object.env.user.partner_id).ids))}}
         </field>
