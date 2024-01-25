@@ -10,12 +10,16 @@ class CompanyCascadeMixin(models.AbstractModel):
     _name = "company.cascade.mixin"
     _description = "Cascade values to child companies"
     _company_cascade_exclude_fields = tuple([])
+    _company_cascade_force_fields = tuple([])
     _company_cascade_cascade_create = False
     _company_cascade_cascade_unlink = False
     _company_cascade_cascade_write = False
 
     company_cascade_parent_id = fields.Many2one(
-        "unknown", auto_join=True, ondelete="cascade"
+        "unknown",
+        auto_join=True,
+        ondelete="cascade",
+        copy=False,
     )
     company_cascade_child_ids = fields.One2many(
         inverse_name="company_cascade_parent_id", auto_join=True
@@ -93,6 +97,7 @@ class CompanyCascadeMixin(models.AbstractModel):
                     field_name
                     for field_name, field in self._fields.items()
                     if field.store
+                    and not field.compute
                     and field_name in (fields or self._fields)
                     and field_name not in models.MAGIC_COLUMNS
                     and not (
@@ -101,11 +106,19 @@ class CompanyCascadeMixin(models.AbstractModel):
                         and "company_cascade_parent_id"
                         in self.env[field.comodel_name]._fields
                     )
+                    or field_name in self._company_cascade_force_fields
                 ],
                 load="_classic_write",
             )[0]
-            result += this._company_cascade_write(values)
-            result += this._company_cascade_create(values)
+            try:
+                # disable _check_company because it causes a lot of unneccessary reads
+                # and possibly calls compute functions we don't want at this point
+                _check_company_org = this.__class__._check_company
+                this.__class__._check_company = lambda self, fnames=None: None
+                result += this._company_cascade_write(values)
+                result += this._company_cascade_create(values)
+            finally:
+                this.__class__._check_company = _check_company_org
             for result_record in result:
                 this.copy_translations(result_record)
 
@@ -114,6 +127,7 @@ class CompanyCascadeMixin(models.AbstractModel):
             field_name
             for field_name, field in self._fields.items()
             if field.store
+            and not field.compute
             and field_name in (fields or self._fields)
             and field_name not in models.MAGIC_COLUMNS + ["company_cascade_child_ids"]
             and (
@@ -286,17 +300,35 @@ class CompanyCascadeMixin(models.AbstractModel):
             vals["company_cascade_parent_id"] = self.id
             candidate = self._company_cascade_find_candidate(create_in_company, vals)
             if candidate:
+                vals = {
+                    key: value
+                    for key, value in vals.items()
+                    if not candidate._company_cascade_values_equal(key, value)
+                }
                 candidate.write(vals)
                 result += candidate
             else:
-                vals["__precomputed__"] = set(vals.keys())
                 result += self.sudo().with_company(create_in_company).create(vals)
         return result
 
     def _company_cascade_write(self, values):
         result = self.browse([])
         for record in self._company_cascade_get_children():
-            vals = self._company_cascade_values(record.company_id, values)
+            vals = {
+                key: value
+                for key, value in self._company_cascade_values(
+                    record.company_id, values
+                ).items()
+                if not record._company_cascade_values_equal(key, value)
+            }
             record.sudo().with_company(self.company_id).write(vals)
             result += record
         return result
+
+    def _company_cascade_values_equal(self, field, value):
+        """Comare values, return True if value is equal to field's value in self"""
+        if self._fields[field].comodel_name:
+            return self[field] == self.env[self._fields[field].comodel_name].browse(
+                value
+            )
+        return self[field] == value
