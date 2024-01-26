@@ -532,7 +532,7 @@ msgstr "קבלה על תרומה"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
 msgid "Draft"
-msgstr "טיוטא"
+msgstr "חדשות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
