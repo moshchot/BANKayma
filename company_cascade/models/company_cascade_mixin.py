@@ -275,7 +275,7 @@ class CompanyCascadeMixin(models.AbstractModel):
             record = record.company_cascade_parent_id
         records = record
         while records.mapped("company_cascade_child_ids") - records:
-            records += records.mapped("company_cascade_child_ids")
+            records |= records.mapped("company_cascade_child_ids")
         return records.filtered(lambda x: x.company_id == company if company else True)
 
     def _company_cascade_find_candidate(self, company, vals):
