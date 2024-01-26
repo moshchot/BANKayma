@@ -298,12 +298,14 @@ class TestBankaymaAccount(TransactionCase):
         )
         invoice_child2_as_child2 = invoice_child2.with_user(self.user_child2)
         invoice_child2_as_child2.review_ids.invalidate_model()
+        self.assertEqual(invoice_child2.validated_state, "needs_validation")
         self.assertTrue(invoice_child2_as_child2.need_validation)
         self.assertTrue(invoice_child2_as_child2.can_review)
         invoice_child2_as_child2.validate_tier()
         self.assertEqual(invoice_child1.payment_state, "paid")
         self.assertEqual(invoice_child2.payment_state, "paid")
         invoice_child1 = invoice_child1.copy()
+        self.assertEqual(invoice_child1.validated_state, "draft")
         invoice_child1.action_post()
         invoice_child2 = self.env["account.move"].search(
             [("auto_invoice_id", "=", invoice_child1.id)]

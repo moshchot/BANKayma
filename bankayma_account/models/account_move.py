@@ -37,6 +37,7 @@ class AccountMove(models.Model):
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
     validated_state = fields.Selection(
         [
+            ("draft", "Draft"),
             ("needs_validation", "Needs validation"),
             ("validated", "Validated"),
             ("rejected", "Rejected"),
@@ -146,6 +147,8 @@ class AccountMove(models.Model):
                 else "rejected"
                 if this.rejected
                 else "needs_validation"
+                if bool(this.sudo().review_ids)
+                else "draft"
             )
 
     @api.depends()
@@ -363,7 +366,11 @@ class AccountMove(models.Model):
         for this in self:
             if this.is_invoice(include_receipts=True) and not this.invoice_date:
                 this.invoice_date = fields.Date.context_today(this)
-        return super().request_validation()
+        result = super().request_validation()
+        self.invalidate_recordset(["review_ids"])
+        self.env.add_to_compute(self._fields["validated_state"], self)
+        self._recompute_recordset(["validated_state"])
+        return result
 
     def _portal_create_vendor_bill(self, post_data, uploaded_files):
         company = self.env["res.company"].browse(
