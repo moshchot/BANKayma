@@ -40,7 +40,11 @@ class CustomerPortal(portal.CustomerPortal):
             if leaf[0] == "state"
             else expression.TRUE_LEAF
             for leaf in result
-        ]
+        ] + (
+            [("company_id", "=", request.env.user.company_id.id)]
+            if not request.env.user.has_group("bankayma_base.group_full")
+            else []
+        )
 
     def _bankayma_get_fiscal_positions(self):
         return (
