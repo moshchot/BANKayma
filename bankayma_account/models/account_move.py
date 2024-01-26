@@ -9,6 +9,14 @@ from odoo.tools import float_utils
 
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
+VALIDATED_STATE_SELECTION = [
+    ("draft", "Draft"),
+    ("needs_validation", "Needs validation"),
+    ("validated", "Validated"),
+    ("rejected", "Rejected"),
+    ("paid", "Paid"),
+]
+
 
 class AccountMove(models.Model):
     _inherit = "account.move"
@@ -36,13 +44,7 @@ class AccountMove(models.Model):
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
     validated_state = fields.Selection(
-        [
-            ("draft", "Draft"),
-            ("needs_validation", "Needs validation"),
-            ("validated", "Validated"),
-            ("rejected", "Rejected"),
-            ("paid", "Paid"),
-        ],
+        VALIDATED_STATE_SELECTION,
         store=True,
         default="needs_validation",
         compute="_compute_validated_state",
