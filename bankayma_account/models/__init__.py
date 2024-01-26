@@ -1,6 +1,7 @@
 from . import account_account
 from . import account_analytic_account
 from . import account_fiscal_position
+from . import account_invoice_report
 from . import account_journal
 from . import account_move
 from . import account_move_line
