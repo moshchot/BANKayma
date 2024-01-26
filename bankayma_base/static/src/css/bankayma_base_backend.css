@@ -3,3 +3,8 @@
     /*rtl:ignore*/
     direction: ltr;
 }
+
+.o-dashboard-action .mx-3 .my-1 {
+    margin-top: 0.25rem !important;
+    margin-bottom: 1.25rem !important;
+}
