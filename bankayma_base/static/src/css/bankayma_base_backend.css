@@ -3,10 +3,10 @@
     /*rtl:ignore*/
     direction: ltr;
 }
-.o-dashboard-action .mx-3 .my-1 .border {
+div.o-dashboard-action .mx-3 .my-1 .border {
     margin-top: 0.25rem !important;
     margin-bottom: 1.25rem !important;
 }
 div.o-scrollbar.vertical {
-    display: none;
+    overflow-y: clip;
 }

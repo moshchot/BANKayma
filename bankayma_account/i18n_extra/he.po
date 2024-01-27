@@ -139,6 +139,7 @@ msgstr "טיוטת חשבונות"
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__res_config_settings__show_line_subtotals_tax_selection__tax_excluded
 #: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Tax Excluded"
 msgstr "סכום העברה"
 
