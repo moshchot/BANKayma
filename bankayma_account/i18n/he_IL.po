@@ -537,7 +537,6 @@ msgstr "לאישור"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_out__bankayma_payment_state__draft
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_out__validated_state__draft
 msgid "Draft"
 msgstr "טיוטות"
 
