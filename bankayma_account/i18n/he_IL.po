@@ -536,7 +536,6 @@ msgid "Draft"
 msgstr "לאישור"
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_out__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_out__validated_state__draft
 msgid "Draft"
@@ -1807,11 +1806,6 @@ msgstr "עדכון תגיות"
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update analytic lines"
 msgstr "עדכון שורות אנליטיות"
-
-#. module: account_move_update_analytic
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
-msgid "Cancel"
-msgstr "ביטול"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
