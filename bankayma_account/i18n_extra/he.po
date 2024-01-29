@@ -194,3 +194,37 @@ msgstr "הזמנת רכש נוצרה"
 msgid "Fiscal Position"
 msgstr "סוג עוסק"
 
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update Analytic Distribution"
+msgstr "עדכון תגיות"
+
+#. module: account_move_update_analytic
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
+msgid "Update Analytic for selected Account Moves"
+msgstr "עדכון תגיות לתשלומים"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+msgid "Update analytic distribution"
+msgstr "עדכון תגיות"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update analytic lines"
+msgstr "עדכון שורות אנליטיות"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
+msgid "New Analytic Distribution"
+msgstr "תיוג חדש"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_distribution
+msgid "Current Analytic Distribution"
+msgstr "תיוג נוכחי"
+
+
+
