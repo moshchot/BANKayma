@@ -109,13 +109,13 @@ msgstr "סכום לתשלום"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "טאג אנליטי"
+msgstr "תג אנליטי"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_analytic_accounts
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_accounts
 msgid "Analytic Accounts"
-msgstr "טאגים אנליטיים"
+msgstr "תג אנליטיים"
 
 #. module: bankayma_account
 #. odoo-python
@@ -530,10 +530,17 @@ msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_in__bankayma_payment_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_in__validated_state__draft
 msgid "Draft"
-msgstr "חדשות"
+msgstr "לאישור"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_out__bankayma_payment_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move_out__validated_state__draft
+msgid "Draft"
+msgstr "טיוטות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
@@ -921,13 +928,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
 msgid "Need Validation"
-msgstr "לאישור"
+msgstr "בטיפול"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__needs_validation
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
 msgid "Needs validation"
-msgstr "לאישור"
+msgstr "בטיפול"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -967,7 +974,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__not_paid
 msgid "Not Paid"
-msgstr "תשלומים צפויים"
+msgstr "הכנסות צפויות"
 
 #. module: bankayma_account
 #. odoo-python
@@ -1603,7 +1610,7 @@ msgstr "אישור הזמנות רכש"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__validated
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
 msgid "Validated"
-msgstr "צפוי"
+msgstr "בתשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__validated_state
@@ -1779,3 +1786,40 @@ msgstr "עם הסימוכין:"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update Analytic Distribution"
+msgstr "עדכון תגיות"
+
+#. module: account_move_update_analytic
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
+msgid "Update Analytic for selected Account Moves"
+msgstr "עדכון תגיות לתשלומים"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+msgid "Update analytic distribution"
+msgstr "עדכון תגיות"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update analytic lines"
+msgstr "עדכון שורות אנליטיות"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Cancel"
+msgstr "ביטול"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
+msgid "New Analytic Distribution"
+msgstr "תיוג חדש"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_distribution
+msgid "Current Analytic Distribution"
+msgstr "תיוג נוכחי"
+
