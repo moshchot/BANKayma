@@ -643,6 +643,13 @@ msgid "From"
 msgstr "מאת"
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/controllers/main.py:0
+#, python-format
+msgid "From me"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
 msgid "From:"
 msgstr "מאת:"
@@ -1530,6 +1537,13 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/bankayma_vendor_invite.py:0
 #, python-format
 msgid "This partner already has a user!"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/controllers/main.py:0
+#, python-format
+msgid "To me"
 msgstr ""
 
 #. module: bankayma_account
