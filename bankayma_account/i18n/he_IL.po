@@ -1366,6 +1366,12 @@ msgid "Signup Group"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_login_redirect
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_login_redirect
+msgid "Signup Login Redirect"
+msgstr ""
+
+#. module: bankayma_account
 #: model:account.tax.group,name:bankayma_account.tax_group_social_security
 msgid "Social security"
 msgstr "ביטוח לאומי"

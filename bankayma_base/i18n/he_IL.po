@@ -142,6 +142,11 @@ msgid "Really impose on all users?"
 msgstr ""
 
 #. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_res_users_form
+msgid "Redirect"
+msgstr ""
+
+#. module: bankayma_base
 #: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
 msgid "Send Password Reset Instructions"
 msgstr "שליחת הוראות לאיפוס סיסמא"
