@@ -1354,7 +1354,9 @@ msgid "Show Fiscal Position"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_company_id
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__signup_company_ids
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_company_id
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__signup_company_ids
 msgid "Signup Company"
 msgstr ""
