@@ -19,5 +19,7 @@ class ResUsers(models.Model):
                 company_id=result.partner_id.signup_company_ids[0].id,
                 company_ids=[(6, 0, result.partner_id.signup_company_ids.ids)],
             )
+        if result.partner_id.signup_login_redirect:
+            vals.update(login_redirect=result.partner_id.signup_login_redirect)
         result.write(vals)
         return result

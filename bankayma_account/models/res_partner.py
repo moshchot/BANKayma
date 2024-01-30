@@ -9,6 +9,7 @@ class ResPartner(models.Model):
 
     signup_group_ids = fields.Many2many("res.groups")
     signup_company_ids = fields.Many2many("res.company")
+    signup_login_redirect = fields.Char()
     bankayma_vendor_tax_percentage = fields.Float("Custom tax")
     bankayma_vendor_max_amount = fields.Float("Max amount")
     bankayma_tax_group_ids = fields.Many2many(
