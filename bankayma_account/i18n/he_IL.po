@@ -118,6 +118,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_analytic_account_id
 msgid "Analytic Account"
 msgstr "תג אנליטי"
 
@@ -132,6 +133,11 @@ msgstr "תג אנליטיים"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__analytic_precision
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__analytic_precision
 msgid "Analytic Precision"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_invoice_report__bankayma_analytic_account_id
+msgid "Analytic account"
 msgstr ""
 
 #. module: bankayma_account
