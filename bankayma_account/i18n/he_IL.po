@@ -78,6 +78,9 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_account_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_account_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_account_id
 msgid "Account"
 msgstr "חשבון"
 
@@ -107,6 +110,13 @@ msgid "Amount"
 msgstr "סכום לתשלום"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_analytic_distribution
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_analytic_distribution
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_analytic_distribution
+msgid "Analytic"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "תג אנליטי"
@@ -116,6 +126,13 @@ msgstr "תג אנליטי"
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_accounts
 msgid "Analytic Accounts"
 msgstr "תג אנליטיים"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__analytic_precision
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__analytic_precision
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__analytic_precision
+msgid "Analytic Precision"
+msgstr ""
 
 #. module: bankayma_account
 #. odoo-python
