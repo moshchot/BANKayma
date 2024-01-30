@@ -36,8 +36,9 @@ class BankaymaVendorInvite(models.TransientModel):
                 "signup_group_ids": [
                     (6, 0, self.env.ref("bankayma_base.group_vendor").ids)
                 ],
+                "signup_company_id": self.env.company.id,
                 "signup_company_ids": [
-                    (6, 0, self.env.company.ids),
+                    (6, 0, self.env["res.company"].search([]).ids),
                 ],
                 "signup_login_redirect": "/my/account?redirect=/my/invoices/new",
             }
