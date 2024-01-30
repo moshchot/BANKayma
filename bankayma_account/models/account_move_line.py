@@ -10,6 +10,12 @@ class AccountMoveLine(models.Model):
     bankayma_parent_move_line_id = fields.Many2one("account.move.line")
     bankayma_immutable = fields.Boolean(copy=False)
     bankayma_product_domain = fields.Binary(compute="_compute_bankayma_product_domain")
+    bankayma_analytic_account_id = fields.Many2one(
+        "account.analytic.account",
+        store=True,
+        compute="_compute_bankayma_analytic_account_id",
+        string="Analytic Account",
+    )
 
     def _compute_name(self):
         """
@@ -81,6 +87,16 @@ class AccountMoveLine(models.Model):
                     or ("purchase_ok", "=", True),
                     ("company_id", "in", (False, this.move_id.company_id.id)),
                 ]
+
+    @api.depends("analytic_distribution")
+    def _compute_bankayma_analytic_account_id(self):
+        for this in self:
+            if this.analytic_distribution:
+                this.bankayma_analytic_account_id = int(
+                    list(this.analytic_distribution.keys())[0]
+                )
+            else:
+                this.bankayma_analytic_account_id = False
 
     def _to_sumit_vals(self):
         return dict(

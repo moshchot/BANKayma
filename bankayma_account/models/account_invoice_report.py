@@ -10,7 +10,11 @@ class AccountTax(models.Model):
     _inherit = "account.invoice.report"
 
     validated_state = fields.Selection(VALIDATED_STATE_SELECTION)
+    bankayma_analytic_account_id = fields.Many2one(
+        "account.analytic.account",
+        string="Analytic account",
+    )
 
     @api.model
     def _select(self):
-        return super()._select() + ", validated_state"
+        return super()._select() + ", validated_state, bankayma_analytic_account_id"
