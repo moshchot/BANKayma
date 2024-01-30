@@ -41,7 +41,15 @@ class CustomerPortal(portal.CustomerPortal):
             else expression.TRUE_LEAF
             for leaf in result
         ] + (
-            [("company_id", "=", request.env.user.company_id.id)]
+            [
+                ("company_id", "=", request.env.user.company_id.id),
+                ("partner_id", "=", request.env.user.partner_id.id),
+                "|",
+                ("move_type", "=", "in_invoice"),
+                "&",
+                ("move_type", "=", "out_invoice"),
+                ("state", "=", "posted"),
+            ]
             if not request.env.user.has_group("bankayma_base.group_full")
             else []
         )
@@ -169,6 +177,18 @@ class CustomerPortal(portal.CustomerPortal):
                 ],
             },
         )
+        if request.env.user.has_group("bankayma_base.group_vendor"):
+            result = {
+                "all": result["all"],
+                "from_me": {
+                    "label": _("From me"),
+                    "domain": [("move_type", "=", "in_invoice")],
+                },
+                "to_me": {
+                    "label": _("To me"),
+                    "domain": [("move_type", "=", "out_invoice")],
+                },
+            }
         return result
 
     @route("/my/invoices/new", auth="user", website=True)
