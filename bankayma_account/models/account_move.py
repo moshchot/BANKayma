@@ -202,6 +202,11 @@ class AccountMove(models.Model):
         result = super().write(vals)
         if "bankayma_vendor_tax_percentage" in vals:
             self.button_bankayma_vendor_tax_create()
+        if "fiscal_position_id" in vals:
+            self.mapped("partner_id").with_company(self.mapped("company_id")[:1]).write(
+                {"property_account_position_id": vals["fiscal_position_id"]}
+            )
+            self.mapped("invoice_line_ids")._compute_tax_ids()
         return result
 
     def action_post(self):
