@@ -39,6 +39,7 @@ class BankaymaVendorInvite(models.TransientModel):
                 "signup_company_ids": [
                     (6, 0, self.env.company.ids),
                 ],
+                "signup_login_redirect": "/my/account?redirect=/my/invoices/new",
             }
         )
         return super()._action_send_mail(auto_commit=auto_commit)
