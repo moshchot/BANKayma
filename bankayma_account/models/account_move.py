@@ -37,6 +37,13 @@ class AccountMove(models.Model):
     bankayma_move_line_product_id = fields.Many2one(
         related="invoice_line_ids.product_id"
     )
+    bankayma_move_line_account_id = fields.Many2one(
+        related="invoice_line_ids.account_id"
+    )
+    bankayma_move_line_analytic_distribution = fields.Json(
+        related="invoice_line_ids.analytic_distribution"
+    )
+    analytic_precision = fields.Integer(related="invoice_line_ids.analytic_precision")
     bankayma_partner_vat = fields.Char(related="partner_id.vat")
     bankayma_attachment_ids = fields.One2many(
         "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
