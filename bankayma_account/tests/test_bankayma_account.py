@@ -385,3 +385,41 @@ class TestBankaymaAccount(TransactionCase):
             }
         )
         partner.vat = "555"
+
+    def test_change_fpos(self):
+        """
+        Test that changing the fiscal position on a move changes it on the partner too,
+        and that taxes are recalculated
+        """
+        invoice = self._create_invoice(self.child1, self.user_child1, post=False)
+        tax = (
+            self.env["account.tax"]
+            .with_company(self.child1)
+            .create(
+                {
+                    "name": "tax1",
+                }
+            )
+        )
+        fpos = (
+            self.env["account.fiscal.position"]
+            .with_company(self.child1)
+            .create(
+                {
+                    "name": "To tax1",
+                    "tax_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "tax_src_id": invoice.invoice_line_ids.tax_ids.id,
+                                "tax_dest_id": tax.id,
+                            },
+                        )
+                    ],
+                }
+            )
+        )
+        invoice.fiscal_position_id = fpos
+        self.assertEqual(invoice.partner_id.property_account_position_id, fpos)
+        self.assertEqual(invoice.invoice_line_ids.tax_ids, tax)
