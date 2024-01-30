@@ -13,11 +13,11 @@ class AccountMoveLine(models.Model):
 
     def _compute_name(self):
         """
-        Don't touch name if line comes from portal
+        Don't touch name ever if set
         """
         for this in self:
-            if this.bankayma_immutable:
-                this.name = getattr(this, "_origin", this).name
+            if this.name:
+                continue
             else:
                 super(AccountMoveLine, this)._compute_name()
         return None
