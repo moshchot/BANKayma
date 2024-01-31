@@ -77,9 +77,19 @@ msgid "Name"
 msgstr "שם בנק"
 
 #. module: l10n_il_bank
+#: model:res.bank,name:l10n_il_bank.bank_14
+msgid "OTZAR HAHAYAL Ltd"
+msgstr ""
+
+#. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_18
 msgid "One Zero Digital Bank Ltd"
 msgstr "אחד אפס בנק דיגיטלי"
+
+#. module: l10n_il_bank
+#: model:res.bank,name:l10n_il_bank.bank_15
+msgid "Poaley Agudat israel Ltd"
+msgstr ""
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_9
