@@ -18,85 +18,85 @@ msgstr ""
 #. module: l10n_il_bank
 #: model:ir.model,name:l10n_il_bank.model_res_bank
 msgid "Bank"
-msgstr ""
+msgstr "בנק"
 
 #. module: l10n_il_bank
 #: model:ir.model,name:l10n_il_bank.model_res_partner_bank
 msgid "Bank Accounts"
-msgstr ""
+msgstr "חשבונות בנק"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_12
 msgid "Bank Hapoalim B.M"
-msgstr ""
+msgstr "בנק הפועלים"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_10
 msgid "Bank Leumi Le-Israel B.M"
-msgstr ""
+msgstr "בנק לאומי לישראל"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_46
 msgid "Bank Massad Ltd"
-msgstr ""
+msgstr "בנק מסד"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_4
 msgid "Bank Yahav for Government Employees Ltd"
-msgstr ""
+msgstr "בנק יהב"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_54
 msgid "Bank of Jerusalem Ltd"
-msgstr ""
+msgstr "בנק ירושלים"
 
 #. module: l10n_il_bank
 #: model:ir.model.fields,field_description:l10n_il_bank.field_account_setup_bank_manual_config__branch_code
 #: model:ir.model.fields,field_description:l10n_il_bank.field_res_partner_bank__branch_code
 msgid "Branch Code"
-msgstr ""
+msgstr "מספר סניף"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_11
 msgid "Israel Discount Bank Ltd"
-msgstr ""
+msgstr "בנק דיסקונט"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_17
 msgid "Mercantile Discount Bank ltd"
-msgstr ""
+msgstr "מרקנטיל דיסקונט"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_20
 msgid "Mizrahi Tefahot Bank Ltd"
-msgstr ""
+msgstr "מזרחי - טפחות"
 
 #. module: l10n_il_bank
 #: model:ir.model.fields,field_description:l10n_il_bank.field_res_bank__name
 msgid "Name"
-msgstr ""
+msgstr "שם בנק"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_18
 msgid "One Zero Digital Bank Ltd"
-msgstr ""
+msgstr "אחד אפס בנק דיגיטלי"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_9
 msgid "Postal Bank Company Ltd"
-msgstr ""
+msgstr "בנק הדואר"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_31
 msgid "The First International Bank of Israel Ltd"
-msgstr ""
+msgstr "הבינלאומי הראשון לישראל"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_26
 msgid "U Bank Ltd"
-msgstr ""
+msgstr "U בנק"
 
 #. module: l10n_il_bank
 #: model:res.bank,name:l10n_il_bank.bank_13
 msgid "Union Bank of Israel Ltd"
-msgstr ""
+msgstr "בנק איגוד"

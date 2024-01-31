@@ -58,6 +58,27 @@
         <field name="phone">03-5191111</field>
         <field name="country" ref="base.il" />
     </record>
+        <record id="bank_14" model="res.bank">
+        <field name="name">OTZAR HAHAYAL Ltd</field>
+        <field name="bank_code">14</field>
+        <field name="bic">FIRBILITXXX</field>
+        <field name="street">אחוזת בית 6-8; ת"ד 2428; תל אביב</field>
+        <field name="city">תל אביב -יפו</field>
+        <field name="zip">6102401</field>
+        <field name="phone">03-5191111</field>
+        <field name="country" ref="base.il" />
+    </record>
+        </record>
+        <record id="bank_15" model="res.bank">
+        <field name="name">Poaley Agudat israel Ltd</field>
+        <field name="bank_code">52</field>
+        <field name="bic">FIRBILITXXX</field>
+        <field name="street">אחוזת בית 6-8; ת"ד 2428; תל אביב</field>
+        <field name="city">תל אביב -יפו</field>
+        <field name="zip">6102401</field>
+        <field name="phone">03-5191111</field>
+        <field name="country" ref="base.il" />
+    </record>
     <record id="bank_17" model="res.bank">
         <field name="name">Mercantile Discount Bank ltd</field>
         <field name="bank_code">17</field>

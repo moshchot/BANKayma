@@ -653,7 +653,7 @@ msgstr "מאת"
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "From me"
-msgstr ""
+msgstr "ממני"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
@@ -1550,7 +1550,7 @@ msgstr ""
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
 msgid "To me"
-msgstr ""
+msgstr "אלי"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.report_invoice_document
