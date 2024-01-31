@@ -23,6 +23,7 @@
         "account_invoice_fiscal_position_update",
         "account_payment_partner",
         "account_payment_mode",
+        "account_statement_base",
         "account_tax_python",
         "account_usability",
         "base_tier_validation_server_action",
