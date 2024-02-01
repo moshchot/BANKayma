@@ -57,6 +57,19 @@ class AccountMove(models.Model):
         compute="_compute_validated_state",
         compute_sudo=True,
     )
+    bankayma_intercompany_grouping = fields.Selection(
+        [
+            ("draft", "Draft"),
+            ("to_confirm", "To confirm"),
+            ("expected", "Expected"),
+            ("paid_out", "Paid (out)"),
+            ("paid_in", "Paid (in)"),
+        ],
+        store=True,
+        default="draft",
+        compute="_compute_bankayma_intercompany_grouping",
+        compute_sudo=True,
+    )
     bankayma_payment_state = fields.Selection(
         [("draft", "Draft")] + PAYMENT_STATE_SELECTION,
         store=True,
@@ -157,6 +170,23 @@ class AccountMove(models.Model):
                 if this.rejected
                 else "needs_validation"
                 if bool(this.sudo().review_ids)
+                else "draft"
+            )
+
+    @api.depends("review_ids.status", "payment_state", "state")
+    def _compute_bankayma_intercompany_grouping(self):
+        for this in self:
+            this.bankayma_intercompany_grouping = (
+                "paid_in"
+                if this.payment_state == "paid" and this.move_type == "in_invoice"
+                else "paid_out"
+                if this.payment_state == "paid" and this.move_type == "out_invoice"
+                else "to_confirm"
+                if this.state == "posted" and this.move_type == "in_invoice"
+                else "expected"
+                if bool(this.sudo().review_ids)
+                or this.state == "posted"
+                and this.move_type == "out_invoice"
                 else "draft"
             )
 
@@ -383,7 +413,8 @@ class AccountMove(models.Model):
         result = super().request_validation()
         self.invalidate_recordset(["review_ids"])
         self.env.add_to_compute(self._fields["validated_state"], self)
-        self._recompute_recordset(["validated_state"])
+        self.env.add_to_compute(self._fields["bankayma_intercompany_grouping"], self)
+        self._recompute_recordset(["validated_state", "bankayma_intercompany_grouping"])
         return result
 
     def _portal_create_vendor_bill(self, post_data, uploaded_files):

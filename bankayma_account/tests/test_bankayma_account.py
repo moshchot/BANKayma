@@ -203,6 +203,10 @@ class TestBankaymaAccount(TransactionCase):
         self.assertEqual(
             child_overhead_invoices.mapped("payment_state"), ["paid", "paid"]
         )
+        self.assertEqual(
+            child_overhead_invoices.mapped("bankayma_intercompany_grouping"),
+            ["paid_in", "paid_in"],
+        )
         self.assertItemsEqual(
             child_overhead_invoices.mapped("journal_id"),
             self.child1.intercompany_purchase_journal_id
