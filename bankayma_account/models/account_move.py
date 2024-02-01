@@ -4,6 +4,7 @@
 from base64 import b64encode
 
 from odoo import _, api, exceptions, fields, models
+from odoo.exceptions import UserError
 from odoo.tests.common import Form
 from odoo.tools import float_utils
 
@@ -410,6 +411,12 @@ class AccountMove(models.Model):
         for this in self:
             if this.is_invoice(include_receipts=True) and not this.invoice_date:
                 this.invoice_date = fields.Date.context_today(this)
+        portal_product = self.env.ref("bankayma_account.product_portal")
+        if any(
+            product == portal_product
+            for product in self.mapped("invoice_line_ids.product_id")
+        ):
+            raise UserError(_("Please set up proper product to request validation"))
         result = super().request_validation()
         self.invalidate_recordset(["review_ids"])
         self.env.add_to_compute(self._fields["validated_state"], self)
