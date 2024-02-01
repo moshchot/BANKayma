@@ -205,6 +205,13 @@ msgid "Bankayma Immutable"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_intercompany_grouping
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_intercompany_grouping
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_intercompany_grouping
+msgid "Bankayma Intercompany Grouping"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_parent_move_line_id
 msgid "Bankayma Parent Move Line"
 msgstr ""
@@ -553,6 +560,7 @@ msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
 msgid "Draft"
@@ -578,6 +586,11 @@ msgstr ""
 msgid ""
 "Email address of the sender. This field is set when no matching partner is "
 "found and replaces the author_id field in the chatter."
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__expected
+msgid "Expected"
 msgstr ""
 
 #. module: bankayma_account
@@ -1175,6 +1188,16 @@ msgstr ""
 #, python-format
 msgid "Paid"
 msgstr "שולם"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__paid_in
+msgid "Paid (in)"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__paid_out
+msgid "Paid (out)"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_base_document_layout__parent_id
