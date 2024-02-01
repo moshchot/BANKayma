@@ -32,6 +32,10 @@ class ResPartner(models.Model):
         "account.tax.group",
         related="property_account_position_id.optional_tax_group_ids",
     )
+    total_billed = fields.Monetary(
+        compute="_compute_total_billed",
+        groups="account.group_account_invoice,account.group_account_readonly",
+    )
 
     @api.depends("property_account_position_id", "bankayma_vendor_tax_percentage")
     def _compute_bankayma_show_tax_deduction(self):
@@ -60,3 +64,35 @@ class ResPartner(models.Model):
         return self.env["ir.actions.actions"]._for_xml_id(
             "bankayma_account.action_bankayma_vendor_invite_form",
         )
+
+    def _compute_total_billed(self):
+        for this in self:
+            this.total_billed = sum(
+                self.env["account.move"]
+                .search(self._compute_total_billed_domain())
+                .mapped("amount_total")
+            )
+
+    def _compute_total_billed_domain(self):
+        all_children = self.with_context(active_test=False).search(
+            [("id", "child_of", self.ids)]
+        )
+        return [
+            ("move_type", "in", ("in_invoice", "in_refund")),
+            ("partner_id", "in", all_children.ids),
+            ("payment_state", "=", "paid"),
+        ]
+
+    def action_view_partner_bills(self):
+        self.ensure_one()
+        action = self.env["ir.actions.actions"]._for_xml_id(
+            "bankayma_account.action_bankayma_group_expense_move"
+        )
+        action["domain"] = self._compute_total_billed_domain()
+        action["context"] = {
+            "default_move_type": "out_invoice",
+            "move_type": "out_invoice",
+            "journal_type": "sale",
+            "search_default_unpaid": 1,
+        }
+        return action

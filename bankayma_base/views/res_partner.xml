@@ -32,4 +32,13 @@
             </page>
         </field>
     </record>
+    <record id="view_partner_form_website_partner" model="ir.ui.view">
+        <field name="inherit_id" ref="website_partner.view_partners_form_website" />
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <field name="is_published" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
+        </field>
+    </record>
 </odoo>
