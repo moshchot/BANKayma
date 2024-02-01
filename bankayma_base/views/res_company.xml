@@ -46,6 +46,13 @@
                     bankayma_base.group_org_manager,bankayma_base.group_full
                 </attribute>
             </field>
+            <page name="company_styles" position="attributes">
+                <attribute
+                    name="groups"
+                    add="bankayma_base.group_manager"
+                    separator=","
+                />
+            </page>
         </field>
     </record>
 </odoo>

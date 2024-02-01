@@ -11,5 +11,8 @@
                 Impose on all users
             </button>
         </Dropdown>
+        <xpath expr="//i[hasclass('fa-close')]/.." position="attributes">
+            <attribute name="t-if">this.show_close_button</attribute>
+        </xpath>
     </t>
 </templates>

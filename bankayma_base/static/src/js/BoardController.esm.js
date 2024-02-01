@@ -18,6 +18,9 @@ patch(BoardController.prototype, "add impose on all users", {
             this.show_button_impose_all_users = await session.user_has_group(
                 "bankayma_base.group_org_manager"
             );
+            this.show_close_button =
+                (await session.user_has_group("bankayma_base.group_org_manager")) ||
+                (await session.user_has_group("bankayma_base.group_full"));
         });
         return this._super.apply();
     },
