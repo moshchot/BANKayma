@@ -559,16 +559,12 @@ msgid "Donation Receipt"
 msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
-msgid "Draft"
-msgstr "טיוטות"
-
-#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
-msgid "new"
-msgstr "חדשות"
+msgid "Draft"
+msgstr "טיוטות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
