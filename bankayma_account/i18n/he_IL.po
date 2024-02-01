@@ -71,6 +71,11 @@ msgid "<option value=\"\">Fiscal position...</option>"
 msgstr "<option value=\"\">סוג עוסק...</option>"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
+msgid "<span class=\"o_stat_text\">Billed</span>"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
@@ -1591,6 +1596,12 @@ msgstr "לכבוד:"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_tree_invoice
 msgid "Total"
 msgstr "עלות"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__total_billed
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__total_billed
+msgid "Total Billed"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_amount_paid
