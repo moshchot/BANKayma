@@ -77,6 +77,7 @@
     "assets": {
         "web.assets_backend": [
             "bankayma_account/static/src/*.xml",
+            "bankayma_account/static/src/account_payment_field.esm.js",
         ],
         "web.assets_frontend": [
             # TODO make this website_select2_bootstrap in oca/website eventually
