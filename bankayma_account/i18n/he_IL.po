@@ -1268,6 +1268,13 @@ msgid "Please remit payment at your earliest convenience."
 msgstr "תודה על העברת התשלום בהקדם או כפי שסוכם"
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "Please set up proper product to request validation"
+msgstr ""
+
+#. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template
 msgid "Portal"
 msgstr "פורטל"
