@@ -78,13 +78,6 @@
         "web.assets_backend": [
             "bankayma_account/static/src/*.xml",
         ],
-        "web.assets_common": [
-            (
-                "replace",
-                "web/static/lib/select2/select2.js",
-                "bankayma_account/static/lib/select2.full.min.js",
-            ),
-        ],
         "web.assets_frontend": [
             # TODO make this website_select2_bootstrap in oca/website eventually
             (
