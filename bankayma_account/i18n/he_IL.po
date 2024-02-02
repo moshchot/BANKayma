@@ -131,7 +131,7 @@ msgstr "תג אנליטי"
 #: model:ir.actions.act_window,name:bankayma_account.action_analytic_accounts
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_config_analytic_accounts
 msgid "Analytic Accounts"
-msgstr "תג אנליטיים"
+msgstr "תגיות אנליטיות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__analytic_precision
@@ -143,7 +143,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_invoice_report__bankayma_analytic_account_id
 msgid "Analytic account"
-msgstr ""
+msgstr "תג אנליטי"
 
 #. module: bankayma_account
 #. odoo-python
@@ -565,11 +565,10 @@ msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
 msgid "Draft"
-msgstr "טיוטות"
+msgstr "לאישור"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
@@ -969,9 +968,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
 msgid "Need Validation"
-msgstr "בטיפול"
+msgstr "לאישור"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__needs_validation
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
 msgid "Needs validation"
