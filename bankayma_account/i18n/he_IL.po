@@ -565,6 +565,7 @@ msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
 msgid "Draft"
@@ -971,7 +972,6 @@ msgid "Need Validation"
 msgstr "לאישור"
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__needs_validation
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
 msgid "Needs validation"
