@@ -569,7 +569,7 @@ msgstr "קבלה על תרומה"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
 msgid "Draft"
-msgstr "לאישור"
+msgstr "לטיפול"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
@@ -975,7 +975,7 @@ msgstr "לאישור"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__needs_validation
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
 msgid "Needs validation"
-msgstr "בטיפול"
+msgstr "בבדיקה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
