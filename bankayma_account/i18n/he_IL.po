@@ -1277,7 +1277,7 @@ msgstr "תודה על העברת התשלום בהקדם או כפי שסוכם"
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "Please set up proper product to request validation"
-msgstr ""
+msgstr "יש לבחור סעיף לפני שליחה לאישור תשלום"
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template

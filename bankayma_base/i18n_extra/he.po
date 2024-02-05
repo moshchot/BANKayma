@@ -186,3 +186,13 @@ msgstr "מנוי #"
 msgid "<strong>Customer:</strong>"
 msgstr "<strong>מנוי:</strong>"
 
+#. module: base_tier_validation
+#: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_label
+msgid ""
+"<i class=\"fa fa-info-circle\"/>\n"
+"                This Record needs to be\n"
+"                validated."
+msgstr ""
+"<i class=\"fa fa-info-circle\"/>\n"
+"       <strong>הועבר לבדיקה, צוות הרובוטים שלנו עובד על זה.\n </strong>"
+"                תודה על הסבלנות :)"
