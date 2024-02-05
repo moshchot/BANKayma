@@ -1830,10 +1830,14 @@ msgid "invoice"
 msgstr "חשבון"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "is delayed due to"
 msgstr "מעוכב עקב"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
+msgid "is delayed due to insufficient documents"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
