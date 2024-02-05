@@ -296,10 +296,7 @@
                 <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                 for
                 <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
-                is delayed due to
-                <t t-out="object.partner_id.name or ''" t-translation="off">
-                    insufficient documents
-                </t>
+                is delayed due to insufficient documents
             </p>
         </div>
         <table>
