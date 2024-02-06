@@ -175,7 +175,6 @@
                     {'invisible': [('show_fiscal_position_id', '=', False)]}
                 </attribute>
                 <attribute name="options">{'no_open': True}</attribute>
-                <attribute name="readonly">True</attribute>
             </field>
             <field name="fiscal_position_id" position="after">
                 <field name="bankayma_deduct_tax" invisible="True" />
