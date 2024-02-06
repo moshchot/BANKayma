@@ -1581,6 +1581,11 @@ msgid "This partner already has a user!"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__to_confirm
+msgid "To confirm"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
 #, python-format
