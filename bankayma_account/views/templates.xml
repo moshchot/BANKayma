@@ -329,13 +329,17 @@
     <template id="portal_new_vendor_bill">
         <t t-call="portal.portal_layout">
             <t t-set="additional_title">New vendor bill</t>
+            <t t-set="my_details" t-value="True" />
             <form action="/my/invoices/new" method="post" enctype="multipart/form-data">
                 <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
+                <div
+                    class="mb-3 col-xl-12"
+                    t-if="len(request.env.user.company_ids) > 1"
+                >
                     <label class="col-form-label" for="company">Company</label>
                     <select
                         class="form-select o-select2"
@@ -359,7 +363,7 @@
                     </select>
                 </div>
                 <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
+                    t-attf-class="mb-3 col-xl-12 #{errors.get('description') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="description">Description</label>
                     <input
@@ -373,7 +377,7 @@
                 </div>
                 <div class="clearfix" />
                 <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
+                    t-attf-class="mb-3 col-xl-12 #{errors.get('amount') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="amount">Amount</label>
                     <input
@@ -388,7 +392,7 @@
                 </div>
 
                 <div
-                    t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-6"
+                    t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-12"
                 >
                     <label class="col-form-label" for="fpos">Fiscal position</label>
                     <select
@@ -416,7 +420,7 @@
                 <div class="clearfix" />
                 <div id="vendor_doc_description" />
                 <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
+                    t-attf-class="mb-3 col-xl-12 #{errors.get('upload') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="upload">Document</label>
                     <input
