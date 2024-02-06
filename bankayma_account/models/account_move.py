@@ -269,6 +269,7 @@ class AccountMove(models.Model):
                 in ("in_invoice", "out_invoice", "in_refund", "out_refund")
                 and not x.auto_invoice_id
                 and not self.search([("auto_invoice_id", "=", x.id)])
+                and not x.journal_id.bankayma_inhibit_mails
             )
             if to_send:
                 action = to_send.with_company(

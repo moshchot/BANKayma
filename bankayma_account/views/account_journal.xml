@@ -23,6 +23,9 @@
                         attrs="{'invisible': [('bankayma_charge_overhead', '=', False)]}"
                     />
                 </group>
+                <group name="bankayma_mail" string="Mails">
+                    <field name="bankayma_inhibit_mails" />
+                </group>
             </xpath>
         </field>
     </record>
