@@ -22,21 +22,21 @@ class AccountMoveLine(models.Model):
         Don't touch name ever if set
         """
         for this in self:
-            if this.name:
+            if getattr(this, "_origin", this).name:
                 continue
             else:
-                super(AccountMoveLine, this)._compute_name()
+                super()._compute_name()
         return None
 
     def _compute_price_unit(self):
         """
-        Don't touch unit price if line comes from portal
+        Don't touch unit price if set
         """
         for this in self:
-            if this.bankayma_immutable:
+            if getattr(this, "_origin", this).price_unit:
                 this.price_unit = getattr(this, "_origin", this).price_unit
             else:
-                super(AccountMoveLine, this)._compute_price_unit()
+                super()._compute_price_unit()
         return None
 
     def _get_computed_taxes(self):
