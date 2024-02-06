@@ -35,6 +35,7 @@ class AccountJournal(models.Model):
         default=7,
         help="The percentage of the amount to be charged as overhead",
     )
+    bankayma_inhibit_mails = fields.Boolean("Inhibit mails")
     intercompany_sale_company_id = fields.One2many(
         "res.company",
         "intercompany_sale_journal_id",
