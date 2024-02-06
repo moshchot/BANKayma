@@ -188,12 +188,7 @@ class CompanyCascadeMixin(models.AbstractModel):
     def _company_cascade_value_many2one(self, company, field, value):
         record = self.env[field.comodel_name].browse(value)
         return (
-            (
-                record.company_cascade_child_ids.filtered(
-                    lambda x: x.company_id == company
-                )
-                or record
-            ).id
+            (record._company_cascade_get_all(company) or record).id
             if record.company_id
             else record.id
         )
@@ -208,10 +203,7 @@ class CompanyCascadeMixin(models.AbstractModel):
             (
                 record
                 if "company_cascade_child_ids" not in record._fields
-                else record.company_cascade_child_ids.filtered(
-                    lambda x: x.company_id == company
-                )
-                or record
+                else record._company_cascade_get_all(company) or record
             ).id,
         )
 
