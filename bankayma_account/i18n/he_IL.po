@@ -24,6 +24,11 @@ msgid ""
 "            documents\n"
 "        "
 msgstr ""
+"\n"
+"            [בנקיימא] {{object.company_id.name}} - תשלום מעוכב עקב "
+"מסמכים\n"
+"            חסרים\n"
+"        "
 
 #. module: bankayma_account
 #. odoo-python
@@ -73,7 +78,7 @@ msgstr "<option value=\"\">סוג עוסק...</option>"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
 msgid "<span class=\"o_stat_text\">Billed</span>"
-msgstr ""
+msgstr "שולם"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -596,7 +601,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__expected
 msgid "Expected"
-msgstr "לאישור"
+msgstr "בטיפול"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
@@ -1207,12 +1212,12 @@ msgstr "שולם"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__paid_in
 msgid "Paid (in)"
-msgstr "שולם הכנסות"
+msgstr "שולם הוצאות"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__paid_out
 msgid "Paid (out)"
-msgstr "שולם הוצאות"
+msgstr "שולם הכנסות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_base_document_layout__parent_id
@@ -1501,7 +1506,7 @@ msgstr "חשבון ניכויים"
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_show_tax_deduction
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Tax deduction"
-msgstr "ניכוי מס"
+msgstr "אחוז ניכוי מס"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
@@ -1518,7 +1523,7 @@ msgstr "ניכוי מס לשכר אמנים"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Tax deduction:"
-msgstr "ניכוי מס:"
+msgstr "אחוז ניכוי מס:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_group_id
@@ -1593,7 +1598,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__to_confirm
 msgid "To confirm"
-msgstr ""
+msgstr "לאישור"
 
 #. module: bankayma_account
 #. odoo-python
@@ -1616,7 +1621,7 @@ msgstr "עלות"
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner__total_billed
 #: model:ir.model.fields,field_description:bankayma_account.field_res_users__total_billed
 msgid "Total Billed"
-msgstr ""
+msgstr "סה"כ עלות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_amount_paid
@@ -1663,7 +1668,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_users
 msgid "User"
-msgstr ""
+msgstr "מנהל פרוייקט"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__user_email
@@ -1739,7 +1744,7 @@ msgstr "שם עוסק"
 #. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_vendor_bill_validated
 msgid "Vendor bill rejected"
-msgstr ""
+msgstr "הזמנת רכש מעוכבת"
 
 #. module: bankayma_account
 #: model:tier.definition,name:bankayma_account.tier_definition_vendor_bill
@@ -1852,7 +1857,7 @@ msgstr "מעוכב עקב"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
 msgid "is delayed due to insufficient documents"
-msgstr ""
+msgstr "מעוכב עקב מסמכים חסרים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
