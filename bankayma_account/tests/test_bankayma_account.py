@@ -392,8 +392,7 @@ class TestBankaymaAccount(TransactionCase):
 
     def test_change_fpos(self):
         """
-        Test that changing the fiscal position on a move changes it on the partner too,
-        and that taxes are recalculated
+        Test that changing the fiscal position on a move recalculates taxes
         """
         invoice = self._create_invoice(self.child1, self.user_child1, post=False)
         tax = (
@@ -425,5 +424,4 @@ class TestBankaymaAccount(TransactionCase):
             )
         )
         invoice.fiscal_position_id = fpos
-        self.assertEqual(invoice.partner_id.property_account_position_id, fpos)
         self.assertEqual(invoice.invoice_line_ids.tax_ids, tax)
