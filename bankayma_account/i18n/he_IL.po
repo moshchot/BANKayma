@@ -191,6 +191,7 @@ msgid "Auto submitting from System1000 import, removed taxes"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_res_bank
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Bank"
 msgstr "בנק"
@@ -1777,6 +1778,13 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_mass_editing_wizard
 msgid "Wizard for mass edition"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/res_bank.py:0
+#, python-format
+msgid "You cannot change provisioned banks"
 msgstr ""
 
 #. module: bankayma_account
