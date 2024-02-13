@@ -237,6 +237,9 @@
                 <field name="bankayma_amount_paid" sum="Total" />
                 <field name="bankayma_payment_method_id" />
             </field>
+            <field name="invoice_date_due" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
         </field>
     </record>
 
@@ -248,6 +251,9 @@
                 <field name="fiscal_position_id" />
                 <field name="bankayma_partner_vat" />
                 <field name="bankayma_attachment_ids" />
+            </field>
+            <field name="invoice_date_due" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
         </field>
     </record>
