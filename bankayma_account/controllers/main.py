@@ -113,7 +113,7 @@ class CustomerPortal(portal.CustomerPortal):
             }
         )
         if request.env.user.has_group("bankayma_base.group_vendor"):
-            if not data.get("vat"):
+            if not data.get("vat") and not request.env.user.partner_id.vat:
                 error["vat"] = "error"
                 error_message.append(_("The VAT is mandatory for vendors"))
             if not data.get("property_account_position_id"):
