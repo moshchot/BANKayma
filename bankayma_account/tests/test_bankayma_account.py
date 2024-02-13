@@ -425,3 +425,14 @@ class TestBankaymaAccount(TransactionCase):
         )
         invoice.fiscal_position_id = fpos
         self.assertEqual(invoice.invoice_line_ids.tax_ids, tax)
+
+    def test_change_provisioned_bank(self):
+        """Test that we can only edit provisioned banks as superuser"""
+        bank = self.env.ref("l10n_il_bank.bank_4")
+        with self.assertRaises(exceptions.AccessError):
+            bank.with_user(self.user_child1).name = "test"
+        with self.assertRaises(exceptions.AccessError):
+            bank.with_user(self.user_child1).unlink()
+        bank.name = "test2"
+        self.env.invalidate_all()
+        self.assertEqual(bank.name, "test2")
