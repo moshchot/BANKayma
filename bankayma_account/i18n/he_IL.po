@@ -914,11 +914,6 @@ msgid "Mail Activity Type"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill_email
-msgid "Mail about validated vendor bill"
-msgstr "הודעה אודות אישור הזמנת רכש"
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
 msgid "Mails"
 msgstr ""
@@ -1699,11 +1694,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__user_file
 msgid "Users"
 msgstr ""
-
-#. module: bankayma_account
-#: model:ir.actions.server,name:bankayma_account.action_post_validation_vendor_bill
-msgid "Validate vendor bills"
-msgstr "אישור הזמנות רכש"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__validated
