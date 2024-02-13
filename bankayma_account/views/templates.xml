@@ -517,6 +517,9 @@
         <xpath expr="//div[@name='no_shipping']//address" position="before">
             <div>To:</div>
         </xpath>
+        <xpath expr="//p[@t-field='o.invoice_date_due']/.." position="attributes">
+            <attribute name="style">display: none</attribute>
+        </xpath>
     </template>
     <template id="payment_checkout" inherit_id="website_payment.payment_checkout">
         <xpath expr="//div[hasclass('o_donation_payment_form')]" position="inside">
