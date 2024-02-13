@@ -61,24 +61,6 @@
         </field>
     </record>
 
-    <record id="action_post_validation_vendor_bill_email" model="ir.actions.server">
-        <field name="name">Mail about validated vendor bill</field>
-        <field name="state">mail_post</field>
-        <field name="mail_post_method">email</field>
-        <field name="model_id" ref="account.model_account_move" />
-        <field name="template_id" ref="template_vendor_bill_validated" />
-    </record>
-
-    <record id="action_post_validation_vendor_bill" model="ir.actions.server">
-        <field name="name">Validate vendor bills</field>
-        <field name="state">multi</field>
-        <field name="model_id" ref="hr.model_hr_employee" />
-        <field
-            name="child_ids"
-            eval="[(6, 0, [ref('action_post_validation_vendor_bill_confirm'), ref('action_post_validation_vendor_bill_email')])]"
-        />
-    </record>
-
     <record id="tier_definition_vendor_bill" model="tier.definition">
         <field name="name">Vendor bills</field>
         <field name="model_id" ref="account.model_account_move" />
@@ -91,6 +73,9 @@
         <field name="has_comment" eval="True" />
         <field name="comment_required_reject" eval="True" />
         <field name="comment_required_validate" eval="False" />
-        <field name="server_action_id" ref="action_post_validation_vendor_bill" />
+        <field
+            name="server_action_id"
+            ref="action_post_validation_vendor_bill_confirm"
+        />
     </record>
 </odoo>

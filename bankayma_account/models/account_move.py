@@ -265,8 +265,7 @@ class AccountMove(models.Model):
             "bankayma_base.group_org_manager"
         ) or self.env.user.has_group("bankayma_base.group_user"):
             to_send = self.filtered(
-                lambda x: x.move_type
-                in ("in_invoice", "out_invoice", "in_refund", "out_refund")
+                lambda x: x.move_type in ("out_invoice", "in_refund", "out_refund")
                 and not x.auto_invoice_id
                 and not self.search([("auto_invoice_id", "=", x.id)])
                 and not x.journal_id.bankayma_inhibit_mails
