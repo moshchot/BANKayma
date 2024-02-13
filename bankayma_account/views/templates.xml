@@ -15,6 +15,40 @@
                     t-field="user_id.partner_id.property_account_position_id"
                 />
             </div>
+            <div style="position: relative" t-if="user_id.partner_id.vat">
+                <i
+                    class="fa fa-id-card fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-field="user_id.partner_id.vat"
+                />
+            </div>
+            <t t-set="bank_account" t-value="user_id.partner_id.bank_ids[:1]" />
+            <div style="position: relative" t-if="bank_account">
+                <i
+                    class="fa fa-money fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-out="'%s [%s]' % (bank_account.acc_number, bank_account.branch_code)"
+                />
+            </div>
+            <div style="position: relative" t-if="bank_account">
+                <i
+                    class="fa fa-bank fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-field="bank_account.bank_id.display_name"
+                />
+            </div>
         </div>
     </template>
 
