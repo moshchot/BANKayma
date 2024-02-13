@@ -336,10 +336,7 @@
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                <div
-                    class="mb-3 col-xl-12"
-                    t-if="len(request.env.user.company_ids) > 1"
-                >
+                <div class="mb-3 col-xl-12">
                     <label class="col-form-label" for="company">Company</label>
                     <select
                         class="form-select o-select2"
