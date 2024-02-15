@@ -127,7 +127,6 @@ class TestSystem1000Import(TransactionCase):
     def test_import_valid_file_auto_confirm_tier_validation_running(self):
         """Test that we confirm moves when everything matches without tier validation"""
         self.bill.with_user(self.env.ref("base.user_demo")).request_validation()
-        self.bill.invalidate_recordset()
         self.test_import_valid_file_auto_confirm()
         self.assertEqual(self.bill.validated_state, "validated")
 
