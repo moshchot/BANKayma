@@ -26,7 +26,7 @@
                     t-field="user_id.partner_id.vat"
                 />
             </div>
-            <t t-set="bank_account" t-value="user_id.partner_id.bank_ids[:1]" />
+            <t t-set="bank_account" t-value="user_id.partner_id.sudo().bank_ids[:1]" />
             <div style="position: relative" t-if="bank_account">
                 <i
                     class="fa fa-money fa-fw"
