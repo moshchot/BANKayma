@@ -111,9 +111,9 @@ class TestBankaymaAccountPortal(TransactionCase):
         invoice.invoice_line_ids._compute_tax_ids()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_date = fields.Date.context_today(invoice)
-        self.assertEqual(invoice.validated_state, "draft")
+        self.assertEqual(invoice.validated_state, "0_draft")
         with self.assertRaises(exceptions.ValidationError):
             invoice.action_post()
         invoice.request_validation()
-        self.assertEqual(invoice.validated_state, "needs_validation")
+        self.assertEqual(invoice.validated_state, "1_needs_validation")
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
