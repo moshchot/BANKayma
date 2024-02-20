@@ -569,10 +569,10 @@ msgid "Donation Receipt"
 msgstr "קבלה על תרומה"
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__0_draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__draft
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__draft
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__draft
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__0_draft
 msgid "Draft"
 msgstr "לטיפול"
 
@@ -982,8 +982,8 @@ msgid "Need Validation"
 msgstr "לאישור"
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__needs_validation
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__needs_validation
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__1_needs_validation
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__1_needs_validation
 msgid "Needs validation"
 msgstr "בבדיקה"
 
@@ -1197,9 +1197,9 @@ msgstr ""
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__paid
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__4_paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__paid
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__paid
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__4_paid
 #, python-format
 msgid "Paid"
 msgstr "שולם"
@@ -1343,8 +1343,8 @@ msgid "Register Payment"
 msgstr "אישור קבלת תשלום"
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__rejected
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__rejected
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__3_rejected
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__3_rejected
 msgid "Rejected"
 msgstr "מעוכב"
 
@@ -1696,8 +1696,8 @@ msgid "Users"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__validated
-#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__validated
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__2_validated
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__2_validated
 msgid "Validated"
 msgstr "בתשלום"
 
