@@ -1,9 +1,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import models
+from odoo import fields, models
 
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
+
+    is_company = fields.Boolean(default=True)
 
     def _get_name(self):
         result = super()._get_name()
