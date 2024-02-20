@@ -42,7 +42,6 @@ class CustomerPortal(portal.CustomerPortal):
             for leaf in result
         ] + (
             [
-                ("company_id", "=", request.env.user.company_id.id),
                 ("partner_id", "=", request.env.user.partner_id.id),
                 "|",
                 ("move_type", "=", "in_invoice"),
