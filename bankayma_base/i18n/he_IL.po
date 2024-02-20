@@ -42,6 +42,12 @@ msgid "Board"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,help:bankayma_base.field_res_partner__is_company
+#: model:ir.model.fields,help:bankayma_base.field_res_users__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr ""
+
+#. module: bankayma_base
 #: model:res.company,name:bankayma_base.child_comp1
 msgid "Child Company 1"
 msgstr ""
@@ -100,6 +106,12 @@ msgid "Impose on all users"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__is_company
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__is_company
+msgid "Is a Company"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_users__login_redirect
 msgid "Login Redirect"
 msgstr ""
@@ -123,6 +135,11 @@ msgstr "מנהל ארגון"
 #: model:ir.actions.act_window,name:bankayma_base.action_simplified_income_company_config
 msgid "Organization config"
 msgstr "הגדרות יוזמה"
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+msgid "Organization..."
+msgstr ""
 
 #. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_manager
