@@ -2,7 +2,7 @@
 {
     "name": "BANKayma (account)",
     "summary": "BANKayma accounting customizations",
-    "version": "16.0.1.0.4",
+    "version": "16.0.1.0.5",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",

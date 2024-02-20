@@ -11,11 +11,11 @@ from odoo.tools import float_utils
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
 VALIDATED_STATE_SELECTION = [
-    ("draft", "Draft"),
-    ("needs_validation", "Needs validation"),
-    ("validated", "Validated"),
-    ("rejected", "Rejected"),
-    ("paid", "Paid"),
+    ("0_draft", "Draft"),
+    ("1_needs_validation", "Needs validation"),
+    ("2_validated", "Validated"),
+    ("3_rejected", "Rejected"),
+    ("4_paid", "Paid"),
 ]
 
 
@@ -54,7 +54,7 @@ class AccountMove(models.Model):
     validated_state = fields.Selection(
         VALIDATED_STATE_SELECTION,
         store=True,
-        default="needs_validation",
+        default="1_needs_validation",
         compute="_compute_validated_state",
         compute_sudo=True,
     )
@@ -163,15 +163,15 @@ class AccountMove(models.Model):
     def _compute_validated_state(self):
         for this in self:
             this.validated_state = (
-                "paid"
+                "4_paid"
                 if this.payment_state == "paid"
-                else "validated"
+                else "2_validated"
                 if this.validated
-                else "rejected"
+                else "3_rejected"
                 if this.rejected
-                else "needs_validation"
+                else "1_needs_validation"
                 if bool(this.sudo().review_ids)
-                else "draft"
+                else "0_draft"
             )
 
     @api.depends("review_ids.status", "payment_state", "state")

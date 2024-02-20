@@ -85,7 +85,7 @@ class TestSystem1000Import(TransactionCase):
         self.bill.date = "2024-01-01"
         self._run_import(import_file_valid=self._import_file_valid(self.bill.id))
         self.assertEqual(self.bill.state, "draft")
-        self.assertEqual(self.bill.validated_state, "rejected")
+        self.assertEqual(self.bill.validated_state, "3_rejected")
         self.assertTrue(self.bill.rejected)
 
     def test_import_valid_file_new_tax(self):
@@ -128,7 +128,7 @@ class TestSystem1000Import(TransactionCase):
         """Test that we confirm moves when everything matches without tier validation"""
         self.bill.with_user(self.env.ref("base.user_demo")).request_validation()
         self.test_import_valid_file_auto_confirm()
-        self.assertEqual(self.bill.validated_state, "validated")
+        self.assertEqual(self.bill.validated_state, "2_validated")
 
     def test_import_valid_file_no_tax_papers(self):
         """Test that we reject moves coming back as no tax papers"""
@@ -137,7 +137,7 @@ class TestSystem1000Import(TransactionCase):
         )
         self.assertEqual(self.bill.state, "draft")
         self.assertTrue(self.bill.rejected)
-        self.assertEqual(self.bill.validated_state, "rejected")
+        self.assertEqual(self.bill.validated_state, "3_rejected")
 
     def test_import_valid_file_no_reduction(self):
         """Test that we reject moves coming back as no reduction"""
