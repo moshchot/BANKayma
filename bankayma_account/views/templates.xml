@@ -414,6 +414,7 @@
                     <input
                         type="number"
                         min="0"
+                        step="0.01"
                         t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
                         required="required"
                         name="amount"
