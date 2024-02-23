@@ -10,7 +10,6 @@ div.o-dashboard-action .mx-3 .my-1 .border {
 div.o-scrollbar.vertical {
     overflow-y: clip;
 }
-.o_main_navbar .o_nav_entry:active
-{
-  background-color: rgba(0, 0, 0, 0.08);
+.o_main_navbar .o_nav_entry:active {
+    background-color: rgba(0, 0, 0, 0.08);
 }
