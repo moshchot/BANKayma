@@ -988,11 +988,6 @@ msgid "Needs validation"
 msgstr "בבדיקה"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
-msgid "New Invoice"
-msgstr "חשבון חדשה"
-
-#. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_new
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_new
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -1002,7 +997,6 @@ msgstr "הזמנת רכש חדשה"
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_new
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_new
-#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New invoice"
 msgstr "חשבון חדשה"
 
