@@ -291,32 +291,12 @@
         <t t-call="portal.portal_searchbar" position="after">
             <nav
                 class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
-                groups="bankayma_base.group_user"
-            >
-                <a
-                    class="btn btn-sm btn-primary"
-                    aria-label="New invoice"
-                    t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_out_invoice_new').id}}"
-                >
-                    New Invoice
-                </a>
-                &#160;
-                <a
-                    class="btn btn-sm btn-primary"
-                    aria-label="New Vendor Bill"
-                    t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_in_invoice_new').id}}"
-                >
-                    New Vendor Bill
-                </a>
-            </nav>
-            <nav
-                class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
                 groups="bankayma_base.group_vendor"
             >
                 <a
                     class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
-                    href="/my/account?redirect=/my/invoices/new"
+                    href="/my/invoices/new"
                 >
                     Pay Me
                 </a>
