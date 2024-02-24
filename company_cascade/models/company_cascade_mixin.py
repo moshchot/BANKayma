@@ -277,7 +277,13 @@ class CompanyCascadeMixin(models.AbstractModel):
         """
         if "code" in self._fields and self._fields["code"].required:
             return self.search(
-                [("code", "=", vals.get("code")), ("company_id", "=", company.id)]
+                [
+                    ("code", "=", vals.get("code")),
+                    "|",
+                    ("company_id", "=", company.id),
+                    ("company_id", "=", False),
+                ],
+                order="company_id desc",
             )
         return self.browse([])
 
