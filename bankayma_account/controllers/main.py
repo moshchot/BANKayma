@@ -69,6 +69,26 @@ class CustomerPortal(portal.CustomerPortal):
         result["fiscal_positions"] = self._bankayma_get_fiscal_positions()
         return result
 
+    def _prepare_my_invoices_values(
+        self,
+        page,
+        date_begin,
+        date_end,
+        sortby,
+        filterby,
+        domain=None,
+        url="/my/invoices",
+    ):
+        try:
+            original_su = request.env.su
+            request.env = request.env(su=True)
+            result = super()._prepare_my_invoices_values(
+                page, date_begin, date_end, sortby, filterby, domain=domain, url=url
+            )
+        finally:
+            request.env = request.env(su=original_su)
+        return result
+
     def on_account_update(self, values, partner):
         for field_name in {"property_account_position_id"} & values.keys():
             try:
