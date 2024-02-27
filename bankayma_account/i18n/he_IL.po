@@ -16,20 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bankayma_account
-#: model:mail.template,subject:bankayma_account.template_vendor_bill_validated
-msgid ""
-"\n"
-"            [BanKayma] {{object.company_id.name}} - payment postponed for "
-"insufficient\n"
-"            documents\n"
-"        "
-msgstr ""
-"\n"
-"            [בנקיימא] {{object.company_id.name}} - תשלום מעוכב עקב מסמכים\n"
-"            חסרים\n"
-"        "
-
-#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
@@ -507,8 +493,6 @@ msgstr "ניכוי מס הכנסה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Dear"
 msgstr "אהלן"
 
@@ -676,8 +660,6 @@ msgstr "סוג עוסק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Fiscal position:"
 msgstr "סוג עוסק:"
 
@@ -967,8 +949,6 @@ msgstr "סכום מקסימלי לשנה הנוכחית"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Max amount:"
 msgstr "סכום מקסימלי לשנה הנוכחית:"
 
@@ -1243,7 +1223,6 @@ msgstr "שולם חלקית"
 msgid "Pay Me"
 msgstr "Pay Me"
 
-
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_intercompany_purchase
 msgid "Pay overhead invoices"
@@ -1490,8 +1469,6 @@ msgstr "מס ח״פ"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Tax ID:"
 msgstr "מספר עוסק:"
 
@@ -1525,8 +1502,6 @@ msgstr "ניכוי מס לשכר אמנים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Tax deduction:"
 msgstr "אחוז ניכוי מס:"
 
@@ -1742,11 +1717,6 @@ msgid "Vendor Name"
 msgstr "שם עוסק"
 
 #. module: bankayma_account
-#: model:mail.template,name:bankayma_account.template_vendor_bill_validated
-msgid "Vendor bill rejected"
-msgstr "הזמנת רכש מעוכבת"
-
-#. module: bankayma_account
 #: model:tier.definition,name:bankayma_account.tier_definition_vendor_bill
 msgid "Vendor bills"
 msgstr "הזמנות רכש"
@@ -1819,8 +1789,6 @@ msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "Your payment request of"
 msgstr "בקשת התשלום שלך"
 
@@ -1841,8 +1809,6 @@ msgstr "הזמנת רכש ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 msgid "for"
 msgstr "עבור"
 
@@ -1857,19 +1823,7 @@ msgid "invoice"
 msgstr "חשבון"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
-msgid "is delayed due to"
-msgstr "מעוכב עקב"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-msgid "is delayed due to insufficient documents"
-msgstr "מעוכב עקב מסמכים חסרים"
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "no"
 msgstr "לא"
@@ -1891,8 +1845,6 @@ msgstr "עם הסימוכין:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_rejected
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_vendor_bill_validated
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
