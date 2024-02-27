@@ -84,8 +84,8 @@ msgid ""
 "                </span>"
 msgstr ""
 "<span class=\"badge rounded-pill text-bg-info\">\n"
-"                    <i class=\"fa fa-fw fa-file-text\" aria-label=\"Draft\" "
-"title=\"Draft\" role=\"img\"/>\n"
+"                    <i class=\"fa fa-fw fa-file-text\" aria-label=\"בבדיקה\" "
+"title=\"בבדיקה\" role=\"img\"/>\n"
 "                    <span class=\"d-none d-md-inline\">בבדיקה</span>\n"
 "                </span>"
 
@@ -1241,7 +1241,8 @@ msgstr "שולם חלקית"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Pay Me"
-msgstr "פיי מי"
+msgstr "Pay Me"
+
 
 #. module: bankayma_account
 #: model:ir.actions.server,name:bankayma_account.action_post_validation_intercompany_purchase
