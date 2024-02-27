@@ -314,6 +314,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -343,6 +344,13 @@ msgstr "לאחר בדיקה עם מערכת 1000: %s הבקשה מעוכבת ע�
 #: model:account.payment.method,name:bankayma_account.payment_method_cash_out
 msgid "Cash"
 msgstr "מזומן"
+
+#. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_bankayma_move_change_company_form
+#: model:ir.model,name:bankayma_account.model_bankayma_move_change_company
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
+msgid "Change company"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_charge_overhead
@@ -390,6 +398,7 @@ msgid "Companies"
 msgstr "יוזמות"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__company_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Company"
 msgstr "יוזמה"
@@ -468,12 +477,14 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_date
 msgid "Created on"
 msgstr ""
@@ -511,6 +522,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__7
 msgid "Credit Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__current_company_id
+msgid "Current Company"
 msgstr ""
 
 #. module: bankayma_account
@@ -573,6 +589,7 @@ msgstr "תיאור"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__display_name
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__display_name
 msgid "Display Name"
 msgstr "שם תצוגה"
@@ -732,6 +749,7 @@ msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
 msgstr "מזהה"
@@ -924,18 +942,21 @@ msgstr "שפה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create____last_update
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_date
 msgid "Last Updated on"
 msgstr ""
