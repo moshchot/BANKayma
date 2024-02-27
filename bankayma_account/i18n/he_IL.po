@@ -36,7 +36,7 @@ msgstr ". עבור"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ". from"
-msgstr . מ"
+msgstr ". מ"
 
 #. module: bankayma_account
 #: model:account.tax,name:bankayma_account.tax_social_security_76ex
