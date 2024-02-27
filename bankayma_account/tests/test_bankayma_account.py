@@ -436,3 +436,42 @@ class TestBankaymaAccount(TransactionCase):
         bank.name = "test2"
         self.env.invalidate_all()
         self.assertEqual(bank.name, "test2")
+
+    def test_change_company(self):
+        """Test the company change wizard"""
+        self.user_child1.write(
+            {
+                "groups_id": [(4, self.env.ref("bankayma_base.group_manager").id)],
+                "company_ids": [(4, self.child2.id)],
+            }
+        )
+        invoice = self._create_invoice(self.child1, self.user_child1, post=False)
+        plan = self.env["account.analytic.plan"].create(
+            {
+                "name": "testplan",
+                "company_id": False,
+            }
+        )
+        account = self.env["account.analytic.account"].create(
+            {
+                "name": "testaccount",
+                "company_id": False,
+                "plan_id": plan.id,
+            }
+        )
+        invoice.invoice_line_ids.analytic_distribution = {str(account.id): 100}
+        original_amount = invoice.amount_total
+        wizard = (
+            self.env["bankayma.move.change.company"]
+            .with_user(self.user_child1)
+            .with_context(
+                active_model=invoice._name,
+                active_id=invoice.id,
+                active_ids=invoice.ids,
+            )
+            .create({"company_id": self.child2.id})
+        )
+        wizard.action_change_company()
+        self.assertEqual(invoice.company_id, self.child2)
+        self.assertEqual(invoice.amount_total, original_amount)
+        self.assertIn(str(account.id), invoice.invoice_line_ids.analytic_distribution)
