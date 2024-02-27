@@ -475,6 +475,9 @@ class AccountMove(models.Model):
                 subtype_xmlid="mail.mt_comment",
                 attachment_ids=attachments.ids,
             )
+        invoice.with_context(mail_notify_author=True).message_post_with_view(
+            "bankayma_account.qweb_template_account_move_new_from_portal"
+        )
         return invoice
 
     def _portal_remove_tax(self):
@@ -593,4 +596,8 @@ class AccountMove(models.Model):
                 this.with_company(this.company_id)._bankayma_invoice_child_income(
                     fraction=parent_journal.bankayma_overhead_percentage / 100
                 )
+        for this in self.filtered(lambda x: x.move_type == "in_invoice"):
+            this.with_context(mail_notify_author=True).message_post_with_view(
+                "bankayma_account.qweb_template_account_move_paid"
+            )
         return super()._invoice_paid_hook()
