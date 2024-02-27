@@ -1295,7 +1295,7 @@ msgstr "אמצעי תשלום"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__13
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "Payment Request"
-msgstr "בקשת התשלום"
+msgstr "לבקשת התשלום"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_payment_transaction
@@ -1929,7 +1929,7 @@ msgstr "עבור"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "from"
-msgstr "מ"
+msgstr "מפרוייקט"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -1946,7 +1946,7 @@ msgstr "לא"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "on"
-msgstr ""
+msgstr "בתאריך"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
@@ -1956,7 +1956,7 @@ msgstr "או"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "to"
-msgstr "ל"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
