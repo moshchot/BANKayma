@@ -23,13 +23,32 @@ msgid "%(name)s %(percentage)d%%"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "(with reference:"
 msgstr "(סימוכין:"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ". for"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ". from"
+msgstr ""
+
+#. module: bankayma_account
 #: model:account.tax,name:bankayma_account.tax_social_security_76ex
 msgid "7.6%"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ""
+"<br/>\n"
+"            <br/>\n"
+"            Following your"
 msgstr ""
 
 #. module: bankayma_account
@@ -192,6 +211,11 @@ msgid "Auto submitting from System1000 import, removed taxes"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "Azure Interior"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_res_bank
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Bank"
@@ -274,6 +298,11 @@ msgstr "ניהול ספרים"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Branch"
 msgstr "סניף"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "Brandon Freeman"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__can_edit_body
@@ -492,6 +521,7 @@ msgstr "ניכוי מס הכנסה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Dear"
 msgstr "אהלן"
@@ -546,6 +576,7 @@ msgstr "שם תצוגה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Do not hesitate to contact us if you have any questions."
 msgstr "לכל דבר ועניין"
@@ -660,6 +691,7 @@ msgstr "סוג עוסק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "Fiscal position:"
 msgstr "סוג עוסק:"
 
@@ -700,6 +732,11 @@ msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
 msgstr "מזהה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "INV/2021/05/0005"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_product_product__sumit_type
@@ -906,6 +943,14 @@ msgid "Log as Internal Note"
 msgstr "הערות פנימיות"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ""
+"Love💜\n"
+"            <br/>\n"
+"            Bill the robot"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mail_activity_type_id
 msgid "Mail Activity Type"
 msgstr ""
@@ -949,6 +994,7 @@ msgstr "סכום מקסימלי לשנה הנוכחית"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "Max amount:"
 msgstr "סכום מקסימלי לשנה הנוכחית:"
 
@@ -1241,6 +1287,7 @@ msgstr "אמצעי תשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__13
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "Payment Request"
 msgstr ""
 
@@ -1277,6 +1324,19 @@ msgstr "תודה על העברת התשלום בהקדם או כפי שסוכם"
 #, python-format
 msgid "Please set up proper product to request validation"
 msgstr "יש לבחור סעיף לפני שליחה לאישור תשלום"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ""
+"Please upload a receipt by following this link, or replying to this email\n"
+"            <br/>\n"
+"            <br/>\n"
+"            To: Bar-Kayma for Culture 580450898\n"
+"            <br/>\n"
+"            Bank First Internation Bank of Israel (31),\n"
+"            <br/>\n"
+"            Branch 012, Account 036218"
+msgstr ""
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template
@@ -1318,6 +1378,7 @@ msgstr "קבלה"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "Recipient Bank info:"
 msgstr "פרטי בנק המקבל"
 
@@ -1391,6 +1452,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__reversed
 msgid "Reversed"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "SUB003"
 msgstr ""
 
 #. module: bankayma_account
@@ -1469,6 +1535,7 @@ msgstr "מס ח״פ"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "Tax ID:"
 msgstr "מספר עוסק:"
 
@@ -1502,6 +1569,7 @@ msgstr "ניכוי מס לשכר אמנים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "Tax deduction:"
 msgstr "אחוז ניכוי מס:"
 
@@ -1732,6 +1800,11 @@ msgid "Vendors"
 msgstr "ספקים"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "We are happy to inform you that we've transferred"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_res_company__invoice_auto_validation
 msgid ""
 "When an invoice is created by a multi company rule for this company, it will "
@@ -1788,9 +1861,25 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ""
+"You've been paid!\n"
+"            <br/>\n"
+"            🤑\n"
+"            <br/>\n"
+"            Hi"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "Your payment request of"
 msgstr "בקשת התשלום שלך"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "YourCompany"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -1808,7 +1897,13 @@ msgid "bill"
 msgstr "הזמנת רכש ספק"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "description"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "for"
 msgstr "עבור"
 
@@ -1824,9 +1919,15 @@ msgstr "חשבון"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "no"
 msgstr "לא"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "on"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
@@ -1834,7 +1935,13 @@ msgid "or"
 msgstr "או"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "to"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "was recieved with this info:"
 msgstr "התקבלה עם הפרטים הבאים:"
 
@@ -1845,6 +1952,12 @@ msgstr "עם הסימוכין:"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "your bank"
+msgstr ""
