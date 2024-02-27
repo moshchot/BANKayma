@@ -75,6 +75,16 @@ msgid "<option value=\"\">Fiscal position...</option>"
 msgstr "<option value=\"\">סוג עוסק...</option>"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
+msgid ""
+"<span class=\"badge rounded-pill text-bg-info\">\n"
+"                    <i class=\"fa fa-fw fa-file-text\" aria-label=\"Draft\" "
+"title=\"Draft\" role=\"img\"/>\n"
+"                    <span class=\"d-none d-md-inline\">Draft</span>\n"
+"                </span>"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
 msgid "<span class=\"o_stat_text\">Billed</span>"
 msgstr "שולם"
