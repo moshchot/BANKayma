@@ -210,7 +210,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
-msgid "Auto submitting from System1000 import, removed taxes"
+msgid "Auto submitting from System1000 import, no deduction"
 msgstr ""
 
 #. module: bankayma_account
