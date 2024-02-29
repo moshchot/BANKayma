@@ -12,3 +12,26 @@ class TestBankaymaBase(TransactionCase):
 
     def test_edit_vat(self):
         self.assertTrue(self.env.ref("bankayma_base.projman").partner_id.can_edit_vat())
+
+    def test_org_manager_companies(self):
+        group = self.env.ref("bankayma_base.group_org_manager")
+        all_companies = self.env["res.company"].search([])
+        main_company = self.env.ref("base.main_company")
+        user = self.env["res.users"].create(
+            {
+                "login": "testorgmanager",
+                "name": "testorgmanager",
+                "groups_id": [(4, group.id)],
+            }
+        )
+        self.assertItemsEqual(user.company_ids, all_companies)
+        user = self.env["res.users"].create({"login": "testuser", "name": "testuser"})
+        self.assertEqual(user.company_ids, main_company)
+        user.write(
+            {
+                "groups_id": [(4, group.id)],
+            }
+        )
+        self.assertItemsEqual(user.company_ids, all_companies)
+        new_company = self.env["res.company"].create({"name": "new company"})
+        self.assertItemsEqual(user.company_ids, all_companies + new_company)
