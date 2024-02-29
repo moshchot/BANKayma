@@ -66,9 +66,9 @@ class L10nIlSystem1000Export(models.TransientModel):
     def _export_line(self, line):
         return "B{:>15}{:0>9}{:0>9}{:0>9}".format(
             line.id,
-            line.partner_id.vat,
-            line.partner_id.vat,
-            line.partner_id.vat,
+            line.partner_id.commercial_partner_id.vat,
+            line.partner_id.commercial_partner_id.vat,
+            line.partner_id.commercial_partner_id.vat,
         )
 
     def _export_footer(self):
