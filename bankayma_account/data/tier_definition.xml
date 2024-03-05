@@ -9,6 +9,7 @@
         <field name="state">code</field>
         <field name="code">
             for this in (records or record).with_context(skip_validation_check=True):
+                    this.invalidate_recordset()
                     this.action_post()
                     this._bankayma_pay(journal=this.company_id.overhead_payment_journal_id)
                     for invoice in this.auto_invoice_id:
