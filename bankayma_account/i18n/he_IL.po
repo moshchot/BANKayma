@@ -398,6 +398,9 @@ msgid "Companies"
 msgstr "יוזמות"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__company_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__company_id
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__company_id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__company_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Company"
