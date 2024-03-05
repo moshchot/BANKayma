@@ -22,6 +22,7 @@ VALIDATED_STATE_SELECTION = [
 class AccountMove(models.Model):
     _inherit = "account.move"
 
+    company_id = fields.Many2one(tracking=True)
     bankayma_amount_paid = fields.Monetary(
         string="Total net paid",
         compute="_compute_amount",
