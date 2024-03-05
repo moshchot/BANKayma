@@ -107,6 +107,12 @@ class AccountMove(models.Model):
             )
         return result
 
+    def _compute_name(self):
+        """
+        Call the sequence version of compute_name to avoid assignment of wrong numbers
+        """
+        return self._compute_name_by_sequence()
+
     def _search_default_journal(self):
         """React on a context key to choose company's intercompany sale journal"""
         if self.env.context.get("bankayma_internal_move"):
