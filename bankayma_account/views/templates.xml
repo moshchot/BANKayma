@@ -364,7 +364,7 @@
                     t-att-value="request.csrf_token()"
                 />
                 <div class="mb-3 col-xl-12">
-                    <label class="col-form-label" for="company">Company</label>
+                    <label class="col-form-label" for="company">Project</label>
                     <select
                         class="form-select o-select2"
                         id="company"
