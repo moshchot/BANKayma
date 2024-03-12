@@ -30,6 +30,13 @@
             <xpath expr="//button[@name='button_cancel'][2]" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <button name="preview_invoice" position="attributes">
+                <attribute name="attrs">
+                    <!-- prettier-ignore-start -->
+                    {'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}
+                    <!-- prettier-ignore-end -->
+                </attribute>
+            </button>
             <button name="button_cancel" position="before">
                 <field name="need_validation" invisible="True" />
                 <field name="reviewer_ids" invisible="True" />
