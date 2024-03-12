@@ -142,6 +142,11 @@ msgid "Amount"
 msgstr "סכום לתשלום"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
+msgid "Amount paid"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_analytic_distribution
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_analytic_distribution
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_analytic_distribution
