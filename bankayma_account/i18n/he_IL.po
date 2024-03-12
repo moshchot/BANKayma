@@ -1261,6 +1261,7 @@ msgstr ""
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_mail_template_invoice_paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__4_paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__4_paid
@@ -1382,6 +1383,11 @@ msgid "Portal"
 msgstr "פורטל"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_mail_template_portal_vendor_bill
+msgid "Portal vendor bill"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__12
 msgid "Price Quotation"
 msgstr ""
@@ -1500,6 +1506,11 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "SUB003"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.action_post_reject_vendor_bill_send_mail
+msgid "Send mail for rejected vendor bills"
 msgstr ""
 
 #. module: bankayma_account
@@ -1684,6 +1695,11 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/bankayma_vendor_invite.py:0
 #, python-format
 msgid "This partner already has a user!"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_mail_template_tier_validation_reject
+msgid "Tier validation rejection"
 msgstr ""
 
 #. module: bankayma_account
