@@ -343,6 +343,26 @@
                 </span>
             </t>
         </xpath>
+        <xpath expr="(//thead/tr/th)[3]" position="attributes">
+            <attribute name="groups">bankayma_base.group_full</attribute>
+        </xpath>
+        <xpath expr="//span[@t-field='invoice.invoice_date']/.." position="attributes">
+            <attribute name="groups">bankayma_base.group_full</attribute>
+        </xpath>
+        <xpath expr="//thead/tr/th[hasclass('text-end')]" position="before">
+            <th class="text-end">Amount paid</th>
+        </xpath>
+        <xpath
+            expr="//t[@t-foreach='invoices']//td[hasclass('text-end')]"
+            position="before"
+        >
+            <td class="text-end">
+                <span
+                    t-field="invoice.bankayma_amount_paid"
+                    t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'
+                />
+            </td>
+        </xpath>
     </template>
 
     <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
