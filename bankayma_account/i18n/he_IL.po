@@ -548,6 +548,7 @@ msgstr "ניכוי מס הכנסה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Dear"
 msgstr "אהלן"
@@ -604,6 +605,7 @@ msgstr "שם תצוגה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Do not hesitate to contact us if you have any questions."
 msgstr "לכל דבר ועניין"
@@ -719,6 +721,7 @@ msgstr "סוג עוסק"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "Fiscal position:"
 msgstr "סוג עוסק:"
 
@@ -1029,6 +1032,7 @@ msgstr "סכום מקסימלי לשנה הנוכחית"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "Max amount:"
 msgstr "סכום מקסימלי לשנה הנוכחית:"
 
@@ -1433,6 +1437,7 @@ msgstr "קבלה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "Recipient Bank info:"
 msgstr "פרטי בנק המקבל"
 
@@ -1595,6 +1600,7 @@ msgstr "מס ח״פ"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "Tax ID:"
 msgstr "מספר עוסק:"
 
@@ -1629,6 +1635,7 @@ msgstr "ניכוי מס לשכר אמנים"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "Tax deduction:"
 msgstr "אחוז ניכוי מס:"
 
@@ -1942,6 +1949,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "Your payment request of"
 msgstr "בקשת התשלום שלך"
 
@@ -1973,6 +1981,7 @@ msgstr "עבור"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "for"
 msgstr "עבור"
 
@@ -1989,6 +1998,7 @@ msgstr "חשבון"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "no"
 msgstr "לא"
@@ -2015,6 +2025,11 @@ msgid "was recieved with this info:"
 msgstr "התקבלה עם הפרטים הבאים:"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
+msgid "was rejected for insufficient documents:"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "with following communication for your payment:"
 msgstr "עם הסימוכין:"
@@ -2022,6 +2037,7 @@ msgstr "עם הסימוכין:"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
