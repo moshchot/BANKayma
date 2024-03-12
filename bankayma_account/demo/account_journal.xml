@@ -46,4 +46,15 @@
         <field name="overhead_journal_id" ref="journal_overhead" />
         <field name="overhead_payment_journal_id" ref="journal_overhead_payment" />
     </record>
+
+    <function name="write" model="account.journal">
+        <value model="account.journal" eval="obj([]).search([]).ids" />
+        <value
+            eval="{
+            'bankayma_mail_template_portal_vendor_bill': ref('account.email_template_edi_invoice'),
+            'bankayma_mail_template_tier_validation_reject': ref('account.email_template_edi_invoice'),
+            'bankayma_mail_template_invoice_paid': ref('account.email_template_edi_invoice'),
+        }"
+        />
+    </function>
 </odoo>

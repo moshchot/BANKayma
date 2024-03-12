@@ -485,6 +485,10 @@ class AccountMove(models.Model):
         invoice.with_context(mail_notify_author=True).message_post_with_view(
             "bankayma_account.qweb_template_account_move_new_from_portal"
         )
+        if invoice.journal_id.bankayma_mail_template_portal_vendor_bill:
+            invoice.journal_id.bankayma_mail_template_portal_vendor_bill.send_mail(
+                invoice.id,
+            )
         return invoice
 
     def _portal_remove_tax(self):
@@ -607,4 +611,7 @@ class AccountMove(models.Model):
             this.with_context(mail_notify_author=True).message_post_with_view(
                 "bankayma_account.qweb_template_account_move_paid"
             )
+        for this in self:
+            if this.journal_id.bankayma_mail_template_invoice_paid:
+                this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
         return super()._invoice_paid_hook()
