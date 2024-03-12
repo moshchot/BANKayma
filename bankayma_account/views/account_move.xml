@@ -31,11 +31,11 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
             <button name="preview_invoice" position="attributes">
+                <!-- prettier-ignore-start -->
                 <attribute name="attrs">
-                    <!-- prettier-ignore-start -->
                     {'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}
-                    <!-- prettier-ignore-end -->
                 </attribute>
+                <!-- prettier-ignore-end -->
             </button>
             <button name="button_cancel" position="before">
                 <field name="need_validation" invisible="True" />
