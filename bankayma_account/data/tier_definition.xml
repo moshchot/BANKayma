@@ -62,6 +62,18 @@
         </field>
     </record>
 
+    <record id="action_post_reject_vendor_bill_send_mail" model="ir.actions.server">
+        <field name="name">Send mail for rejected vendor bills</field>
+        <field name="groups_id" eval="[(4, ref('bankayma_base.group_manager'))]" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">
+            for this in (records or record):
+                if this.journal_id.bankayma_mail_template_tier_validation_reject:
+                    this.journal_id.bankayma_mail_template_tier_validation_reject.send_mail(this.id)
+        </field>
+    </record>
+
     <record id="tier_definition_vendor_bill" model="tier.definition">
         <field name="name">Vendor bills</field>
         <field name="model_id" ref="account.model_account_move" />
@@ -77,6 +89,10 @@
         <field
             name="server_action_id"
             ref="action_post_validation_vendor_bill_confirm"
+        />
+        <field
+            name="rejected_server_action_id"
+            ref="action_post_reject_vendor_bill_send_mail"
         />
     </record>
 </odoo>
