@@ -585,12 +585,36 @@ class AccountMove(models.Model):
         else:
             return {"type": "ir.actions.act_window.page.list"}
 
+    def _notify_requested_review(self):
+        return super(
+            AccountMove, self.with_context(mail_notify_force_inbox=True)
+        )._notify_requested_review()
+
     def _notify_requested_review_body(self):
         return self.env["mail.template"]._render_template_qweb_view(
             "bankayma_account.qweb_template_account_move_draft",
             self._name,
             self.ids,
         )[self.id]
+
+    def _notify_rejected_review(self):
+        return super(
+            AccountMove, self.with_context(mail_notify_force_inbox=True)
+        )._notify_rejected_review()
+
+    def _notify_rejected_review_body(self):
+        return self.env["mail.template"]._render_template_qweb_view(
+            "bankayma_account.qweb_template_account_move_rejected",
+            self._name,
+            self.ids,
+        )[self.id]
+
+    def _notify_get_recipients(self, message, msg_vals, **kwargs):
+        """Force all notifcations to inbox if context key is set"""
+        result = super()._notify_get_recipients(message, msg_vals, **kwargs)
+        if self.env.context.get("mail_notify_force_inbox"):
+            map(lambda data: data.update(notif="inbox"), result)
+        return result
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
