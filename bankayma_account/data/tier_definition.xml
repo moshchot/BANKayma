@@ -94,5 +94,7 @@
             name="rejected_server_action_id"
             ref="action_post_reject_vendor_bill_send_mail"
         />
+        <field name="notify_on_rejected" eval="True" />
+        <field name="notify_on_create" eval="True" />
     </record>
 </odoo>

@@ -348,4 +348,91 @@
             Bill the robot
         </p>
     </template>
+    <template id="qweb_template_account_move_rejected">
+        <div>
+            <h1>
+                Dear
+                <t t-if="object.partner_id.parent_id">
+                    <t t-out="object.partner_id.name or ''" t-translation="off">
+                        Brandon Freeman
+                    </t>
+                    (
+                    <t
+                        t-out="object.partner_id.parent_id.name or ''"
+                        t-translation="off"
+                    >
+                        Azure Interior
+                    </t>
+                    ),
+                </t>
+                <t t-else="">
+                    <t t-out="object.partner_id.name or ''" t-translation="off">
+                        Brandon Freeman
+                    </t>
+                    ,
+                </t>
+            </h1>
+            <p>
+                Your payment request of
+                <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
+                for
+                <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
+                was rejected for insufficient documents:
+                <div t-foreach="object.mapped('review_ids.comment')" t-as="comment" />
+            </p>
+        </div>
+        <table>
+            <tr>
+                <th>Recipient Bank info:</th>
+                <td t-foreach="object.partner_id.bank_ids[:1]" t-as="bank_account">
+                    <span t-out="bank_account.acc_number" />
+                    ,
+                    <span t-out="bank_account.branch_code" />
+                    ,
+                    <span t-out="bank_account.bank_id.bank_code" />
+                    ,
+                    <span t-out="bank_account.bank_id.name" />
+                </td>
+            </tr>
+            <tr>
+                <th>Tax ID:</th>
+                <td t-out="object.partner_id.vat" />
+            </tr>
+            <tr>
+                <th>Fiscal position:</th>
+                <td t-out="object.fiscal_position_id.name" />
+            </tr>
+            <tr>
+                <th>Tax deduction:</th>
+                <td>
+                    <t t-if="object.bankayma_vendor_tax_percentage">
+                        <t t-out="object.bankayma_vendor_tax_percentage" />
+                    </t>
+                    <t t-else="">no</t>
+                </td>
+            </tr>
+            <tr t-if="object.bankayma_deduct_tax_use_max_amount">
+                <th>Max amount:</th>
+                <td t-out="object.bankayma_vendor_max_amount" />
+            </tr>
+            <tr
+                t-foreach="object.mapped('invoice_line_ids.tax_ids.tax_group_id').sorted('name')"
+                t-as="tax_group"
+            >
+                <th>
+                    <span t-out="tax_group.name" />
+                    :
+                </th>
+                <td>yes</td>
+            </tr>
+        </table>
+        <p>
+            Do not hesitate to contact us if you have any questions.
+            <t t-if="object.invoice_user_id.signature">
+                <t t-out="object.invoice_user_id.signature or ''" t-translation="off">
+                    --Bill Bot
+                </t>
+            </t>
+        </p>
+    </template>
 </odoo>
