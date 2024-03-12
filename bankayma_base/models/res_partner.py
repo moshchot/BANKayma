@@ -6,6 +6,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     is_company = fields.Boolean(default=True)
+    user_state = fields.Selection(related="user_ids.state")
 
     def _get_name(self):
         result = super()._get_name()
