@@ -131,8 +131,6 @@ multi-company:
     legalsylvain: https://github.com/legalsylvain/multi-company.git
     oca: https://github.com/OCA/multi-company.git
 operating-unit:
-  defaults:
-    depth: 100
   merges:
     - oca c569edae55039d8dbf7c5ae5b0d1c3c54cf791f9
     - hbrunn 16.0-mig-account_operating_unit
