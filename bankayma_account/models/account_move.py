@@ -586,10 +586,10 @@ class AccountMove(models.Model):
         else:
             return {"type": "ir.actions.act_window.page.list"}
 
-    def _notify_requested_review(self):
+    def _notify_review_requested(self, tier_reviews):
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
-        )._notify_requested_review()
+        )._notify_review_requested(tier_reviews)
 
     def _notify_requested_review_body(self):
         return self.env["mail.template"]._render_template_qweb_view(
@@ -614,7 +614,8 @@ class AccountMove(models.Model):
         """Force all notifcations to inbox if context key is set"""
         result = super()._notify_get_recipients(message, msg_vals, **kwargs)
         if self.env.context.get("mail_notify_force_inbox"):
-            map(lambda data: data.update(notif="inbox"), result)
+            for data in result:
+                data.update(notif="inbox")
         return result
 
     def _to_sumit_vals(self):
