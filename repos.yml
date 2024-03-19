@@ -226,3 +226,17 @@ web:
   remotes:
     hbrunn: https://github.com/hbrunn/web.git
     oca: https://github.com/OCA/web.git
+website-repo:
+  defaults:
+    depth: 1
+  merges:
+    - oca 8b35700557bfcfd7ad2d70bcb4f1a5e9f748e56c
+  remotes:
+    oca: https://github.com/OCA/website.git
+website-cms:
+  defaults:
+    depth: 1
+  merges:
+    - oca 631964e93e37991b8b20388dcac42a46022f5308
+  remotes:
+    oca: https://github.com/OCA/website-cms.git
