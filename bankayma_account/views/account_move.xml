@@ -279,6 +279,13 @@
                     domain="[('state', '!=', 'draft')]"
                 />
             </filter>
+            <filter name="status" position="after">
+                <filter
+                    name="bankayma_move_line_product_id"
+                    string="Product"
+                    context="{'group_by': 'bankayma_move_line_product_id'}"
+                />
+            </filter>
         </field>
     </record>
 </odoo>
