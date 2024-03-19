@@ -1406,6 +1406,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_id
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Product"
 msgstr "סעיף"
 
