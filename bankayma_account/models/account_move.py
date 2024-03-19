@@ -599,6 +599,10 @@ class AccountMove(models.Model):
         )[self.id]
 
     def _notify_rejected_review(self):
+        if self.journal_id.bankayma_mail_template_tier_validation_reject:
+            self.journal_id.bankayma_mail_template_tier_validation_reject.send_mail(
+                self.id
+            )
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
         )._notify_rejected_review()
