@@ -144,7 +144,7 @@ msgstr "סכום לתשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Amount paid"
-msgstr ""
+msgstr "שולם"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_analytic_distribution
@@ -216,7 +216,7 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
 #, python-format
 msgid "Auto submitting from System1000 import, no deduction"
-msgstr ""
+msgstr "נבדק במערכת 1000, פטור"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
@@ -355,7 +355,7 @@ msgstr "מזומן"
 #: model:ir.model,name:bankayma_account.model_bankayma_move_change_company
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
 msgid "Change company"
-msgstr ""
+msgstr "העברת טיוטא מיוזמה ליוזמה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_charge_overhead
@@ -442,7 +442,7 @@ msgid ""
 "Confirm\n"
 "                    <span class=\"fa fa-long-arrow-right\"/>"
 msgstr ""
-"אישור\n"
+"שליחת דרישת תשלום\n"
 "                    <span class=\"fa fa-long-arrow-right\"/>"
 
 #. module: bankayma_account
@@ -1418,7 +1418,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Project"
-msgstr ""
+msgstr "יוזמה"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__11
@@ -2028,7 +2028,7 @@ msgstr "התקבלה עם הפרטים הבאים:"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "was rejected for insufficient documents:"
-msgstr ""
+msgstr "מעוכבת עכב מסמכים חסרים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
