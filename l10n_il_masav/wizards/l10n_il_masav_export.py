@@ -40,6 +40,19 @@ class L10nIlMasavExport(models.TransientModel):
                 _("You can only export moves of the same company")
             )
 
+        masav_id = "".join(filter(str.isnumeric, company.l10n_il_masav_id or ""))
+        vat = "".join(filter(str.isnumeric, company.vat or ""))
+
+        if not masav_id:
+            raise exceptions.UserError(
+                _("Company %s is missing its MASAV id") % company.name
+            )
+
+        if not vat:
+            raise exceptions.UserError(
+                _("Company %s is missing its VAT") % company.name
+            )
+
         if set(moves.mapped("move_type")) != {"in_invoice"}:
             raise exceptions.UserError(_("You can only export vendor bills"))
 
@@ -47,9 +60,9 @@ class L10nIlMasavExport(models.TransientModel):
             raise exceptions.UserError(_("You can only export posted bills"))
 
         institute = MasavPayingInstitute(
-            institute_code=company.l10n_il_masav_id,
+            institute_code=masav_id,
             institute_name=company.name,
-            sending_institute_code="".join(filter(str.isnumeric, company.vat))[:-5],
+            sending_institute_code=vat[:-5],
         )
 
         transactions = []
@@ -117,7 +130,7 @@ class L10nIlMasavExport(models.TransientModel):
 
         self.export_file = b64encode(buffer.getbuffer())
         self.export_file_name = "%s-%s.msv" % (
-            self.env.company.l10n_il_masav_id,
+            masav_id,
             fields.Date.today().strftime("%Y%m%d"),
         )
         action_dict = self.env["ir.actions.actions"]._for_xml_id(
