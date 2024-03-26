@@ -60,6 +60,7 @@ class TestL10nIlMasav(TransactionCase):
         self._amend_partners(moves)
         self._test_export(moves)
 
+    def test_export_wrong_type(self):
         moves = self.env["account.move"].search(
             [
                 ("move_type", "=", "out_invoice"),
@@ -69,11 +70,13 @@ class TestL10nIlMasav(TransactionCase):
         with self.assertRaisesRegex(exceptions.UserError, "vendor bills"):
             self._test_export(moves)
 
+    def test_export_multiple_companies(self):
         moves = self.env["account.move"].search([("move_type", "=", "in_invoice")])
         self.user.company_ids = moves.mapped("company_id")
         with self.assertRaisesRegex(exceptions.UserError, "same company"):
             self._test_export(moves)
 
+    def test_export_wrong_state(self):
         moves = self.env["account.move"].search(
             [
                 ("move_type", "=", "in_invoice"),
