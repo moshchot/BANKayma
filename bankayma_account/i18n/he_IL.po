@@ -1329,7 +1329,7 @@ msgstr "פייפאל"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_date
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_date
 msgid "Payment Date"
-msgstr ""
+msgstr "תאריך תשלום"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_method
