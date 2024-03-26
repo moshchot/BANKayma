@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account
-#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
-msgid "Invoice"
-msgstr "דרישת תשלום"
-
-#. module: account
 #. odoo-python
 #: code:addons/account/wizard/account_tour_upload_bill.py:0
 #: model_terms:ir.ui.view,arch_db:account.account_resequence_view
@@ -53,7 +48,7 @@ msgstr "<i class=\"fa fa-fw fa-comments\"/><b>שליחת הודעה</b>"
 #: model:ir.model.fields.selection,name:account.selection__account_account_invoice_report__move_type__in_invoice
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Vendor bill"
-msgstr "חשבונית ספק"
+msgstr "הזמנת רכש"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_payment_form
@@ -64,3 +59,172 @@ msgstr "החזרה לטיוטה"
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Reset to Draft"
 msgstr "החזרה לטיוטה"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#: code:addons/account/models/account_move.py:0
+#: code:addons/account/models/account_tax.py:0
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__amount_untaxed
+#: model:ir.model.fields,field_description:account.field_account_move__amount_untaxed
+#: model:ir.model.fields,field_description:account.field_account_payment__amount_untaxed
+#, python-format
+msgid "Untaxed Amount"
+msgstr "סכום העברה"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__amount_untaxed_signed
+#: model:ir.model.fields,field_description:account.field_account_move__amount_untaxed_signed
+#: model:ir.model.fields,field_description:account.field_account_payment__amount_untaxed_signed
+msgid "Untaxed Amount Signed"
+msgstr "סכום העברה"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_invoice_report__price_subtotal
+msgid "Untaxed Total"
+msgstr "סכום העברה כולל "
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_vendor_bill_id
+#: model:ir.model.fields,field_description:account.field_account_move__invoice_vendor_bill_id
+#: model:ir.model.fields,field_description:account.field_account_payment__invoice_vendor_bill_id
+#: model:ir.model.fields.selection,name:account.selection__account_analytic_applicability__business_domain__bill
+#: model:ir.model.fields.selection,name:account.selection__account_analytic_line__category__vendor_bill
+#: model:ir.model.fields.selection,name:account.selection__account_invoice_report__move_type__in_invoice
+#: model:ir.model.fields.selection,name:account.selection__account_move__move_type__in_invoice
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "Vendor Bill"
+msgstr "הזמנת רכש"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_analytic_account__vendor_bill_count
+msgid "Vendor Bill Count"
+msgstr "# הזמנות רכש"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_payment_receipt_document
+msgid "<span>Invoice Number</span>"
+msgstr "<span>מספר חשבון</span>"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#: model_terms:ir.ui.view,arch_db:account.portal_my_invoices__move_type__in_invoice
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document__move_type__in_invoice
+#, python-format
+msgid "Draft BILL"
+msgstr "טיוטת הזמנת רכש"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search__move_type__in_invoice
+msgid "Draft BILLS"
+msgstr "טיוטת הזמנות רכש"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#: model_terms:ir.ui.view,arch_db:account.portal_my_invoices__move_type__out_invoice
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document__move_type__out_invoice
+#, python-format
+msgid "Draft Invoice"
+msgstr "טיוטת חשבון"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search__move_type__out_invoice
+msgid "Draft Invoices"
+msgstr "טיוטת חשבונות"
+
+#. module: account
+#: model:ir.model.fields.selection,name:account.selection__res_config_settings__show_line_subtotals_tax_selection__tax_excluded
+#: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "Tax Excluded"
+msgstr "סכום העברה"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#: model:ir.model.fields,field_description:account.field_res_partner__invoice_warn
+#: model:ir.model.fields,field_description:account.field_res_users__invoice_warn
+#: model:ir.model.fields.selection,name:account.selection__account_analytic_applicability__business_domain__invoice
+#: model:ir.model.fields.selection,name:account.selection__account_payment__reconciled_invoices_type__invoice
+#: model:ir.model.fields.selection,name:account.selection__account_tax_repartition_line__document_type__invoice
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+#, python-format
+msgid "Invoice"
+msgstr "חשבון"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid "Draft Bill"
+msgstr "טיוטת הזמנת רכש"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid "Vendor Bill Created"
+msgstr "הזמנת רכש נוצרה"
+
+#. module: account
+#: model:ir.model,name:account.model_account_fiscal_position
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__fiscal_position_id
+#: model:ir.model.fields,field_description:account.field_account_fiscal_position__name
+#: model:ir.model.fields,field_description:account.field_account_fiscal_position_account__position_id
+#: model:ir.model.fields,field_description:account.field_account_fiscal_position_tax__position_id
+#: model:ir.model.fields,field_description:account.field_account_fiscal_position_tax_template__position_id
+#: model:ir.model.fields,field_description:account.field_account_invoice_report__fiscal_position_id
+#: model:ir.model.fields,field_description:account.field_account_move__fiscal_position_id
+#: model:ir.model.fields,field_description:account.field_account_payment__fiscal_position_id
+#: model:ir.model.fields,field_description:account.field_res_company__fiscal_position_ids
+#: model:ir.model.fields,field_description:account.field_res_partner__property_account_position_id
+#: model:ir.model.fields,field_description:account.field_res_users__property_account_position_id
+#: model_terms:ir.ui.view,arch_db:account.view_account_position_filter
+#: model_terms:ir.ui.view,arch_db:account.view_account_position_form
+#: model_terms:ir.ui.view,arch_db:account.view_account_position_template_search
+#: model_terms:ir.ui.view,arch_db:account.view_account_position_template_tree
+#: model_terms:ir.ui.view,arch_db:account.view_account_position_tree
+msgid "Fiscal Position"
+msgstr "סוג עוסק"
+
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update Analytic Distribution"
+msgstr "עדכון תגיות"
+
+#. module: account_move_update_analytic
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
+msgid "Update Analytic for selected Account Moves"
+msgstr "עדכון תגיות לתשלומים"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+msgid "Update analytic distribution"
+msgstr "עדכון תגיות"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update analytic lines"
+msgstr "עדכון שורות אנליטיות"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
+msgid "New Analytic Distribution"
+msgstr "תיוג חדש"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_distribution
+msgid "Current Analytic Distribution"
+msgstr "תיוג נוכחי"
+
+
+

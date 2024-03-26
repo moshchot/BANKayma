@@ -23,7 +23,8 @@ class TestBankaymaAccountWeb(HttpCase):
         self.assertIn("action", response.headers.get("location", ""))
 
     def test_profile(self):
-        self.authenticate("demo", "demo")
+        self.authenticate("vendor_child_comp1", "vendor_child_comp1")
+        self.url_open("/my")
         self.url_open("/my/account")
         self.url_open("/my/invoices/new")
         # TODO: actually do something useful here, run a tour or similar

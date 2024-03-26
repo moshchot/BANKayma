@@ -28,6 +28,7 @@
             "spreadsheet_board/static/src/BoardController.xml",
             "spreadsheet_board/static/src/SpreadsheetBoard.esm.js",
             "spreadsheet_board/static/src/SpreadsheetBoard.xml",
+            "spreadsheet_board/static/src/SpreadsheetBoard.css",
         ],
     },
 }

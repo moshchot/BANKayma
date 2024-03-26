@@ -20,6 +20,7 @@ class L10nIlSystem1000Export(models.TransientModel):
 
     def _validate_confirm(self, move):
         """Confirm a move, or validate it if under validation"""
+        move.invalidate_recordset()
         if move.need_validation or move.review_ids:
             if not move.review_ids:
                 move.request_validation()
@@ -30,6 +31,7 @@ class L10nIlSystem1000Export(models.TransientModel):
 
     def _reject_cancel(self, move):
         """Cancel a move, or reject it if under validation"""
+        move.invalidate_recordset()
         if move.need_validation or move.review_ids:
             if not move.review_ids:
                 move.request_validation()
@@ -106,7 +108,7 @@ class L10nIlSystem1000Export(models.TransientModel):
                         )
                 elif data.tax_deduction_income == 99:
                     move.message_post(
-                        body=_("Auto submitting from System1000 import, removed taxes")
+                        body=_("Auto submitting from System1000 import, no deduction")
                     )
                     move._portal_remove_tax()
                     self._validate_confirm(move)

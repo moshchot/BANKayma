@@ -141,7 +141,7 @@ class BankaymaCompanyCreate(models.TransientModel):
             "account.fiscal.position.tax",
         ):
             for record in self.env[model].search([("company_id", "=", template.id)]):
-                record._company_cascade()
+                record.with_context(company_cascade_up=True)._company_cascade()
 
         fields = [
             field_name
@@ -161,10 +161,10 @@ class BankaymaCompanyCreate(models.TransientModel):
             new_company, template.read(fields, load="_classic_write")[0]
         )
 
-        new_company.write(vals)
+        new_company.with_context(company_cascade_up=True).write(vals)
 
         self.env["ir.property"].search([("company_id", "=", new_company.id)]).unlink()
         for prop in self.env["ir.property"].search([("company_id", "=", template.id)]):
-            prop._company_cascade()
+            prop.with_context(company_cascade_up=True)._company_cascade()
 
         return new_company

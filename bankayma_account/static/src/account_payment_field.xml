@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="account.AccountPaymentPopOver" t-inherit-mode="extension">
+        <xpath
+            expr="//button[hasclass('js_unreconcile_payment')]"
+            position="attributes"
+        >
+            <attribute
+                name="t-if"
+                add="props.show_unreconcile_button"
+                separator=" &amp;&amp; "
+            />
+        </xpath>
+    </t>
+</templates>

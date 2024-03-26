@@ -30,6 +30,13 @@
             <xpath expr="//button[@name='button_cancel'][2]" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <button name="preview_invoice" position="attributes">
+                <!-- prettier-ignore-start -->
+                <attribute name="attrs">
+                    {'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}
+                </attribute>
+                <!-- prettier-ignore-end -->
+            </button>
             <button name="button_cancel" position="before">
                 <field name="need_validation" invisible="True" />
                 <field name="reviewer_ids" invisible="True" />
@@ -175,7 +182,6 @@
                     {'invisible': [('show_fiscal_position_id', '=', False)]}
                 </attribute>
                 <attribute name="options">{'no_open': True}</attribute>
-                <attribute name="readonly">True</attribute>
             </field>
             <field name="fiscal_position_id" position="after">
                 <field name="bankayma_deduct_tax" invisible="True" />
@@ -219,6 +225,9 @@
                 }
                 </attribute>
             </field>
+            <field name="tax_totals" position="attributes">
+                <attribute name="readonly">True</attribute>
+            </field>
         </field>
     </record>
 
@@ -227,10 +236,20 @@
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
             <field name="amount_total_signed" position="after">
+                <field
+                    name="bankayma_move_line_analytic_distribution"
+                    widget="analytic_distribution"
+                    options="{'product_field': 'bankayma_move_line_product_id', 'account_field': 'bankayma_move_line_account_id'}"
+                />
+                <field name="bankayma_move_line_account_id" invisible="True" />
                 <field name="bankayma_move_line_product_id" />
                 <field name="bankayma_move_line_name" />
                 <field name="bankayma_amount_paid" sum="Total" />
+                <field name="bankayma_payment_date" />
                 <field name="bankayma_payment_method_id" />
+            </field>
+            <field name="invoice_date_due" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
         </field>
     </record>
@@ -244,6 +263,9 @@
                 <field name="bankayma_partner_vat" />
                 <field name="bankayma_attachment_ids" />
             </field>
+            <field name="invoice_date_due" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
         </field>
     </record>
 
@@ -256,6 +278,13 @@
                     name="no_draft"
                     string="Not Draft"
                     domain="[('state', '!=', 'draft')]"
+                />
+            </filter>
+            <filter name="status" position="after">
+                <filter
+                    name="bankayma_move_line_product_id"
+                    string="Product"
+                    context="{'group_by': 'bankayma_move_line_product_id'}"
                 />
             </filter>
         </field>

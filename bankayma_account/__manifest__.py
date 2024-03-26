@@ -2,7 +2,7 @@
 {
     "name": "BANKayma (account)",
     "summary": "BANKayma accounting customizations",
-    "version": "16.0.1.0.4",
+    "version": "16.0.1.0.7",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
@@ -36,6 +36,7 @@
         "l10n_il_bank",
         "l10n_il_sumit",
         "l10n_il_system1000",
+        "l10n_il_masav",
         "mis_builder",
         "web_ir_actions_act_multi",
         "web_ir_actions_act_window_page",
@@ -71,19 +72,14 @@
         "views/templates.xml",
         "wizards/account_payment_register.xml",
         "wizards/bankayma_company_create.xml",
+        "wizards/bankayma_move_change_company.xml",
         "wizards/bankayma_vendor_invite.xml",
         "wizards/mass_editing_wizard.xml",
     ],
     "assets": {
         "web.assets_backend": [
             "bankayma_account/static/src/*.xml",
-        ],
-        "web.assets_common": [
-            (
-                "replace",
-                "web/static/lib/select2/select2.js",
-                "bankayma_account/static/lib/select2.full.min.js",
-            ),
+            "bankayma_account/static/src/account_payment_field.esm.js",
         ],
         "web.assets_frontend": [
             # TODO make this website_select2_bootstrap in oca/website eventually

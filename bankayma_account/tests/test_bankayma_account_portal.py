@@ -6,12 +6,13 @@ from collections import namedtuple
 
 from werkzeug.datastructures import MultiDict
 
-from odoo import fields
+from odoo import exceptions, fields
 from odoo.tests.common import Form, TransactionCase
 
 
 class TestBankaymaAccountPortal(TransactionCase):
     def test_vendor_bill(self):
+        self.env.ref("bankayma_account.tier_definition_vendor_bill").active = True
         fake_upload = namedtuple("fake_upload", ["stream", "filename"])
         user = self.env.ref("bankayma_base.vendor_child_comp1")
         user.company_ids += self.env.ref("l10n_il.demo_company_il")
@@ -92,15 +93,17 @@ class TestBankaymaAccountPortal(TransactionCase):
         self.assertEqual(vendor_tax.amount, 42)
         self.assertEqual(vendor_tax.amount_type, "code")
         self.assertTrue(invoice.bankayma_vendor_max_amount, 424242)
+        with self.assertRaises(exceptions.UserError):
+            invoice.request_validation()
         self.assertTrue(invoice.invoice_line_ids.bankayma_immutable)
         with Form(invoice) as invoice_form:
-            invoice_form.invoice_line_ids.product_id = self.env[
-                "product.product"
-            ].search(
-                [
-                    ("id", "!=", invoice.invoice_line_ids.product_id.id),
-                ]
-            )
+            with invoice_form.invoice_line_ids.edit(0) as line:
+                line.product_id = self.env["product.product"].search(
+                    [
+                        ("id", "!=", invoice.invoice_line_ids.product_id.id),
+                    ],
+                    limit=1,
+                )
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_line_ids._compute_tax_ids()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
@@ -108,5 +111,9 @@ class TestBankaymaAccountPortal(TransactionCase):
         invoice.invoice_line_ids._compute_tax_ids()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_date = fields.Date.context_today(invoice)
-        invoice.action_post()
+        self.assertEqual(invoice.validated_state, "0_draft")
+        with self.assertRaises(exceptions.ValidationError):
+            invoice.action_post()
+        invoice.request_validation()
+        self.assertEqual(invoice.validated_state, "1_needs_validation")
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)

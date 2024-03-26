@@ -1,0 +1,15 @@
+.spreadsheet_board-container {
+    background: white;
+}
+.spreadsheet_board-filters {
+    display: flex;
+}
+.spreadsheet_board-container .o-grid {
+    background: white;
+}
+.spreadsheet_board-container .o-scrollbar {
+    display: none;
+}
+.spreadsheet_board-container .o_side_panel_filter_icon {
+    padding: 0;
+}

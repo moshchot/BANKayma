@@ -99,6 +99,32 @@
                     attrs="{'invisible': [('user_ids', '!=', [])]}"
                 />
             </button>
+            <button name="action_view_partner_invoices" position="attributes">
+                <attribute name="attrs">
+                    {'invisible': [('total_invoiced', '=', 0)]}
+                </attribute>
+            </button>
+            <button name="action_view_partner_invoices" position="after">
+                <button
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-pencil-square-o"
+                    name="action_view_partner_bills"
+                    groups="account.group_account_invoice,account.group_account_readonly"
+                    context="{'default_partner_id': active_id}"
+                >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field
+                                name="total_billed"
+                                widget='monetary'
+                                options="{'currency_field': 'currency_id'}"
+                            />
+                        </span>
+                        <span class="o_stat_text">Billed</span>
+                    </div>
+                </button>
+            </button>
         </field>
     </record>
 
@@ -121,6 +147,29 @@
             <page name="sales_purchases" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
+        </field>
+    </record>
+
+    <record id="view_partner_form_contract" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="contract.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="(//button[@name='act_show_contract'])[1]"
+                position="attributes"
+            >
+                <attribute name="attrs">
+                    {'invisible': [('sale_contract_count', '=', 0)]}
+                </attribute>
+            </xpath>
+            <xpath
+                expr="(//button[@name='act_show_contract'])[2]"
+                position="attributes"
+            >
+                <attribute name="attrs">
+                    {'invisible': [('purchase_contract_count', '=', 0)]}
+                </attribute>
+            </xpath>
         </field>
     </record>
 </odoo>

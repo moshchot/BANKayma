@@ -1,1 +1,15 @@
 /* here css classes for the backend go */
+.o-spreadsheet {
+    /*rtl:ignore*/
+    direction: ltr;
+}
+div.o-dashboard-action .mx-3 .my-1 .border {
+    margin-top: 0.25rem !important;
+    margin-bottom: 1.25rem !important;
+}
+div.o-scrollbar.vertical {
+    overflow-y: clip;
+}
+.o_main_navbar .o_nav_entry:active {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}

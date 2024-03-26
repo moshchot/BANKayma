@@ -21,6 +21,27 @@ msgid "/my/example"
 msgstr ""
 
 #. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+msgid ""
+"<strong>\n"
+"                                A password reset has been requested for this "
+"user. An\n"
+"                                email containing the following link has been "
+"sent:\n"
+"                            </strong>"
+msgstr ""
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+msgid ""
+"<strong>\n"
+"                                An invitation email containing the "
+"following\n"
+"                                subscription link has been sent:\n"
+"                            </strong>"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,help:bankayma_base.field_res_users__login_redirect
 msgid ""
 "After login, the user will be redirected to this page instead of /web or /my"
@@ -42,6 +63,12 @@ msgid "Board"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,help:bankayma_base.field_res_partner__is_company
+#: model:ir.model.fields,help:bankayma_base.field_res_users__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr ""
+
+#. module: bankayma_base
 #: model:res.company,name:bankayma_base.child_comp1
 msgid "Child Company 1"
 msgstr ""
@@ -49,6 +76,11 @@ msgstr ""
 #. module: bankayma_base
 #: model_terms:ir.ui.view,arch_db:bankayma_base.external_layout_standard
 msgid "Child logo"
+msgstr ""
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+msgid "Close"
 msgstr ""
 
 #. module: bankayma_base
@@ -100,6 +132,12 @@ msgid "Impose on all users"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__is_company
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__is_company
+msgid "Is a Company"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_users__login_redirect
 msgid "Login Redirect"
 msgstr ""
@@ -125,6 +163,11 @@ msgid "Organization config"
 msgstr "הגדרות יוזמה"
 
 #. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+msgid "Organization..."
+msgstr ""
+
+#. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_manager
 msgid "Project Manager"
 msgstr "מנהל פרוייקט"
@@ -142,9 +185,20 @@ msgid "Really impose on all users?"
 msgstr ""
 
 #. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_res_users_form
+msgid "Redirect"
+msgstr ""
+
+#. module: bankayma_base
 #: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
 msgid "Send Password Reset Instructions"
 msgstr "שליחת הוראות לאיפוס סיסמא"
+
+#. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__user_state
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__user_state
+msgid "Status"
+msgstr ""
 
 #. module: bankayma_base
 #: model:ir.model,name:bankayma_base.model_res_users

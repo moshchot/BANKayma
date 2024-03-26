@@ -203,6 +203,10 @@ class TestBankaymaAccount(TransactionCase):
         self.assertEqual(
             child_overhead_invoices.mapped("payment_state"), ["paid", "paid"]
         )
+        self.assertEqual(
+            child_overhead_invoices.mapped("bankayma_intercompany_grouping"),
+            ["paid_in", "paid_in"],
+        )
         self.assertItemsEqual(
             child_overhead_invoices.mapped("journal_id"),
             self.child1.intercompany_purchase_journal_id
@@ -298,12 +302,14 @@ class TestBankaymaAccount(TransactionCase):
         )
         invoice_child2_as_child2 = invoice_child2.with_user(self.user_child2)
         invoice_child2_as_child2.review_ids.invalidate_model()
+        self.assertEqual(invoice_child2.validated_state, "1_needs_validation")
         self.assertTrue(invoice_child2_as_child2.need_validation)
         self.assertTrue(invoice_child2_as_child2.can_review)
         invoice_child2_as_child2.validate_tier()
         self.assertEqual(invoice_child1.payment_state, "paid")
         self.assertEqual(invoice_child2.payment_state, "paid")
         invoice_child1 = invoice_child1.copy()
+        self.assertEqual(invoice_child1.validated_state, "0_draft")
         invoice_child1.action_post()
         invoice_child2 = self.env["account.move"].search(
             [("auto_invoice_id", "=", invoice_child1.id)]
@@ -383,3 +389,89 @@ class TestBankaymaAccount(TransactionCase):
             }
         )
         partner.vat = "555"
+
+    def test_change_fpos(self):
+        """
+        Test that changing the fiscal position on a move recalculates taxes
+        """
+        invoice = self._create_invoice(self.child1, self.user_child1, post=False)
+        tax = (
+            self.env["account.tax"]
+            .with_company(self.child1)
+            .create(
+                {
+                    "name": "tax1",
+                }
+            )
+        )
+        fpos = (
+            self.env["account.fiscal.position"]
+            .with_company(self.child1)
+            .create(
+                {
+                    "name": "To tax1",
+                    "tax_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "tax_src_id": invoice.invoice_line_ids.tax_ids.id,
+                                "tax_dest_id": tax.id,
+                            },
+                        )
+                    ],
+                }
+            )
+        )
+        invoice.fiscal_position_id = fpos
+        self.assertEqual(invoice.invoice_line_ids.tax_ids, tax)
+
+    def test_change_provisioned_bank(self):
+        """Test that we can only edit provisioned banks as superuser"""
+        bank = self.env.ref("l10n_il_bank.bank_4")
+        with self.assertRaises(exceptions.AccessError):
+            bank.with_user(self.user_child1).name = "test"
+        with self.assertRaises(exceptions.AccessError):
+            bank.with_user(self.user_child1).unlink()
+        bank.name = "test2"
+        self.env.invalidate_all()
+        self.assertEqual(bank.name, "test2")
+
+    def test_change_company(self):
+        """Test the company change wizard"""
+        self.user_child1.write(
+            {
+                "groups_id": [(4, self.env.ref("bankayma_base.group_manager").id)],
+                "company_ids": [(4, self.child2.id)],
+            }
+        )
+        invoice = self._create_invoice(self.child1, self.user_child1, post=False)
+        plan = self.env["account.analytic.plan"].create(
+            {
+                "name": "testplan",
+                "company_id": False,
+            }
+        )
+        account = self.env["account.analytic.account"].create(
+            {
+                "name": "testaccount",
+                "company_id": False,
+                "plan_id": plan.id,
+            }
+        )
+        invoice.invoice_line_ids.analytic_distribution = {str(account.id): 100}
+        original_amount = invoice.amount_total
+        wizard = (
+            self.env["bankayma.move.change.company"]
+            .with_user(self.user_child1)
+            .with_context(
+                active_model=invoice._name,
+                active_id=invoice.id,
+                active_ids=invoice.ids,
+            )
+            .create({"company_id": self.child2.id})
+        )
+        wizard.action_change_company()
+        self.assertEqual(invoice.company_id, self.child2)
+        self.assertEqual(invoice.amount_total, original_amount)
+        self.assertIn(str(account.id), invoice.invoice_line_ids.analytic_distribution)

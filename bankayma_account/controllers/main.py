@@ -40,7 +40,18 @@ class CustomerPortal(portal.CustomerPortal):
             if leaf[0] == "state"
             else expression.TRUE_LEAF
             for leaf in result
-        ]
+        ] + (
+            [
+                ("partner_id", "=", request.env.user.partner_id.id),
+                "|",
+                ("move_type", "=", "in_invoice"),
+                "&",
+                ("move_type", "=", "out_invoice"),
+                ("state", "=", "posted"),
+            ]
+            if not request.env.user.has_group("bankayma_base.group_full")
+            else []
+        )
 
     def _bankayma_get_fiscal_positions(self):
         return (
@@ -56,6 +67,26 @@ class CustomerPortal(portal.CustomerPortal):
     def _prepare_portal_layout_values(self):
         result = super()._prepare_portal_layout_values()
         result["fiscal_positions"] = self._bankayma_get_fiscal_positions()
+        return result
+
+    def _prepare_my_invoices_values(
+        self,
+        page,
+        date_begin,
+        date_end,
+        sortby,
+        filterby,
+        domain=None,
+        url="/my/invoices",
+    ):
+        try:
+            original_su = request.env.su
+            request.env = request.env(su=True)
+            result = super()._prepare_my_invoices_values(
+                page, date_begin, date_end, sortby, filterby, domain=domain, url=url
+            )
+        finally:
+            request.env = request.env(su=original_su)
         return result
 
     def on_account_update(self, values, partner):
@@ -101,7 +132,7 @@ class CustomerPortal(portal.CustomerPortal):
             }
         )
         if request.env.user.has_group("bankayma_base.group_vendor"):
-            if not data.get("vat"):
+            if not data.get("vat") and not request.env.user.partner_id.vat:
                 error["vat"] = "error"
                 error_message.append(_("The VAT is mandatory for vendors"))
             if not data.get("property_account_position_id"):
@@ -165,6 +196,18 @@ class CustomerPortal(portal.CustomerPortal):
                 ],
             },
         )
+        if request.env.user.has_group("bankayma_base.group_vendor"):
+            result = {
+                "all": result["all"],
+                "from_me": {
+                    "label": _("From me"),
+                    "domain": [("move_type", "=", "in_invoice")],
+                },
+                "to_me": {
+                    "label": _("To me"),
+                    "domain": [("move_type", "=", "out_invoice")],
+                },
+            }
         return result
 
     @route("/my/invoices/new", auth="user", website=True)

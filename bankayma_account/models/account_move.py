@@ -4,15 +4,25 @@
 from base64 import b64encode
 
 from odoo import _, api, exceptions, fields, models
+from odoo.exceptions import UserError
 from odoo.tests.common import Form
 from odoo.tools import float_utils
 
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
+VALIDATED_STATE_SELECTION = [
+    ("0_draft", "Draft"),
+    ("1_needs_validation", "Needs validation"),
+    ("2_validated", "Validated"),
+    ("3_rejected", "Rejected"),
+    ("4_paid", "Paid"),
+]
+
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
+    company_id = fields.Many2one(tracking=True)
     bankayma_amount_paid = fields.Monetary(
         string="Total net paid",
         compute="_compute_amount",
@@ -27,8 +37,16 @@ class AccountMove(models.Model):
     )
     bankayma_move_line_name = fields.Char(related="invoice_line_ids.name")
     bankayma_move_line_product_id = fields.Many2one(
-        related="invoice_line_ids.product_id"
+        related="invoice_line_ids.product_id",
+        store=True,
     )
+    bankayma_move_line_account_id = fields.Many2one(
+        related="invoice_line_ids.account_id"
+    )
+    bankayma_move_line_analytic_distribution = fields.Json(
+        related="invoice_line_ids.analytic_distribution"
+    )
+    analytic_precision = fields.Integer(related="invoice_line_ids.analytic_precision")
     bankayma_partner_vat = fields.Char(related="partner_id.vat")
     bankayma_attachment_ids = fields.One2many(
         "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
@@ -36,19 +54,32 @@ class AccountMove(models.Model):
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
     auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
     validated_state = fields.Selection(
+        VALIDATED_STATE_SELECTION,
+        store=True,
+        default="1_needs_validation",
+        compute="_compute_validated_state",
+        compute_sudo=True,
+    )
+    bankayma_intercompany_grouping = fields.Selection(
         [
-            ("needs_validation", "Needs validation"),
-            ("validated", "Validated"),
-            ("rejected", "Rejected"),
-            ("paid", "Paid"),
+            ("draft", "Draft"),
+            ("to_confirm", "To confirm"),
+            ("expected", "Expected"),
+            ("paid_out", "Paid (out)"),
+            ("paid_in", "Paid (in)"),
         ],
         store=True,
-        default="needs_validation",
-        compute="_compute_validated_state",
+        default="draft",
+        compute="_compute_bankayma_intercompany_grouping",
         compute_sudo=True,
     )
     bankayma_payment_state = fields.Selection(
         [("draft", "Draft")] + PAYMENT_STATE_SELECTION,
+        store=True,
+        compute="_compute_payment_state",
+    )
+    bankayma_payment_date = fields.Date(
+        string="Payment Date",
         store=True,
         compute="_compute_payment_state",
     )
@@ -82,6 +113,12 @@ class AccountMove(models.Model):
                 this.amount_total_signed - this.amount_residual_signed
             )
         return result
+
+    def _compute_name(self):
+        """
+        Call the sequence version of compute_name to avoid assignment of wrong numbers
+        """
+        return self._compute_name_by_sequence()
 
     def _search_default_journal(self):
         """React on a context key to choose company's intercompany sale journal"""
@@ -139,13 +176,32 @@ class AccountMove(models.Model):
     def _compute_validated_state(self):
         for this in self:
             this.validated_state = (
-                "paid"
+                "4_paid"
                 if this.payment_state == "paid"
-                else "validated"
+                else "2_validated"
                 if this.validated
-                else "rejected"
+                else "3_rejected"
                 if this.rejected
-                else "needs_validation"
+                else "1_needs_validation"
+                if bool(this.sudo().review_ids)
+                else "0_draft"
+            )
+
+    @api.depends("review_ids.status", "payment_state", "state")
+    def _compute_bankayma_intercompany_grouping(self):
+        for this in self:
+            this.bankayma_intercompany_grouping = (
+                "paid_in"
+                if this.payment_state == "paid" and this.move_type == "in_invoice"
+                else "paid_out"
+                if this.payment_state == "paid" and this.move_type == "out_invoice"
+                else "to_confirm"
+                if this.state == "posted" and this.move_type == "in_invoice"
+                else "expected"
+                if bool(this.sudo().review_ids)
+                or this.state == "posted"
+                and this.move_type == "out_invoice"
+                else "draft"
             )
 
     @api.depends()
@@ -154,6 +210,12 @@ class AccountMove(models.Model):
         for this in self:
             this.bankayma_payment_state = (
                 "draft" if this.state == "draft" else this.payment_state
+            )
+            this.bankayma_payment_date = max(
+                this.line_ids.mapped(
+                    "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+                ).mapped("date")
+                or [False]
             )
         return result
 
@@ -190,6 +252,8 @@ class AccountMove(models.Model):
         result = super().write(vals)
         if "bankayma_vendor_tax_percentage" in vals:
             self.button_bankayma_vendor_tax_create()
+        if "fiscal_position_id" in vals:
+            self.mapped("invoice_line_ids")._compute_tax_ids()
         return result
 
     def action_post(self):
@@ -220,10 +284,10 @@ class AccountMove(models.Model):
             "bankayma_base.group_org_manager"
         ) or self.env.user.has_group("bankayma_base.group_user"):
             to_send = self.filtered(
-                lambda x: x.move_type
-                in ("in_invoice", "out_invoice", "in_refund", "out_refund")
+                lambda x: x.move_type in ("out_invoice", "in_refund", "out_refund")
                 and not x.auto_invoice_id
                 and not self.search([("auto_invoice_id", "=", x.id)])
+                and not x.journal_id.bankayma_inhibit_mails
             )
             if to_send:
                 action = to_send.with_company(
@@ -363,7 +427,18 @@ class AccountMove(models.Model):
         for this in self:
             if this.is_invoice(include_receipts=True) and not this.invoice_date:
                 this.invoice_date = fields.Date.context_today(this)
-        return super().request_validation()
+        portal_product = self.env.ref("bankayma_account.product_portal")
+        if any(
+            product == portal_product
+            for product in self.mapped("invoice_line_ids.product_id")
+        ):
+            raise UserError(_("Please set up proper product to request validation"))
+        result = super().request_validation()
+        self.invalidate_recordset(["review_ids"])
+        self.env.add_to_compute(self._fields["validated_state"], self)
+        self.env.add_to_compute(self._fields["bankayma_intercompany_grouping"], self)
+        self._recompute_recordset(["validated_state", "bankayma_intercompany_grouping"])
+        return result
 
     def _portal_create_vendor_bill(self, post_data, uploaded_files):
         company = self.env["res.company"].browse(
@@ -418,6 +493,13 @@ class AccountMove(models.Model):
                 message_type="comment",
                 subtype_xmlid="mail.mt_comment",
                 attachment_ids=attachments.ids,
+            )
+        invoice.with_context(mail_notify_author=True).message_post_with_view(
+            "bankayma_account.qweb_template_account_move_new_from_portal"
+        )
+        if invoice.journal_id.bankayma_mail_template_portal_vendor_bill:
+            invoice.journal_id.bankayma_mail_template_portal_vendor_bill.send_mail(
+                invoice.id,
             )
         return invoice
 
@@ -515,12 +597,41 @@ class AccountMove(models.Model):
         else:
             return {"type": "ir.actions.act_window.page.list"}
 
+    def _notify_review_requested(self, tier_reviews):
+        return super(
+            AccountMove, self.with_context(mail_notify_force_inbox=True)
+        )._notify_review_requested(tier_reviews)
+
     def _notify_requested_review_body(self):
         return self.env["mail.template"]._render_template_qweb_view(
             "bankayma_account.qweb_template_account_move_draft",
             self._name,
             self.ids,
         )[self.id]
+
+    def _notify_rejected_review(self):
+        if self.journal_id.bankayma_mail_template_tier_validation_reject:
+            self.journal_id.bankayma_mail_template_tier_validation_reject.send_mail(
+                self.id
+            )
+        return super(
+            AccountMove, self.with_context(mail_notify_force_inbox=True)
+        )._notify_rejected_review()
+
+    def _notify_rejected_review_body(self):
+        return self.env["mail.template"]._render_template_qweb_view(
+            "bankayma_account.qweb_template_account_move_rejected",
+            self._name,
+            self.ids,
+        )[self.id]
+
+    def _notify_get_recipients(self, message, msg_vals, **kwargs):
+        """Force all notifcations to inbox if context key is set"""
+        result = super()._notify_get_recipients(message, msg_vals, **kwargs)
+        if self.env.context.get("mail_notify_force_inbox"):
+            for data in result:
+                data.update(notif="inbox")
+        return result
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
@@ -537,4 +648,11 @@ class AccountMove(models.Model):
                 this.with_company(this.company_id)._bankayma_invoice_child_income(
                     fraction=parent_journal.bankayma_overhead_percentage / 100
                 )
+        for this in self.filtered(lambda x: x.move_type == "in_invoice"):
+            this.with_context(mail_notify_author=True).message_post_with_view(
+                "bankayma_account.qweb_template_account_move_paid"
+            )
+        for this in self:
+            if this.journal_id.bankayma_mail_template_invoice_paid:
+                this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
         return super()._invoice_paid_hook()

@@ -6,9 +6,11 @@
         <field name="inherit_id" ref="base.view_users_form" />
         <field name="model">res.users</field>
         <field name="arch" type="xml">
-            <field name="action_id" position="after">
-                <field name="login_redirect" placeholder="/my/example" />
-            </field>
+            <group name="preferences" position="after">
+                <group string="Redirect" name="redirect">
+                    <field name="login_redirect" placeholder="/my/example" />
+                </group>
+            </group>
         </field>
     </record>
 </odoo>

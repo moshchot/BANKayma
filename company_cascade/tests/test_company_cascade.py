@@ -202,3 +202,123 @@ class TestCompanyCascade(TransactionCase):
             journal._company_cascade_get_all().mapped("secure_sequence_id"), sequence
         )
         self.assertEqual(all_sequences, find_all_global_sequences())
+
+    def test_property_all_companies(self):
+        """Test that setting a property sets it in all companies"""
+        fiscal_position = self.env["account.fiscal.position"].create(
+            {
+                "name": "Fiscal position",
+            }
+        )
+        fiscal_position2 = self.env["account.fiscal.position"].create(
+            {
+                "name": "Fiscal position2",
+            }
+        )
+        cascading_child2 = self.env["res.company"].create(
+            {
+                "name": "Cascading child2",
+                "company_cascade_from_parent": True,
+                "parent_id": self.cascading_parent.id,
+            }
+        )
+        self._apply_cascade_wizard(fiscal_position)
+        self._apply_cascade_wizard(fiscal_position2)
+        fiscal_position_child1 = fiscal_position._company_cascade_get_all(
+            self.cascading_child
+        )
+        fiscal_position_child2 = fiscal_position._company_cascade_get_all(
+            cascading_child2
+        )
+        fiscal_position2_child1 = fiscal_position2._company_cascade_get_all(
+            self.cascading_child
+        )
+        fiscal_position2_child2 = fiscal_position2._company_cascade_get_all(
+            cascading_child2
+        )
+        self.assertTrue(fiscal_position_child1)
+        self.assertNotEqual(fiscal_position, fiscal_position_child1)
+        self.assertNotEqual(fiscal_position, fiscal_position_child2)
+        self.assertNotEqual(fiscal_position_child1, fiscal_position_child2)
+        partner = (
+            self.env["res.partner"]
+            .with_user(self.cascading_child_user)
+            .with_company(self.cascading_child)
+            .create(
+                {
+                    "name": "Partner",
+                    "property_account_position_id": fiscal_position_child1.id,
+                }
+            )
+        )
+        partner_as_parent = partner.with_user(
+            self.env.ref("base.user_root")
+        ).with_company(self.cascading_parent)
+        self.assertEqual(
+            partner_as_parent.property_account_position_id,
+            fiscal_position,
+        )
+        partner_as_child2 = partner.with_user(
+            self.env.ref("base.user_root")
+        ).with_company(cascading_child2)
+        self.assertEqual(
+            partner_as_child2.property_account_position_id,
+            fiscal_position_child2,
+        )
+        partner_as_child1 = partner.with_user(self.cascading_child_user).with_company(
+            self.cascading_child
+        )
+        partner_as_child1.property_account_position_id = fiscal_position2_child1
+        self.env.invalidate_all()
+        self.assertEqual(
+            partner_as_parent.property_account_position_id,
+            fiscal_position2,
+        )
+        self.assertEqual(
+            partner_as_child2.property_account_position_id,
+            fiscal_position2_child2,
+        )
+        # delete the property, that's different from setting to False
+        self.env["ir.property"].search(
+            [
+                ("company_id", "=", cascading_child2.id),
+                ("fields_id.name", "=", "property_account_position_id"),
+                ("res_id", "=", "res.partner,%s" % partner.id),
+            ]
+        ).unlink()
+        self.env.invalidate_all()
+        self.assertFalse(partner_as_parent.property_account_position_id)
+        self.assertFalse(partner.property_account_position_id)
+        partner_as_child2.property_account_position_id = fiscal_position_child2
+        self.env.invalidate_all()
+        self.assertEqual(
+            partner_as_parent.property_account_position_id,
+            fiscal_position,
+        )
+        self.assertEqual(
+            partner.property_account_position_id,
+            fiscal_position_child1,
+        )
+        partner_as_child2.property_account_position_id = False
+        self.env.invalidate_all()
+        self.assertFalse(partner_as_parent.property_account_position_id)
+        self.assertFalse(partner.property_account_position_id)
+        # simulate the case where there's a property in a child, but none in parent
+        # and we do a write on the child's property
+        partner_as_child1.property_account_position_id = fiscal_position_child1
+        property_in_parent = self.env["ir.property"].search(
+            [
+                ("company_id", "=", self.cascading_parent.id),
+                ("fields_id.name", "=", "property_account_position_id"),
+                ("res_id", "=", "res.partner,%s" % partner.id),
+            ]
+        )
+        self.env.invalidate_all()
+        self.env.cr.execute(
+            "update ir_property set company_cascade_parent_id=null "
+            "where company_cascade_parent_id in %s;"
+            "delete from ir_property where id in %s",
+            (tuple(property_in_parent.ids), tuple(property_in_parent.ids)),
+        )
+        self.env.invalidate_all()
+        partner_as_child1.property_account_position_id = fiscal_position2_child1

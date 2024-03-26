@@ -15,6 +15,40 @@
                     t-field="user_id.partner_id.property_account_position_id"
                 />
             </div>
+            <div style="position: relative" t-if="user_id.partner_id.vat">
+                <i
+                    class="fa fa-id-card fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-field="user_id.partner_id.vat"
+                />
+            </div>
+            <t t-set="bank_account" t-value="user_id.partner_id.sudo().bank_ids[:1]" />
+            <div style="position: relative" t-if="bank_account">
+                <i
+                    class="fa fa-money fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-out="'%s [%s]' % (bank_account.acc_number, bank_account.branch_code)"
+                />
+            </div>
+            <div style="position: relative" t-if="bank_account">
+                <i
+                    class="fa fa-bank fa-fw"
+                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
+                    role="img"
+                />
+                <span
+                    style="padding-left: 1.78571429em; display: block"
+                    t-field="bank_account.bank_id.display_name"
+                />
+            </div>
         </div>
     </template>
 
@@ -257,32 +291,12 @@
         <t t-call="portal.portal_searchbar" position="after">
             <nav
                 class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
-                groups="bankayma_base.group_user"
-            >
-                <a
-                    class="btn btn-sm btn-primary"
-                    aria-label="New invoice"
-                    t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_out_invoice_new').id}}"
-                >
-                    New Invoice
-                </a>
-                &#160;
-                <a
-                    class="btn btn-sm btn-primary"
-                    aria-label="New Vendor Bill"
-                    t-attf-href="/web#model=account.move&amp;action={{invoices.env.ref('bankayma_account.action_move_in_invoice_new').id}}"
-                >
-                    New Vendor Bill
-                </a>
-            </nav>
-            <nav
-                class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
                 groups="bankayma_base.group_vendor"
             >
                 <a
                     class="btn btn-lg btn-primary"
                     aria-label="New Vendor Bill"
-                    href="/my/account?redirect=/my/invoices/new"
+                    href="/my/invoices/new"
                 >
                     Pay Me
                 </a>
@@ -316,6 +330,43 @@
                 </table>
             </nav>
         </t>
+        <xpath expr="//td[hasclass('tx_status')]" position="inside">
+            <t t-if="invoice.state == 'draft'">
+                <span class="badge rounded-pill text-bg-info">
+                    <i
+                        class="fa fa-fw fa-file-text"
+                        aria-label="Draft"
+                        title="Draft"
+                        role="img"
+                    />
+                    <span class="d-none d-md-inline">Draft</span>
+                </span>
+            </t>
+        </xpath>
+        <xpath expr="(//thead/tr/th)[3]" position="attributes">
+            <attribute name="groups">bankayma_base.group_full</attribute>
+        </xpath>
+        <xpath expr="//span[@t-field='invoice.invoice_date']/.." position="attributes">
+            <attribute name="groups">bankayma_base.group_full</attribute>
+        </xpath>
+        <xpath expr="//thead/tr/th[hasclass('text-end')]" position="before">
+            <th class="text-end">Amount paid</th>
+            <th class="text-end">Payment date</th>
+        </xpath>
+        <xpath
+            expr="//t[@t-foreach='invoices']//td[hasclass('text-end')]"
+            position="before"
+        >
+            <td class="text-end">
+                <span
+                    t-field="invoice.bankayma_amount_paid"
+                    t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'
+                />
+            </td>
+            <td>
+                <span t-field="invoice.bankayma_payment_date" />
+            </td>
+        </xpath>
     </template>
 
     <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
@@ -329,14 +380,15 @@
     <template id="portal_new_vendor_bill">
         <t t-call="portal.portal_layout">
             <t t-set="additional_title">New vendor bill</t>
+            <t t-set="my_details" t-value="True" />
             <form action="/my/invoices/new" method="post" enctype="multipart/form-data">
                 <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                <div class="mb-3 col-xl-6" t-if="len(request.env.user.company_ids) > 1">
-                    <label class="col-form-label" for="company">Company</label>
+                <div class="mb-3 col-xl-12">
+                    <label class="col-form-label" for="company">Project</label>
                     <select
                         class="form-select o-select2"
                         id="company"
@@ -359,7 +411,7 @@
                     </select>
                 </div>
                 <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('description') and 'o_has_error' or ''}"
+                    t-attf-class="mb-3 col-xl-12 #{errors.get('description') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="description">Description</label>
                     <input
@@ -373,12 +425,13 @@
                 </div>
                 <div class="clearfix" />
                 <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('amount') and 'o_has_error' or ''}"
+                    t-attf-class="mb-3 col-xl-12 #{errors.get('amount') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="amount">Amount</label>
                     <input
                         type="number"
                         min="0"
+                        step="0.01"
                         t-attf-class="form-control #{errors.get('amount') and 'is-invalid' or ''}"
                         required="required"
                         name="amount"
@@ -388,7 +441,7 @@
                 </div>
 
                 <div
-                    t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-6"
+                    t-attf-class="mb-3 #{errors.get('fpos') and 'o_has_error' or ''} col-xl-12"
                 >
                     <label class="col-form-label" for="fpos">Fiscal position</label>
                     <select
@@ -416,7 +469,7 @@
                 <div class="clearfix" />
                 <div id="vendor_doc_description" />
                 <div
-                    t-attf-class="mb-3 col-xl-6 #{errors.get('upload') and 'o_has_error' or ''}"
+                    t-attf-class="mb-3 col-xl-12 #{errors.get('upload') and 'o_has_error' or ''}"
                 >
                     <label class="col-form-label" for="upload">Document</label>
                     <input
@@ -481,6 +534,9 @@
         </xpath>
         <xpath expr="//div[@name='no_shipping']//address" position="before">
             <div>To:</div>
+        </xpath>
+        <xpath expr="//p[@t-field='o.invoice_date_due']/.." position="attributes">
+            <attribute name="style">display: none</attribute>
         </xpath>
     </template>
     <template id="payment_checkout" inherit_id="website_payment.payment_checkout">
