@@ -245,6 +245,7 @@
                 <field name="bankayma_move_line_product_id" />
                 <field name="bankayma_move_line_name" />
                 <field name="bankayma_amount_paid" sum="Total" />
+                <field name="bankayma_payment_date" />
                 <field name="bankayma_payment_method_id" />
             </field>
             <field name="invoice_date_due" position="attributes">
