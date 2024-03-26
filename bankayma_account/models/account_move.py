@@ -78,6 +78,11 @@ class AccountMove(models.Model):
         store=True,
         compute="_compute_payment_state",
     )
+    bankayma_payment_date = fields.Date(
+        string="Payment Date",
+        store=True,
+        compute="_compute_payment_state",
+    )
     need_validation = fields.Boolean(compute_sudo=True)
     show_fiscal_position_id = fields.Boolean(compute="_compute_show_fiscal_position_id")
     bankayma_deduct_tax = fields.Boolean(
@@ -205,6 +210,12 @@ class AccountMove(models.Model):
         for this in self:
             this.bankayma_payment_state = (
                 "draft" if this.state == "draft" else this.payment_state
+            )
+            this.bankayma_payment_date = max(
+                this.line_ids.mapped(
+                    "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+                ).mapped("date")
+                or [False]
             )
         return result
 

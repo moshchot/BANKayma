@@ -351,6 +351,7 @@
         </xpath>
         <xpath expr="//thead/tr/th[hasclass('text-end')]" position="before">
             <th class="text-end">Amount paid</th>
+            <th class="text-end">Payment date</th>
         </xpath>
         <xpath
             expr="//t[@t-foreach='invoices']//td[hasclass('text-end')]"
@@ -361,6 +362,9 @@
                     t-field="invoice.bankayma_amount_paid"
                     t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'
                 />
+            </td>
+            <td>
+                <span t-field="invoice.bankayma_payment_date" />
             </td>
         </xpath>
     </template>
