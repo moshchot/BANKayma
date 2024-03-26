@@ -89,7 +89,7 @@ class L10nIlMasavExport(models.TransientModel):
 
             transactions.append(
                 MasavPaymentDetails(
-                    amount=move.amount_total,
+                    amount=move.amount_untaxed,
                     bank_number=bank.bank_code,
                     branch_number=branch_code,
                     account_number=bank_account.acc_number,
