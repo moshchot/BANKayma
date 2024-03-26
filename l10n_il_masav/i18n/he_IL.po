@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_il_masav
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-03-26 10:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: he\n"
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "Cancel"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "Click below to export your marked moves as MASAV"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "Close"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model,name:l10n_il_masav.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields.selection,name:l10n_il_masav.selection__l10n_il_masav_export__state__done
+msgid "Done"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields.selection,name:l10n_il_masav.selection__l10n_il_masav_export__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "Export"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__export_file
+msgid "Export File"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__export_file_name
+msgid "Export File Name"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.actions.act_window,name:l10n_il_masav.action_l10n_il_masav_export
+msgid "Export as MASAV"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_res_company__l10n_il_masav_id
+msgid "MASAV ID"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model,name:l10n_il_masav.model_l10n_il_masav_export
+msgid "Masav export"
+msgstr ""
+
+#. module: l10n_il_masav
+#. odoo-python
+#: code:addons/l10n_il_masav/wizards/l10n_il_masav_export.py:0
+#, python-format
+msgid ""
+"Partner %s is missing bank account information (bank code, branch code, "
+"account number)"
+msgstr ""
+
+#. module: l10n_il_masav
+#. odoo-python
+#: code:addons/l10n_il_masav/wizards/l10n_il_masav_export.py:0
+#, python-format
+msgid "Partner %s is missing vat"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__payment_date
+msgid "Payment Date"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "Please go to"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model:ir.model.fields,field_description:l10n_il_masav.field_l10n_il_masav_export__state
+msgid "State"
+msgstr ""
+
+#. module: l10n_il_masav
+#. odoo-python
+#: code:addons/l10n_il_masav/wizards/l10n_il_masav_export.py:0
+#, python-format
+msgid "You can only export moves of the same company"
+msgstr ""
+
+#. module: l10n_il_masav
+#. odoo-python
+#: code:addons/l10n_il_masav/wizards/l10n_il_masav_export.py:0
+#, python-format
+msgid "You can only export posted bills"
+msgstr ""
+
+#. module: l10n_il_masav
+#. odoo-python
+#: code:addons/l10n_il_masav/wizards/l10n_il_masav_export.py:0
+#, python-format
+msgid "You can only export vendor bills"
+msgstr ""
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "and submit your file."
+msgstr ""
+
+#. module: l10n_il_masav
+#: model_terms:ir.ui.view,arch_db:l10n_il_masav.view_l10n_il_masav_export_form
+msgid "https://masav.co.il"
+msgstr ""
