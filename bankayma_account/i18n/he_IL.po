@@ -1021,6 +1021,11 @@ msgid "Masav"
 msgstr "מסב"
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_l10n_il_masav_export
+msgid "Masav export"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_vendor_max_amount
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_vendor_max_amount
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_vendor_max_amount
