@@ -1,0 +1,5 @@
+<odoo>
+    <record id="l10n_il.demo_company_il" model="res.company">
+        <field name="l10n_il_masav_id">123456789</field>
+    </record>
+</odoo>
