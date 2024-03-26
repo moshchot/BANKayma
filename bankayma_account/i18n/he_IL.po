@@ -1325,6 +1325,13 @@ msgid "PayPal"
 msgstr "פייפאל"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_date
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_payment_date
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_payment_date
+msgid "Payment Date"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_method
 msgid "Payment Methods"
 msgstr "אמצעי תשלום"
@@ -1339,6 +1346,11 @@ msgstr "לבקשת התשלום"
 #: model:ir.model,name:bankayma_account.model_payment_transaction
 msgid "Payment Transaction"
 msgstr "העברת תשלום"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
+msgid "Payment date"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
