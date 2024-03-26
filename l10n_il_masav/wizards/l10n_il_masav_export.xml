@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_l10n_il_masav_export_form" model="ir.ui.view">
+        <field name="model">l10n.il.masav.export</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <group attrs="{'invisible': [('state', '=', 'draft')]}">
+                    <field name="export_file" filename="export_file_name" />
+                    <field name="export_file_name" invisible="1" />
+                </group>
+                <group attrs="{'invisible': [('state', '!=', 'draft')]}">
+                    <field name="payment_date" />
+                    <div colspan="2">
+                        Click below to export your marked moves as MASAV
+                    </div>
+                </group>
+                <div attrs="{'invisible': [('state', '!=', 'done')]}">
+                    Please go to
+                    <a href="https://masav.co.il" target="_blank">
+                        https://masav.co.il
+                    </a>
+                    and submit your file.
+                </div>
+                <br />
+                <footer>
+                    <button
+                        attrs="{'invisible': [('state', '!=', 'done')]}"
+                        special="cancel"
+                        string="Close"
+                        class="btn btn-primary"
+                    />
+                    <button
+                        attrs="{'invisible': [('state', '!=', 'draft')]}"
+                        type="object"
+                        name="button_export"
+                        string="Export"
+                        class="btn btn-primary"
+                    />
+                    <button
+                        attrs="{'invisible': [('state', '=', 'done')]}"
+                        special="cancel"
+                        string="Cancel"
+                        class="btn btn-secondary"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_il_masav_export" model="ir.actions.act_window">
+        <field name="name">Export as MASAV</field>
+        <field name="res_model">l10n.il.masav.export</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>
