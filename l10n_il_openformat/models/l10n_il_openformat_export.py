@@ -12,6 +12,7 @@ from odoo import _, api, exceptions, fields, models
 from ..openformat_file import (
     OpenformatFile,
     RecordDataClose,
+    RecordDataDocument,
     RecordDataOpen,
     RecordInit,
     RecordInitSummary,
@@ -84,6 +85,7 @@ class L10nIlOpenformatExport(models.Model):
                 + d120_count
                 + m100_count
                 + 2,
+                authorized_dealer_number=company.vat,
                 primary_id=self.id,
                 software_name="Odoo",
                 software_release=module.latest_version,
@@ -104,6 +106,7 @@ class L10nIlOpenformatExport(models.Model):
                 date_export=export_timestamp.date(),
                 time_export=export_timestamp.hour * 100 + export_timestamp.minute,
                 charset=1,  # iso
+                compressor_name="zip",
                 branches=1,  # no branches
                 currency=company.currency_id.name,
             )
@@ -131,6 +134,10 @@ class L10nIlOpenformatExport(models.Model):
         d120_count = 0
         m100_count = 0
 
+        for record in self._export_data_c100():
+            c100_count += 1
+            data_file.append(record)
+
         data_file.append(
             RecordDataClose(
                 primary_id=self.id,
@@ -143,6 +150,7 @@ class L10nIlOpenformatExport(models.Model):
                 + 2,
             )
         )
+
         stream.write(data_file.tobytes())
         return dict(
             b100_count=b100_count,
@@ -152,6 +160,42 @@ class L10nIlOpenformatExport(models.Model):
             d120_count=d120_count,
             m100_count=m100_count,
         )
+
+    def _export_data_c100_document_type(self, move):
+        return 400 if move.move_type.startswith("in") else 500
+
+    def _export_data_c100(self):
+        serial = 0
+        for move in self.env["account.move"].search(
+            [
+                ("date", ">=", self.date_start),
+                ("date", "<=", self.date_end),
+                ("state", "=", "posted"),
+            ]
+        ):
+            serial += 1
+            yield RecordDataDocument(
+                serial=serial,
+                company_vat=self.company_id.vat,
+                type=self._export_data_c100_document_type(move),
+                number=move.name,
+                create_date=move.create_date.date(),
+                create_time=move.create_date.hour * 100 + move.create_date.minute,
+                partner_name=move.partner_id.name,
+                partner_street=move.partner_id.street,
+                partner_city=move.partner_id.city,
+                partner_zip=move.partner_id.zip,
+                partner_country=move.partner_id.country_id.name,
+                partner_country_code=move.partner_id.country_id.code,
+                partner_phone=move.partner_id.phone,
+                partner_vat=move.partner_id.vat,
+                accounting_date=move.date,
+                amount_tax=move.amount_tax,
+                amount_untaxed=move.amount_untaxed,
+                partner_id=move.partner_id.id,
+                user_id=move.user_id.id,
+                document_id=move.id,
+            )
 
     def button_export(self):
         """Do the export"""
