@@ -204,7 +204,7 @@ class L10nIlOpenformatExport(models.Model):
                     _("Error exporting %(move_name)s: %(message)s")
                     % {
                         "move_name": move.name,
-                        "message": "".join(ex.args),
+                        "message": "".join(map(str, ex.args)),
                     }
                 ) from ex
 
@@ -226,10 +226,10 @@ class L10nIlOpenformatExport(models.Model):
                 try:
                     record_counts = self._export_data(data_file)
                 except ValueError as ex:
-                    raise exceptions.UserError("".join(ex.args)) from ex
+                    raise exceptions.UserError("".join(map(str, ex.args))) from ex
             with z.open(os.path.join(path, "INI.TXT"), "w") as ini_file:
                 try:
                     self._export_ini(ini_file, **record_counts)
                 except ValueError as ex:
-                    raise exceptions.UserError("".join(ex.args)) from ex
+                    raise exceptions.UserError("".join(map(str, ex.args))) from ex
         self.export_file = b64encode(buffer.getbuffer())
