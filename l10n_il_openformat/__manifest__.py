@@ -15,6 +15,8 @@
     "preloadable": True,
     "depends": [
         "account",
+        # TODO for l10n_il_tax_deduction_id - shouldn't this be vat?
+        "l10n_il_system1000",
     ],
     "data": [
         "security/ir.model.access.csv",

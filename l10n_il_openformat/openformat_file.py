@@ -6,7 +6,7 @@ from collections import namedtuple
 from datetime import date
 
 FixedLengthField = namedtuple(
-    "OpenformatField", ("length", "name", "type"), defaults=(str,)
+    "OpenformatField", ("code", "length", "name", "type"), defaults=(str,)
 )
 F = FixedLengthField
 
@@ -56,41 +56,41 @@ class RecordInit(Record):
     def __init__(self, **_data):
         super().__init__(
             (
-                F(4, "code"),
-                F(5, "unused"),
-                F(15, "bkmvdata_count", int),
-                F(9, "authorized_dealer_number", int),
-                F(15, "primary_id", int),
-                F(8, "system_constant"),
-                F(8, "software_registration_number", int),
-                F(20, "software_name"),
-                F(20, "software_release"),
-                F(9, "software_serial"),
-                F(20, "software_manufacturer"),
-                F(1, "software_period", int),  # 1=one year, 2=multi
-                F(50, "software_save_path"),
+                F(1000, 4, "code"),
+                F(1001, 5, "unused"),
+                F(1002, 15, "bkmvdata_count", int),
+                F(1003, 9, "authorized_dealer_number", int),
+                F(1004, 15, "primary_id", int),
+                F(1005, 8, "system_constant"),
+                F(1006, 8, "software_registration_number", int),
+                F(1007, 20, "software_name"),
+                F(1008, 20, "software_release"),
+                F(1009, 9, "software_serial"),
+                F(1010, 20, "software_manufacturer"),
+                F(1011, 1, "software_period", int),  # 1=one year, 2=multi
+                F(1012, 50, "software_save_path"),
                 # 1=no double entry, 2=double entry
-                F(1, "software_accounting_type", int),
-                F(1, "software_balance_required", int),
-                F(9, "company_registry_number", int),
-                F(9, "company_decuction_file_id", int),
-                F(10, "unused_1017"),
-                F(50, "company_name"),
-                F(50, "company_street"),
-                F(10, "company_street_number"),
-                F(30, "company_city"),
-                F(8, "company_zip"),
-                F(4, "year", int),
-                F(8, "date_start", date),
-                F(8, "date_end", date),
-                F(8, "date_export", date),
-                F(4, "time_export", int),
-                F(1, "lang", int),  # 0=he, 1=ar, 2=other
-                F(1, "charset", int),  # 1=iso-8859-8-i, 2=cp862
-                F(20, "compressor_name"),
-                F(3, "currency"),
-                F(1, "branches", int),
-                F(46, "unused_1034"),
+                F(1013, 1, "software_accounting_type", int),
+                F(1014, 1, "software_balance_required", int),
+                F(1015, 9, "company_registry_number", int),
+                F(1016, 9, "company_decuction_file_id", int),
+                F(1017, 10, "unused_1017"),
+                F(1018, 50, "company_name"),
+                F(1019, 50, "company_street"),
+                F(1020, 10, "company_street_number"),
+                F(1021, 30, "company_city"),
+                F(1022, 8, "company_zip"),
+                F(1023, 4, "year", int),
+                F(1024, 8, "date_start", date),
+                F(1025, 8, "date_end", date),
+                F(1026, 8, "date_export", date),
+                F(1027, 4, "time_export", int),
+                F(1028, 1, "lang", int),  # 0=he, 1=ar, 2=other
+                F(1029, 1, "charset", int),  # 1=iso-8859-8-i, 2=cp862
+                F(1030, 20, "compressor_name"),
+                F(1032, 3, "currency"),
+                F(1034, 1, "branches", int),
+                F(1035, 46, "unused_1035"),
             ),
             **_data
         )
@@ -100,8 +100,8 @@ class RecordInitSummary(Record):
     def __init__(self, **_data):
         super().__init__(
             (
-                F(4, "code"),
-                F(51, "count", int),
+                F(105, 4, "code"),
+                F(1105, 51, "count", int),
             ),
             **_data
         )
@@ -111,12 +111,12 @@ class RecordDataOpen(Record):
     def __init__(self, **_data):
         super().__init__(
             (
-                F(4, "code"),
-                F(9, "registered_tax"),
-                F(9, "authorized_dealer_number", int),
-                F(15, "primary_id", int),
-                F(8, "system_constant"),
-                F(50, "unused"),
+                F(1100, 4, "code"),
+                F(1101, 9, "registered_tax"),
+                F(1102, 9, "authorized_dealer_number", int),
+                F(1103, 15, "primary_id", int),
+                F(1104, 8, "system_constant"),
+                F(1105, 50, "unused"),
             ),
             **_data
         )
@@ -127,14 +127,57 @@ class RecordDataClose(Record):
     def __init__(self, **_data):
         super().__init__(
             (
-                F(4, "code"),
-                F(9, "registered_tax"),
-                F(9, "authorized_dealer_number", int),
-                F(15, "primary_id", int),
-                F(8, "system_constant"),
-                F(15, "record_count", int),
-                F(50, "unused"),
+                F(1150, 4, "code"),
+                F(1151, 9, "registered_tax"),
+                F(1152, 9, "authorized_dealer_number", int),
+                F(1153, 15, "primary_id", int),
+                F(1154, 8, "system_constant"),
+                F(1155, 15, "record_count", int),
+                F(1156, 50, "unused"),
             ),
             **_data
         )
         self._data["code"] = "Z900"
+
+
+class RecordDataDocument(Record):
+    def __init__(self, **_data):
+        super().__init__(
+            (
+                F(1200, 4, "code"),
+                F(1201, 9, "serial", int),
+                F(1202, 9, "company_vat", int),
+                F(1203, 3, "type", int),
+                F(1204, 20, "number"),
+                F(1205, 8, "create_date", date),
+                F(1206, 4, "create_time", int),
+                F(1207, 50, "partner_name"),
+                F(1208, 50, "partner_street"),
+                F(1209, 10, "partner_street_number"),
+                F(1210, 30, "partner_city"),
+                F(1211, 8, "partner_zip"),
+                F(1212, 30, "partner_country"),
+                F(1213, 2, "partner_country_code"),
+                F(1214, 15, "partner_phone"),
+                F(1215, 9, "partner_vat", int),
+                F(1216, 8, "accounting_date", date),
+                F(1217, 15, "amount_currency", int),
+                F(1218, 3, "amount_corrency_code"),
+                F(1219, 15, "amount_without_discount", int),
+                F(1220, 15, "discount", int),
+                F(1221, 15, "amount_with_discount", int),
+                F(1222, 15, "amount_tax", int),
+                F(1223, 15, "amount_untaxed", int),
+                F(1224, 12, "withholding_tax"),
+                F(1225, 15, "partner_id"),
+                F(1226, 10, "matching_key"),
+                F(1228, 1, "cancelled", int),
+                F(1230, 8, "payment_date", date),
+                F(1231, 7, "branch_id"),
+                F(1233, 9, "user_id"),
+                F(1234, 7, "document_id", int),
+                F(1235, 13, "unused"),
+            ),
+            **_data
+        )
+        self._data["code"] = "C100"
