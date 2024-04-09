@@ -35,7 +35,7 @@ class Record(object):
     def _format_field(self, field, data):
         if field.type == int:
             try:
-                number = int(str(data or 0).lstrip("0").strip())
+                number = int(str(data or 0).lstrip("0").strip() or 0)
             except ValueError as ex:
                 raise ValueError(
                     "Field %(field_name)s must be an integer, got %(value)s"
