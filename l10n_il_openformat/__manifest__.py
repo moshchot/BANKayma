@@ -18,8 +18,8 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        "wizards/l10n_il_openformat_export.xml",
+        "views/l10n_il_openformat_export.xml",
     ],
     "demo": [],
-    "installable": False,
+    "installable": True,
 }
