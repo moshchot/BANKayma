@@ -54,6 +54,16 @@ class Record(object):
                 data.year * 10000 + data.month * 100 + data.day
             )
         else:
+            try:
+                str(data or "").encode(OpenformatFile.encoding)
+            except ValueError as ex:
+                raise ValueError(
+                    "Field %(field_name)s contains invalid characters, got %(value)s"
+                    % {
+                        "field_name": "%s (%s)" % (field.name, field.code),
+                        "value": data,
+                    }
+                ) from ex
             return ("{: <%ds}" % field.length).format(str(data or "")[: field.length])
 
     def format(self):
