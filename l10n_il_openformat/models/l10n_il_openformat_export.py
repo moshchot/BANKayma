@@ -85,7 +85,7 @@ class L10nIlOpenformatExport(models.Model):
                 + d120_count
                 + m100_count
                 + 2,
-                authorized_dealer_number=company.vat,
+                vat=company.vat,
                 primary_id=self.id,
                 software_name="Odoo",
                 software_release=module.latest_version,
@@ -124,6 +124,7 @@ class L10nIlOpenformatExport(models.Model):
         data_file.append(
             RecordDataOpen(
                 primary_id=self.id,
+                vat=self.company_id.vat,
             )
         )
 
@@ -141,6 +142,7 @@ class L10nIlOpenformatExport(models.Model):
         data_file.append(
             RecordDataClose(
                 primary_id=self.id,
+                vat=self.company_id.vat,
                 record_count=b100_count
                 + b110_count
                 + c100_count

@@ -67,7 +67,7 @@ class RecordInit(Record):
                 F(1000, 4, "code"),
                 F(1001, 5, "unused"),
                 F(1002, 15, "bkmvdata_count", int),
-                F(1003, 9, "authorized_dealer_number", int),
+                F(1003, 9, "vat", int),
                 F(1004, 15, "primary_id", int),
                 F(1005, 8, "system_constant"),
                 F(1006, 8, "software_registration_number", int),
@@ -121,7 +121,7 @@ class RecordDataOpen(Record):
             (
                 F(1100, 4, "code"),
                 F(1101, 9, "registered_tax"),
-                F(1102, 9, "authorized_dealer_number", int),
+                F(1102, 9, "vat", int),
                 F(1103, 15, "primary_id", int),
                 F(1104, 8, "system_constant"),
                 F(1105, 50, "unused"),
@@ -137,7 +137,7 @@ class RecordDataClose(Record):
             (
                 F(1150, 4, "code"),
                 F(1151, 9, "registered_tax"),
-                F(1152, 9, "authorized_dealer_number", int),
+                F(1152, 9, "vat", int),
                 F(1153, 15, "primary_id", int),
                 F(1154, 8, "system_constant"),
                 F(1155, 15, "record_count", int),
