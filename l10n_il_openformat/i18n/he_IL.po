@@ -66,6 +66,13 @@ msgid "Export Timestamp"
 msgstr ""
 
 #. module: l10n_il_openformat
+#. odoo-python
+#: code:addons/l10n_il_openformat/openformat_file.py:0
+#, python-format
+msgid "Field %(field_name)s must be an integer, got %(value)s"
+msgstr ""
+
+#. module: l10n_il_openformat
 #: model:ir.model.fields,field_description:l10n_il_openformat.field_l10n_il_openformat_export__id
 msgid "ID"
 msgstr ""
