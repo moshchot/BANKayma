@@ -51,6 +51,13 @@ msgid "Download"
 msgstr ""
 
 #. module: l10n_il_openformat
+#. odoo-python
+#: code:addons/l10n_il_openformat/models/l10n_il_openformat_export.py:0
+#, python-format
+msgid "Error exporting %(move_name)s: %(message)s"
+msgstr ""
+
+#. module: l10n_il_openformat
 #: model_terms:ir.ui.view,arch_db:l10n_il_openformat.view_l10n_il_openformat_export_form
 msgid "Export"
 msgstr ""
@@ -63,13 +70,6 @@ msgstr ""
 #. module: l10n_il_openformat
 #: model:ir.model.fields,field_description:l10n_il_openformat.field_l10n_il_openformat_export__export_timestamp
 msgid "Export Timestamp"
-msgstr ""
-
-#. module: l10n_il_openformat
-#. odoo-python
-#: code:addons/l10n_il_openformat/openformat_file.py:0
-#, python-format
-msgid "Field %(field_name)s must be an integer, got %(value)s"
 msgstr ""
 
 #. module: l10n_il_openformat
