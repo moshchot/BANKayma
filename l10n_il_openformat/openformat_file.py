@@ -24,7 +24,7 @@ class OpenformatFile(object):
 
     def tobytes(self):
         result = "\r\n".join(record.format() for record in self.records)
-        return result.encode(self.encoding)
+        return result.encode(self.encoding, errors="replace")
 
 
 class Record(object):
@@ -54,16 +54,6 @@ class Record(object):
                 data.year * 10000 + data.month * 100 + data.day
             )
         else:
-            try:
-                str(data or "").encode(OpenformatFile.encoding)
-            except ValueError as ex:
-                raise ValueError(
-                    "Field %(field_name)s contains invalid characters, got %(value)s"
-                    % {
-                        "field_name": "%s (%s)" % (field.name, field.code),
-                        "value": data,
-                    }
-                ) from ex
             return ("{: <%ds}" % field.length).format(str(data or "")[: field.length])
 
     def format(self):
