@@ -174,28 +174,37 @@ class L10nIlOpenformatExport(models.Model):
             ]
         ):
             serial += 1
-            yield RecordDataDocument(
-                serial=serial,
-                company_vat=self.company_id.vat,
-                type=self._export_data_c100_document_type(move),
-                number=move.name,
-                create_date=move.create_date.date(),
-                create_time=move.create_date.hour * 100 + move.create_date.minute,
-                partner_name=move.partner_id.name,
-                partner_street=move.partner_id.street,
-                partner_city=move.partner_id.city,
-                partner_zip=move.partner_id.zip,
-                partner_country=move.partner_id.country_id.name,
-                partner_country_code=move.partner_id.country_id.code,
-                partner_phone=move.partner_id.phone,
-                partner_vat=move.partner_id.vat,
-                accounting_date=move.date,
-                amount_tax=move.amount_tax,
-                amount_untaxed=move.amount_untaxed,
-                partner_id=move.partner_id.id,
-                user_id=move.user_id.id,
-                document_id=move.id,
-            )
+            try:
+                yield RecordDataDocument(
+                    serial=serial,
+                    company_vat=self.company_id.vat,
+                    type=self._export_data_c100_document_type(move),
+                    number=move.name,
+                    create_date=move.create_date.date(),
+                    create_time=move.create_date.hour * 100 + move.create_date.minute,
+                    partner_name=move.partner_id.name,
+                    partner_street=move.partner_id.street,
+                    partner_city=move.partner_id.city,
+                    partner_zip=move.partner_id.zip,
+                    partner_country=move.partner_id.country_id.name,
+                    partner_country_code=move.partner_id.country_id.code,
+                    partner_phone=move.partner_id.phone,
+                    partner_vat=move.partner_id.vat,
+                    accounting_date=move.date,
+                    amount_tax=move.amount_tax,
+                    amount_untaxed=move.amount_untaxed,
+                    partner_id=move.partner_id.id,
+                    user_id=move.user_id.id,
+                    document_id=move.id,
+                )
+            except ValueError as ex:
+                raise exceptions.UserError(
+                    _("Error exporting %(move_name)s: %(message)s")
+                    % {
+                        "move_name": move.name,
+                        "message": "".join(ex.args),
+                    }
+                ) from ex
 
     def button_export(self):
         """Do the export"""
@@ -213,7 +222,13 @@ class L10nIlOpenformatExport(models.Model):
         )
         with zipfile.ZipFile(buffer, "w") as z:
             with z.open(os.path.join(path, "BKMVDATA.TXT"), "w") as data_file:
-                record_counts = self._export_data(data_file)
+                try:
+                    record_counts = self._export_data(data_file)
+                except ValueError as ex:
+                    raise exceptions.UserError("".join(ex.args)) from ex
             with z.open(os.path.join(path, "INI.TXT"), "w") as ini_file:
-                self._export_ini(ini_file, **record_counts)
+                try:
+                    self._export_ini(ini_file, **record_counts)
+                except ValueError as ex:
+                    raise exceptions.UserError("".join(ex.args)) from ex
         self.export_file = b64encode(buffer.getbuffer())
