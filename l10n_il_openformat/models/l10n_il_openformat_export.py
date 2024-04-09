@@ -216,7 +216,6 @@ class L10nIlOpenformatExport(models.Model):
         path = os.path.join(
             "%s.%s"
             % (
-                # is this authorized_dealer_number?
                 self.company_id.company_registry,
                 self.export_timestamp.strftime("%y"),
             ),
