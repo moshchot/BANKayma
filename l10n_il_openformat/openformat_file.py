@@ -5,6 +5,9 @@
 from collections import namedtuple
 from datetime import date
 
+from odoo import _
+from odoo.exceptions import UserError
+
 FixedLengthField = namedtuple(
     "OpenformatField", ("code", "length", "name", "type"), defaults=(str,)
 )
@@ -34,9 +37,17 @@ class Record(object):
 
     def _format_field(self, field, data):
         if field.type == int:
-            return ("{:0>%dd}" % field.length).format(
-                int(data or 0) % field.length**10
-            )
+            try:
+                number = int(data or 0)
+            except ValueError as ex:
+                raise UserError(
+                    _("Field %(field_name)s must be an integer, got %(value)s")
+                    % {
+                        "field_name": "%s (%s)" % (field.name, field.code),
+                        "value": data,
+                    }
+                ) from ex
+            return ("{:0>%dd}" % field.length).format(number % field.length**10)
         elif field.type == date:
             data = data or date.min
             return ("{:0>%dd}" % field.length).format(
