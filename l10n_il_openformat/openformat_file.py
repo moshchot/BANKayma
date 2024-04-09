@@ -45,6 +45,9 @@ class Record(object):
                     }
                 ) from ex
             return ("{:0>%dd}" % field.length).format(number % field.length**10)
+        elif field.type == float:
+            number = int((data or 0) * 100)
+            return ("{:0=+%dd}" % field.length).format(number % field.length**10)
         elif field.type == date:
             data = data or date.min
             return ("{:0>%dd}" % field.length).format(
@@ -169,14 +172,14 @@ class RecordDataDocument(Record):
                 F(1214, 15, "partner_phone"),
                 F(1215, 9, "partner_vat", int),
                 F(1216, 8, "accounting_date", date),
-                F(1217, 15, "amount_currency", int),
-                F(1218, 3, "amount_corrency_code"),
-                F(1219, 15, "amount_without_discount", int),
-                F(1220, 15, "discount", int),
-                F(1221, 15, "amount_with_discount", int),
-                F(1222, 15, "amount_tax", int),
-                F(1223, 15, "amount_untaxed", int),
-                F(1224, 12, "withholding_tax"),
+                F(1217, 15, "amount_currency", float),
+                F(1218, 3, "amount_currency_code"),
+                F(1219, 15, "amount_without_discount", float),
+                F(1220, 15, "discount", float),
+                F(1221, 15, "amount_with_discount", float),
+                F(1222, 15, "amount_tax", float),
+                F(1223, 15, "amount_untaxed", float),
+                F(1224, 12, "withholding_tax", float),
                 F(1225, 15, "partner_id"),
                 F(1226, 10, "matching_key"),
                 F(1228, 1, "cancelled", int),
