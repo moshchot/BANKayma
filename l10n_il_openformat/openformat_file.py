@@ -14,7 +14,7 @@ F = FixedLengthField
 
 
 class OpenformatFile(object):
-    encoding = "ISO-8859-8-i"
+    encoding = "ISO-8859-8"
 
     def __init__(self):
         self.records = []
@@ -23,9 +23,8 @@ class OpenformatFile(object):
         self.records.append(record)
 
     def tobytes(self):
-        return "\r\n".join(record.format() for record in self.records).encode(
-            self.encoding
-        )
+        result = "\r\n".join(record.format() for record in self.records)
+        return result.encode(self.encoding)
 
 
 class Record(object):
@@ -35,14 +34,14 @@ class Record(object):
 
     def _format_field(self, field, data):
         if field.type == int:
-            return ("{:0>%dd}" % field.length).format(data or 0)
+            return ("{:0>%dd}" % field.length).format((data or 0) % field.length ^ 10)
         elif field.type == date:
             data = data or date.min
             return ("{:0>%dd}" % field.length).format(
                 data.year * 10000 + data.month * 100 + data.day
             )
         else:
-            return ("{: <%ds}" % field.length).format(str(data or ""))
+            return ("{: <%ds}" % field.length).format(str(data or "")[: field.length])
 
     def format(self):
         return "".join(
