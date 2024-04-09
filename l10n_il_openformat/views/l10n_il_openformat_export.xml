@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_l10n_il_openformat_export_tree" model="ir.ui.view">
+        <field name="model">l10n.il.openformat.export</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_date" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_l10n_il_openformat_export_form" model="ir.ui.view">
+        <field name="model">l10n.il.openformat.export</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!--attrs="{'invisible': [('export_file', '!=', False)]}"/-->
+                    <button
+                        type="object"
+                        name="button_export"
+                        string="Export"
+                        class="btn btn-primary"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company" />
+                        <field name="date_start" />
+                        <field name="date_end" />
+                        <field
+                            name="export_file"
+                            filename="export_file_name"
+                            attrs="{'invisible': [('export_file', '=', False)]}"
+                        />
+                        <field name="export_file_name" invisible="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_il_openformat_export" model="ir.actions.act_window">
+        <field name="name">OPENFORMAT</field>
+        <field name="res_model">l10n.il.openformat.export</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_l10n_il_openformat_export_tree" />
+    </record>
+
+    <menuitem
+        parent="account.menu_finance_reports"
+        id="menu_l10n_il_openformat_export"
+        sequence="120"
+        action="action_l10n_il_openformat_export"
+    />
+</odoo>
