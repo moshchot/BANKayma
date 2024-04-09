@@ -34,7 +34,9 @@ class Record(object):
 
     def _format_field(self, field, data):
         if field.type == int:
-            return ("{:0>%dd}" % field.length).format((data or 0) % field.length ^ 10)
+            return ("{:0>%dd}" % field.length).format(
+                int(data or 0) % field.length**10
+            )
         elif field.type == date:
             data = data or date.min
             return ("{:0>%dd}" % field.length).format(

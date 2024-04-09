@@ -68,24 +68,43 @@ class L10nIlOpenformatExport(models.Model):
     ):
         ini_file = OpenformatFile()
         company = self.company_id
+        module = (
+            self.env["ir.module.module"]
+            .sudo()
+            .search([("name", "=", "l10n_il_openformat")])
+        )
         export_timestamp = self.export_timestamp
         ini_file.append(
             RecordInit(
                 code="A000",
+                bkmvdata_count=b100_count
+                + b110_count
+                + c100_count
+                + d110_count
+                + d120_count
+                + m100_count
+                + 2,
                 primary_id=self.id,
+                software_name="Odoo",
+                software_release=module.latest_version,
+                software_manufacturer="OCA",
                 software_period=2,
                 software_save_path="database",
                 software_accounting_type=2,
+                company_registry_number=company.company_registry,
+                company_decuction_file_id=company.l10n_il_tax_deduction_id,
                 company_name=company.name,
                 company_street=company.street,
                 # TODO install partner_street_name for this?
                 # company_street_number
                 company_city=company.city,
                 company_zip=company.zip,
-                date_export=export_timestamp.date(),
                 date_start=self.date_start,
                 date_end=self.date_end,
+                date_export=export_timestamp.date(),
                 time_export=export_timestamp.hour * 100 + export_timestamp.minute,
+                charset=1,  # iso
+                branches=1,  # no branches
                 currency=company.currency_id.name,
             )
         )
@@ -104,12 +123,35 @@ class L10nIlOpenformatExport(models.Model):
                 primary_id=self.id,
             )
         )
+
+        b100_count = 0
+        b110_count = 0
+        c100_count = 0
+        d110_count = 0
+        d120_count = 0
+        m100_count = 0
+
         data_file.append(
             RecordDataClose(
                 primary_id=self.id,
+                record_count=b100_count
+                + b110_count
+                + c100_count
+                + d110_count
+                + d120_count
+                + m100_count
+                + 2,
             )
         )
         stream.write(data_file.tobytes())
+        return dict(
+            b100_count=b100_count,
+            b110_count=b110_count,
+            c100_count=c100_count,
+            d110_count=d110_count,
+            d120_count=d120_count,
+            m100_count=m100_count,
+        )
 
     def button_export(self):
         """Do the export"""
@@ -127,7 +169,7 @@ class L10nIlOpenformatExport(models.Model):
         )
         with zipfile.ZipFile(buffer, "w") as z:
             with z.open(os.path.join(path, "BKMVDATA.TXT"), "w") as data_file:
-                self._export_data(data_file)
+                record_counts = self._export_data(data_file)
             with z.open(os.path.join(path, "INI.TXT"), "w") as ini_file:
-                self._export_ini(ini_file)
+                self._export_ini(ini_file, **record_counts)
         self.export_file = b64encode(buffer.getbuffer())
