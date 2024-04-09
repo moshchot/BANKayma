@@ -44,10 +44,10 @@ class Record(object):
                         "value": data,
                     }
                 ) from ex
-            return ("{:0>%dd}" % field.length).format(number % field.length**10)
+            return ("{:0>%dd}" % field.length).format(number % 10**field.length)
         elif field.type == float:
             number = int((data or 0) * 100)
-            return ("{:0=+%dd}" % field.length).format(number % field.length**10)
+            return ("{:0=+%dd}" % field.length).format(number % 10**field.length)
         elif field.type == date:
             data = data or date.min
             return ("{:0>%dd}" % field.length).format(
