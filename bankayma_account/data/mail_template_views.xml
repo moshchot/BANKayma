@@ -322,7 +322,7 @@
             We are happy to inform you that we've transferred
             <span style="font-weight:bold;" t-field="object.amount_total" />
             on
-            <t t-out="object.date or ''" />
+            <t t-out="object.bankayma_amount_paid or ''" />
             . for
             <t t-out="', '.join(object.mapped('invoice_line_ids.name')) or ''">
                 description
@@ -333,7 +333,7 @@
             <t t-out="object.partner_bank_id or ''">your bank</t>
         </p>
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
-            Please upload a receipt by following this link, or replying to this email
+            <strong style="box-sizing:border-box;font-weight:500;">Please upload a receipt by following this link, or replying to this email</strong>
             <br />
             <br />
             To: Bar-Kayma for Culture 580450898
