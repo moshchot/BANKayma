@@ -103,6 +103,22 @@ msgid "<span class=\"o_stat_text\">Billed</span>"
 msgstr "שולם"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid ""
+"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"                Please upload a receipt by following this link, or replying "
+"to this email\n"
+"            </strong>\n"
+"            <br/>\n"
+"            <br/>\n"
+"            To: Bar-Kayma for Culture 580450898\n"
+"            <br/>\n"
+"            Bank First Internation Bank of Israel (31),\n"
+"            <br/>\n"
+"            Branch 012, Account 036218"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
@@ -1380,28 +1396,6 @@ msgstr "תודה על העברת התשלום בהקדם או כפי שסוכם"
 #, python-format
 msgid "Please set up proper product to request validation"
 msgstr "יש לבחור סעיף לפני שליחה לאישור תשלום"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
-msgid ""
-"Please upload a receipt by following this link, or replying to this email\n"
-"            <br/>\n"
-"            <br/>\n"
-"            To: Bar-Kayma for Culture 580450898\n"
-"            <br/>\n"
-"            Bank First Internation Bank of Israel (31),\n"
-"            <br/>\n"
-"            Branch 012, Account 036218"
-msgstr ""
-"עוסק פטור / מורשה / בע׳מ / מלכ׳ר? אם כן, עכשיו רק נשאר לשלוח לנו קבלה במייל "
-"חוזר או מהבנקיימא שלך\n"
-"            <br/>\n"
-"            <br/>\n"
-"            עבור: בר-קיימא לתרבות 580450898\n"
-"            <br/>\n"
-"            הבנק הבינלאומי הראשון לישראל (31),\n"
-"            <br/>\n"
-"            סניף 012, ח-ן 409036218"
 
 #. module: bankayma_account
 #: model:product.template,name:bankayma_account.product_portal_product_template
