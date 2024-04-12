@@ -45,7 +45,9 @@ class IrProperty(models.Model):
         to_delete_ids = []
 
         def intercept_delete(cursor, query, params, start, delay):
-            if query.startswith("DELETE FROM ir_property WHERE id="):
+            if isinstance(query, str) and query.startswith(
+                "DELETE FROM ir_property WHERE id="
+            ):
                 to_delete_ids.extend(params)
 
         hooks.append(intercept_delete)
