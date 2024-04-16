@@ -649,9 +649,10 @@ class AccountMove(models.Model):
                     fraction=parent_journal.bankayma_overhead_percentage / 100
                 )
         for this in self.filtered(lambda x: x.move_type == "in_invoice"):
-            this.with_context(mail_notify_author=True).message_post_with_view(
-                "bankayma_account.qweb_template_account_move_paid"
-            )
+            this.with_context(
+                mail_notify_author=True,
+                mail_notify_force_inbox=this.journal_id.bankayma_inhibit_mails,
+            ).message_post_with_view("bankayma_account.qweb_template_account_move_paid")
         for this in self:
             if this.journal_id.bankayma_mail_template_invoice_paid:
                 this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
