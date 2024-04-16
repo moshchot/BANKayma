@@ -27,8 +27,21 @@
                 <sheet>
                     <group>
                         <field name="company_id" groups="base.group_multi_company" />
+                        <field name="company_id" invisible="True" />
                         <field name="date_start" />
                         <field name="date_end" />
+                        <field
+                            name="journal_ids"
+                            widget="many2many_tags"
+                            domain="[('company_id', '=', company_id)]"
+                        />
+                        <field
+                            name="move_domain"
+                            widget="domain"
+                            options="{'model': 'account.move'}"
+                        />
+                        <field name="b100" />
+                        <field name="c100" />
                         <field
                             name="export_file"
                             filename="export_file_name"

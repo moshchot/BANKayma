@@ -11,9 +11,11 @@ from odoo import _, api, exceptions, fields, models
 
 from ..openformat_file import (
     OpenformatFile,
+    RecordDataAccount,
     RecordDataClose,
     RecordDataDocument,
     RecordDataOpen,
+    RecordDataTransaction,
     RecordInit,
     RecordInitSummary,
 )
@@ -33,6 +35,10 @@ class L10nIlOpenformatExport(models.Model):
     date_end = fields.Date(
         required=True, default=fields.Date.today().replace(month=12, day=31)
     )
+    journal_ids = fields.Many2many(
+        "account.journal", string="Journals", check_company=True
+    )
+    move_domain = fields.Text(compute="_compute_move_domain")
     export_timestamp = fields.Datetime()
     export_file = fields.Binary("Download", readonly=True)
     export_file_name = fields.Char(
@@ -40,6 +46,8 @@ class L10nIlOpenformatExport(models.Model):
             this.update({"export_file_name": "OPENFRMT.zip"}) for this in self
         ]
     )
+    b100 = fields.Boolean(default=True, string="Transactions (B*)")
+    c100 = fields.Boolean(string="Documents (C*)")
 
     def name_get(self):
         return [
@@ -50,12 +58,17 @@ class L10nIlOpenformatExport(models.Model):
     @api.constrains("date_start", "date_end")
     def _check_dates(self):
         for this in self:
-            if this.date_start >= this.date_end:
+            if this.date_start > this.date_end:
                 raise exceptions.ValidationError(
                     _(
-                        "Start date needs to be greater than end date",
+                        "End date needs to be greater than start date",
                     )
                 )
+
+    @api.depends("date_start", "date_end", "journal_ids")
+    def _compute_move_domain(self):
+        for this in self:
+            this.move_domain = this._export_data_get_move_domain()
 
     def _export_ini(
         self,
@@ -77,7 +90,6 @@ class L10nIlOpenformatExport(models.Model):
         export_timestamp = self.export_timestamp
         ini_file.append(
             RecordInit(
-                code="A000",
                 bkmvdata_count=b100_count
                 + b110_count
                 + c100_count
@@ -93,6 +105,7 @@ class L10nIlOpenformatExport(models.Model):
                 software_period=2,
                 software_save_path="database",
                 software_accounting_type=2,
+                software_balance_required=1,
                 company_registry_number=company.company_registry,
                 company_decuction_file_id=company.l10n_il_tax_deduction_id,
                 company_name=company.name,
@@ -135,14 +148,30 @@ class L10nIlOpenformatExport(models.Model):
         d120_count = 0
         m100_count = 0
 
-        for record in self._export_data_c100():
-            c100_count += 1
-            data_file.append(record)
+        moves = self._export_data_get_moves()
+        serial = 1
+
+        if self.b100:
+            for record in self._export_data_b100(moves, serial):
+                b100_count += 1
+                serial += 1
+                data_file.append(record)
+            for record in self._export_data_b110(moves, serial):
+                b110_count += 1
+                serial += 1
+                data_file.append(record)
+
+        if self.c100:
+            for record in self._export_data_c100(moves, serial):
+                c100_count += 1
+                serial += 1
+                data_file.append(record)
 
         data_file.append(
             RecordDataClose(
                 primary_id=self.id,
                 vat=self.company_id.vat,
+                serial=serial,
                 record_count=b100_count
                 + b110_count
                 + c100_count
@@ -163,18 +192,92 @@ class L10nIlOpenformatExport(models.Model):
             m100_count=m100_count,
         )
 
+    def _export_data_get_moves(self):
+        return self.env["account.move"].search(self._export_data_get_move_domain())
+
+    def _export_data_get_move_domain(self):
+        return [
+            ("date", ">=", self.date_start),
+            ("date", "<=", self.date_end),
+            ("state", "=", "posted"),
+        ] + (
+            [
+                ("journal_id", "in", self.journal_ids.ids),
+            ]
+            if self.journal_ids
+            else []
+        )
+
+    def _export_data_b100(self, moves, serial):
+        """Export move lines to b100 records"""
+        for move_line in moves.mapped("line_ids"):
+            serial += 1
+            try:
+                yield RecordDataTransaction(
+                    serial=serial,
+                    company_vat=self.company_id.vat,
+                    transaction_id=move_line.id,
+                    line_number=move_line.id,
+                    reference1=move_line.move_id.id,
+                    reference1_type=self._export_data_c100_document_type(
+                        move_line.move_id
+                    ),
+                    details=move_line.name,
+                    date=move_line.date,
+                    value_date=move_line.date_maturity or move_line.date,
+                    account_id=move_line.account_id.id,
+                    sign=1 if move_line.debit > 0 else 2,
+                    amount=move_line.debit or move_line.credit,
+                    quantity=move_line.quantity,
+                    create_date=move_line.create_date,
+                    user_id=move_line.move_id.user_id.id,
+                )
+            except ValueError as ex:
+                raise exceptions.UserError(
+                    _("Error exporting %(move_name)s: %(message)s")
+                    % {
+                        "move_name": move_line.name,
+                        "message": "".join(map(str, ex.args)),
+                    }
+                ) from ex
+
+    def _export_data_b110(self, moves, serial):
+        """Export accounts to b110 records"""
+        total_debit = 0
+        total_credit = 0
+        move_lines = moves.mapped("line_ids")
+        for move_line in move_lines:
+            total_debit += move_line.debit
+            total_credit += move_line.credit
+        balance = total_credit - total_debit
+        for account in move_lines.mapped("account_id"):
+            serial += 1
+            try:
+                yield RecordDataAccount(
+                    serial=serial,
+                    company_vat=self.company_id.vat,
+                    account_code=account.code,
+                    account_name=account.name,
+                    trial_balance_code=account.code,
+                    balance=balance,
+                    debit=total_debit,
+                    credit=total_credit,
+                )
+            except ValueError as ex:
+                raise exceptions.UserError(
+                    _("Error exporting %(move_name)s: %(message)s")
+                    % {
+                        "move_name": account.name,
+                        "message": "".join(map(str, ex.args)),
+                    }
+                ) from ex
+
     def _export_data_c100_document_type(self, move):
         return 400 if move.move_type.startswith("in") else 500
 
-    def _export_data_c100(self):
-        serial = 0
-        for move in self.env["account.move"].search(
-            [
-                ("date", ">=", self.date_start),
-                ("date", "<=", self.date_end),
-                ("state", "=", "posted"),
-            ]
-        ):
+    def _export_data_c100(self, moves, serial):
+        """Export moves to c100 records"""
+        for move in moves:
             serial += 1
             try:
                 yield RecordDataDocument(
