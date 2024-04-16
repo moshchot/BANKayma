@@ -110,6 +110,11 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: l10n_il_openformat
+#: model:ir.model.fields,field_description:l10n_il_openformat.field_l10n_il_openformat_export__move_domain
+msgid "Move Domain"
+msgstr ""
+
+#. module: l10n_il_openformat
 #: model:ir.actions.act_window,name:l10n_il_openformat.action_l10n_il_openformat_export
 #: model:ir.ui.menu,name:l10n_il_openformat.menu_l10n_il_openformat_export
 msgid "OPENFORMAT"
