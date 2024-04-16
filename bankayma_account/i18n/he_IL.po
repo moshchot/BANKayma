@@ -1970,6 +1970,13 @@ msgid "YourCompany"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[BanKayma] %(company_name)s you’ve been paid! (Ref %(ref)s)"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "amounting in"
 msgstr "על סך"
@@ -2005,6 +2012,13 @@ msgstr "מפרוייקט"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "invoice"
 msgstr "חשבון"
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "n/a"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
