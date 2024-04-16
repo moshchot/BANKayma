@@ -39,6 +39,7 @@
                             name="move_domain"
                             widget="domain"
                             options="{'model': 'account.move'}"
+                            groups="base.group_no_one"
                         />
                         <field name="b100" />
                         <field name="c100" />

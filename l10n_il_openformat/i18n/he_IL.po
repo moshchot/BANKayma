@@ -46,6 +46,11 @@ msgid "Display Name"
 msgstr ""
 
 #. module: l10n_il_openformat
+#: model:ir.model.fields,field_description:l10n_il_openformat.field_l10n_il_openformat_export__c100
+msgid "Documents (C*)"
+msgstr ""
+
+#. module: l10n_il_openformat
 #: model:ir.model.fields,field_description:l10n_il_openformat.field_l10n_il_openformat_export__export_file
 msgid "Download"
 msgstr ""
@@ -108,4 +113,9 @@ msgstr ""
 #: code:addons/l10n_il_openformat/models/l10n_il_openformat_export.py:0
 #, python-format
 msgid "Start date needs to be greater than end date"
+msgstr ""
+
+#. module: l10n_il_openformat
+#: model:ir.model.fields,field_description:l10n_il_openformat.field_l10n_il_openformat_export__b100
+msgid "Transactions (B*)"
 msgstr ""
