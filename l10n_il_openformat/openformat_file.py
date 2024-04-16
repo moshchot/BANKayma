@@ -30,7 +30,11 @@ class OpenformatFile(object):
 class Record(object):
     def __init__(self, _fields, **_data):
         self._fields = _fields
+        self._field_names = tuple([field.name for field in _fields])
         self._data = _data
+        for field in _data:
+            if field not in self._field_names:
+                raise ValueError("Unknown field %s for %s given" % (field, self))
 
     def _format_field(self, field, data):
         if field.type == int:
@@ -105,6 +109,8 @@ class RecordInit(Record):
             ),
             **_data
         )
+        self._data["code"] = "A000"
+        self._data["system_constant"] = "&OF1.31&"
 
 
 class RecordInitSummary(Record):
@@ -123,7 +129,7 @@ class RecordDataOpen(Record):
         super().__init__(
             (
                 F(1100, 4, "code"),
-                F(1101, 9, "registered_tax"),
+                F(1101, 9, "serial", int),
                 F(1102, 9, "vat", int),
                 F(1103, 15, "primary_id", int),
                 F(1104, 8, "system_constant"),
@@ -132,6 +138,8 @@ class RecordDataOpen(Record):
             **_data
         )
         self._data["code"] = "A100"
+        self._data["serial"] = 1
+        self._data["system_constant"] = "&OF1.31&"
 
 
 class RecordDataClose(Record):
@@ -139,7 +147,7 @@ class RecordDataClose(Record):
         super().__init__(
             (
                 F(1150, 4, "code"),
-                F(1151, 9, "registered_tax"),
+                F(1151, 9, "serial", int),
                 F(1152, 9, "vat", int),
                 F(1153, 15, "primary_id", int),
                 F(1154, 8, "system_constant"),
@@ -149,6 +157,7 @@ class RecordDataClose(Record):
             **_data
         )
         self._data["code"] = "Z900"
+        self._data["system_constant"] = "&OF1.31&"
 
 
 class RecordDataDocument(Record):
@@ -192,3 +201,73 @@ class RecordDataDocument(Record):
             **_data
         )
         self._data["code"] = "C100"
+
+
+class RecordDataTransaction(Record):
+    def __init__(self, **_data):
+        super().__init__(
+            (
+                F(1350, 4, "code"),
+                F(1351, 9, "serial", int),
+                F(1352, 9, "company_vat", int),
+                F(1353, 10, "transaction_id", int),
+                F(1354, 5, "line_number", int),
+                F(1355, 8, "batch_number", int),
+                F(1356, 15, "transaction_type"),
+                F(1357, 20, "reference1"),
+                F(1358, 3, "reference1_type", int),
+                F(1359, 20, "reference2"),
+                F(1360, 3, "reference2_type", int),
+                F(1361, 50, "details"),
+                F(1362, 8, "date", date),
+                F(1363, 8, "value_date", date),
+                F(1364, 15, "account_id"),
+                F(1365, 15, "account2_id"),
+                F(1366, 1, "sign", int),
+                F(1367, 3, "currency"),
+                F(1368, 15, "amount", float),
+                F(1369, 15, "amount_currency", float),
+                F(1370, 12, "quantity", float),
+                F(1371, 10, "matching1"),
+                F(1372, 10, "matching2"),
+                F(1374, 7, "branch_id"),
+                F(1375, 8, "create_date", date),
+                F(1376, 9, "user_id"),
+                F(1377, 25, "unused"),
+            ),
+            **_data
+        )
+        self._data["code"] = "B100"
+
+
+class RecordDataAccount(Record):
+    def __init__(self, **_data):
+        super().__init__(
+            (
+                F(1400, 4, "code"),
+                F(1401, 9, "serial", int),
+                F(1402, 9, "company_vat", int),
+                F(1403, 15, "account_code"),
+                F(1404, 50, "account_name"),
+                F(1405, 15, "trial_balance_code"),
+                F(1406, 30, "trial_balance_code_description"),
+                F(1407, 50, "partner_street"),
+                F(1408, 10, "partner_street_number"),
+                F(1409, 30, "partner_city"),
+                F(1410, 8, "partner_zip"),
+                F(1411, 30, "partner_country"),
+                F(1412, 2, "partner_country_code"),
+                F(1413, 15, "central_account"),
+                F(1414, 15, "balance", float),
+                F(1415, 15, "debit", float),
+                F(1416, 15, "credit", float),
+                F(1417, 4, "accounting_type", int),
+                F(1419, 9, "partner_vat", int),
+                F(1421, 7, "branch_id"),
+                F(1422, 15, "balance_currency", float),
+                F(1423, 3, "currency"),
+                F(1424, 16, "unused"),
+            ),
+            **_data
+        )
+        self._data["code"] = "B110"
