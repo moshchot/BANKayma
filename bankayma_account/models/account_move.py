@@ -652,7 +652,14 @@ class AccountMove(models.Model):
             this.with_context(
                 mail_notify_author=True,
                 mail_notify_force_inbox=this.journal_id.bankayma_inhibit_mails,
-            ).message_post_with_view("bankayma_account.qweb_template_account_move_paid")
+            ).message_post_with_view(
+                "bankayma_account.qweb_template_account_move_paid",
+                subject=_("[BanKayma] %(company_name)s you’ve been paid! (Ref %(ref)s)")
+                % {
+                    "company_name": this.company_id.name,
+                    "ref": this.name or _("n/a"),
+                },
+            )
         for this in self:
             if this.journal_id.bankayma_mail_template_invoice_paid:
                 this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
