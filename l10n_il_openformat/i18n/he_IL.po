@@ -59,6 +59,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_il_openformat/models/l10n_il_openformat_export.py:0
 #, python-format
+msgid "End date needs to be greater than start date"
+msgstr ""
+
+#. module: l10n_il_openformat
+#. odoo-python
+#: code:addons/l10n_il_openformat/models/l10n_il_openformat_export.py:0
+#, python-format
 msgid "Error exporting %(move_name)s: %(message)s"
 msgstr ""
 
@@ -111,13 +118,6 @@ msgstr ""
 #. module: l10n_il_openformat
 #: model:ir.model,name:l10n_il_openformat.model_l10n_il_openformat_export
 msgid "OPENFORMAT export"
-msgstr ""
-
-#. module: l10n_il_openformat
-#. odoo-python
-#: code:addons/l10n_il_openformat/models/l10n_il_openformat_export.py:0
-#, python-format
-msgid "Start date needs to be greater than end date"
 msgstr ""
 
 #. module: l10n_il_openformat
