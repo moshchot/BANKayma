@@ -171,7 +171,7 @@ class L10nIlOpenformatExport(models.Model):
             RecordDataClose(
                 primary_id=self.id,
                 vat=self.company_id.vat,
-                serial=serial,
+                serial=serial + 1,
                 record_count=b100_count
                 + b110_count
                 + c100_count
@@ -197,6 +197,7 @@ class L10nIlOpenformatExport(models.Model):
 
     def _export_data_get_move_domain(self):
         return [
+            ("company_id", "=", self.company_id.id),
             ("date", ">=", self.date_start),
             ("date", "<=", self.date_end),
             ("state", "=", "posted"),
@@ -225,7 +226,7 @@ class L10nIlOpenformatExport(models.Model):
                     details=move_line.name,
                     date=move_line.date,
                     value_date=move_line.date_maturity or move_line.date,
-                    account_id=move_line.account_id.id,
+                    account_code=move_line.account_id.code,
                     sign=1 if move_line.debit > 0 else 2,
                     amount=move_line.debit or move_line.credit,
                     quantity=move_line.quantity,
@@ -243,14 +244,33 @@ class L10nIlOpenformatExport(models.Model):
 
     def _export_data_b110(self, moves, serial):
         """Export accounts to b110 records"""
-        total_debit = 0
-        total_credit = 0
-        move_lines = moves.mapped("line_ids")
-        for move_line in move_lines:
-            total_debit += move_line.debit
-            total_credit += move_line.credit
-        balance = total_credit - total_debit
-        for account in move_lines.mapped("account_id"):
+        total_debit = {}
+        total_credit = {}
+        opening_balance = {}
+
+        move_line_domain = [
+            ("move_id.%s" % field_name, operator, value)
+            for field_name, operator, value in self._export_data_get_move_domain()
+        ]
+
+        move_line_domain_opening_balance = [
+            (field_name, operator, value)
+            for field_name, operator, value in move_line_domain
+            if field_name not in ("move_id.date")
+        ] + [("move_id.date", "<", self.date_start)]
+
+        for row in self.env["account.move.line"].read_group(
+            move_line_domain, ["debit", "credit"], ["account_id"]
+        ):
+            total_debit[row["account_id"][0]] = row["debit"]
+            total_credit[row["account_id"][0]] = row["credit"]
+
+        for row in self.env["account.move.line"].read_group(
+            move_line_domain_opening_balance, ["debit", "credit"], ["account_id"]
+        ):
+            opening_balance[row["account_id"][0]] = row["credit"] - row["debit"]
+
+        for account in moves.mapped("line_ids.account_id"):
             serial += 1
             try:
                 yield RecordDataAccount(
@@ -259,9 +279,10 @@ class L10nIlOpenformatExport(models.Model):
                     account_code=account.code,
                     account_name=account.name,
                     trial_balance_code=account.code,
-                    balance=balance,
-                    debit=total_debit,
-                    credit=total_credit,
+                    trial_balance_code_description="/",
+                    opening_balance=opening_balance.get(account.id, 0),
+                    debit=total_debit.get(account.id, 0),
+                    credit=total_credit.get(account.id, 0),
                 )
             except ValueError as ex:
                 raise exceptions.UserError(

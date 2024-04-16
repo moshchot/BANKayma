@@ -37,6 +37,8 @@ class Record(object):
                 raise ValueError("Unknown field %s for %s given" % (field, self))
 
     def _format_field(self, field, data):
+        if data is None:
+            return ("!" if field.type == str else "0") * field.length
         if field.type == int:
             try:
                 number = int(str(data or 0).lstrip("0").strip() or 0)
@@ -48,10 +50,14 @@ class Record(object):
                         "value": data,
                     }
                 ) from ex
+            if number < 0:
+                raise ValueError("Field %(field_name)s cannot be negative")
             return ("{:0>%dd}" % field.length).format(number % 10**field.length)
         elif field.type == float:
             number = int((data or 0) * 100)
-            return ("{:0=+%dd}" % field.length).format(number % 10**field.length)
+            return ("{:0=+%dd}" % field.length).format(
+                (-1 if number < 0 else 1) * (abs(number) % 10 ** (field.length - 1))
+            )
         elif field.type == date:
             data = data or date.min
             return ("{:0>%dd}" % field.length).format(
@@ -118,7 +124,7 @@ class RecordInitSummary(Record):
         super().__init__(
             (
                 F(105, 4, "code"),
-                F(1105, 51, "count", int),
+                F(1105, 15, "count", int),
             ),
             **_data
         )
@@ -221,8 +227,8 @@ class RecordDataTransaction(Record):
                 F(1361, 50, "details"),
                 F(1362, 8, "date", date),
                 F(1363, 8, "value_date", date),
-                F(1364, 15, "account_id"),
-                F(1365, 15, "account2_id"),
+                F(1364, 15, "account_code"),
+                F(1365, 15, "account2_code"),
                 F(1366, 1, "sign", int),
                 F(1367, 3, "currency"),
                 F(1368, 15, "amount", float),
@@ -258,7 +264,7 @@ class RecordDataAccount(Record):
                 F(1411, 30, "partner_country"),
                 F(1412, 2, "partner_country_code"),
                 F(1413, 15, "central_account"),
-                F(1414, 15, "balance", float),
+                F(1414, 15, "opening_balance", float),
                 F(1415, 15, "debit", float),
                 F(1416, 15, "credit", float),
                 F(1417, 4, "accounting_type", int),
