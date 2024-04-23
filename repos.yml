@@ -207,6 +207,8 @@ web:
     - oca refs/pull/2634/head
     # web_ir_actions_act_window_page
     - oca refs/pull/2698/head
+    # web_widget_pattern
+    - oca refs/pull/2806/head
   remotes:
     oca: https://github.com/OCA/web.git
 website-cms:
