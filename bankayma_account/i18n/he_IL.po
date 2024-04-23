@@ -1977,6 +1977,13 @@ msgid "[BanKayma] %(company_name)s you’ve been paid! (Ref %(ref)s)"
 msgstr "[בנקיימא] %(company_name)s שילמנו לך! (Ref %(ref)s)"
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[BanKayma] Payment request from %(company_name)s (Ref %(ref)s)"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "amounting in"
 msgstr "על סך"
