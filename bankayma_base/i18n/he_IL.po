@@ -201,6 +201,21 @@ msgid "Status"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__vat
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__vat
+msgid "Tax ID"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model.fields,help:bankayma_base.field_res_partner__vat
+#: model:ir.model.fields,help:bankayma_base.field_res_users__vat
+msgid ""
+"The Tax Identification Number. Values here will be validated based on the "
+"country format. You can use '/' to indicate that the partner is not subject "
+"to tax."
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model,name:bankayma_base.model_res_users
 msgid "User"
 msgstr "חבר"
