@@ -495,7 +495,12 @@ class AccountMove(models.Model):
                 attachment_ids=attachments.ids,
             )
         invoice.with_context(mail_notify_author=True).message_post_with_view(
-            "bankayma_account.qweb_template_account_move_new_from_portal"
+            "bankayma_account.qweb_template_account_move_new_from_portal",
+            subject=_("[BanKayma] Payment request from %(company_name)s (Ref %(ref)s)")
+            % {
+                "company_name": invoice.company_id.name,
+                "ref": invoice.name or _("n/a"),
+            },
         )
         if invoice.journal_id.bankayma_mail_template_portal_vendor_bill:
             invoice.journal_id.bankayma_mail_template_portal_vendor_bill.send_mail(
