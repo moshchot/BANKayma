@@ -101,6 +101,14 @@ class AccountMove(models.Model):
     bankayma_vendor_tax_exists = fields.Boolean(
         compute="_compute_bankayma_vendor_tax_exists"
     )
+    bankayma_fiscal_position_id = fields.Many2one(
+        "account.fiscal.position",
+        store=True,
+        string="Parent fiscal position",
+        compute="_compute_bankayma_fiscal_position_id",
+        groups="bankayma_base.group_org_manager",
+        compute_sudo=True,
+    )
 
     def _compute_amount(self):
         """
@@ -247,6 +255,14 @@ class AccountMove(models.Model):
         for this in self:
             this.hide_post_button |= this.state == "draft" and bool(this.reviewer_ids)
         return result
+
+    @api.depends("fiscal_position_id")
+    def _compute_bankayma_fiscal_position_id(self):
+        for this in self:
+            fpos = this.fiscal_position_id
+            while fpos.company_cascade_parent_id:
+                fpos = fpos.company_cascade_parent_id
+            this.bankayma_fiscal_position_id = fpos
 
     def write(self, vals):
         result = super().write(vals)
