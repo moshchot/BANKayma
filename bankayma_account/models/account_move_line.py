@@ -110,3 +110,8 @@ class AccountMoveLine(models.Model):
                 self.product_id.code,
             ),
         )
+
+    def _prepare_account_move_line(self, dest_move, dest_company):
+        result = super()._prepare_account_move_line(dest_move, dest_company)
+        result["name"] = self.name
+        return result
