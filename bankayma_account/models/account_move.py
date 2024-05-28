@@ -109,6 +109,7 @@ class AccountMove(models.Model):
         groups="bankayma_base.group_org_manager",
         compute_sudo=True,
     )
+    system1000_error_message = fields.Char()
 
     def _compute_amount(self):
         """
@@ -604,7 +605,10 @@ class AccountMove(models.Model):
             line._compute_tax_ids()
 
     def _get_under_validation_exceptions(self):
-        return super()._get_under_validation_exceptions() + ["validated_state"]
+        return super()._get_under_validation_exceptions() + [
+            "validated_state",
+            "system1000_error_message",
+        ]
 
     def action_register_payment(self):
         result = super().action_register_payment()
