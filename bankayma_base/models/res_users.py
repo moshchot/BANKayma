@@ -25,7 +25,9 @@ class ResUsers(models.Model):
         """Add all existing companies to users in self that are org managers"""
         all_companies = self.env["res.company"].sudo().search([])
         for this in self:
-            if this.has_group("bankayma_base.group_org_manager"):
+            if this.has_group("bankayma_base.group_org_manager") and bool(
+                all_companies - this.company_ids
+            ):
                 this.write(
                     {
                         "company_ids": [(6, 0, all_companies.ids)],
