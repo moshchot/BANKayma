@@ -12,11 +12,27 @@ from odoo.addons.l10n_il_system1000.system1000_file import (
 class L10nIlSystem1000Export(models.TransientModel):
     _inherit = "l10n.il.system1000.export"
 
+    failed_move_ids = fields.Many2many("account.move", readonly=True)
+
     def button_import(self):
         if self.import_file_valid:
             self._import_valid_file()
         if self.import_file_invalid:
             self._import_invalid_file()
+        if self.failed_move_ids:
+            return {
+                "type": "ir.actions.act_window",
+                "name": _("Failed System1000 results"),
+                "res_model": "account.move",
+                "domain": [("id", "in", self.failed_move_ids.ids)],
+                "views": [
+                    (
+                        self.env.ref("bankayma_account.view_failed_sys1k_moves").id,
+                        "tree",
+                    ),
+                    (False, "form"),
+                ],
+            }
 
     def _validate_confirm(self, move):
         """Confirm a move, or validate it if under validation"""
@@ -134,4 +150,6 @@ class L10nIlSystem1000Export(models.TransientModel):
             move.message_post(
                 body=_("Cancelling because of error: %s") % data.error_comment
             )
+            move.system1000_error_message = data.error_comment
+            self.failed_move_ids += move
             self._reject_cancel(move)
