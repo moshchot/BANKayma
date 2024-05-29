@@ -148,13 +148,6 @@ reporting-engine:
     - oca 86ea5e4deb8cebbeb88c8ee89810099062e8e6b2
   remotes:
     oca: https://github.com/OCA/reporting-engine.git
-sandbox:
-  defaults:
-    depth: 1
-  merges:
-    - origin main
-  remotes:
-    origin: git@github.com:moshchot/sandbox
 server-auth:
   defaults:
     depth: 1
