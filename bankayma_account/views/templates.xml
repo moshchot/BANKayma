@@ -517,6 +517,22 @@
         <div name="address_same_as_shipping" position="attributes">
             <attribute name="class" remove="offset-col-6" separator=" " />
         </div>
+        <div id="partner_vat_address_same_as_shipping" position="before">
+            <div t-field="o.partner_id.email" t-if="o.partner_id.email" />
+        </div>
+        <div id="partner_vat_address_same_as_shipping" position="after">
+            <div
+                t-field="o.fiscal_position_id.name"
+                t-if="o.move_type == 'in_invoice'"
+            />
+            <div t-if="o.partner_id.bank_ids">
+                <span t-field="o.partner_id.bank_ids[:1].acc_number" />
+                ,
+                <span t-field="o.partner_id.bank_ids[:1].branch_code" />
+                ,
+                <span t-field="o.partner_id.bank_ids[:1].bank_id.name" />
+            </div>
+        </div>
         <div name="no_shipping" position="before">
             <div class="col-6">
                 <t t-set="information_block">
@@ -528,6 +544,38 @@
         </div>
         <div name="no_shipping" position="attributes">
             <attribute name="class" remove="offset-col-6" separator=" " />
+        </div>
+        <div id="partner_vat_no_shipping" position="before">
+            <div t-field="o.partner_id.email" t-if="o.partner_id.email" />
+        </div>
+        <div id="partner_vat_no_shipping" position="after">
+            <div
+                t-field="o.fiscal_position_id.name"
+                t-if="o.move_type == 'in_invoice'"
+            />
+            <div t-if="o.partner_id.bank_ids">
+                <span t-field="o.partner_id.bank_ids[:1].acc_number" />
+                ,
+                <span t-field="o.partner_id.bank_ids[:1].branch_code" />
+                ,
+                <span t-field="o.partner_id.bank_ids[:1].bank_id.name" />
+            </div>
+        </div>
+        <div id="partner_vat_address_not_same_as_shipping" position="before">
+            <div t-field="o.partner_id.email" t-if="o.partner_id.email" />
+        </div>
+        <div id="partner_vat_address_not_same_as_shipping" position="after">
+            <div
+                t-field="o.fiscal_position_id.name"
+                t-if="o.move_type == 'in_invoice'"
+            />
+            <div t-if="o.partner_id.bank_ids">
+                <span t-field="o.partner_id.bank_ids[:1].acc_number" />
+                ,
+                <span t-field="o.partner_id.bank_ids[:1].branch_code" />
+                ,
+                <span t-field="o.partner_id.bank_ids[:1].bank_id.name" />
+            </div>
         </div>
         <xpath
             expr="//div[@name='address_not_same_as_shipping']//address"
@@ -546,6 +594,14 @@
         </xpath>
         <xpath expr="//p[@t-field='o.invoice_date_due']/.." position="attributes">
             <attribute name="style">display: none</attribute>
+        </xpath>
+    </template>
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="//span[hasclass('page')]/.." position="before">
+            <div t-if="o and o._name == 'account.move' and o.invoice_date">
+                Created on
+                <span t-field="o.invoice_date" />
+            </div>
         </xpath>
     </template>
     <template id="payment_checkout" inherit_id="website_payment.payment_checkout">
