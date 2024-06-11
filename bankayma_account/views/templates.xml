@@ -90,6 +90,11 @@
                 env.user.has_group('bankayma_base.group_vendor') and 'label-optional' or ''}
             </attribute>
         </xpath>
+        <xpath expr="//input[@name='vat']" position="attributes">
+            <attribute name="type">number</attribute>
+            <attribute name="max">999999999</attribute>
+            <attribute name="min">1</attribute>
+        </xpath>
         <xpath expr="//label[@for='city']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
         </xpath>
@@ -148,6 +153,8 @@
                         </label>
                         <input
                             name="bank_branch_code"
+                            type="number"
+                            min="1"
                             t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
                             t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
                         />
@@ -163,6 +170,8 @@
                         </label>
                         <input
                             name="bank_acc_number"
+                            type="number"
+                            min="1"
                             t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
                             t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
                         />
