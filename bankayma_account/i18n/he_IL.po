@@ -737,6 +737,13 @@ msgid "Failed Move"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
+#, python-format
+msgid "Failed System1000 results"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_payment_form
 msgid "Fill in a comment..."
 msgstr "הערה..."
@@ -1557,13 +1564,6 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_restrict_partner
 msgid "Restrict partners"
-msgstr ""
-
-#. module: bankayma_account
-#. odoo-python
-#: code:addons/bankayma_account/wizards/l10n_il_system1000_export.py:0
-#, python-format
-msgid "Results"
 msgstr ""
 
 #. module: bankayma_account
