@@ -535,6 +535,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_date
+#: model_terms:ir.ui.view,arch_db:bankayma_account.external_layout_standard
 msgid "Created on"
 msgstr ""
 
