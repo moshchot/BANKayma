@@ -320,7 +320,7 @@
         </p>
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
             We are happy to inform you that we've transferred
-            <span style="font-weight:bold;" t-field="object.amount_total" />
+            <span style="font-weight:bold;" t-field="object.amount_untaxed_signed" />
             on
             <t t-out="object.bankayma_payment_date or ''" />
             . for
