@@ -3,7 +3,7 @@
 
 from base64 import b64encode
 from io import StringIO
-from operator import attrgetter
+from operator import attrgetter, itemgetter
 
 from odoo import _, exceptions, fields, models
 
@@ -111,10 +111,18 @@ class L10nIlHashavshevetExport(models.TransientModel):
         def format_date(date):
             return date and date.strftime("%d%m%y") or ""
 
+        payments = self.env["account.payment"].browse(
+            map(
+                itemgetter("account_payment_id"),
+                move.invoice_payments_widget or [],
+            ),
+        )
+        payment_ref = payments[:1].ref
+
         yield ExportRecord(
             code="2",
-            ref1=move.id,
-            ref2=move.payment_id.ref,
+            ref1=move.name,
+            ref2=payment_ref,
             date_ref=format_date(move.invoice_date),
             date_value=format_date(move.bankayma_payment_date),
             currency=move.currency_id.name,
@@ -130,8 +138,8 @@ class L10nIlHashavshevetExport(models.TransientModel):
 
         yield ExportRecord(
             code="5",
-            ref1=move.id,
-            ref2=move.payment_id.ref,
+            ref1=move.name,
+            ref2=payment_ref,
             date_ref=format_date(move.invoice_date),
             date_value=format_date(move.bankayma_payment_date),
             currency=move.currency_id.name,
