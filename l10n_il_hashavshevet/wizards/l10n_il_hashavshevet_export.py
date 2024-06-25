@@ -140,7 +140,7 @@ class L10nIlHashavshevetExport(models.TransientModel):
 
         yield ExportRecord(
             code="5",
-            ref1=move.name,
+            ref1=(payments[:1].name or "").split("/")[-1],
             ref2=payment_ref,
             date_ref=format_date(move.invoice_date),
             date_value=format_date(move.bankayma_payment_date),
