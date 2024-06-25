@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from base64 import b64encode
-from datetime import date
 from io import StringIO
 from operator import attrgetter
 
@@ -50,10 +49,10 @@ class L10nIlHashavshevetExport(models.TransientModel):
                     (
                         # TODO make configurable
                         F(2, 3, "code"),
-                        F(3, 9, "ref1", int),
-                        F(4, 9, "ref2", int),
-                        F(5, 10, "date_ref", date),
-                        F(6, 10, "date_value", date),
+                        F(3, 9, "ref1"),
+                        F(5, 10, "date_ref"),
+                        F(4, 9, "ref2"),
+                        F(6, 10, "date_value"),
                         F(8, 5, "currency"),
                         F(9, 50, "details"),
                         F(10, 15, "left_account1"),
@@ -72,12 +71,12 @@ class L10nIlHashavshevetExport(models.TransientModel):
         export_map_file = StringIO()
 
         export_map_file.write(
-            "%s\n" % sum(map(attrgetter("length"), ExportRecord()._fields))
+            "%s\r\n" % sum(map(attrgetter("length"), ExportRecord()._fields))
         )
         pos = 1
         for field in ExportRecord()._fields:
             export_map_file.write(
-                "%s %s ; %s\n" % (pos, pos + field.length - 1, field.code)
+                "%s %s;%s\r\n" % (pos, pos + field.length - 1, field.code)
             )
             pos += field.length
 
@@ -109,12 +108,15 @@ class L10nIlHashavshevetExport(models.TransientModel):
         def first_of_type(account_type):
             return all_of_type(account_type)[:1]
 
+        def format_date(date):
+            return date and date.strftime("%d%m%y") or ""
+
         yield ExportRecord(
             code="2",
-            ref1=move.id,
-            ref2=move.id,
-            date_ref=move.invoice_date,
-            date_value=move.bankayma_payment_date,
+            ref1=move.ref,
+            ref2=move.payment_reference,
+            date_ref=format_date(move.invoice_date),
+            date_value=format_date(move.bankayma_payment_date),
             currency=move.currency_id.name,
             details=move.partner_id.name,
             left_account1=first_of_type("expense").account_id.code,
@@ -128,10 +130,10 @@ class L10nIlHashavshevetExport(models.TransientModel):
 
         yield ExportRecord(
             code="5",
-            ref1=move.id,
-            ref2=move.id,
-            date_ref=move.invoice_date,
-            date_value=move.bankayma_payment_date,
+            ref1=move.ref,
+            ref2=move.payment_reference,
+            date_ref=format_date(move.invoice_date),
+            date_value=format_date(move.bankayma_payment_date),
             currency=move.currency_id.name,
             details=move.partner_id.name,
             left_account1=first_of_type("liability_payable").account_id.code,
