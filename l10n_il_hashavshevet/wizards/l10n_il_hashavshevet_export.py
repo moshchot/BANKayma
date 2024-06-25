@@ -114,7 +114,9 @@ class L10nIlHashavshevetExport(models.TransientModel):
         payments = self.env["account.payment"].browse(
             map(
                 itemgetter("account_payment_id"),
-                move.invoice_payments_widget or [],
+                move.invoice_payments_widget
+                and move.invoice_payments_widget.get("content")
+                or [],
             ),
         )
         payment_ref = payments[:1].ref
