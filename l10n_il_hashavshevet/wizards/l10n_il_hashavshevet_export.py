@@ -3,6 +3,8 @@
 
 from base64 import b64encode
 from datetime import date
+from io import StringIO
+from operator import attrgetter
 
 from odoo import _, exceptions, fields, models
 
@@ -23,8 +25,10 @@ class L10nIlHashavshevetExport(models.TransientModel):
     journal_ids = fields.Many2many(
         "account.journal", string="Journals", check_company=True
     )
-    export_file = fields.Binary(string="Result")
+    export_file = fields.Binary(string="DAT file")
     export_file_name = fields.Char(default="MOVEIN.dat")
+    export_map_file = fields.Binary(string="PRM file")
+    export_map_file_name = fields.Char(default="MOVEIN.prm")
 
     def button_export(self):
         moves = self.env["account.move"].search(
@@ -65,6 +69,17 @@ class L10nIlHashavshevetExport(models.TransientModel):
                 )
 
         export_file = OpenformatFile()
+        export_map_file = StringIO()
+
+        export_map_file.write(
+            "%s\n" % sum(map(attrgetter("length"), ExportRecord()._fields))
+        )
+        pos = 1
+        for field in ExportRecord()._fields:
+            export_map_file.write(
+                "%s %s ; %s\n" % (pos, pos + field.length - 1, field.code)
+            )
+            pos += field.length
 
         for move in moves:
             for record in getattr(self, "_export_move_%s" % move.move_type)(
@@ -73,6 +88,9 @@ class L10nIlHashavshevetExport(models.TransientModel):
                 export_file.append(record)
 
         self.export_file = b64encode(export_file.tobytes())
+        self.export_map_file = b64encode(
+            export_map_file.getvalue().encode(export_file.encoding)
+        )
 
         action_dict = self.env["ir.actions.actions"]._for_xml_id(
             "l10n_il_hashavshevet.action_l10n_il_hashavshevet_export"

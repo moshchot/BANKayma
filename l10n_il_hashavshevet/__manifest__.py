@@ -16,6 +16,8 @@
     "preloadable": True,
     "depends": [
         "account",
+        # TODO: move the code depending on this to bankayma_account, invert dependency
+        "bankayma_account",
     ],
     "data": [
         "security/ir.model.access.csv",

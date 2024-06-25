@@ -26,6 +26,12 @@
                         readonly="1"
                     />
                     <field name="export_file_name" invisible="1" />
+                    <field
+                        name="export_map_file"
+                        filename="export_map_file_name"
+                        readonly="1"
+                    />
+                    <field name="export_map_file_name" invisible="1" />
                 </group>
                 <footer>
                     <button
