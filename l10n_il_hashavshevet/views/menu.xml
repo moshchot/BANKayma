@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="action_l10n_il_hashavshevet_export" model="ir.actions.act_window">
+        <field name="name">Export to Hashavshevet</field>
+        <field name="res_model">l10n.il.hashavshevet.export</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="action_l10n_il_hashavshevet_config_movin" model="ir.actions.act_window">
+        <field name="name">Configuration: MOVIN</field>
+        <field name="res_model">l10n.il.hashavshevet.config.movin</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record
+        id="action_l10n_il_hashavshevet_config_heshin"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Configuration: HESHIN</field>
+        <field name="res_model">l10n.il.hashavshevet.config.heshin</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_l10n_il_hashavshevet"
+        name="Hashavshevet"
+        parent="account.menu_finance_reports"
+    />
+    <menuitem
+        id="menu_l10n_il_hashavshevet_export"
+        action="action_l10n_il_hashavshevet_export"
+        parent="menu_l10n_il_hashavshevet"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_l10n_il_hashavshevet_config_movin"
+        action="action_l10n_il_hashavshevet_config_movin"
+        parent="menu_l10n_il_hashavshevet"
+        sequence="100"
+    />
+    <menuitem
+        id="menu_l10n_il_hashavshevet_config_heshin"
+        action="action_l10n_il_hashavshevet_config_heshin"
+        parent="menu_l10n_il_hashavshevet"
+        sequence="110"
+    />
+</odoo>

@@ -22,6 +22,10 @@
     "data": [
         "security/ir.model.access.csv",
         "wizards/l10n_il_hashavshevet_export.xml",
+        "views/l10n_il_hashavshevet_config.xml",
+        "views/l10n_il_hashavshevet_config_movin.xml",
+        "views/l10n_il_hashavshevet_config_heshin.xml",
+        "views/menu.xml",
     ],
     "demo": [],
 }
