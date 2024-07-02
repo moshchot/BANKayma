@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_l10n_il_hashavshevet_heshin_form" model="ir.ui.view">
+        <field name="model">l10n.il.hashavshevet.config.heshin</field>
+        <field name="inherit_id" ref="view_l10n_il_hashavshevet_config_form" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <group name="fields" position="inside">
+                <div>
+                    <label for="expr_key" />
+                </div>
+                <div>
+                    <field name="expr_key" widget="ace" options="{'mode': 'python'}" />
+                    <div
+                        attrs="{'invisible': [('expr_key_result', '=', False)]}"
+                        role="alert"
+                        class="alert alert-danger"
+                    >
+                        <field name="expr_key_result" />
+                    </div>
+                    <div>
+                        Examples:
+                        <dl>
+                            <dt>
+                                <code>
+                                    ','.join(line.account_id.code for line in
+                                    move.line_ids)
+                                </code>
+                            </dt>
+                            <dd>comma separated list of all account codes in a move</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div>
+                    <label for="expr_name" />
+                </div>
+                <div>
+                    <field name="expr_name" widget="ace" options="{'mode': 'python'}" />
+                    <div
+                        attrs="{'invisible': [('expr_name_result', '=', False)]}"
+                        role="alert"
+                        class="alert alert-danger"
+                    >
+                        <field name="expr_name_result" />
+                    </div>
+                </div>
+                <div>
+                    <label for="expr_sort_code" />
+                </div>
+                <div>
+                    <field
+                        name="expr_sort_code"
+                        widget="ace"
+                        options="{'mode': 'python'}"
+                    />
+                    <div
+                        attrs="{'invisible': [('expr_sort_code_result', '=', False)]}"
+                        role="alert"
+                        class="alert alert-danger"
+                    >
+                        <field name="expr_sort_code_result" />
+                    </div>
+                </div>
+                <div>
+                    <label for="expr_filter" />
+                </div>
+                <div>
+                    <field
+                        name="expr_filter"
+                        widget="ace"
+                        options="{'mode': 'python'}"
+                    />
+                    <div
+                        attrs="{'invisible': [('expr_filter_result', '=', False)]}"
+                        role="alert"
+                        class="alert alert-danger"
+                    >
+                        <field name="expr_filter_result" />
+                    </div>
+                </div>
+            </group>
+        </field>
+    </record>
+    <record id="view_l10n_il_hashavshevet_heshin_tree" model="ir.ui.view">
+        <field name="model">l10n.il.hashavshevet.config.heshin</field>
+        <field name="inherit_id" ref="view_l10n_il_hashavshevet_config_tree" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="expr_condition" position="after">
+                <field name="expr_key" />
+                <field name="expr_name" />
+                <field name="expr_sort_code" />
+                <field name="expr_filter" />
+            </field>
+        </field>
+    </record>
+</odoo>

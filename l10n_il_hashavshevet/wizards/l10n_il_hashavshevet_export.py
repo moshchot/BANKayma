@@ -24,18 +24,22 @@ class L10nIlHashavshevetExport(models.TransientModel):
     journal_ids = fields.Many2many(
         "account.journal", string="Journals", check_company=True
     )
-    export_file = fields.Binary(string="DAT file")
-    export_file_name = fields.Char(default="MOVEIN.dat")
-    export_map_file = fields.Binary(string="PRM file")
-    export_map_file_name = fields.Char(default="MOVEIN.prm")
+    export_file_movin = fields.Binary(string="DAT file")
+    export_file_movin_name = fields.Char(default="MOVEIN.dat")
+    export_map_file_movin = fields.Binary(string="PRM file")
+    export_map_file_movin_name = fields.Char(default="MOVEIN.prm")
+
+    export_file_heshin = fields.Binary(string="DAT file")
+    export_file_heshin_name = fields.Char(default="HESHIN.dat")
+    export_map_file_heshin = fields.Binary(string="PRM file")
+    export_map_file_heshin_name = fields.Char(default="HESHIN.prm")
 
     def button_export(self):
         moves = self.env["account.move"].search(
             [
                 ("company_id", "=?", self.company_id.id),
-                ("invoice_date", ">=", self.date_start),
+                ("date", ">=", self.date_start),
                 ("date", "<=", self.date_end),
-                ("move_type", "=", "in_invoice"),
                 ("state", "=", "posted"),
             ]
         )
@@ -43,15 +47,15 @@ class L10nIlHashavshevetExport(models.TransientModel):
         if not moves:
             raise exceptions.UserError(_("No moves found"))
 
-        class ExportRecord(Record):
+        class ExportRecordMOVIN(Record):
             def __init__(self, **_data):
                 super().__init__(
                     (
                         # TODO make configurable
                         F(2, 3, "code"),
                         F(3, 9, "ref1"),
-                        F(5, 10, "date_ref"),
                         F(4, 9, "ref2"),
+                        F(5, 10, "date_ref"),
                         F(6, 10, "date_value"),
                         F(8, 5, "currency"),
                         F(9, 50, "details"),
@@ -67,28 +71,65 @@ class L10nIlHashavshevetExport(models.TransientModel):
                     **_data
                 )
 
-        export_file = OpenformatFile()
-        export_map_file = StringIO()
+        class ExportRecordHESHIN(Record):
+            def __init__(self, **_data):
+                super().__init__(
+                    (
+                        # TODO make configurable
+                        F(2, 15, "key"),
+                        F(3, 50, "name"),
+                        F(4, 9, "sort_code"),
+                        F(5, 5, "filter"),
+                    ),
+                    **_data
+                )
 
-        export_map_file.write(
-            "%s\r\n" % sum(map(attrgetter("length"), ExportRecord()._fields))
+        export_file_movin = OpenformatFile()
+        export_map_file_movin = StringIO()
+        export_file_heshin = OpenformatFile()
+        export_map_file_heshin = StringIO()
+
+        export_map_file_movin.write(
+            "%s\r\n" % sum(map(attrgetter("length"), ExportRecordMOVIN()._fields))
         )
         pos = 1
-        for field in ExportRecord()._fields:
-            export_map_file.write(
+        for field in ExportRecordMOVIN()._fields:
+            export_map_file_movin.write(
                 "%s %s;%s\r\n" % (pos, pos + field.length - 1, field.code)
             )
             pos += field.length
 
-        for move in moves:
-            for record in getattr(self, "_export_move_%s" % move.move_type)(
-                move, ExportRecord
-            ):
-                export_file.append(record)
+        export_map_file_heshin.write(
+            "%s\r\n" % sum(map(attrgetter("length"), ExportRecordHESHIN()._fields))
+        )
+        pos = 1
+        for field in ExportRecordHESHIN()._fields:
+            export_map_file_heshin.write(
+                "%s %s;%s\r\n" % (pos, pos + field.length - 1, field.code)
+            )
+            pos += field.length
 
-        self.export_file = b64encode(export_file.tobytes())
-        self.export_map_file = b64encode(
-            export_map_file.getvalue().encode(export_file.encoding)
+        movin_configs = self.env["l10n.il.hashavshevet.config.movin"].search([])
+        heshin_configs = self.env["l10n.il.hashavshevet.config.heshin"].search([])
+        for move in moves:
+            for movin_config in movin_configs:
+                if movin_config._eval_field(move, "expr_condition"):
+                    export_file_movin.append(
+                        ExportRecordMOVIN(**movin_config._eval_all(move))
+                    )
+            for heshin_config in heshin_configs:
+                if heshin_config._eval_field(move, "expr_condition"):
+                    record = ExportRecordHESHIN(**heshin_config._eval_all(move))
+                    if record not in export_file_heshin.records:
+                        export_file_heshin.append(record)
+
+        self.export_file_movin = b64encode(export_file_movin.tobytes())
+        self.export_map_file_movin = b64encode(
+            export_map_file_movin.getvalue().encode(export_file_movin.encoding)
+        )
+        self.export_file_heshin = b64encode(export_file_heshin.tobytes())
+        self.export_map_file_heshin = b64encode(
+            export_map_file_heshin.getvalue().encode(export_file_heshin.encoding)
         )
 
         action_dict = self.env["ir.actions.actions"]._for_xml_id(

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_l10n_il_hashavshevet_config_form" model="ir.ui.view">
+        <field name="model">l10n.il.hashavshevet.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="fields" colspan="4" col="2">
+                    <div>
+                        <label for="move_id" />
+                    </div>
+                    <div>
+                        <field name="move_id" />
+                        <div
+                            attrs="{'invisible': [('move_id', '!=', False)]}"
+                            role="alert"
+                            class="alert alert-warning"
+                        >
+                            Select an example move to preview your expressions
+                        </div>
+                    </div>
+                    <div>
+                        <label for="expr_condition" />
+                    </div>
+                    <div>
+                        <field
+                            name="expr_condition"
+                            widget="ace"
+                            options="{'mode': 'python'}"
+                        />
+                        <div
+                            attrs="{'invisible': [('expr_condition_result', '=', False)]}"
+                            role="alert"
+                            class="alert alert-danger"
+                        >
+                            <field name="expr_condition_result" />
+                        </div>
+                        <div>
+                            <p>
+                                For every move selected in the export, all export
+                                configurations that match here will be used to generate
+                                lines.
+                            </p>
+                            Examples:
+                            <dl>
+                                <dt>
+                                    <code>move.move_type == 'in_invoice'</code>
+                                </dt>
+                                <dd>this configuration applies to vendor bills</dd>
+                                <dt>
+                                    <code>
+                                        move.move_type == 'out_invoice' and
+                                        any(line.account_id.code.startswith('42'))
+                                    </code>
+                                </dt>
+                                <dd>
+                                    this configuration applies to customer invoices with
+                                    at least one account that has a code starting
+                                    with '42'
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="view_l10n_il_hashavshevet_config_tree" model="ir.ui.view">
+        <field name="model">l10n.il.hashavshevet.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="expr_condition" />
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -8,7 +8,7 @@
             <form>
                 <group
                     name="domain"
-                    attrs="{'invisible': [('export_file', '!=', False)]}"
+                    attrs="{'invisible': [('export_file_movin', '!=', False)]}"
                 >
                     <field name="date_start" />
                     <field name="date_end" />
@@ -18,24 +18,36 @@
                 </group>
                 <group
                     name="results"
-                    attrs="{'invisible': [('export_file', '=', False)]}"
+                    attrs="{'invisible': [('export_file_movin', '=', False)]}"
                 >
                     <field
-                        name="export_file"
-                        filename="export_file_name"
+                        name="export_file_movin"
+                        filename="export_file_movin_name"
                         readonly="1"
                     />
-                    <field name="export_file_name" invisible="1" />
+                    <field name="export_file_movin_name" invisible="1" />
                     <field
-                        name="export_map_file"
-                        filename="export_map_file_name"
+                        name="export_map_file_movin"
+                        filename="export_map_file_movin_name"
                         readonly="1"
                     />
-                    <field name="export_map_file_name" invisible="1" />
+                    <field name="export_map_file_movin_name" invisible="1" />
+                    <field
+                        name="export_file_heshin"
+                        filename="export_file_heshin_name"
+                        readonly="1"
+                    />
+                    <field name="export_file_heshin_name" invisible="1" />
+                    <field
+                        name="export_map_file_heshin"
+                        filename="export_map_file_heshin_name"
+                        readonly="1"
+                    />
+                    <field name="export_map_file_heshin_name" invisible="1" />
                 </group>
                 <footer>
                     <button
-                        attrs="{'invisible': [('export_file', '!=', False)]}"
+                        attrs="{'invisible': [('export_file_movin', '!=', False)]}"
                         name="button_export"
                         string="Export"
                         type="object"
@@ -46,17 +58,4 @@
             </form>
         </field>
     </record>
-
-    <record id="action_l10n_il_hashavshevet_export" model="ir.actions.act_window">
-        <field name="name">Export to Hashavshevet</field>
-        <field name="res_model">l10n.il.hashavshevet.export</field>
-        <field name="target">new</field>
-        <field name="view_mode">form</field>
-    </record>
-
-    <menuitem
-        id="menu_l10n_il_hashavshevet_export"
-        action="action_l10n_il_hashavshevet_export"
-        parent="account.menu_finance_reports"
-    />
 </odoo>
