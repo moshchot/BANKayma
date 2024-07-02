@@ -16,8 +16,94 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid ""
+"<code>\n"
+"                                        move.move_type == 'out_invoice' and\n"
+"                                        any(line.account_id.code."
+"startswith('42'))\n"
+"                                    </code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"<code>\n"
+"                                    ','.join(line.account_id.code for line "
+"in\n"
+"                                        move.line_ids if\n"
+"                                        line.account_id.account_type == "
+"'expense')\n"
+"                                </code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_heshin_form
+msgid ""
+"<code>\n"
+"                                    ','.join(line.account_id.code for line "
+"in\n"
+"                                    move.line_ids)\n"
+"                                </code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"<code>\n"
+"                                    (move.partner_id.name\n"
+"                                        or '') + ' ' + (move.partner_id.vat "
+"or '')\n"
+"                                </code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"<code>\n"
+"                                    sum(line.debit for line in move.line_ids "
+"if\n"
+"                                        line.account_id.account_type == "
+"'expense')\n"
+"                                </code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "<code>'4'</code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "<code>move.date.strftime('%d%m%y')</code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "<code>move.move_type == 'in_invoice'</code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_key
+msgid "Account key"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_name
+msgid "Account name"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_export_form
 msgid "Cancel"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"Comma separated list of codes of accounts of\n"
+"                                    type 'Expenses'. Consult the value "
+"column of"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -26,17 +112,46 @@ msgid "Company"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__expr_condition
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_condition
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_condition
+msgid "Condition"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.actions.act_window,name:l10n_il_hashavshevet.action_l10n_il_hashavshevet_config_heshin
+#: model:ir.ui.menu,name:l10n_il_hashavshevet.menu_l10n_il_hashavshevet_config_heshin
+msgid "Configuration: HESHIN"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.actions.act_window,name:l10n_il_hashavshevet.action_l10n_il_hashavshevet_config_movin
+#: model:ir.ui.menu,name:l10n_il_hashavshevet.menu_l10n_il_hashavshevet_config_movin
+msgid "Configuration: MOVIN"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__create_uid
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__create_uid
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__create_date
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__create_date
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__create_date
 msgid "Created on"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_file
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_currency
+msgid "Currency code"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_file_heshin
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_file_movin
 msgid "DAT file"
 msgstr ""
 
@@ -51,8 +166,36 @@ msgid "Date Start"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_date_ref
+msgid "Date of reference"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_details
+msgid "Details"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__display_name
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__display_name
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#. odoo-python
+#: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
+#, python-format
+msgid ""
+"Error evaluating %(expression)s:\n"
+"%(message)s"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_heshin_form
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "Examples:"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -61,13 +204,23 @@ msgid "Export"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_file_name
-msgid "Export File Name"
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_file_heshin_name
+msgid "Export File Heshin Name"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_map_file_name
-msgid "Export Map File Name"
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_file_movin_name
+msgid "Export File Movin Name"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_map_file_heshin_name
+msgid "Export Map File Heshin Name"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_map_file_movin_name
+msgid "Export Map File Movin Name"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -77,11 +230,149 @@ msgid "Export to Hashavshevet"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_code_result
+msgid "Expr Code Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__expr_condition_result
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_condition_result
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_condition_result
+msgid "Expr Condition Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_currency_result
+msgid "Expr Currency Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_date_ref_result
+msgid "Expr Date Ref Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_date_value_result
+msgid "Expr Date Value Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_details_result
+msgid "Expr Details Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_filter_result
+msgid "Expr Filter Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_key_result
+msgid "Expr Key Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account1_amount_result
+msgid "Expr Left Account1 Amount Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account1_result
+msgid "Expr Left Account1 Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account2_amount_result
+msgid "Expr Left Account2 Amount Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account2_result
+msgid "Expr Left Account2 Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_name_result
+msgid "Expr Name Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_ref1_result
+msgid "Expr Ref1 Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_ref2_result
+msgid "Expr Ref2 Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account1_amount_result
+msgid "Expr Right Account1 Amount Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account1_result
+msgid "Expr Right Account1 Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account2_amount_result
+msgid "Expr Right Account2 Amount Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account2_result
+msgid "Expr Right Account2 Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_sort_code_result
+msgid "Expr Sort Code Result"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_filter
+msgid "Filter"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid ""
+"For every move selected in the export, all export\n"
+"                                configurations that match here will be used "
+"to generate\n"
+"                                lines."
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.ui.menu,name:l10n_il_hashavshevet.menu_l10n_il_hashavshevet
+msgid "Hashavshevet"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model:ir.model,name:l10n_il_hashavshevet.model_l10n_il_hashavshevet_export
 msgid "Hashavshevet export"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model,name:l10n_il_hashavshevet.model_l10n_il_hashavshevet_config
+msgid "Hashavshevet export configuration - abstract base class"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model,name:l10n_il_hashavshevet.model_l10n_il_hashavshevet_config_heshin
+msgid "Hashavshevet export configuration - heshin"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model,name:l10n_il_hashavshevet.model_l10n_il_hashavshevet_config_movin
+msgid "Hashavshevet export configuration - movin"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__id
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__id
 msgid "ID"
 msgstr ""
@@ -92,18 +383,63 @@ msgid "Journals"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin____last_update
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin____last_update
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__write_uid
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__write_uid
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__write_date
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__write_date
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__write_date
 msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account1
+msgid "Left account key 1"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account2
+msgid "Left account key 2"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account1_amount
+msgid "Left amount 1 in NIS"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_left_account2_amount
+msgid "Left amount 2 in NIS"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__move_id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__move_id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__move_id
+msgid "Move"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#. odoo-python
+#: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
+#, python-format
+msgid "Move %(move_id)s does not match your condition `%(expr_condition)s`"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "Move date formatted as daymonthyear"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -114,6 +450,113 @@ msgid "No moves found"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_map_file
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_map_file_heshin
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__export_map_file_movin
 msgid "PRM file"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_ref1
+msgid "Reference 1"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_ref2
+msgid "Reference 2"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account1
+msgid "Right account key 1"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account2
+msgid "Right account key 2"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account1_amount
+msgid "Right amount 1 in NIS"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_right_account2_amount
+msgid "Right amount 2 in NIS"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "Select an example move to preview your expressions"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"Show the partner's name and vat (while taking care\n"
+"                                    not to have an error for moves without "
+"partner or\n"
+"                                    partners without vat)"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__expr_sort_code
+msgid "Sort code"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"Sum up all debits of lines with accounts of\n"
+"                                    type 'Expenses'. Consult the value "
+"column of"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_code
+msgid "Traffic type code"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_date_value
+msgid "Value date"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_heshin_form
+msgid "comma separated list of all account codes in a move"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"for possible values of the\n"
+"                                <b>account_type</b>\n"
+"                                field."
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "the account type selection"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid ""
+"this configuration applies to customer invoices with\n"
+"                                    at least one account that has a code "
+"starting\n"
+"                                    with '42'"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "this configuration applies to vendor bills"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid ""
+"traffic type code of lines generated by this\n"
+"                                    configuration is 4"
 msgstr ""
