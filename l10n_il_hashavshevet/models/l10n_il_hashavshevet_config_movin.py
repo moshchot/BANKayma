@@ -12,10 +12,10 @@ class L10nIlHashavshevetConfigMovin(models.Model):
 
     expr_code = fields.Char(hashavshevet_name="code", string="Traffic type code")
     expr_ref1 = fields.Char(hashavshevet_name="ref1", string="Reference 1")
-    expr_ref2 = fields.Char(hashavshevet_name="ref2", string="Reference 2")
     expr_date_ref = fields.Char(
         hashavshevet_name="date_ref", string="Date of reference"
     )
+    expr_ref2 = fields.Char(hashavshevet_name="ref2", string="Reference 2")
     expr_date_value = fields.Char(hashavshevet_name="date_value", string="Value date")
     expr_currency = fields.Char(hashavshevet_name="currency", string="Currency code")
     expr_details = fields.Char(hashavshevet_name="details", string="Details")
