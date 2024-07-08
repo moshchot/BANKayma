@@ -46,8 +46,8 @@ class L10nIlHashavshevetConfigMovin(models.Model):
 
     expr_code_result = fields.Char(compute="_compute_results")
     expr_ref1_result = fields.Char(compute="_compute_results")
-    expr_ref2_result = fields.Char(compute="_compute_results")
     expr_date_ref_result = fields.Char(compute="_compute_results")
+    expr_ref2_result = fields.Char(compute="_compute_results")
     expr_date_value_result = fields.Char(compute="_compute_results")
     expr_currency_result = fields.Char(compute="_compute_results")
     expr_details_result = fields.Char(compute="_compute_results")
