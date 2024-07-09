@@ -12,15 +12,15 @@ class L10nIlHashavshevetExport(models.TransientModel):
         domain=lambda self: [("company_id", "=", self.env.company.id)],
     )
 
-    def _get_move_line_domain(self):
-        result = super()._get_move_line_domain()
+    def _get_move_domain(self):
+        result = super()._get_move_domain()
         return [
             leaf
-            if leaf[0] != "move_id.journal_id"
-            else ("move_id.journal_id.code", "in", self.journal_ids.mapped("code"))
+            if leaf[0] != "journal_id"
+            else ("journal_id.code", "in", self.journal_ids.mapped("code"))
             for leaf in result
         ] + [
-            ("move_id.journal_id.intercompany_sale_company_id", "=", False),
-            ("move_id.journal_id.intercompany_overhead_company_id", "=", False),
-            ("move_id.journal_id.intercompany_purchase_company_id", "=", False),
+            ("journal_id.intercompany_sale_company_id", "=", False),
+            ("journal_id.intercompany_overhead_company_id", "=", False),
+            ("journal_id.intercompany_purchase_company_id", "=", False),
         ]

@@ -41,9 +41,22 @@
                 </div>
                 <group name="fields" colspan="4" col="2">
                     <div>
-                        <label for="move_line_id" />
+                        <label for="base_model" />
                     </div>
                     <div>
+                        <field name="base_model" widget="radio" />
+                        <div>
+                            Decide if this configuration is based on moves or move lines
+                        </div>
+                    </div>
+                    <div
+                        attrs="{'invisible': [('base_model', '!=', 'account.move.line')]}"
+                    >
+                        <label for="move_line_id" />
+                    </div>
+                    <div
+                        attrs="{'invisible': [('base_model', '!=', 'account.move.line')]}"
+                    >
                         <field name="move_line_id" />
                         <div
                             attrs="{'invisible': [('move_line_id', '!=', False)]}"
@@ -51,6 +64,19 @@
                             class="alert alert-warning"
                         >
                             Select an example move line to preview your expressions
+                        </div>
+                    </div>
+                    <div attrs="{'invisible': [('base_model', '!=', 'account.move')]}">
+                        <label for="move_id" />
+                    </div>
+                    <div attrs="{'invisible': [('base_model', '!=', 'account.move')]}">
+                        <field name="move_id" />
+                        <div
+                            attrs="{'invisible': [('move_id', '!=', False)]}"
+                            role="alert"
+                            class="alert alert-warning"
+                        >
+                            Select an example move to preview your expressions
                         </div>
                     </div>
                     <div>
@@ -115,6 +141,7 @@
         <field name="model">l10n.il.hashavshevet.config</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="base_model" />
                 <field name="expr_condition" />
             </tree>
         </field>
