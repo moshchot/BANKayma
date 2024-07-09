@@ -107,25 +107,8 @@ class L10nIlHashavshevetExport(models.TransientModel):
         export_file_heshin = OpenformatFile()
         export_map_file_heshin = StringIO()
 
-        export_map_file_movin.write(
-            "%s\r\n" % sum(map(attrgetter("length"), ExportRecordMOVIN()._fields))
-        )
-        pos = 1
-        for field in ExportRecordMOVIN()._fields:
-            export_map_file_movin.write(
-                "%s %s;%s\r\n" % (pos, pos + field.length - 1, field.code)
-            )
-            pos += field.length
-
-        export_map_file_heshin.write(
-            "%s\r\n" % sum(map(attrgetter("length"), ExportRecordHESHIN()._fields))
-        )
-        pos = 1
-        for field in ExportRecordHESHIN()._fields:
-            export_map_file_heshin.write(
-                "%s %s;%s\r\n" % (pos, pos + field.length - 1, field.code)
-            )
-            pos += field.length
+        self._export_map_file(export_map_file_movin, ExportRecordMOVIN)
+        self._export_map_file(export_map_file_heshin, ExportRecordHESHIN)
 
         movin_configs = self.env["l10n.il.hashavshevet.config.movin"].search([])
         heshin_configs = self.env["l10n.il.hashavshevet.config.heshin"].search([])
@@ -175,6 +158,20 @@ class L10nIlHashavshevetExport(models.TransientModel):
                     record = export_type(**config._eval_all(move, move_line))
                     if not unique or record not in export_file.records:
                         export_file.append(record)
+
+    def _export_map_file(self, map_file, export_type):
+        map_file.write("%s\r\n" % sum(map(attrgetter("length"), export_type()._fields)))
+        pos = 1
+        for field in export_type()._fields:
+            map_file.write(
+                "%s %s;%s\r\n"
+                % (
+                    (pos, pos + field.length - 1, field.code)
+                    if field.length
+                    else (0, 0, field.code)
+                )
+            )
+            pos += field.length
 
     def _get_move_domain(self):
         return [
