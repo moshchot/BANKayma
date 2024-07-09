@@ -7,6 +7,7 @@ from odoo import fields, models
 class AccountFiscalPosition(models.Model):
     _inherit = "account.fiscal.position"
 
+    code = fields.Char()
     vendor_doc_mandatory = fields.Boolean(
         "Mandatory document upload",
         help="Check this field to have vendors with this fiscal position "

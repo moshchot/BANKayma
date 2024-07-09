@@ -3,7 +3,7 @@
 
 from base64 import b64encode
 from io import StringIO
-from operator import attrgetter, itemgetter
+from operator import attrgetter
 
 from odoo import _, exceptions, fields, models
 
@@ -35,17 +35,10 @@ class L10nIlHashavshevetExport(models.TransientModel):
     export_map_file_heshin_name = fields.Char(default="HESHIN.prm")
 
     def button_export(self):
-        moves = self.env["account.move"].search(
-            [
-                ("company_id", "=?", self.company_id.id),
-                ("date", ">=", self.date_start),
-                ("date", "<=", self.date_end),
-                ("state", "=", "posted"),
-            ]
-        )
+        move_lines = self.env["account.move.line"].search(self._get_move_line_domain())
 
-        if not moves:
-            raise exceptions.UserError(_("No moves found"))
+        if not move_lines:
+            raise exceptions.UserError(_("No move lines found"))
 
         class ExportRecordMOVIN(Record):
             def __init__(self, **_data):
@@ -136,15 +129,15 @@ class L10nIlHashavshevetExport(models.TransientModel):
 
         movin_configs = self.env["l10n.il.hashavshevet.config.movin"].search([])
         heshin_configs = self.env["l10n.il.hashavshevet.config.heshin"].search([])
-        for move in moves:
+        for move_line in move_lines:
             for movin_config in movin_configs:
-                if movin_config._eval_field(move, "expr_condition"):
+                if movin_config._eval_field(move_line, "expr_condition"):
                     export_file_movin.append(
-                        ExportRecordMOVIN(**movin_config._eval_all(move))
+                        ExportRecordMOVIN(**movin_config._eval_all(move_line))
                     )
             for heshin_config in heshin_configs:
-                if heshin_config._eval_field(move, "expr_condition"):
-                    record = ExportRecordHESHIN(**heshin_config._eval_all(move))
+                if heshin_config._eval_field(move_line, "expr_condition"):
+                    record = ExportRecordHESHIN(**heshin_config._eval_all(move_line))
                     if record not in export_file_heshin.records:
                         export_file_heshin.append(record)
 
@@ -163,60 +156,14 @@ class L10nIlHashavshevetExport(models.TransientModel):
         action_dict.update(res_id=self.id)
         return action_dict
 
-    def _export_move_in_invoice(self, move, ExportRecord):
-        """One line for liabilities, one for assets"""
-
-        def all_of_type(account_type):
-            return move.mapped("line_ids").filtered(
-                lambda x: x.account_id.account_type == account_type
-            )
-
-        def first_of_type(account_type):
-            return all_of_type(account_type)[:1]
-
-        def format_date(date):
-            return date and date.strftime("%d%m%y") or ""
-
-        payments = self.env["account.payment"].browse(
-            map(
-                itemgetter("account_payment_id"),
-                move.invoice_payments_widget
-                and move.invoice_payments_widget.get("content")
-                or [],
-            ),
-        )
-        payment_ref = payments[:1].ref
-
-        yield ExportRecord(
-            code="2",
-            ref1=move.name,
-            date_ref=format_date(move.invoice_date),
-            ref2=payment_ref,
-            date_value=format_date(move.bankayma_payment_date),
-            currency=move.currency_id.name,
-            details=move.partner_id.name,
-            left_account1=first_of_type("expense").account_id.code,
-            right_account1=first_of_type("liability_current").account_id.code,
-            right_account2=first_of_type("asset_current").account_id.code,
-            left_account1_amount=sum(move.mapped("line_ids.debit")),
-            right_account1_amount=sum(all_of_type("liability_current").mapped("debit"))
-            + sum(all_of_type("expense").mapped("debit")),
-            right_account2_amount=sum(all_of_type("asset_current").mapped("debit")),
-        )
-
-        yield ExportRecord(
-            code="5",
-            ref1=(payments[:1].name or "").split("/")[-1],
-            date_ref=format_date(move.invoice_date),
-            ref2=payment_ref,
-            date_value=format_date(move.bankayma_payment_date),
-            currency=move.currency_id.name,
-            details=move.partner_id.name,
-            left_account1=first_of_type("liability_payable").account_id.code,
-            right_account1=first_of_type("liability_payable").account_id.code,
-            right_account2=first_of_type("liability_current").account_id.code,
-            left_account1_amount=sum(all_of_type("liability_current").mapped("debit"))
-            + sum(all_of_type("expense").mapped("debit")),
-            right_account1_amount=move.amount_untaxed_signed,
-            right_account2_amount=sum(all_of_type("liability_current").mapped("debit")),
+    def _get_move_line_domain(self):
+        return [
+            ("move_id.company_id", "=?", self.company_id.id),
+            ("move_id.date", ">=", self.date_start),
+            ("move_id.date", "<=", self.date_end),
+            ("move_id.state", "=", "posted"),
+        ] + (
+            [("move_id.journal_id", "in", self.journal_ids.ids)]
+            if self.journal_ids
+            else []
         )
