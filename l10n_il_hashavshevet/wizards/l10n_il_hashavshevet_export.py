@@ -69,7 +69,7 @@ class L10nIlHashavshevetExport(models.TransientModel):
                 super().__init__(
                     (
                         # TODO make configurable
-                        F(2, 16, "key"),
+                        F(2, 15, "key"),
                         F(3, 50, "name"),
                         F(4, 9, "sort_code"),
                         F(5, 0, None),
