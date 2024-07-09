@@ -21,6 +21,11 @@ msgid "Account"
 msgstr ""
 
 #. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_fiscal_position_account
+msgid "Accounts Mapping of Fiscal Position"
+msgstr ""
+
+#. module: company_cascade
 #: model:ir.model,name:company_cascade.model_ir_actions_actions
 msgid "Actions"
 msgstr ""
@@ -77,6 +82,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:company_cascade.field_account_analytic_account__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_analytic_plan__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_account__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_tax__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_cascade_child_ids
@@ -96,6 +102,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:company_cascade.field_account_analytic_account__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_analytic_plan__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_account__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_fiscal_position_tax__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_cascade_parent_id
