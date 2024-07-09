@@ -16,6 +16,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: l10n_il_hashavshevet
+#. odoo-python
+#: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
+#, python-format
+msgid "%(model)s %(name)s does not match your condition `%(expr_condition)s`"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 msgid ""
 "<code>\n"
@@ -101,6 +108,13 @@ msgid "Active"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__base_model
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__base_model
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__base_model
+msgid "Base Model"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_export_form
 msgid "Cancel"
 msgstr ""
@@ -177,6 +191,11 @@ msgstr ""
 #. module: l10n_il_hashavshevet
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__expr_date_ref
 msgid "Date of reference"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "Decide if this configuration is based on moves or move lines"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -387,6 +406,20 @@ msgid "ID"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model:ir.model.fields.selection,name:l10n_il_hashavshevet.selection__l10n_il_hashavshevet_config__base_model__account_move
+#: model:ir.model.fields.selection,name:l10n_il_hashavshevet.selection__l10n_il_hashavshevet_config_heshin__base_model__account_move
+#: model:ir.model.fields.selection,name:l10n_il_hashavshevet.selection__l10n_il_hashavshevet_config_movin__base_model__account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model:ir.model.fields.selection,name:l10n_il_hashavshevet.selection__l10n_il_hashavshevet_config__base_model__account_move_line
+#: model:ir.model.fields.selection,name:l10n_il_hashavshevet.selection__l10n_il_hashavshevet_config_heshin__base_model__account_move_line
+#: model:ir.model.fields.selection,name:l10n_il_hashavshevet.selection__l10n_il_hashavshevet_config_movin__base_model__account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_export__journal_ids
 msgid "Journals"
 msgstr ""
@@ -433,6 +466,16 @@ msgid "Left amount 2 in NIS"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#. odoo-python
+#: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__move_id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__move_id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__move_id
+#, python-format
+msgid "Move"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__move_line_id
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__move_line_id
 #: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__move_line_id
@@ -448,15 +491,14 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
 #, python-format
-msgid ""
-"Move line %(move_line_id)s does not match your condition `%(expr_condition)s`"
+msgid "Move line"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
 #. odoo-python
 #: code:addons/l10n_il_hashavshevet/wizards/l10n_il_hashavshevet_export.py:0
 #, python-format
-msgid "No move lines found"
+msgid "No moves found"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -498,6 +540,11 @@ msgstr ""
 #. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 msgid "Select an example move line to preview your expressions"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "Select an example move to preview your expressions"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
