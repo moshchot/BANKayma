@@ -430,6 +430,11 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__code
+msgid "Code"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__comment
 msgid "Comment"
 msgstr "הערה"
@@ -803,6 +808,11 @@ msgid "Goods Return Note"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_l10n_il_hashavshevet_export
+msgid "Hashavshevet export"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Here is your"
 msgstr "להלן"
@@ -991,6 +1001,11 @@ msgstr "פקודת יומן"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_move_line
 msgid "Journal Item"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_l10n_il_hashavshevet_export__journal_ids
+msgid "Journals"
 msgstr ""
 
 #. module: bankayma_account
