@@ -19,22 +19,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 msgid ""
 "<code>\n"
-"                                        move.move_type == 'out_invoice' and\n"
-"                                        any(line.account_id.code."
-"startswith('42'))\n"
-"                                    </code>"
-msgstr ""
-
-#. module: l10n_il_hashavshevet
-#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
-msgid ""
-"<code>\n"
-"                                    ','.join(line.account_id.code for line "
-"in\n"
-"                                        move.line_ids if\n"
+"                                        line.move_id.move_type == "
+"'out_invoice' and\n"
 "                                        line.account_id.account_type == "
-"'expense')\n"
-"                                </code>"
+"'expense'\n"
+"                                    </code>"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -51,9 +40,10 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
 msgid ""
 "<code>\n"
-"                                    (move.partner_id.name\n"
-"                                        or '') + ' ' + (move.partner_id.vat "
-"or '')\n"
+"                                    (line.move_id.partner_id.name\n"
+"                                        or '') + ' ' + (line.move_id."
+"partner_id.vat\n"
+"                                    or '')\n"
 "                                </code>"
 msgstr ""
 
@@ -75,12 +65,22 @@ msgstr ""
 
 #. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
-msgid "<code>move.date.strftime('%d%m%y')</code>"
+msgid "<code>line.account_id.code</code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "<code>line.move_id.date.strftime('%d%m%y')</code>"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
-msgid "<code>move.move_type == 'in_invoice'</code>"
+msgid "<code>line.move_id.move_type == 'in_invoice'</code>"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
+msgid "Account code"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -94,16 +94,15 @@ msgid "Account name"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_export_form
-msgid "Cancel"
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__active
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__active
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__active
+msgid "Active"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
-msgid ""
-"Comma separated list of codes of accounts of\n"
-"                                    type 'Expenses'. Consult the value "
-"column of"
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_export_form
+msgid "Cancel"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -128,6 +127,16 @@ msgstr ""
 #: model:ir.actions.act_window,name:l10n_il_hashavshevet.action_l10n_il_hashavshevet_config_movin
 #: model:ir.ui.menu,name:l10n_il_hashavshevet.menu_l10n_il_hashavshevet_config_movin
 msgid "Configuration: MOVIN"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "Consult the"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "Consult the value column of"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -339,7 +348,7 @@ msgstr ""
 #. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 msgid ""
-"For every move selected in the export, all export\n"
+"For every move line selected in the export, all export\n"
 "                                configurations that match here will be used "
 "to generate\n"
 "                                lines."
@@ -424,17 +433,10 @@ msgid "Left amount 2 in NIS"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__move_id
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__move_id
-#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__move_id
-msgid "Move"
-msgstr ""
-
-#. module: l10n_il_hashavshevet
-#. odoo-python
-#: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
-#, python-format
-msgid "Move %(move_id)s does not match your condition `%(expr_condition)s`"
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config__move_line_id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_heshin__move_line_id
+#: model:ir.model.fields,field_description:l10n_il_hashavshevet.field_l10n_il_hashavshevet_config_movin__move_line_id
+msgid "Move Line"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -444,9 +446,17 @@ msgstr ""
 
 #. module: l10n_il_hashavshevet
 #. odoo-python
+#: code:addons/l10n_il_hashavshevet/models/l10n_il_hashavshevet_config.py:0
+#, python-format
+msgid ""
+"Move line %(move_line_id)s does not match your condition `%(expr_condition)s`"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#. odoo-python
 #: code:addons/l10n_il_hashavshevet/wizards/l10n_il_hashavshevet_export.py:0
 #, python-format
-msgid "No moves found"
+msgid "No move lines found"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -487,7 +497,7 @@ msgstr ""
 
 #. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
-msgid "Select an example move to preview your expressions"
+msgid "Select an example move line to preview your expressions"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
@@ -523,11 +533,32 @@ msgid "Value date"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "account.account"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "account.move"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "account.move.line"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "and"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_heshin_form
 msgid "comma separated list of all account codes in a move"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
 msgid ""
 "for possible values of the\n"
@@ -536,6 +567,17 @@ msgid ""
 msgstr ""
 
 #. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "models for available fields."
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
+msgid "res.partner"
+msgstr ""
+
+#. module: l10n_il_hashavshevet
+#: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_movin_form
 msgid "the account type selection"
 msgstr ""
@@ -543,10 +585,9 @@ msgstr ""
 #. module: l10n_il_hashavshevet
 #: model_terms:ir.ui.view,arch_db:l10n_il_hashavshevet.view_l10n_il_hashavshevet_config_form
 msgid ""
-"this configuration applies to customer invoices with\n"
-"                                    at least one account that has a code "
-"starting\n"
-"                                    with '42'"
+"this configuration applies to lines of customer\n"
+"                                    invoices with\n"
+"                                    an account of type 'expense'"
 msgstr ""
 
 #. module: l10n_il_hashavshevet
