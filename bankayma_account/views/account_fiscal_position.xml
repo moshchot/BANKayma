@@ -6,6 +6,9 @@
         <field name="model">account.fiscal.position</field>
         <field name="inherit_id" ref="account.view_account_position_form" />
         <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code" />
+            </field>
             <notebook position="inside">
                 <page name="vendor_doc" string="Vendors">
                     <group>

@@ -50,8 +50,9 @@
                         <dl>
                             <dt>
                                 <code>
-                                    (move.partner_id.name
-                                        or '') + ' ' + (move.partner_id.vat or '')
+                                    (line.move_id.partner_id.name
+                                        or '') + ' ' + (line.move_id.partner_id.vat
+                                    or '')
                                 </code>
                             </dt>
                             <dd>
@@ -95,7 +96,7 @@
                         Examples:
                         <dl>
                             <dt>
-                                <code>move.date.strftime('%d%m%y')</code>
+                                <code>line.move_id.date.strftime('%d%m%y')</code>
                             </dt>
                             <dd>Move date formatted as daymonthyear</dd>
                         </dl>
@@ -172,25 +173,9 @@
                         Examples:
                         <dl>
                             <dt>
-                                <code>
-                                    ','.join(line.account_id.code for line in
-                                        move.line_ids if
-                                        line.account_id.account_type == 'expense')
-                                </code>
+                                <code>line.account_id.code</code>
                             </dt>
-                            <dd>
-                                Comma separated list of codes of accounts of
-                                    type 'Expenses'. Consult the value column of
-                                <a
-                                    href="/web#id=%(account.field_account_account__account_type)s&amp;model=ir.model.fields&amp;view_type=form"
-                                    target="_blank"
-                                >
-                                    the account type selection
-                                </a>
-                                for possible values of the
-                                <b>account_type</b>
-                                field.
-                            </dd>
+                            <dd>Account code</dd>
                         </dl>
                     </div>
                 </div>

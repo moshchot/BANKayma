@@ -7,3 +7,4 @@ from . import comment_wizard
 from . import mass_editing_wizard
 from . import l10n_il_system1000_export
 from . import l10n_il_masav_export
+from . import l10n_il_hashavshevet_export

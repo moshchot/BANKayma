@@ -34,6 +34,7 @@
         "email_template_qweb",
         "l10n_il",
         "l10n_il_bank",
+        "l10n_il_hashavshevet",
         "l10n_il_sumit",
         "l10n_il_system1000",
         "l10n_il_masav",
