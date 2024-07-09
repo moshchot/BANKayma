@@ -157,6 +157,16 @@ class TestCompanyCascade(TransactionCase):
                     (0, 0, {"tax_src_id": tax.id}),
                     (0, 0, {"tax_src_id": tax.id, "tax_dest_id": tax.id}),
                 ],
+                "account_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "account_src_id": self.account.id,
+                            "account_dest_id": self.account.id,
+                        },
+                    ),
+                ],
             }
         )
         self._apply_cascade_wizard(tax)

@@ -25,3 +25,21 @@ class AccountFiscalPositionTax(models.Model):
                 ("tax_dest_id", "=", vals.get("tax_dest_id")),
             ]
         )
+
+
+class AccountFiscalPositionAccount(models.Model):
+    _inherit = ["account.fiscal.position.account", "company.cascade.mixin"]
+    _name = "account.fiscal.position.account"
+
+    def _company_cascade_find_candidate(self, company, vals):
+        return self.search(
+            [
+                (
+                    "position_id",
+                    "=",
+                    self.position_id._company_cascade_get_all(company).id,
+                ),
+                ("account_src_id", "=", vals.get("account_src_id")),
+                ("account_dest_id", "=", vals.get("account_dest_id")),
+            ]
+        )
