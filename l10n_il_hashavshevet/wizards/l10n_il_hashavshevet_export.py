@@ -35,10 +35,10 @@ class L10nIlHashavshevetExport(models.TransientModel):
     export_map_file_heshin_name = fields.Char(default="HESHIN.prm")
 
     def button_export(self):
-        move_lines = self.env["account.move.line"].search(self._get_move_line_domain())
+        moves = self.env["account.move"].search(self._get_move_domain())
 
-        if not move_lines:
-            raise exceptions.UserError(_("No move lines found"))
+        if not moves:
+            raise exceptions.UserError(_("No moves found"))
 
         class ExportRecordMOVIN(Record):
             def __init__(self, **_data):
@@ -129,17 +129,17 @@ class L10nIlHashavshevetExport(models.TransientModel):
 
         movin_configs = self.env["l10n.il.hashavshevet.config.movin"].search([])
         heshin_configs = self.env["l10n.il.hashavshevet.config.heshin"].search([])
-        for move_line in move_lines:
-            for movin_config in movin_configs:
-                if movin_config._eval_field(move_line, "expr_condition"):
-                    export_file_movin.append(
-                        ExportRecordMOVIN(**movin_config._eval_all(move_line))
-                    )
-            for heshin_config in heshin_configs:
-                if heshin_config._eval_field(move_line, "expr_condition"):
-                    record = ExportRecordHESHIN(**heshin_config._eval_all(move_line))
-                    if record not in export_file_heshin.records:
-                        export_file_heshin.append(record)
+        for move in moves:
+            self._eval_configs(
+                move, movin_configs, export_file_movin, ExportRecordMOVIN
+            )
+            self._eval_configs(
+                move,
+                heshin_configs,
+                export_file_heshin,
+                ExportRecordHESHIN,
+                unique=True,
+            )
 
         self.export_file_movin = b64encode(export_file_movin.tobytes())
         self.export_map_file_movin = b64encode(
@@ -156,14 +156,30 @@ class L10nIlHashavshevetExport(models.TransientModel):
         action_dict.update(res_id=self.id)
         return action_dict
 
-    def _get_move_line_domain(self):
+    def _eval_configs(self, move, configs, export_file, export_type, unique=False):
+        for config in configs.filtered(lambda x: x.base_model == "account.move"):
+            if config._eval_field(
+                move, self.env["account.move.line"], "expr_condition"
+            ):
+                record = export_type(
+                    **config._eval_all(move, self.env["account.move.line"])
+                )
+                if not unique or record not in export_file.records:
+                    export_file.append(record)
+
+        for move_line in move.line_ids:
+            for config in configs.filtered(
+                lambda x: x.base_model == "account.move.line"
+            ):
+                if config._eval_field(move, move_line, "expr_condition"):
+                    record = export_type(**config._eval_all(move, move_line))
+                    if not unique or record not in export_file.records:
+                        export_file.append(record)
+
+    def _get_move_domain(self):
         return [
-            ("move_id.company_id", "=?", self.company_id.id),
-            ("move_id.date", ">=", self.date_start),
-            ("move_id.date", "<=", self.date_end),
-            ("move_id.state", "=", "posted"),
-        ] + (
-            [("move_id.journal_id", "in", self.journal_ids.ids)]
-            if self.journal_ids
-            else []
-        )
+            ("company_id", "=?", self.company_id.id),
+            ("date", ">=", self.date_start),
+            ("date", "<=", self.date_end),
+            ("state", "=", "posted"),
+        ] + ([("journal_id", "in", self.journal_ids.ids)] if self.journal_ids else [])
