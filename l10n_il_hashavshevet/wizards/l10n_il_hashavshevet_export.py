@@ -7,7 +7,7 @@ from operator import attrgetter
 
 from odoo import _, exceptions, fields, models
 
-from odoo.addons.l10n_il_openformat.openformat_file import F, OpenformatFile, Record
+from ..hashashevet_file import F, HashashevetFile, Record
 
 
 class L10nIlHashavshevetExport(models.TransientModel):
@@ -102,9 +102,9 @@ class L10nIlHashavshevetExport(models.TransientModel):
                     **_data
                 )
 
-        export_file_movin = OpenformatFile()
+        export_file_movin = HashashevetFile()
         export_map_file_movin = StringIO()
-        export_file_heshin = OpenformatFile()
+        export_file_heshin = HashashevetFile()
         export_map_file_heshin = StringIO()
 
         self._export_map_file(export_map_file_movin, ExportRecordMOVIN)
