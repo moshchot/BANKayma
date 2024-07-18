@@ -94,6 +94,7 @@
             <attribute name="type">number</attribute>
             <attribute name="max">999999999</attribute>
             <attribute name="min">1</attribute>
+            <attribute name="required">1</attribute>
         </xpath>
         <xpath expr="//label[@for='city']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
@@ -126,6 +127,7 @@
                         <select
                             name="bank"
                             t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''} o-select2"
+                            required="required"
                         >
                             <t
                                 t-foreach="request.env['res.bank'].sudo().search([])"
