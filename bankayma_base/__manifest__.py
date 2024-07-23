@@ -14,6 +14,7 @@
         "contacts",
         "document_knowledge",
         "document_page_approval",
+        "event",
         "mail_debrand",
         "disable_odoo_online",
         "base_portal_type",

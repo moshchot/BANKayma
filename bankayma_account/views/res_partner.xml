@@ -145,7 +145,7 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <page name="sales_purchases" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="invisible">True</attribute>
             </page>
         </field>
     </record>
