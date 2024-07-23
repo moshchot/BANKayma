@@ -53,12 +53,11 @@ class ResPartner(models.Model):
             )
 
     @api.constrains("vat", "country_id")
-    def check_vat(self):
+    def check_vat(self):  # pylint: disable=missing-return
         """Defuse vat check for individuals in IL"""
         il = self.env.ref("base.il")
-        return super(
-            ResPartner, self.filtered(lambda x: x.is_company or x.country_id != il)
-        ).check_vat()
+        for this in self.filtered(lambda x: x.is_company or x.country_id != il):
+            super(ResPartner, this).check_vat()
 
     def action_invite_vendor(self):
         return self.env["ir.actions.actions"]._for_xml_id(
