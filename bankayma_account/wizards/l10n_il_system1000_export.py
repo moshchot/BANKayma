@@ -15,6 +15,7 @@ class L10nIlSystem1000Export(models.TransientModel):
     failed_move_ids = fields.Many2many("account.move", readonly=True)
 
     def button_import(self):
+        self = self.with_context(mail_notify_force_inbox=True)
         if self.import_file_valid:
             self._import_valid_file()
         if self.import_file_invalid:
@@ -45,7 +46,7 @@ class L10nIlSystem1000Export(models.TransientModel):
         else:
             return move.action_post()
 
-    def _reject_cancel(self, move):
+    def _reject_cancel(self, move, message=None):
         """Cancel a move, or reject it if under validation"""
         move.invalidate_recordset()
         if move.need_validation or move.review_ids:
@@ -59,7 +60,7 @@ class L10nIlSystem1000Export(models.TransientModel):
                     .with_context(**result["context"])
                     .create(
                         {
-                            "comment": _("Rejected by System1000"),
+                            "comment": message or _("Rejected by System1000"),
                         }
                     )
                     .add_comment()
@@ -152,4 +153,4 @@ class L10nIlSystem1000Export(models.TransientModel):
             )
             move.system1000_error_message = data.error_comment
             self.failed_move_ids += move
-            self._reject_cancel(move)
+            self._reject_cancel(move, data.error_comment)

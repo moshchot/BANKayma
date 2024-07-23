@@ -511,17 +511,9 @@ class AccountMove(models.Model):
                 subtype_xmlid="mail.mt_comment",
                 attachment_ids=attachments.ids,
             )
-        invoice.with_context(mail_notify_author=True).message_post_with_view(
-            "bankayma_account.qweb_template_account_move_new_from_portal",
-            subject=_("[BanKayma] Payment request from %(company_name)s (Ref %(ref)s)")
-            % {
-                "company_name": invoice.company_id.name,
-                "ref": invoice.name or _("n/a"),
-            },
-        )
         if invoice.journal_id.bankayma_mail_template_portal_vendor_bill:
             invoice.journal_id.bankayma_mail_template_portal_vendor_bill.send_mail(
-                invoice.id,
+                invoice.id
             )
         return invoice
 
@@ -673,18 +665,6 @@ class AccountMove(models.Model):
                 this.with_company(this.company_id)._bankayma_invoice_child_income(
                     fraction=parent_journal.bankayma_overhead_percentage / 100
                 )
-        for this in self.filtered(lambda x: x.move_type == "in_invoice"):
-            this.with_context(
-                mail_notify_author=True,
-                mail_notify_force_inbox=this.journal_id.bankayma_inhibit_mails,
-            ).message_post_with_view(
-                "bankayma_account.qweb_template_account_move_paid",
-                subject=_("[BanKayma] %(company_name)s you’ve been paid! (Ref %(ref)s)")
-                % {
-                    "company_name": this.company_id.name,
-                    "ref": this.name or _("n/a"),
-                },
-            )
         for this in self:
             if this.journal_id.bankayma_mail_template_invoice_paid:
                 this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
