@@ -52,7 +52,7 @@ class Record(object):
                 raise ValueError("Field %(field_name)s cannot be negative")
             return ("{:0>%dd}" % field.length).format(number % 10**field.length)
         elif field.type == float:
-            number = int((data or 0) * 100)
+            number = round((data or 0) * 100)
             return ("{:0=%dd}" % field.length).format(
                 (-1 if number < 0 else 1) * (abs(number) % 10 ** (field.length - 1))
             )
