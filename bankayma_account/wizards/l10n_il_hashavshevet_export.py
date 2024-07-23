@@ -23,4 +23,5 @@ class L10nIlHashavshevetExport(models.TransientModel):
             ("journal_id.intercompany_sale_company_id", "=", False),
             ("journal_id.intercompany_overhead_company_id", "=", False),
             ("journal_id.intercompany_purchase_company_id", "=", False),
+            ("payment_state", "=", "paid"),
         ]
