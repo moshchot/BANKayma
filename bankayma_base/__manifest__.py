@@ -78,6 +78,7 @@
     "website": "https://github.com/moshchot/BANKayma",
     "external_dependencies": {
         "python": [
+            "astor",
             "openupgradelib",
             "odoo_test_helper",
         ]
