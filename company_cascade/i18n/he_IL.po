@@ -87,6 +87,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_payment_mode__company_cascade_child_ids
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_term__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_tax__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_account_tax_repartition_line__company_cascade_child_ids
 #: model:ir.model.fields,field_description:company_cascade.field_company_cascade_mixin__company_cascade_child_ids
@@ -107,6 +108,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:company_cascade.field_account_journal__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_payment_method_line__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_payment_mode__company_cascade_parent_id
+#: model:ir.model.fields,field_description:company_cascade.field_account_payment_term__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_tax__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_account_tax_repartition_line__company_cascade_parent_id
 #: model:ir.model.fields,field_description:company_cascade.field_company_cascade_mixin__company_cascade_parent_id
@@ -207,6 +209,11 @@ msgstr ""
 #. module: company_cascade
 #: model:ir.model,name:company_cascade.model_payment_provider
 msgid "Payment Provider"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model,name:company_cascade.model_account_payment_term
+msgid "Payment Terms"
 msgstr ""
 
 #. module: company_cascade
