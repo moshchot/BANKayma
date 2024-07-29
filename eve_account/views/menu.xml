@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <menuitem
+        id="action_payment_terms"
+        action="account.action_payment_term_form"
+        parent="bankayma_base.menu_bankayma_config"
+        groups="bankayma_base.group_org_manager,bankayma_base.group_full"
+        sequence="130"
+    />
+</odoo>

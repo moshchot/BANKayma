@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bankayma_account.access_account_model_account_payment_term,access_account_model_account_payment_term,account.model_account_payment_term,bankayma_base.group_org_manager,1,1,1,1
+access_account_payment_term_line_orgman,access_account_payment_term_line_orgman,account.model_account_payment_term_line,bankayma_base.group_org_manager,1,1,1,1
