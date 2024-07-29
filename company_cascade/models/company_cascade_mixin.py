@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from collections.abc import Iterable
+from contextlib import contextmanager
 
 from odoo import api, fields, models
 
@@ -93,49 +94,18 @@ class CompanyCascadeMixin(models.AbstractModel):
             if not this.company_id:
                 continue
             values = this.read(
-                [
-                    field_name
-                    for field_name, field in self._fields.items()
-                    if field.store
-                    and not field.compute
-                    and field_name in (fields or self._fields)
-                    and field_name not in models.MAGIC_COLUMNS
-                    and not (
-                        field.relational
-                        and field.type != "many2one"
-                        and "company_cascade_parent_id"
-                        in self.env[field.comodel_name]._fields
-                    )
-                    or field_name in self._company_cascade_force_fields
-                ],
+                self._company_cascade_field_names_scalar(fields),
                 load="_classic_write",
             )[0]
-            try:
-                # disable _check_company because it causes a lot of unneccessary reads
-                # and possibly calls compute functions we don't want at this point
-                _check_company_org = this.__class__._check_company
-                this.__class__._check_company = lambda self, fnames=None: None
+            with self._company_cascade_protect():
                 result += this._company_cascade_write(values)
                 result += this._company_cascade_create(values)
-            finally:
-                this.__class__._check_company = _check_company_org
             for result_record in result:
                 this.copy_translations(result_record)
 
+        self.env.flush_all()
         # second step: write x2many fields that cascade themselves
-        field_names = [
-            field_name
-            for field_name, field in self._fields.items()
-            if field.store
-            and not field.compute
-            and field_name in (fields or self._fields)
-            and field_name not in models.MAGIC_COLUMNS + ["company_cascade_child_ids"]
-            and (
-                field.relational
-                and field.type != "many2one"
-                and "company_cascade_parent_id" in self.env[field.comodel_name]._fields
-            )
-        ]
+        field_names = self._company_cascade_field_names_cascading(fields)
         if not field_names:
             return result
         for this in self:
@@ -144,7 +114,9 @@ class CompanyCascadeMixin(models.AbstractModel):
             values = this.read(field_names, load="_classic_write")[0]
             for field in field_names:
                 this[field]._company_cascade()
-            this._company_cascade_write(values)
+            with self._company_cascade_protect():
+                this._company_cascade_write(values)
+
         return result
 
     def _company_cascade_values(self, company, vals):
@@ -330,3 +302,54 @@ class CompanyCascadeMixin(models.AbstractModel):
                 value
             )
         return self[field] == value
+
+    def _company_cascade_field_names_scalar(self, fields=None):
+        """
+        Return field names that can be just written on child records.
+        At first approximation, all stored non-x2x and many2one fields that don't
+        cascade themselves
+        """
+        return [
+            field_name
+            for field_name, field in self._fields.items()
+            if field.store
+            and (not field.compute)
+            and field_name in (fields or self._fields)
+            and field_name not in models.MAGIC_COLUMNS
+            and not (
+                field.relational
+                and field.type != "many2one"
+                and "company_cascade_parent_id" in self.env[field.comodel_name]._fields
+            )
+            or field_name in self._company_cascade_force_fields
+        ]
+
+    def _company_cascade_field_names_cascading(self, fields=None):
+        """
+        Return x2many field names that need to be cascaded, but use models that cascade
+        themselves
+        """
+        return [
+            field_name
+            for field_name, field in self._fields.items()
+            if field.store
+            and (not field.compute or not field.inverse)
+            and field_name in (fields or self._fields)
+            and field_name not in models.MAGIC_COLUMNS + ["company_cascade_child_ids"]
+            and (
+                field.relational
+                and field.type != "many2one"
+                and "company_cascade_parent_id" in self.env[field.comodel_name]._fields
+            )
+        ]
+
+    @contextmanager
+    def _company_cascade_protect(self):
+        """
+        A context manager that disables company checks
+        This avoids a lot of unnecessary reads and crashes on recursive computations
+        """
+        _check_company_org = self.__class__._check_company
+        self.__class__._check_company = lambda self, fnames=None: None
+        yield
+        self.__class__._check_company = _check_company_org

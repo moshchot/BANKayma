@@ -80,6 +80,33 @@ class TestCompanyCascade(TransactionCase):
             self._apply_cascade_wizard(self.journal.sequence_id)
         self._apply_cascade_wizard(self.journal)
         self.assertTrue(self.journal.outbound_payment_method_line_ids)
+        payment_method = self.env["account.payment.method"].create(
+            {
+                "name": "A payment method",
+                "code": "test_cascade",
+                "payment_type": "inbound",
+            }
+        )
+        self.journal.write(
+            {
+                "inbound_payment_method_line_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "payment_method_id": payment_method.id,
+                            "payment_account_id": self.account.id,
+                        },
+                    )
+                ],
+            }
+        )
+        self._apply_cascade_wizard(self.journal)
+        self.assertTrue(
+            self.journal.company_cascade_child_ids.mapped(
+                "inbound_payment_method_line_ids"
+            ).filtered(lambda x: x.payment_method_id == payment_method)
+        )
 
     def test_cascade_translations(self):
         """Test that we propagate translations correctly"""
