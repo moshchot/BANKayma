@@ -1,4 +1,6 @@
 ../libreerp-git:
+  defaults:
+    depth: 100
   merges:
     - oca 10fc74f17d7b9a2fb9f232d40e3b5ad4fa83627b
     - hbrunn 16.0-res.users-context_get-disable-prefetch-ocb
@@ -9,6 +11,8 @@
     ../libreerp-default\n\
     \  ln -s libreerp-git ../libreerp\nfi\n"
 account-analytic:
+  defaults:
+    depth: 400
   merges:
     - oca 125391f361f4d880c61d34afeb8c1236870d9654
       # account_analytic_plan_applicability_product
@@ -121,6 +125,8 @@ multi-company:
   remotes:
     oca: https://github.com/OCA/multi-company.git
 operating-unit:
+  defaults:
+    depth: 1000
   merges:
     - oca c569edae55039d8dbf7c5ae5b0d1c3c54cf791f9
     # account_operating_unit
@@ -156,6 +162,8 @@ server-auth:
   remotes:
     oca: https://github.com/OCA/server-auth.git
 server-backend:
+  defaults:
+    depth: 100
   merges:
     - oca 763f4e99511223fb8edcd702cfb13b7fd441a5da
       # base_user_effective_permissions
@@ -170,6 +178,8 @@ server-brand:
   remotes:
     oca: https://github.com/OCA/server-brand.git
 server-tools:
+  defaults:
+    depth: 1000
   merges:
     - oca 6fec2167f953ad95ba34dee68f2f5e316c9d51fe
       # module_auto_update shell fixes
@@ -177,6 +187,8 @@ server-tools:
   remotes:
     oca: https://github.com/OCA/server-tools.git
 server-ux:
+  defaults:
+    depth: 100
   merges:
     - oca 42fac842508cb17364a1105398756bc69037e8bb
     - hbrunn 16.0-base_tier_validation-dynamic_validation_flag
@@ -201,6 +213,8 @@ spreadsheet:
   remotes:
     oca: https://github.com/OCA/spreadsheet.git
 web:
+  defaults:
+    depth: 100
   merges:
     - oca 5f6aa6c5667acd5e353c74bef0b226ea4c8c7591
     # web_dashboard_open_action

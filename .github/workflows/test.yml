@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - "16.0"
-      - "16.0-ocabot-*"
 
 jobs:
   unreleased-deps:
@@ -29,17 +28,10 @@ jobs:
           done
   test:
     runs-on: ubuntu-latest
-    container: ${{ matrix.container }}
-    name: ${{ matrix.name }}
+    container: ghcr.io/oca/oca-ci/py3.10-ocb16.0:latest
+    name: Run tests
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - container: ghcr.io/oca/oca-ci/py3.10-odoo16.0:latest
-            name: test with Odoo
-          - container: ghcr.io/oca/oca-ci/py3.10-ocb16.0:latest
-            makepo: "true"
-            name: test with OCB
     services:
       postgres:
         image: postgres:12.0
@@ -51,6 +43,11 @@ jobs:
           - 5432:5432
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: /tmp/src
+          key: gitaggregate
       - name: Install addons and dependencies
         run: |
           apt -y install openssh-client
@@ -65,12 +62,13 @@ jobs:
           git config --global user.name "$GITHUB_ACTOR"
           pip install -r requirements.txt
           pip install git-aggregator
-          cd /tmp
+          mkdir -p /tmp/src/gitaggregate
+          cd /tmp/src/gitaggregate
             gitaggregate --jobs 8 -c $GITHUB_WORKSPACE/repos.yml
             find . -maxdepth 3 -mindepth 3 -name __manifest__.py -exec sh -c "ln -rs \$(dirname '{}') $ADDONS_PATH/" \;
             pip install ../libreerp-git
           cd $GITHUB_WORKSPACE
-          echo "addons_path=/libreerp-git/odoo/addons,/libreerp-git/addons,${ADDONS_PATH},${ADDONS_DIR}" >> ${ODOO_RC}
+          echo "addons_path=/tmp/src/libreerp-git/odoo/addons,/tmp/src/libreerp-git/addons,${ADDONS_PATH},${ADDONS_DIR}" >> ${ODOO_RC}
           cat $ODOO_RC
       - name: Check licenses
         run: manifestoo -d . check-licenses
@@ -87,6 +85,13 @@ jobs:
       - uses: codecov/codecov-action@v3
         with:
           files: coverage.xml
+      - name: Show files to be cached
+        run: du -chsx /tmp/src/*
+      - uses: actions/cache/save@v4
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: /tmp/src
+          key: gitaggregate
       - name: Update .po files
         run: |
           apt install gettext
@@ -114,4 +119,3 @@ jobs:
           else
             echo No changes, doing nothing
           fi
-        if: ${{ matrix.makepo == 'true' }}
