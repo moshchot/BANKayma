@@ -153,10 +153,13 @@
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']"
                 position="attributes"
             >
-                <attribute name="groups" />
-                <attribute name="invisible">
-                    context.get('bankayma_hide_account_id', False)
-                </attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']"
+                position="after"
+            >
+                <field name="account_id" invisible="1" />
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='name']"
