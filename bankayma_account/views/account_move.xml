@@ -59,13 +59,13 @@
                 </h5>
             </xpath>
             <field name="payment_reference" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <field name="payment_mode_id" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <field name="narration" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <field name="invoice_vendor_bill_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
@@ -77,28 +77,28 @@
                 expr="//group[@id='header_right_group']/field[@name='date']"
                 position="attributes"
             >
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath expr="//label[@for='invoice_date']" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath expr="//label[@for='invoice_date'][2]" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <field name="invoice_date" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <xpath
                 expr="//field[@name='invoice_date_due']/parent::div[hasclass('d-flex')]"
                 position="attributes"
             >
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath
                 expr="//label[@for='invoice_date_due']/parent::div[hasclass('o_td_label')]"
                 position="attributes"
             >
-                <attribute name="invisible">1</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <field name="name" position="attributes">
                 <attribute name="readonly">1</attribute>
@@ -108,7 +108,7 @@
                 position="attributes"
             >
                 <attribute name="groups">
-                    base.group_user,!bankayma_base.group_user,bankayma_base.group_manager
+                    bankayma_base.group_org_manager,bankayma_base.group_full
                 </attribute>
             </xpath>
             <page id="aml_tab" position="attributes">
