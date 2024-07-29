@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_account_move_form" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="bankayma_account.view_account_move_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//sheet//group[@id='header_right_group']/field[@name='currency_id']"
+                position="after"
+            >
+                <field
+                    name="invoice_payment_term_id"
+                    attrs="{'invisible': [('move_type', '!=', 'in_invoice')], 'required': [('move_type', '=', 'in_invoice')]}"
+                    groups="!bankayma_base.group_full"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
