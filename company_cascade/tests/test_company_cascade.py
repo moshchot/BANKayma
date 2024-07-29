@@ -15,6 +15,7 @@ class TestCompanyCascade(TransactionCase):
                 "company_id": cls.cascading_parent.id,
                 "name": "Test account for cascading",
                 "code": "cascade.code",
+                "account_type": "asset_receivable",
             }
         )
         cls.journal = cls.env["account.journal"].create(
@@ -83,23 +84,27 @@ class TestCompanyCascade(TransactionCase):
     def test_cascade_translations(self):
         """Test that we propagate translations correctly"""
         self.env["res.lang"]._activate_lang("fr_FR")
-        tax = self.env["account.tax"].create({"name": "tax"})
-        tax.with_context(lang="fr_FR").name = "impôt"
-        self._apply_cascade_wizard(tax)
-        child_tax = tax.company_cascade_child_ids[:1]
+        term = (
+            self.env["account.payment.term"]
+            .with_context(lang="en_US")
+            .create({"name": "english", "company_id": self.cascading_parent.id})
+        )
+        term.with_context(lang="fr_FR").name = "français"
+        self._apply_cascade_wizard(term)
+        child_term = term.company_cascade_child_ids[:1]
         self.assertEqual(
-            child_tax.name,
-            "tax",
+            child_term.name,
+            "english",
         )
         self.assertEqual(
-            child_tax.with_context(lang="fr_FR").name,
-            "impôt",
+            child_term.with_context(lang="fr_FR").name,
+            "français",
         )
-        tax.name = "another tax"
-        tax.with_context(lang="fr_FR").name = "autre impôt"
-        self._apply_cascade_wizard(tax, ["name"])
-        self.assertEqual(child_tax.name, "another tax")
-        self.assertEqual(child_tax.with_context(lang="fr_FR").name, "autre impôt")
+        term.name = "english2"
+        term.with_context(lang="fr_FR").name = "français2"
+        self._apply_cascade_wizard(term, ["name"])
+        self.assertEqual(child_term.name, "english2")
+        self.assertEqual(child_term.with_context(lang="fr_FR").name, "français2")
 
     def test_cascade_many2many(self):
         """Test that we cascade many2many fields with company restricted records"""

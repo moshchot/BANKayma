@@ -6,6 +6,7 @@ from . import account_fiscal_position
 from . import account_journal
 from . import account_payment_method_line
 from . import account_payment_mode
+from . import account_payment_term
 from . import account_tax
 from . import ir_actions_actions
 from . import ir_property
