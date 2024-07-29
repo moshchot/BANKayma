@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eve_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-07-29 09:09+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: he\n"
+
+#. module: eve_account
+#: model:ir.model.fields,field_description:eve_account.field_account_payment_term__fixed_date
+msgid "Date"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model,name:eve_account.model_account_payment_term
+#: model:ir.ui.menu,name:eve_account.action_payment_terms
+msgid "Payment Terms"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model.fields,help:eve_account.field_account_payment_term__fixed_date
+msgid "Set a fixed date instad of relative terms below"
+msgstr ""
