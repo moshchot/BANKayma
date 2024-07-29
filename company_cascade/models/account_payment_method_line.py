@@ -13,7 +13,6 @@ class AccountPaymentMethodLine(models.Model):
     def _company_cascade_find_candidate(self, company, vals):
         return self.search(
             [
-                ("name", "=", vals["name"]),
                 ("payment_method_id", "=", vals["payment_method_id"]),
                 ("journal_id", "=", vals["journal_id"]),
                 ("company_id", "=", company.id),
