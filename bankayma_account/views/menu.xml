@@ -89,7 +89,7 @@
             [('move_type', '=', 'out_invoice'), ('journal_id.intercompany_sale_company_id', '=', False), ('journal_id.intercompany_purchase_company_id', '=', False), ('journal_id.intercompany_overhead_company_id', '=', False)]
         </field>
         <field name="context">
-            {'default_move_type': 'out_invoice', 'group_by': ['bankayma_payment_state'], 'bankayma_hide_account_id': True}
+            {'default_move_type': 'out_invoice', 'group_by': ['bankayma_payment_state']}
         </field>
     </record>
 
@@ -113,7 +113,7 @@
             ['|', '|', ('journal_id.intercompany_sale_company_id', '!=', False), ('journal_id.intercompany_overhead_company_id', '!=', False), ('journal_id.intercompany_purchase_company_id', '!=', False)]
         </field>
         <field name="context">
-            {'bankayma_internal_move': True, 'default_move_type': 'out_invoice', 'group_by': ['bankayma_intercompany_grouping'], 'bankayma_hide_account_id': True}
+            {'bankayma_internal_move': True, 'default_move_type': 'out_invoice', 'group_by': ['bankayma_intercompany_grouping']}
         </field>
     </record>
 
@@ -135,7 +135,7 @@
             [('move_type', '=', 'in_invoice'), ('journal_id.intercompany_purchase_company_id', '=', False), ('journal_id.intercompany_sale_company_id', '=', False), ('journal_id.intercompany_overhead_company_id', '=', False)]
         </field>
         <field name="context">
-            {'default_move_type': 'in_invoice', 'group_by': ['validated_state'], 'bankayma_hide_account_id': True}
+            {'default_move_type': 'in_invoice', 'group_by': ['validated_state']}
         </field>
     </record>
 
