@@ -135,13 +135,13 @@ msgstr "שולם"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_analytic_distribution
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_analytic_distribution
 msgid "Analytic"
-msgstr ""
+msgstr "תגיות"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_analytic_account_id
 msgid "Analytic Account"
-msgstr "תג אנליטי"
+msgstr "תגית"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_analytic_accounts
@@ -159,7 +159,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_invoice_report__bankayma_analytic_account_id
 msgid "Analytic account"
-msgstr "תג אנליטי"
+msgstr "תגית"
 
 #. module: bankayma_account
 #. odoo-python
