@@ -51,9 +51,9 @@
         <value model="account.journal" eval="obj([]).search([]).ids" />
         <value
             eval="{
-            'bankayma_mail_template_portal_vendor_bill': ref('account.email_template_edi_invoice'),
-            'bankayma_mail_template_tier_validation_reject': ref('account.email_template_edi_invoice'),
-            'bankayma_mail_template_invoice_paid': ref('account.email_template_edi_invoice'),
+            'bankayma_mail_template_portal_vendor_bill': ref('template_account_move_new_from_portal'),
+            'bankayma_mail_template_tier_validation_reject': ref('template_account_move_tier_rejected'),
+            'bankayma_mail_template_invoice_paid': ref('template_account_move_paid'),
         }"
         />
     </function>
