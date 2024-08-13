@@ -24,4 +24,36 @@
         <field name="body_type">qweb_view</field>
         <field name="body_view_id" ref="qweb_template_edi_invoice" />
     </record>
+    <record id="template_account_move_paid" model="mail.template" forcecreate="1">
+        <field name="name">Account move paid</field>
+        <field name="body_type">qweb_view</field>
+        <field name="body_view_id" ref="qweb_template_account_move_paid" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="partner_to">{{object.partner_id.id}}</field>
+        <field name="lang">object.partner_id.lang</field>
+    </record>
+    <record
+        id="template_account_move_new_from_portal"
+        model="mail.template"
+        forcecreate="1"
+    >
+        <field name="name">Account move from portal</field>
+        <field name="body_type">qweb_view</field>
+        <field name="body_view_id" ref="qweb_template_account_move_new_from_portal" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="partner_to">{{object.partner_id.id}}</field>
+        <field name="lang">object.partner_id.lang</field>
+    </record>
+    <record
+        id="template_account_move_tier_rejected"
+        model="mail.template"
+        forcecreate="1"
+    >
+        <field name="name">Account move rejected by tier validation</field>
+        <field name="body_type">qweb_view</field>
+        <field name="body_view_id" ref="qweb_template_account_move_rejected" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="partner_to">{{object.partner_id.id}}</field>
+        <field name="lang">object.partner_id.lang</field>
+    </record>
 </odoo>
