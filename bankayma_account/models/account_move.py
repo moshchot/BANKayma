@@ -1,10 +1,14 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import json
 from base64 import b64encode
+
+from lxml import etree
 
 from odoo import _, api, exceptions, fields, models
 from odoo.exceptions import UserError
+from odoo.osv.expression import OR
 from odoo.tests.common import Form
 from odoo.tools import float_utils
 
@@ -600,6 +604,8 @@ class AccountMove(models.Model):
         return super()._get_under_validation_exceptions() + [
             "validated_state",
             "system1000_error_message",
+            "message_main_attachment_id",
+            "invoice_line_ids",
         ]
 
     def action_register_payment(self):
@@ -669,3 +675,27 @@ class AccountMove(models.Model):
             if this.journal_id.bankayma_mail_template_invoice_paid:
                 this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
         return super()._invoice_paid_hook()
+
+    @api.model
+    def get_view(self, view_id=None, view_type="form", **options):
+        """
+        Make all invoice line fields except analytic_distribution readonly under
+        validation
+        """
+        result = super().get_view(view_id=view_id, view_type=view_type, **options)
+
+        arch = etree.fromstring(result["arch"])
+        for node in arch.xpath("//field[@name='invoice_line_ids']/*/field[@name]"):
+            if node.attrib.get("name") == "analytic_distribution":
+                continue
+            modifiers = json.loads(node.attrib.get("modifiers", '{"readonly": false}'))
+            if modifiers.get("readonly") is not True:
+                modifiers["readonly"] = OR(
+                    [
+                        modifiers.get("readonly", []) or [],
+                        [("parent.review_ids", "!=", [])],
+                    ]
+                )
+            node.attrib["modifiers"] = json.dumps(modifiers)
+            result["arch"] = etree.tostring(arch)
+        return result
