@@ -91,7 +91,7 @@
         name="BNK Vendor: Payment request recieved"
     >
         <t t-set="subject">
-            [BanKayma] Payment request from 
+            [BanKayma] Payment request from
             <t t-esc="object.company_id.name" />
         </t>
         <div>
@@ -184,9 +184,10 @@
         name="BNK Vendor: Message after payment - send receipt"
     >
         <t t-set="subject">
-            [BanKayma] 
+            [BanKayma]
             <t t-esc="object.company_id.name" />
-            you've been paid! 🤑 (Ref <t t-esc="object.name" />
+            you've been paid! 🤑 (Ref
+            <t t-esc="object.name" />
             )
         </t>
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
@@ -238,7 +239,7 @@
         </p>
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
             <strong style="box-sizing:border-box;font-weight:500;">
-                Licensed or Exempt dealer? Please upload a receipt by replying to this 
+                Licensed or Exempt dealer? Please upload a receipt by replying to this
                 email
             </strong>
             <br />
@@ -257,9 +258,9 @@
     </template>
     <template id="qweb_template_account_move_rejected">
         <t t-set="subject">
-            [BanKayma] 
+            [BanKayma]
             <t t-esc="object.company_id.name" />
-            payment on hold for insufficient documents 
+            payment on hold for insufficient documents
         </t>
         <div>
             <h1>
