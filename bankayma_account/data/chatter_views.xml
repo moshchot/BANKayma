@@ -90,6 +90,7 @@
         id="qweb_template_account_move_new_from_portal"
         name="BNK Vendor: Payment request recieved"
     >
+        <t t-set="subject">[BanKayma] Payment request from <t t-esc="object.company_id.name"/></t></t>
         <div>
             <h1>
                 Dear
@@ -179,6 +180,7 @@
         id="qweb_template_account_move_paid"
         name="BNK Vendor: Message after payment - send receipt"
     >
+        <t t-set="subject">[BanKayma] <t t-esc="object.company_id.name"/></t> you've been paid! 🤑 (Ref <t t-esc="object.name"/>)</t>
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
             You've been paid!
             <br />
@@ -228,7 +230,7 @@
         </p>
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
             <strong style="box-sizing:border-box;font-weight:500;">
-                Please upload a receipt by replying to this email
+                Licensed or Exempt dealer? Please upload a receipt by replying to this email
             </strong>
             <br />
             <br />
@@ -245,6 +247,7 @@
         </p>
     </template>
     <template id="qweb_template_account_move_rejected">
+        <t t-set="subject">[BanKayma] <t t-esc="object.company_id.name"/></t> payment on hold for insufficient documents </t>
         <div>
             <h1>
                 Dear
@@ -273,10 +276,11 @@
                 <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                 for
                 <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
-                was rejected for insufficient documents:
-                <div t-foreach="object.review_ids" t-as="review">
+                is on hold after checking 1000 system:
+                <t t-foreach="object.review_ids" t-as="review">
                     <t t-out="review.comment" />
-                </div>
+                </t>
+                until up to date documents
             </p>
         </div>
         <table>
