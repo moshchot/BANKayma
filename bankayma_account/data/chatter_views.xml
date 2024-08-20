@@ -274,7 +274,9 @@
                 for
                 <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
                 was rejected for insufficient documents:
-                <div t-foreach="object.mapped('review_ids.comment')" t-as="comment" />
+                <div t-foreach="object.review_ids" t-as="review">
+                    <t t-out="review.comment" />
+                </div>
             </p>
         </div>
         <table>
