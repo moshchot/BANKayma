@@ -135,21 +135,6 @@ msgid "Account Number"
 msgstr "מספר חשבון"
 
 #. module: bankayma_account
-#: model:mail.template,name:bankayma_account.template_account_move_new_from_portal
-msgid "Account move from portal"
-msgstr ""
-
-#. module: bankayma_account
-#: model:mail.template,name:bankayma_account.template_account_move_paid
-msgid "Account move paid"
-msgstr ""
-
-#. module: bankayma_account
-#: model:mail.template,name:bankayma_account.template_account_move_tier_rejected
-msgid "Account move rejected by tier validation"
-msgstr ""
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Account number"
 msgstr "מספר חשבון"
@@ -405,6 +390,11 @@ msgstr "העברת טיוטא מיוזמה ליוזמה"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_charge_overhead
 msgid "Charge overhead"
 msgstr "חיוב תקורה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
+msgid "Chatter templates"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_fiscal_position__vendor_doc_mandatory
@@ -1063,7 +1053,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
-msgid "Mails"
+msgid "Mails/Chatter"
 msgstr ""
 
 #. module: bankayma_account
@@ -1344,7 +1334,7 @@ msgstr ""
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
-#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_mail_template_invoice_paid
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_qweb_template_invoice_paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__4_paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__paid
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__4_paid
@@ -1463,7 +1453,7 @@ msgid "Portal"
 msgstr "פורטל"
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_mail_template_portal_vendor_bill
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_qweb_template_portal_vendor_bill
 msgid "Portal vendor bill"
 msgstr ""
 
@@ -1588,11 +1578,6 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "SUB003"
-msgstr ""
-
-#. module: bankayma_account
-#: model:ir.actions.server,name:bankayma_account.action_post_reject_vendor_bill_send_mail
-msgid "Send mail for rejected vendor bills"
 msgstr ""
 
 #. module: bankayma_account
@@ -1789,7 +1774,7 @@ msgid "This partner already has a user!"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_mail_template_tier_validation_reject
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_qweb_template_tier_validation_reject
 msgid "Tier validation rejection"
 msgstr ""
 
