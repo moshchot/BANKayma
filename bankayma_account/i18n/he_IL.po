@@ -103,7 +103,8 @@ msgstr "שולם"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ""
 "<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
-"                Please upload a receipt by replying to this email\n"
+"                Licensed or Exempt dealer? Please upload a receipt by "
+"replying to this email\n"
 "            </strong>\n"
 "            <br/>\n"
 "            <br/>\n"
@@ -2018,6 +2019,17 @@ msgid "YourCompany"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
+msgid "[BanKayma]"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+msgid "[BanKayma] Payment request from"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "amounting in"
 msgstr "על סך"
@@ -2055,6 +2067,11 @@ msgid "invoice"
 msgstr "חשבון"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
+msgid "is on hold after checking 1000 system:"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
@@ -2073,8 +2090,18 @@ msgid "or"
 msgstr "או"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
+msgid "payment on hold for insufficient documents"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "to"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
+msgid "until up to date documents"
 msgstr ""
 
 #. module: bankayma_account
@@ -2082,11 +2109,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
 msgid "was recieved with this info:"
 msgstr "התקבלה עם הפרטים הבאים:"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
-msgid "was rejected for insufficient documents:"
-msgstr "מעוכבת עכב מסמכים חסרים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -2100,6 +2122,11 @@ msgstr "עם הסימוכין:"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+msgid "you've been paid! 🤑 (Ref"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
