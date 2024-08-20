@@ -6,7 +6,7 @@ from base64 import b64encode
 
 from lxml import etree
 
-from odoo import _, api, exceptions, fields, models
+from odoo import SUPERUSER_ID, _, api, exceptions, fields, models
 from odoo.exceptions import UserError
 from odoo.osv.expression import OR
 from odoo.tests.common import Form
@@ -515,9 +515,13 @@ class AccountMove(models.Model):
                 subtype_xmlid="mail.mt_comment",
                 attachment_ids=attachments.ids,
             )
-        if invoice.journal_id.bankayma_mail_template_portal_vendor_bill:
-            invoice.journal_id.bankayma_mail_template_portal_vendor_bill.send_mail(
-                invoice.id
+        invoice.message_subscribe(
+            invoice.company_id.intercompany_invoice_user_id.partner_id.ids
+        )
+        if invoice.journal_id.bankayma_qweb_template_portal_vendor_bill:
+            invoice.with_user(SUPERUSER_ID).message_post_with_view(
+                invoice.journal_id.bankayma_qweb_template_portal_vendor_bill,
+                message_type="comment",
             )
         return invoice
 
@@ -625,28 +629,14 @@ class AccountMove(models.Model):
             AccountMove, self.with_context(mail_notify_force_inbox=True)
         )._notify_review_requested(tier_reviews)
 
-    def _notify_requested_review_body(self):
-        return self.env["mail.template"]._render_template_qweb_view(
-            "bankayma_account.qweb_template_account_move_draft",
-            self._name,
-            self.ids,
-        )[self.id]
-
     def _notify_rejected_review(self):
-        if self.journal_id.bankayma_mail_template_tier_validation_reject:
-            self.journal_id.bankayma_mail_template_tier_validation_reject.send_mail(
-                self.id
+        if self.journal_id.bankayma_qweb_template_tier_validation_reject:
+            self.message_post_with_view(
+                self.journal_id.bankayma_qweb_template_tier_validation_reject
             )
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
         )._notify_rejected_review()
-
-    def _notify_rejected_review_body(self):
-        return self.env["mail.template"]._render_template_qweb_view(
-            "bankayma_account.qweb_template_account_move_rejected",
-            self._name,
-            self.ids,
-        )[self.id]
 
     def _notify_get_recipients(self, message, msg_vals, **kwargs):
         """Force all notifcations to inbox if context key is set"""
@@ -672,8 +662,10 @@ class AccountMove(models.Model):
                     fraction=parent_journal.bankayma_overhead_percentage / 100
                 )
         for this in self:
-            if this.journal_id.bankayma_mail_template_invoice_paid:
-                this.journal_id.bankayma_mail_template_invoice_paid.send_mail(this.id)
+            if this.journal_id.bankayma_qweb_template_invoice_paid:
+                this.message_post_with_view(
+                    this.journal_id.bankayma_qweb_template_invoice_paid
+                )
         return super()._invoice_paid_hook()
 
     @api.model

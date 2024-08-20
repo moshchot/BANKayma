@@ -23,11 +23,12 @@
                         attrs="{'invisible': [('bankayma_charge_overhead', '=', False)]}"
                     />
                 </group>
-                <group name="bankayma_mail" string="Mails">
+                <group name="bankayma_mail" string="Mails/Chatter">
                     <field name="bankayma_inhibit_mails" />
-                    <field name="bankayma_mail_template_portal_vendor_bill" />
-                    <field name="bankayma_mail_template_tier_validation_reject" />
-                    <field name="bankayma_mail_template_invoice_paid" />
+                    <separator string="Chatter templates" />
+                    <field name="bankayma_qweb_template_portal_vendor_bill" />
+                    <field name="bankayma_qweb_template_tier_validation_reject" />
+                    <field name="bankayma_qweb_template_invoice_paid" />
                 </group>
             </xpath>
         </field>

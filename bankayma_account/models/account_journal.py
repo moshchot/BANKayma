@@ -36,29 +36,20 @@ class AccountJournal(models.Model):
         help="The percentage of the amount to be charged as overhead",
     )
     bankayma_inhibit_mails = fields.Boolean("Inhibit mails")
-    bankayma_mail_template_portal_vendor_bill = fields.Many2one(
-        "mail.template",
+    bankayma_qweb_template_portal_vendor_bill = fields.Many2one(
+        "ir.ui.view",
         string="Portal vendor bill",
-        domain=[("model", "=", "account.move")],
-        context=lambda env: {
-            "default_model_id": env.ref("account.model_account_move").id
-        },
+        domain=[("type", "=", "qweb")],
     )
-    bankayma_mail_template_tier_validation_reject = fields.Many2one(
-        "mail.template",
+    bankayma_qweb_template_tier_validation_reject = fields.Many2one(
+        "ir.ui.view",
         string="Tier validation rejection",
-        domain=[("model", "=", "account.move")],
-        context=lambda env: {
-            "default_model_id": env.ref("account.model_account_move").id
-        },
+        domain=[("type", "=", "qweb")],
     )
-    bankayma_mail_template_invoice_paid = fields.Many2one(
-        "mail.template",
+    bankayma_qweb_template_invoice_paid = fields.Many2one(
+        "ir.ui.view",
         string="Paid",
-        domain=[("model", "=", "account.move")],
-        context=lambda env: {
-            "default_model_id": env.ref("account.model_account_move").id
-        },
+        domain=[("type", "=", "qweb")],
     )
     intercompany_sale_company_id = fields.One2many(
         "res.company",
