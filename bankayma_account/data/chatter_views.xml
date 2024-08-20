@@ -90,7 +90,7 @@
         id="qweb_template_account_move_new_from_portal"
         name="BNK Vendor: Payment request recieved"
     >
-        <t t-set="subject">[BanKayma] Payment request from <t t-esc="object.company_id.name"/></t></t>
+        <t t-set="subject">[BanKayma] Payment request from <t t-esc="object.company_id.name"/></t>
         <div>
             <h1>
                 Dear
