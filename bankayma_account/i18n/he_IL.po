@@ -2045,21 +2045,21 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[BanKayma] %(company)s payment on hold for insufficient documents"
-msgstr ""
+msgstr "[בנקיימא] תשלום מעוכב עד להשלמת מסמכים עבור %(company)s "
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
-msgstr ""
+msgstr "[בנקיימא] %(company)s שילמנו לך! 🤑 (Ref %(ref)s)"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[BanKayma] Payment request from %(company)s"
-msgstr ""
+msgstr "[בנקיימא] דרישת התשלום עבור %(company)s התקבלה ובטיפול"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
