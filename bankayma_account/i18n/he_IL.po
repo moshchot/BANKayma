@@ -2051,7 +2051,14 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
-msgid "[BanKayma] %(company)s you've been paid! 🤑(Ref %(ref)s)"
+msgid "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[BanKayma] Payment request from %(company)s"
 msgstr ""
 
 #. module: bankayma_account
