@@ -2101,7 +2101,7 @@ msgstr "חשבון"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "is on hold after checking 1000 system:"
-msgstr "הבקשה מעוכבת עד לעדכון פרטים או מסמכים"
+msgstr "- הבקשה מעוכבת עד לעדכון פרטים או מסמכים -"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
@@ -2129,7 +2129,7 @@ msgstr "ל"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "until up to date documents"
-msgstr "עד לעדכון פרטים או מסמכים"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
