@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_company_cascade_wizard_form" model="ir.ui.view">
+        <field name="model">company.cascade.wizard</field>
+        <field
+            name="inherit_id"
+            ref="company_cascade.view_company_cascade_wizard_form"
+        />
+        <field name="arch" type="xml">
+            <div role="alert" position="after">
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': [('category_ids', '!=', [])]}"
+                >
+                    You very probably should choose a category to restrict the
+                        cascading.
+                </div>
+                <group>
+                    <field
+                        name="category_ids"
+                        widget="many2many_tags"
+                        placeholder="Select company categories to cascade to"
+                    />
+                </group>
+            </div>
+        </field>
+    </record>
+</odoo>
