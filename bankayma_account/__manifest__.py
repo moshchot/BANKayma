@@ -31,6 +31,7 @@
         "company_cascade",
         "contract",
         "currency_rate_update",
+        "donation",
         "email_template_qweb",
         "l10n_il",
         "l10n_il_bank",
