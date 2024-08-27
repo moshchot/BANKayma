@@ -2041,15 +2041,18 @@ msgid "YourCompany"
 msgstr ""
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
-msgid "[BanKayma]"
-msgstr "[בנקיימא]"
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[BanKayma] %(company)s payment on hold for insufficient documents"
+msgstr ""
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
-msgid "[BanKayma] Payment request from"
-msgstr "[בנקיימא] דרישת תשלום מ"
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[BanKayma] %(company)s you've been paid! 🤑(Ref %(ref)s)"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -2112,11 +2115,6 @@ msgid "or"
 msgstr "או"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
-msgid "payment on hold for insufficient documents"
-msgstr "תשלום מעוכב עד להשלמת מסמכים"
-
-#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "to"
 msgstr "ל"
@@ -2144,11 +2142,6 @@ msgstr "עם הסימוכין:"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.system1000_validation_summary
 msgid "yes"
 msgstr "כן"
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
-msgid "you've been paid! 🤑 (Ref"
-msgstr "שילמנו לך!  🤑 ("
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
