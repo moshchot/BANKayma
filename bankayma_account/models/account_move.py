@@ -521,6 +521,8 @@ class AccountMove(models.Model):
         if invoice.journal_id.bankayma_qweb_template_portal_vendor_bill:
             invoice.with_user(SUPERUSER_ID).message_post_with_view(
                 invoice.journal_id.bankayma_qweb_template_portal_vendor_bill,
+                subject=_("[BanKayma] Payment request from %(company)s")
+                % dict(company=invoice.company_id.name),
                 message_type="comment",
             )
         return invoice
@@ -632,7 +634,11 @@ class AccountMove(models.Model):
     def _notify_rejected_review(self):
         if self.journal_id.bankayma_qweb_template_tier_validation_reject:
             self.message_post_with_view(
-                self.journal_id.bankayma_qweb_template_tier_validation_reject
+                self.journal_id.bankayma_qweb_template_tier_validation_reject,
+                subject=_(
+                    "[BanKayma] %(company)s payment on hold for insufficient documents"
+                )
+                % dict(company=self.company_id.name),
             )
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
@@ -664,7 +670,11 @@ class AccountMove(models.Model):
         for this in self:
             if this.journal_id.bankayma_qweb_template_invoice_paid:
                 this.message_post_with_view(
-                    this.journal_id.bankayma_qweb_template_invoice_paid
+                    this.journal_id.bankayma_qweb_template_invoice_paid,
+                    subject=_(
+                        "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
+                    )
+                    % dict(company=this.company_id.name, ref=this.name),
                 )
         return super()._invoice_paid_hook()
 
