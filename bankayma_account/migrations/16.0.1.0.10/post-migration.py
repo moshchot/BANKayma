@@ -11,4 +11,4 @@ def migrate(env, version=None):
         "template_account_move_new_from_portal",
         "template_account_move_tier_rejected",
     ):
-        env.ref("bankayma_account.%s" % xmlid).unlink()
+        env.ref("bankayma_account.%s" % xmlid, False).unlink()
