@@ -2052,7 +2052,7 @@ msgstr "[בנקיימא] תשלום מעוכב עד להשלמת מסמכים ע
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
-msgstr "[בנקיימא] %(company)s שילמנו לך! 🤑 (Ref %(ref)s)"
+msgstr "[בנקיימא] %(company)s - שילמנו לך! 🤑 (Ref %(ref)s)"
 
 #. module: bankayma_account
 #. odoo-python
@@ -2129,7 +2129,7 @@ msgstr "ל"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "until up to date documents"
-msgstr ""
+msgstr "."
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
