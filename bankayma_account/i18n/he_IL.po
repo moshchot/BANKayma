@@ -36,7 +36,7 @@ msgstr ". עבור"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ". from"
-msgstr ". מ"
+msgstr "מ"
 
 #. module: bankayma_account
 #: model:account.tax,name:bankayma_account.tax_social_security_76ex
@@ -2124,12 +2124,12 @@ msgstr "או"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid "to"
-msgstr "ל"
+msgstr ":)"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "until up to date documents"
-msgstr "."
+msgstr "-"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
