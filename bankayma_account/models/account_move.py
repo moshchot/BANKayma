@@ -639,6 +639,7 @@ class AccountMove(models.Model):
                     "[BanKayma] %(company)s payment on hold for insufficient documents"
                 )
                 % dict(company=self.company_id.name),
+                message_type="comment",
             )
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
@@ -675,6 +676,7 @@ class AccountMove(models.Model):
                         "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
                     )
                     % dict(company=this.company_id.name, ref=this.name),
+                    message_type="comment",
                 )
         return super()._invoice_paid_hook()
 
