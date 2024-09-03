@@ -66,3 +66,36 @@ class PaymentTransaction(models.Model):
         return super(
             PaymentTransaction, self.with_company(self.provider_id.company_id)
         )._finalize_post_processing()
+
+    def _create_payment(self, **extra_create_values):
+        payment_method_line = None
+        if self.is_donation and self.company_id.donation_account_id:
+            # poison the cache to have super create move line with configured account
+            payment_method_line = (
+                self.provider_id.journal_id.inbound_payment_method_line_ids.filtered(
+                    lambda x, self=self: x.code == self.provider_id.code
+                )
+            )
+            payment_method_line._cache[
+                "payment_account_id"
+            ] = self.company_id.donation_account_id.id
+        # pass donation product as default
+        result = super(
+            PaymentTransaction,
+            self.with_context(
+                default_product_id=self.company_id.donation_credit_transfer_product_id.id
+            ),
+        )._create_payment(**extra_create_values)
+        if payment_method_line:
+            payment_method_line.invalidate_recordset(["payment_account_id"])
+        return result
+
+    def _to_sumit_vals(self):
+        result = super()._to_sumit_vals()
+        if self.is_donation and len(result.get("Items", [])) == 1:
+            result["Items"][0]["Item"]["Name"] = (
+                self.company_id.donation_credit_transfer_product_id.display_name
+                or self.company_id.donation_account_id.name
+                or result["Items"][0]["Item"]["Name"]
+            )
+        return result
