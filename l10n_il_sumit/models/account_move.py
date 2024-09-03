@@ -80,9 +80,7 @@ class AccountMove(models.Model):
                 "/accounting/documents/create",
                 self._to_sumit_vals(),
             )
-            self.line_ids.mapped(
-                "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
-            ).write(
+            payment.write(
                 {
                     "ref": result.get("DocumentNumber"),
                     "sumit_document_url": result.get("DocumentDownloadURL"),
