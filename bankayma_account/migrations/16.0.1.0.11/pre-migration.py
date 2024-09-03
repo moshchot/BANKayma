@@ -16,4 +16,4 @@ def migrate(env, version=None):
     ):
         record = env.ref("bankayma_account.%s" % xmlid, False)
         if record:
-            record.unlink()
+            record.with_context(_force_unlink=True).unlink()
