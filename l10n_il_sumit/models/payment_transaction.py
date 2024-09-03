@@ -3,7 +3,7 @@
 
 from urllib.parse import urlparse, urlunparse
 
-from odoo import models
+from odoo import _, models
 
 
 class PaymentTransaction(models.Model):
@@ -87,7 +87,7 @@ class PaymentTransaction(models.Model):
             ),
             "ExternalIdentifier": self.reference,
             "MaximumPayments": None,
-            "SendUpdateByEmailAddress": False,
+            "SendUpdateByEmailAddress": True,
             "ExpirationHours": None,
             "Theme": None,
             "Language": invoice_sumit_vals.get("Details", {}).get("Language")
@@ -118,4 +118,19 @@ class PaymentTransaction(models.Model):
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             self.provider_reference = notification_data["OG-PaymentID"]
             self._set_done()
+            if "OG-DocumentNumber" in notification_data:
+                details = self.provider_id.sumit_account_id._request(
+                    "/accounting/documents/getdetails",
+                    {
+                        "DocumentType": self._to_sumit_vals()["DocumentType"],
+                        "DocumentNumber": notification_data["OG-DocumentNumber"],
+                    },
+                )
+                self.invoice_ids.message_post(
+                    body=_(
+                        'Sumit document: <a href="%(DocumentDownloadURL)s">'
+                        "%(DocumentNumber)s</a>"
+                    )
+                    % details
+                )
         return result
