@@ -79,13 +79,11 @@ class PaymentTransaction(models.Model):
             payment_method_line._cache[
                 "payment_account_id"
             ] = self.company_id.donation_account_id.id
-        # pass donation product as default
-        result = super(
-            PaymentTransaction,
-            self.with_context(
+            # pass donation product as default
+            self = self.with_context(
                 default_product_id=self.company_id.donation_credit_transfer_product_id.id
-            ),
-        )._create_payment(**extra_create_values)
+            )
+        result = super(PaymentTransaction, self)._create_payment(**extra_create_values)
         if payment_method_line:
             payment_method_line.invalidate_recordset(["payment_account_id"])
         return result
