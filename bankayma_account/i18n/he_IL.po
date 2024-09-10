@@ -1016,9 +1016,12 @@ msgid "Journals"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move_line.py:0
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_name
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_name
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_name
+#, python-format
 msgid "Label"
 msgstr "תיאור"
 
