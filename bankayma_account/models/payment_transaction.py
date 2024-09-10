@@ -92,8 +92,20 @@ class PaymentTransaction(models.Model):
         result = super()._to_sumit_vals()
         if self.is_donation and len(result.get("Items", [])) == 1:
             result["Items"][0]["Item"]["Name"] = (
-                self.company_id.donation_credit_transfer_product_id.display_name
-                or self.company_id.donation_account_id.name
-                or result["Items"][0]["Item"]["Name"]
+                (
+                    "[%s] %s, %s"
+                    % (
+                        self.company_id.donation_account_id.code,
+                        self.company_id.name,
+                        self.company_id.donation_credit_transfer_product_id.name,
+                    )
+                )
+                if self.company_id.donation_credit_transfer_product_id
+                and self.company_id.donation_account_id
+                else (
+                    self.company_id.donation_credit_transfer_product_id.display_name
+                    or self.company_id.donation_account_id.name
+                    or result["Items"][0]["Item"]["Name"]
+                )
             )
         return result

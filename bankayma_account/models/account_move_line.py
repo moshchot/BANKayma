@@ -1,7 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 
 class AccountMoveLine(models.Model):
@@ -99,17 +99,15 @@ class AccountMoveLine(models.Model):
                 this.bankayma_analytic_account_id = False
 
     def _to_sumit_vals(self):
-        return dict(
-            super()._to_sumit_vals(),
-            Description="%s, %s, %s, [%s%s]"
-            % (
-                self.move_id.company_id.name,
-                self.name,
-                self.move_id.name,
-                self.company_id.code,
-                self.product_id.code,
-            ),
+        result = super()._to_sumit_vals()
+        result["Description"] = _("Label")
+        result["Item"]["Name"] = "[%s%s] %s: %s" % (
+            self.company_id.code,
+            self.product_id.code,
+            self.move_id.company_id.name,
+            self.product_id.name or self.name,
         )
+        return result
 
     def _prepare_account_move_line(self, dest_move, dest_company):
         result = super()._prepare_account_move_line(dest_move, dest_company)
