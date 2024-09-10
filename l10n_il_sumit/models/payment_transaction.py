@@ -87,7 +87,7 @@ class PaymentTransaction(models.Model):
             ),
             "ExternalIdentifier": self.reference,
             "MaximumPayments": None,
-            "SendUpdateByEmailAddress": True,
+            "SendUpdateByEmailAddress": self.partner_email or None,
             "ExpirationHours": None,
             "Theme": None,
             "Language": invoice_sumit_vals.get("Details", {}).get("Language")
