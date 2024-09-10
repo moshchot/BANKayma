@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="company_page" name="Company page">
+        <t t-set="title" t-value="object.name" />
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <span t-field="object.logo" t-options="{'widget': 'image'}" />
+                    <h1 t-field="object.name" />
+                    <div t-field="object.website_description" />
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
