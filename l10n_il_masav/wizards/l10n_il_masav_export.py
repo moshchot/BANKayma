@@ -95,7 +95,7 @@ class L10nIlMasavExport(models.TransientModel):
                     account_number=bank_account.acc_number,
                     payee_id="".join(filter(str.isnumeric, partner.vat)),
                     payee_name=partner.name,
-                    payee_number=move.id,
+                    payee_number=move.name,
                 )
             )
 
