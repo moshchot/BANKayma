@@ -82,7 +82,9 @@
                 request.env.user.has_group('bankayma_base.group_full')
             </attribute>
         </xpath>
-        <xpath expr="//div[./input[@name='phone']]" position="after" />
+        <xpath expr="//input[@name='phone']" position="attributes">
+            <attribute name="required">required</attribute>
+        </xpath>
         <xpath expr="//label[@for='vat']" position="attributes">
             <attribute name="class" />
             <attribute name="t-attf-class">
@@ -159,6 +161,7 @@
                             min="1"
                             t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
                             t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
+                            required="required"
                         />
                     </div>
                     <div
@@ -176,6 +179,7 @@
                             min="1"
                             t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
                             t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
+                            required="required"
                         />
                     </div>
                 </div>
@@ -192,6 +196,7 @@
                         <select
                             name="property_account_position_id"
                             t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''} bk-onchange"
+                            required="required"
                         >
                             <option value="">Fiscal position...</option>
                             <t t-foreach="fiscal_positions or []" t-as="fpos">
