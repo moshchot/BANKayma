@@ -15,9 +15,11 @@ class L10nIlHashavshevetExport(models.TransientModel):
     def _get_move_domain(self):
         result = super()._get_move_domain()
         return [
-            leaf
-            if leaf[0] != "journal_id"
-            else ("journal_id.code", "in", self.journal_ids.mapped("code"))
+            ("journal_id.code", "in", self.journal_ids.mapped("code"))
+            if leaf[0] == "journal_id"
+            else ("bankayma_payment_date", leaf[1], leaf[2])
+            if leaf[0] == "date"
+            else leaf
             for leaf in result
         ] + [
             ("journal_id.intercompany_sale_company_id", "=", False),
