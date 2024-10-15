@@ -107,6 +107,8 @@ class TestCompanyCascade(TransactionCase):
                 "inbound_payment_method_line_ids"
             ).filtered(lambda x: x.payment_method_id == payment_method)
         )
+        self.cascading_child.write({"parent_id": False})
+        self.assertFalse(self.journal.company_cascade_child_ids)
 
     def test_cascade_translations(self):
         """Test that we propagate translations correctly"""

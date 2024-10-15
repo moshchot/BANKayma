@@ -17,8 +17,9 @@ class BankaymaCompanyCreate(models.TransientModel):
 
     template_company_id = fields.Many2one(
         "res.company",
-        default=lambda self: self.env.company,
+        default=lambda self: self.env.ref("base.main_company"),
         string="Template company",
+        domain=[("parent_id", "=", False)],
     )
     user_file = fields.Binary("Users")
     company_code = fields.Char()
