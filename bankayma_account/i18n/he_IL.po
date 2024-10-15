@@ -713,6 +713,11 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_tier_definition__bankayma_enforce_fpos_restrictions
+msgid "Enforce fiscal position restrictions"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__expected
 msgid "Expected"
 msgstr "בטיפול"
@@ -1139,6 +1144,13 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "Missing attachment: %s"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
@@ -1153,14 +1165,12 @@ msgstr "בבדיקה"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_in_invoice_new
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_expense_new
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "New Vendor Bill"
 msgstr "הזמנת רכש חדשה"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_move_out_invoice_new
-#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_income_new
 msgid "New invoice"
 msgstr "חשבון חדשה"
 
@@ -1792,6 +1802,11 @@ msgstr ""
 #: code:addons/bankayma_account/wizards/bankayma_vendor_invite.py:0
 #, python-format
 msgid "This partner already has a user!"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_tier_definition
+msgid "Tier Definition"
 msgstr ""
 
 #. module: bankayma_account
