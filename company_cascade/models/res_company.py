@@ -27,6 +27,13 @@ class ResCompany(models.Model):
         compute=lambda self: [this.update({"company_id": this}) for this in self],
     )
 
+    def write(self, vals):
+        result = super().write(vals)
+        if "parent_id" in vals:
+            for this in self.filtered("company_cascade_from_parent"):
+                this._company_cascade_fix_hierarchy()
+        return result
+
     def _company_cascade_get_companies(self):
         """To fit into the cascading mechanism, companies pretend to be their own company"""
         return self.mapped("child_ids").filtered("company_cascade_from_parent")
@@ -39,3 +46,22 @@ class ResCompany(models.Model):
         """Only cascade explicitly requested fields"""
         if fields:
             return super()._company_cascade(fields=fields)
+
+    def _company_cascade_fix_hierarchy(self):
+        """When moving a company in the hierarchy tree, we need to fix cascading parents"""
+        for model in self.env["company.cascade.mixin"]._inherit_children:
+            for record in self.env[model].search(
+                [
+                    ("company_cascade_parent_id", "!=", False),
+                    ("company_id", "in", self.ids),
+                ]
+            ):
+                if (
+                    record.company_cascade_parent_id.company_id
+                    != record.company_id.parent_id
+                ):
+                    record.company_cascade_parent_id = (
+                        record._company_cascade_get_all(record.company_id.parent_id)
+                        if record.company_id.parent_id
+                        else False
+                    )

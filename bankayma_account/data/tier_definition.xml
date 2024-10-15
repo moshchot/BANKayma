@@ -74,6 +74,7 @@
         <field name="has_comment" eval="True" />
         <field name="comment_required_reject" eval="True" />
         <field name="comment_required_validate" eval="False" />
+        <field name="bankayma_enforce_fpos_restrictions" eval="True" />
         <field
             name="server_action_id"
             ref="action_post_validation_vendor_bill_confirm"

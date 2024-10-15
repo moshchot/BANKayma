@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: eve_account
+#: model:ir.model,name:eve_account.model_bankayma_company_create
+msgid "Create companies in bulk"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_account_payment_term__fixed_date
 msgid "Date"
 msgstr ""
@@ -29,4 +34,9 @@ msgstr ""
 #. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_payment_term__fixed_date
 msgid "Set a fixed date instad of relative terms below"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model.fields,field_description:eve_account.field_bankayma_company_create__template_company_id
+msgid "Template company"
 msgstr ""
