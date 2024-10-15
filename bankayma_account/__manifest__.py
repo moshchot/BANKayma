@@ -73,6 +73,7 @@
         "views/res_partner.xml",
         "views/snippets.xml",
         "views/templates.xml",
+        "views/tier_definition.xml",
         "wizards/account_payment_register.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/bankayma_move_change_company.xml",
