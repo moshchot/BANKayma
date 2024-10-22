@@ -266,7 +266,7 @@
             <br />
             According to our records, you haven't sent a reciept for
             <span style="font-weight:bold;" t-field="object.amount_untaxed_signed" />
-             for
+            for
             <t t-out="', '.join(object.mapped('invoice_line_ids.name')) or ''">
                 description
             </t>
