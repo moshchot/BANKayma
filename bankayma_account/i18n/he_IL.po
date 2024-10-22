@@ -44,6 +44,14 @@ msgid "7.6%"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
+msgid ""
+"<br/>\n"
+"            <br/>\n"
+"            According to our records, you haven't sent a reciept for"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ""
 "<br/>\n"
@@ -128,6 +136,21 @@ msgstr ""
 "            הבנק הבינלאומי הראשון לישראל  (31),\n"
 "            <br/>\n"
 "            סניף 012, חשבון 036218"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
+msgid ""
+"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"                Please upload a receipt by replying to this email\n"
+"            </strong>\n"
+"            <br/>\n"
+"            <br/>\n"
+"            To: Bar-Kayma for Culture 580450898\n"
+"            <br/>\n"
+"            Bank First Internation Bank of Israel (31),\n"
+"            <br/>\n"
+"            Branch 012, Account 036218"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -253,6 +276,7 @@ msgstr "נבדק במערכת 1000, פטור"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid "Azure Interior"
 msgstr ""
 
@@ -353,6 +377,7 @@ msgstr "מס' סניף"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid "Brandon Freeman"
 msgstr ""
 
@@ -830,6 +855,11 @@ msgid "Here is your"
 msgstr "להלן"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
+msgid "Hi"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
 msgid "I agree that the amount will be withdrawn periodically"
 msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
@@ -1063,6 +1093,7 @@ msgstr "הערות פנימיות"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid ""
 "Love💜\n"
 "            <br/>\n"
@@ -2055,6 +2086,7 @@ msgstr "בקשת התשלום שלך"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid "YourCompany"
 msgstr ""
 
@@ -2096,17 +2128,20 @@ msgstr "הזמנת רכש ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid "description"
 msgstr "עבור"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_rejected
 msgid "for"
 msgstr "עבור"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "from"
 msgstr "מפרוייקט"
@@ -2140,7 +2175,13 @@ msgid "or"
 msgstr "או"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
+msgid "paid on"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid "to"
 msgstr ":)"
 
@@ -2170,5 +2211,6 @@ msgstr "כן"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid "your bank"
 msgstr "לבנק שלך"
