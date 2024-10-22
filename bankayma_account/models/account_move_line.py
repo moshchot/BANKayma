@@ -112,4 +112,19 @@ class AccountMoveLine(models.Model):
     def _prepare_account_move_line(self, dest_move, dest_company):
         result = super()._prepare_account_move_line(dest_move, dest_company)
         result["name"] = self.name
+        result["analytic_distribution"] = self._equivalent_analytic_distribution(
+            dest_company
+        )
         return result
+
+    def _equivalent_analytic_distribution(self, company):
+        """
+        Return an analytic distribution using the analytic accounts of company
+        """
+        return {
+            self.env["account.analytic.account"]
+            .browse(int(_id))
+            ._company_cascade_get_all(company)
+            .id: _percentage
+            for _id, _percentage in (self.analytic_distribution or {}).items()
+        }
