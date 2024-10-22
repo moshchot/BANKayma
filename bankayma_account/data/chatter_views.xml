@@ -245,6 +245,56 @@
             Bill the robot
         </p>
     </template>
+    <template
+        id="qweb_template_account_move_paid_reminder"
+        name="BNK Vendor: reminder to send receipt"
+    >
+        <p style="margin:0px 0 12px 0;box-sizing:border-box;">
+            Hi
+            <t t-if="object.partner_id.parent_id">
+                <t t-out="object.partner_id.name or ''">Brandon Freeman</t>
+                <!-- prettier-ignore-start -->
+                (<t t-out="object.partner_id.parent_id.name or ''">Azure Interior</t>),
+                <!-- prettier-ignore-end -->
+            </t>
+            <t t-else="">
+                <!-- prettier-ignore-start -->
+                <t t-out="object.partner_id.name or ''">Brandon Freeman</t>,
+                <!-- prettier-ignore-end -->
+            </t>
+            <br />
+            <br />
+            According to our records, you haven't sent a reciept for
+            <span style="font-weight:bold;" t-field="object.amount_untaxed_signed" />
+             for
+            <t t-out="', '.join(object.mapped('invoice_line_ids.name')) or ''">
+                description
+            </t>
+            paid on
+            <t t-out="object.bankayma_payment_date or ''" />
+            from
+            <t t-out="object.company_id.name or ''">YourCompany</t>
+            to
+            <t t-out="object.partner_bank_id or ''">your bank</t>
+        </p>
+        <p style="margin:0px 0 12px 0;box-sizing:border-box;">
+            <strong style="box-sizing:border-box;font-weight:500;">
+                Please upload a receipt by replying to this email
+            </strong>
+            <br />
+            <br />
+            To: Bar-Kayma for Culture 580450898
+            <br />
+            Bank First Internation Bank of Israel (31),
+            <br />
+            Branch 012, Account 036218
+        </p>
+        <p style="margin:0px 0 12px 0;box-sizing:border-box;">
+            Love💜
+            <br />
+            Bill the robot
+        </p>
+    </template>
     <template id="qweb_template_account_move_rejected">
         <div>
             <h1>
