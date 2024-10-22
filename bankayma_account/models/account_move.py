@@ -10,7 +10,7 @@ from odoo import SUPERUSER_ID, _, api, exceptions, fields, models
 from odoo.exceptions import UserError
 from odoo.osv.expression import OR
 from odoo.tests.common import Form
-from odoo.tools import float_utils
+from odoo.tools import float_utils, html2plaintext
 
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
@@ -372,28 +372,37 @@ class AccountMove(models.Model):
             if not company.overhead_journal_id or not company.overhead_account_id:
                 continue
             child = this.company_id
-            invoice_form = Form(
+            invoice = (
                 self.env["account.move"]
                 .with_context(
-                    default_move_type="out_invoice",
-                    default_journal_id=company.overhead_journal_id,
                     bankayma_force_intercompany_journal=False,
                 )
-                .with_company(company),
-                "account.view_move_form",
-            )
-            invoice_form.partner_id = child.partner_id
-            with invoice_form.invoice_line_ids.new() as invoice_line:
-                invoice_line.product_id = self.env.ref(
-                    "bankayma_account.product_overhead"
+                .with_company(company)
+                .create(
+                    {
+                        "partner_id": child.partner_id.id,
+                        "move_type": "out_invoice",
+                        "journal_id": company.overhead_journal_id.id,
+                    }
                 )
-                invoice_line.account_id = company.overhead_account_id
-                invoice_line.price_unit = this.bankayma_amount_paid * fraction
-                invoice_line.name = "%s %s" % (this.name, this.partner_id.name)
-            invoice = invoice_form.save()
-            this.line_ids.filtered("credit").write(
-                {"bankayma_parent_move_line_id": invoice.invoice_line_ids[:1].id}
             )
+            for line in this.invoice_line_ids:
+                parent_line = line.with_company(company).copy(
+                    {
+                        "move_id": invoice.id,
+                        "product_id": self.env.ref(
+                            "bankayma_account.product_overhead"
+                        ).id,
+                        "account_id": company.overhead_account_id.id,
+                        "price_unit": line.price_total * fraction,
+                        "name": "%s %s" % (this.name, this.partner_id.name),
+                        "tax_ids": False,
+                        "analytic_distribution": line._equivalent_analytic_distribution(
+                            company
+                        ),
+                    }
+                )
+                line.bankayma_parent_move_line_id = parent_line
             if post:
                 invoice.action_post()
                 if pay:
@@ -455,11 +464,25 @@ class AccountMove(models.Model):
         ):
             raise UserError(_("Please set up proper product to request validation"))
         result = super().request_validation()
+        for tier_review in result:
+            if tier_review.definition_id.bankayma_enforce_fpos_restrictions:
+                this = self.env[tier_review["model"]].browse(tier_review.res_id)
+                this.request_validation_check_fpos()
+
         self.invalidate_recordset(["review_ids"])
         self.env.add_to_compute(self._fields["validated_state"], self)
         self.env.add_to_compute(self._fields["bankayma_intercompany_grouping"], self)
         self._recompute_recordset(["validated_state", "bankayma_intercompany_grouping"])
         return result
+
+    def request_validation_check_fpos(self):
+        if self.fiscal_position_id.vendor_doc_mandatory and not self.env[
+            "ir.attachment"
+        ].search([("res_model", "=", self._name), ("res_id", "in", self.ids)]):
+            raise UserError(
+                _("Missing attachment: %s")
+                % html2plaintext(self.fiscal_position_id.vendor_doc_description)
+            )
 
     def _portal_create_vendor_bill(self, post_data, uploaded_files):
         company = self.env["res.company"].browse(

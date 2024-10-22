@@ -275,7 +275,8 @@ class CompanyCascadeMixin(models.AbstractModel):
                     for key, value in vals.items()
                     if not candidate._company_cascade_values_equal(key, value)
                 }
-                candidate.write(vals)
+                if vals:
+                    candidate.write(vals)
                 result += candidate
             else:
                 result += self.sudo().with_company(create_in_company).create(vals)

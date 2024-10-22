@@ -14,14 +14,6 @@
         </field>
     </record>
 
-    <menuitem
-        id="menu_bankayma_income_new"
-        action="action_move_out_invoice_new"
-        sequence="110"
-        web_icon="bankayma_account,static/img/odoo_icon_bk_in.png"
-        groups="bankayma_base.group_user"
-    />
-
     <record id="action_move_in_invoice_new" model="ir.actions.act_window">
         <field name="name">New Vendor Bill</field>
         <field name="res_model">account.move</field>
@@ -33,14 +25,6 @@
             {'default_move_type': 'in_invoice', 'search_default_closed': True}
         </field>
     </record>
-
-    <menuitem
-        id="menu_bankayma_expense_new"
-        action="action_move_in_invoice_new"
-        sequence="120"
-        web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
-        groups="bankayma_base.group_user"
-    />
 
     <record id="account.menu_finance" model="ir.ui.menu">
         <field
