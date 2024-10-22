@@ -231,6 +231,17 @@
             <field name="tax_totals" position="attributes">
                 <attribute name="readonly">True</attribute>
             </field>
+            <form position="inside">
+                <field name="review_ids" invisible="1" />
+            </form>
+            <xpath
+                expr="//field[@name='invoice_line_ids']//button[@name='account_move_update_analytic.action_view_account_move_update_analytic']"
+                position="attributes"
+            >
+                <attribute name="attrs">
+                    {'column_invisible': [('parent.state', '!=', 'posted'), ('parent.review_ids', '=', False)]}
+                </attribute>
+            </xpath>
         </field>
     </record>
 

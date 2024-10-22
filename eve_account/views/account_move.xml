@@ -16,6 +16,14 @@
                     groups="!bankayma_base.group_full"
                 />
             </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']//button[@name='account_move_update_analytic.action_view_account_move_update_analytic']"
+                position="attributes"
+            >
+                <attribute name="attrs">
+                    {'column_invisible': [('parent.state', '!=', 'posted')]}
+                </attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
