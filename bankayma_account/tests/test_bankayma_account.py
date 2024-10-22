@@ -139,6 +139,21 @@ class TestBankaymaAccount(TransactionCase):
             .with_company(cls.parent)
             .create({"name": "Testproduct", "sale_ok": True, "lst_price": 42})
         )
+        cls.analytic_account = cls.env["account.analytic.account"].create(
+            {
+                "name": "Analytic account",
+                "company_id": cls.parent.id,
+                "plan_id": cls.env["account.analytic.plan"]
+                .create(
+                    {
+                        "name": "Plan without company",
+                        "company_id": False,
+                    }
+                )
+                .id,
+            }
+        )
+        cls.analytic_account._company_cascade()
 
     def test_basic_function(self):
         invoice_child1 = self._create_invoice(self.child1, self.user_child1)
@@ -213,6 +228,27 @@ class TestBankaymaAccount(TransactionCase):
             + self.child2.intercompany_purchase_journal_id,
         )
         self.assertItemsEqual(
+            (
+                int(_id)
+                for _id, _percentage in (
+                    overhead_invoices[0].invoice_line_ids.analytic_distribution or {}
+                ).items()
+            ),
+            self.analytic_account.ids,
+        )
+        self.assertItemsEqual(
+            (
+                int(_id)
+                for _id, _percentage in (
+                    child_overhead_invoices[0].invoice_line_ids.analytic_distribution
+                    or {}
+                ).items()
+            ),
+            self.analytic_account._company_cascade_get_all(
+                child_overhead_invoices[0].company_id
+            ).ids,
+        )
+        self.assertItemsEqual(
             child_overhead_invoices.mapped("invoice_line_ids.name"),
             [
                 "%s %s" % (invoice_child1.name, invoice_child1.partner_id.name),
@@ -244,6 +280,9 @@ class TestBankaymaAccount(TransactionCase):
             with invoice_form.invoice_line_ids.new() as line:
                 line.product_id = product
                 line.quantity = 2
+                line.analytic_distribution = {
+                    self.analytic_account._company_cascade_get_all(company).id: 100
+                }
         if post:
             if invoice.need_validation:
                 invoice.sudo().validate_tier()
