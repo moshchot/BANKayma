@@ -5,8 +5,9 @@
     <record id="product_overhead" model="product.product">
         <field name="name">Overhead</field>
         <field name="default_code">OVER</field>
-        <field name="active" eval="False" />
+        <field name="active" eval="True" />
         <field name="company_id" eval="False" />
+        <field name="sale_ok" eval="True" />
     </record>
 
     <record id="product_portal" model="product.product">
