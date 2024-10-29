@@ -14,10 +14,9 @@ patch(SwitchCompanyMenu.prototype, "EveCompanyMenu", {
         });
 
         onWillStart(async () => {
-            this.state.showCheckboxes = !(
-                (await this.user.hasGroup("bankayma_base.group_user")) ||
-                (await this.user.hasGroup("bankayma_base.group_manager"))
-            );
+            this.state.showCheckboxes =
+                !(await this.user.hasGroup("bankayma_base.group_manager")) ||
+                (await this.user.hasGroup("bankayma_base.group_org_manager"));
         });
     },
 });
