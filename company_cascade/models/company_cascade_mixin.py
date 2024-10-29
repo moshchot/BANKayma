@@ -234,6 +234,8 @@ class CompanyCascadeMixin(models.AbstractModel):
         """Return all records that are the equivalent to self in some company"""
         if not self:
             return self.browse([])
+        if not self.company_id:
+            return self
         record = self
         while record.company_cascade_parent_id:
             record = record.company_cascade_parent_id
