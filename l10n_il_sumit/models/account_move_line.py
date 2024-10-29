@@ -20,7 +20,7 @@ class AccountMoveLine(models.Model):
             "Item": {
                 "ID": None,
                 "Name": self.product_id.name or None,
-                "Description": self.bankayma_move_line.name or None,
+                "Description": self.account_move_line.name or None,
                 "Price": self.product_id.list_price,
                 "Currency": self.env["sumit.account"].sumit_currency(
                     self.move_id.currency_id
