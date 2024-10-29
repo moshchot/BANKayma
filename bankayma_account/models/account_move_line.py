@@ -122,9 +122,15 @@ class AccountMoveLine(models.Model):
         Return an analytic distribution using the analytic accounts of company
         """
         return {
-            self.env["account.analytic.account"]
-            .browse(int(_id))
-            ._company_cascade_get_all(company)
-            .id: _percentage
-            for _id, _percentage in (self.analytic_distribution or {}).items()
+            record.id: __percentage
+            for record, __percentage in (
+                (
+                    self.env["account.analytic.account"]
+                    .browse(int(_id))
+                    ._company_cascade_get_all(company),
+                    _percentage,
+                )
+                for _id, _percentage in (self.analytic_distribution or {}).items()
+            )
+            if record
         }
