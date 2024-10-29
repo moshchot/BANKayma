@@ -235,6 +235,11 @@ msgid "Analytic Accounts"
 msgstr "תגיות אנליטיות"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_analytic_plan_id
+msgid "Analytic Plan"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__analytic_precision
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__analytic_precision
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__analytic_precision
@@ -245,6 +250,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_invoice_report__bankayma_analytic_account_id
 msgid "Analytic account"
 msgstr "תגית"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_invoice_report__bankayma_analytic_plan_id
+msgid "Analytic plan"
+msgstr ""
 
 #. module: bankayma_account
 #. odoo-python
