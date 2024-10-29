@@ -8,6 +8,7 @@
     "license": "AGPL-3",
     "depends": [
         "bankayma_account",
+        "eve_base",
     ],
     "data": [
         "security/ir.model.access.csv",
