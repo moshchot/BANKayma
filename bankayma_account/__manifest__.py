@@ -65,6 +65,7 @@
         "views/menu.xml",
         "views/account_analytic_account.xml",
         "views/account_fiscal_position.xml",
+        "views/account_invoice_report.xml",
         "views/account_journal.xml",
         "views/account_move.xml",
         "views/product_template.xml",

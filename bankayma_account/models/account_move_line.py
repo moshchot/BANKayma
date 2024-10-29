@@ -16,6 +16,12 @@ class AccountMoveLine(models.Model):
         compute="_compute_bankayma_analytic_account_id",
         string="Analytic Account",
     )
+    bankayma_analytic_plan_id = fields.Many2one(
+        "account.analytic.plan",
+        store=True,
+        compute="_compute_bankayma_analytic_account_id",
+        string="Analytic Plan",
+    )
 
     def _compute_name(self):
         """
@@ -95,8 +101,12 @@ class AccountMoveLine(models.Model):
                 this.bankayma_analytic_account_id = int(
                     list(this.analytic_distribution.keys())[0]
                 )
+                this.bankayma_analytic_plan_id = (
+                    this.bankayma_analytic_account_id.plan_id
+                )
             else:
                 this.bankayma_analytic_account_id = False
+                this.bankayma_analytic_plan_id = False
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
