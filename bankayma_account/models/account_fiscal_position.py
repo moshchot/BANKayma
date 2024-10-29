@@ -10,6 +10,7 @@ class AccountFiscalPosition(models.Model):
     code = fields.Char()
     vendor_doc_mandatory = fields.Boolean(
         "Mandatory document upload",
+        translate=True,
         help="Check this field to have vendors with this fiscal position "
         "upload a document for every invoice",
     )
