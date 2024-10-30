@@ -7,11 +7,11 @@ from odoo import fields, models
 class AccountFiscalPosition(models.Model):
     _inherit = "account.fiscal.position"
 
-    code = fields.Char()
+    code = fields.Char(string=_("code"))
     vendor_doc_mandatory = fields.Boolean(
-        "Mandatory document upload",
-        help="Check this field to have vendors with this fiscal position "
-        "upload a document for every invoice",
+        string=_("Mandatory document upload"),
+        help=_("Check this field to have vendors with this fiscal position "
+        "upload a document for every invoice"),
     )
     vendor_doc_description = fields.Html()
     bankayma_tax_ids = fields.Many2many(
