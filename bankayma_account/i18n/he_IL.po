@@ -155,7 +155,8 @@ msgid ""
 "            Branch 012, Account 036218"
 msgstr ""
 "<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
-"                  נא לשלוח קבלה במייל חוזר \n"
+"                  עוסק פטור? נא לשלוח קבלה במייל חוזר \n"
+"                  עוסק מורשה? נא לשלוח חשבונית מס וקבלה במייל חוזר \n"
 "            </strong>\n"
 "            <br/>\n"
 "            <br/>\n"
@@ -1642,7 +1643,7 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "Remove %s"
-msgstr ""
+msgstr "הסרת %s"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__render_model
