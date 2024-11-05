@@ -394,6 +394,7 @@ class AccountMove(models.Model):
                             "bankayma_account.product_overhead"
                         ).id,
                         "account_id": company.overhead_account_id.id,
+                        "quantity": 1,
                         "price_unit": line.price_total * fraction,
                         "name": "%s %s" % (this.name, this.partner_id.name),
                         "tax_ids": False,
