@@ -8,6 +8,9 @@ class ResPartner(models.Model):
     is_company = fields.Boolean(default=True)
     user_state = fields.Selection(related="user_ids.state")
     vat = fields.Char(pattern="([0-9]+)|(/)")
+    street = fields.Char(translate=True)
+    street2 = fields.Char(translate=True)
+    city = fields.Char(translate=True)
 
     def _get_name(self):
         result = super()._get_name()
