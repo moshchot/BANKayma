@@ -13,7 +13,7 @@ class AccountFiscalPosition(models.Model):
         help="Check this field to have vendors with this fiscal position "
         "upload a document for every invoice",
     )
-    vendor_doc_description = fields.Html()
+    vendor_doc_description = fields.Html(translate=True)
     bankayma_tax_ids = fields.Many2many(
         "account.tax",
         "account_fiscal_position_bankayma_tax",

@@ -8,6 +8,9 @@ class ResCompany(models.Model):
     name = fields.Char(
         translate=True,
     )
+    street = fields.Char(translate=True)
+    street2 = fields.Char(translate=True)
+    city = fields.Char(translate=True)
 
     @api.model_create_multi
     def create(self, vals_list):
