@@ -364,6 +364,13 @@ msgid "Bankayma Product Domain"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_tax_removal_label
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_tax_removal_label
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_tax_removal_label
+msgid "Bankayma Tax Removal Label"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_tax__bankayma_vendor_specific
 msgid "Bankayma Vendor Specific"
 msgstr ""
@@ -900,6 +907,13 @@ msgid "INV/2021/05/0005"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_tax_group__bankayma_offer_removal
+msgid ""
+"If this is checked, moves with taxes belonging to this group offer a button "
+"to remove all those taxes"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_product_product__sumit_type
 #: model:ir.model.fields,help:bankayma_account.field_product_template__sumit_type
 msgid ""
@@ -1267,6 +1281,11 @@ msgid "Notify followers of the document (mass post only)"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_tax_group__bankayma_offer_removal
+msgid "Offer removal"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/wizards/bankayma_company_create.py:0
 #, python-format
@@ -1619,6 +1638,13 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__model
 msgid "Related Document Model"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "Remove %s"
 msgstr ""
 
 #. module: bankayma_account
