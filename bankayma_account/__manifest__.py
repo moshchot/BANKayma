@@ -68,6 +68,7 @@
         "views/account_invoice_report.xml",
         "views/account_journal.xml",
         "views/account_move.xml",
+        "views/account_tax_group.xml",
         "views/product_template.xml",
         "views/res_company.xml",
         "views/res_config_settings.xml",
