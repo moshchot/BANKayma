@@ -9,4 +9,11 @@
         groups="bankayma_base.group_org_manager,bankayma_base.group_full"
         sequence="130"
     />
+    <menuitem
+        id="menu_journals"
+        action="account.action_account_journal_form"
+        parent="bankayma_base.menu_bankayma_config"
+        groups="bankayma_base.group_org_manager,bankayma_base.group_full"
+        sequence="135"
+    />
 </odoo>
