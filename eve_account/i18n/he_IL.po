@@ -26,6 +26,16 @@ msgid "Date"
 msgstr ""
 
 #. module: eve_account
+#: model:ir.model,name:eve_account.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.ui.menu,name:eve_account.menu_journals
+msgid "Journals"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
 #: model:ir.ui.menu,name:eve_account.action_payment_terms
 msgid "Payment Terms"
