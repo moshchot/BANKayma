@@ -1,7 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class AccountMoveLine(models.Model):
@@ -110,7 +110,7 @@ class AccountMoveLine(models.Model):
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
-        result["Description"] = _("Label")
+        result["Description"] = self.name
         result["Item"]["Name"] = "[%s%s] %s: %s" % (
             self.company_id.code,
             self.product_id.code,
