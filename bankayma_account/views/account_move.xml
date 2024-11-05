@@ -187,6 +187,16 @@
                 <attribute name="options">{'no_open': True}</attribute>
             </field>
             <field name="fiscal_position_id" position="after">
+                <div
+                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
+                />
+                <button
+                    name="action_bankayma_remove_taxes"
+                    type="object"
+                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
+                >
+                    <field name="bankayma_tax_removal_label" />
+                </button>
                 <field name="bankayma_deduct_tax" invisible="True" />
                 <field name="bankayma_deduct_tax_use_max_amount" invisible="True" />
                 <label
@@ -213,18 +223,6 @@
                     attrs="{'invisible': ['|', '|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice'), ('bankayma_deduct_tax_use_max_amount', '=', False)]}"
                 />
             </field>
-            <label for="journal_id" position="before">
-                <div
-                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
-                />
-                <button
-                    name="action_bankayma_remove_taxes"
-                    type="object"
-                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
-                >
-                    <field name="bankayma_tax_removal_label" />
-                </button>
-            </label>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">bankayma_partner_domain</attribute>
                 <attribute name="context">
