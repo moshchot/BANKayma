@@ -12,6 +12,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "views/account_journal.xml",
         "views/account_move.xml",
         "views/account_payment_term.xml",
         "views/menu.xml",

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="account_journal_view_kanban" model="ir.ui.view">
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.account_journal_view_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('row')]" position="after">
+                <field name="bankayma_charge_overhead" invisible="1" />
+                <div
+                    class="row"
+                    attrs="{'invisible': [('bankayma_charge_overhead', '=', False)]}"
+                >
+                    <div class="col-6">
+                        <field name="bankayma_overhead_percentage" />
+                        %
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
