@@ -113,6 +113,9 @@ class AccountMove(models.Model):
         groups="bankayma_base.group_org_manager",
         compute_sudo=True,
     )
+    bankayma_tax_removal_label = fields.Char(
+        compute="_compute_bankayma_tax_removal_label"
+    )
     system1000_error_message = fields.Char()
 
     def _compute_amount(self):
@@ -268,6 +271,20 @@ class AccountMove(models.Model):
             while fpos.company_cascade_parent_id:
                 fpos = fpos.company_cascade_parent_id
             this.bankayma_fiscal_position_id = fpos
+
+    @api.depends("line_ids.tax_ids")
+    def _compute_bankayma_tax_removal_label(self):
+        for this in self:
+            this.bankayma_tax_removal_label = False
+            if this.move_type != "in_invoice" or this.state != "draft":
+                continue
+            groups = this.line_ids.tax_ids.tax_group_id.filtered(
+                "bankayma_offer_removal",
+            )
+            if groups:
+                this.bankayma_tax_removal_label = _("Remove %s") % ", ".join(
+                    groups.mapped("name")
+                )
 
     def write(self, vals):
         result = super().write(vals)
@@ -642,6 +659,18 @@ class AccountMove(models.Model):
         result = super().action_register_payment()
         result.get("context", {})["dont_redirect_to_payments"] = True
         return result
+
+    def action_bankayma_remove_taxes(self):
+        return self.line_ids.write(
+            {
+                "tax_ids": [
+                    fields.Command.unlink(tax.id)
+                    for tax in self.line_ids.tax_ids.filtered(
+                        "tax_group_id.bankayma_offer_removal"
+                    )
+                ]
+            }
+        )
 
     def validate_tier(self):
         result = super().validate_tier()
