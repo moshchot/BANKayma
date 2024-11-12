@@ -334,10 +334,13 @@ class AccountMove(models.Model):
                 if not isinstance(action["view_id"], int):
                     # this happens if the document layout isn't configured yet
                     return action
-                with Form(
-                    self.env[action["res_model"]].with_context(**action["context"]),
-                    action["view_id"],
-                ) as send_form:
+                wizard = (
+                    self.env[action["res_model"]]
+                    .with_context(**action["context"])
+                    .create({})
+                )
+                wizard.onchange_template_id()
+                with Form(wizard, action["view_id"]) as send_form:
                     send_form.save().send_and_print_action()
                 result = {
                     "type": "ir.actions.act_url",
