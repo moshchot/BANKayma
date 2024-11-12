@@ -11,15 +11,27 @@
         web_icon="bankayma_base,static/description/icon.png"
         groups="group_user"
     />
-    <record
-        id="contacts.action_contacts_view_kanban"
-        model="ir.actions.act_window.view"
-    >
-        <field name="sequence" eval="3" />
+    <record id="action_bankayma_contacts" model="ir.actions.act_window">
+        <field name="name">Contacts</field>
+        <field name="res_model">res.partner</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter" />
+        <field name="context">{'default_is_company': True}</field>
+    </record>
+    <record id="action_bankayma_contacts_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="base.view_partner_tree" />
+        <field name="act_window_id" ref="action_bankayma_contacts" />
+    </record>
+    <record id="action_bankayma_contacts_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="bankayma_partner_form" />
+        <field name="act_window_id" ref="action_bankayma_contacts" />
     </record>
     <menuitem
         id="menu_bankayma_contacts"
-        action="contacts.action_contacts"
+        action="action_bankayma_contacts"
         parent="menu_bankayma_root"
         sequence="200"
     />

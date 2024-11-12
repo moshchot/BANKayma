@@ -1,5 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -36,3 +36,26 @@ class ResPartner(models.Model):
     def can_edit_vat(self):
         """Allow editing vat if there's no vat"""
         return not bool(self.vat) or super().can_edit_vat()
+
+    @api.model
+    def get_view(self, view_id=None, view_type="form", **options):
+        """
+        Force partner view to bankayma's simplified form for x2x partner fields
+        """
+
+        def has_group(group):
+            return self.env.user.has_group("bankayma_base." + group)
+
+        if (
+            not view_id
+            and view_type == "form"
+            and not has_group("group_full")
+            and (
+                has_group("group_user")
+                or has_group("group_manager")
+                or has_group("group_org_manager")
+            )
+        ):
+            view_id = self.env.ref("bankayma_base.bankayma_partner_form").id
+
+        return super().get_view(view_id=view_id, view_type=view_type, **options)

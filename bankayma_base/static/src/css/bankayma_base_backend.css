@@ -13,3 +13,6 @@ div.o-scrollbar.vertical {
 .o_main_navbar .o_nav_entry:active {
     background-color: rgba(0, 0, 0, 0.08) !important;
 }
+.o_form_view .o_address_format .o_address_city span {
+    margin-right: auto;
+}
