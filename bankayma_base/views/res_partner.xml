@@ -2,8 +2,10 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="view_partner_form" model="ir.ui.view">
+    <record id="bankayma_partner_form" model="ir.ui.view">
         <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="mode">primary</field>
+        <field name="priority">500</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
             <sheet position="before">
@@ -16,44 +18,74 @@
                         groups="base.group_erp_manager,bankayma_base.group_manager,bankayma_base.group_org_manager"
                     />
                 </header>
-                <xpath expr="//sheet" position="before">
-                    <div
-                        class="alert alert-success text-center o_form_header alert-dismissible"
-                        attrs="{'invisible': [('signup_valid', '!=', True)]}"
-                        role="status"
-                    >
-                        <button
-                            class="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                        <div attrs="{'invisible': [('user_state', '!=', 'active')]}">
-                            <strong>
-                                A password reset has been requested for this user. An
+                <div
+                    class="alert alert-success text-center o_form_header alert-dismissible"
+                    attrs="{'invisible': [('signup_valid', '!=', True)]}"
+                    role="status"
+                >
+                    <button
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                    />
+                    <div attrs="{'invisible': [('user_state', '!=', 'active')]}">
+                        <strong>
+                            A password reset has been requested for this user. An
                                 email containing the following link has been sent:
-                            </strong>
-                        </div>
-                        <div attrs="{'invisible': [('user_state', '!=', 'new')]}">
-                            <strong>
-                                An invitation email containing the following
-                                subscription link has been sent:
-                            </strong>
-                        </div>
-                        <div>
-                            <field name="signup_url" widget="url" />
-                        </div>
-                        <field name="signup_valid" invisible="1" />
-                        <field name="user_state" invisible="1" />
+                        </strong>
                     </div>
-                </xpath>
+                    <div attrs="{'invisible': [('user_state', '!=', 'new')]}">
+                        <strong>
+                            An invitation email containing the following
+                                subscription link has been sent:
+                        </strong>
+                    </div>
+                    <div>
+                        <field name="signup_url" widget="url" />
+                    </div>
+                    <field name="signup_valid" invisible="1" />
+                    <field name="user_state" invisible="1" />
+                </div>
             </sheet>
             <form position="inside">
                 <field name="user_id" invisible="True" />
             </form>
-            <span name="address_name" position="before">
-                <xpath expr="//label[@for='email']" position="move" />
-                <xpath expr="//field[@name='email']/parent::div" position="move" />
-            </span>
+            <notebook position="inside">
+                <page name="bankayma_standard_moved" string="Details" />
+            </notebook>
+            <page name="bankayma_standard_moved" position="inside">
+                <xpath expr="//form/sheet/group" position="move" />
+            </page>
+            <xpath expr="//field[@name='parent_id']/.." position="before">
+                <field name="company_type" position="move" />
+            </xpath>
+            <xpath expr="//form/sheet/div[hasclass('oe_title')]" position="after">
+                <group name="bankayma_top" class="o_label_nowrap">
+                    <group name="bankayma_left">
+                        <field name="email" />
+                        <field name="phone" />
+                    </group>
+                    <group name="bankayma_right">
+                        <field name="vat" />
+                        <field
+                            name="bank_ids"
+                            context="{'default_allow_out_payment': True}"
+                            editable="bottom"
+                        >
+                            <tree>
+                                <field
+                                    name="acc_number"
+                                    modifiers="{&quot;required&quot;: true}"
+                                />
+                                <field name="bank_id" />
+                                <field name="branch_code" />
+                                <field name="acc_holder_name" invisible="1" />
+                            </tree>
+                        </field>
+                        <field name="lang" />
+                    </group>
+                </group>
+            </xpath>
             <page name="accounting_disabled" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
@@ -65,6 +97,11 @@
             </field>
             <field name="parent_id" position="attributes">
                 <attribute name="placeholder">Organization...</attribute>
+            </field>
+            <field name="child_ids" position="attributes">
+                <attribute name="context">
+                    {'default_parent_id': active_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type': 'other'}
+                </attribute>
             </field>
             <xpath
                 expr="//field[@name='child_ids']/form//div[hasclass('text-muted')]"

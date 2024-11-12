@@ -2,53 +2,26 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="view_res_bank_form" model="ir.ui.view">
+    <record id="bankayma_partner_form" model="ir.ui.view">
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="account.view_partner_property_form" />
+        <field name="inherit_id" ref="bankayma_base.bankayma_partner_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//field[@name='bank_ids']//field[@name='bank_id']"
-                position="before"
-            >
-                <field name="acc_number" position="move" />
-            </xpath>
-            <field name="vat" position="after">
-                <xpath
-                    expr="//group[@name='fiscal_information']/field[@name='property_account_position_id']"
-                    position="move"
-                />
-                <field name="bank_ids" position="move" />
-            </field>
-            <xpath
-                expr="//field[@name='bank_ids']/tree/field[@name='allow_out_payment']"
-                position="attributes"
-            >
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <field name="bank_ids" position="attributes">
-                <attribute name="context">
-                    {'default_allow_out_payment': True}
-                </attribute>
-            </field>
-            <group name="fiscal_information" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </group>
-            <group name="banks" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </group>
-            <xpath
-                expr="//button[@name='action_view_partner_with_same_bank']/parent::bold/parent::div"
-                position="attributes"
-            >
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </xpath>
+            <form position="inside">
+                <field name="show_warning_vat_required" invisible="True" />
+                <field name="duplicated_bank_account_partners_count" invisible="True" />
+                <field name="supplier_rank" invisible="True" />
+            </form>
             <page name="accounting" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
             <xpath
-                expr="//sheet//field[@name='property_account_position_id']"
-                position="after"
+                expr="//group[@name='bankayma_right']/field[@name='bank_ids']"
+                position="before"
             >
+                <field
+                    name="property_account_position_id"
+                    attrs="{'required': [('supplier_rank', '&gt;', 0)]}"
+                />
                 <field name="bankayma_deduct_tax" invisible="True" />
                 <field
                     name="bankayma_show_tax_deduction"
@@ -70,27 +43,22 @@
                     attrs="{'invisible': [('bankayma_available_tax_group_ids', '=', [])]}"
                 />
             </xpath>
-            <span name="address_name" position="before">
-                <field name="type" />
-            </span>
-            <span name="address_name" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </span>
-            <div class="o_address_format" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </div>
-            <field name="child_ids" position="attributes">
-                <attribute name="context">
-                    {'default_parent_id': active_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type': 'other'}
-                </attribute>
-            </field>
-        </field>
-    </record>
-
-    <record id="view_partner_form" model="ir.ui.view">
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form" />
-        <field name="arch" type="xml">
+            <xpath
+                expr="//group[@name='bankayma_top']//field[@name='vat']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'required': [('supplier_rank', '&gt;', 0)]}</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='bankayma_top']//field[@name='bank_ids']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'required': [('supplier_rank', '&gt;', 0)]}</attribute>
+            </xpath>
             <button name="action_reset_password" position="after">
                 <button
                     string="Invite Vendor"
@@ -125,35 +93,9 @@
                     </div>
                 </button>
             </button>
-        </field>
-    </record>
-
-    <record
-        id="view_partner_property_form_account_fiscal_position_vat_check"
-        model="ir.ui.view"
-    >
-        <field name="model">res.partner</field>
-        <field
-            name="inherit_id"
-            ref="account_fiscal_position_vat_check.view_partner_property_form"
-        />
-        <field name="arch" type="xml">
-            <xpath
-                expr="//field[@name='property_account_position_id']/parent::em/parent::div"
-                position="attributes"
-            >
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </xpath>
             <page name="sales_purchases" position="attributes">
-                <attribute name="invisible">True</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
-        </field>
-    </record>
-
-    <record id="view_partner_form_contract" model="ir.ui.view">
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="contract.view_partner_form" />
-        <field name="arch" type="xml">
             <xpath
                 expr="(//button[@name='act_show_contract'])[1]"
                 position="attributes"
