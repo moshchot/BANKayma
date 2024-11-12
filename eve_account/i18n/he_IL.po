@@ -26,13 +26,37 @@ msgid "Date"
 msgstr ""
 
 #. module: eve_account
+#: model:ir.model.fields,help:eve_account.field_account_bank_statement_line__bankayma_waive_overhead
+#: model:ir.model.fields,help:eve_account.field_account_move__bankayma_waive_overhead
+#: model:ir.model.fields,help:eve_account.field_account_payment__bankayma_waive_overhead
+msgid "Exceptionally don't charge overhead for this move"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.view_account_move_form
+msgid "Extra settings"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_account_journal
 msgid "Journal"
 msgstr ""
 
 #. module: eve_account
+#: model:ir.model,name:eve_account.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.ui.menu,name:eve_account.menu_journals
 msgid "Journals"
+msgstr ""
+
+#. module: eve_account
+#. odoo-python
+#: code:addons/eve_account/models/account_move.py:0
+#, python-format
+msgid "Overhead of %d%% was waived on this move"
 msgstr ""
 
 #. module: eve_account
@@ -49,4 +73,11 @@ msgstr ""
 #. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_bankayma_company_create__template_company_id
 msgid "Template company"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model.fields,field_description:eve_account.field_account_bank_statement_line__bankayma_waive_overhead
+#: model:ir.model.fields,field_description:eve_account.field_account_move__bankayma_waive_overhead
+#: model:ir.model.fields,field_description:eve_account.field_account_payment__bankayma_waive_overhead
+msgid "Waive overhead"
 msgstr ""
