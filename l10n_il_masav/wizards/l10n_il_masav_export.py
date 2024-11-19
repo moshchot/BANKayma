@@ -69,7 +69,9 @@ class L10nIlMasavExport(models.TransientModel):
 
         for move in moves:
             partner = move.partner_id
-            bank_account = partner.bank_ids[:1]
+            bank_account = (
+                partner.bank_ids[:1] or partner.commercial_partner_id.bank_ids[:1]
+            )
             bank = bank_account.bank_id
             branch_code = bank_account.branch_code or bank.bank_branch_code
 
