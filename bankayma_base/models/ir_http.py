@@ -3,7 +3,7 @@ from odoo import models
 from odoo.http import request
 
 
-class ResUsers(models.AbstractModel):
+class IrHttp(models.AbstractModel):
     _inherit = "ir.http"
 
     @classmethod
