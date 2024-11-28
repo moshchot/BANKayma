@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: eve_account
+#: model:ir.model,name:eve_account.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_bankayma_company_create
 msgid "Create companies in bulk"
 msgstr ""
@@ -57,6 +62,11 @@ msgstr ""
 #: code:addons/eve_account/models/account_move.py:0
 #, python-format
 msgid "Overhead of %d%% was waived on this move"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model.fields,field_description:eve_account.field_res_company__bankayma_overhead_percentage
+msgid "Overhead percentage"
 msgstr ""
 
 #. module: eve_account
