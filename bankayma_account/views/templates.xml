@@ -656,4 +656,13 @@
             </tr>
         </table>
     </template>
+
+    <template
+        id="tier_validation_buttons"
+        inherit_id="base_tier_validation.tier_validation_buttons"
+    >
+        <button name="request_validation" position="attributes">
+            <attribute name="class">btn btn-primary</attribute>
+        </button>
+    </template>
 </odoo>
