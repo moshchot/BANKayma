@@ -1334,6 +1334,11 @@ msgid "Other"
 msgstr "אחר"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__other_line_ids
+msgid "Other Line"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Out:"
 msgstr "יוצא:"
