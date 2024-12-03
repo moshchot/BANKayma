@@ -62,6 +62,7 @@
         "web_widget_pattern",
     ],
     "data": [
+        "data/res_company.xml",
         "data/res_users.xml",
         "security/bankayma_base.xml",
         "security/ir.model.access.csv",
