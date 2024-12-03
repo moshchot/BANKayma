@@ -37,9 +37,11 @@ account-financial-tools:
     oca: https://github.com/OCA/account-financial-tools.git
 account-fiscal-rule:
   defaults:
-    depth: 1
+    depth: 100
   merges:
     - oca 1b72345380e5c750575fbb58a0843067100efe3c
+    # fix for #763
+    - oca refs/pull/457/head
   remotes:
     oca: https://github.com/OCA/account-fiscal-rule.git
 account-invoicing:
