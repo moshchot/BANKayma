@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="base.main_company" model="res.company">
+        <field name="color_navbar_bg">#939393</field>
+        <field name="color_navbar_bg_hover">#797979</field>
+        <field name="color_navbar_text">#000</field>
+    </record>
+</odoo>
