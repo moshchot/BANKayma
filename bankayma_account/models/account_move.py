@@ -460,18 +460,17 @@ class AccountMove(models.Model):
 
     def _bankayma_pay(self, journal=None, payment_communication=None):
         """Pay an invoice with the payment register wizard"""
-        for this in self:
-            action = this.action_register_payment()
-            payment_form = Form(
-                self.env[action["res_model"]]
-                .with_context(**action["context"])
-                .with_company(this.company_id)
-            )
-            if journal:
-                payment_form.journal_id = journal
-            if payment_communication:
-                payment_form.communication = payment_communication
-            payment_form.save().action_create_payments()
+        action = self.action_register_payment()
+        payment_form = Form(
+            self.env[action["res_model"]]
+            .with_context(**action["context"])
+            .with_context(allowed_company_ids=self.company_id.ids)
+        )
+        if journal:
+            payment_form.journal_id = journal
+        if payment_communication:
+            payment_form.communication = payment_communication
+        payment_form.save().action_create_payments()
 
     def request_validation(self):
         """Set invoice_date before rquesting validation"""

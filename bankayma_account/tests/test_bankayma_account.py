@@ -183,8 +183,7 @@ class TestBankaymaAccount(TransactionCase):
             self.child1.account_journal_payment_debit_account_id,
             self.child2.account_journal_payment_debit_account_id,
         )
-        invoice_child1._bankayma_pay()
-        invoice_child2._bankayma_pay()
+        (invoice_child1 + invoice_child2).with_user(self.env.user)._bankayma_pay()
         overhead_invoices = self.env["account.move"].search(
             [
                 (
