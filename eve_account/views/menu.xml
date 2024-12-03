@@ -16,4 +16,12 @@
         groups="bankayma_base.group_org_manager,bankayma_base.group_full"
         sequence="135"
     />
+    <record
+        id="bankayma_account.action_bankayma_group_income_move_out_invoice"
+        model="ir.actions.act_window"
+    >
+        <field name="context">
+            {'default_move_type': 'out_invoice', 'group_by': ['validated_state']}
+        </field>
+    </record>
 </odoo>
