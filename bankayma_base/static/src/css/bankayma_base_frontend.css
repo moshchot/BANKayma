@@ -1,1 +1,6 @@
-/* here css classes for the frontend go */
+form label:after {
+    content: "*";
+}
+form label.label-optional:after {
+    content: "";
+}
