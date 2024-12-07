@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="qweb_template_account_move_draft" name="Move tier validation request">
-        <div
-            t-attf-style="direction: #{'rtl' if object.partner_id.lang and
-            request.env['res.lang']._lang_get(object.partner_id.lang).direction == 'rtl' else 'ltr'};"
-        >
+        <div>
             <h1>
                 Dear
                 <t t-if="object.partner_id.parent_id">
@@ -35,10 +32,7 @@
                 was recieved with this info:
             </p>
         </div>
-        <table
-            t-attf-style="direction: #{'rtl' if object.partner_id.lang and
-            request.env['res.lang']._lang_get(object.partner_id.lang).direction == 'rtl' else 'ltr'};"
-        >
+        <table>
             <tr>
                 <th>Recipient Bank info:</th>
                 <td t-foreach="object.partner_id.bank_ids[:1]" t-as="bank_account">
@@ -96,10 +90,7 @@
         id="qweb_template_account_move_new_from_portal"
         name="BNK Vendor: Payment request recieved"
     >
-        <div
-            t-attf-style="direction: #{'rtl' if object.partner_id.lang and
-            request.env['res.lang']._lang_get(object.partner_id.lang).direction == 'rtl' else 'ltr'};"
-        >
+        <div>
             <h1>
                 Dear
                 <t t-if="object.partner_id.parent_id">
@@ -130,10 +121,7 @@
                 was recieved with this info:
             </p>
         </div>
-        <table
-            t-attf-style="direction: #{'rtl' if object.partner_id.lang and
-            request.env['res.lang']._lang_get(object.partner_id.lang).direction == 'rtl' else 'ltr'};"
-        >
+        <table>
             <tr>
                 <th>Recipient Bank info:</th>
                 <td t-foreach="object.partner_id.bank_ids[:1]" t-as="bank_account">
