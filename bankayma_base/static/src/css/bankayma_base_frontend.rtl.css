@@ -1,0 +1,10 @@
+.o_content {
+    direction: rtl;
+    text-align: right;
+}
+form label:after {
+    content: "*";
+}
+form label.label-optional:after {
+    content: "";
+}
