@@ -599,6 +599,7 @@ class AccountMove(models.Model):
                     ("company_id", "=", company.id),
                     ("tax_group_id", "=", tax_group.id),
                     ("bankayma_vendor_specific", "=", True),
+                    ("analytic", "=", True),
                 ]
             )
             or create
@@ -629,6 +630,7 @@ class AccountMove(models.Model):
                     "tax_group_id": tax_group.id,
                     "python_compute": "result = quantity * price_unit * %f"
                     % (tax_percentage / 100),
+                    "analytic": True,
                 }
             )
             or AccountTax
