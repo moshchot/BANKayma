@@ -1145,6 +1145,11 @@ msgid "Mail Activity Type"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_mail_tracking_value
+msgid "Mail Tracking Value"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
 msgid "Mails/Chatter"
 msgstr ""
