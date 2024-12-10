@@ -9,6 +9,7 @@ from . import account_payment_method
 from . import account_tax
 from . import account_tax_group
 from . import mail_template
+from . import mail_tracking_value
 from . import payment_transaction
 from . import product_template
 from . import res_bank
