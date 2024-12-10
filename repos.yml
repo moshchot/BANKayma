@@ -17,8 +17,8 @@ account-analytic:
     - oca 757c06d5e9101e099ae96092953fe1da6c855e99
     # account_analytic_plan_applicability_product
     - oca refs/pull/556/head
-    # fix for #670
-    - oca refs/pull/705/head
+    # fix for #670, #742
+    - oca refs/pull/726/head
   remotes:
     oca: https://github.com/OCA/account-analytic.git
 account-financial-reporting:
