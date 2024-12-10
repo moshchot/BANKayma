@@ -62,6 +62,7 @@ class AccountPaymentRegister(models.TransientModel):
                 {
                     "journal_id": self.journal_id._company_cascade_get_all(company),
                     "payment_method_line_id": payment_method,
+                    "payment_date": self.payment_date,
                 }
             )
             self.write(defaults)

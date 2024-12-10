@@ -16,6 +16,15 @@
             <xpath expr="./group" position="after">
                 <field name="comment" placeholder="Fill in a comment..." />
             </xpath>
+            <field name="communication" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <label for="amount" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </label>
+            <div name="amount_div" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </div>
         </field>
     </record>
 </odoo>
