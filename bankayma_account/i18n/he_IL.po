@@ -94,6 +94,21 @@ msgid "<option value=\"\">Fiscal position...</option>"
 msgstr "<option value=\"\">סוג עוסק...</option>"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
+msgid "VAT Number"
+msgstr "מספר עוסק/ת.ז./ח.פ"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
+msgid "Company"
+msgstr "שם חברה (אם רלוונטי)"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
+msgid "Name"
+msgstr "שם העוסק"
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid ""
 "<span class=\"badge rounded-pill text-bg-info\">\n"
