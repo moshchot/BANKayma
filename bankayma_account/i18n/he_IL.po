@@ -116,7 +116,7 @@ msgstr "שולם"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                Licensed or Exempt dealer? Please upload a receipt by "
 "replying to this\n"
 "                email\n"
@@ -129,7 +129,7 @@ msgid ""
 "            <br/>\n"
 "            Branch 012, Account 036218"
 msgstr ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"<strong style=\"direction:rtl;box-sizing:border-box;font-weight:800;\">\n"
 "                  עוסק פטור/מלכ״ר/מורשה/בע״מ? נא לשלוח קבלה במייל חוזר \n"
 "            </strong>\n"
 "            <br/>\n"
@@ -143,7 +143,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                Please upload a receipt by replying to this email\n"
 "            </strong>\n"
 "            <br/>\n"
@@ -154,7 +154,7 @@ msgid ""
 "            <br/>\n"
 "            Branch 012, Account 036218"
 msgstr ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                  עוסק פטור? נא לשלוח קבלה במייל חוזר \n"
 "            <br/>\n"
 "                  עוסק מורשה? נא לשלוח חשבונית מס וקבלה במייל חוזר \n"
@@ -169,9 +169,9 @@ msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
+msgid "<strong style=\"box-sizing:border-box;font-weight:800;\">For:</strong>"
 msgstr ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">עבור:</strong>"
+"<strong style=\"box-sizing:border-box;font-weight:800;\">עבור:</strong>"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -1529,7 +1529,7 @@ msgstr "העברת תשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Payment date"
-msgstr ""
+msgstr "תאריך תשלום"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_payment_method_id
@@ -2152,22 +2152,22 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
-msgid "[BanKayma] %(company)s payment on hold for insufficient documents"
-msgstr "[בנקיימא] תשלום מעוכב עד להשלמת מסמכים עבור %(company)s "
+msgid "[Bar-Kayma] %(company)s payment on hold for insufficient documents"
+msgstr "[בר-קיימא] תשלום מעוכב עד להשלמת מסמכים עבור %(company)s "
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
-msgid "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
-msgstr "[בנקיימא] %(company)s - שילמנו לך! 🤑 (Ref %(ref)s)"
+msgid "[Bar-Kayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
+msgstr "[בר-קיימא] %(company)s - שילמנו לך! 🤑 (Ref %(ref)s)"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
-msgid "[BanKayma] Payment request from %(company)s"
-msgstr "[בנקיימא] דרישת התשלום עבור %(company)s התקבלה ובטיפול"
+msgid "[Bar-Kayma] Payment request from %(company)s"
+msgstr "[בר-קיימא] דרישת התשלום עבור %(company)s התקבלה ובטיפול"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
