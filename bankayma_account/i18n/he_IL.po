@@ -100,7 +100,7 @@ msgstr "מספר עוסק/ת.ז./ח.פ"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
-msgid "Company"
+msgid "Company (if applicable)"
 msgstr "שם חברה (אם רלוונטי)"
 
 #. module: bankayma_account
