@@ -226,5 +226,17 @@ msgstr "תיוג חדש"
 msgid "Current Analytic Distribution"
 msgstr "תיוג נוכחי"
 
+#. module: portal
+#: model_terms:ir.ui.view,arch_db:portal.portal_my_details_fields
+msgid "VAT Number"
+msgstr "מספר עוסק/ת.ז./ח.פ"
 
+#. module: portal
+#: model_terms:ir.ui.view,arch_db:portal.portal_my_details_fields
+msgid "Company Name"
+msgstr "שם חברה (אם רלוונטי)"
 
+#. module: portal
+#: model_terms:ir.ui.view,arch_db:portal.portal_my_details_fields
+msgid "Name"
+msgstr "שם העוסק"
