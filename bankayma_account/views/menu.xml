@@ -18,7 +18,7 @@
         <field name="name">New Vendor Bill</field>
         <field name="res_model">account.move</field>
         <field name="view_mode">form</field>
-        <field name="view_id" ref="account.view_in_invoice_bill_tree" />
+        <field name="view_id" ref="account.view_in_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">[('move_type', '=', 'in_invoice')]</field>
         <field name="context">

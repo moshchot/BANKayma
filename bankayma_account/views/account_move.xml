@@ -278,9 +278,9 @@
         </field>
     </record>
 
-    <record id="view_in_invoice_bill_tree" model="ir.ui.view">
+    <record id="view_in_invoice_tree" model="ir.ui.view">
         <field name="model">account.move</field>
-        <field name="inherit_id" ref="account.view_in_invoice_bill_tree" />
+        <field name="inherit_id" ref="account.view_in_invoice_tree" />
         <field name="arch" type="xml">
             <field name="amount_total_signed" position="before">
                 <field name="fiscal_position_id" />
