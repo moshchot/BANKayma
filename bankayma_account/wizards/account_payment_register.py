@@ -64,12 +64,12 @@ class AccountPaymentRegister(models.TransientModel):
                     "payment_method_line_id": payment_method,
                     "payment_date": self.payment_date,
                     "communication": self.communication,
+                    "use_sumit_this_payment": self.use_sumit_this_payment,
                 }
             )
             self.write(defaults)
-            if self.use_sumit_journal and not self.use_sumit_this_payment:
-                for journal in self.line_ids.mapped("move_id.journal_id"):
-                    journal.read(["use_sumit"])
-                    journal._cache["use_sumit"] = False
+            for journal in self.line_ids.mapped("move_id.journal_id"):
+                journal.read(["use_sumit"])
+                journal._cache["use_sumit"] = self.use_sumit_this_payment
             last_result = super()._create_payments()
         return last_result
