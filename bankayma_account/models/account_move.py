@@ -40,7 +40,11 @@ class AccountMove(models.Model):
         compute="_compute_bankayma_payment_method_id",
         store=True,
     )
-    bankayma_move_line_name = fields.Char(related="invoice_line_ids.name")
+    bankayma_move_line_name = fields.Char(
+        compute="_compute_bankayma_move_line_fields",
+        store=True,
+        string="Description",
+    )
     bankayma_move_line_product_id = fields.Many2one(
         related="invoice_line_ids.product_id",
         store=True,
@@ -49,7 +53,9 @@ class AccountMove(models.Model):
         related="invoice_line_ids.account_id"
     )
     bankayma_move_line_analytic_distribution = fields.Json(
-        related="invoice_line_ids.analytic_distribution",
+        compute="_compute_bankayma_move_line_fields",
+        store=True,
+        string="Tag",
         tracking=True,
     )
     analytic_precision = fields.Integer(related="invoice_line_ids.analytic_precision")
@@ -161,6 +167,23 @@ class AccountMove(models.Model):
                 "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
                 "payment_method_line_id.payment_method_id"
             )[:1]
+
+    @api.depends(
+        "line_ids.analytic_distribution",
+        "line_ids.name",
+    )
+    def _compute_bankayma_move_line_fields(self):
+        for this in self:
+            this.bankayma_move_line_name = "\n".join(
+                filter(None, this.invoice_line_ids.mapped("name"))
+            )
+            this.bankayma_move_line_analytic_distribution = {
+                key: value
+                for distribution in this.invoice_line_ids.mapped(
+                    "analytic_distribution"
+                )
+                for key, value in (distribution or {}).items()
+            }
 
     @api.depends("journal_id.bankayma_restrict_partner")
     def _compute_bankayma_partner_domain(self):
