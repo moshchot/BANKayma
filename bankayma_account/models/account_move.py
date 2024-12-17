@@ -3,6 +3,7 @@
 
 import json
 from base64 import b64encode
+from datetime import date
 
 from lxml import etree
 
@@ -716,6 +717,8 @@ class AccountMove(models.Model):
         product_sumit_types = self.invoice_line_ids.mapped("product_id.sumit_type")
         if len(product_sumit_types) == 1 and all(product_sumit_types):
             result["Details"]["Type"] = product_sumit_types[0]
+        result["Details"]["Date"] = date.today().isoformat()
+        result["Details"]["DueDate"] = date.today().isoformat()
         return result
 
     def _invoice_paid_hook(self):
