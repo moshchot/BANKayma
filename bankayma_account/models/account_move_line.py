@@ -28,7 +28,7 @@ class AccountMoveLine(models.Model):
         Don't touch name ever if set
         """
         for this in self:
-            if getattr(this, "_origin", this).name:
+            if this.name:
                 continue
             else:
                 super()._compute_name()
