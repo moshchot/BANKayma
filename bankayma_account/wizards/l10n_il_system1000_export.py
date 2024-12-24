@@ -90,41 +90,51 @@ class L10nIlSystem1000Export(models.TransientModel):
             if not data.tax_papers:
                 self._reject_cancel(move)
                 continue
-            if data.tax_deduction_income and data.tax_deduction_income != 99:
-                taxes = move.mapped("invoice_line_ids.tax_ids").filtered(
-                    "bankayma_vendor_specific"
-                )
-                tax = move._portal_get_or_create_tax(
-                    move.company_id,
-                    move.fiscal_position_id,
-                    data.tax_deduction_income,
-                )
-                if tax in taxes:
-                    move.message_post(body=_("Auto submitting from System1000 import"))
-                    self._validate_confirm(move)
-                else:
-                    move.invoice_line_ids.write(
-                        {
-                            "tax_ids": [fields.Command.unlink(tax.id) for tax in taxes]
-                            + [fields.Command.link(tax.id)],
-                        }
+            if move.date <= data.date_to and move.date >= data.date_from:
+                if data.tax_deduction_income and data.tax_deduction_income != 99:
+                    taxes = move.mapped("invoice_line_ids.tax_ids").filtered(
+                        "bankayma_vendor_specific"
                     )
-                    move.message_post(
-                        body=_(
-                            "Replaced existing tax %(taxes)s with %(tax)s from System1000"
+                    tax = move._portal_get_or_create_tax(
+                        move.company_id,
+                        move.fiscal_position_id,
+                        data.tax_deduction_income,
+                    )
+                    if tax in taxes:
+                        move.message_post(
+                            body=_("Auto submitting from System1000 import")
                         )
-                        % {
-                            "taxes": ", ".join(taxes.mapped("name")),
-                            "tax": tax.name,
-                        }
+                        self._validate_confirm(move)
+                    else:
+                        move.invoice_line_ids.write(
+                            {
+                                "tax_ids": [
+                                    fields.Command.unlink(tax.id) for tax in taxes
+                                ]
+                                + [fields.Command.link(tax.id)],
+                            }
+                        )
+                        move.message_post(
+                            body=_(
+                                "Replaced existing tax %(taxes)s with %(tax)s from System1000"
+                            )
+                            % {
+                                "taxes": ", ".join(taxes.mapped("name")),
+                                "tax": tax.name,
+                            }
+                        )
+                elif data.tax_deduction_income == 99:
+                    move.message_post(
+                        body=_("Auto submitting from System1000 import, no deduction")
                     )
-            elif data.tax_deduction_income == 99:
+                    move._portal_remove_tax()
+                    self._validate_confirm(move)
+                move.system1000_error_message = False
+            else:
                 move.message_post(
-                    body=_("Auto submitting from System1000 import, no deduction")
+                    body=_("Cancelling because move date is out of validity interval")
                 )
-                move._portal_remove_tax()
-                self._validate_confirm(move)
-            move.system1000_error_message = False
+                self._reject_cancel(move)
 
     def _import_invalid_file(self):
         invalid_data = System1000FileImportInvalid(self.import_file_invalid)
