@@ -852,7 +852,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Has analytics"
-msgstr ""
+msgstr "עם תגיות אנליטיות"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_l10n_il_hashavshevet_export
@@ -1739,7 +1739,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_analytic_distribution
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Tag"
-msgstr "טאג"
+msgstr "תגית"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_tax
