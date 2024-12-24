@@ -850,6 +850,11 @@ msgid "Goods Return Note"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
+msgid "Has analytics"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_l10n_il_hashavshevet_export
 msgid "Hashavshevet export"
 msgstr ""
@@ -1726,8 +1731,11 @@ msgid "System1000 Error Message"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_analytic_account_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_analytic_distribution
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_analytic_account_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_analytic_distribution
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_analytic_account_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_analytic_distribution
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 msgid "Tag"
