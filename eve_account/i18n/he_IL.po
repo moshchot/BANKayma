@@ -43,6 +43,11 @@ msgid "Extra settings"
 msgstr ""
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.view_payment_term_form
+msgid "Fixed date"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_account_journal
 msgid "Journal"
 msgstr ""
@@ -77,7 +82,7 @@ msgstr ""
 
 #. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_payment_term__fixed_date
-msgid "Set a fixed date instad of relative terms below"
+msgid "Set a fixed date instead of relative terms below"
 msgstr ""
 
 #. module: eve_account
