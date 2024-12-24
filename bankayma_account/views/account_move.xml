@@ -309,6 +309,17 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_account_invoice_filter" />
         <field name="arch" type="xml">
+            <field name="journal_id" position="before">
+                <field name="bankayma_move_line_analytic_account_id" />
+            </field>
+            <filter name="myinvoices" position="before">
+                <filter
+                    name="has_analytics"
+                    string="Has analytics"
+                    domain="[('invoice_line_ids.analytic_distribution', '!=', False)]"
+                />
+                <separator />
+            </filter>
             <filter name="open" position="before">
                 <filter
                     name="no_draft"
