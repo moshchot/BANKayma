@@ -10,7 +10,7 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </sheet>
             <field name="name" position="after">
-                <field name="fixed_date" />
+                <field name="fixed_date" placeholder="Fixed date" />
             </field>
             <label for="display_on_invoice" position="attributes">
                 <attribute name="attrs">
