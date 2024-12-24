@@ -282,10 +282,10 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_in_invoice_tree" />
         <field name="arch" type="xml">
-            <field name="amount_total_signed" position="before">
-                <field name="fiscal_position_id" />
-                <field name="bankayma_partner_vat" />
-                <field name="bankayma_attachment_ids" />
+            <field name="bankayma_amount_paid" position="after">
+                <field name="fiscal_position_id" optional="show" />
+                <field name="bankayma_partner_vat" optional="show" />
+                <field name="bankayma_attachment_ids" optional="show" />
             </field>
             <field name="invoice_date_due" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
