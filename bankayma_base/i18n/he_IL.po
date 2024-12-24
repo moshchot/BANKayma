@@ -21,24 +21,23 @@ msgid "/my/example"
 msgstr ""
 
 #. module: bankayma_base
-#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid ""
 "<strong>\n"
-"                                A password reset has been requested for this "
+"                            A password reset has been requested for this "
 "user. An\n"
 "                                email containing the following link has been "
 "sent:\n"
-"                            </strong>"
+"                        </strong>"
 msgstr ""
 
 #. module: bankayma_base
-#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid ""
 "<strong>\n"
-"                                An invitation email containing the "
-"following\n"
+"                            An invitation email containing the following\n"
 "                                subscription link has been sent:\n"
-"                            </strong>"
+"                        </strong>"
 msgstr ""
 
 #. module: bankayma_base
@@ -86,7 +85,7 @@ msgid "City"
 msgstr ""
 
 #. module: bankayma_base
-#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid "Close"
 msgstr ""
 
@@ -112,9 +111,15 @@ msgid "Contact"
 msgstr "קונטאקט"
 
 #. module: bankayma_base
+#: model:ir.actions.act_window,name:bankayma_base.action_bankayma_contacts
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_contacts
 msgid "Contacts"
 msgstr "אנשי קשר"
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
+msgid "Details"
+msgstr ""
 
 #. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_full
@@ -170,7 +175,7 @@ msgid "Organization config"
 msgstr "הגדרות יוזמה"
 
 #. module: bankayma_base
-#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid "Organization..."
 msgstr ""
 
@@ -197,7 +202,7 @@ msgid "Redirect"
 msgstr ""
 
 #. module: bankayma_base
-#: model_terms:ir.ui.view,arch_db:bankayma_base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid "Send Password Reset Instructions"
 msgstr "שליחת הוראות לאיפוס סיסמא"
 
