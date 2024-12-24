@@ -129,6 +129,7 @@ class L10nIlSystem1000Export(models.TransientModel):
                     )
                     move._portal_remove_tax()
                     self._validate_confirm(move)
+                move.system1000_error_message = False
             else:
                 move.message_post(
                     body=_("Cancelling because move date is out of validity interval")
