@@ -14,12 +14,12 @@ def migrate(env, version=None):
     ).write({"analytic": True})
 
     env["account.move.line"].search([("tax_line_id.analytic", "=", True)]).with_context(
-        skip_invoice_sync=True
-    ).write(
-        {
-            "analytic_distribution": False,
-        }
-    )
+        skip_invoice_sync=True,
+        dynamic_unlink=True,
+        force_delete=True,
+        check_move_validity=False,
+    ).unlink()
+    env["account.move.line"].__class__._check_reconciliation = lambda self: None
     for line in env["account.move.line"].search(
         [
             ("tax_ids.analytic", "=", True),
@@ -27,7 +27,9 @@ def migrate(env, version=None):
         ]
     ):
         distribution = line.analytic_distribution
-        line.with_context(skip_invoice_sync=True).write(
+        for move_line in line.move_id.line_ids:
+            move_line._cache["parent_state"] = "draft"
+        line.write(
             {
                 "analytic_distribution": False,
             }
