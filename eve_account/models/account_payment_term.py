@@ -6,7 +6,7 @@ class AccountPaymentTerm(models.AbstractModel):
     _inherit = "account.payment.term"
 
     fixed_date = fields.Date(
-        string="Date", help="Set a fixed date instad of relative terms below"
+        string="Date", help="Set a fixed date instead of relative terms below"
     )
 
     @api.onchange("fixed_date")
