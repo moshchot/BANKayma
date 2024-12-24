@@ -5,9 +5,22 @@ from odoo import api, fields, models, tools
 class AccountPaymentTerm(models.AbstractModel):
     _inherit = "account.payment.term"
 
+    _order = "fixed_date asc, sequence, id"
+
     fixed_date = fields.Date(
         string="Date", help="Set a fixed date instead of relative terms below"
     )
+
+    def name_get(self):
+        return [
+            (
+                _id,
+                _name
+                if not self.browse(_id).fixed_date
+                else self.browse(_id).fixed_date.strftime("%d%m%Y"),
+            )
+            for _id, _name in super().name_get()
+        ]
 
     @api.onchange("fixed_date")
     def _onchange_fixed_date(self):
