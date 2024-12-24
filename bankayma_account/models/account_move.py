@@ -58,6 +58,12 @@ class AccountMove(models.Model):
         string="Tag",
         tracking=True,
     )
+    bankayma_move_line_analytic_account_id = fields.Many2one(
+        "account.analytic.account",
+        string="Tag",
+        store=False,
+        search="_search_bankayma_move_line_analytic_account_id",
+    )
     analytic_precision = fields.Integer(related="invoice_line_ids.analytic_precision")
     bankayma_partner_vat = fields.Char(related="partner_id.vat")
     bankayma_attachment_ids = fields.One2many(
@@ -184,6 +190,11 @@ class AccountMove(models.Model):
                 )
                 for key, value in (distribution or {}).items()
             }
+
+    def _search_bankayma_move_line_analytic_account_id(self, operator, value):
+        if isinstance(value, (int, list, tuple)):
+            value = self.env["account.analytic.account"].browse(value)[:1].name
+        return [("invoice_line_ids.analytic_distribution_search", operator, value)]
 
     @api.depends("journal_id.bankayma_restrict_partner")
     def _compute_bankayma_partner_domain(self):
