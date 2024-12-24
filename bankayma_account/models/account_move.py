@@ -378,11 +378,6 @@ class AccountMove(models.Model):
                 wizard.onchange_template_id()
                 with Form(wizard, action["view_id"]) as send_form:
                     send_form.save().send_and_print_action()
-                result = {
-                    "type": "ir.actions.act_url",
-                    "target": "self",
-                    "url": to_send[:1].get_portal_url(),
-                }
             intercompany = len(self) == 1 and self._find_company_from_invoice_partner()
             if intercompany:
                 # request a review for counterpart of intercompany sales invoice
