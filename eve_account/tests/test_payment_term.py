@@ -41,3 +41,4 @@ class TestPaymentTerm(TransactionCase):
             self.invoice.line_ids.filtered("date_maturity").date_maturity,
             self.term.fixed_date,
         )
+        self.assertEqual(self.term.display_name, "01062020")
