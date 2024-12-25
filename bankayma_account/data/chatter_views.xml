@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template
-        id="qweb_template_account_move_draft"
-        name="Move tier validation request"
-    >
+    <template id="qweb_template_account_move_draft" name="Move tier validation request">
         <div style="direction:rtl;">
             <h1>
                 Dear
@@ -224,7 +221,10 @@
             </p>
             <p style="margin:0px 0 12px 0;box-sizing:border-box;">
                 We are happy to inform you that we've transferred
-                <span style="font-weight:bold;" t-field="object.amount_untaxed_signed" />
+                <span
+                    style="font-weight:bold;"
+                    t-field="object.amount_untaxed_signed"
+                />
                 on
                 <t t-out="object.bankayma_payment_date or ''" />
                 . for
@@ -238,8 +238,8 @@
             </p>
             <p style="margin:0px 0 12px 0;box-sizing:border-box;">
                 <strong style="box-sizing:border-box;font-weight:800;">
-                    Licensed or Exempt dealer? Please upload a receipt by replying to this
-                    email
+                    Licensed or Exempt dealer? Please upload a receipt by replying to 
+                    this email
                     <br />
                     <br />
                     To: Bar-Kayma for Culture 580450898
@@ -277,7 +277,10 @@
                 <br />
                 <br />
                 According to our records, you haven't sent a reciept for
-                <span style="font-weight:bold;" t-field="object.amount_untaxed_signed" />
+                <span
+                    style="font-weight:bold;"
+                    t-field="object.amount_untaxed_signed"
+                />
                 for
                 <t t-out="', '.join(object.mapped('invoice_line_ids.name')) or ''">
                     description
