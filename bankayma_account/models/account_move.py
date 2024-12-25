@@ -724,7 +724,7 @@ class AccountMove(models.Model):
             self.message_post_with_view(
                 self.journal_id.bankayma_qweb_template_tier_validation_reject,
                 subject=_(
-                    "[BanKayma] %(company)s payment on hold for insufficient documents"
+                    "[Bar-Kayma] %(company)s payment on hold for insufficient documents"
                 )
                 % dict(company=self.company_id.name),
                 message_type="comment",
@@ -763,7 +763,7 @@ class AccountMove(models.Model):
                 this.message_post_with_view(
                     this.journal_id.bankayma_qweb_template_invoice_paid,
                     subject=_(
-                        "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
+                        "[Bar-Kayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
                     )
                     % dict(company=this.company_id.name, ref=this.name),
                     message_type="comment",
