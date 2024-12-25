@@ -1436,7 +1436,7 @@ msgstr "אחוז תקורה"
 #: model:ir.model.fields,field_description:bankayma_account.field_product_template__sumit_type
 msgid "Override sumit type"
 msgstr ""
-דרישת התשלום עבור
+
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
