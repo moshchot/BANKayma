@@ -3,7 +3,7 @@
     <template
         id="qweb_template_account_move_draft"
         name="Move tier validation request"
-        style="/*ltr:ignore*/direction:rtl;"
+        style="direction:rtl;"
     >
         <div>
             <h1>
@@ -96,6 +96,7 @@
     <template
         id="qweb_template_account_move_new_from_portal"
         name="BNK Vendor: Payment request recieved"
+        style="direction:rtl;"
     >
         <div>
             <h1>
@@ -188,6 +189,7 @@
     <template
         id="qweb_template_account_move_paid"
         name="BNK Vendor: Message after payment - send receipt"
+        style="direction:rtl;"
     >
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
             You've been paid!
@@ -258,6 +260,7 @@
     <template
         id="qweb_template_account_move_paid_reminder"
         name="BNK Vendor: reminder to send receipt"
+        style="direction:rtl;"
     >
         <p style="margin:0px 0 12px 0;box-sizing:border-box;">
             Hi
@@ -305,7 +308,10 @@
             Bill the robot
         </p>
     </template>
-    <template id="qweb_template_account_move_rejected">
+    <template
+        id="qweb_template_account_move_rejected"
+        style="direction:rtl;"
+    >
         <div>
             <h1>
                 Dear
