@@ -117,7 +117,7 @@ msgstr ""
 msgid ""
 "<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                    Licensed or Exempt dealer? Please upload a receipt by "
-"replying to \n"
+"replying to\n"
 "                    this email\n"
 "                    <br/>\n"
 "                    <br/>\n"
@@ -2115,21 +2115,21 @@ msgstr ""
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
-msgid "[BanKayma] %(company)s payment on hold for insufficient documents"
-msgstr ""
-
-#. module: bankayma_account
-#. odoo-python
-#: code:addons/bankayma_account/models/account_move.py:0
-#, python-format
-msgid "[BanKayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
-msgstr ""
-
-#. module: bankayma_account
-#. odoo-python
-#: code:addons/bankayma_account/models/account_move.py:0
-#, python-format
 msgid "[BanKayma] Payment request from %(company)s"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[Bar-Kayma] %(company)s payment on hold for insufficient documents"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[Bar-Kayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
 msgstr ""
 
 #. module: bankayma_account
