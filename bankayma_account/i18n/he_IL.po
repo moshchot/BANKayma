@@ -50,6 +50,10 @@ msgid ""
 "                <br/>\n"
 "                According to our records, you haven't sent a reciept for"
 msgstr ""
+"<br/>\n"
+"                <br/>\n"
+"                על פי הרשומות שלנו, טרם שלחת קבלה עבור"
+
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
@@ -58,6 +62,8 @@ msgid ""
 "                <br/>\n"
 "                Following your"
 msgstr ""
+"                <br/>\n"
+"                בהמשך ל"
 
 #. module: bankayma_account
 #: model:mail.template,body_html:bankayma_account.template_vendor_invite
@@ -128,6 +134,17 @@ msgid ""
 "                <br/>\n"
 "                Branch 012, Account 036218"
 msgstr ""
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
+"                    עוסק פטור? נא להשיב למייל זה בצירוף קבלה \n"
+"                    <br/>\n"
+"                     עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית מס/קבלה \n"
+"                    <br/>\n"
+"                    את הקבלות יש לרשום עבור  בר-קיימא לתרבות 580450898\n"
+"                    <br/>\n"
+"                </strong>\n"
+"                הבנק הבינלאומי הראשון לישראל  (31),\n"
+"                <br/>\n"
+"                סניף 012, חשבון 036218"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
@@ -143,6 +160,17 @@ msgid ""
 "                <br/>\n"
 "                Branch 012, Account 036218"
 msgstr ""
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
+"                    עוסק פטור? נא להשיב למייל זה בצירוף קבלה \n"
+"                    <br/>\n"
+"                     עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית מס/קבלה \n"
+"                    <br/>\n"
+"                    את הקבלות יש לרשום עבור  בר-קיימא לתרבות 580450898\n"
+"                    <br/>\n"
+"                </strong>\n"
+"                הבנק הבינלאומי הראשון לישראל  (31),\n"
+"                <br/>\n"
+"                סניף 012, חשבון 036218"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_account
@@ -1100,6 +1128,9 @@ msgid ""
 "                <br/>\n"
 "                Bill the robot"
 msgstr ""
+"באהבה 💜\n"
+"                <br/>\n"
+"                Bill the robot"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mail_activity_type_id
@@ -1405,7 +1436,7 @@ msgstr "אחוז תקורה"
 #: model:ir.model.fields,field_description:bankayma_account.field_product_template__sumit_type
 msgid "Override sumit type"
 msgstr ""
-
+דרישת התשלום עבור
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/controllers/main.py:0
@@ -2116,21 +2147,21 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[BanKayma] Payment request from %(company)s"
-msgstr ""
+msgstr "[בנקיימא] דרישת התשלום עבור %(company)s התקבלה ובטיפול"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[Bar-Kayma] %(company)s payment on hold for insufficient documents"
-msgstr ""
+msgstr "[בר-קיימא] %(company)s תשלום מעוכב עד להשלמת מסמכים"
 
 #. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[Bar-Kayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
-msgstr ""
+msgstr "[בר-קיימא] %(company)s שילמנו לך! 🤑 (Ref %(ref)s)"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
@@ -2162,7 +2193,7 @@ msgid "for"
 msgstr "עבור"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_PAIDer
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "from"
 msgstr "מפרוייקט"
