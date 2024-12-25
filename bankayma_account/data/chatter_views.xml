@@ -308,10 +308,7 @@
             Bill the robot
         </p>
     </template>
-    <template
-        id="qweb_template_account_move_rejected"
-        style="direction:rtl;"
-    >
+    <template id="qweb_template_account_move_rejected" style="direction:rtl;">
         <div>
             <h1>
                 Dear
