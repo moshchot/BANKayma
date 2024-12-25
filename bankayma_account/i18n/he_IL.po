@@ -54,7 +54,6 @@ msgstr ""
 "                <br/>\n"
 "                על פי הרשומות שלנו, טרם שלחת קבלה עבור"
 
-
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ""
@@ -2193,7 +2192,7 @@ msgid "for"
 msgstr "עבור"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_PAIDer
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "from"
 msgstr "מפרוייקט"
