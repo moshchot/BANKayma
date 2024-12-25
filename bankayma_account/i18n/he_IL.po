@@ -114,17 +114,22 @@ msgid "<span class=\"o_stat_text\">Billed</span>"
 msgstr "שולם"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
+msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 msgid ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                Licensed or Exempt dealer? Please upload a receipt by "
 "replying to this\n"
 "                email\n"
-"            </strong>\n"
 "            <br/>\n"
 "            <br/>\n"
 "            To: Bar-Kayma for Culture 580450898\n"
 "            <br/>\n"
+"            </strong>    \n"
 "            Bank First Internation Bank of Israel (31),\n"
 "            <br/>\n"
 "            Branch 012, Account 036218"
@@ -133,21 +138,16 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid_reminder
 msgid ""
-"<strong style=\"box-sizing:border-box;font-weight:500;\">\n"
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                Please upload a receipt by replying to this email\n"
-"            </strong>\n"
 "            <br/>\n"
 "            <br/>\n"
 "            To: Bar-Kayma for Culture 580450898\n"
 "            <br/>\n"
+"            </strong>    \n"
 "            Bank First Internation Bank of Israel (31),\n"
 "            <br/>\n"
 "            Branch 012, Account 036218"
-msgstr ""
-
-#. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
-msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
 
 #. module: bankayma_account
