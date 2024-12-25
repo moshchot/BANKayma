@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="qweb_template_account_move_draft" name="Move tier validation request">
+    <template id="qweb_template_account_move_draft" name="Move tier validation request"  style="/*ltr:ignore*/direction: rtl;">
         <div>
             <h1>
                 Dear
