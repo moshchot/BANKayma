@@ -17,7 +17,7 @@ class AccountPaymentTerm(models.AbstractModel):
                 _id,
                 _name
                 if not self.browse(_id).fixed_date
-                else self.browse(_id).fixed_date.strftime("%d%m%Y"),
+                else self.browse(_id).fixed_date.strftime("%d/%m/%Y"),
             )
             for _id, _name in super().name_get()
         ]
