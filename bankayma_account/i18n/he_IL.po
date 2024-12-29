@@ -2146,7 +2146,7 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "[BanKayma] Payment request from %(company)s"
-msgstr "[בנקיימא] דרישת התשלום עבור %(company)s התקבלה ובטיפול"
+msgstr "[בר-קיימא לתרבות] דרישת התשלום עבור %(company)s התקבלה ובטיפול"
 
 #. module: bankayma_account
 #. odoo-python
