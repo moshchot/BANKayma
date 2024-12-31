@@ -322,12 +322,28 @@ class AccountMove(models.Model):
                     groups.mapped("name")
                 )
 
+    def create(self, vals_list):
+        """
+        Subscribe partner_id to message_subtype_vendor
+        """
+        vendor_subtype = self.env.ref("bankayma_account.message_subtype_vendor")
+
+        result = super().create(vals_list)
+        for this in result:
+            this.message_subscribe(this.partner_id.ids, vendor_subtype.ids)
+        return result
+
     def write(self, vals):
+        vendor_subtype = self.env.ref("bankayma_account.message_subtype_vendor")
         result = super().write(vals)
         if "bankayma_vendor_tax_percentage" in vals:
             self.button_bankayma_vendor_tax_create()
         if "fiscal_position_id" in vals:
             self.mapped("invoice_line_ids")._compute_tax_ids()
+        if "partner_id" in vals:
+            for this in self:
+                this.message_subscribe(this.partner_id.ids, vendor_subtype.ids)
+
         return result
 
     def action_post(self):
@@ -598,6 +614,7 @@ class AccountMove(models.Model):
                 subject=_("[BanKayma] Payment request from %(company)s")
                 % dict(company=invoice.company_id.name),
                 message_type="comment",
+                subtype_id=self.env.ref("bankayma_account.message_subtype_vendor").id,
             )
         return invoice
 
@@ -728,6 +745,7 @@ class AccountMove(models.Model):
                 )
                 % dict(company=self.company_id.name),
                 message_type="comment",
+                subtype_id=self.env.ref("bankayma_account.message_subtype_vendor").id,
             )
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
@@ -767,6 +785,9 @@ class AccountMove(models.Model):
                     )
                     % dict(company=this.company_id.name, ref=this.name),
                     message_type="comment",
+                    subtype_id=self.env.ref(
+                        "bankayma_account.message_subtype_vendor"
+                    ).id,
                 )
         return super()._invoice_paid_hook()
 
