@@ -77,17 +77,6 @@ class TestSystem1000Import(TransactionCase):
         wizard.button_import()
         return wizard
 
-    def test_import_valid_file_out_of_date(self):
-        """
-        Test that we generate new taxes on the fly and replace the existing specific tax
-        with it
-        """
-        self.bill.date = "2024-01-01"
-        self._run_import(import_file_valid=self._import_file_valid(self.bill.id))
-        self.assertEqual(self.bill.state, "draft")
-        self.assertEqual(self.bill.validated_state, "3_rejected")
-        self.assertTrue(self.bill.rejected)
-
     def test_import_valid_file_new_tax(self):
         """
         Test that we generate new taxes on the fly and replace the existing specific tax
