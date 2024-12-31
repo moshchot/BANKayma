@@ -314,6 +314,11 @@
             </field>
             <filter name="myinvoices" position="before">
                 <filter
+                    name="bankayma_payment_date"
+                    string="Payment date"
+                    date="bankayma_payment_date"
+                />
+                <filter
                     name="has_analytics"
                     string="Has analytics"
                     domain="[('invoice_line_ids.analytic_distribution', '!=', False)]"
@@ -332,6 +337,13 @@
                     name="bankayma_move_line_product_id"
                     string="Product"
                     context="{'group_by': 'bankayma_move_line_product_id'}"
+                />
+            </filter>
+            <filter name="salesperson" position="before">
+                <filter
+                    name="groupby_bankayma_payment_date"
+                    string="Payment date"
+                    context="{'group_by': 'bankayma_payment_date'}"
                 />
             </filter>
         </field>
