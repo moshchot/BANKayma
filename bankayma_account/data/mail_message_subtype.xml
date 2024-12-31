@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="message_subtype_vendor" model="mail.message.subtype">
+        <field name="name">Move: Vendor-only message</field>
+        <field name="res_model">account.move</field>
+        <field name="hidden" eval="True" />
+        <field name="track_recipients" eval="True" />
+    </record>
+</odoo>
