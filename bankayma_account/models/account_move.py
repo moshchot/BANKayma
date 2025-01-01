@@ -322,6 +322,7 @@ class AccountMove(models.Model):
                     groups.mapped("name")
                 )
 
+    @api.model_create_multi
     def create(self, vals_list):
         """
         Subscribe partner_id to message_subtype_vendor
