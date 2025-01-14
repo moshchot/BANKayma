@@ -18,10 +18,11 @@ class AccountInvoiceReport(models.Model):
         "account.analytic.plan",
         string="Analytic plan",
     )
+    bankayma_payment_date = fields.Date("Payment Date")
 
     @api.model
     def _select(self):
         return (
-            super()._select()
-            + ", validated_state, bankayma_analytic_account_id, bankayma_analytic_plan_id"
+            super()._select() + ", validated_state, bankayma_analytic_account_id, "
+            "bankayma_analytic_plan_id, bankayma_payment_date"
         )
