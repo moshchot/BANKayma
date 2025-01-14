@@ -17,7 +17,7 @@ def migrate(env, version=None):
     ):
         if not invoice._get_unbalanced_moves(dict(records=invoice)):
             continue
-        logger.info("working on %s", invoice.name)
+        logger.info("working on %s [%s]", invoice.name, invoice.id)
         invoice._cache["state"] = "draft"
         invoice.invoice_line_ids.read(["parent_state"])
         for line in invoice.invoice_line_ids:
