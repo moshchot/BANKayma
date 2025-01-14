@@ -9,6 +9,13 @@
             <search position="inside">
                 <field name="bankayma_analytic_account_id" />
                 <field name="bankayma_analytic_plan_id" />
+                <filter name="duemonth" position="after">
+                    <filter
+                        string="Payment Date"
+                        name="groupby_bankayma_payment_date"
+                        context="{'group_by':'bankayma_payment_date:month'}"
+                    />
+                </filter>
             </search>
         </field>
     </record>
