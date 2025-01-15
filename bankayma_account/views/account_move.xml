@@ -169,12 +169,6 @@
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"
-                position="after"
-            >
-                <field name="bankayma_edit_buffer" invisible="True" />
-            </xpath>
-            <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="string">Tag</attribute>
