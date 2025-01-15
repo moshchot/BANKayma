@@ -118,10 +118,10 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </page>
             <label for="journal_id" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </label>
             <div name="journal_div" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </div>
             <field name="partner_bank_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
