@@ -321,11 +321,6 @@ msgid "Bankayma Attachment"
 msgstr "מסמכים מצורפים"
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_edit_buffer
-msgid "Bankayma Edit Buffer"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_immutable
 msgid "Bankayma Immutable"
 msgstr ""
