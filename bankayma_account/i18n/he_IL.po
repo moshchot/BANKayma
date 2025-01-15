@@ -2014,7 +2014,7 @@ msgstr "בתשלום"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__2_validated_out
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__2_validated_out
-msgid "Validated"
+msgid "Validated income"
 msgstr "הכנסות צפויות"
 
 #. module: bankayma_account
