@@ -18,12 +18,6 @@
         <field name="sequence" eval="3" />
     </record>
     <menuitem
-        id="menu_bankayma_contacts"
-        action="contacts.action_contacts"
-        parent="menu_bankayma_root"
-        sequence="200"
-    />
-    <menuitem
         id="menu_bankayma_config"
         parent="menu_bankayma_root"
         sequence="1000"
