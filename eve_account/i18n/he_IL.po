@@ -78,7 +78,7 @@ msgstr ""
 #: model:ir.model,name:eve_account.model_account_payment_term
 #: model:ir.ui.menu,name:eve_account.action_payment_terms
 msgid "Payment Terms"
-msgstr ""
+msgstr "מועד תשלום"
 
 #. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_payment_term__fixed_date
