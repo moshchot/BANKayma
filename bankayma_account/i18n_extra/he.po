@@ -240,3 +240,20 @@ msgstr "שם חברה (אם רלוונטי)"
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details_fields
 msgid "Name"
 msgstr "שם העוסק"
+
+#. module: account
+#: model:ir.actions.act_window,name:account.action_payment_term_form
+#: model:ir.model,name:account.model_account_payment_term
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_payment_term_id
+#: model:ir.model.fields,field_description:account.field_account_move__invoice_payment_term_id
+#: model:ir.model.fields,field_description:account.field_account_payment__invoice_payment_term_id
+#: model:ir.model.fields,field_description:account.field_account_payment_term__name
+#: model:ir.model.fields,field_description:account.field_account_payment_term_line__payment_id
+#: model:ir.model.fields.selection,name:account.selection__account_move_line__display_type__payment_term
+#: model:ir.ui.menu,name:account.menu_action_payment_term_form
+#: model_terms:ir.ui.view,arch_db:account.view_partner_property_form
+#: model_terms:ir.ui.view,arch_db:account.view_payment_term_form
+#: model_terms:ir.ui.view,arch_db:account.view_payment_term_search
+#: model_terms:ir.ui.view,arch_db:account.view_payment_term_tree
+msgid "Payment Terms"
+msgstr "מועד תשלום"
