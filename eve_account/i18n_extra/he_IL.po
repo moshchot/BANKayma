@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bankayma_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-13 17:53+0000\n"
+"PO-Revision-Date: 2023-06-13 17:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_internal
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_move_internal
+msgid "Internal"
+msgstr "תקורות"
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_invoice_report__validated_state__2_validated
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__2_validated
+msgid "Validated"
+msgstr "צפויות"

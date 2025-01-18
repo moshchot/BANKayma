@@ -72,13 +72,13 @@ msgstr ""
 #. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_res_company__bankayma_overhead_percentage
 msgid "Overhead percentage"
-msgstr ""
+msgstr "אחוז תקורה"
 
 #. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
 #: model:ir.ui.menu,name:eve_account.action_payment_terms
 msgid "Payment Terms"
-msgstr "מועד תשלום"
+msgstr "מועדי תשלום"
 
 #. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_payment_term__fixed_date
