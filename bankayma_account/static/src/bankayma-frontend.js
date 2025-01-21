@@ -24,12 +24,17 @@
                 $tax_deduction.prop("checked") ? $tax_percentage.val() : 0
             );
 
-            jQuery(".optional-tax-group").hide();
-            (data.optional_tax_groups || []).forEach(function (tax_group_id) {
-                jQuery("#tax_group_" + tax_group_id)
-                    .parent()
-                    .parent()
-                    .show();
+            jQuery(".optional-tax-group").toggle(
+                (data.optional_tax_groups || []).length > 0
+            );
+            jQuery(".optional-tax-group option").each(function (i, o) {
+                var $o = jQuery(o);
+                $o.toggle(
+                    $o.val() === "" ||
+                        (data.optional_tax_groups || []).indexOf(
+                            parseInt($o.val(), 10)
+                        ) >= 0
+                );
             });
         });
         jQuery(".bk-onchange").change();

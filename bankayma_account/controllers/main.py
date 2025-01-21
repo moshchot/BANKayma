@@ -16,12 +16,7 @@ class CustomerPortal(portal.CustomerPortal):
                 "property_account_position_id",
                 "bankayma_vendor_tax_percentage",
                 "bankayma_vendor_max_amount",
-            ]
-            + [
-                "tax_group_%d" % tax_group.id
-                for tax_group in self._bankayma_get_fiscal_positions().mapped(
-                    "optional_tax_group_ids"
-                )
+                "bankayma_tax_group_id",
             ]
         )
         for optional_field in ("street", "city", "zip", "country_id"):
@@ -90,25 +85,14 @@ class CustomerPortal(portal.CustomerPortal):
         return result
 
     def on_account_update(self, values, partner):
-        for field_name in {"property_account_position_id"} & values.keys():
+        for field_name in {
+            "property_account_position_id",
+            "bankayma_tax_group_id",
+        } & values.keys():
             try:
                 values[field_name] = int(values[field_name])
             except BaseException:
                 values[field_name] = False
-        fpos = (
-            request.env["account.fiscal.position"]
-            .sudo()
-            .browse(values["property_account_position_id"])
-            & self._bankayma_get_fiscal_positions()
-        )
-        tax_groups = request.env["account.tax.group"].sudo()
-        for field_name in values.copy():
-            if field_name.startswith("tax_group_"):
-                tax_groups += (
-                    tax_groups.browse(int(values.pop(field_name)))
-                    & fpos.optional_tax_group_ids
-                )
-        values["bankayma_tax_group_ids"] = [(6, 0, tax_groups.ids)]
         bank_account_fields = ("bank", "bank_branch_code", "bank_acc_number")
         bank_vals = {
             key[len("bank_") :]: request.httprequest.form.get(key)
