@@ -22,16 +22,20 @@ class AccountMoveLine(models.Model):
         compute="_compute_bankayma_analytic_account_id",
         string="Analytic Plan",
     )
+    bankayma_edit_buffer = fields.Json(compute="_compute_bankayma_edit_buffer")
 
     def _compute_name(self):
         """
         Don't touch name ever if set
         """
         for this in self:
-            if this.name:
-                continue
+            value = getattr(this, "_origin", this).name or (
+                this.bankayma_edit_buffer or {}
+            ).get("name")
+            if value:
+                this.name = value
             else:
-                super()._compute_name()
+                super(AccountMoveLine, this)._compute_name()
         return None
 
     def _compute_price_unit(self):
@@ -39,11 +43,27 @@ class AccountMoveLine(models.Model):
         Don't touch unit price if set
         """
         for this in self:
-            if getattr(this, "_origin", this).price_unit:
-                this.price_unit = getattr(this, "_origin", this).price_unit
+            value = getattr(this, "_origin", this).price_unit or (
+                this.bankayma_edit_buffer or {}
+            ).get("price_unit")
+            if value:
+                this.price_unit = value
             else:
-                super()._compute_price_unit()
+                super(AccountMoveLine, this)._compute_price_unit()
         return None
+
+    @api.onchange("name", "price_unit")
+    def _compute_bankayma_edit_buffer(self):
+        """
+        Save first setting of price/name to be able to restore those in compute
+        overrides above
+        """
+        for this in self:
+            previous = this.bankayma_edit_buffer or {}
+            this.bankayma_edit_buffer = dict(
+                name=previous.get("name") or this.name,
+                price_unit=previous.get("price_unit") or this.price_unit,
+            )
 
     def _get_computed_taxes(self):
         """
