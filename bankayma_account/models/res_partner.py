@@ -20,6 +20,12 @@ class ResPartner(models.Model):
         "tax_group_id",
         string="Tax groups",
     )
+    bankayma_tax_group_id = fields.Many2one(
+        "account.tax.group",
+        compute="_compute_bankayma_tax_group_id",
+        inverse="_inverse_bankayma_tax_group_id",
+        search="_search_bankayma_tax_group_id",
+    )
     bankayma_deduct_tax = fields.Boolean(
         related="property_account_position_id.bankayma_deduct_tax"
     )
@@ -36,6 +42,20 @@ class ResPartner(models.Model):
         compute="_compute_total_billed",
         groups="account.group_account_invoice,account.group_account_readonly",
     )
+
+    @api.depends("bankayma_tax_group_ids")
+    def _compute_bankayma_tax_group_id(self):
+        for this in self:
+            this.bankayma_tax_group_id = this.bankayma_tax_group_ids[:1]
+
+    def _inverse_bankayma_tax_group_id(self):
+        for this in self:
+            this.bankayma_tax_group_ids = [
+                fields.Command.set(this.bankayma_tax_group_id.ids)
+            ]
+
+    def _search_bankayma_tax_group_id(self, operator, value):
+        return [("bankayma_tax_group_ids", operator, value)]
 
     @api.depends("property_account_position_id", "bankayma_vendor_tax_percentage")
     def _compute_bankayma_show_tax_deduction(self):

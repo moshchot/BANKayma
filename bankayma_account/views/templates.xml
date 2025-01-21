@@ -248,27 +248,30 @@
                             t-att-value="bankayma_vendor_max_amount or request.env.user.partner_id.bankayma_vendor_max_amount"
                         />
                     </div>
-                    <div
-                        t-attf-class="mb-3 optional-tax-group"
-                        t-foreach="fiscal_positions.mapped('optional_tax_group_ids')"
-                        t-as="tax_group"
-                    >
+                    <div t-attf-class="mb-3 optional-tax-group">
                         <label
-                            class="col-form-label"
-                            t-attf-for="tax_group_#{tax_group.id}"
+                            class="col-form-label label-optional"
+                            for="bankayma_tax_group_id"
                         >
-                            <t t-out="tax_group.name" />
+                            Tax group
                         </label>
-                        <div class="form-check form-switch">
-                            <input
-                                type="checkbox"
-                                t-attf-class="form-check-input #{error.get('tax_group%d' % tax_group.id) and 'is-invalid' or ''}"
-                                t-attf-name="tax_group_#{tax_group.id}"
-                                t-attf-id="tax_group_#{tax_group.id}"
-                                t-att-value="tax_group.id"
-                                t-att-checked="'tax_group_%d' % tax_group.id in request.httprequest.form or tax_group in request.env.user.partner_id.bankayma_tax_group_ids"
-                            />
-                        </div>
+                        <select
+                            name="bankayma_tax_group_id"
+                            t-attf-class="form-select #{error.get('bankayma_tax_group_id') and 'is-invalid' or ''}"
+                        >
+                            <option value="" />
+                            <t
+                                t-foreach="fiscal_positions.mapped('optional_tax_group_ids') or []"
+                                t-as="tax_group"
+                            >
+                                <option
+                                    t-att-value="tax_group.id"
+                                    t-att-selected="tax_group.id == int(bankayma_tax_group_id) if bankayma_tax_group_id else tax_group.id == partner.bankayma_tax_group_id.id"
+                                >
+                                    <t t-esc="tax_group.name" />
+                                </option>
+                            </t>
+                        </select>
                     </div>
                 </div>
             </div>

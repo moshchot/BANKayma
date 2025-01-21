@@ -37,8 +37,7 @@
                 />
                 <field name="bankayma_available_tax_group_ids" invisible="True" />
                 <field
-                    name="bankayma_tax_group_ids"
-                    widget="many2many_checkboxes"
+                    name="bankayma_tax_group_id"
                     domain="[('id', 'in', bankayma_available_tax_group_ids)]"
                     attrs="{'invisible': [('bankayma_available_tax_group_ids', '=', [])]}"
                 />
