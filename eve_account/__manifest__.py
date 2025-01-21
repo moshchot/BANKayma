@@ -16,6 +16,7 @@
         "views/account_move.xml",
         "views/account_payment_term.xml",
         "views/res_company.xml",
+        "views/res_partner.xml",
         "views/menu.xml",
     ],
     "demo": [],
