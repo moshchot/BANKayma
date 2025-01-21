@@ -108,7 +108,7 @@ msgstr ""
 "                </span>"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_account.bankayma_partner_form
 msgid "<span class=\"o_stat_text\">Billed</span>"
 msgstr "שולם"
 
@@ -319,6 +319,11 @@ msgstr "העברה בנקאית"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_attachment_ids
 msgid "Bankayma Attachment"
 msgstr "מסמכים מצורפים"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_edit_buffer
+msgid "Bankayma Edit Buffer"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_immutable
@@ -1010,7 +1015,7 @@ msgid "Invitation to vendor portal"
 msgstr "הזמנה לפורטל ספקים"
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_partner_form
+#: model_terms:ir.ui.view,arch_db:bankayma_account.bankayma_partner_form
 msgid "Invite Vendor"
 msgstr "הזמנת ספק"
 
