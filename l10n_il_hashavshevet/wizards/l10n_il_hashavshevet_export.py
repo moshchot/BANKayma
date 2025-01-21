@@ -103,6 +103,7 @@ class L10nIlHashavshevetExport(models.TransientModel):
                 )
 
         export_file_movin = HashashevetFile()
+        export_file_movin.append(Record([]))
         export_map_file_movin = StringIO()
         export_file_heshin = HashashevetFile()
         export_map_file_heshin = StringIO()

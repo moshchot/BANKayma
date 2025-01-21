@@ -21,7 +21,7 @@ class HashashevetFile(object):
         self.records.append(record)
 
     def tobytes(self):
-        result = "\r\n" + "\r\n".join(record.format() for record in self.records)
+        result = "\r\n".join(record.format() for record in self.records)
         return result.encode(self.encoding, errors="replace")
 
 
