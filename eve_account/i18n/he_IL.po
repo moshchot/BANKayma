@@ -21,8 +21,19 @@ msgid "Companies"
 msgstr ""
 
 #. module: eve_account
+#: model:ir.model,name:eve_account.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_bankayma_company_create
 msgid "Create companies in bulk"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model.fields,field_description:eve_account.field_res_partner__eve_customer_code
+#: model:ir.model.fields,field_description:eve_account.field_res_users__eve_customer_code
+msgid "Customer #"
 msgstr ""
 
 #. module: eve_account
@@ -88,6 +99,12 @@ msgstr ""
 #. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_bankayma_company_create__template_company_id
 msgid "Template company"
+msgstr ""
+
+#. module: eve_account
+#: model:ir.model.fields,field_description:eve_account.field_res_partner__eve_vendor_code
+#: model:ir.model.fields,field_description:eve_account.field_res_users__eve_vendor_code
+msgid "Vendor Internal #"
 msgstr ""
 
 #. module: eve_account
