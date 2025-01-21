@@ -25,7 +25,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "(Taxes included)"
-msgstr ""
+msgstr "מיסי ספק"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
@@ -1717,7 +1717,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Save the invoice for updated tax totals"
-msgstr ""
+msgstr "יש לשמור המסמך לשם חישוב מיסים"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__show_fiscal_position_id
@@ -1759,7 +1759,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Submitted amount"
-msgstr ""
+msgstr "סכום מבוקש"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subtype_id
@@ -1873,7 +1873,7 @@ msgstr "ניכויים"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Taxes excluded"
-msgstr ""
+msgstr "מיסי מעביד"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__template_company_id
@@ -1970,7 +1970,7 @@ msgstr "סהכ עלות"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Total expense"
-msgstr ""
+msgstr "סכום עלות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_amount_paid
@@ -1994,7 +1994,7 @@ msgstr "לתשלום"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Untaxed amount"
-msgstr ""
+msgstr "סכום העברה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__use_sumit_journal
