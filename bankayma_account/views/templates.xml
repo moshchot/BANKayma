@@ -599,6 +599,19 @@
         <xpath expr="//p[@t-field='o.invoice_date_due']/.." position="attributes">
             <attribute name="style">display: none</attribute>
         </xpath>
+        <div id="total" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </div>
+        <div id="total" position="after">
+            <div id="bankayma_total" class="row">
+                <div
+                    t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto"
+                >
+                    <t t-set="object" t-value="o" />
+                    <t t-call="bankayma_account.template_tax_totals" />
+                </div>
+            </div>
+        </div>
     </template>
     <template id="external_layout_standard" inherit_id="web.external_layout_standard">
         <xpath expr="//span[hasclass('page')]/.." position="before">
@@ -661,5 +674,95 @@
         <button name="request_validation" position="attributes">
             <attribute name="class">btn btn-primary</attribute>
         </button>
+    </template>
+
+    <template id="template_tax_totals">
+        <t
+            t-set="taxes_inc"
+            t-value="object.line_ids.filtered('tax_line_id').tax_line_id.filtered('price_include')"
+        />
+        <t
+            t-set="taxes_ex"
+            t-value="object.line_ids.filtered('tax_line_id').tax_line_id - taxes_inc"
+        />
+        <t t-if="not object.id">
+            <div>Save the invoice for updated tax totals</div>
+            <t t-set="taxes_inc" t-value="object.env['account.tax']" />
+            <t t-set="taxes_ex" t-value="object.env['account.tax']" />
+        </t>
+        <t t-foreach="[taxes_inc, taxes_ex]" t-as="taxes">
+            <t t-if="taxes">
+                <div t-if="taxes == taxes_inc">(Taxes included)</div>
+                <div t-if="taxes == taxes_ex">Taxes excluded</div>
+
+                <table
+                    t-att-class="'oe_right' if not report_type else 'table table-sm table-borderless'"
+                    style="page-break-inside: avoid;"
+                >
+                    <tbody>
+                        <tr t-if="taxes == taxes_inc or not taxes_inc">
+                            <td class="o_td_label">
+                                <label class="o_form_label o_tax_total_label">
+                                    Untaxed amount
+                                </label>
+                            </td>
+
+                            <td class="text-end">
+                                <span
+                                    style="font-weight: bold;"
+                                    t-out="object.amount_untaxed"
+                                    t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
+                                />
+                            </td>
+                        </tr>
+                        <tr t-foreach="taxes" t-as="tax">
+                            <td class="o_td_label">
+                                <label
+                                    class="o_form_label o_tax_total_label"
+                                    t-out="tax.description or tax.name"
+                                />
+                            </td>
+
+                            <td class="text-end">
+                                <span
+                                    t-out="sum(object.line_ids.filtered(lambda x: x.tax_line_id==tax).mapped(lambda x: -x.balance if x.balance &lt; 0 else x.balance))"
+                                    t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
+                                />
+                            </td>
+                        </tr>
+                        <tr t-if="taxes == taxes_inc">
+                            <td class="o_td_label">
+                                <label class="o_form_label o_tax_total_label">
+                                    Submitted amount
+                                </label>
+                            </td>
+
+                            <td class="text-end">
+                                <span
+                                    style="font-size: 1.3em; font-weight: bold;"
+                                    t-out="sum(object.line_ids.filtered(lambda x: x.tax_line_id in taxes).mapped(lambda x: -x.balance if x.balance &lt; 0 else x.balance)) + object.amount_untaxed"
+                                    t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
+                                />
+                            </td>
+                        </tr>
+                        <tr t-if="taxes == taxes_ex">
+                            <td class="o_td_label">
+                                <label class="o_form_label o_tax_total_label">
+                                    Total expense
+                                </label>
+                            </td>
+
+                            <td class="text-end">
+                                <span
+                                    style="font-size: 1.3em; font-weight: bold;"
+                                    t-out="object.amount_total"
+                                    t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </t>
+        </t>
     </template>
 </odoo>
