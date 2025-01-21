@@ -362,6 +362,12 @@ msgid "Bankayma Product Domain"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_tax_group_id
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_tax_group_id
+msgid "Bankayma Tax Group"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_tax_removal_label
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_tax_removal_label
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_tax_removal_label
@@ -1827,6 +1833,7 @@ msgstr "אחוז ניכוי מס:"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_deduct_tax_group_id
+#: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 msgid "Tax group"
 msgstr ""
 
