@@ -130,6 +130,7 @@ class AccountMove(models.Model):
     bankayma_tax_removal_label = fields.Char(
         compute="_compute_bankayma_tax_removal_label"
     )
+    bankayma_tax_totals = fields.Html(compute="_compute_bankayma_tax_totals")
     system1000_error_message = fields.Char()
 
     def _compute_amount(self):
@@ -321,6 +322,22 @@ class AccountMove(models.Model):
                 this.bankayma_tax_removal_label = _("Remove %s") % ", ".join(
                     groups.mapped("name")
                 )
+
+    @api.depends(
+        "invoice_line_ids.currency_rate",
+        "invoice_line_ids.tax_base_amount",
+        "invoice_line_ids.tax_line_id",
+        "invoice_line_ids.price_total",
+        "invoice_line_ids.price_subtotal",
+        "invoice_payment_term_id",
+        "partner_id",
+        "currency_id",
+    )
+    def _compute_bankayma_tax_totals(self):
+        for this in self:
+            this.bankayma_tax_totals = self.env["ir.qweb"]._render(
+                "bankayma_account.template_tax_totals", {"object": this}
+            )
 
     @api.model_create_multi
     def create(self, vals_list):
