@@ -23,6 +23,11 @@ msgid "%(name)s %(percentage)d%%"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
+msgid "(Taxes included)"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "(with reference:"
@@ -372,6 +377,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_tax_removal_label
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_tax_removal_label
 msgid "Bankayma Tax Removal Label"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_tax_totals
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_tax_totals
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_tax_totals
+msgid "Bankayma Tax Totals"
 msgstr ""
 
 #. module: bankayma_account
@@ -1703,6 +1715,11 @@ msgid "SUB003"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
+msgid "Save the invoice for updated tax totals"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__show_fiscal_position_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__show_fiscal_position_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__show_fiscal_position_id
@@ -1737,6 +1754,11 @@ msgstr "ביטוח לאומי"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subject
 msgid "Subject"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
+msgid "Submitted amount"
 msgstr ""
 
 #. module: bankayma_account
@@ -1849,6 +1871,11 @@ msgid "Taxes"
 msgstr "ניכויים"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
+msgid "Taxes excluded"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__template_company_id
 msgid "Template company"
 msgstr ""
@@ -1941,6 +1968,11 @@ msgid "Total Billed"
 msgstr "סהכ עלות"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
+msgid "Total expense"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_amount_paid
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_amount_paid
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_amount_paid
@@ -1958,6 +1990,11 @@ msgstr ""
 #, python-format
 msgid "Unpaid"
 msgstr "לתשלום"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
+msgid "Untaxed amount"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__use_sumit_journal
