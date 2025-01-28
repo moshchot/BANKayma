@@ -440,6 +440,10 @@ class AccountMove(models.Model):
             result["journal_id"] = dest_company.intercompany_purchase_journal_id.id
         return result
 
+    def _bankayma_invoice_child_income_get_parent_company(self):
+        """Get the parent that invoices overhead"""
+        return self.company_id.parent_id
+
     def _bankayma_invoice_child_income(
         self,
         fraction=0.07,
@@ -453,7 +457,7 @@ class AccountMove(models.Model):
             and x.move_type == "out_invoice"
             and x.company_id.parent_id
         ):
-            company = this.company_id.parent_id
+            company = this._bankayma_invoice_child_income_get_parent_company()
             if not company.overhead_journal_id or not company.overhead_account_id:
                 continue
             child = this.company_id
