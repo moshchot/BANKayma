@@ -70,9 +70,8 @@
                         <field
                             name="bank_ids"
                             context="{'default_allow_out_payment': True}"
-                            editable="bottom"
                         >
-                            <tree>
+                            <tree editable="bottom">
                                 <field
                                     name="acc_number"
                                     modifiers="{&quot;required&quot;: true}"
