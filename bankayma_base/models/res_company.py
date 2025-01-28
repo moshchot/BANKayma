@@ -1,5 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import api, fields, models
+from odoo import SUPERUSER_ID, api, fields, models
 
 
 class ResCompany(models.Model):
@@ -22,3 +22,16 @@ class ResCompany(models.Model):
             }
         )
         return result
+
+    def unlink(self):
+        if self.env.user.id == SUPERUSER_ID:
+            domain = [("company_id", "in", self.ids)]
+            self.env["account.fiscal.position.tax"].search(domain).unlink()
+            self.env["account.fiscal.position"].search(domain).unlink()
+            self.env["account.tax"].search(domain).unlink()
+            self.env["account.payment.mode"].search(domain).unlink()
+            self.env["account.journal"].search(domain).unlink()
+            self.env["account.account"].search(domain).unlink()
+            self.env["ir.sequence"].search(domain).unlink()
+            self.env["res.users"].search(domain).unlink()
+        return super().unlink()
