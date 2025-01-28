@@ -261,6 +261,21 @@
                     {'column_invisible': [('parent.state', '!=', 'posted'), ('parent.review_ids', '=', False)]}
                 </attribute>
             </xpath>
+            <xpath expr="(//field[@name='ref'])[1]" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </xpath>
+            <xpath expr="(//field[@name='ref'])[2]" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </xpath>
+            <xpath expr="(//field[@name='ref'])[3]" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </xpath>
         </field>
     </record>
 
