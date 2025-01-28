@@ -13,6 +13,13 @@ class AccountMove(models.Model):
         states={"draft": [("readonly", False)], "posted": [("readonly", True)]},
     )
 
+    def _bankayma_invoice_child_income_get_parent_company(self):
+        """Get the parent that invoices overhead"""
+        company = self.company_id.parent_id
+        while company.parent_id:
+            company = company.parent_id
+        return company
+
     def _bankayma_invoice_child_income(
         self,
         fraction=0.07,
