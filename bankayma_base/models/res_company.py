@@ -26,6 +26,7 @@ class ResCompany(models.Model):
     def unlink(self):
         if self.env.user.id == SUPERUSER_ID:
             domain = [("company_id", "in", self.ids)]
+            self.env["ir.property"].search(domain).unlink()
             self.env["account.fiscal.position.tax"].search(domain).unlink()
             self.env["account.fiscal.position"].search(domain).unlink()
             self.env["account.tax"].search(domain).unlink()
