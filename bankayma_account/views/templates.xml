@@ -685,6 +685,10 @@
             t-set="taxes_ex"
             t-value="object.line_ids.filtered('tax_line_id').tax_line_id - taxes_inc"
         />
+        <t
+            t-set="payroll_product_id"
+            t-value="object.fiscal_position_id.bankayma_payroll_product_id"
+        />
         <t t-if="not object.id">
             <div>Save the invoice for updated tax totals</div>
             <t t-set="taxes_inc" t-value="object.env['account.tax']" />
@@ -710,7 +714,7 @@
                             <td class="text-end">
                                 <span
                                     style="font-weight: bold;"
-                                    t-out="object.amount_untaxed"
+                                    t-out="object.amount_untaxed - sum(object.invoice_line_ids.filtered(lambda x: x.product_id and x.product_id == payroll_product_id).mapped('price_subtotal'))"
                                     t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
                                 />
                             </td>
@@ -741,6 +745,21 @@
                                 <span
                                     style="font-size: 1.3em; font-weight: bold;"
                                     t-out="sum(object.line_ids.filtered(lambda x: x.tax_line_id in taxes).mapped(lambda x: -x.balance if x.balance &lt; 0 else x.balance)) + object.amount_untaxed"
+                                    t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
+                                />
+                            </td>
+                        </tr>
+                        <tr t-if="taxes == taxes_ex and payroll_product_id">
+                            <td class="o_td_label">
+                                <label
+                                    class="o_form_label o_tax_total_label"
+                                    t-out="' '.join(object.invoice_line_ids.filtered(lambda x: x.product_id == payroll_product_id).mapped('name'))"
+                                />
+                            </td>
+
+                            <td class="text-end">
+                                <span
+                                    t-out="sum(object.invoice_line_ids.filtered(lambda x: x.product_id == payroll_product_id).mapped('price_subtotal'))"
                                     t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"
                                 />
                             </td>

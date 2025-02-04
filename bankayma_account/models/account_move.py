@@ -339,6 +339,35 @@ class AccountMove(models.Model):
                 "bankayma_account.template_tax_totals", {"object": this}
             )
 
+    @api.onchange("fiscal_position_id")
+    def _onchange_fiscal_position_id_payroll(self):
+        if getattr(self, "_origin", False):
+            prev_product = self._origin.fiscal_position_id.bankayma_payroll_product_id
+            if prev_product:
+                self.invoice_line_ids = self.invoice_line_ids.filtered(
+                    lambda x: x.product_id != prev_product
+                )
+        product = self.fiscal_position_id.bankayma_payroll_product_id
+        if product:
+            self.invoice_line_ids += self.env["account.move.line"].new(
+                {
+                    "product_id": product.id,
+                }
+            )
+
+    @api.constrains("fiscal_position_id", "invoice_line_ids")
+    def _check_payroll_price_unit(self):
+        for this in self.filtered("fiscal_position_id.bankayma_payroll_product_id"):
+            if not this.invoice_line_ids.filtered(
+                lambda x: x.product_id
+                == this.fiscal_position_id.bankayma_payroll_product_id
+                and x.price_unit > 0
+            ):
+                raise UserError(
+                    _("You need to set a price for the line with product %s")
+                    % this.fiscal_position_id.bankayma_payroll_product_id.name
+                )
+
     @api.model_create_multi
     def create(self, vals_list):
         """
