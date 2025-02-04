@@ -245,10 +245,18 @@
                 </attribute>
             </field>
             <field name="tax_totals" position="attributes">
-                <attribute name="invisible">True</attribute>
+                <attribute name="attrs">
+                    {'invisible': [('show_bankayma_tax_totals', '=', True)]}
+                </attribute>
             </field>
             <field name="tax_totals" position="after">
-                <field name="bankayma_tax_totals" nolabel="1" colspan="2" />
+                <field
+                    name="bankayma_tax_totals"
+                    nolabel="1"
+                    colspan="2"
+                    attrs="{'invisible': [('show_bankayma_tax_totals', '=', False)]}"
+                />
+                <field name="show_bankayma_tax_totals" invisible="True" />
             </field>
             <form position="inside">
                 <field name="review_ids" invisible="1" />
