@@ -52,6 +52,7 @@ class AccountPaymentRegister(models.TransientModel):
             self = self.with_company(company).with_context(
                 active_ids=all_lines.filtered(lambda x: x.company_id == company).ids,
                 active_model="account.move.line",
+                bankayma_force_sumit=self.use_sumit_this_payment,
             )
             defaults = self.default_get(self._fields)
             defaults.pop("other_line_ids", False)

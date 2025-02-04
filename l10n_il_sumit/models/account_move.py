@@ -75,7 +75,12 @@ class AccountMove(models.Model):
             "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
         )
         payment_provider = payment.payment_transaction_id.provider_id
-        if self and self.journal_id.use_sumit and payment_provider.code != "sumit":
+        if (
+            self
+            and self.journal_id.use_sumit
+            and payment_provider.code != "sumit"
+            and self.env.context.get("bankayma_force_sumit", True)
+        ):
             result = self.env["sumit.account"]._request(
                 "/accounting/documents/create",
                 self._to_sumit_vals(),
