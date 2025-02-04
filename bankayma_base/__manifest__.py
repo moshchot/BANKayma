@@ -16,6 +16,7 @@
         "document_page_approval",
         "event",
         "mail_debrand",
+        "mail_discuss_security",
         "disable_odoo_online",
         "base_portal_type",
         "module_auto_update",
