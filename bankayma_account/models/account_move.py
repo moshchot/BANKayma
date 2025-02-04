@@ -131,6 +131,7 @@ class AccountMove(models.Model):
         compute="_compute_bankayma_tax_removal_label"
     )
     bankayma_tax_totals = fields.Html(compute="_compute_bankayma_tax_totals")
+    show_bankayma_tax_totals = fields.Boolean(compute="_compute_bankayma_tax_totals")
     system1000_error_message = fields.Char()
 
     def _compute_amount(self):
@@ -334,9 +335,14 @@ class AccountMove(models.Model):
         "currency_id",
     )
     def _compute_bankayma_tax_totals(self):
+        get_param = self.env["ir.config_parameter"].sudo().get_param
         for this in self:
             this.bankayma_tax_totals = self.env["ir.qweb"]._render(
                 "bankayma_account.template_tax_totals", {"object": this}
+            )
+            this.show_bankayma_tax_totals = bool(
+                bool(this.id)
+                and get_param("bankayma_show_bankayma_tax_totals_%s" % this.move_type)
             )
 
     @api.onchange("fiscal_position_id")
