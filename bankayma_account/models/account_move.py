@@ -364,10 +364,13 @@ class AccountMove(models.Model):
     @api.constrains("fiscal_position_id", "invoice_line_ids")
     def _check_payroll_price_unit(self):
         for this in self.filtered("fiscal_position_id.bankayma_payroll_product_id"):
-            if not this.invoice_line_ids.filtered(
-                lambda x: x.product_id
-                == this.fiscal_position_id.bankayma_payroll_product_id
-                and x.price_unit > 0
+            if (
+                not this.invoice_line_ids.filtered(
+                    lambda x: x.product_id
+                    == this.fiscal_position_id.bankayma_payroll_product_id
+                    and x.price_unit != 0
+                )
+                and this.move_type != "entry"
             ):
                 raise UserError(
                     _("You need to set a price for the line with product %s")
