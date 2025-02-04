@@ -75,6 +75,10 @@ class PaymentTransaction(models.Model):
                 "Type",
                 self.is_donation and "4" or "0",
             ),
+            "DocumentDescription": invoice_sumit_vals.get("Details", {}).get(
+                "Description",
+            )
+            or self.reference,
             "RedirectURL": urlunparse(
                 (
                     base_url.scheme,
@@ -96,7 +100,6 @@ class PaymentTransaction(models.Model):
             "UpdateOrganizationOnSuccess": None,
             "UpdateOrganizationOnFailure": None,
             "UpdateCustomerOnSuccess": None,
-            "DocumentDescription": None,
             "DraftDocument": None,
         }
 
