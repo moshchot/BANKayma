@@ -26,7 +26,7 @@ class AccountMove(models.Model):
         post=True,
         pay=True,
     ):
-        if self.bankayma_waive_overhead:
+        if self.bankayma_waive_overhead or not fraction:
             self.message_post(
                 body=_(
                     "Overhead of %d%% was waived on this move",
