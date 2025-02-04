@@ -43,6 +43,11 @@
                         />
                     </group>
                 </page>
+                <page name="payroll" string="Payroll">
+                    <group>
+                        <field name="bankayma_payroll_product_id" />
+                    </group>
+                </page>
             </notebook>
         </field>
     </record>
