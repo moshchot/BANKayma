@@ -513,3 +513,10 @@ class TestBankaymaAccount(TransactionCase):
         self.assertEqual(invoice.company_id, self.child2)
         self.assertEqual(invoice.amount_total, original_amount)
         self.assertIn(str(account.id), invoice.invoice_line_ids.analytic_distribution)
+
+    def test_delete(self):
+        """
+        Test that deletetion works after cascading
+        """
+        self.child1.unlink()
+        self.assertFalse(self.child1.exists())
