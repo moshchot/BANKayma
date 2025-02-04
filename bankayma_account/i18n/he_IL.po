@@ -1558,6 +1558,16 @@ msgid "Payment will be remitted in next round"
 msgstr "התשלום יועבר בסבב התשלומים הקרוב"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
+msgid "Payroll"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_payroll_product_id
+msgid "Payroll product"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_account__plan_id
 msgid "Plan"
 msgstr ""
@@ -2164,6 +2174,13 @@ msgstr "עלייך לאשר הוראת קבע חודשית"
 msgid ""
 "You need to have configured a chart of accounts for your parent company "
 "before cloning it"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "You need to set a price for the line with product %s"
 msgstr ""
 
 #. module: bankayma_account
