@@ -1730,10 +1730,27 @@ msgid "Save the invoice for updated tax totals"
 msgstr "יש לשמור המסמך לשם חישוב מיסים"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__show_bankayma_tax_totals
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__show_bankayma_tax_totals
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__show_bankayma_tax_totals
+msgid "Show Bankayma Tax Totals"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__show_fiscal_position_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__show_fiscal_position_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__show_fiscal_position_id
 msgid "Show Fiscal Position"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_config_settings__show_bankayma_tax_totals_out_invoice
+msgid "Show custom tax totals for customer invoices"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_config_settings__show_bankayma_tax_totals_in_invoice
+msgid "Show custom tax totals for vendor bills"
 msgstr ""
 
 #. module: bankayma_account
