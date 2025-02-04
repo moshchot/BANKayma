@@ -16,6 +16,9 @@ class ResCompany(models.Model):
     @api.depends("name")
     def _compute_website_link(self):
         for this in self:
+            if not this.id:
+                this.website_link = False
+                continue
             base_url = urlparse(self.get_base_url())
             this.website_link = urlunparse(
                 (
