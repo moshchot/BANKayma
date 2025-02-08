@@ -25,7 +25,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "(Taxes included)"
-msgstr "מיסי ספק"
+msgstr "ניכויים"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_account_move_paid
@@ -1900,7 +1900,7 @@ msgstr "ניכויים"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Taxes excluded"
-msgstr "מיסי מעביד"
+msgstr "עלויות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__template_company_id
