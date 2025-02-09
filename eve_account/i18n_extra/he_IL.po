@@ -26,3 +26,17 @@ msgstr "תקורות"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__2_validated
 msgid "Validated"
 msgstr "צפויות"
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[EVE] %(company)s payment on hold for insufficient documents"
+msgstr "[אי״ב] %(company)s תשלום מעוכב עד להשלמת מסמכים"
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "[EVE] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
+msgstr "[אי״ב] %(company)s העברנו לך תשלום עבור (Ref %(ref)s)"
