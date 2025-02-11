@@ -13,3 +13,4 @@ class AccountTaxGroup(models.Model):
         help="If this is checked, moves with taxes belonging to this group offer a "
         "button to remove all those taxes",
     )
+    bankayma_editable = fields.Boolean()
