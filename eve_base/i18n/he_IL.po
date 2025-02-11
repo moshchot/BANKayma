@@ -16,6 +16,11 @@ msgid "Company Details"
 msgstr ""
 
 #. module: eve_base
+#: model:ir.model,name:eve_base.model_base_document_layout
+msgid "Company Document Layout"
+msgstr ""
+
+#. module: eve_base
 #: model:ir.model.fields,field_description:eve_base.field_res_company__report_header
 msgid "Company Tagline"
 msgstr ""
@@ -23,4 +28,10 @@ msgstr ""
 #. module: eve_base
 #: model:ir.model.fields,help:eve_base.field_res_company__company_details
 msgid "Header text displayed at the top of all reports."
+msgstr ""
+
+#. module: eve_base
+#: model:ir.model.fields,field_description:eve_base.field_base_document_layout__parent_root_id
+#: model:ir.model.fields,field_description:eve_base.field_res_company__parent_root_id
+msgid "Parent Root"
 msgstr ""
