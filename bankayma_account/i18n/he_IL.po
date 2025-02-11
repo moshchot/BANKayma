@@ -331,6 +331,11 @@ msgid "Bankayma Edit Buffer"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_tax_group__bankayma_editable
+msgid "Bankayma Editable"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_immutable
 msgid "Bankayma Immutable"
 msgstr ""
