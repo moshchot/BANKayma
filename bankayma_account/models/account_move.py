@@ -165,6 +165,28 @@ class AccountMove(models.Model):
             this.show_reset_to_draft_button &= this.payment_state != "paid"
         return result
 
+    def _compute_tax_totals(self):
+        result = super()._compute_tax_totals()
+        AccountTaxGroup = self.env["account.tax.group"]
+        for this in self:
+            if not this.tax_totals:
+                continue
+            this.tax_totals["groups_by_subtotal"] = {
+                key: [
+                    dict(
+                        tax_group,
+                        bankayma_editable=AccountTaxGroup.browse(
+                            tax_group["tax_group_id"]
+                        ).bankayma_editable,
+                    )
+                    for tax_group in tax_groups
+                ]
+                for key, tax_groups in this.tax_totals.get(
+                    "groups_by_subtotal", []
+                ).items()
+            }
+        return result
+
     @api.depends(
         "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id."
         "payment_method_line_id.payment_method_id"
@@ -342,6 +364,7 @@ class AccountMove(models.Model):
             )
             this.show_bankayma_tax_totals = bool(
                 bool(this.id)
+                and bool(this.line_ids.tax_ids)
                 and get_param("bankayma_show_bankayma_tax_totals_%s" % this.move_type)
             )
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t t-inherit="account.TaxGroupComponent" t-inherit-mode="extension">
+        <t t-if="!props.isReadonly" position="attributes">
+            <attribute
+                name="t-if"
+            >!props.isReadonly &amp;&amp; props.taxGroup.bankayma_editable</attribute>
+        </t>
+    </t>
+</templates>

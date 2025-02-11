@@ -5,6 +5,7 @@
         <field name="arch" type="xml">
             <field name="sequence" position="after">
                 <field name="bankayma_offer_removal" />
+                <field name="bankayma_editable" />
             </field>
         </field>
     </record>
@@ -14,6 +15,7 @@
         <field name="arch" type="xml">
             <field name="property_tax_payable_account_id" position="before">
                 <field name="bankayma_offer_removal" />
+                <field name="bankayma_editable" />
             </field>
         </field>
     </record>
