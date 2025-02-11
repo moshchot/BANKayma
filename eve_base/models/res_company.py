@@ -7,3 +7,11 @@ class ResCompany(models.Model):
 
     report_header = fields.Html(translate=True)
     company_details = fields.Html(translate=True)
+    parent_root_id = fields.Many2one("res.company", compute="_compute_parent_root_id")
+
+    def _compute_parent_root_id(self):
+        for this in self:
+            root = this.parent_id
+            while root.parent_id:
+                root = root.parent_id
+            this.parent_root_id = root
