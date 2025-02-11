@@ -1,0 +1,93 @@
+<odoo>
+    <record id="bankayma_base.external_layout_standard" model="ir.ui.view">
+        <field name="active" eval="False" />
+    </record>
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <img t-if="company.logo" position="attributes">
+            <attribute name="t-if">company.parent_root_id.logo</attribute>
+            <attribute name="t-att-src">
+                image_data_uri(company.parent_root_id.logo)
+            </attribute>
+        </img>
+        <div t-field="company.report_header" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_header</attribute>
+        </div>
+        <div t-if="company.logo or company.report_header" position="attributes">
+            <attribute name="t-if">
+                company.parent_root_id.logo or company.parent_root_id.report_header
+            </attribute>
+        </div>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_footer</attribute>
+        </div>
+    </template>
+    <record id="bankayma_base.external_layout_bold" model="ir.ui.view">
+        <field name="active" eval="False" />
+    </record>
+    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
+        <img t-if="company.logo" position="attributes">
+            <attribute name="t-if">company.parent_root_id.logo</attribute>
+            <attribute name="t-att-src">
+                image_data_uri(company.parent_root_id.logo)
+            </attribute>
+        </img>
+        <div t-field="company.report_header" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_header</attribute>
+        </div>
+        <span t-field="company.report_footer" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_footer</attribute>
+        </span>
+    </template>
+    <record id="bankayma_base.external_layout_boxed" model="ir.ui.view">
+        <field name="active" eval="False" />
+    </record>
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <img t-if="company.logo" position="attributes">
+            <attribute name="t-if">company.parent_root_id.logo</attribute>
+            <attribute name="t-att-src">
+                image_data_uri(company.parent_root_id.logo)
+            </attribute>
+        </img>
+        <div t-field="company.report_header" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_header</attribute>
+        </div>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_footer</attribute>
+        </div>
+    </template>
+    <record id="bankayma_base.external_layout_striped" model="ir.ui.view">
+        <field name="active" eval="False" />
+    </record>
+    <template id="external_layout_striped" inherit_id="web.external_layout_striped">
+        <img t-if="company.logo" position="attributes">
+            <attribute name="t-if">company.parent_root_id.logo</attribute>
+            <attribute name="t-att-src">
+                image_data_uri(company.parent_root_id.logo)
+            </attribute>
+        </img>
+        <div t-field="company.report_header" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_header</attribute>
+        </div>
+        <div t-field="company.report_footer" position="attributes">
+            <attribute name="t-field">company.parent_root_id.report_footer</attribute>
+        </div>
+    </template>
+    <template id="mail_notification_layout" inherit_id="mail.mail_notification_layout">
+        <img
+            t-att-src="'/logo.png?company=%s' % (company.id or 0)"
+            position="attributes"
+        >
+            <attribute name="t-att-src">
+                '/logo.png?company=%s' % (company.parent_root_id.id or company.id or 0)
+            </attribute>
+            <attribute name="t-att-alt">
+                company.parent_root_id.name or company_id.name
+            </attribute>
+        </img>
+        <b t-out="company.name" position="attributes">
+            <attribute name="t-out">
+                company.parent_root_id.name or company.name
+            </attribute>
+        </b>
+    </template>
+</odoo>

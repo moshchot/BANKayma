@@ -9,7 +9,9 @@
     "depends": [
         "bankayma_base",
     ],
-    "data": [],
+    "data": [
+        "views/templates.xml",
+    ],
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
     "assets": {
