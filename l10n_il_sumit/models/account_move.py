@@ -21,7 +21,7 @@ class AccountMove(models.Model):
                     "ExternalIdentifier": None,
                     "NoVAT": None,
                     "SearchMode": 0,
-                    "Name": self.partner_id.name,
+                    "Name": self.partner_id.display_name,
                     "Phone": self.partner_id.phone or None,
                     "EmailAddress": self.partner_id.email or None,
                     "City": self.partner_id.city or None,
