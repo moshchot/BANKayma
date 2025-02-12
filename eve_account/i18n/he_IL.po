@@ -16,6 +16,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid "(with reference:"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ". for"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ". from"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid ""
+"<br/>\n"
+"                <br/>\n"
+"                According to our records, you haven't sent a reciept for"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ""
+"<br/>\n"
+"                <br/>\n"
+"                Following your"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ""
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
+"                    Licensed or Exempt dealer? Please upload a receipt by "
+"replying to\n"
+"                    this email\n"
+"                    <br/>\n"
+"                    <br/>\n"
+"                    To: EVE 580549962\n"
+"                    <br/>\n"
+"                </strong>"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid ""
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
+"                    Please upload a receipt by replying to this email\n"
+"                    <br/>\n"
+"                    <br/>\n"
+"                    To: EVE 580549962\n"
+"                    <br/>\n"
+"                </strong>"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "Azure Interior"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "Brandon Freeman"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_res_company
 msgid "Companies"
 msgstr ""
@@ -42,6 +111,20 @@ msgid "Date"
 msgstr ""
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Dear"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Do not hesitate to contact us if you have any questions."
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_bank_statement_line__bankayma_waive_overhead
 #: model:ir.model.fields,help:eve_account.field_account_move__bankayma_waive_overhead
 #: model:ir.model.fields,help:eve_account.field_account_payment__bankayma_waive_overhead
@@ -54,8 +137,25 @@ msgid "Extra settings"
 msgstr ""
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Fiscal position:"
+msgstr ""
+
+#. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.view_payment_term_form
 msgid "Fixed date"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "Hi"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid "INV/2021/05/0005"
 msgstr ""
 
 #. module: eve_account
@@ -74,6 +174,13 @@ msgid "Journals"
 msgstr ""
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Max amount:"
+msgstr ""
+
+#. module: eve_account
 #. odoo-python
 #: code:addons/eve_account/models/account_move.py:0
 #, python-format
@@ -86,10 +193,27 @@ msgid "Overhead percentage"
 msgstr "אחוז תקורה"
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid "Payment Request"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
 #: model:ir.ui.menu,name:eve_account.action_payment_terms
 msgid "Payment Terms"
 msgstr "מועדי תשלום"
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Recipient Bank info:"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid "SUB003"
+msgstr ""
 
 #. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_payment_term__fixed_date
@@ -97,8 +221,30 @@ msgid "Set a fixed date instead of relative terms below"
 msgstr ""
 
 #. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Tax ID:"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Tax deduction:"
+msgstr ""
+
+#. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_bankayma_company_create__template_company_id
 msgid "Template company"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ""
+"Thank You\n"
+"                <br/>\n"
+"                Eve's Accounting crew"
 msgstr ""
 
 #. module: eve_account
@@ -112,4 +258,110 @@ msgstr ""
 #: model:ir.model.fields,field_description:eve_account.field_account_move__bankayma_waive_overhead
 #: model:ir.model.fields,field_description:eve_account.field_account_payment__bankayma_waive_overhead
 msgid "Waive overhead"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid "We are happy to inform you that we've transferred"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ""
+"You've been paid!\n"
+"                <br/>\n"
+"                <br/>\n"
+"                Hi"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "Your payment request of"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "YourCompany"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "description"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "for"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "from"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "is on hold after checking 1000 system:"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "no"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid "on"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "paid on"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid ""
+"thanks\n"
+"                <br/>\n"
+"                Eve crew"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "to"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "until up to date documents"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+msgid "was recieved with this info:"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
+msgid "yes"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
+msgid "your bank"
 msgstr ""
