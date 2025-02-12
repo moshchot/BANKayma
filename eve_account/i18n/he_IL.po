@@ -18,17 +18,17 @@ msgstr ""
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid "(with reference:"
-msgstr ""
+msgstr "(סימוכין:"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid ". for"
-msgstr ""
+msgstr ". עבור"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid ". from"
-msgstr ""
+msgstr ". דרך"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
@@ -45,6 +45,8 @@ msgid ""
 "                <br/>\n"
 "                Following your"
 msgstr ""
+"                <br/>\n"
+"                בהמשך ל"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
@@ -71,7 +73,14 @@ msgid ""
 "                    <br/>\n"
 "                </strong>"
 msgstr ""
-
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
+"                    עוסק פטור? נא להשיב למייל זה בצירוף קבלה \n"
+"                    <br/>\n"
+"                     עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית מס/קבלה \n"
+"                    <br/>\n"
+"                    את הקבלות יש לרשום תוך 60 יום עבור אי״ב - ארגון יוצרים עצמאים בתאטרון ואמנות המופע (ע״ר 580549962) \n"
+"                    <br/>\n"
+"                </strong>\n"
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
@@ -115,14 +124,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "Dear"
-msgstr ""
+msgstr "שלום"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "Do not hesitate to contact us if you have any questions."
-msgstr ""
+msgstr "לכל שאלה, ניתן להשיב למייל זה"
 
 #. module: eve_account
 #: model:ir.model.fields,help:eve_account.field_account_bank_statement_line__bankayma_waive_overhead
@@ -151,7 +160,7 @@ msgstr ""
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
 msgid "Hi"
-msgstr ""
+msgstr "שלום"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
@@ -195,7 +204,7 @@ msgstr "אחוז תקורה"
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid "Payment Request"
-msgstr ""
+msgstr "בקשת התשלום"
 
 #. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
@@ -208,7 +217,7 @@ msgstr "מועדי תשלום"
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "Recipient Bank info:"
-msgstr ""
+msgstr "פרטי בנק:"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
@@ -225,14 +234,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "Tax ID:"
-msgstr ""
+msgstr "מספר עוסק:"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "Tax deduction:"
-msgstr ""
+msgstr "ניכויים:"
 
 #. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_bankayma_company_create__template_company_id
@@ -246,6 +255,9 @@ msgid ""
 "                <br/>\n"
 "                Eve's Accounting crew"
 msgstr ""
+"תודה,\n"
+"                <br/>\n"
+"                צוות הנהלת החשבונות של אי״ב"
 
 #. module: eve_account
 #: model:ir.model.fields,field_description:eve_account.field_res_partner__eve_vendor_code
@@ -263,7 +275,7 @@ msgstr ""
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid "We are happy to inform you that we've transferred"
-msgstr ""
+msgstr "עמותת אי״ב - ארגון יוצרים עצמאים בתאטרון ואמנות המופע העבירה לחשבונך תשלום"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
@@ -273,13 +285,17 @@ msgid ""
 "                <br/>\n"
 "                Hi"
 msgstr ""
+"שלום\n"
+"                <br/>\n"
+"                <br/>\n"
+"                "
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "Your payment request of"
-msgstr ""
+msgstr "בקשת התשלום שלך על סך"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
@@ -299,12 +315,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "for"
-msgstr ""
+msgstr "עבור"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
 msgid "from"
-msgstr ""
+msgstr "מ"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
@@ -316,12 +332,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_new_from_portal
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_rejected
 msgid "no"
-msgstr ""
+msgstr "לא"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid "on"
-msgstr ""
+msgstr "בתאריך"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
@@ -335,6 +351,9 @@ msgid ""
 "                <br/>\n"
 "                Eve crew"
 msgstr ""
+"תודה,\n"
+"                <br/>\n"
+"                צוות הנהלת החשבונות של אי״ב"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
