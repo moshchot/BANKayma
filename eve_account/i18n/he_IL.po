@@ -78,9 +78,11 @@ msgstr ""
 "                    <br/>\n"
 "                     עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית מס/קבלה \n"
 "                    <br/>\n"
-"                    את הקבלות יש לרשום תוך 60 יום עבור אי״ב - ארגון יוצרים עצמאים בתאטרון ואמנות המופע (ע״ר 580549962) \n"
+"                    את הקבלות יש לרשום תוך 60 יום עבור אי״ב - ארגון יוצרים "
+"עצמאים בתאטרון ואמנות המופע (ע״ר 580549962) \n"
 "                    <br/>\n"
 "                </strong>\n"
+
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
@@ -275,7 +277,8 @@ msgstr ""
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid "We are happy to inform you that we've transferred"
-msgstr "עמותת אי״ב - ארגון יוצרים עצמאים בתאטרון ואמנות המופע העבירה לחשבונך תשלום"
+msgstr ""
+"עמותת אי״ב - ארגון יוצרים עצמאים בתאטרון ואמנות המופע העבירה לחשבונך תשלום"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
