@@ -210,6 +210,9 @@ msgstr "בקשת התשלום"
 
 #. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
+#: model:ir.model.fields,field_description:eve_account.field_account_bank_statement_line__invoice_payment_term_id
+#: model:ir.model.fields,field_description:eve_account.field_account_move__invoice_payment_term_id
+#: model:ir.model.fields,field_description:eve_account.field_account_payment__invoice_payment_term_id
 #: model:ir.ui.menu,name:eve_account.action_payment_terms
 msgid "Payment Terms"
 msgstr "מועדי תשלום"
