@@ -13,7 +13,6 @@
                 <field
                     name="invoice_payment_term_id"
                     attrs="{'invisible': [('move_type', '!=', 'in_invoice')], 'required': [('move_type', '=', 'in_invoice')]}"
-                    domain="['|', ('fixed_date', '=', False), ('fixed_date', '&gt;', current_date)]"
                     groups="!bankayma_base.group_full"
                 />
             </xpath>

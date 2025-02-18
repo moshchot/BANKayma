@@ -12,6 +12,9 @@ class AccountMove(models.Model):
         help="Exceptionally don't charge overhead for this move",
         states={"draft": [("readonly", False)], "posted": [("readonly", True)]},
     )
+    invoice_payment_term_id = fields.Many2one(
+        domain="['|', ('fixed_date', '=', False), ('fixed_date', '>', current_date)]"
+    )
 
     def _bankayma_invoice_child_income_get_parent_company(self):
         """Get the parent that invoices overhead"""
