@@ -81,7 +81,7 @@
                 '/logo.png?company=%s' % (company.parent_root_id.id or company.id or 0)
             </attribute>
             <attribute name="t-att-alt">
-                company.parent_root_id.name or company_id.name
+                company.parent_root_id.name or company.name
             </attribute>
         </img>
         <b t-out="company.name" position="attributes">
