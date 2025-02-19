@@ -80,10 +80,10 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath expr="//label[@for='invoice_date']" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </xpath>
             <xpath expr="//label[@for='invoice_date'][2]" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="groups">bankayma_base.group_org_manager</attribute>
             </xpath>
             <field name="invoice_date" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
