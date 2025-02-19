@@ -51,6 +51,13 @@ msgstr ""
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid ""
+"<br/>\n"
+"                Hi"
+msgstr ""
+
+#. module: eve_account
+#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
+msgid ""
 "<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
 "                    Licensed or Exempt dealer? Please upload a receipt by "
 "replying to\n"
@@ -291,19 +298,6 @@ msgstr ""
 msgid "We are happy to inform you that we've transferred"
 msgstr ""
 "עמותת אי״ב - ארגון יוצרים עצמאים בתאטרון ואמנות המופע העבירה לחשבונך תשלום"
-
-#. module: eve_account
-#: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
-msgid ""
-"You've been paid!\n"
-"                <br/>\n"
-"                <br/>\n"
-"                Hi"
-msgstr ""
-"שלום\n"
-"                <br/>\n"
-"                <br/>\n"
-"                "
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
