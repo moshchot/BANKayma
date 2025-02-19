@@ -183,12 +183,10 @@
     </template>
     <template
         id="qweb_template_account_move_paid"
-        name="BNK Vendor: Message after payment - send receipt"
+        name="EVE Vendor: Message after payment - send receipt"
     >
         <div style="direction:rtl;">
             <p style="margin:0px 0 12px 0;box-sizing:border-box;">
-                You've been paid!
-                <br />
                 <br />
                 Hi
                 <t t-if="object.partner_id.parent_id">
@@ -254,7 +252,7 @@
     </template>
     <template
         id="qweb_template_account_move_paid_reminder"
-        name="BNK Vendor: reminder to send receipt"
+        name="EVE Vendor: reminder to send receipt"
     >
         <div style="direction:rtl;">
             <p style="margin:0px 0 12px 0;box-sizing:border-box;">
