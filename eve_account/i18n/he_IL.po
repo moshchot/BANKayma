@@ -61,6 +61,15 @@ msgid ""
 "                    <br/>\n"
 "                </strong>"
 msgstr ""
+"<strong style=\"box-sizing:border-box;font-weight:800;\">\n"
+"                    עוסק פטור? נא להשיב למייל זה בצירוף קבלה \n"
+"                    <br/>\n"
+"                     עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית מס/קבלה \n"
+"                    <br/>\n"
+"                    את הקבלות יש לרשום תוך 60 יום עבור אי״ב - ארגון יוצרים "
+"עצמאים בתאטרון ואמנות המופע (ע״ר 580549962) \n"
+"                    <br/>\n"
+"                </strong>\n"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
@@ -206,7 +215,7 @@ msgstr "אחוז תקורה"
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 msgid "Payment Request"
-msgstr "בקשת התשלום"
+msgstr "לבקשת התשלום"
 
 #. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
@@ -314,13 +323,13 @@ msgstr ""
 #: code:addons/eve_account/models/account_move.py:0
 #, python-format
 msgid "[EVE] %(company)s you've been paid! (Ref %(ref)s)"
-msgstr ""
+msgstr "[EVE] העברנו לך תשלום דרך %(company)s (Ref %(ref)s)"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
 msgid "description"
-msgstr ""
+msgstr "עבור"
 
 #. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_draft
