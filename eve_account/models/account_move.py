@@ -63,4 +63,3 @@ class AccountMove(models.Model):
                     ).id,
                 )
         return super()._invoice_paid_hook()
-    
