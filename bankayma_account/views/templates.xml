@@ -360,7 +360,7 @@
             <attribute name="groups">bankayma_base.group_full</attribute>
         </xpath>
         <xpath expr="//span[@t-field='invoice.invoice_date']/.." position="attributes">
-            <attribute name="groups">bankayma_base.group_full</attribute>
+            <attribute name="groups">bankayma_base.group_org_manager</attribute>
         </xpath>
         <xpath expr="//thead/tr/th[hasclass('text-end')]" position="before">
             <th class="text-end">Amount paid</th>
