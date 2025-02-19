@@ -55,9 +55,7 @@ class AccountMove(models.Model):
             if this.journal_id.bankayma_qweb_template_invoice_paid:
                 this.message_post_with_view(
                     this.journal_id.bankayma_qweb_template_invoice_paid,
-                    subject=_(
-                        "[EVE] %(company)s you've been paid! (Ref %(ref)s)"
-                    )
+                    subject=_("[EVE] %(company)s you've been paid! (Ref %(ref)s)")
                     % dict(company=this.company_id.name, ref=this.name),
                     message_type="comment",
                     subtype_id=self.env.ref(
@@ -65,3 +63,4 @@ class AccountMove(models.Model):
                     ).id,
                 )
         return super()._invoice_paid_hook()
+    
