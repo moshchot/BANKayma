@@ -310,6 +310,13 @@ msgid "YourCompany"
 msgstr ""
 
 #. module: eve_account
+#. odoo-python
+#: code:addons/eve_account/models/account_move.py:0
+#, python-format
+msgid "[EVE] %(company)s you've been paid! (Ref %(ref)s)"
+msgstr ""
+
+#. module: eve_account
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid
 #: model_terms:ir.ui.view,arch_db:eve_account.qweb_template_account_move_paid_reminder
 msgid "description"
