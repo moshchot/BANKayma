@@ -77,7 +77,7 @@
                 expr="//group[@id='header_right_group']/field[@name='date']"
                 position="attributes"
             >
-                <attribute name="groups">bankayma_base.group_org_manager</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath expr="//label[@for='invoice_date']" position="attributes">
                 <attribute name="groups">bankayma_base.group_org_manager</attribute>
