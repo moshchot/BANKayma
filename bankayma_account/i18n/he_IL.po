@@ -528,6 +528,7 @@ msgstr "יוזמות"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__company_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__company_id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__company_id
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Company"
 msgstr "יוזמה"
 
@@ -857,6 +858,7 @@ msgstr "סוג עוסק"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Fiscal position"
 msgstr "סוג עוסק"
 
@@ -887,6 +889,11 @@ msgstr "מאת:"
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__10
 msgid "Goods Return Note"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
+msgid "Has activity"
 msgstr ""
 
 #. module: bankayma_account
@@ -1274,11 +1281,6 @@ msgid "No intercompany"
 msgstr ""
 
 #. module: bankayma_account
-#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
-msgid "Not Draft"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__not_paid
 msgid "Not Paid"
 msgstr "הכנסות צפויות"
@@ -1502,6 +1504,11 @@ msgstr ""
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_payment_state__partial
 msgid "Partially Paid"
 msgstr "שולם חלקית"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
+msgid "Partner"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
@@ -2099,6 +2106,11 @@ msgstr "בתשלום"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__validated_state
 msgid "Validated State"
 msgstr "סטטוס אישור"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
+msgid "Validated state"
+msgstr ""
 
 #. module: bankayma_account
 #. odoo-javascript
