@@ -12,6 +12,7 @@ from odoo.exceptions import UserError
 from odoo.osv.expression import OR
 from odoo.tests.common import Form
 from odoo.tools import float_utils, html2plaintext
+from odoo.tools.safe_eval import const_eval
 
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
@@ -873,6 +874,21 @@ class AccountMove(models.Model):
                     ).id,
                 )
         return super()._invoice_paid_hook()
+
+    def _export_rows(self, fields, *, _is_toplevel_call=True):
+        result = super()._export_rows(fields, _is_toplevel_call=_is_toplevel_call)
+        if ["bankayma_move_line_analytic_distribution"] in fields:
+            idx = fields.index(["bankayma_move_line_analytic_distribution"])
+            AnalyticAccount = self.env["account.analytic.account"]
+            for row in result:
+                distribution = const_eval(row[idx] or "{}")
+                row[idx] = (
+                    ", ".join(
+                        AnalyticAccount.browse(int(_id)).name for _id in distribution
+                    )
+                    or ""
+                )
+        return result
 
     @api.model
     def get_view(self, view_id=None, view_type="form", **options):

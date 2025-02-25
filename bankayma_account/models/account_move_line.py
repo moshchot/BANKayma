@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
+from odoo.tools.safe_eval import const_eval
 
 
 class AccountMoveLine(models.Model):
@@ -127,6 +128,21 @@ class AccountMoveLine(models.Model):
             else:
                 this.bankayma_analytic_account_id = False
                 this.bankayma_analytic_plan_id = False
+
+    def _export_rows(self, fields, *, _is_toplevel_call=True):
+        result = super()._export_rows(fields, _is_toplevel_call=_is_toplevel_call)
+        if ["analytic_distribution"] in fields:
+            idx = fields.index(["analytic_distribution"])
+            AnalyticAccount = self.env["account.analytic.account"]
+            for row in result:
+                distribution = const_eval(row[idx] or "{}")
+                row[idx] = (
+                    ", ".join(
+                        AnalyticAccount.browse(int(_id)).name for _id in distribution
+                    )
+                    or ""
+                )
+        return result
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
