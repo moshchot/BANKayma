@@ -15,6 +15,7 @@
                     attrs="{'invisible': [('move_type', '!=', 'in_invoice')], 'required': [('move_type', '=', 'in_invoice')]}"
                     groups="!bankayma_base.group_full"
                 />
+                <field name="invoice_date" groups="bankayma_base.group_org_manager" />
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']//button[@name='account_move_update_analytic.action_view_account_move_update_analytic']"
