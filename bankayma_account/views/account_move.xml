@@ -355,14 +355,12 @@
                     string="Has analytics"
                     domain="[('invoice_line_ids.analytic_distribution', '!=', False)]"
                 />
-                <separator />
-            </filter>
-            <filter name="open" position="before">
                 <filter
-                    name="no_draft"
-                    string="Not Draft"
-                    domain="[('state', '!=', 'draft')]"
+                    name="has_activity"
+                    string="Has activity"
+                    domain="[('activity_ids', '!=', False)]"
                 />
+                <separator />
             </filter>
             <filter name="status" position="after">
                 <filter
@@ -376,6 +374,107 @@
                     name="groupby_bankayma_payment_date"
                     string="Payment date"
                     context="{'group_by': 'bankayma_payment_date'}"
+                />
+            </filter>
+            <field name="journal_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
+            <field name="invoice_user_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
+            <filter name="draft" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="posted" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="cancel" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <xpath
+                expr="//filter[@name='cancel']/following-sibling::separator"
+                position="attributes"
+            >
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </xpath>
+            <filter name="open" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="closed" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="late" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <xpath
+                expr="//filter[@name='late']/following-sibling::separator"
+                position="attributes"
+            >
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </xpath>
+            <filter name="date" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="due_date" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="edi_to_process" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="needs_review" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="no_validation_requested" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="validation_not_started" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="validation_in_progress" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="tier_validated" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <xpath
+                expr="//filter[@name='needs_review']/preceding-sibling::separator"
+                position="attributes"
+            >
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </xpath>
+            <filter name="salesperson" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="salesperson" position="after">
+                <filter
+                    name="validated_state"
+                    string="Validated state"
+                    context="{'group_by':'validated_state'}"
+                />
+                <filter
+                    name="partner_id"
+                    string="Partner"
+                    context="{'group_by':'partner_id'}"
+                />
+                <filter
+                    name="company_id"
+                    string="Company"
+                    context="{'group_by':'company_id'}"
+                />
+                <filter
+                    name="bankayma_fiscal_position_id"
+                    string="Fiscal position"
+                    context="{'group_by':'bankayma_fiscal_position_id'}"
+                />
+            </filter>
+            <filter name="payment_mode_groupby" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </filter>
+            <filter name="payment_mode_groupby" position="after">
+                <filter
+                    string="Payment Method"
+                    name="bankayma_payment_method_id"
+                    context="{'group_by': 'bankayma_payment_method_id'}"
                 />
             </filter>
         </field>
