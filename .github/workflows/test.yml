@@ -50,6 +50,7 @@ jobs:
           key: gitaggregate
       - name: Install addons and dependencies
         run: |
+          apt update
           apt -y install openssh-client
           eval `ssh-agent -s`
           mkdir -p /root/.ssh
