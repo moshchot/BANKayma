@@ -134,6 +134,11 @@ class AccountMove(models.Model):
     bankayma_tax_totals = fields.Html(compute="_compute_bankayma_tax_totals")
     show_bankayma_tax_totals = fields.Boolean(compute="_compute_bankayma_tax_totals")
     system1000_error_message = fields.Char()
+    bankayma_waive_overhead = fields.Boolean(
+        "Waive overhead",
+        help="Exceptionally don't charge overhead for this move",
+        states={"draft": [("readonly", False)], "posted": [("readonly", True)]},
+    )
 
     def _compute_amount(self):
         """
@@ -521,6 +526,14 @@ class AccountMove(models.Model):
         ):
             company = this._bankayma_invoice_child_income_get_parent_company()
             if not company.overhead_journal_id or not company.overhead_account_id:
+                continue
+            if this.bankayma_waive_overhead or not fraction:
+                this.message_post(
+                    body=_(
+                        "Overhead of %d%% was waived on this move",
+                        this.journal_id.bankayma_overhead_percentage,
+                    )
+                )
                 continue
             child = this.company_id
             invoice = (
