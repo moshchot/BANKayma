@@ -16,33 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bankayma_account
-#: model:mail.template,subject:bankayma_account.template_account_move_new_from_portal
-msgid ""
-"\n"
-"            [BanKayma] Payment request from {{object.company_id.name}}\n"
-"        "
-msgstr ""
-
-#. module: bankayma_account
-#: model:mail.template,subject:bankayma_account.template_account_move_rejected
-msgid ""
-"\n"
-"            [Bar-Kayma] {{object.company_id.name}} payment on hold for "
-"insufficient\n"
-"            documents\n"
-"        "
-msgstr ""
-
-#. module: bankayma_account
-#: model:mail.template,subject:bankayma_account.template_account_move_paid
-msgid ""
-"\n"
-"            [Bar-Kayma] {{object.company_id.name}} you've been\n"
-"            paid! 🤑 (Ref {{object.ref}})\n"
-"        "
-msgstr ""
-
-#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
@@ -1274,6 +1247,11 @@ msgid "Invoice Auto Validation"
 msgstr ""
 
 #. module: bankayma_account
+#: model:mail.template,report_name:bankayma_account.template_account_move_paid
+msgid "Invoice_{{ (object.name or '').replace('/','_') }}"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_invoice_report
 msgid "Invoices Statistics"
 msgstr ""
@@ -2396,6 +2374,25 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "You need to set a price for the line with product %s"
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,subject:bankayma_account.template_account_move_new_from_portal
+msgid "[BanKayma] Payment request from {{object.company_id.name}}"
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,subject:bankayma_account.template_account_move_rejected
+msgid ""
+"[Bar-Kayma] {{object.company_id.name}} payment on hold for insufficient "
+"documents"
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,subject:bankayma_account.template_account_move_paid
+msgid ""
+"[Bar-Kayma] {{object.company_id.name}} you've been paid! 🤑 (Ref {{object."
+"ref}})"
 msgstr ""
 
 #. module: bankayma_account
