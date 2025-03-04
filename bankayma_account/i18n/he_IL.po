@@ -690,6 +690,13 @@ msgid "Enforce fiscal position restrictions"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_bank_statement_line__bankayma_waive_overhead
+#: model:ir.model.fields,help:bankayma_account.field_account_move__bankayma_waive_overhead
+#: model:ir.model.fields,help:bankayma_account.field_account_payment__bankayma_waive_overhead
+msgid "Exceptionally don't charge overhead for this move"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__bankayma_intercompany_grouping__expected
 msgid "Expected"
 msgstr "בטיפול"
@@ -719,6 +726,11 @@ msgstr ""
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_expense_move
 msgid "Expenses"
 msgstr "הוצאות"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "Extra settings"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_l10n_il_system1000_export__failed_move_ids
@@ -1314,6 +1326,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.res_config_settings_view_form
 msgid "Overhead journal"
 msgstr "יומן תקורה"
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/account_move.py:0
+#, python-format
+msgid "Overhead of %d%% was waived on this move"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_company__overhead_payment_journal_id
@@ -2005,6 +2024,13 @@ msgstr "ניכוי מס ספק"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
 msgid "Vendors"
 msgstr "ספקים"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_waive_overhead
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_waive_overhead
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_waive_overhead
+msgid "Waive overhead"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_res_company__invoice_auto_validation
