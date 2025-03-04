@@ -12,7 +12,10 @@ class ResPartner(models.Model):
     signup_company_ids = fields.Many2many("res.company")
     signup_login_redirect = fields.Char()
     bankayma_vendor_tax_percentage = fields.Float("Custom tax")
-    bankayma_vendor_max_amount = fields.Float("Max amount")
+    bankayma_vendor_max_amount = fields.Monetary("Max amount")
+    bankayma_vendor_amount_this_year = fields.Monetary(
+        "Amount paid this year", compute="_compute_bankayma_vendor_amount_this_year"
+    )
     bankayma_tax_group_ids = fields.Many2many(
         "account.tax.group",
         "res_partner_bankayma_tax_group",
@@ -42,6 +45,26 @@ class ResPartner(models.Model):
         compute="_compute_total_billed",
         groups="account.group_account_invoice,account.group_account_readonly",
     )
+
+    def _compute_bankayma_vendor_amount_this_year(self):
+        AccountMove = self.env["account.move"]
+        year_start = fields.Date.today().replace(month=1, day=1)
+        year_end = year_start.replace(month=12, day=31)
+        for this in self:
+            this.bankayma_vendor_amount_this_year = -sum(
+                AccountMove.search(
+                    [
+                        ("partner_id", "=", this.id),
+                        ("move_type", "=", "in_invoice"),
+                        ("date", ">=", year_start),
+                        ("date", "<=", year_end),
+                        ("state", "=", "posted"),
+                        ("journal_id.intercompany_purchase_company_id", "=", False),
+                        ("journal_id.intercompany_sale_company_id", "=", False),
+                        ("journal_id.intercompany_overhead_company_id", "=", False),
+                    ]
+                ).mapped("amount_total_signed")
+            )
 
     @api.depends("bankayma_tax_group_ids")
     def _compute_bankayma_tax_group_id(self):
