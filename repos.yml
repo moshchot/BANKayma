@@ -215,6 +215,13 @@ spreadsheet:
     - oca 89676f1a24a7ffadb7c123c1606db15c74192a72
   remotes:
     oca: https://github.com/OCA/spreadsheet.git
+vertical-association:
+  defaults:
+    depth: 1
+  merges:
+    - oca cc9b92e36a125362aff5f15179f2f95e4b719022
+  remotes:
+    oca: https://github.com/OCA/vertical-association.git
 web:
   defaults:
     depth: 100
