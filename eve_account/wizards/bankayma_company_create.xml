@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_bankayma_company_create_form" model="ir.ui.view">
+        <field
+            name="inherit_id"
+            ref="bankayma_account.view_bankayma_company_create_form"
+        />
+        <field name="model">bankayma.company.create</field>
+        <field name="arch" type="xml">
+            <field name="template_company_id" position="attributes">
+                <attribute name="context">{'active_test': False}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
