@@ -284,6 +284,18 @@
                     bankayma_base.group_org_manager,bankayma_base.group_full
                 </attribute>
             </xpath>
+            <notebook position="inside">
+                <page
+                    name="bankayma_extra"
+                    string="Extra settings"
+                    groups="bankayma_base.group_org_manager"
+                    attrs="{'invisible': [('move_type', '!=', 'out_invoice')]}"
+                >
+                    <group>
+                        <field name="bankayma_waive_overhead" />
+                    </group>
+                </page>
+            </notebook>
         </field>
     </record>
 
