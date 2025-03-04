@@ -7,6 +7,7 @@
     "author": "Moshchot Coop",
     "license": "AGPL-3",
     "depends": [
+        "association",
         "attachment_indexation",
         "base_user_effective_permissions",
         "board",
@@ -17,6 +18,7 @@
         "event",
         "mail_debrand",
         "mail_discuss_security",
+        "membership",
         "disable_odoo_online",
         "base_portal_type",
         "module_auto_update",
