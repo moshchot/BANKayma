@@ -362,6 +362,16 @@ msgid "<span class=\"o_stat_text\">Billed</span>"
 msgstr "שולם"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "<span> (paid this year: </span>"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "<span>)</span>"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
@@ -409,6 +419,15 @@ msgstr "סכום לתשלום"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_invoices
 msgid "Amount paid"
 msgstr "שולם"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_vendor_amount_this_year
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_vendor_amount_this_year
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_vendor_amount_this_year
+#: model:ir.model.fields,field_description:bankayma_account.field_res_partner__bankayma_vendor_amount_this_year
+#: model:ir.model.fields,field_description:bankayma_account.field_res_users__bankayma_vendor_amount_this_year
+msgid "Amount paid this year"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_account
