@@ -18,6 +18,7 @@
         "views/res_company.xml",
         "views/res_partner.xml",
         "views/menu.xml",
+        "wizards/bankayma_company_create.xml",
     ],
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
