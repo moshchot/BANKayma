@@ -6,6 +6,7 @@ msgid ""
 msgstr ""
 
 #. module: eve_base
+#: model:ir.actions.act_window,name:eve_base.action_companies
 #: model:ir.model,name:eve_base.model_res_company
 msgid "Companies"
 msgstr ""
