@@ -32,9 +32,9 @@
         <field name="name">BNK Vendor: Payment request recieved</field>
         <field name="model_id" ref="account.model_account_move" />
         <field name="lang">{{object.partner_id.lang}}</field>
-        <field name="subject">
-            [BanKayma] Payment request from {{object.company_id.name}}
-        </field>
+        <!-- prettier-ignore-start -->
+        <field name="subject">[BanKayma] Payment request from {{object.company_id.name}}</field>
+        <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
         <field name="body_html" type="html">
@@ -131,10 +131,9 @@
         <field name="name">BNK Vendor: Payment request rejected</field>
         <field name="model_id" ref="account.model_account_move" />
         <field name="lang">{{object.partner_id.lang}}</field>
-        <field name="subject">
-            [Bar-Kayma] {{object.company_id.name}} payment on hold for insufficient
-            documents
-        </field>
+        <!-- prettier-ignore-start -->
+        <field name="subject">[Bar-Kayma] {{object.company_id.name}} payment on hold for insufficient documents</field>
+        <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
         <field name="body_html" type="html">
@@ -235,13 +234,15 @@
         <field name="name">BNK Vendor: Message after payment - send receipt</field>
         <field name="model_id" ref="account.model_account_move" />
         <field name="lang">{{object.partner_id.lang}}</field>
-        <field name="subject">
-            [Bar-Kayma] {{object.company_id.name}} you've been
-            paid! 🤑 (Ref {{object.ref}})
-        </field>
+        <!-- prettier-ignore-start -->
+        <field name="subject">[Bar-Kayma] {{object.company_id.name}} you've been paid! 🤑 (Ref {{object.ref}})</field>
+        <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
         <field name="report_template" ref="account.account_invoices" />
+        <!-- prettier-ignore-start -->
+        <field name="report_name">Invoice_{{ (object.name or '').replace('/','_') }}</field>
+        <!-- prettier-ignore-end -->
         <field name="body_html" type="html">
             <div>
                 <p style="margin:0px 0 12px 0;box-sizing:border-box;">
