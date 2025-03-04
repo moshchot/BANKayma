@@ -37,6 +37,13 @@
                     </group>
                 </page>
             </notebook>
+            <label for="ref" position="before">
+                <field
+                    name="ref"
+                    attrs="{'invisible': [('move_type', '!=', 'out_invoice')]}"
+                    groups="bankayma_base.group_org_manager"
+                />
+            </label>
         </field>
     </record>
 </odoo>
