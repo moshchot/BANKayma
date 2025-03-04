@@ -63,6 +63,7 @@
         "web_widget_pattern",
     ],
     "data": [
+        "data/mail_message_subtype.xml",
         "data/res_company.xml",
         "data/res_users.xml",
         "security/bankayma_base.xml",
@@ -72,6 +73,7 @@
         "views/res_users.xml",
         "views/templates.xml",
         "views/mail_compose_message.xml",
+        "views/mail_template.xml",
         "views/menu.xml",
     ],
     "demo": [

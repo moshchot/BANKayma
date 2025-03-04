@@ -36,20 +36,20 @@ class AccountJournal(models.Model):
         help="The percentage of the amount to be charged as overhead",
     )
     bankayma_inhibit_mails = fields.Boolean("Inhibit mails")
-    bankayma_qweb_template_portal_vendor_bill = fields.Many2one(
-        "ir.ui.view",
+    bankayma_mail_template_portal_vendor_bill = fields.Many2one(
+        "mail.template",
         string="Portal vendor bill",
-        domain=[("type", "=", "qweb")],
+        domain=[("model", "=", "account.move")],
     )
-    bankayma_qweb_template_tier_validation_reject = fields.Many2one(
-        "ir.ui.view",
+    bankayma_mail_template_tier_validation_reject = fields.Many2one(
+        "mail.template",
         string="Tier validation rejection",
-        domain=[("type", "=", "qweb")],
+        domain=[("model", "=", "account.move")],
     )
-    bankayma_qweb_template_invoice_paid = fields.Many2one(
-        "ir.ui.view",
+    bankayma_mail_template_invoice_paid = fields.Many2one(
+        "mail.template",
         string="Paid",
-        domain=[("type", "=", "qweb")],
+        domain=[("model", "=", "account.move")],
     )
     intercompany_sale_company_id = fields.One2many(
         "res.company",

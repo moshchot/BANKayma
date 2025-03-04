@@ -11,7 +11,6 @@
         "eve_base",
     ],
     "data": [
-        "data/chatter_views.xml",
         "security/ir.model.access.csv",
         "views/account_journal.xml",
         "views/account_move.xml",

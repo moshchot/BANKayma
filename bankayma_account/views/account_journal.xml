@@ -25,10 +25,19 @@
                 </group>
                 <group name="bankayma_mail" string="Mails/Chatter">
                     <field name="bankayma_inhibit_mails" />
-                    <separator string="Chatter templates" />
-                    <field name="bankayma_qweb_template_portal_vendor_bill" />
-                    <field name="bankayma_qweb_template_tier_validation_reject" />
-                    <field name="bankayma_qweb_template_invoice_paid" />
+                    <separator string="Mail templates" />
+                    <field
+                        name="bankayma_mail_template_portal_vendor_bill"
+                        context="{'default_model_id': %(account.model_account_move)s, 'default_lang': '{{object.partner_id.lang}}'}"
+                    />
+                    <field
+                        name="bankayma_mail_template_tier_validation_reject"
+                        context="{'default_model_id': %(account.model_account_move)s, 'default_lang': '{{object.partner_id.lang}}'}"
+                    />
+                    <field
+                        name="bankayma_mail_template_invoice_paid"
+                        context="{'default_model_id': %(account.model_account_move)s, 'default_lang': '{{object.partner_id.lang}}'}"
+                    />
                 </group>
             </xpath>
         </field>

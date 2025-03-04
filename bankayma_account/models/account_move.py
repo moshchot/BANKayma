@@ -7,7 +7,7 @@ from datetime import date
 
 from lxml import etree
 
-from odoo import SUPERUSER_ID, _, api, exceptions, fields, models
+from odoo import _, api, exceptions, fields, models
 from odoo.exceptions import UserError
 from odoo.osv.expression import OR
 from odoo.tests.common import Form
@@ -692,13 +692,9 @@ class AccountMove(models.Model):
         invoice.message_subscribe(
             invoice.company_id.intercompany_invoice_user_id.partner_id.ids
         )
-        if invoice.journal_id.bankayma_qweb_template_portal_vendor_bill:
-            invoice.with_user(SUPERUSER_ID).message_post_with_view(
-                invoice.journal_id.bankayma_qweb_template_portal_vendor_bill,
-                subject=_("[BanKayma] Payment request from %(company)s")
-                % dict(company=invoice.company_id.name),
-                message_type="comment",
-                subtype_id=self.env.ref("bankayma_account.message_subtype_vendor").id,
+        if invoice.journal_id.bankayma_mail_template_portal_vendor_bill:
+            invoice.journal_id.bankayma_mail_template_portal_vendor_bill.send_mail(
+                invoice.id,
             )
         return invoice
 
@@ -821,15 +817,9 @@ class AccountMove(models.Model):
         )._notify_review_requested(tier_reviews)
 
     def _notify_rejected_review(self):
-        if self.journal_id.bankayma_qweb_template_tier_validation_reject:
-            self.message_post_with_view(
-                self.journal_id.bankayma_qweb_template_tier_validation_reject,
-                subject=_(
-                    "[Bar-Kayma] %(company)s payment on hold for insufficient documents"
-                )
-                % dict(company=self.company_id.name),
-                message_type="comment",
-                subtype_id=self.env.ref("bankayma_account.message_subtype_vendor").id,
+        if self.journal_id.bankayma_mail_template_tier_validation_reject:
+            self.journal_id.bankayma_mail_template_tier_validation_reject.send_mail(
+                self.id,
             )
         return super(
             AccountMove, self.with_context(mail_notify_force_inbox=True)
@@ -861,17 +851,9 @@ class AccountMove(models.Model):
                     fraction=parent_journal.bankayma_overhead_percentage / 100
                 )
         for this in self:
-            if this.journal_id.bankayma_qweb_template_invoice_paid:
-                this.message_post_with_view(
-                    this.journal_id.bankayma_qweb_template_invoice_paid,
-                    subject=_(
-                        "[Bar-Kayma] %(company)s you've been paid! 🤑 (Ref %(ref)s)"
-                    )
-                    % dict(company=this.company_id.name, ref=this.name),
-                    message_type="comment",
-                    subtype_id=self.env.ref(
-                        "bankayma_account.message_subtype_vendor"
-                    ).id,
+            if this.journal_id.bankayma_mail_template_invoice_paid:
+                this.journal_id.bankayma_mail_template_invoice_paid.send_mail(
+                    this.id,
                 )
         return super()._invoice_paid_hook()
 
