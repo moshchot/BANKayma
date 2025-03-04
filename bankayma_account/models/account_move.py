@@ -110,8 +110,11 @@ class AccountMove(models.Model):
     bankayma_deduct_tax_use_max_amount = fields.Boolean(
         related="fiscal_position_id.bankayma_deduct_tax_use_max_amount"
     )
-    bankayma_vendor_max_amount = fields.Float(
+    bankayma_vendor_max_amount = fields.Monetary(
         related="partner_id.bankayma_vendor_max_amount", readonly=False
+    )
+    bankayma_vendor_amount_this_year = fields.Monetary(
+        related="partner_id.bankayma_vendor_amount_this_year",
     )
     bankayma_vendor_tax_percentage = fields.Float(
         related="partner_id.bankayma_vendor_tax_percentage",

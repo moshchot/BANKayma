@@ -223,11 +223,28 @@
                     />
                 </span>
                 <field name="bankayma_vendor_tax_exists" invisible="True" />
-                <field
-                    name="bankayma_vendor_max_amount"
-                    readonly="True"
-                    attrs="{'invisible': ['|', '|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice'), ('bankayma_deduct_tax_use_max_amount', '=', False)]}"
+                <label
+                    for="bankayma_vendor_max_amount"
+                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
                 />
+                <div
+                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
+                >
+                    <field
+                        name="bankayma_vendor_max_amount"
+                        class="oe_inline"
+                        readonly="True"
+                    />
+                    <!-- prettier-ignore-start -->
+                    <span> (paid this year: </span>
+                    <!-- prettier-ignore-end -->
+                    <field
+                        name="bankayma_vendor_amount_this_year"
+                        class="oe_inline"
+                        attrs="{'invisible': [('move_type', '!=', 'in_invoice')]}"
+                    />
+                    <span>)</span>
+                </div>
             </field>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">bankayma_partner_domain</attribute>
