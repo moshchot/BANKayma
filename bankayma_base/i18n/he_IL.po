@@ -122,6 +122,11 @@ msgid "Details"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_mail_template
+msgid "Email Templates"
+msgstr ""
+
+#. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_full
 msgid "Full Odoo functionality"
 msgstr ""
@@ -141,6 +146,11 @@ msgstr ""
 #: code:addons/bankayma_base/static/src/xml/BoardController.xml:0
 #, python-format
 msgid "Impose on all users"
+msgstr ""
+
+#. module: bankayma_base
+#: model:mail.message.subtype,name:bankayma_base.message_subtype_internal
+msgid "Internal-only message"
 msgstr ""
 
 #. module: bankayma_base
@@ -177,6 +187,11 @@ msgstr "הגדרות יוזמה"
 #. module: bankayma_base
 #: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid "Organization..."
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_mail_template__post_to_chatter
+msgid "Post To Chatter"
 msgstr ""
 
 #. module: bankayma_base
