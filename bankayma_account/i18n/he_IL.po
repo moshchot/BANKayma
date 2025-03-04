@@ -1536,6 +1536,11 @@ msgid "Payment Date"
 msgstr "תאריך תשלום"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
+msgid "Payment Method"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_method
 msgid "Payment Methods"
 msgstr "אמצעי תשלום"
