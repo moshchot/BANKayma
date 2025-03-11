@@ -2728,9 +2728,7 @@ msgstr "[בנקיימא] בקשת תשלום מ{{object.company_id.name}"
 msgid ""
 "[Bar-Kayma] {{object.company_id.name}} payment on hold for insufficient "
 "documents"
-msgstr ""
-"[בר-קיימא] {{object.company_id.name}} תשלום מעוכב עד עדכון"
-"מסמכים"
+msgstr "[בר-קיימא] {{object.company_id.name}} תשלום מעוכב עד עדכוןמסמכים"
 
 #. module: bankayma_account
 #: model:mail.template,subject:bankayma_account.template_account_move_paid
@@ -2738,8 +2736,7 @@ msgid ""
 "[Bar-Kayma] {{object.company_id.name}} you've been paid! 🤑 (Ref {{object."
 "ref}})"
 msgstr ""
-"[בר-קיימא] {{object.company_id.name}} שילמנו לך! 🤑 (Ref {{object."
-"ref}})"
+"[בר-קיימא] {{object.company_id.name}} שילמנו לך! 🤑 (Ref {{object.ref}})"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
