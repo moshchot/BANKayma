@@ -411,6 +411,7 @@ msgid "Allowed products"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__balance
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "Amount"
 msgstr "סכום לתשלום"
@@ -549,11 +550,6 @@ msgid "Bankayma Edit Buffer"
 msgstr ""
 
 #. module: bankayma_account
-#: model:ir.model.fields,field_description:bankayma_account.field_account_tax_group__bankayma_editable
-msgid "Bankayma Editable"
-msgstr ""
-
-#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_immutable
 msgid "Bankayma Immutable"
 msgstr ""
@@ -652,6 +648,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_edit_tax_totals
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -814,6 +811,8 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__create_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_uid
 msgid "Created by"
 msgstr ""
@@ -821,6 +820,8 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__create_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_date
 #: model_terms:ir.ui.view,arch_db:bankayma_account.external_layout_standard
 msgid "Created on"
@@ -859,6 +860,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__7
 msgid "Credit Receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__currency_id
+msgid "Currency"
 msgstr ""
 
 #. module: bankayma_account
@@ -928,6 +934,8 @@ msgstr "תיאור"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__display_name
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__display_name
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__display_name
 msgid "Display Name"
 msgstr "שם תצוגה"
@@ -961,6 +969,26 @@ msgstr "קבלה על תרומה"
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_move__validated_state__0_draft
 msgid "Draft"
 msgstr "לטיפול"
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_bankayma_move_edit_tax_totals
+msgid "Edit tax totals"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_bankayma_move_edit_tax_totals_line
+msgid "Edit tax totals line"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "Edit taxes"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_tax_group__bankayma_editable
+msgid "Editable"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_add_signature
@@ -1125,6 +1153,8 @@ msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__id
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__id
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
 msgstr "מזהה"
@@ -1317,6 +1347,11 @@ msgid "Journals"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__name
+msgid "Label"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__lang
 msgid "Language"
 msgstr "שפה"
@@ -1324,6 +1359,8 @@ msgstr "שפה"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company____last_update
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals____last_update
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -1331,6 +1368,8 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__write_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__write_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_uid
 msgid "Last Updated by"
 msgstr ""
@@ -1338,8 +1377,16 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__write_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__write_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_date
 msgid "Last Updated on"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__line_ids
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__line_id
+msgid "Line"
 msgstr ""
 
 #. module: bankayma_account
@@ -1926,6 +1973,11 @@ msgid "Reversed"
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_edit_tax_totals
+msgid "Save"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Save the invoice for updated tax totals"
 msgstr "יש לשמור המסמך לשם חישוב מיסים"
@@ -2121,6 +2173,11 @@ msgstr "יש למלא סוג עוסק"
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_journal__bankayma_overhead_percentage
 msgid "The percentage of the amount to be charged as overhead"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_edit_tax_totals
+msgid "There are no editable taxes"
 msgstr ""
 
 #. module: bankayma_account
@@ -2344,6 +2401,11 @@ msgstr ""
 msgid ""
 "When this is checked, payments for moves in child journals will create an "
 "overhead invoice for the child company"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__wizard_id
+msgid "Wizard"
 msgstr ""
 
 #. module: bankayma_account
