@@ -820,6 +820,15 @@ class AccountMove(models.Model):
             }
         )
 
+    def action_bankayma_move_edit_tax_totals(self):
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Edit tax totals",
+            "res_model": "bankayma.move.edit.tax.totals",
+            "target": "new",
+            "views": [(False, "form")],
+        }
+
     def validate_tier(self):
         result = super().validate_tier()
         if result:

@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_bankayma_move_edit_tax_totals" model="ir.ui.view">
+        <field name="model">bankayma.move.edit.tax.totals</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="line_ids" attrs="{'invisible': [('line_ids', '=', [])]}">
+                    <tree delete="false" create="false" editable="top">
+                        <field name="name" readonly="1" />
+                        <field name="balance" />
+                        <field name="line_id" invisible="1" />
+                        <field name="currency_id" invisible="1" />
+                    </tree>
+                </field>
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': [('line_ids', '!=', [])]}"
+                >
+                    There are no editable taxes
+                </div>
+                <footer>
+                    <button
+                        type="object"
+                        name="action_edit_tax_totals"
+                        class="btn btn-primary"
+                        string="Save"
+                    />
+                    <button special="cancel" class="btn-secondary" string="Cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
