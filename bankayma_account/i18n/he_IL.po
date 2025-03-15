@@ -554,7 +554,8 @@ msgstr ""
 "                    <strong style=\"box-sizing:border-box;font-weight:800;"
 "\">\n"
 "                        עוסק פטור? נא להשיב למייל זה בצירוף קבלה\n"
-"                        עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית מס/קבלה\n"
+"                        עוסק מורשה? נא להשיב למייל זה בצירוף חשבונית "
+"מס/קבלה\n"
 "                        <br>\n"
 "                        <br>\n"
 "                        את הקבלות יש לרשום עבור בר-קיימא לתרבות 580450898\n"
@@ -2733,8 +2734,7 @@ msgstr "[בר-קיימא] {{object.company_id.name}} תשלום מעוכב עד 
 msgid ""
 "[Bar-Kayma] {{object.company_id.name}} you've been paid! 🤑 (Ref {{object."
 "ref}})"
-msgstr ""
-"[בר-קיימא] {{object.company_id.name}} שילמנו לך! 🤑 ({{object.ref}})"
+msgstr "[בר-קיימא] {{object.company_id.name}} שילמנו לך! 🤑 ({{object.ref}})"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
