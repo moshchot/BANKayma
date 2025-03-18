@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: eve_account
-#: model:ir.model,name:eve_account.model_res_company
-msgid "Companies"
-msgstr ""
-
-#. module: eve_account
 #: model:ir.model,name:eve_account.model_res_partner
 msgid "Contact"
 msgstr ""
@@ -60,11 +55,6 @@ msgstr ""
 #: model:ir.ui.menu,name:eve_account.menu_journals
 msgid "Journals"
 msgstr ""
-
-#. module: eve_account
-#: model:ir.model.fields,field_description:eve_account.field_res_company__bankayma_overhead_percentage
-msgid "Overhead percentage"
-msgstr "אחוז תקורה"
 
 #. module: eve_account
 #: model:ir.model,name:eve_account.model_account_payment_term
