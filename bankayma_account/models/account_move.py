@@ -136,6 +136,9 @@ class AccountMove(models.Model):
     )
     bankayma_tax_totals = fields.Html(compute="_compute_bankayma_tax_totals")
     show_bankayma_tax_totals = fields.Boolean(compute="_compute_bankayma_tax_totals")
+    bankayma_show_edit_tax_totals = fields.Boolean(
+        compute="_compute_bankayma_show_edit_tax_totals"
+    )
     system1000_error_message = fields.Char()
     bankayma_waive_overhead = fields.Boolean(
         "Waive overhead",
@@ -375,6 +378,12 @@ class AccountMove(models.Model):
                 bool(this.id)
                 and bool(this.line_ids.tax_ids)
                 and get_param("bankayma_show_bankayma_tax_totals_%s" % this.move_type)
+            )
+
+    def _compute_bankayma_show_edit_tax_totals(self):
+        for this in self:
+            this.bankayma_show_edit_tax_totals = any(
+                this.line_ids.tax_ids.tax_group_id.mapped("bankayma_editable")
             )
 
     @api.onchange("fiscal_position_id")
@@ -809,15 +818,14 @@ class AccountMove(models.Model):
         return result
 
     def action_bankayma_remove_taxes(self):
+        to_delete_taxes = self.mapped("invoice_line_ids.tax_ids").filtered(
+            "tax_group_id.bankayma_offer_removal"
+        )
+        self.mapped("line_ids").with_context(dynamic_unlink=True).filtered(
+            lambda x: x.tax_line_id in to_delete_taxes
+        ).unlink()
         return self.line_ids.write(
-            {
-                "tax_ids": [
-                    fields.Command.unlink(tax.id)
-                    for tax in self.line_ids.tax_ids.filtered(
-                        "tax_group_id.bankayma_offer_removal"
-                    )
-                ]
-            }
+            {"tax_ids": [fields.Command.unlink(tax.id) for tax in to_delete_taxes]}
         )
 
     def action_bankayma_move_edit_tax_totals(self):
