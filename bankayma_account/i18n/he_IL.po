@@ -1955,6 +1955,7 @@ msgstr "תשלומי תקורה"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_overhead_percentage
+#: model:ir.model.fields,field_description:bankayma_account.field_res_company__bankayma_overhead_percentage
 msgid "Overhead percentage"
 msgstr "אחוז תקורה"
 
