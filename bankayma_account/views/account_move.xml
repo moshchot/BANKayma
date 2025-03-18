@@ -194,27 +194,27 @@
             </field>
             <field name="fiscal_position_id" position="after">
                 <div
-                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
+                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False), ('bankayma_show_edit_tax_totals', '=', False)]}"
                 />
-                <button
-                    name="action_bankayma_remove_taxes"
-                    type="object"
-                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
-                >
-                    <field name="bankayma_tax_removal_label" />
-                </button>
-                <field name="bankayma_show_edit_tax_totals" invisible="1" />
                 <div
-                    attrs="{'invisible': [('bankayma_show_edit_tax_totals', '=', False)]}"
-                />
-                <button
-                    type="object"
-                    name="action_bankayma_move_edit_tax_totals"
-                    string="Edit taxes"
-                    groups="bankayma_base.group_org_manager"
-                    states="draft"
-                    attrs="{'invisible': [('bankayma_show_edit_tax_totals', '=', False)]}"
-                />
+                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False), ('bankayma_show_edit_tax_totals', '=', False)]}"
+                >
+                    <button
+                        name="action_bankayma_remove_taxes"
+                        type="object"
+                        attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
+                    >
+                        <field name="bankayma_tax_removal_label" />
+                    </button>
+                    <field name="bankayma_show_edit_tax_totals" invisible="1" />
+                    <button
+                        type="object"
+                        name="action_bankayma_move_edit_tax_totals"
+                        string="Edit taxes"
+                        groups="bankayma_base.group_org_manager"
+                        attrs="{'invisible': [('bankayma_show_edit_tax_totals', '=', False)]}"
+                    />
+                </div>
                 <field name="bankayma_deduct_tax" invisible="True" />
                 <field name="bankayma_deduct_tax_use_max_amount" invisible="True" />
                 <label
