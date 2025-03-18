@@ -322,6 +322,7 @@
                 >
                     <group>
                         <field name="bankayma_waive_overhead" />
+                        <field name="bankayma_overhead_percentage" />
                     </group>
                 </page>
             </notebook>
