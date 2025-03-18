@@ -30,7 +30,7 @@ class MailTemplate(models.Model):
             email_values=email_values,
             email_layout_xmlid=email_layout_xmlid,
         )
-        mail = self.env["mail.mail"].browse(mail_id)
+        mail = self.env["mail.mail"].browse(mail_id or []).exists()
         if not mail.recipient_ids and not mail.email_to and not mail.email_cc:
             mail.unlink()
             mail_id = False
