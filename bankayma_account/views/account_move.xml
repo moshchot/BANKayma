@@ -203,6 +203,18 @@
                 >
                     <field name="bankayma_tax_removal_label" />
                 </button>
+                <field name="bankayma_show_edit_tax_totals" invisible="1" />
+                <div
+                    attrs="{'invisible': [('bankayma_show_edit_tax_totals', '=', False)]}"
+                />
+                <button
+                    type="object"
+                    name="action_bankayma_move_edit_tax_totals"
+                    string="Edit taxes"
+                    groups="bankayma_base.group_org_manager"
+                    states="draft"
+                    attrs="{'invisible': [('bankayma_show_edit_tax_totals', '=', False)]}"
+                />
                 <field name="bankayma_deduct_tax" invisible="True" />
                 <field name="bankayma_deduct_tax_use_max_amount" invisible="True" />
                 <label
@@ -271,16 +283,6 @@
                     name="bankayma_tax_totals"
                     nolabel="1"
                     colspan="2"
-                    attrs="{'invisible': [('show_bankayma_tax_totals', '=', False)]}"
-                />
-                <button
-                    type="object"
-                    colspan="2"
-                    name="action_bankayma_move_edit_tax_totals"
-                    string="Edit taxes"
-                    class="oe_link"
-                    groups="bankayma_base.group_manager"
-                    states="draft"
                     attrs="{'invisible': [('show_bankayma_tax_totals', '=', False)]}"
                 />
                 <field name="show_bankayma_tax_totals" invisible="True" />
