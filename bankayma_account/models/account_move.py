@@ -380,9 +380,10 @@ class AccountMove(models.Model):
                 and get_param("bankayma_show_bankayma_tax_totals_%s" % this.move_type)
             )
 
+    @api.depends("invoice_line_ids.tax_ids")
     def _compute_bankayma_show_edit_tax_totals(self):
         for this in self:
-            this.bankayma_show_edit_tax_totals = any(
+            this.bankayma_show_edit_tax_totals = this.state == "draft" and any(
                 this.line_ids.tax_ids.tax_group_id.mapped("bankayma_editable")
             )
 
