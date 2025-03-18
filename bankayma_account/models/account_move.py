@@ -143,7 +143,11 @@ class AccountMove(models.Model):
     bankayma_waive_overhead = fields.Boolean(
         "Waive overhead",
         help="Exceptionally don't charge overhead for this move",
-        states={"draft": [("readonly", False)], "posted": [("readonly", True)]},
+        copy=False,
+    )
+    bankayma_overhead_percentage = fields.Float(
+        "Custom overhead percentage",
+        copy=False,
     )
 
     def _compute_amount(self):
@@ -811,6 +815,8 @@ class AccountMove(models.Model):
             "system1000_error_message",
             "message_main_attachment_id",
             "invoice_line_ids",
+            "bankayma_waive_overhead",
+            "bankayma_overhead_percentage",
         ]
 
     def action_register_payment(self):
@@ -879,10 +885,15 @@ class AccountMove(models.Model):
     def _invoice_paid_hook(self):
         """Invoice overhead if necessary"""
         for this in self.sudo().with_context(skip_invoice_sync=False):
-            if this.journal_id.company_cascade_parent_id.bankayma_charge_overhead:
-                parent_journal = this.journal_id.company_cascade_parent_id
+            company = this._bankayma_invoice_child_income_get_parent_company()
+            journal = this.journal_id._company_cascade_get_all(company)[:1]
+            if journal.bankayma_charge_overhead:
                 this.with_company(this.company_id)._bankayma_invoice_child_income(
-                    fraction=parent_journal.bankayma_overhead_percentage / 100
+                    fraction=(
+                        this.bankayma_overhead_percentage
+                        or journal.bankayma_overhead_percentage
+                    )
+                    / 100
                 )
         for this in self:
             if this.journal_id.bankayma_mail_template_invoice_paid:
