@@ -885,8 +885,7 @@ class AccountMove(models.Model):
     def _invoice_paid_hook(self):
         """Invoice overhead if necessary"""
         for this in self.sudo().with_context(skip_invoice_sync=False):
-            company = this._bankayma_invoice_child_income_get_parent_company()
-            journal = this.journal_id._company_cascade_get_all(company)[:1]
+            journal = this.journal_id.company_cascade_parent_id
             if journal.bankayma_charge_overhead:
                 this.with_company(this.company_id)._bankayma_invoice_child_income(
                     fraction=(
