@@ -38,7 +38,7 @@
     >
         <field
             name="groups_id"
-            eval="[Command.set([ref('bankayma_base.group_full')])]"
+            eval="[Command.set([ref('bankayma_base.group_org_manager')])]"
         />
     </record>
     <record id="action_analytic_accounts" model="ir.actions.act_window">
