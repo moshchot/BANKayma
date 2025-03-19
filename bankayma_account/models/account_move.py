@@ -147,6 +147,7 @@ class AccountMove(models.Model):
     )
     bankayma_overhead_percentage = fields.Float(
         "Custom overhead percentage",
+        default=False,
         copy=False,
     )
 
