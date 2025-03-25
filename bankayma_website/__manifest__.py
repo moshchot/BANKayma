@@ -20,7 +20,7 @@
         "python": [
             "acme<2.0.0",
             "cryptography<43,>=41.0.5",
-            "pyopenssl<23.0",
+            "pyopenssl<23.0,>=22.0",
             "python-jose",
         ]
     },
