@@ -228,6 +228,18 @@ msgid "Send Password Reset Instructions"
 msgstr "שליחת הוראות לאיפוס סיסמא"
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__signup_valid
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__signup_valid
+msgid "Signup Token is Valid"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__signup_url
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__signup_url
+msgid "Signup URL"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_partner__user_state
 #: model:ir.model.fields,field_description:bankayma_base.field_res_users__user_state
 msgid "Status"
