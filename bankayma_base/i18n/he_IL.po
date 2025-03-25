@@ -160,6 +160,12 @@ msgid "Is a Company"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__lang_id
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__lang_id
+msgid "Lang"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_users__login_redirect
 msgid "Login Redirect"
 msgstr ""
@@ -265,3 +271,8 @@ msgstr "חבר"
 #: model:res.groups,name:bankayma_base.group_vendor
 msgid "Vendor"
 msgstr "ספק"
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.mail_header
+msgid "View"
+msgstr ""
