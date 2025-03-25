@@ -11,6 +11,15 @@ class ResPartner(models.Model):
     street = fields.Char(translate=True)
     street2 = fields.Char(translate=True)
     city = fields.Char(translate=True)
+    lang_id = fields.Many2one("res.lang", compute="_compute_lang_id")
+
+    def _compute_lang_id(self):
+        for this in self:
+            this.lang_id = self.env["res.lang"].search(
+                [
+                    ("code", "=", this.lang),
+                ]
+            ) or self.env.ref("base.lang_en")
 
     def _get_name(self):
         result = super()._get_name()

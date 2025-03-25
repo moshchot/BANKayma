@@ -105,4 +105,96 @@
             />
         </span>
     </template>
+
+    <data noupdate="1">
+        <template id="mail_header">
+            <div
+                id="header"
+                style="padding: 0px;"
+                t-if="'company_id' in object._fields"
+            >
+                <table
+                    role="presentation"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                    style="width: 100%; margin-top: 5px;"
+                >
+                    <tbody>
+                        <tr>
+                            <td valign="center">
+                                <img
+                                    t-att-src="'/logo.png?company=%s' % (object.company_id.id or 0)"
+                                    style="padding: 0px; margin: 0px; height: auto; max-width: 200px; max-height: 36px;"
+                                    t-att-alt="'%s' % object.company_id.name"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="center">
+                                <hr
+                                    width="100%"
+                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 10px 0px;"
+                                />
+                            </td>
+                        </tr>
+                        <tr t-if="'access_url' in object._fields">
+                            <td valign="center" style="white-space:nowrap;">
+                                <table cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td
+                                                t-att-style="'border-radius: 3px; text-align: center; background: ' + (object.company_id.secondary_color if object.company_id.secondary_color else '#875A7B')"
+                                            >
+                                                <a
+                                                    t-att-href="object._notify_get_action_link('view')"
+                                                    t-attf-style="font-size: 12px; color: #FFFFFF; display: block; padding: 8px 12px 11px; text-decoration: none !important; font-weight: 400; direction: {{object.partner_id.lang_id.direction}}"
+                                                >
+                                                    View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+        <template id="mail_footer">
+            <div id="footer" style="margin-top:32px;">
+                <hr
+                    width="100%"
+                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"
+                />
+                <b t-out="object.company_id.name" style="font-size:11px;" />
+                <br />
+                <p
+                    t-attf-style="color: #999999; margin-top:2px; font-size:11px;direction: {{object.partner_id.lang_id.direction}}"
+                >
+                    <t t-out="object.company_id.phone" />
+                    <t t-if="object.company_id.email and object.company_id.phone">|</t>
+                    <a
+                        t-if="object.company_id.email"
+                        t-att-href="'mailto:%s' % object.company_id.email"
+                        style="text-decoration:none; color: #999999;"
+                        t-out="object.company_id.email"
+                    />
+                    <t
+                        t-if="object.company_id.website and (object.company_id.phone or object.company_id.email)"
+                    >
+                        |
+                    </t>
+                    <a
+                        t-if="object.company_id.website"
+                        t-att-href="'%s' % object.company_id.website"
+                        style="text-decoration:none; color: #999999;"
+                        t-out="object.company_id.website"
+                    />
+                </p>
+            </div>
+        </template>
+    </data>
 </odoo>
