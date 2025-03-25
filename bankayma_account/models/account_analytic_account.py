@@ -9,7 +9,8 @@ class AccountAnalyticAccount(models.Model):
 
     plan_id = fields.Many2one(default=lambda self: self._default_analytic_plan_id())
     balance = fields.Monetary(
-        groups="account.group_account_readonly,bankayma_base.group_user"
+        groups="account.group_account_readonly,bankayma_base.group_user,"
+        "bankayma_base.group_org_manager"
     )
 
     def _default_analytic_plan_id(self):
