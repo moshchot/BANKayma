@@ -16,8 +16,226 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; "
+"02-1234567&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; "
+"&amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"&amp;nbsp;<output class=\"s_range_bubble\" style=\"left: calc(3.01508% + "
+"7.51759px);\">\n"
+"                                                35\n"
+"                                            </output>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"+ <strong>geolink</strong> <strong>\n"
+"                                    embed\n"
+"                                </strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<font class=\"text-o-color-1 bg-o-color-3\">\n"
+"                                <span style=\"font-size: 36px;\">\n"
+"                                    <strong>backers</strong>\n"
+"                                </span>\n"
+"                            </font>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<font style=\"\" class=\"text-o-color-4\">\n"
+"                                        גלריה קהילתית לאמנות עכשווית\n"
+"                                    </font>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<font>\n"
+"                                <strong>events</strong>\n"
+"                            </font>\n"
+"                            <font style=\"font-size: 62px;\"/>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
+"                                <span class=\"visually-hidden\">קודם</span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"fa fa-chevron-right fa-2x text-white\"/>\n"
+"                                <span class=\"visually-hidden\">הבא</span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_fade_in o_visible\" "
+"style=\"animation-delay: 4s;\">\n"
+"                                <strong>פרס האמן הצעיר</strong>\n"
+"                                : גלריית ברבור הכריזה על פתיחת תחרות לפרס "
+"האמן הצעיר. הפרס יוענק לאמן מבטיח מתחת לגיל 30, שיצירתו תיבחר על ידי ועדה "
+"מקצועית. הזוכה יקבל מענק כספי והזדמנות להציג תערוכה יחיד בגלריה.\n"
+"                            </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_right "
+"o_visible\" style=\"animation-delay: 1s;\">\n"
+"                                <strong>פתיחת תערוכה חדשה</strong>\n"
+"                                : בגלריית ברבור נפתחה תערוכה חדשה בשם "
+"\"צללים וגבולות,\" המציגה עבודות של אמנים צעירים מהארץ ומהעולם. התערוכה "
+"מתמקדת בחקר מושגי הגבול והזהות בחברה המודרנית.\n"
+"                            </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_right "
+"o_visible\" style=\"animation-delay: 2s;\">\n"
+"                                <strong>שיפוץ חלל הגלריה</strong>\n"
+"                                : גלריית ברבור עוברת שיפוץ נרחב שיכלול הרחבת "
+"חללי התצוגה והקמת סטודיו חדש לאמנים. השיפוץ צפוי להסתיים בחודשים הקרובים "
+"ולהגדיל את יכולת הגלריה לארח תערוכות ואירועים.\n"
+"                            </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_right "
+"o_visible\" style=\"animation-delay: 3s;\">\n"
+"                                <strong>שיתוף פעולה עם מוסדות חינוך</"
+"strong>\n"
+"                                : הגלריה החלה בשיתוף פעולה חדש עם בתי ספר "
+"לאמנות באזור, במטרה לקדם חינוך לאמנות ולערוך סדנאות יצירה לתלמידים. במסגרת "
+"הפרויקט יתקיימו מפגשים חודשיים עם אמנים מובילים.\n"
+"                            </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"s_badge badge text-bg-secondary o_animable\" data-name=\"תג\" "
+"data-snippet=\"s_badge\" style=\"\">\n"
+"                                <span style=\"font-size: 18px;\"/>\n"
+"                                <i class=\"fa fa-bullhorn fa-fw o_not-"
+"animable mx-auto d-block fa-2x\" data-bs-original-title=\"\" title=\"\" aria-"
+"describedby=\"tooltip250290\"/>\n"
+"                                <span style=\"font-size: 18px;\">updates<br/"
+">&amp;nbsp;(blog posts title+desc+permalink)</span>\n"
+"                            </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
+"weight: 400;\">\n"
+"                                        <font class=\"bg-600\" style=\"\">\n"
+"                                            הרברט סמואל 2, ירושלים\n"
+"                                        </font>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
+"weight: 400;\">\n"
+"                                        <font class=\"bg-600\" "
+"style=\"\">שני עד חמישי 16:00 &amp;gt; 20:00</font>\n"
+"                                        <br/>\n"
+"                                        <font class=\"bg-600\" "
+"style=\"\">שישי 11:00 &amp;gt; 14:00</font>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span id=\"s_donation_description_inputs\"/>\n"
+"                                        <span "
+"id=\"s_donation_description_inputs\" style=\"font-size: 36px;\">\n"
+"                                            <font class=\"bg-o-color-3 text-"
+"o-color-1\">\n"
+"                                                <strong>donations</strong>\n"
+"                                            </font>\n"
+"                                        </span>\n"
+"                                        <br/>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 18px;\">\n"
+"                                <font class=\"text-o-color-1\" "
+"style=\"background-color: inherit;\">\n"
+"                                    <strong>\n"
+"                                        bankayma_child_company_openning_hours\n"
+"                                    </strong>\n"
+"                                    16:00-20:00, שישי 11:00-14:00\n"
+"                                </font>\n"
+"                            </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 36px;\">\n"
+"                                        <font class=\"bg-o-color-3 text-o-"
+"color-1\">\n"
+"                                            <strong>our crew</strong>\n"
+"                                        </font>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company
 msgid "Companies"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "Donate Now"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "Shop"
 msgstr ""
 
 #. module: bankayma_website
@@ -38,4 +256,112 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website settings"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "about"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "backers"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "contact"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "crew​"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "donation"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "events"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "media"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "updates"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "דוד פרידמן"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "האוצר הראשי"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "הבא"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"הקטע הדינמי שלך יוצג כאן... הודעה זו מוצגת מכיוון שלא סיפקת גם מסנן וגם "
+"תבנית לשימוש.\n"
+"                                <br/>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "יונתן לביא"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "יש לציין כתובת כדי להטמיע מפה"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "מנהל אחזקה ותפעול"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "מנהלת אמנותית"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "מפיקה ראשית"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "נעמה לוי"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "קודם"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "רותם כהן"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "רשתות חברתיות"
 msgstr ""
