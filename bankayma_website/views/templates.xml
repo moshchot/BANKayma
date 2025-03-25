@@ -5,12 +5,1133 @@
     <template id="company_page" name="Company page">
         <t t-set="title" t-value="object.name" />
         <t t-call="website.layout">
-            <div id="wrap">
-                <div class="container">
-                    <span t-field="object.logo" t-options="{'widget': 'image'}" />
-                    <h1 t-field="object.name" />
-                    <div t-field="object.website_description" />
-                </div>
+            <div id="wrap" class="oe_structure oe_empty">
+                <section
+                    class="s_text_block o_colored_level pb0 pt0"
+                    data-snippet="s_text_block"
+                    data-name="Text"
+                    style="background-image: none; position: relative;"
+                >
+                    <font class="text-o-color-5">
+                        <div class="s_allow_columns container-fluid">
+                            <div
+                                class="row o_grid_mode"
+                                style=""
+                                data-row-count="-Infinity"
+                            />
+                        </div>
+                    </font>
+                </section>
+                <section
+                    class="s_title o_colored_level o_cc o_cc3 pb0 pt0 parallax"
+                    data-vcss="001"
+                    data-snippet="s_title"
+                    data-name="Title"
+                    style="background-image: none;"
+                    data-scroll-background-ratio="0.9"
+                >
+                    <span
+                        class="s_parallax_bg oe_img_bg o_bg_img_center"
+                        t-attf-style="background-image: url(&quot;/web/image/res.company/{{object.id}}/logo&quot;)"
+                    />
+                    <div
+                        class="o_we_bg_filter"
+                        style="background-color: rgba(0, 0, 0, 0.26);"
+                    />
+                    <div class="s_allow_columns o_container_small">
+                        <div class="row o_grid_mode" style="" data-row-count="12">
+                            <div
+                                class="o_colored_level o_grid_item g-col-lg-12 g-height-12 col-lg-12"
+                                style="grid-area: 1 / 1 / 13 / 13; z-index: 1;"
+                            >
+                                <h1 style="text-align: center;">
+                                    <br />
+                                </h1>
+                                <h1 style="text-align: center;">
+                                    <font
+                                        style="font-size: 62px;"
+                                        class="text-o-color-4"
+                                    >
+                                        <strong t-out="object.name" />
+                                    </font>
+                                </h1>
+                                <h4 style="text-align: center;">
+                                    <font style="" class="text-o-color-4">
+                                        גלריה קהילתית לאמנות עכשווית
+                                    </font>
+                                </h4>
+                                <p style="text-align: center;">
+                                    <br />
+                                </p>
+                                <p style="text-align: center;">
+                                    <img
+                                        src="https://dev.bureau.ninja/web/image/1214-e1a3ae8c/%D7%9C%D7%95%D7%92%D7%95%20%D7%91%D7%A8%D7%91%D7%95%D7%A8%204%20%D7%A2%D7%9C%204.jpg"
+                                        class="img-fluid mx-auto d-block rounded-circle img-thumbnail shadow rounded"
+                                        data-original-id="1012"
+                                        data-original-src="https://dev.bureau.ninja/web/image/1012-4dfc2629/%D7%9C%D7%95%D7%92%D7%95%20%D7%91%D7%A8%D7%91%D7%95%D7%A8%204%20%D7%A2%D7%9C%204.jpg"
+                                        data-mimetype="image/jpeg"
+                                        data-bs-original-title=""
+                                        title=""
+                                        aria-describedby="tooltip26237"
+                                        loading="lazy"
+                                        style="padding: 2px;"
+                                    />
+                                </p>
+                                <p style="text-align: center;">
+                                    <span
+                                        class="text-200 bg-o-color-2"
+                                        style="font-style: normal; font-weight: 400;"
+                                    >
+                                        <font class="bg-600" style="">
+                                            הרברט סמואל 2, ירושלים
+                                        </font>
+                                    </span>
+                                </p>
+                                <p style="text-align: center;">
+                                    <span
+                                        class="text-200 bg-o-color-2"
+                                        style="font-style: normal; font-weight: 400;"
+                                    >
+                                        <font
+                                            class="bg-600"
+                                            style=""
+                                        >שני עד חמישי 16:00 &amp;gt; 20:00</font>
+                                        <br />
+                                        <font
+                                            class="bg-600"
+                                            style=""
+                                        >שישי 11:00 &amp;gt; 14:00</font>
+                                    </span>
+                                </p>
+                                <div
+                                    class="s_social_media o_not_editable text-center no_icon_color"
+                                    data-snippet="s_social_media"
+                                    data-name="רשתות חברתיות"
+                                >
+                                    <h4
+                                        class="s_social_media_title o_default_snippet_text d-none"
+                                    >
+                                        רשתות חברתיות
+                                    </h4>
+                                    <a
+                                        href="/website/social/facebook"
+                                        class="s_social_media_facebook"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa fa-facebook rounded-circle shadow-sm"
+                                        />
+                                    </a>
+                                    <a
+                                        href="/website/social/instagram"
+                                        class="s_social_media_instagram"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa fa-instagram rounded-circle shadow-sm"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_text_block o_colored_level pt0 pb0 o_cc o_cc4"
+                    data-snippet="s_text_block"
+                    data-name="טקסט"
+                    style="background-image: none;"
+                >
+                    <div class="s_allow_columns container-fluid">
+                        <div class="row" style="">
+                            <div
+                                class="o_colored_level col-lg-12 o_cc o_cc2"
+                                style="text-align: center;"
+                            >
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+        <a href="#about-test">
+                                        <i
+                                            class="fa fa-info fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a><span
+                                        style="font-size: 18px; font-weight: normal;"
+                                    >
+                                        <a
+                                            href="#about-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            about
+                                        </a>
+                                    </span>&amp;nbsp;</span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span style="font-size: 18px;" />
+                                    <a
+                                        href="#updates-test"
+                                        data-bs-original-title=""
+                                        title=""
+                                    >
+                                        <i
+                                            class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="#updates-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            updates
+                                        </a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span style="font-size: 18px;" />
+                                    <a
+                                        href="#media-test"
+                                        data-bs-original-title=""
+                                        title=""
+                                    >
+                                        <i
+                                            class="fa fa-photo fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="#media-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            media
+                                        </a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span style="font-size: 18px;" />
+                                    <a
+                                        href="#events-test"
+                                        data-bs-original-title=""
+                                        title=""
+                                    >
+                                        <i
+                                            class="fa fa-calendar-check-o fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="#events-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="popover629867"
+                                        >
+                                            events
+                                        </a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span style="font-size: 18px;" />
+                                    <a href="#store-test">
+                                        <i
+                                            class="fa fa-gift fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a href="#store-test">Shop</a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <a
+                                        href="#donation-test"
+                                        data-bs-original-title=""
+                                        title=""
+                                    >
+                                        <span style="font-size: 18px;" />
+                                        <i
+                                            class="fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="#donation-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            donation
+                                        </a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span style="font-size: 18px;" />
+                                    <a
+                                        href="#team-test"
+                                        data-bs-original-title=""
+                                        title=""
+                                    >
+                                        <i
+                                            class="fa fa-user fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="##team-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            crew​
+                                        </a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span style="font-size: 18px;" />
+                                    <a href="#supporters-test">
+                                        <i
+                                            class="fa fa-user-circle-o fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="#donators-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            backers
+                                        </a>
+                                    </span>
+                                </span>
+                                <span
+                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
+                                    data-name="תג"
+                                    data-snippet="s_badge"
+                                    style=""
+                                >
+                                    <span
+                                        style="font-size: 18px; font-weight: normal;"
+                                    />
+                                    <a
+                                        href="#contact-test"
+                                        data-bs-original-title=""
+                                        title=""
+                                    >
+                                        <i
+                                            class="fa fa-phone fa-fw o_not-animable mx-auto d-block fa-2x"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="tooltip250290"
+                                        />
+                                    </a>
+                                    <span style="font-size: 18px; font-weight: normal;">
+                                        <a
+                                            href="#contact-test"
+                                            data-bs-original-title=""
+                                            title=""
+                                            aria-describedby="popover964776"
+                                        >
+                                            contact
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_text_block o_colored_level pb0 pt0"
+                    data-snippet="s_text_block"
+                    data-name="טקסט"
+                    style="background-image: none;"
+                    id="about-test"
+                    data-anchor="true"
+                >
+                    <div class="s_allow_columns container-fluid">
+                        <div class="s_allow_columns container-fluid">
+                            <div style="" class="row">
+                                <div
+                                    data-scroll-zone-end="65"
+                                    data-scroll-zone-start="0"
+                                    style="animation-delay: -0.249621s;"
+                                    class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll pb40 pt40 col-lg-12 o_cc o_cc3"
+                                >
+                                    <p t-out="object.website_description" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_text_block pt40 pb40 o_colored_level o_cc o_cc4"
+                    data-snippet="s_text_block"
+                    data-name="טקסט"
+                    style="background-image: none;"
+                    id="updates-test"
+                    data-anchor="true"
+                >
+                    <div class="s_allow_columns container-fluid">
+                        <p />
+                        <p style="text-align: center;">
+                            <span
+                                class="s_badge badge text-bg-secondary o_animable"
+                                data-name="תג"
+                                data-snippet="s_badge"
+                                style=""
+                            >
+                                <span style="font-size: 18px;" />
+                                <i
+                                    class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
+                                    data-bs-original-title=""
+                                    title=""
+                                    aria-describedby="tooltip250290"
+                                />
+                                <span style="font-size: 18px;">updates<br
+                                    />&amp;nbsp;(blog posts title+desc+permalink)</span>
+                            </span>
+                        </p>
+                        <p>
+                            <span
+                                class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
+                                style="animation-delay: 1s;"
+                            >
+                                <strong>פתיחת תערוכה חדשה</strong>
+                                : בגלריית ברבור נפתחה תערוכה חדשה בשם "צללים וגבולות," המציגה עבודות של אמנים צעירים מהארץ ומהעולם. התערוכה מתמקדת בחקר מושגי הגבול והזהות בחברה המודרנית.
+                            </span>
+                        </p>
+                        <p />
+                        <p>
+                            <span
+                                class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
+                                style="animation-delay: 2s;"
+                            >
+                                <strong>שיפוץ חלל הגלריה</strong>
+                                : גלריית ברבור עוברת שיפוץ נרחב שיכלול הרחבת חללי התצוגה והקמת סטודיו חדש לאמנים. השיפוץ צפוי להסתיים בחודשים הקרובים ולהגדיל את יכולת הגלריה לארח תערוכות ואירועים.
+                            </span>
+                        </p>
+                        <p />
+                        <p>
+                            <span
+                                class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
+                                style="animation-delay: 3s;"
+                            >
+                                <strong>שיתוף פעולה עם מוסדות חינוך</strong>
+                                : הגלריה החלה בשיתוף פעולה חדש עם בתי ספר לאמנות באזור, במטרה לקדם חינוך לאמנות ולערוך סדנאות יצירה לתלמידים. במסגרת הפרויקט יתקיימו מפגשים חודשיים עם אמנים מובילים.
+                            </span>
+                        </p>
+                        <p />
+                        <p>
+                            <span
+                                class="o_animated_text o_animate o_anim_fade_in o_visible"
+                                style="animation-delay: 4s;"
+                            >
+                                <strong>פרס האמן הצעיר</strong>
+                                : גלריית ברבור הכריזה על פתיחת תחרות לפרס האמן הצעיר. הפרס יוענק לאמן מבטיח מתחת לגיל 30, שיצירתו תיבחר על ידי ועדה מקצועית. הזוכה יקבל מענק כספי והזדמנות להציג תערוכה יחיד בגלריה.
+                            </span>
+                        </p>
+                    </div>
+                </section>
+                <section
+                    class="s_masonry_block o_colored_level"
+                    data-vcss="001"
+                    data-vxml="001"
+                    data-snippet="s_masonry_block"
+                    data-name="Masonry"
+                    style="background-image: none;"
+                    data-masonry-template="default_reversed"
+                    id="media-test"
+                    data-anchor="true"
+                >
+                    <div class="container-fluid">
+                        <div class="row o_grid_mode" data-row-count="6">
+                            <div
+                                class="o_grid_item o_grid_item_image text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
+                                data-name="Block"
+                                style="grid-area: 1 / 1 / 7 / 13; z-index: 5; background-image: none;"
+                            >
+                                <div
+                                    data-oe-expression="//www.youtube.com/embed/ElAaRpu9Xcg?rel=0&amp;autoplay=0"
+                                    class="mx-auto media_iframe_video"
+                                >
+                                    <div class="css_editable_mode_display" />
+                                    <div class="media_iframe_video_size" />
+                                    <iframe
+                                        src="//www.youtube.com/embed/ElAaRpu9Xcg?rel=0&amp;autoplay=0"
+                                        frameborder="0"
+                                        allowfullscreen="allowfullscreen"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_image_gallery pt24 o_colored_level o_slideshow s_image_gallery_indicators_arrows_boxed s_image_gallery_show_indicators s_image_gallery_indicators_dots o_cc o_cc3"
+                    data-vcss="001"
+                    data-columns="3"
+                    style="overflow: hidden; height: 662px; background-image: none;"
+                    data-snippet="s_image_gallery"
+                    data-name="Image Gallery"
+                >
+                    <div class="container">
+                        <div
+                            id="slideshow_1725973766980"
+                            class="carousel slide"
+                            data-bs-ride="carousel"
+                            data-bs-interval="0"
+                            style="margin: 0 12px;"
+                        >
+                            <div class="carousel-inner" style="padding: 0;">
+                                <div class="carousel-item" style="">
+                                    <img
+                                        src="https://dev.bureau.ninja/web/image/1320-4b18b007/uri-screenshot.jpg"
+                                        alt=""
+                                        class="img img-fluid d-block o_we_custom_image shadow"
+                                        loading="lazy"
+                                        style=""
+                                    />
+                                </div>
+
+                                <div class="carousel-item undefined" style="">
+                                    <img
+                                        src="https://dev.bureau.ninja/web/image/1640-e3a59c07/WhatsApp-Image-2024-02-06-at-13.25.22-1.jpeg"
+                                        alt=""
+                                        class="img img-fluid d-block o_we_custom_image shadow"
+                                        data-original-id="1319"
+                                        data-original-src="https://dev.bureau.ninja/web/image/1319-b7af6b13/WhatsApp-Image-2024-02-06-at-13.25.22-1.jpeg"
+                                        data-mimetype="image/jpeg"
+                                        data-resize-width="690"
+                                        loading="lazy"
+                                        style=""
+                                    />
+                                </div>
+
+                                <div class="carousel-item undefined" style="">
+                                    <img
+                                        src="https://dev.bureau.ninja/web/image/1641-57f1f685/WhatsApp-Image-2024-04-01-at-10.37.53-PM-1.jpeg"
+                                        alt=""
+                                        class="img img-fluid d-block o_we_custom_image shadow"
+                                        data-original-id="1321"
+                                        data-original-src="https://dev.bureau.ninja/web/image/1321-82fdc001/WhatsApp-Image-2024-04-01-at-10.37.53-PM-1.jpeg"
+                                        data-mimetype="image/jpeg"
+                                        data-resize-width="690"
+                                        loading="lazy"
+                                        style=""
+                                        data-bs-original-title=""
+                                        title=""
+                                        aria-describedby="tooltip961037"
+                                    />
+                                </div>
+
+                                <div class="carousel-item undefined active" style="">
+                                    <img
+                                        class="img img-fluid d-block shadow"
+                                        src="https://dev.bureau.ninja/web/image/1318-7d44a8f5/barbur-16-9-Sacrificer.jpg"
+                                        style=""
+                                        alt=""
+                                        data-name="Image"
+                                        data-index="3"
+                                        loading="lazy"
+                                        data-bs-original-title=""
+                                        title=""
+                                        aria-describedby="tooltip637610"
+                                    />
+                                </div>
+                            </div>
+
+                            <ul class="carousel-indicators" style="">
+                                <li
+                                    class="o_indicators_left text-center d-none"
+                                    aria-label="קודם"
+                                    title="קודם"
+                                >
+                                    <i class="fa fa-chevron-left" />
+                                </li>
+
+                                <li
+                                    data-bs-target="#slideshow_1725973766980"
+                                    data-bs-slide-to="0"
+                                    style="background-image: url(/web/image/website.library_image_08)"
+                                />
+
+                                <li
+                                    data-bs-target="#slideshow_1725973766980"
+                                    data-bs-slide-to="1"
+                                    style="background-image: url(&quot;/web/image/1319-b7af6b13/WhatsApp-Image-2024-02-06-at-13.25.22-1.jpeg&quot;);"
+                                />
+
+                                <li
+                                    data-bs-target="#slideshow_1725973766980"
+                                    data-bs-slide-to="2"
+                                    style="background-image: url(&quot;/web/image/1321-82fdc001/WhatsApp-Image-2024-04-01-at-10.37.53-PM-1.jpeg&quot;);"
+                                />
+
+                                <li
+                                    data-bs-target="#slideshow_1725973766980"
+                                    data-bs-slide-to="3"
+                                    style="background-image: url(https://dev.bureau.ninja/web/image/1318-7d44a8f5/barbur-16-9-Sacrificer.jpg)"
+                                    class="active"
+                                    aria-current="true"
+                                />
+
+                                <li
+                                    class="o_indicators_right text-center d-none"
+                                    aria-label="הבא"
+                                    title="הבא"
+                                >
+                                    <i class="fa fa-chevron-right" />
+                                </li>
+                            </ul>
+
+                            <a
+                                class="carousel-control-prev o_we_no_overlay o_not_editable"
+                                href="#slideshow_1725973766980"
+                                data-bs-slide="prev"
+                                aria-label="קודם"
+                                title="קודם"
+                            >
+                                <span class="fa fa-chevron-left fa-2x text-white" />
+                                <span class="visually-hidden">קודם</span>
+                            </a>
+                            <a
+                                class="carousel-control-next o_we_no_overlay o_not_editable"
+                                href="#slideshow_1725973766980"
+                                data-bs-slide="next"
+                                aria-label="הבא"
+                                title="הבא"
+                            >
+                                <span class="fa fa-chevron-right fa-2x text-white" />
+                                <span class="visually-hidden">הבא</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_title pt40 pb40 o_colored_level"
+                    data-vcss="001"
+                    data-snippet="s_title"
+                    data-name="Title"
+                    style="background-image: none;"
+                >
+                    <div class="container s_allow_columns">
+                        <h2 style="text-align: center;">
+                            <font>
+                                <strong>events</strong>
+                            </font>
+                            <font style="font-size: 62px;" />
+                        </h2>
+                    </div>
+                </section>
+                <section
+                    data-snippet="s_events"
+                    class="s_events s_event_upcoming_snippet s_dynamic pt32 pb32 o_colored_level s_event_event_card o_cc o_cc2 o_dynamic_empty"
+                    data-name="אירועים"
+                    style="background-image: none;"
+                    data-number-of-records="4"
+                    data-filter-id="3"
+                    data-template-key="website_event.dynamic_filter_template_event_event_card"
+                    id="events-test"
+                    data-anchor="true"
+                    data-filter-by-tag-ids="[1]"
+                    data-force-minimum-max-limit-to16="1"
+                >
+                    <div class="o_not_editable container-fluid">
+                        <div class="css_non_editable_mode_hidden">
+                            <div
+                                class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text"
+                            >
+                                הקטע הדינמי שלך יוצג כאן... הודעה זו מוצגת מכיוון שלא סיפקת גם מסנן וגם תבנית לשימוש.
+                                <br />
+                            </div>
+                        </div>
+                        <div class="dynamic_snippet_template" />
+                    </div>
+                </section>
+                <section
+                    data-snippet="s_dynamic_snippet_products"
+                    class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level o_cc o_cc3 s_product_product_borderless_1 o_dynamic_empty"
+                    data-name="מוצרים"
+                    style="background-image: none;"
+                    data-product-category-id="all"
+                    data-number-of-records="16"
+                    data-filter-id="4"
+                    data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
+                    data-carousel-interval="5000"
+                    id="store-test"
+                    data-anchor="true"
+                    data-product-tag-ids="[{&quot;id&quot;:1,&quot;name&quot;:&quot;תג מוצר נסיון&quot;,&quot;display_name&quot;:&quot;תג מוצר נסיון&quot;}]"
+                >
+                    <div class="o_not_editable container-fluid">
+                        <div class="css_non_editable_mode_hidden">
+                            <div
+                                class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text"
+                            >
+                                הקטע הדינמי שלך יוצג כאן... הודעה זו מוצגת מכיוון שלא סיפקת גם מסנן וגם תבנית לשימוש.
+                                <br />
+                            </div>
+                        </div>
+                        <div class="dynamic_snippet_template" />
+                    </div>
+                </section>
+                <section
+                    class="pt32 pb32 o_colored_level o_cc o_cc2"
+                    data-snippet="s_donation"
+                    data-name="תרומה"
+                    style="background-image: none;"
+                    id="donation-test"
+                    data-anchor="true"
+                >
+                    <div class="o_container_small">
+                        <div class="row" style="">
+                            <div class="o_colored_level col-lg-12" style="">
+                                <h2>
+                                    <br />
+                                </h2>
+                                <div
+                                    class="s_donation"
+                                    data-name="Donation Button"
+                                    data-donation-email="info@yourcompany.example.com"
+                                    data-custom-amount="slider"
+                                    data-prefilled-options=""
+                                    data-descriptions=""
+                                    data-minimum-amount="5"
+                                    data-maximum-amount="1000"
+                                    data-slider-step="10"
+                                    data-default-amount="30"
+                                    data-snippet="s_donation_button"
+                                    data-display-options="true"
+                                    data-donation-amounts="[&quot;100&quot;]"
+                                >
+                                    <form
+                                        class="s_donation_form"
+                                        action="/he/donation/pay"
+                                        method="post"
+                                        enctype="multipart/form-data"
+                                        style="text-align: center;"
+                                    >
+                                        <span id="s_donation_description_inputs" />
+                                        <div
+                                            class="s_donation_prefilled_buttons mb-2"
+                                        />
+                                        <span id="s_donation_description_inputs" />
+                                        <span
+                                            id="s_donation_description_inputs"
+                                            style="font-size: 36px;"
+                                        >
+                                            <font class="bg-o-color-3 text-o-color-1">
+                                                <strong>donations</strong>
+                                            </font>
+                                        </span>
+                                        <br />
+                                        <div
+                                            class="s_donation_range_slider_wrap mb-2 position-relative"
+                                        >
+            <input
+                                                type="range"
+                                                class="form-range"
+                                                min="5"
+                                                max="1000"
+                                                step="10"
+                                                id="s_donation_range_slider"
+                                            />&amp;nbsp;<output
+                                                class="s_range_bubble"
+                                                style="left: calc(3.01508% + 7.51759px);"
+                                            >
+                                                35
+                                            </output>
+        </div>
+                                        <a
+                                            href="#"
+                                            type="button"
+                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2 o_default_snippet_text"
+                                        >
+                                            Donate Now
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_company_team o_colored_level pt24 pb32 o_cc o_cc3"
+                    data-snippet="s_company_team"
+                    data-name="Team"
+                    style="background-image: none;"
+                    id="%23team-test"
+                    data-anchor="true"
+                >
+                    <div class="container-fluid">
+                        <div class="row s_nb_column_fixed" style="">
+                            <div class="o_colored_level col-lg-12" style="">
+                                <p style="text-align: center;">
+                                    <span style="font-size: 36px;">
+                                        <font class="bg-o-color-3 text-o-color-1">
+                                            <strong>our crew</strong>
+                                        </font>
+                                    </span>
+                                </p>
+                            </div>
+                            <div
+                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
+                                style="animation-delay: 0.0107189s;"
+                                data-scroll-zone-start="0"
+                                data-scroll-zone-end="65"
+                            >
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <div class="col-lg-4 pb16 o_not_editable">
+                                        <img
+                                            alt=""
+                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_1"
+                                            class="img-fluid rounded-circle mx-auto o_editable_media"
+                                            loading="eager"
+                                            data-original-id="97"
+                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_1.png"
+                                            data-mimetype="image/png"
+                                            style=""
+                                        />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h4 style="text-align: center;">יונתן לביא</h4>
+                                        <p>מנהל אחזקה ותפעול</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
+                                data-scroll-zone-start="0"
+                                data-scroll-zone-end="65"
+                                style="animation-delay: 0.0107189s;"
+                            >
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <div class="col-lg-4 pb16 o_not_editable">
+                                        <img
+                                            alt=""
+                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_2"
+                                            class="img-fluid rounded-circle mx-auto o_editable_media"
+                                            loading="eager"
+                                            data-original-id="98"
+                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_2.png"
+                                            data-mimetype="image/png"
+                                            style=""
+                                        />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h4>דוד פרידמן</h4>
+                                        <p>האוצר הראשי</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
+                                data-scroll-zone-start="0"
+                                data-scroll-zone-end="65"
+                                style="animation-delay: 0.0107189s;"
+                            >
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <div class="col-lg-4 pb16 o_not_editable">
+                                        <img
+                                            alt=""
+                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_3"
+                                            class="img-fluid rounded-circle mx-auto o_editable_media"
+                                            loading="eager"
+                                            data-original-id="99"
+                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_3.png"
+                                            data-mimetype="image/png"
+                                            style=""
+                                        />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h4>נעמה לוי</h4>
+                                        <p>מנהלת אמנותית</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
+                                style="animation-delay: 0.0107189s;"
+                                data-scroll-zone-start="0"
+                                data-scroll-zone-end="65"
+                            >
+                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                    <div class="col-lg-4 pb16 o_not_editable">
+                                        <img
+                                            alt=""
+                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_4"
+                                            class="img-fluid o_editable_media rounded-circle mx-auto d-block"
+                                            loading="eager"
+                                            data-original-id="100"
+                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_4.png"
+                                            data-mimetype="image/png"
+                                            style=""
+                                        />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h4>רותם כהן</h4>
+                                        <p>מפיקה ראשית</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_references o_colored_level pb32 pt24 o_cc o_cc1"
+                    data-snippet="s_references"
+                    data-name="מזהים"
+                    style=""
+                    id="supporters-test"
+                    data-anchor="true"
+                >
+                    <div class="container">
+                        <h5 style="text-align: center;">
+                            <font class="text-o-color-1 bg-o-color-3">
+                                <span style="font-size: 36px;">
+                                    <strong>backers</strong>
+                                </span>
+                            </font>
+                        </h5>
+                        <div class="row">
+                            <div class="col-lg-2 pt16 pb16 o_colored_level" style="">
+                                <img
+                                    src="/web/image/website.s_reference_demo_image_1"
+                                    class="img img-fluid mx-auto"
+                                    alt=""
+                                    loading="lazy"
+                                    data-original-id="91"
+                                    data-original-src="/website/static/src/img/snippets_demo/s_references_1.png"
+                                    data-mimetype="image/png"
+                                    data-bs-original-title=""
+                                    title=""
+                                    aria-describedby="tooltip52590"
+                                    style=""
+                                />
+                            </div>
+                            <div class="col-lg-2 pt16 pb16 o_colored_level">
+                                <img
+                                    src="/web/image/website.s_reference_demo_image_2"
+                                    class="img img-fluid mx-auto"
+                                    alt=""
+                                    loading="lazy"
+                                    data-original-id="92"
+                                    data-original-src="/website/static/src/img/snippets_demo/s_references_2.png"
+                                    data-mimetype="image/png"
+                                    style=""
+                                    data-bs-original-title=""
+                                    title=""
+                                    aria-describedby="tooltip639487"
+                                />
+                            </div>
+                            <div class="col-lg-2 pt16 pb16 o_colored_level">
+                                <img
+                                    src="/web/image/website.s_reference_demo_image_3"
+                                    class="img img-fluid mx-auto"
+                                    alt=""
+                                    loading="lazy"
+                                    data-original-id="93"
+                                    data-original-src="/website/static/src/img/snippets_demo/s_references_3.png"
+                                    data-mimetype="image/png"
+                                    data-bs-original-title=""
+                                    title=""
+                                    aria-describedby="tooltip969358"
+                                    style=""
+                                />
+                            </div>
+                            <div class="col-lg-2 pt16 pb16 o_colored_level">
+                                <img
+                                    src="/web/image/website.s_reference_demo_image_4"
+                                    class="img img-fluid mx-auto"
+                                    alt=""
+                                    loading="lazy"
+                                    data-original-id="94"
+                                    data-original-src="/website/static/src/img/snippets_demo/s_references_4.png"
+                                    data-mimetype="image/png"
+                                    style=""
+                                />
+                            </div>
+                            <div class="col-lg-2 pt16 pb16 o_colored_level">
+                                <img
+                                    src="/web/image/website.s_reference_demo_image_5"
+                                    class="img img-fluid mx-auto"
+                                    alt=""
+                                    loading="lazy"
+                                    data-original-id="95"
+                                    data-original-src="/website/static/src/img/snippets_demo/s_references_5.png"
+                                    data-mimetype="image/png"
+                                    style=""
+                                    data-bs-original-title=""
+                                    title=""
+                                    aria-describedby="tooltip446135"
+                                />
+                            </div>
+                            <div class="col-lg-2 pt16 pb16 o_colored_level">
+                                <img
+                                    src="/web/image/website.s_reference_default_image_6"
+                                    class="img img-fluid mx-auto"
+                                    alt=""
+                                    loading="lazy"
+                                    data-original-id="96"
+                                    data-original-src="/website/static/src/img/snippets_demo/s_references_6.png"
+                                    data-mimetype="image/png"
+                                    style=""
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="s_map pb56 pt56"
+                    data-map-type="m"
+                    data-map-zoom="15"
+                    data-snippet="s_map"
+                    data-map-address="הרברט סמואל 2 ירושלים"
+                    data-name="מפה"
+                    id="maps-test"
+                    data-anchor="true"
+                >
+                    <div class="map_container o_not_editable">
+                        <div class="css_non_editable_mode_hidden">
+                            <div
+                                class="missing_option_warning alert alert-info rounded-0 fade show d-print-none d-none"
+                            >
+                                יש לציין כתובת כדי להטמיע מפה
+                            </div>
+                        </div>
+
+                        <iframe
+                            class="s_map_embedded o_not_editable"
+                            width="100%"
+                            height="100%"
+                            frameborder="0"
+                            scrolling="no"
+                            marginheight="0"
+                            marginwidth="0"
+                            src="https://maps.google.com/maps?q=%D7%94%D7%A8%D7%91%D7%A8%D7%98%20%D7%A1%D7%9E%D7%95%D7%90%D7%9C%202%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D&amp;t=m&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                        />
+                        <div class="s_map_color_filter" style="" />
+                    </div>
+                </section>
+                <section
+                    class="s_text_block o_colored_level pb0 pt0 o_cc o_cc3"
+                    data-snippet="s_text_block"
+                    data-name="Text"
+                    style="background-image: none;"
+                    id="contact-test"
+                    data-anchor="true"
+                >
+                    <div class="s_allow_columns container">
+                        <h4 class="text-center mb-1" style="text-align: right;">
+                            <span style="font-size: 16px;">
+                                <a title="" data-bs-original-title="" href="/about">
+                                    <span style="font-size: 16px;" />
+                                </a>
+                            </span>
+                            <span
+                                style="font-size: 18px;"
+                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;
+                                <strong
+                                    t-field="object.partner_id"
+                                    t-options='{"widget": "contact"}'
+                                />
+                                 + <strong>geolink</strong> <strong>
+                                    embed
+                                </strong></span>
+                        </h4>
+                        <h4 class="text-center mb-1" style="text-align: right;">
+                            <span style="font-size: 18px;">
+                                <font
+                                    class="text-o-color-1"
+                                    style="background-color: inherit;"
+                                >
+                                    <strong>
+                                        bankayma_child_company_openning_hours
+                                    </strong>
+                                    16:00-20:00, שישי 11:00-14:00
+                                </font>
+                            </span>
+                        </h4>
+                        <h4 class="text-center mb-1" style="text-align: right;">
+                            <span
+                                style="font-size: 18px;"
+                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 02-1234567&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;<strong
+                                    t-out="object.phone"
+                                /> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</span>
+                            <span
+                                style="font-size: 18px;"
+                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 02-1234567&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;<a
+                                    t-att-href="object.website"
+                                    t-out="object.website"
+                                /> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</span>
+                            <span style="font-size: 18px;">
+                                <font
+                                    class="text-o-color-1"
+                                    style="background-color: inherit;"
+                                >
+                                    <a t-att-href="object.email" t-out="object.email" />
+                                </font>
+                            </span>
+                        </h4>
+                    </div>
+                </section>
             </div>
         </t>
     </template>
