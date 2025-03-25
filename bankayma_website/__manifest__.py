@@ -16,12 +16,5 @@
     ],
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
-    "external_dependencies": {
-        "python": [
-            "acme>1.3.0,<2.0.0",
-            "cryptography<43,>=41.0.5",
-            "pyopenssl<23.0,>=22.1",
-            "python-jose",
-        ]
-    },
+    "external_dependencies": {"python": []},
 }
