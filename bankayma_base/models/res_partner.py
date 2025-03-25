@@ -12,6 +12,8 @@ class ResPartner(models.Model):
     street2 = fields.Char(translate=True)
     city = fields.Char(translate=True)
     lang_id = fields.Many2one("res.lang", compute="_compute_lang_id")
+    signup_url = fields.Char(compute_sudo=True)
+    signup_valid = fields.Boolean(compute_sudo=True)
 
     def _compute_lang_id(self):
         for this in self:
