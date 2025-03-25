@@ -4,3 +4,6 @@ masav
 odoo_test_helper
 openupgradelib
 strenum
+acme<2.0.0
+cryptography<43,>=41.0.5
+python-jose
