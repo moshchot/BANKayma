@@ -374,7 +374,6 @@ msgid ""
 "bankayma_vendor_tax_percentage\"></t>\n"
 "                        </t>\n"
 "                        <t t-else=\"\">no</t>\n"
-@@ -319,102 +292,15 @@
 "                    </t>\n"
 "                </t>\n"
 "            </p>\n"
