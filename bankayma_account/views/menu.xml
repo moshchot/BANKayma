@@ -66,7 +66,7 @@
     >
         <field name="name">Income</field>
         <field name="res_model">account.move</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">tree,kanban,pivot,form</field>
         <field name="view_id" ref="account.view_out_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">
@@ -90,7 +90,7 @@
     >
         <field name="name">Internal</field>
         <field name="res_model">account.move</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">tree,kanban,pivot,form</field>
         <field name="view_id" ref="account.view_out_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">
@@ -112,7 +112,7 @@
     <record id="action_bankayma_group_expense_move" model="ir.actions.act_window">
         <field name="name">Expenses</field>
         <field name="res_model">account.move</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">tree,kanban,pivot,form</field>
         <field name="view_id" ref="account.view_in_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">
