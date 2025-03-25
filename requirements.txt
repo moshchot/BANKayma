@@ -1,9 +1,10 @@
 # generated from manifests external_dependencies
+acme<2.0.0
 astor
+cryptography<43,>=41.0.5
 masav
 odoo_test_helper
 openupgradelib
-strenum
-acme<2.0.0
-cryptography<43,>=41.0.5
+pyopenssl<23.0
 python-jose
+strenum
