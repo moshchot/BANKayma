@@ -56,7 +56,7 @@ class ResPartner(models.Model):
             return self.env.user.has_group("bankayma_base." + group)
 
         if (
-            not view_id
+            (not view_id or view_id == self.env.ref("base.view_partner_form").id)
             and view_type == "form"
             and not has_group("group_full")
             and (
