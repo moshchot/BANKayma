@@ -9,7 +9,7 @@ class MailController(mail.MailController):
     def _redirect_to_record(cls, model, res_id, access_token=None, **kwargs):
         """Add an action_id to the redirect url for invoices"""
         response = super()._redirect_to_record(
-            model, res_id, access_token=None, **kwargs
+            model, res_id, access_token=access_token, **kwargs
         )
         if (
             model == "account.move"
