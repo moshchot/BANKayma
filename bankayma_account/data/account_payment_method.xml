@@ -45,8 +45,8 @@
         <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_defrayal_out" model="account.payment.method">
-        <field name="name">Defrayal</field>
-        <field name="code">sumit_defrayal</field>
+        <field name="name">Debit</field>
+        <field name="code">sumit_debit</field>
         <field name="payment_type">outbound</field>
         <field name="sumit_type">8</field>
     </record>
@@ -57,8 +57,8 @@
         <field name="sumit_type">8</field>
     </record>
     <record id="payment_method_paypal_out" model="account.payment.method">
-        <field name="name">PayPal</field>
-        <field name="code">sumit_paypal</field>
+        <field name="name">Standing Order</field>
+        <field name="code">sumit_standing</field>
         <field name="payment_type">outbound</field>
         <field name="sumit_type">8</field>
     </record>
