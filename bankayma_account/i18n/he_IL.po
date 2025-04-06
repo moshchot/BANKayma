@@ -1223,6 +1223,11 @@ msgid "Dear"
 msgstr "אהלן"
 
 #. module: bankayma_account
+#: model:account.payment.method,name:bankayma_account.payment_method_defrayal_out
+msgid "Debit"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_mass_editing_wizard__default_account_id
 msgid "Default Account"
 msgstr ""
@@ -1234,7 +1239,6 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_defrayal_in
-#: model:account.payment.method,name:bankayma_account.payment_method_defrayal_out
 msgid "Defrayal"
 msgstr "סליקה"
 
@@ -2103,7 +2107,6 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_paypal_in
-#: model:account.payment.method,name:bankayma_account.payment_method_paypal_out
 msgid "PayPal"
 msgstr "פייפאל"
 
@@ -2368,6 +2371,11 @@ msgstr ""
 #: model:account.tax.group,name:bankayma_account.tax_group_social_security
 msgid "Social security"
 msgstr "ביטוח לאומי"
+
+#. module: bankayma_account
+#: model:account.payment.method,name:bankayma_account.payment_method_paypal_out
+msgid "Standing Order"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subject
