@@ -1225,7 +1225,7 @@ msgstr "אהלן"
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_defrayal_out
 msgid "Debit"
-msgstr ""
+msgstr "דביט"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_mass_editing_wizard__default_account_id
@@ -2375,7 +2375,7 @@ msgstr "ביטוח לאומי"
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_paypal_out
 msgid "Standing Order"
-msgstr ""
+msgstr "הוראת קבע"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__subject
