@@ -16,3 +16,42 @@ div.o-scrollbar.vertical {
 .o_form_view .o_address_format .o_address_city span {
     margin-right: auto;
 }
+/* Make Company Name Bigger */
+.o_switch_company_menu .oe_topbar_name {
+    font-weight: bold;
+    font-size: 1.16rem;
+}
+/* Make Company name bigger on move form */
+.o_form_sheet div[name="company_id"] {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+/* make navigation areas bigger on multiple attachments */
+.o_AttachmentViewer_buttonNavigation {
+    width: 40px;
+    height: 40px;
+    background: white;
+}
+/* Make my Warnings bigger*/
+@keyframes vertical-shaking {
+    0% { transform: translateY(0) }
+    25% { transform: translateY(5px) }
+    50% { transform: translateY(-5px) }
+    75% { transform: translateY(5px) }
+    100% { transform: translateY(0) }
+}
+.alert-warning {
+    background-color: #faff00;
+    color: #ff0000;
+    font-size: 20px;
+    text-align: center;
+    animation: vertical-shaking 0.3s 2;
+}
+/* To Contact details To see bank details -- maybe have text  on top */
+@media (min-width: 576px) { .d-sm-contents {
+    display: flex !important;
+}}
+@media (min-width: 576px) { .o_form_view .o_inner_group {
+    grid-template-columns: fit-content(150px) 1fr;
+    grid-template-columns: auto;
+}}
