@@ -34,11 +34,19 @@ div.o-scrollbar.vertical {
 }
 /* Make my Warnings bigger*/
 @keyframes vertical-shaking {
-    0% { transform: translateY(0) }
-    25% { transform: translateY(5px) }
-    50% { transform: translateY(-5px) }
-    75% { transform: translateY(5px) }
-    100% { transform: translateY(0) }
+    0% {
+        transform: translateY(0)
+    }
+    25% {
+        transform: translateY(5px)
+    }
+    50% {
+        transform: translateY(-5px)
+    }
+    75% {transform: translateY(5px)
+        }
+    100% {transform: translateY(0)
+         }
 }
 .alert-warning {
     background-color: #faff00;
