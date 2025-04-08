@@ -43,9 +43,11 @@ div.o-scrollbar.vertical {
     50% {
         transform: translateY(-5px);
     }
-    75% {transform: translateY(5px);
+    75% {
+        transform: translateY(5px);
     }
-    100% {transform: translateY(0);
+    100% {
+        transform: translateY(0);
     }
 }
 .alert-warning {
