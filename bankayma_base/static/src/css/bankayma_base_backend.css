@@ -44,9 +44,9 @@ div.o-scrollbar.vertical {
         transform: translateY(-5px);
     }
     75% {transform: translateY(5px);
-        }
+    }
     100% {transform: translateY(0);
-         }
+    }
 }
 .alert-warning {
     background-color: #faff00;
