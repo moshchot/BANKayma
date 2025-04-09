@@ -51,8 +51,6 @@ div.o-scrollbar.vertical {
     }
 }
 .alert-warning {
-    background-color: #faff00;
-    color: #ff0000;
     font-size: 20px;
     text-align: center;
     animation: vertical-shaking 0.3s 2;
