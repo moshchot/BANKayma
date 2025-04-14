@@ -55,15 +55,3 @@ div.o-scrollbar.vertical {
     text-align: center;
     animation: vertical-shaking 0.3s 2;
 }
-/* To Contact details To see bank details -- maybe have text  on top */
-@media (min-width: 576px) {
-    .d-sm-contents {
-        display: flex !important;
-    }
-}
-@media (min-width: 576px) {
-    .o_form_view .o_inner_group {
-        grid-template-columns: fit-content(150px) 1fr;
-        grid-template-columns: auto;
-    }
-}
