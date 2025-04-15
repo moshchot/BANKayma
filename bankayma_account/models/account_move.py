@@ -174,11 +174,24 @@ class AccountMove(models.Model):
             return self.env.company.intercompany_sale_journal_id
         return super()._search_default_journal()
 
-    @api.depends("payment_state")
+    @api.depends("payment_state", "validated_state")
     def _compute_show_reset_to_draft_button(self):
         result = super()._compute_show_reset_to_draft_button()
+        has_group = self.env.user.has_group
         for this in self:
             this.show_reset_to_draft_button &= this.payment_state != "paid"
+            if has_group("bankayma_base.group_manager") and not (
+                has_group("bankayma_base.group_org_manager")
+                or has_group("bankayma_base.group_full")
+            ):
+                this.show_reset_to_draft_button &= (
+                    not this.validated_state
+                    or this.validated_state
+                    in (
+                        "0_draft",
+                        "3_rejected",
+                    )
+                )
         return result
 
     def _compute_tax_totals(self):

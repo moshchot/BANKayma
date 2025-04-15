@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <button name="button_draft" position="attributes">
                 <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
+                    bankayma_base.group_manager,bankayma_base.group_org_manager,bankayma_base.group_full
                 </attribute>
             </button>
             <button name="action_register_payment" position="attributes">
