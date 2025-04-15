@@ -1157,6 +1157,11 @@ msgid "Created on"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_account__credit
+msgid "Credit"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__14
 msgid "Credit Donation Receipt"
 msgstr ""
@@ -1224,6 +1229,7 @@ msgstr "אהלן"
 
 #. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_defrayal_out
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_account__debit
 msgid "Debit"
 msgstr "דביט"
 
