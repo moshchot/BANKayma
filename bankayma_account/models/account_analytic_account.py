@@ -12,6 +12,14 @@ class AccountAnalyticAccount(models.Model):
         groups="account.group_account_readonly,bankayma_base.group_user,"
         "bankayma_base.group_org_manager"
     )
+    credit = fields.Monetary(
+        groups="account.group_account_readonly,bankayma_base.group_user,"
+        "bankayma_base.group_org_manager"
+    )
+    debit = fields.Monetary(
+        groups="account.group_account_readonly,bankayma_base.group_user,"
+        "bankayma_base.group_org_manager"
+    )
 
     def _default_analytic_plan_id(self):
         return self.env["account.analytic.plan"].search(
