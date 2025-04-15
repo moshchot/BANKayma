@@ -298,6 +298,24 @@
                     {'column_invisible': [('parent.state', '!=', 'posted'), ('parent.review_ids', '=', False)]}
                 </attribute>
             </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']//form//field[@name='analytic_distribution']"
+                position="after"
+            >
+                <field name="parent_state" invisible="1" />
+                <div attrs="{'invisible': [('parent_state', '!=', 'posted')]}" />
+                <button
+                    name="account_move_update_analytic.action_view_account_move_update_analytic"
+                    type="action"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{'invisible': [('parent_state', '!=', 'posted')]}"
+                    icon="fa-tags"
+                    title="Update analytic distribution"
+                    aria-label="Update analytic distribution"
+                >
+                    Change analytic distribution
+                </button>
+            </xpath>
             <xpath expr="(//field[@name='ref'])[1]" position="attributes">
                 <attribute name="groups">
                     bankayma_base.group_org_manager,bankayma_base.group_full
