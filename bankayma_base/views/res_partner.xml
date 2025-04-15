@@ -100,32 +100,23 @@
             <field name="child_ids" position="attributes">
                 <attribute name="context" operation="update">
                     {
+                        'default_is_company': False,
                         'default_street': False,
                         'default_street2': False,
                         'default_city': False,
                         'default_state_id': False,
                         'default_zip': False,
                         'default_country_id': False,
+                        'form_view_ref': 'bankayma_base.bankayma_partner_form',
                     }
                 </attribute>
             </field>
-            <xpath
-                expr="//field[@name='child_ids']/form//div[hasclass('text-muted')]"
-                position="attributes"
-            >
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </xpath>
-            <xpath
-                expr="//field[@name='child_ids']/form//field[@name='type']"
-                position="attributes"
-            >
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </xpath>
-            <xpath
-                expr="//field[@name='child_ids']/form//field[@name='type']"
-                position="after"
-            >
-                <field name="type" invisible="1" />
+            <xpath expr="//field[@name='child_ids']/form" position="replace" />
+            <page name="contact_addresses" position="attributes">
+                <attribute name="invisible">context.get('default_parent_id')</attribute>
+            </page>
+            <xpath expr="//div[hasclass('oe_button_box')]" position="attributes">
+                <attribute name="invisible">context.get('default_parent_id')</attribute>
             </xpath>
         </field>
     </record>
