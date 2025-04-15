@@ -1000,6 +1000,11 @@ msgid "Cash"
 msgstr "מזומן"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "Change analytic distribution"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_move_change_company_form
 #: model:ir.model,name:bankayma_account.model_bankayma_move_change_company
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
@@ -2619,6 +2624,11 @@ msgstr "לתשלום"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.template_tax_totals
 msgid "Untaxed amount"
 msgstr "סכום העברה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
+msgid "Update analytic distribution"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment_register__use_sumit_journal
