@@ -98,8 +98,15 @@
                 <attribute name="placeholder">Organization...</attribute>
             </field>
             <field name="child_ids" position="attributes">
-                <attribute name="context">
-                    {'default_parent_id': active_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type': 'other'}
+                <attribute name="context" operation="update">
+                    {
+                        'default_street': False,
+                        'default_street2': False,
+                        'default_city': False,
+                        'default_state_id': False,
+                        'default_zip': False,
+                        'default_country_id': False,
+                    }
                 </attribute>
             </field>
             <xpath
@@ -120,6 +127,19 @@
             >
                 <field name="type" invisible="1" />
             </xpath>
+        </field>
+    </record>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <field name="child_ids" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        'default_type': 'contact',
+                    }
+                </attribute>
+            </field>
         </field>
     </record>
     <record id="view_partner_form_website_partner" model="ir.ui.view">

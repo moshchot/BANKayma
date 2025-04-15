@@ -2,7 +2,7 @@
 {
     "name": "BANKayma",
     "summary": "BANKayma base module",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
@@ -12,6 +12,7 @@
         "base_user_effective_permissions",
         "board",
         "barcodes_gs1_nomenclature",
+        "base_view_inheritance_extension",
         "contacts",
         "document_knowledge",
         "document_page_approval",
