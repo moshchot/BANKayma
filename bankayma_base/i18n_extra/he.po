@@ -81,7 +81,7 @@ msgstr "שליחה לאישור תשלום"
 #. module: base_tier_validation
 #: model_terms:ir.ui.view,arch_db:base_tier_validation.tier_validation_buttons
 msgid "Restart Validation"
-msgstr "אתחול שליחה לאישור"
+msgstr "עריכה"
 
 #. module: base_tier_validation
 #. odoo-python
