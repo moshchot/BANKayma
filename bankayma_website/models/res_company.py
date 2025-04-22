@@ -4,24 +4,27 @@ from urllib.parse import urlparse, urlunparse
 
 from odoo import api, fields, models
 
-from odoo.addons.http_routing.models.ir_http import slug
+from odoo.addons.http_routing.models.ir_http import slugify
 
 
 class ResCompany(models.Model):
     _inherit = "res.company"
 
     website_description = fields.Html()
-    website_slug = fields.Char()
+    seo_name = fields.Char("Website slug")
     website_link = fields.Char(compute="_compute_website_link")
+    bankayma_website_subtitle = fields.Char("Subtitle")
+    bankayma_website_opening_hours = fields.Html("Opening hours")
     bankayma_website_geolink = fields.Char("Geolink")
     bankayma_website_image_ids = fields.Many2many(
         "ir.attachment", "res_company_bankayma_website_image_rel", string="Image slider"
     )
 
-    @api.depends("name")
+    @api.depends("name", "seo_name")
     def _compute_website_link(self):
         for this in self:
-            if not this.id:
+            _id = getattr(this.id, "origin", this.id)
+            if not _id:
                 this.website_link = False
                 continue
             base_url = urlparse(self.get_base_url())
@@ -29,7 +32,7 @@ class ResCompany(models.Model):
                 (
                     base_url.scheme,
                     base_url.netloc,
-                    "projects/" + slug(this),
+                    f"projects/{slugify(this.seo_name or this.name)}-{_id}",
                     None,
                     None,
                     None,
