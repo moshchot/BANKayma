@@ -11,7 +11,12 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     website_description = fields.Html()
+    website_slug = fields.Char()
     website_link = fields.Char(compute="_compute_website_link")
+    bankayma_website_geolink = fields.Char("Geolink")
+    bankayma_website_image_ids = fields.Many2many(
+        "ir.attachment", "res_company_bankayma_website_image_rel", string="Image slider"
+    )
 
     @api.depends("name")
     def _compute_website_link(self):
