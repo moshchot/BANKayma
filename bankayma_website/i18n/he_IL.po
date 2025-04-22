@@ -51,27 +51,11 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"+ <strong>geolink</strong> <strong>\n"
-"                                    embed\n"
-"                                </strong>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<font class=\"text-o-color-1 bg-o-color-3\">\n"
 "                                <span style=\"font-size: 36px;\">\n"
 "                                    <strong>backers</strong>\n"
 "                                </span>\n"
 "                            </font>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<font style=\"\" class=\"text-o-color-4\">\n"
-"                                        גלריה קהילתית לאמנות עכשווית\n"
-"                                    </font>"
 msgstr ""
 
 #. module: bankayma_website
@@ -165,17 +149,6 @@ msgstr ""
 msgid ""
 "<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
 "weight: 400;\">\n"
-"                                        <font class=\"bg-600\" style=\"\">\n"
-"                                            הרברט סמואל 2, ירושלים\n"
-"                                        </font>\n"
-"                                    </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">\n"
 "                                        <font class=\"bg-600\" "
 "style=\"\">שני עד חמישי 16:00 &amp;gt; 20:00</font>\n"
 "                                        <br/>\n"
@@ -234,6 +207,16 @@ msgid "Donate Now"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_geolink
+msgid "Geolink"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_image_ids
+msgid "Image slider"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Shop"
 msgstr ""
@@ -246,6 +229,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_link
 msgid "Website Link"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_slug
+msgid "Website Slug"
 msgstr ""
 
 #. module: bankayma_website
@@ -324,11 +312,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "יונתן לביא"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "יש לציין כתובת כדי להטמיע מפה"
 msgstr ""
 
 #. module: bankayma_website
