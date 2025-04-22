@@ -16,6 +16,38 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bankayma_account
+#: model:mail.template,description:bankayma_account.template_account_move_paid_reminder
+msgid ""
+"\n"
+"            This mail is sent as reminder to send a receipt\n"
+"        "
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,description:bankayma_account.template_account_move_paid
+msgid ""
+"\n"
+"            This mail is sent when a payment request is paid\n"
+"        "
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,description:bankayma_account.template_account_move_new_from_portal
+msgid ""
+"\n"
+"            This mail is sent when a payment request is received\n"
+"        "
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,description:bankayma_account.template_account_move_rejected
+msgid ""
+"\n"
+"            This mail is sent when a payment request is rejected\n"
+"        "
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
@@ -2541,6 +2573,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "This invoice is already paid."
 msgstr "חשבונית זו שולמה במלואה"
+
+#. module: bankayma_account
+#: model:mail.template,description:bankayma_account.template_vendor_invite
+msgid "This mail is sent when a vendor is invited"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__auto_delete
