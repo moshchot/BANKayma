@@ -3,4 +3,9 @@ from openupgradelib.openupgrade import migrate
 
 @migrate()
 def migrate(env, version=None):
-    env["res.partner"].search([("type", "=", "other")]).write({"type": "contact"})
+    env["res.partner"].search(
+        [
+            ("type", "=", "other"),
+            ("name", "!=", False),
+        ]
+    ).write({"type": "contact"})
