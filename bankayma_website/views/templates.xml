@@ -59,7 +59,7 @@
                                     <font
                                         style=""
                                         class="text-o-color-4"
-                                        t-field="object.website_slug"
+                                        t-field="object.bankayma_website_subtitle"
                                     />
                                 </h4>
                                 <p style="text-align: center;">
@@ -85,34 +85,38 @@
                                         </font>
                                     </span>
                                 </p>
-                                <p style="text-align: center;">
+                                <div
+                                    style="text-align: center;"
+                                    t-if="object.bankayma_website_opening_hours"
+                                >
                                     <span
-                                        class="text-200 bg-o-color-2"
-                                        style="font-style: normal; font-weight: 400;"
-                                    >
-                                        <font
-                                            class="bg-600"
-                                            style=""
-                                        >שני עד חמישי 16:00 &amp;gt; 20:00</font>
-                                        <br />
-                                        <font
-                                            class="bg-600"
-                                            style=""
-                                        >שישי 11:00 &amp;gt; 14:00</font>
-                                    </span>
-                                </p>
+                                        t-field="object.bankayma_website_opening_hours"
+                                    />
+                                </div>
                                 <div
                                     class="s_social_media o_not_editable text-center no_icon_color"
                                     data-snippet="s_social_media"
-                                    data-name="רשתות חברתיות"
+                                    data-name="Social Networks"
+                                    t-if="object.social_twitter or object.social_facebook or object.social_instagram or object.social_youtube"
                                 >
                                     <h4
                                         class="s_social_media_title o_default_snippet_text d-none"
                                     >
-                                        רשתות חברתיות
+                                        Social Networks
                                     </h4>
                                     <a
-                                        href="/website/social/facebook"
+                                        t-if="object.social_twitter"
+                                        t-att-href="object.social_twitter"
+                                        class="s_social_media_twitter"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa fa-twitter rounded-circle shadow-sm"
+                                        />
+                                    </a>
+                                    <a
+                                        t-if="object.social_facebook"
+                                        t-att-href="object.social_facebook"
                                         class="s_social_media_facebook"
                                         target="_blank"
                                     >
@@ -121,12 +125,23 @@
                                         />
                                     </a>
                                     <a
-                                        href="/website/social/instagram"
+                                        t-if="object.social_instagram"
+                                        t-att-href="object.social_instagram"
                                         class="s_social_media_instagram"
                                         target="_blank"
                                     >
                                         <i
                                             class="fa fa-instagram rounded-circle shadow-sm"
+                                        />
+                                    </a>
+                                    <a
+                                        t-if="object.social_youtube"
+                                        t-att-href="object.social_youtube"
+                                        class="s_social_media_youtube"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa fa-youtube rounded-circle shadow-sm"
                                         />
                                     </a>
                                 </div>
@@ -1027,18 +1042,12 @@
                                 />
                             </span>
                         </h4>
-                        <h4 class="text-center mb-1" style="text-align: right;">
-                            <span style="font-size: 18px;">
-                                <font
-                                    class="text-o-color-1"
-                                    style="background-color: inherit;"
-                                >
-                                    <strong>
-                                        bankayma_child_company_openning_hours
-                                    </strong>
-                                    16:00-20:00, שישי 11:00-14:00
-                                </font>
-                            </span>
+                        <h4
+                            class="text-center mb-1"
+                            style="text-align: right;"
+                            t-if="object.bankayma_website_opening_hours"
+                        >
+                            <span t-field="object.bankayma_website_opening_hours" />
                         </h4>
                         <h4 class="text-center mb-1" style="text-align: right;">
                             <span

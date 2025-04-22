@@ -10,7 +10,9 @@
                 <page name="bankayma_website" string="Website settings">
                     <group>
                         <field name="website_link" widget="url" />
-                        <field name="website_slug" required="True" />
+                        <field name="seo_name" required="True" />
+                        <field name="bankayma_website_subtitle" widget="url" />
+                        <field name="bankayma_website_opening_hours" />
                         <field name="bankayma_website_geolink" widget="url" />
                         <field
                             name="bankayma_website_image_ids"
