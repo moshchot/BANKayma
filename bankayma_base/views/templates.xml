@@ -112,6 +112,7 @@
                 id="header"
                 style="padding: 0px;"
                 t-if="'company_id' in object._fields"
+                t-att-dir="'partner_id' in object._fields and object.partner_id.lang_id.direction"
             >
                 <table
                     role="presentation"
@@ -164,16 +165,19 @@
         </template>
 
         <template id="mail_footer">
-            <div id="footer" style="margin-top:32px;">
+            <div
+                id="footer"
+                style="margin-top:32px;"
+                t-att-dir="'partner_id' in object._fields and object.partner_id.lang_id.direction"
+                t-if="'company_id' in object._fields"
+            >
                 <hr
                     width="100%"
                     style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"
                 />
                 <b t-out="object.company_id.name" style="font-size:11px;" />
                 <br />
-                <p
-                    t-attf-style="color: #999999; margin-top:2px; font-size:11px;direction: {{object.partner_id.lang_id.direction}}"
-                >
+                <p t-attf-style="color: #999999; margin-top:2px; font-size:11px">
                     <t t-out="object.company_id.phone" />
                     <t t-if="object.company_id.email and object.company_id.phone">|</t>
                     <a
