@@ -147,19 +147,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">\n"
-"                                        <font class=\"bg-600\" "
-"style=\"\">שני עד חמישי 16:00 &amp;gt; 20:00</font>\n"
-"                                        <br/>\n"
-"                                        <font class=\"bg-600\" "
-"style=\"\">שישי 11:00 &amp;gt; 14:00</font>\n"
-"                                    </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span id=\"s_donation_description_inputs\"/>\n"
 "                                        <span "
 "id=\"s_donation_description_inputs\" style=\"font-size: 36px;\">\n"
@@ -169,20 +156,6 @@ msgid ""
 "                                            </font>\n"
 "                                        </span>\n"
 "                                        <br/>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<span style=\"font-size: 18px;\">\n"
-"                                <font class=\"text-o-color-1\" "
-"style=\"background-color: inherit;\">\n"
-"                                    <strong>\n"
-"                                        bankayma_child_company_openning_hours\n"
-"                                    </strong>\n"
-"                                    16:00-20:00, שישי 11:00-14:00\n"
-"                                </font>\n"
-"                            </span>"
 msgstr ""
 
 #. module: bankayma_website
@@ -217,8 +190,23 @@ msgid "Image slider"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_opening_hours
+msgid "Opening hours"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Shop"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "Social Networks"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_subtitle
+msgid "Subtitle"
 msgstr ""
 
 #. module: bankayma_website
@@ -232,11 +220,6 @@ msgid "Website Link"
 msgstr ""
 
 #. module: bankayma_website
-#: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_slug
-msgid "Website Slug"
-msgstr ""
-
-#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website description"
 msgstr ""
@@ -244,6 +227,11 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website settings"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__seo_name
+msgid "Website slug"
 msgstr ""
 
 #. module: bankayma_website
@@ -342,9 +330,4 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "רותם כהן"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "רשתות חברתיות"
 msgstr ""
