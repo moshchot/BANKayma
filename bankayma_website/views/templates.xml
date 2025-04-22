@@ -56,23 +56,19 @@
                                     </font>
                                 </h1>
                                 <h4 style="text-align: center;">
-                                    <font style="" class="text-o-color-4">
-                                        גלריה קהילתית לאמנות עכשווית
-                                    </font>
+                                    <font
+                                        style=""
+                                        class="text-o-color-4"
+                                        t-field="object.website_slug"
+                                    />
                                 </h4>
                                 <p style="text-align: center;">
                                     <br />
                                 </p>
                                 <p style="text-align: center;">
                                     <img
-                                        src="https://dev.bureau.ninja/web/image/1214-e1a3ae8c/%D7%9C%D7%95%D7%92%D7%95%20%D7%91%D7%A8%D7%91%D7%95%D7%A8%204%20%D7%A2%D7%9C%204.jpg"
+                                        t-attf-src="/web/image/res.company/{{object.id}}/logo"
                                         class="img-fluid mx-auto d-block rounded-circle img-thumbnail shadow rounded"
-                                        data-original-id="1012"
-                                        data-original-src="https://dev.bureau.ninja/web/image/1012-4dfc2629/%D7%9C%D7%95%D7%92%D7%95%20%D7%91%D7%A8%D7%91%D7%95%D7%A8%204%20%D7%A2%D7%9C%204.jpg"
-                                        data-mimetype="image/jpeg"
-                                        data-bs-original-title=""
-                                        title=""
-                                        aria-describedby="tooltip26237"
                                         loading="lazy"
                                         style="padding: 2px;"
                                     />
@@ -83,7 +79,9 @@
                                         style="font-style: normal; font-weight: 400;"
                                     >
                                         <font class="bg-600" style="">
-                                            הרברט סמואל 2, ירושלים
+                                            <span t-field="object.street" />
+                                            ,
+                                            <span t-field="object.city" />
                                         </font>
                                     </span>
                                 </p>
@@ -531,6 +529,7 @@
                     style="overflow: hidden; height: 662px; background-image: none;"
                     data-snippet="s_image_gallery"
                     data-name="Image Gallery"
+                    t-if="object.bankayma_website_image_ids"
                 >
                     <div class="container">
                         <div
@@ -541,59 +540,19 @@
                             style="margin: 0 12px;"
                         >
                             <div class="carousel-inner" style="padding: 0;">
-                                <div class="carousel-item" style="">
+                                <div
+                                    t-attf-class="carousel-item {{'active' if image_index == 0 else ''}}"
+                                    style=""
+                                    t-foreach="object.bankayma_website_image_ids"
+                                    t-as="image"
+                                >
                                     <img
-                                        src="https://dev.bureau.ninja/web/image/1320-4b18b007/uri-screenshot.jpg"
+                                        t-attf-src="/web/image/{{image.id}}"
                                         alt=""
                                         class="img img-fluid d-block o_we_custom_image shadow"
                                         loading="lazy"
                                         style=""
-                                    />
-                                </div>
-
-                                <div class="carousel-item undefined" style="">
-                                    <img
-                                        src="https://dev.bureau.ninja/web/image/1640-e3a59c07/WhatsApp-Image-2024-02-06-at-13.25.22-1.jpeg"
-                                        alt=""
-                                        class="img img-fluid d-block o_we_custom_image shadow"
-                                        data-original-id="1319"
-                                        data-original-src="https://dev.bureau.ninja/web/image/1319-b7af6b13/WhatsApp-Image-2024-02-06-at-13.25.22-1.jpeg"
-                                        data-mimetype="image/jpeg"
-                                        data-resize-width="690"
-                                        loading="lazy"
-                                        style=""
-                                    />
-                                </div>
-
-                                <div class="carousel-item undefined" style="">
-                                    <img
-                                        src="https://dev.bureau.ninja/web/image/1641-57f1f685/WhatsApp-Image-2024-04-01-at-10.37.53-PM-1.jpeg"
-                                        alt=""
-                                        class="img img-fluid d-block o_we_custom_image shadow"
-                                        data-original-id="1321"
-                                        data-original-src="https://dev.bureau.ninja/web/image/1321-82fdc001/WhatsApp-Image-2024-04-01-at-10.37.53-PM-1.jpeg"
-                                        data-mimetype="image/jpeg"
-                                        data-resize-width="690"
-                                        loading="lazy"
-                                        style=""
-                                        data-bs-original-title=""
-                                        title=""
-                                        aria-describedby="tooltip961037"
-                                    />
-                                </div>
-
-                                <div class="carousel-item undefined active" style="">
-                                    <img
-                                        class="img img-fluid d-block shadow"
-                                        src="https://dev.bureau.ninja/web/image/1318-7d44a8f5/barbur-16-9-Sacrificer.jpg"
-                                        style=""
-                                        alt=""
-                                        data-name="Image"
-                                        data-index="3"
-                                        loading="lazy"
-                                        data-bs-original-title=""
-                                        title=""
-                                        aria-describedby="tooltip637610"
+                                        t-attf-data-index="{{image_index}}"
                                     />
                                 </div>
                             </div>
@@ -608,31 +567,14 @@
                                 </li>
 
                                 <li
+                                    t-foreach="object.bankayma_website_image_ids"
+                                    t-as="image"
                                     data-bs-target="#slideshow_1725973766980"
-                                    data-bs-slide-to="0"
-                                    style="background-image: url(/web/image/website.library_image_08)"
+                                    t-attf-data-bs-slide-to="{{image_index}}"
+                                    t-attf-style="background-image: url(/web/image/{{image.id}})"
+                                    t-att-aria-current="'true' if image_index == 0 else None"
+                                    t-att-class="'active' if image_index == 0 else None"
                                 />
-
-                                <li
-                                    data-bs-target="#slideshow_1725973766980"
-                                    data-bs-slide-to="1"
-                                    style="background-image: url(&quot;/web/image/1319-b7af6b13/WhatsApp-Image-2024-02-06-at-13.25.22-1.jpeg&quot;);"
-                                />
-
-                                <li
-                                    data-bs-target="#slideshow_1725973766980"
-                                    data-bs-slide-to="2"
-                                    style="background-image: url(&quot;/web/image/1321-82fdc001/WhatsApp-Image-2024-04-01-at-10.37.53-PM-1.jpeg&quot;);"
-                                />
-
-                                <li
-                                    data-bs-target="#slideshow_1725973766980"
-                                    data-bs-slide-to="3"
-                                    style="background-image: url(https://dev.bureau.ninja/web/image/1318-7d44a8f5/barbur-16-9-Sacrificer.jpg)"
-                                    class="active"
-                                    aria-current="true"
-                                />
-
                                 <li
                                     class="o_indicators_right text-center d-none"
                                     aria-label="הבא"
@@ -641,7 +583,6 @@
                                     <i class="fa fa-chevron-right" />
                                 </li>
                             </ul>
-
                             <a
                                 class="carousel-control-prev o_we_no_overlay o_not_editable"
                                 href="#slideshow_1725973766980"
@@ -1043,20 +984,12 @@
                     data-map-type="m"
                     data-map-zoom="15"
                     data-snippet="s_map"
-                    data-map-address="הרברט סמואל 2 ירושלים"
-                    data-name="מפה"
+                    t-attf-data-map-address="{{object.street}} {{object.city}}"
                     id="maps-test"
                     data-anchor="true"
+                    t-if="object.bankayma_website_geolink"
                 >
                     <div class="map_container o_not_editable">
-                        <div class="css_non_editable_mode_hidden">
-                            <div
-                                class="missing_option_warning alert alert-info rounded-0 fade show d-print-none d-none"
-                            >
-                                יש לציין כתובת כדי להטמיע מפה
-                            </div>
-                        </div>
-
                         <iframe
                             class="s_map_embedded o_not_editable"
                             width="100%"
@@ -1065,7 +998,7 @@
                             scrolling="no"
                             marginheight="0"
                             marginwidth="0"
-                            src="https://maps.google.com/maps?q=%D7%94%D7%A8%D7%91%D7%A8%D7%98%20%D7%A1%D7%9E%D7%95%D7%90%D7%9C%202%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D&amp;t=m&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                            t-att-src="object.bankayma_website_geolink"
                         />
                         <div class="s_map_color_filter" style="" />
                     </div>
@@ -1092,9 +1025,7 @@
                                     t-field="object.partner_id"
                                     t-options='{"widget": "contact"}'
                                 />
-                                 + <strong>geolink</strong> <strong>
-                                    embed
-                                </strong></span>
+                            </span>
                         </h4>
                         <h4 class="text-center mb-1" style="text-align: right;">
                             <span style="font-size: 18px;">
