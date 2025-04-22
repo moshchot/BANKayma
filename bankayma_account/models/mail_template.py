@@ -1,27 +1,11 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import models
 
 
 class MailTemplate(models.Model):
     _inherit = "mail.template"
-
-    bankayma_portal_vendor_bill_journal_ids = fields.One2many(
-        "account.journal",
-        "bankayma_mail_template_portal_vendor_bill",
-        string="Portal vendor bill",
-    )
-    bankayma_tier_validation_reject_journal_ids = fields.One2many(
-        "account.journal",
-        "bankayma_mail_template_tier_validation_reject",
-        string="Tier validation rejection",
-    )
-    bankayma_invoice_paid_journal_ids = fields.One2many(
-        "account.journal",
-        "bankayma_mail_template_invoice_paid",
-        string="Paid",
-    )
 
     def send_mail(
         self,
