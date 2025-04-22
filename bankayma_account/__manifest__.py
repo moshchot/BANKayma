@@ -6,6 +6,7 @@
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
+    "application": True,
     "depends": [
         "account",
         "account_analytic_plan_applicability_product",

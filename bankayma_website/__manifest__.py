@@ -6,6 +6,7 @@
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
+    "application": True,
     "depends": [
         "bankayma_account",
         "website",
