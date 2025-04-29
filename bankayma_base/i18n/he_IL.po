@@ -176,6 +176,11 @@ msgid "Logo"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_mail_render_mixin
+msgid "Mail Render Mixin"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model,name:bankayma_base.model_ir_module_module
 msgid "Module"
 msgstr ""
@@ -198,6 +203,13 @@ msgstr ""
 #. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_mail_template__post_to_chatter
 msgid "Post To Chatter"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model.fields,help:bankayma_base.field_mail_template__post_to_chatter
+msgid ""
+"Post mails sent by this template to chatter. This is necessary to receive "
+"replies to mail generated from the template"
 msgstr ""
 
 #. module: bankayma_base
