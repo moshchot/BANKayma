@@ -6,6 +6,9 @@
         <field name="name">Invitation to vendor portal</field>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="subject">Invitation to vendor portal</field>
+        <!-- prettier-ignore-start -->
+        <field name="email_from">{{object.env.user.name}} &lt;{{catchall_address or object.env.user.email}}&gt;</field>
+        <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.id}}</field>
         <field name="description">This mail is sent when a vendor is invited</field>
         <field name="body_html" type="html">
@@ -35,6 +38,7 @@
         <field name="lang">{{object.partner_id.lang}}</field>
         <!-- prettier-ignore-start -->
         <field name="subject">[BanKayma] Payment request from {{object.company_id.name}}</field>
+        <field name="email_from">{{object.env.user.name}} &lt;{{catchall_address or object.env.user.email}}&gt;</field>
         <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
@@ -139,6 +143,7 @@
         <field name="lang">{{object.partner_id.lang}}</field>
         <!-- prettier-ignore-start -->
         <field name="subject">[Bar-Kayma] {{object.company_id.name}} payment on hold for insufficient documents</field>
+        <field name="email_from">{{object.env.user.name}} &lt;{{catchall_address or object.env.user.email}}&gt;</field>
         <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
@@ -247,6 +252,7 @@
         <field name="lang">{{object.partner_id.lang}}</field>
         <!-- prettier-ignore-start -->
         <field name="subject">[Bar-Kayma] {{object.company_id.name}} you've been paid! 🤑 (Ref {{object.ref}})</field>
+        <field name="email_from">{{object.env.user.name}} &lt;{{catchall_address or object.env.user.email}}&gt;</field>
         <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
@@ -343,6 +349,7 @@
         <field name="lang">{{object.partner_id.lang}}</field>
         <!-- prettier-ignore-start -->
         <field name="subject">[Bar-Kayma] {{object.company_id.name}} reminder to send receipt (Ref {{object.ref}})</field>
+        <field name="email_from">{{object.env.user.name}} &lt;{{catchall_address or object.env.user.email}}&gt;</field>
         <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
