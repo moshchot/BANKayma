@@ -45,6 +45,7 @@ class ResCompany(models.Model):
         compute="_compute_bankayma_overhead_percentage",
         inverse="_inverse_bankayma_overhead_percentage",
         compute_sudo=True,
+        tracking=True,
     )
 
     def _compute_bankayma_overhead_percentage(self):

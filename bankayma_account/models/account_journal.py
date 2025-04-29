@@ -34,6 +34,7 @@ class AccountJournal(models.Model):
         "Overhead percentage",
         default=7,
         help="The percentage of the amount to be charged as overhead",
+        tracking=True,
     )
     bankayma_inhibit_mails = fields.Boolean("Inhibit mails")
     bankayma_mail_template_portal_vendor_bill = fields.Many2one(
