@@ -144,10 +144,12 @@ class AccountMove(models.Model):
         "Waive overhead",
         help="Exceptionally don't charge overhead for this move",
         copy=False,
+        tracking=True,
     )
     bankayma_overhead_percentage = fields.Float(
         "Custom overhead percentage",
         copy=False,
+        tracking=True,
     )
 
     def _compute_amount(self):
