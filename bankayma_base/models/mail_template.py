@@ -1,11 +1,16 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from lxml import etree
+
 from odoo import fields, models
 
 
 class MailTemplate(models.Model):
     _inherit = "mail.template"
 
-    post_to_chatter = fields.Boolean()
+    post_to_chatter = fields.Boolean(
+        help="Post mails sent by this template to chatter. "
+        "This is necessary to receive replies to mail generated from the template"
+    )
 
     def send_mail(
         self,
@@ -15,14 +20,25 @@ class MailTemplate(models.Model):
         email_values=None,
         email_layout_xmlid=False,
     ):
+        """
+        Implement chatter-like behavior for email templates
+        """
         if self.post_to_chatter:
             record = self.env[self.model].browse(res_id or [])
             values = self.generate_email(res_id, ["body_html"])
-            record.message_post(
-                body=values["body_html"],
+
+            body_doc = etree.fromstring(values["body_html"], etree.HTMLParser())
+            for element in body_doc.xpath("//div[@id='header' or @id='footer']"):
+                element.getparent().remove(element)
+
+            message = record.message_post(
+                body=etree.tostring(body_doc),
                 message_type="comment",
                 subtype_id=self.env.ref("bankayma_base.message_subtype_internal").id,
             )
+
+            email_values = dict(email_values or {}, message_id=message.message_id)
+
         mail_id = super().send_mail(
             res_id,
             force_send=force_send,
