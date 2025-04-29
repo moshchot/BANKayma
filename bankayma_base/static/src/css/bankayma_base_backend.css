@@ -56,5 +56,8 @@ div.o-scrollbar.vertical {
     animation: vertical-shaking 0.3s 2;
 }
 .o_Message.o-not-discussion:not(.o-notification) {
-    background: #d1d1d1;
+    background: #d6cdcd;
+}
+.alert-warning .fa-info-circle {
+    padding: 0px 5px;
 }
