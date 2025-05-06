@@ -443,15 +443,20 @@ class AccountMove(models.Model):
         """
         Subscribe partner_id to message_subtype_vendor
         """
-        vendor_subtype = self.env.ref("bankayma_account.message_subtype_vendor")
+        subtypes = self.env.ref(
+            "bankayma_account.message_subtype_vendor"
+        ) + self.env.ref("mail.mt_comment")
 
         result = super().create(vals_list)
         for this in result:
-            this.message_subscribe(this.partner_id.ids, vendor_subtype.ids)
+            this.message_subscribe(this.partner_id.ids, subtypes.ids)
         return result
 
     def write(self, vals):
-        vendor_subtype = self.env.ref("bankayma_account.message_subtype_vendor")
+        subtypes = self.env.ref(
+            "bankayma_account.message_subtype_vendor"
+        ) + self.env.ref("mail.mt_comment")
+
         result = super().write(vals)
         if "bankayma_vendor_tax_percentage" in vals:
             self.button_bankayma_vendor_tax_create()
@@ -459,7 +464,7 @@ class AccountMove(models.Model):
             self.mapped("invoice_line_ids")._compute_tax_ids()
         if "partner_id" in vals:
             for this in self:
-                this.message_subscribe(this.partner_id.ids, vendor_subtype.ids)
+                this.message_subscribe(this.partner_id.ids, subtypes.ids)
 
         return result
 
