@@ -74,6 +74,10 @@ class TestBankaymaAccountPortal(TransactionCase):
             )
         )
         self.assertTrue(invoice)
+        vendor_follower = invoice.message_follower_ids.filtered(
+            lambda x: x.partner_id == invoice.partner_id
+        )
+        self.assertIn(self.env.ref("mail.mt_comment"), vendor_follower.subtype_ids)
         attachment = self.env["ir.attachment"].search(
             [
                 ("res_id", "=", invoice.id),
