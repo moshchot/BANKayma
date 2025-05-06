@@ -1,4 +1,5 @@
 from . import account_payment_register
+from . import account_move_update_analytic
 from . import base_document_layout
 from . import bankayma_company_create
 from . import bankayma_move_change_company
