@@ -125,6 +125,18 @@ class ResPartner(models.Model):
             ("payment_state", "=", "paid"),
         ]
 
+    def write(self, vals):
+        result = super().write(vals)
+        if "bankayma_vendor_tax_percentage" in vals:
+            for move in self.env["account.move"].search(
+                [
+                    ("partner_id", "in", self.ids),
+                    ("state", "=", "draft"),
+                ]
+            ):
+                move.button_bankayma_vendor_tax_create()
+        return result
+
     def action_view_partner_bills(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id(
