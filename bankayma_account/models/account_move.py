@@ -712,11 +712,6 @@ class AccountMove(models.Model):
 
         if invoice.bankayma_vendor_tax_percentage:
             invoice.button_bankayma_vendor_tax_create()
-        invoice.invoice_line_ids.write(
-            {
-                "bankayma_immutable": True,
-            }
-        )
         invoice.invoice_line_ids.invalidate_recordset()
         attachments = self.env["ir.attachment"]
         for uploaded_file in uploaded_files.getlist("upload"):
