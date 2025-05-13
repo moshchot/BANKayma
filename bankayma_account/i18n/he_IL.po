@@ -729,6 +729,11 @@ msgid "Account"
 msgstr "חשבון"
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_account_move_update_analytic_wizard
+msgid "Account Move Update Analytic Account Wizard"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_setup_bank_manual_config__acc_number
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner_bank__acc_number
 msgid "Account Number"
