@@ -792,6 +792,17 @@ msgid "Analytic Accounts"
 msgstr "תגיות אנליטיות"
 
 #. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_analytic_lines
+#: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_analytic_line
+msgid "Analytic Balance"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_analytic_plan_id
 msgid "Analytic Plan"
 msgstr ""
@@ -876,6 +887,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_account__balance
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_balance
 msgid "Balance"
 msgstr "מאזן"
 
@@ -1413,6 +1425,12 @@ msgid "Expected"
 msgstr "בטיפול"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_expense
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_analytic_line__bankayma_type__expense
+msgid "Expense"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
 msgid "Expense Invoice"
 msgstr "הזמנת רכש"
@@ -1476,6 +1494,7 @@ msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_fiscal_position
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__fiscal_position_id
 msgid "Fiscal Position"
 msgstr "סוג עוסק"
 
@@ -1485,6 +1504,14 @@ msgstr "סוג עוסק"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Fiscal position"
 msgstr "סוג עוסק"
+
+#. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_account_analytic_line__fiscal_position_id
+msgid ""
+"Fiscal positions are used to adapt taxes and accounts for particular "
+"customers or sales orders/invoices. The default value comes from the "
+"customer."
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
@@ -1574,6 +1601,8 @@ msgstr "נכנס:"
 
 #. module: bankayma_account
 #: model:ir.actions.act_window,name:bankayma_account.action_bankayma_group_income_move_out_invoice
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_income
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_analytic_line__bankayma_type__income
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_income_out_invoice
 msgid "Income"
 msgstr "הכנסות"
@@ -1581,6 +1610,12 @@ msgstr "הכנסות"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_inhibit_mails
 msgid "Inhibit mails"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_intercompany
+#: model:ir.model.fields.selection,name:bankayma_account.selection__account_analytic_line__bankayma_type__intercompany
+msgid "Intercompany"
 msgstr ""
 
 #. module: bankayma_account
@@ -1716,6 +1751,7 @@ msgstr "יומן"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_move
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__move_id
 msgid "Journal Entry"
 msgstr "פקודת יומן"
 
@@ -2642,6 +2678,7 @@ msgid "Total net paid"
 msgstr "שולם"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_type
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__message_type
 msgid "Type"
 msgstr ""
