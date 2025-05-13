@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_account_analytic_line_list" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="name" />
+                <field name="bankayma_income" />
+                <field name="bankayma_expense" />
+                <field name="bankayma_intercompany" />
+                <field name="bankayma_balance" />
+                <field name="move_line_id" widget="line_open_move_widget" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_account_analytic_line_search" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id" />
+                <field name="move_line_id" />
+                <field name="fiscal_position_id" />
+                <field name="amount" />
+                <searchpanel>
+                    <field name="account_id" select="multi" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+</odoo>
