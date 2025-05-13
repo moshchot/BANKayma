@@ -99,7 +99,6 @@ class TestBankaymaAccountPortal(TransactionCase):
         self.assertTrue(invoice.bankayma_vendor_max_amount, 424242)
         with self.assertRaises(exceptions.UserError):
             invoice.request_validation()
-        self.assertTrue(invoice.invoice_line_ids.bankayma_immutable)
         with Form(invoice) as invoice_form:
             with invoice_form.invoice_line_ids.edit(0) as line:
                 line.product_id = self.env["product.product"].search(
@@ -109,9 +108,6 @@ class TestBankaymaAccountPortal(TransactionCase):
                     limit=1,
                 )
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
-        invoice.invoice_line_ids._compute_tax_ids()
-        self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
-        invoice.invoice_line_ids.bankayma_immutable = False
         invoice.invoice_line_ids._compute_tax_ids()
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_date = fields.Date.context_today(invoice)

@@ -9,7 +9,6 @@ class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     bankayma_parent_move_line_id = fields.Many2one("account.move.line")
-    bankayma_immutable = fields.Boolean(copy=False)
     bankayma_product_domain = fields.Binary(compute="_compute_bankayma_product_domain")
     bankayma_analytic_account_id = fields.Many2one(
         "account.analytic.account",
@@ -82,9 +81,7 @@ class AccountMoveLine(models.Model):
                 lambda x: x.company_id == self.move_id.company_id
             )
         )
-        if self.bankayma_immutable:
-            return getattr(self, "_origin", self).tax_ids
-        elif fpos.bankayma_deduct_tax and self.move_id.bankayma_vendor_tax_percentage:
+        if fpos.bankayma_deduct_tax and self.move_id.bankayma_vendor_tax_percentage:
             return (
                 imposed_tax or super()._get_computed_taxes()
             ) + self.move_id._portal_get_or_create_tax(
