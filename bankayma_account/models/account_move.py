@@ -952,5 +952,9 @@ class AccountMove(models.Model):
                     ]
                 )
             node.attrib["modifiers"] = json.dumps(modifiers)
-            result["arch"] = etree.tostring(arch)
+        for node in arch.xpath("//field[@name='partner_id']"):
+            node.attrib["options"] = json.dumps(
+                {"no_create": bool(self.env.context.get("bankayma_internal_move"))}
+            )
+        result["arch"] = etree.tostring(arch)
         return result
