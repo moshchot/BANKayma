@@ -166,6 +166,7 @@
                 position="attributes"
             >
                 <attribute name="string">Description</attribute>
+                <attribute name="required">True</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"

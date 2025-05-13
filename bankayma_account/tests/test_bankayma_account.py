@@ -278,6 +278,7 @@ class TestBankaymaAccount(TransactionCase):
             invoice_form.partner_id = partner
             with invoice_form.invoice_line_ids.new() as line:
                 line.product_id = product
+                line.name = "product line"
                 line.quantity = 2
                 line.analytic_distribution = {
                     self.analytic_account._company_cascade_get_all(company).id: 100
