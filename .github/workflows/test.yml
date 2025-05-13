@@ -94,6 +94,7 @@ jobs:
           path: /tmp/src
           key: gitaggregate
       - name: Update .po files
+        if: github.event_name == 'pull_request'
         run: |
           apt install gettext
           git config --global --add safe.directory $(pwd)
