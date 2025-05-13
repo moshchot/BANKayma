@@ -32,11 +32,7 @@ class AccountMoveLine(models.Model):
             value = getattr(this, "_origin", this).name or (
                 this.bankayma_edit_buffer or {}
             ).get("name")
-            if value:
-                this.name = value
-            else:
-                super(AccountMoveLine, this)._compute_name()
-        return None
+            this.name = value
 
     def _compute_price_unit(self):
         """
