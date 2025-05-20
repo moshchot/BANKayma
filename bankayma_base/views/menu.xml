@@ -9,7 +9,7 @@
         sequence="100"
         action="board.open_board_my_dash_action"
         web_icon="bankayma_base,static/description/icon.png"
-        groups="group_user"
+        groups="group_user,group_full"
     />
     <record id="action_bankayma_contacts" model="ir.actions.act_window">
         <field name="name">Contacts</field>
@@ -39,7 +39,7 @@
         id="menu_bankayma_config"
         parent="menu_bankayma_root"
         sequence="1000"
-        groups="group_manager"
+        groups="group_manager,group_full"
         name="Configuration"
     />
     <record id="base.action_res_company_form" model="ir.actions.act_window">
