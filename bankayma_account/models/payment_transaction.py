@@ -83,6 +83,8 @@ class PaymentTransaction(models.Model):
             self = self.with_context(
                 default_product_id=self.company_id.donation_credit_transfer_product_id.id
             )
+        if self.is_donation and self.company_id.donation_journal_id:
+            extra_create_values["journal_id"] = self.company_id.donation_journal_id.id
         result = super(PaymentTransaction, self)._create_payment(**extra_create_values)
         if payment_method_line:
             payment_method_line.invalidate_recordset(["payment_account_id"])

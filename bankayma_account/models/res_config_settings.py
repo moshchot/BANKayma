@@ -22,6 +22,9 @@ class ResConfigSettings(models.TransientModel):
     overhead_payment_journal_id = fields.Many2one(
         related="company_id.overhead_payment_journal_id", readonly=False
     )
+    donation_journal_id = fields.Many2one(
+        related="company_id.donation_journal_id", readonly=False
+    )
     show_bankayma_tax_totals_in_invoice = fields.Boolean(
         string="Show custom tax totals for vendor bills",
         config_parameter="bankayma_show_bankayma_tax_totals_in_invoice",

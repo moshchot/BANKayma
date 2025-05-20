@@ -47,6 +47,10 @@ class ResCompany(models.Model):
         compute_sudo=True,
         tracking=True,
     )
+    donation_journal_id = fields.Many2one(
+        "account.journal",
+        "Donation journal",
+    )
 
     def _compute_bankayma_overhead_percentage(self):
         for this in self:
