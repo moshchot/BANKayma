@@ -101,4 +101,17 @@
             </div>
         </field>
     </record>
+    <record id="res_config_settings_view_form_donation" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="donation.res_config_settings_donation" />
+        <field name="arch" type="xml">
+            <div id="donation-settings" position="inside">
+                <div class="o_setting_left_pane" />
+                <div class="o_setting_right_pane">
+                    <label for="donation_journal_id" class="col-md-5" />
+                    <field name="donation_journal_id" />
+                </div>
+            </div>
+        </field>
+    </record>
 </odoo>
