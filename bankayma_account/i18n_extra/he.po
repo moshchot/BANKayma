@@ -257,3 +257,8 @@ msgstr "שם העוסק"
 #: model_terms:ir.ui.view,arch_db:account.view_payment_term_tree
 msgid "Payment Terms"
 msgstr "מועד תשלום"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.view_move_form
+msgid "Bill Reference"
+msgstr "חשבונית מס"
