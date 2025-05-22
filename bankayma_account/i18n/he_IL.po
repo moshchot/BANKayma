@@ -795,12 +795,12 @@ msgstr "תגיות אנליטיות"
 #: model:ir.actions.act_window,name:bankayma_account.action_analytic_lines
 #: model:ir.ui.menu,name:bankayma_account.menu_bankayma_group_analytic_line
 msgid "Analytic Balance"
-msgstr ""
+msgstr "מאזן תגיות"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "שורת תגית"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_analytic_plan_id
