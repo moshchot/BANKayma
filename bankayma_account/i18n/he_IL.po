@@ -1434,7 +1434,7 @@ msgstr "בטיפול"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_expense
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_analytic_line__bankayma_type__expense
 msgid "Expense"
-msgstr ""
+msgstr "הוצאות"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__16
@@ -1622,7 +1622,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_line__bankayma_intercompany
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_analytic_line__bankayma_type__intercompany
 msgid "Intercompany"
-msgstr ""
+msgstr "פנימיות"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__intercompany_overhead_company_id
