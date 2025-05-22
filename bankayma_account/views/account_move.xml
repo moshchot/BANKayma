@@ -59,7 +59,7 @@
                 </h5>
             </xpath>
             <field name="payment_reference" position="attributes">
-                <attribute name="groups">bankayma_base.group_manager</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <field name="payment_mode_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
@@ -319,17 +319,17 @@
             </xpath>
             <xpath expr="(//field[@name='ref'])[1]" position="attributes">
                 <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
+                    bankayma_base.group_manager,bankayma_base.group_full
                 </attribute>
             </xpath>
             <xpath expr="(//field[@name='ref'])[2]" position="attributes">
                 <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
+                    bankayma_base.group_manager,bankayma_base.group_full
                 </attribute>
             </xpath>
             <xpath expr="(//field[@name='ref'])[3]" position="attributes">
                 <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
+                    bankayma_base.group_manager,bankayma_base.group_full
                 </attribute>
             </xpath>
             <notebook position="inside">
