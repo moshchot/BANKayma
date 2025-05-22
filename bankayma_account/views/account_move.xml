@@ -59,7 +59,7 @@
                 </h5>
             </xpath>
             <field name="payment_reference" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="groups">bankayma_base.group_manager</attribute>
             </field>
             <field name="payment_mode_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
