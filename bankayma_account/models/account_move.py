@@ -939,6 +939,9 @@ class AccountMove(models.Model):
         """
         result = super().get_view(view_id=view_id, view_type=view_type, **options)
 
+        if view_type != "form":
+            return result
+
         arch = etree.fromstring(result["arch"])
         for node in arch.xpath("//field[@name='invoice_line_ids']/*/field[@name]"):
             if node.attrib.get("name") == "analytic_distribution":
@@ -953,8 +956,12 @@ class AccountMove(models.Model):
                 )
             node.attrib["modifiers"] = json.dumps(modifiers)
         for node in arch.xpath("//field[@name='partner_id']"):
-            node.attrib["options"] = json.dumps(
-                {"no_create": bool(self.env.context.get("bankayma_internal_move"))}
+            options = const_eval(node.attrib.get("options") or "{}")
+            node.attrib["options"] = str(
+                dict(
+                    options,
+                    no_create=bool(self.env.context.get("bankayma_internal_move")),
+                )
             )
         result["arch"] = etree.tostring(arch)
         return result
