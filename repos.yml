@@ -1,20 +1,20 @@
 ../libreerp-git:
   defaults:
-    depth: 100
+    depth: 1000
   merges:
-    - oca 10fc74f17d7b9a2fb9f232d40e3b5ad4fa83627b
+    - oca 0710a30e47926bf7bd98b6503b71cbc2ca9128be
     - hbrunn 16.0-res.users-context_get-disable-prefetch-ocb
   remotes:
     hbrunn: https://github.com/hbrunn/OCB.git
     oca: https://github.com/OCA/OCB.git
-  shell_command_after: "if [ ! -L ../libreerp ]; then\n  mv ../libreerp
-    ../libreerp-default\n\
-    \  ln -s libreerp-git ../libreerp\nfi\n"
+  shell_command_after:
+    "if [ ! -L ../libreerp ]; then mv ../libreerp ../libreerp-default;  ln -s
+    libreerp-git ../libreerp; fi"
 account-analytic:
   defaults:
     depth: 400
   merges:
-    - oca 757c06d5e9101e099ae96092953fe1da6c855e99
+    - oca 8eb2b3f95f87a0e040f3a417bfeae7234e725454
     # account_analytic_plan_applicability_product
     - oca refs/pull/556/head
     # fix for #670, #742
@@ -25,21 +25,21 @@ account-financial-reporting:
   defaults:
     depth: 1
   merges:
-    - oca a848ff0ee50abd40f8929a3e7ad8c0f0ea1b88ec
+    - oca d0106347995a5d7a2bff977df189ec4be8bb0962
   remotes:
     oca: https://github.com/OCA/account-financial-reporting.git
 account-financial-tools:
   defaults:
     depth: 1
   merges:
-    - oca 86345702efcdf6f7ccbdd4d074e837f3fbc7764d
+    - oca cc2011337db6a7faf14a7c2cb32aa156484b34a4
   remotes:
     oca: https://github.com/OCA/account-financial-tools.git
 account-fiscal-rule:
   defaults:
     depth: 100
   merges:
-    - oca 1b72345380e5c750575fbb58a0843067100efe3c
+    - oca 09c6c9cc185faec0d135742b17ba9a668724f35b
     # fix for #763
     - oca refs/pull/457/head
   remotes:
@@ -48,128 +48,126 @@ account-invoicing:
   defaults:
     depth: 1
   merges:
-    - oca 808c66d2be973cd3a6929694e3089f42ae036047
+    - oca bdbfe6fe8b5882dcb9e5d05d577271a9e034a5ff
   remotes:
     oca: https://github.com/OCA/account-invoicing.git
 account-payment:
   defaults:
     depth: 1
   merges:
-    - oca e7c702739a3ab34d11b0a73070b14626eaefe02d
+    - oca 587263dfd5d98886ca0ff3e59513ef5e330f36c5
   remotes:
     oca: https://github.com/OCA/account-payment.git
 account-reconcile:
   defaults:
     depth: 1
   merges:
-    - oca 858fa9ee64074fd64924c374471473a528d3d6b4
+    - oca aa4401e34bec64b602cf8fefb27f66b31af64441
   remotes:
     oca: https://github.com/OCA/account-reconcile.git
 bank-payment:
   defaults:
     depth: 1
   merges:
-    - oca f30381b24301fba37dc164fb2db95f701f8eb037
+    - oca c83d437d919a6f486d8ac53ec302feb6543aa5a7
   remotes:
     oca: https://github.com/OCA/bank-payment.git
 bank-statement-import:
   defaults:
     depth: 1
   merges:
-    - oca 198b7b8ccb08b8f216778616b3cb307ce2616764
+    - oca be1727629813227f962b8032523904af84484658
   remotes:
     oca: https://github.com/OCA/bank-statement-import.git
 bank-statement-reconcile:
   defaults:
     depth: 1
   merges:
-    - oca 858fa9ee64074fd64924c374471473a528d3d6b4
+    - oca aa4401e34bec64b602cf8fefb27f66b31af64441
   remotes:
     oca: https://github.com/OCA/bank-statement-reconcile.git
 contract-repo:
   defaults:
     depth: 1
   merges:
-    - oca 4aff2af5d487491beef8106fd1855eb878e64685
+    - oca ba912553c1fe4cd54a1edfff252c4aad83e40bf9
   remotes:
     oca: https://github.com/OCA/contract.git
 currency:
   defaults:
     depth: 1
   merges:
-    - oca 9934201708adb6e09bd2558dcdbf3726d78d1ebd
+    - oca 3c095b3e93c80aa2274c6938a143dcd21c350c12
   remotes:
     oca: https://github.com/OCA/currency.git
 donation-repo:
   defaults:
     depth: 1
   merges:
-    - oca fdd36decbba767abeaa06fbec4ebfa3d183d99be
+    - oca ace890dd2c23f9552041166312879da2ab42d6ed
   remotes:
     oca: https://github.com/OCA/donation.git
 knowledge:
   defaults:
     depth: 1
   merges:
-    - oca da81ac1948a6053cfa04e359c94535c5f5355fbf
+    - oca 7c0ad400e3f6a8011f87ca44017c710319374330
   remotes:
     oca: https://github.com/OCA/knowledge.git
 mis-builder:
   defaults:
     depth: 1
   merges:
-    - oca 4856898272b2acb549de782a19bdb1d13ce446c0
+    - oca 02193c679b48d160eb4aa1cf3d44603a7397a37c
   remotes:
     oca: https://github.com/OCA/mis-builder.git
 multi-company:
   defaults:
     depth: 1
   merges:
-    - oca efef39e482cf59f2684c893790777f6a13c42010
+    - oca b122e4465f8ef650a084b3b1bc656fd7a97906d7
   remotes:
     oca: https://github.com/OCA/multi-company.git
 operating-unit:
   defaults:
     depth: 1000
   merges:
-    - oca 54c39c56ad7bfbd6a0c7ad460d784d22d6dd851d
-    # account_operating_unit
-    - oca refs/pull/656/head
+    - oca 763488ee6de8cda9510c3b95e93e1db26d05dd2b
   remotes:
     oca: https://github.com/OCA/operating-unit.git
 partner-contact:
   defaults:
     depth: 1
   merges:
-    - oca 2d183ca0f0c15765132ecdc0050d78d95dafe478
+    - oca cdd32371ceb7c321c75e916054b1bf5d8901ad27
   remotes:
     oca: https://github.com/OCA/partner-contact.git
 project:
   defaults:
     depth: 1
   merges:
-    - oca 18c813ec31c83df53befe093963ec7343071cdfb
+    - oca 0a82d6b7b5cc8c41c0d05eb42686c8dc5fd41110
   remotes:
     oca: https://github.com/OCA/project.git
 reporting-engine:
   defaults:
     depth: 1
   merges:
-    - oca 3bd8709d4d466351404f25ca23896748dd54faae
+    - oca 0da326ae86177fc15d48db41002228d8a8a0d5fe
   remotes:
     oca: https://github.com/OCA/reporting-engine.git
 server-auth:
   defaults:
     depth: 1
   merges:
-    - oca 035093daf0edc8ee30ce9b65c263aa8f1de5048a
+    - oca c381f5929def1e09a72f08410274834ec0e776f2
   remotes:
     oca: https://github.com/OCA/server-auth.git
 server-backend:
   defaults:
     depth: 100
   merges:
-    - oca 778242d9a956d9b0ead998b706d701d44996fe21
+    - oca c756460d266dbe3b2a49deb248d11a267a0f686d
     # base_user_effective_permissions
     - oca refs/pull/225/head
   remotes:
@@ -178,14 +176,14 @@ server-brand:
   defaults:
     depth: 1
   merges:
-    - oca 12c1e61d0d04d380bbb53ff3c117c4f7fe80b0b0
+    - oca 749361a09185d7debf9551c5484f4420f5e1f6aa
   remotes:
     oca: https://github.com/OCA/server-brand.git
 server-tools:
   defaults:
     depth: 1000
   merges:
-    - oca 7096308e09058a403c2aab895450fc6eb87a31cd
+    - oca 9880aa4c3d064821b29b9234a0ea863249c61458
     # module_auto_update shell fixes
     - oca refs/pull/2604/head
   remotes:
@@ -194,8 +192,8 @@ server-ux:
   defaults:
     depth: 100
   merges:
-    - oca 33f9425c893e3f09e81ddd5b6a1e90da6157c16c
-    - hbrunn 16.0-base_tier_validation-validation_flag
+    - oca 528b182c1a71c9eaee4e291ce760bcc69a284326
+    - hbrunn 16.0-base_tier_validation-validation_flag-528b182c1a71c9
     - hbrunn 16.0-base_tier_validation_server_action-active_ids
     - hbrunn 16.0-base_tier_validation_comment_required
   remotes:
@@ -205,28 +203,30 @@ social:
   defaults:
     depth: 1
   merges:
-    - oca 3a82937ed73bacb42771e5be5398ac6c9744362f
+    - oca 2326b11f559f24e4fd816e02596aec17e6535e64
   remotes:
     oca: https://github.com/OCA/social.git
 spreadsheet:
   defaults:
-    depth: 1
+    depth: 100
   merges:
-    - oca 89676f1a24a7ffadb7c123c1606db15c74192a72
+    - oca e39c271c59e0014376c2899202e8785372c523fe
+    # fix crash when downloading xslx #900
+    - oca refs/pull/63/head
   remotes:
     oca: https://github.com/OCA/spreadsheet.git
 vertical-association:
   defaults:
     depth: 1
   merges:
-    - oca cc9b92e36a125362aff5f15179f2f95e4b719022
+    - oca 8647c08dca7f655e06088521b98333730f0f51fa
   remotes:
     oca: https://github.com/OCA/vertical-association.git
 web:
   defaults:
     depth: 100
   merges:
-    - oca 91a9800ea3fe31eb7c5f3d7171a5e8c9d3e83e5d
+    - oca 4e36d940a52dc655c7007ffa734ca2ca328c2e45
     # web_dashboard_open_action
     - oca refs/pull/2634/head
     # web_ir_actions_act_window_page
@@ -239,13 +239,13 @@ website-cms:
   defaults:
     depth: 1
   merges:
-    - oca 2a3865ace4cfefb003d22f513fdce2c64ac234c9
+    - oca 21524db83a9d6e7eb464d0262ec5ab9351d9d8d2
   remotes:
     oca: https://github.com/OCA/website-cms.git
 website-repo:
   defaults:
     depth: 1
   merges:
-    - oca 5a188cc853553b7bd805b791c76f6d0e3bfab8d9
+    - oca 47ddd1aeb0441a09a4d541f8d422b6ac57bbac91
   remotes:
     oca: https://github.com/OCA/website.git

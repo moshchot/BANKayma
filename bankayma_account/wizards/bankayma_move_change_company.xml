@@ -6,14 +6,22 @@
         <field name="model">bankayma.move.change.company</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <field name="has_nondraft_moves" invisible="True" />
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': [('has_nondraft_moves', '=', False)]}"
+                >
+                    You cannot change the company of non-draft moves
+                </div>
+                <group attrs="{'invisible': [('has_nondraft_moves', '=', True)]}">
                     <field
                         name="company_id"
                         domain="[('id', '!=', current_company_id)]"
                     />
                     <field name="current_company_id" invisible="1" />
                 </group>
-                <footer>
+                <footer attrs="{'invisible': [('has_nondraft_moves', '=', True)]}">
                     <button
                         type="object"
                         name="action_change_company"

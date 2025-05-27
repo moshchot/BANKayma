@@ -40,6 +40,7 @@ class AccountPaymentTerm(models.AbstractModel):
         sign,
         untaxed_amount,
         untaxed_amount_currency,
+        cash_rounding=None,
     ):
         self.ensure_one()
         if not self.fixed_date:
@@ -52,6 +53,7 @@ class AccountPaymentTerm(models.AbstractModel):
                 sign,
                 untaxed_amount,
                 untaxed_amount_currency,
+                cash_rounding=cash_rounding,
             )
         return [
             {
