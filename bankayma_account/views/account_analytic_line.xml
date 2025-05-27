@@ -4,11 +4,14 @@
         <field name="arch" type="xml">
             <tree create="false" delete="false">
                 <field name="name" />
-                <field name="bankayma_income" />
-                <field name="bankayma_expense" />
-                <field name="bankayma_intercompany" />
-                <field name="bankayma_balance" />
+                <field name="product_id" optional="show" />
+                <field name="company_id" optional="show" />
+                <field name="bankayma_income" sum="sum" />
+                <field name="bankayma_expense" sum="sum" />
+                <field name="bankayma_intercompany" sum="sum" />
+                <field name="bankayma_balance" sum="sum" />
                 <field name="move_line_id" widget="line_open_move_widget" />
+                <field name="partner_id" optional="show" />
             </tree>
         </field>
     </record>
@@ -17,6 +20,7 @@
         <field name="arch" type="xml">
             <search>
                 <field name="partner_id" />
+                <field name="product_id" />
                 <field name="move_line_id" />
                 <field name="fiscal_position_id" />
                 <field name="amount" />
