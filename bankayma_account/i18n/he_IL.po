@@ -2964,6 +2964,11 @@ msgid "or"
 msgstr "או"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_analytic_line_list
+msgid "sum"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "with following communication for your payment:"
 msgstr "עם הסימוכין:"
