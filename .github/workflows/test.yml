@@ -79,6 +79,10 @@ jobs:
         continue-on-error: true
       - name: Initialize test db
         run: oca_init_test_database
+      - name: Install COA
+        run: |
+          $(which odoo) -d ${PGDATABASE} --save --stop-after-init
+          echo "env.ref('l10n_il.il_chart_template').try_loading(env.ref('base.main_company')); env.cr.commit()" | $(which odoo) shell
       - name: Run tests
         run: oca_run_tests
       - name: Generate coverage.xml

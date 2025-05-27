@@ -58,6 +58,7 @@
         <field name="state">code</field>
         <field name="code">
             for this in (records or record).with_context(skip_validation_check=True):
+                    this.invalidate_recordset()
                     this.action_post()
         </field>
     </record>
