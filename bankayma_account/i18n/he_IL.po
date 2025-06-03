@@ -1542,6 +1542,11 @@ msgid "Goods Return Note"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__has_nondraft_moves
+msgid "Has Nondraft Moves"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Has activity"
 msgstr "עם פעילות"
@@ -1934,6 +1939,13 @@ msgstr "חשבון חדשה"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_new_vendor_bill
 msgid "New vendor bill"
 msgstr "הזמנת רכש חדשה"
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/bankayma_move_change_company.py:0
+#, python-format
+msgid "No equivalent record found for %(record)s in company %(company)s"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_journal__bankayma_restrict_partner__no_intercompany
@@ -2863,6 +2875,11 @@ msgstr ""
 #: code:addons/bankayma_account/models/res_bank.py:0
 #, python-format
 msgid "You cannot change provisioned banks"
+msgstr ""
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
+msgid "You cannot change the company of non-draft moves"
 msgstr ""
 
 #. module: bankayma_account
