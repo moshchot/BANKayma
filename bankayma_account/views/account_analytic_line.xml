@@ -30,4 +30,25 @@
             </search>
         </field>
     </record>
+    <record id="view_account_analytic_line_pivot" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="account.view_account_analytic_line_pivot" />
+        <field name="arch" type="xml">
+            <field name="amount" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="unit_amount" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="account_id" position="after">
+                <field name="bankayma_income" type="measure" />
+                <field name="bankayma_expense" type="measure" />
+                <field name="bankayma_intercompany" type="measure" />
+                <field name="bankayma_balance" type="measure" />
+            </field>
+        </field>
+    </record>
 </odoo>
