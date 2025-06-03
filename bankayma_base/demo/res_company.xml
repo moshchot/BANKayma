@@ -11,5 +11,6 @@
             file="bankayma_base/static/description/icon.png"
         />
         <field name="external_report_layout_id" ref="web.external_layout_standard" />
+        <field name="company_cascade_from_parent" eval="True" />
     </record>
 </odoo>
