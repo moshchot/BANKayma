@@ -61,3 +61,14 @@ class AccountAnalyticLine(models.Model):
                 vals["bankayma_type"] = "income"
                 vals["bankayma_income"] = this.amount
             this.update(vals)
+
+    def action_open_move(self):
+        return {
+            "name": self.move_line_id.move_id.display_name,
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "views": [(False, "form")],
+            "res_model": self.move_line_id.move_id._name,
+            "res_id": self.move_line_id.move_id.id,
+            "target": "current",
+        }
