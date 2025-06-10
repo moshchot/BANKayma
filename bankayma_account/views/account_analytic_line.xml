@@ -2,7 +2,7 @@
     <record id="view_account_analytic_line_list" model="ir.ui.view">
         <field name="model">account.analytic.line</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false">
+            <tree create="false" delete="false" action="action_open_move" type="object">
                 <field name="name" />
                 <field name="product_id" optional="show" />
                 <field name="company_id" optional="show" />
