@@ -916,6 +916,11 @@ msgid "Bankayma Attachment"
 msgstr "מסמכים מצורפים"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_comment
+msgid "Bankayma Comment"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move_line__bankayma_edit_buffer
 msgid "Bankayma Edit Buffer"
 msgstr ""
@@ -2251,6 +2256,11 @@ msgstr "אמצעי תשלום"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Payment will be remitted in next round"
 msgstr "התשלום יועבר בסבב התשלומים הקרוב"
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_account_payment
+msgid "Payments"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
