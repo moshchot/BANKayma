@@ -607,6 +607,10 @@ class AccountMove(models.Model):
                 line.bankayma_parent_move_line_id = parent_line
             if post:
                 invoice.action_post()
+                for line1, line2 in zip(
+                    this.invoice_line_ids, invoice.auto_invoice_ids.invoice_line_ids
+                ):
+                    line2.analytic_distribution = line1.analytic_distribution
                 if pay:
                     invoice._bankayma_pay(
                         journal=invoice.company_id.overhead_payment_journal_id
