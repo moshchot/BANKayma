@@ -643,7 +643,9 @@ class AccountMove(models.Model):
             invoices += invoice
         return invoices
 
-    def _bankayma_pay(self, journal=None, payment_communication=None):
+    def _bankayma_pay(
+        self, journal=None, payment_communication=None, payment_comment=None
+    ):
         """Pay an invoice with the payment register wizard"""
         action = self.action_register_payment()
         payment_form = Form(
@@ -655,6 +657,8 @@ class AccountMove(models.Model):
             payment_form.journal_id = journal
         if payment_communication:
             payment_form.communication = payment_communication
+        if payment_comment:
+            payment_form.comment = payment_comment
         payment_form.save().action_create_payments()
 
     def request_validation(self):
@@ -899,6 +903,11 @@ class AccountMove(models.Model):
             result["Details"]["Type"] = product_sumit_types[0]
         result["Details"]["Date"] = date.today().isoformat()
         result["Details"]["DueDate"] = date.today().isoformat()
+        payment = self.line_ids.mapped(
+            "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+        )
+        if payment.bankayma_comment:
+            result["Details"]["Description"] = payment.bankayma_comment
         return result
 
     def _invoice_paid_hook(self):

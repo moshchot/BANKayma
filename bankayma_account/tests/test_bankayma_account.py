@@ -1,6 +1,8 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from unittest.mock import patch
+
 from odoo import exceptions
 from odoo.fields import Command
 from odoo.tests.common import Form, TransactionCase
@@ -521,3 +523,43 @@ class TestBankaymaAccount(TransactionCase):
         """
         self.child1.unlink()
         self.assertFalse(self.child1.exists())
+
+    def test_sumit(self):
+        """
+        Test sumit specific functionality
+        """
+        journal = self.env["account.journal"].search(
+            [("type", "=", "sale"), ("company_id", "=", self.child1.id)], limit=1
+        )
+        journal.use_sumit = True
+        invoice = self._create_invoice(self.child1, self.user_child1)
+        with patch.object(
+            self.env["sumit.account"].__class__, "_request"
+        ) as mock_request:
+            mock_request.side_effect = lambda self, *args, **kwargs: {
+                "DocumentNumber": 42,
+                "DocumentDownloadURL": "",
+            }
+            invoice.sudo()._bankayma_pay(payment_comment="the payment communication")
+        mock_request.assert_called()
+        self.assertEqual(
+            mock_request.call_args[0][1]["Details"]["Description"],
+            "the payment communication",
+        )
+        invoice1 = self._create_invoice(self.child1, self.user_child1)
+        invoice2 = self._create_invoice(self.child1, self.user_child1)
+        with patch.object(
+            self.env["sumit.account"].__class__, "_request"
+        ) as mock_request:
+            mock_request.side_effect = lambda self, *args, **kwargs: {
+                "DocumentNumber": 42,
+                "DocumentDownloadURL": "",
+            }
+            (invoice1 + invoice2).sudo()._bankayma_pay(
+                payment_comment="the payment communication"
+            )
+        mock_request.assert_called()
+        self.assertEqual(
+            mock_request.call_args[0][1]["Details"]["Description"],
+            "the payment communication",
+        )

@@ -65,6 +65,7 @@ class AccountPaymentRegister(models.TransientModel):
                     "payment_method_line_id": payment_method,
                     "payment_date": self.payment_date,
                     "communication": self.communication,
+                    "comment": self.comment,
                     "use_sumit_this_payment": self.use_sumit_this_payment,
                 }
             )
@@ -74,3 +75,15 @@ class AccountPaymentRegister(models.TransientModel):
                 journal._cache["use_sumit"] = self.use_sumit_this_payment
             last_result = super()._create_payments()
         return last_result
+
+    def _create_payment_vals_from_wizard(self, batch_result):
+        result = super()._create_payment_vals_from_wizard(batch_result)
+        if self.comment:
+            result["bankayma_comment"] = self.comment
+        return result
+
+    def _create_payment_vals_from_batch(self, batch_result):
+        result = super()._create_payment_vals_from_batch(batch_result)
+        if self.comment:
+            result["bankayma_comment"] = self.comment
+        return result
