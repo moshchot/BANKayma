@@ -72,7 +72,8 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
                     "line_ids": changed_move_lines,
                 }
             )
-            move.line_ids.analytic_line_ids.unlink()
-            move.line_ids._create_analytic_lines()
+            if move.state == "posted":
+                move.line_ids.analytic_line_ids.unlink()
+                move.line_ids._create_analytic_lines()
 
         return result
