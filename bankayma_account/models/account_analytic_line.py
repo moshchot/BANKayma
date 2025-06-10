@@ -45,7 +45,7 @@ class AccountAnalyticLine(models.Model):
                 "bankayma_income": 0,
                 "bankayma_expense": 0,
                 "bankayma_intercompany": 0,
-                "bankayma_balance": 0,
+                "bankayma_balance": this.amount,
             }
             journal = this.move_line_id.journal_id
             if (
@@ -54,13 +54,10 @@ class AccountAnalyticLine(models.Model):
             ):
                 vals["bankayma_type"] = "intercompany"
                 vals["bankayma_intercompany"] = this.amount
-                vals["bankayma_balance"] = this.amount
             elif this.amount < 0:
                 vals["bankayma_type"] = "expense"
-                vals["bankayma_expense"] = -this.amount
-                vals["bankayma_balance"] = this.amount
+                vals["bankayma_expense"] = this.amount
             else:
                 vals["bankayma_type"] = "income"
                 vals["bankayma_income"] = this.amount
-                vals["bankayma_balance"] = this.amount
             this.update(vals)
