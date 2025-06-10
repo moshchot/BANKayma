@@ -73,6 +73,8 @@ class BankaymaMoveChangeCompany(models.TransientModel):
                 {
                     "credit": 0,
                     "debit": 0,
+                    "amount_currency": False,
+                    "balance": 0,
                 }
             )
             invoice_lines.env.flush_all()
@@ -80,9 +82,6 @@ class BankaymaMoveChangeCompany(models.TransientModel):
                 {
                     "display_type": "line_note",
                     "account_id": False,
-                    "amount_currency": False,
-                    "credit": 0,
-                    "debit": 0,
                     "tax_ids": False,
                 }
             )
