@@ -67,6 +67,11 @@ msgid "Cascade values to child companies"
 msgstr ""
 
 #. module: company_cascade
+#: model:ir.model,name:company_cascade.model_company_cascade_up_mixin
+msgid "Cascade values upwards"
+msgstr ""
+
+#. module: company_cascade
 #: model:ir.model,name:company_cascade.model_res_company
 msgid "Companies"
 msgstr ""

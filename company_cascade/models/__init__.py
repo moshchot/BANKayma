@@ -1,4 +1,5 @@
 from . import company_cascade_mixin
+from . import company_cascade_up_mixin
 from . import account_account
 from . import account_analytic_account
 from . import account_analytic_plan

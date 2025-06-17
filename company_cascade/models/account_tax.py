@@ -18,6 +18,8 @@ class AccountTaxRepartitionLine(models.Model):
         if vals.get("repartition_type") == "base":
             return self.search(
                 [
+                    ("factor_percent", "=", vals.get("factor_percent")),
+                    ("account_id", "=", vals.get("account_id")),
                     ("repartition_type", "=", vals.get("repartition_type")),
                     ("invoice_tax_id", "=", vals.get("invoice_tax_id")),
                     ("refund_tax_id", "=", vals.get("refund_tax_id")),
