@@ -63,4 +63,10 @@
     <function model="res.company" name="_company_cascade">
         <value eval="ref('base.main_company')" />
     </function>
+    <function model="ir.property" name="_company_cascade">
+        <value
+            model="ir.property"
+            eval="obj([]).search([('company_id', '=', ref('base.main_company'))]).ids"
+        />
+    </function>
 </odoo>

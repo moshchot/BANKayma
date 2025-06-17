@@ -563,3 +563,24 @@ class TestBankaymaAccount(TransactionCase):
             mock_request.call_args[0][1]["Details"]["Description"],
             "the payment communication",
         )
+
+    def test_tax_cascade_up(self):
+        """
+        Test that taxes created in child company are created in parent and lateral
+        companies
+        """
+        child1_tax = (
+            self.env["account.tax"]
+            .with_company(self.child1)
+            .with_user(self.user_child1)
+            .create(
+                {
+                    "name": "child1 tax",
+                }
+            )
+        )
+        self.assertEqual(child1_tax.company_cascade_parent_id.company_id, self.parent)
+        self.assertItemsEqual(
+            child1_tax.company_cascade_parent_id.company_cascade_child_ids.company_id,
+            self.child1 + self.child2,
+        )
