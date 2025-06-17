@@ -1586,6 +1586,13 @@ msgid "ID"
 msgstr "מזהה"
 
 #. module: bankayma_account
+#: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__mass_mailing_name
+msgid ""
+"If set, a mass mailing will be created so that you can track its results in "
+"the Email Marketing app."
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_account_tax_group__bankayma_offer_removal
 msgid ""
 "If this is checked, moves with taxes belonging to this group offer a button "
@@ -1845,6 +1852,11 @@ msgid "Mail templates"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mailing_list_ids
+msgid "Mailing List"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_journal_form
 msgid "Mails/Chatter"
 msgstr ""
@@ -1875,6 +1887,21 @@ msgstr "מסב"
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_l10n_il_masav_export
 msgid "Masav export"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mass_mailing_id
+msgid "Mass Mailing"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__campaign_id
+msgid "Mass Mailing Campaign"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__mass_mailing_name
+msgid "Mass Mailing Name"
 msgstr ""
 
 #. module: bankayma_account
