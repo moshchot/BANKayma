@@ -20,6 +20,9 @@
         "event",
         "mail_debrand",
         "mail_discuss_security",
+        "mail_tracking_mass_mailing",
+        "mass_mailing_list_dynamic",
+        "mass_mailing_partner",
         "membership",
         "disable_odoo_online",
         "base_portal_type",
@@ -68,6 +71,7 @@
     ],
     "data": [
         "data/mail_message_subtype.xml",
+        "data/mailing_list.xml",
         "data/res_company.xml",
         "data/res_users.xml",
         "security/bankayma_base.xml",

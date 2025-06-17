@@ -1,0 +1,12 @@
+<odoo>
+    <record id="mass_mailing_project_manager" model="mailing.list">
+        <field name="name">Project managers</field>
+        <field name="dynamic" eval="True" />
+        <field name="sync_method">full</field>
+        <field
+            name="sync_domain"
+            eval="&quot;[('user_ids.groups_id', '=', %s)]&quot; % ref('bankayma_base.group_manager')"
+        />
+        <field name="is_public" eval="False" />
+    </record>
+</odoo>
