@@ -71,11 +71,11 @@
     ],
     "data": [
         "data/mail_message_subtype.xml",
-        "data/mailing_list.xml",
         "data/res_company.xml",
         "data/res_users.xml",
         "security/bankayma_base.xml",
         "security/ir.model.access.csv",
+        "data/mailing_list.xml",
         "views/res_company.xml",
         "views/res_partner.xml",
         "views/res_users.xml",
