@@ -315,8 +315,7 @@ msgstr "הופקה קבלה"
 #, python-format
 msgid ""
 "Sumit document: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
-msgstr ""
-"הופק קבלה: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
+msgstr "הופק קבלה: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_payment_method__sumit_type__7
