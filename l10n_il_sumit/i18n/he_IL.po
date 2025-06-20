@@ -58,12 +58,12 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "נוצרה ע״י"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__create_date
 msgid "Created on"
-msgstr ""
+msgstr "בתאריך"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_payment_method__sumit_type__5
@@ -163,12 +163,12 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__0
 msgid "Invoice"
-msgstr ""
+msgstr "חשבון"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__1
 msgid "Invoice And Receipt"
-msgstr ""
+msgstr "חשבון וקבלה"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type
@@ -264,7 +264,7 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__2
 msgid "Receipt"
-msgstr ""
+msgstr "קבלה"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__sequence
@@ -306,7 +306,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_move__sumit_document_url
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_payment__sumit_document_url
 msgid "Sumit document"
-msgstr ""
+msgstr "הופקה קבלה"
 
 #. module: l10n_il_sumit
 #. odoo-python
@@ -316,6 +316,7 @@ msgstr ""
 msgid ""
 "Sumit document: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
 msgstr ""
+"הופק קבלה: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_payment_method__sumit_type__7
