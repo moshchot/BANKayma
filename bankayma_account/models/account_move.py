@@ -13,6 +13,7 @@ from odoo.osv.expression import OR
 from odoo.tests.common import Form
 from odoo.tools import float_utils, html2plaintext
 from odoo.tools.safe_eval import const_eval
+from odoo.tools.translate import code_translations
 
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
 
@@ -767,23 +768,22 @@ class AccountMove(models.Model):
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):
         AccountTax = self.env["account.tax"].with_company(company)
         tax_group = fpos.bankayma_deduct_tax_group_id
-        return (
-            AccountTax.search(
-                [
-                    ("type_tax_use", "=", "purchase"),
-                    ("amount", "=", tax_percentage),
-                    ("price_include", "=", True),
-                    ("include_base_amount", "=", False),
-                    ("is_base_affected", "=", False),
-                    ("amount_type", "=", "code"),
-                    ("company_id", "=", company.id),
-                    ("tax_group_id", "=", tax_group.id),
-                    ("bankayma_vendor_specific", "=", True),
-                    ("analytic", "=", True),
-                ]
-            )
-            or create
-            and AccountTax.create(
+        result = AccountTax.search(
+            [
+                ("type_tax_use", "=", "purchase"),
+                ("amount", "=", tax_percentage),
+                ("price_include", "=", True),
+                ("include_base_amount", "=", False),
+                ("is_base_affected", "=", False),
+                ("amount_type", "=", "code"),
+                ("company_id", "=", company.id),
+                ("tax_group_id", "=", tax_group.id),
+                ("bankayma_vendor_specific", "=", True),
+                ("analytic", "=", True),
+            ]
+        )
+        if not result and create:
+            result = AccountTax.create(
                 {
                     "name": _("%(name)s %(percentage)d%%")
                     % {"name": tax_group.name, "percentage": tax_percentage},
@@ -813,8 +813,19 @@ class AccountMove(models.Model):
                     "analytic": True,
                 }
             )
-            or AccountTax
-        )
+            for lang in self.env["res.lang"].search([]).mapped("code"):
+                result.with_context(lang=lang).write(
+                    {
+                        "name": code_translations.get_python_translations(
+                            "bankayma_account", lang
+                        ).get("%(name)s %(percentage)d%%", "%(name)s %(percentage)d%%")
+                        % {
+                            "name": tax_group.with_context(lang=lang).name,
+                            "percentage": tax_percentage,
+                        }
+                    }
+                )
+        return result
 
     def button_cancel_unlink(self):
         self.button_cancel()
