@@ -18,18 +18,16 @@ class AccountTaxRepartitionLine(models.Model):
 
     def _company_cascade_find_candidate(self, company, vals):
         """Always overwrite the base repartition line"""
-        if vals.get("repartition_type") == "base":
-            result = self.search(
-                [
-                    ("factor_percent", "=", vals.get("factor_percent")),
-                    ("account_id", "=", vals.get("account_id")),
-                    ("repartition_type", "=", vals.get("repartition_type")),
-                    ("invoice_tax_id", "=", vals.get("invoice_tax_id")),
-                    ("refund_tax_id", "=", vals.get("refund_tax_id")),
-                    ("company_id", "=", company.id),
-                ],
-                limit=1,
-            )
-            _logger.debug("find_candidate: returning %s", result)
-            return result
-        return super()._company_cascade_find_candidate(company, vals)
+        result = self.search(
+            [
+                ("factor_percent", "=", vals.get("factor_percent")),
+                ("account_id", "=", vals.get("account_id")),
+                ("repartition_type", "=", vals.get("repartition_type")),
+                ("invoice_tax_id", "=", vals.get("invoice_tax_id")),
+                ("refund_tax_id", "=", vals.get("refund_tax_id")),
+                ("company_id", "=", company.id),
+            ],
+            limit=1,
+        )
+        _logger.debug("find_candidate: returning %s", result)
+        return result
