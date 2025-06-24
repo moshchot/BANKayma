@@ -584,3 +584,16 @@ class TestBankaymaAccount(TransactionCase):
             child1_tax.company_cascade_parent_id.company_cascade_child_ids.company_id,
             self.child1 + self.child2,
         )
+        child1_tax2 = (
+            self.env["account.tax"]
+            .with_company(self.child1)
+            .with_user(self.user_child1)
+            .create(
+                {
+                    "name": "child1 tax",
+                }
+            )
+        )
+        self.assertEqual(
+            child1_tax2.company_cascade_parent_id, child1_tax.company_cascade_parent_id
+        )
