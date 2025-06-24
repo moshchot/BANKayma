@@ -1,10 +1,12 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-
+import logging
 from collections.abc import Iterable
 from contextlib import contextmanager
 
 from odoo import api, fields, models
+
+_logger = logging.getLogger("company_cascade")
 
 
 class CompanyCascadeMixin(models.AbstractModel):
@@ -91,6 +93,7 @@ class CompanyCascadeMixin(models.AbstractModel):
                     )
         # first step: exclude x2many fields that cascade themselves
         for this in self:
+            _logger.debug("cascading %s", this)
             if not this.company_id:
                 continue
             values = this.read(
@@ -233,16 +236,26 @@ class CompanyCascadeMixin(models.AbstractModel):
     def _company_cascade_get_all(self, company=None):
         """Return all records that are the equivalent to self in some company"""
         if not self:
+            _logger.debug("get_all: self is falsy, return empty record")
             return self.browse([])
         if not self.company_id:
+            _logger.debug("get_all: no company, return self")
             return self
         record = self
         while record.company_cascade_parent_id:
+            _logger.debug(
+                "get_all: company_cascade_parent_id %s",
+                record.company_cascade_parent_id,
+            )
             record = record.company_cascade_parent_id
         records = record
         while records.mapped("company_cascade_child_ids") - records:
             records |= records.mapped("company_cascade_child_ids")
-        return records.filtered(lambda x: x.company_id == company if company else True)
+        result = records.filtered(
+            lambda x: x.company_id == company if company else True
+        )
+        _logger.debug("get_all: returning %s", result)
+        return result
 
     def _company_cascade_find_candidate(self, company, vals):
         """
@@ -250,7 +263,7 @@ class CompanyCascadeMixin(models.AbstractModel):
         This is used before creating cascading record to avoid constraints failing
         """
         if "code" in self._fields and self._fields["code"].required:
-            return self.search(
+            result = self.search(
                 [
                     ("code", "=", vals.get("code")),
                     "|",
@@ -259,7 +272,10 @@ class CompanyCascadeMixin(models.AbstractModel):
                 ],
                 order="company_id desc",
             )
-        return self.browse([])
+        else:
+            result = self.browse([])
+        _logger.debug("find_candidate: returning %s", result)
+        return result
 
     def _company_cascade_create(self, values):
         result = self.browse([])
@@ -267,6 +283,7 @@ class CompanyCascadeMixin(models.AbstractModel):
             self._company_cascade_get_companies()
             - self._company_cascade_get_children().mapped("company_id")
         )
+        _logger.debug("cascade create %s into %s", values, create_in_companies)
         for create_in_company in create_in_companies:
             vals = self._company_cascade_values(create_in_company, values)
             vals["company_cascade_parent_id"] = self.id
@@ -286,6 +303,9 @@ class CompanyCascadeMixin(models.AbstractModel):
 
     def _company_cascade_write(self, values):
         result = self.browse([])
+        _logger.debug(
+            "cascade write %s to %s", values, self._company_cascade_get_children()
+        )
         for record in self._company_cascade_get_children():
             vals = {
                 key: value

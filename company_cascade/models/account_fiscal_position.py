@@ -1,7 +1,10 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+import logging
 
 from odoo import models
+
+_logger = logging.getLogger("company_cascade")
 
 
 class AccountFiscalPosition(models.Model):
@@ -14,7 +17,7 @@ class AccountFiscalPositionTax(models.Model):
     _name = "account.fiscal.position.tax"
 
     def _company_cascade_find_candidate(self, company, vals):
-        return self.search(
+        result = self.search(
             [
                 (
                     "position_id",
@@ -25,6 +28,8 @@ class AccountFiscalPositionTax(models.Model):
                 ("tax_dest_id", "=", vals.get("tax_dest_id")),
             ]
         )
+        _logger.debug("find_candidate: returning %s", result)
+        return result
 
 
 class AccountFiscalPositionAccount(models.Model):
@@ -32,7 +37,7 @@ class AccountFiscalPositionAccount(models.Model):
     _name = "account.fiscal.position.account"
 
     def _company_cascade_find_candidate(self, company, vals):
-        return self.search(
+        result = self.search(
             [
                 (
                     "position_id",
@@ -43,3 +48,5 @@ class AccountFiscalPositionAccount(models.Model):
                 ("account_dest_id", "=", vals.get("account_dest_id")),
             ]
         )
+        _logger.debug("find_candidate: returning %s", result)
+        return result

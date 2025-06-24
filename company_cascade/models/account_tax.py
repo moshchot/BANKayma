@@ -1,7 +1,10 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+import logging
 
 from odoo import models
+
+_logger = logging.getLogger("company_cascade")
 
 
 class AccountTax(models.Model):
@@ -16,7 +19,7 @@ class AccountTaxRepartitionLine(models.Model):
     def _company_cascade_find_candidate(self, company, vals):
         """Always overwrite the base repartition line"""
         if vals.get("repartition_type") == "base":
-            return self.search(
+            result = self.search(
                 [
                     ("factor_percent", "=", vals.get("factor_percent")),
                     ("account_id", "=", vals.get("account_id")),
@@ -27,4 +30,6 @@ class AccountTaxRepartitionLine(models.Model):
                 ],
                 limit=1,
             )
+            _logger.debug("find_candidate: returning %s", result)
+            return result
         return super()._company_cascade_find_candidate(company, vals)
