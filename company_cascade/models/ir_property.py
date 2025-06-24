@@ -1,9 +1,11 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-
+import logging
 import threading
 
 from odoo import api, models
+
+_logger = logging.getLogger("company_cascade")
 
 
 class IrProperty(models.Model):
@@ -48,10 +50,12 @@ class IrProperty(models.Model):
         return result
 
     def _company_cascade_find_candidate(self, company, vals):
-        return self.search(
+        result = self.search(
             [
                 ("fields_id", "=", vals.get("fields_id")),
                 ("res_id", "=", vals.get("res_id")),
                 ("company_id", "=", company.id),
             ]
         )
+        _logger.debug("find_candidate: returning %s", result)
+        return result
