@@ -156,6 +156,7 @@ class TestCompanyCascade(TransactionCase):
         self.env.invalidate_all()
         self.assertFalse(product.with_user(self.cascading_child_user).taxes_id)
         self._apply_cascade_wizard(tax, [])
+        self.env.invalidate_all()
         self._apply_cascade_wizard(product, [])
         self.env.invalidate_all()
         self.assertEqual(
