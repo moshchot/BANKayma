@@ -196,6 +196,7 @@ server-ux:
     - hbrunn 16.0-base_tier_validation-validation_flag-528b182c1a71c9
     - hbrunn 16.0-base_tier_validation_server_action-active_ids
     - hbrunn 16.0-base_tier_validation_comment_required
+    - hbrunn 16.0-fix-1040
   remotes:
     hbrunn: https://github.com/hbrunn/server-ux.git
     oca: https://github.com/OCA/server-ux.git
