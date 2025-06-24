@@ -54,14 +54,18 @@ class CompanyCascadeUpMixin(models.AbstractModel):
                     or None
                 )
                 if parent_vals:
-                    parent.with_context(company_cascade_up=True).write(parent_vals)
-                parent.with_context(company_cascade_up=True)._company_cascade(
-                    fields=parent_vals
-                )
+                    cascade_write = self._company_cascade_cascade_write
+                    cascade_create = self._company_cascade_cascade_create
+                    try:
+                        self.__class__._company_cascade_cascade_write = True
+                        self.__class__._company_cascade_cascade_create = True
+                        parent.with_context(company_cascade_up=True).write(parent_vals)
+                    finally:
+                        self.__class__._company_cascade_cascade_write = cascade_write
+                        self.__class__._company_cascade_cascade_create = cascade_create
+
             else:
-                parent_company = this.company_id
-                while parent_company.parent_id:
-                    parent_company = parent_company.parent_id
+                parent_company = this.company_id.parent_id
                 if parent_company and parent_company != this.company_id:
                     this_vals = this.read(
                         self._company_cascade_field_names_scalar(this._fields),
@@ -88,6 +92,9 @@ class CompanyCascadeUpMixin(models.AbstractModel):
                                 candidate.write(
                                     {k: v for k, v in parent_vals.items() if k in vals}
                                 )
+                            this.with_context(
+                                company_cascade_up=False, company_cascade=False
+                            ).company_cascade_parent_id = candidate
                         else:
                             self.create(parent_vals)
                     finally:
