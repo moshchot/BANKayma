@@ -1043,6 +1043,11 @@ msgid "Cancelling because of error: %s"
 msgstr "לאחר בדיקה עם מערכת 1000: %s הבקשה מעוכבת עד לעדכון פרטים או מסמכים "
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_company_cascade_mixin
+msgid "Cascade values to child companies"
+msgstr ""
+
+#. module: bankayma_account
 #: model:account.payment.method,name:bankayma_account.payment_method_cash_in
 #: model:account.payment.method,name:bankayma_account.payment_method_cash_out
 msgid "Cash"
@@ -1120,7 +1125,24 @@ msgid "Company"
 msgstr "יוזמה"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_account__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_account__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_analytic_plan__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_account__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position_tax__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_journal__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_method_line__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_mode__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_term__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_tax__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_account_tax_repartition_line__company_code
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_company_cascade_mixin__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_ir_property__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_ir_sequence__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_payment_provider__company_code
+#: model:ir.model.fields,field_description:bankayma_account.field_res_company__company_code
 msgid "Company Code"
 msgstr "קוד יוזמה"
 
