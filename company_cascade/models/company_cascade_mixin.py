@@ -368,6 +368,29 @@ class CompanyCascadeMixin(models.AbstractModel):
             )
         ]
 
+    def _company_cascade_set_parent(self):
+        """
+        Search for a candidate in parent company and set as parent if no parent is set
+        """
+        for this in self:
+            parent_company = this.company_id.parent_id
+            if not parent_company:
+                continue
+            this_vals = this.read(
+                self._company_cascade_field_names_scalar(this._fields),
+                load="_classic_write",
+            )[0]
+            parent_vals = self._company_cascade_values(
+                parent_company,
+                this_vals,
+            )
+            this.company_cascade_parent_id = (
+                self.sudo()._company_cascade_find_candidate(
+                    parent_company,
+                    parent_vals,
+                )
+            )
+
     @contextmanager
     def _company_cascade_protect(self):
         """
