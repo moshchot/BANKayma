@@ -2003,7 +2003,9 @@ msgstr "הזמנת רכש חדשה"
 #. odoo-python
 #: code:addons/bankayma_account/wizards/bankayma_move_change_company.py:0
 #, python-format
-msgid "No equivalent record found for %(record)s in company %(company)s"
+msgid ""
+"No equivalent analytic tag found for %(record)s in company %(company)s - "
+"Remove analytic tag and try again"
 msgstr ""
 
 #. module: bankayma_account
