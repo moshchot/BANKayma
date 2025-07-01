@@ -1965,6 +1965,11 @@ msgid "Move: Vendor-only message"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment_method_line__name
+msgid "Name"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__need_validation
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__need_validation
@@ -2275,6 +2280,7 @@ msgstr "אמצעי תשלום"
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_account_payment_method
+#: model:ir.model,name:bankayma_account.model_account_payment_method_line
 msgid "Payment Methods"
 msgstr "אמצעי תשלום"
 
