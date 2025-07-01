@@ -11,6 +11,17 @@ class AccountTax(models.Model):
     _inherit = ["account.tax", "company.cascade.mixin"]
     _name = "account.tax"
 
+    def create(self, vals_list):
+        """
+        As the tax model sets defaults for repartition lines, those are created already
+        during cascading, without proper parents. Set them accordingly
+        """
+        result = super().create(vals_list)
+        (
+            result.invoice_repartition_line_ids + result.refund_repartition_line_ids
+        )._company_cascade_set_parent()
+        return result
+
 
 class AccountTaxRepartitionLine(models.Model):
     _inherit = ["account.tax.repartition.line", "company.cascade.mixin"]

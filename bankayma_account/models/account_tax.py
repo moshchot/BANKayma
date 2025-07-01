@@ -8,6 +8,9 @@ class AccountTax(models.Model):
     _inherit = ["account.tax", "company.cascade.up.mixin"]
     _name = "account.tax"
     _company_cascade_up_unlink = False
+    _company_cascade_cascade_unlink = False
+    _company_cascade_cascade_create = True
+    _company_cascade_cascade_write = True
 
     bankayma_vendor_specific = fields.Boolean()
 

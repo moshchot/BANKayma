@@ -580,6 +580,20 @@ class TestBankaymaAccount(TransactionCase):
             )
         )
         self.assertEqual(child1_tax.company_cascade_parent_id.company_id, self.parent)
+        self.assertEqual(
+            child1_tax.invoice_repartition_line_ids.company_cascade_parent_id.company_id,
+            self.parent,
+        )
+
+        child2_tax = child1_tax.company_cascade_parent_id._company_cascade_get_all(
+            self.child2
+        )
+        self.assertTrue(child2_tax)
+        self.assertEqual(
+            child1_tax.invoice_repartition_line_ids.company_cascade_parent_id,
+            child2_tax.invoice_repartition_line_ids.company_cascade_parent_id,
+        )
+
         self.assertItemsEqual(
             child1_tax.company_cascade_parent_id.company_cascade_child_ids.company_id,
             self.child1 + self.child2,

@@ -10,6 +10,9 @@ class CompanyCascadeUpMixin(models.AbstractModel):
     _company_cascade_up_create = True
     _company_cascade_up_write = True
     _company_cascade_up_unlink = True
+    _company_cascade_cascade_create = True
+    _company_cascade_cascade_unlink = True
+    _company_cascade_cascade_write = True
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -54,15 +57,7 @@ class CompanyCascadeUpMixin(models.AbstractModel):
                     or None
                 )
                 if parent_vals:
-                    cascade_write = self._company_cascade_cascade_write
-                    cascade_create = self._company_cascade_cascade_create
-                    try:
-                        self.__class__._company_cascade_cascade_write = True
-                        self.__class__._company_cascade_cascade_create = True
-                        parent.with_context(company_cascade_up=True).write(parent_vals)
-                    finally:
-                        self.__class__._company_cascade_cascade_write = cascade_write
-                        self.__class__._company_cascade_cascade_create = cascade_create
+                    parent.with_context(company_cascade_up=True).write(parent_vals)
 
             else:
                 parent_company = this.company_id.parent_id
@@ -82,21 +77,13 @@ class CompanyCascadeUpMixin(models.AbstractModel):
                         .with_context(company_cascade_up=True)
                         .with_company(parent_company)
                     )
-                    cascade_write = self._company_cascade_cascade_write
-                    cascade_create = self._company_cascade_cascade_create
-                    try:
-                        self.__class__._company_cascade_cascade_write = True
-                        self.__class__._company_cascade_cascade_create = True
-                        if candidate:
-                            if vals:
-                                candidate.write(
-                                    {k: v for k, v in parent_vals.items() if k in vals}
-                                )
-                            this.with_context(
-                                company_cascade_up=False, company_cascade=False
-                            ).company_cascade_parent_id = candidate
-                        else:
-                            self.create(parent_vals)
-                    finally:
-                        self.__class__._company_cascade_cascade_write = cascade_write
-                        self.__class__._company_cascade_cascade_create = cascade_create
+                    if candidate:
+                        if vals:
+                            candidate.write(
+                                {k: v for k, v in parent_vals.items() if k in vals}
+                            )
+                        this.with_context(
+                            company_cascade_up=False, company_cascade=False
+                        ).company_cascade_parent_id = candidate
+                    else:
+                        self.create(parent_vals)
