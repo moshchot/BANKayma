@@ -25,6 +25,7 @@ class ResCompany(models.Model):
     company_id = fields.Many2one(
         "res.company",
         compute=lambda self: [this.update({"company_id": this}) for this in self],
+        search=lambda self, operator, value: [("id", operator, value)],
     )
 
     def write(self, vals):
