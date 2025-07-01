@@ -4,6 +4,8 @@ import logging
 from collections.abc import Iterable
 from contextlib import contextmanager
 
+import lxml
+
 from odoo import api, fields, models
 
 _logger = logging.getLogger("company_cascade")
@@ -376,3 +378,48 @@ class CompanyCascadeMixin(models.AbstractModel):
         self.__class__._check_company = lambda self, fnames=None: None
         yield
         self.__class__._check_company = _check_company_org
+
+    @api.model
+    def _get_view(self, view_id=None, view_type="form", **options):
+        """
+        Inject fields useful for debugging
+        """
+        arch, view = super()._get_view(view_id=view_id, view_type=view_type, **options)
+
+        view_modification = getattr(
+            self, "_get_view_company_cascade_%s" % view_type, False
+        )
+        if view_modification:
+            view_modification(arch)
+
+        return arch, view
+
+    def _get_view_company_cascade_form(self, arch):
+        container = None
+        for notebook in arch.xpath("//notebook"):
+            container = lxml.etree.SubElement(
+                notebook,
+                "page",
+                {"string": "Company cascade", "groups": "base.group_no_one"},
+            )
+            break
+        if container is not None:
+            field = lxml.etree.SubElement(
+                container, "field", {"name": "company_cascade_child_ids"}
+            )
+            tree = lxml.etree.SubElement(field, "tree")
+            lxml.etree.SubElement(tree, "field", {"name": "display_name"})
+            lxml.etree.SubElement(tree, "field", {"name": "company_id"})
+            group = lxml.etree.SubElement(container, "group")
+            lxml.etree.SubElement(group, "field", {"name": "company_cascade_parent_id"})
+
+    def _get_view_company_cascade_tree(self, arch):
+        lxml.etree.SubElement(
+            arch,
+            "field",
+            {
+                "name": "company_cascade_parent_id",
+                "groups": "base.group_no_one",
+                "optional": "hidden",
+            },
+        )
