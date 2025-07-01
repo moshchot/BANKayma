@@ -10,6 +10,7 @@ _logger = logging.getLogger("company_cascade")
 class AccountPaymentMethodLine(models.Model):
     _inherit = ["account.payment.method.line", "company.cascade.mixin"]
     _name = "account.payment.method.line"
+    _company_cascade_force_fields = ("name",)
 
     company_id = fields.Many2one("res.company", related="journal_id.company_id")
 

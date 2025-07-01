@@ -92,6 +92,7 @@ class TestBankaymaAccount(TransactionCase):
                 }
             )
         )
+        bank_account_wizard._compute_linked_journal_id()
         cls.parent_bank_account = bank_account_wizard.res_partner_bank_id
         cls.parent_bank_journal = bank_account_wizard.linked_journal_id
         cls.child1 = Wizard._create_company(cls.parent, "child1", "ch1")
@@ -296,6 +297,7 @@ class TestBankaymaAccount(TransactionCase):
             self.parent.overhead_payment_journal_id.bankayma_charge_overhead = True
 
     def test_cascade(self):
+        self.env["res.lang"]._activate_lang("fr_FR")
         account = self.env["account.account"].search(
             [("company_id", "=", self.child1.id)], limit=1
         )
@@ -325,6 +327,48 @@ class TestBankaymaAccount(TransactionCase):
                     "company_cascade_child_ids.outbound_payment_method_line_ids"
                 ).mapped(lambda x: (x.name, x.code, x.payment_type))
             ),
+        )
+        method = self.env.ref("bankayma_account.payment_method_bank_out")
+        parent_method_line = (
+            self.parent_bank_journal.outbound_payment_method_line_ids.filtered(
+                lambda x: x.payment_method_id == method,
+            )
+        )
+        self.parent_bank_journal.write(
+            {
+                "outbound_payment_method_line_ids": [
+                    Command.update(
+                        parent_method_line.id,
+                        {
+                            "name": "test1",
+                        },
+                    ),
+                ],
+            }
+        )
+        self.parent_bank_journal.with_context(lang="fr_FR").write(
+            {
+                "outbound_payment_method_line_ids": [
+                    Command.update(
+                        parent_method_line.id,
+                        {
+                            "name": "test1 - fr",
+                        },
+                    ),
+                ],
+            }
+        )
+        self.parent_bank_journal._company_cascade()
+        self.assertItemsEqual(
+            set(parent_method_line.company_cascade_child_ids.mapped("name")), ["test1"]
+        )
+        self.assertItemsEqual(
+            set(
+                parent_method_line.with_context(
+                    lang="fr_FR"
+                ).company_cascade_child_ids.mapped("name")
+            ),
+            ["test1 - fr"],
         )
 
     def test_intercompany(self):
