@@ -18,6 +18,7 @@
                     <field
                         name="company_id"
                         domain="[('id', '!=', current_company_id)]"
+                        options="{'no_create': True}"
                     />
                     <field name="current_company_id" invisible="1" />
                 </group>
