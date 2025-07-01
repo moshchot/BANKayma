@@ -12,5 +12,9 @@
         />
         <field name="external_report_layout_id" ref="web.external_layout_standard" />
         <field name="company_cascade_from_parent" eval="True" />
+        <field name="country_id" ref="base.il" />
+    </record>
+    <record id="res_company_code.company_test" model="res.company">
+        <field name="country_id" ref="base.il" />
     </record>
 </odoo>
