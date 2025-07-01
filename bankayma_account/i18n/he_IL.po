@@ -2007,6 +2007,8 @@ msgid ""
 "No equivalent analytic tag found for %(record)s in company "
 "%(company)sanalytic tag and try again"
 msgstr ""
+"לא נמצאה תגית %(record)s עבור יוזמה %(company)s ,"
+"יש להסיר את התגית ולנסות שוב"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_journal__bankayma_restrict_partner__no_intercompany
