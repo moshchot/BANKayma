@@ -36,7 +36,7 @@ class BankaymaMoveChangeCompany(models.TransientModel):
             if result_record.company_id and result_record.company_id != self.company_id:
                 raise exceptions.UserError(
                     _(
-                        "No equivalent record found for %(record)s in company %(company)s"
+                        "No equivalent analytic tag found for %(record)s in company %(company)s - Remove analytic tag and try again"
                     )
                     % {
                         "record": record.display_name,
