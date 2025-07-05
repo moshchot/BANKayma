@@ -2005,6 +2005,7 @@ msgstr "הזמנת רכש חדשה"
 #, python-format
 msgid "No equivalent tag found for %(record)s in company %(company)s"
 msgstr ""
+"לא נמצאה תגית %(record)s עבור יוזמה %(company)s ,יש להסיר את התגית ולנסות שוב"
 
 #. module: bankayma_account
 #: model:ir.model.fields.selection,name:bankayma_account.selection__account_journal__bankayma_restrict_partner__no_intercompany
