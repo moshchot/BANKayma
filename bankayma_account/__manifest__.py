@@ -82,6 +82,7 @@
         "wizards/account_payment_register.xml",
         "wizards/bankayma_company_create.xml",
         "wizards/bankayma_move_change_company.xml",
+        "wizards/bankayma_move_change_payment_method.xml",
         "wizards/bankayma_move_edit_tax_totals.xml",
         "wizards/bankayma_vendor_invite.xml",
         "wizards/mass_editing_wizard.xml",
