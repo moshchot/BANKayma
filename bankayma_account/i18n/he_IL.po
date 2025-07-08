@@ -1026,6 +1026,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_payment_method_form
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_edit_tax_totals
 msgid "Cancel"
 msgstr "ביטול"
@@ -1064,6 +1065,21 @@ msgstr "עדכון תגיות"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_company_form
 msgid "Change company"
 msgstr "העברת טיוטא מיוזמה ליוזמה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_move_change_payment_method_form
+msgid "Change method"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.actions.act_window,name:bankayma_account.action_bankayma_move_change_payment_method_form
+msgid "Change payment method"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_bankayma_move_change_payment_method
+msgid "Change payment method of paid move"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_journal__bankayma_charge_overhead
@@ -1216,6 +1232,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__create_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_uid
@@ -1225,6 +1242,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__create_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__create_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__create_date
@@ -1356,6 +1374,7 @@ msgstr "תיאור"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__display_name
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__display_name
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__display_name
@@ -1601,6 +1620,7 @@ msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__id
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__id
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
@@ -1823,6 +1843,7 @@ msgstr "שפה"
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company____last_update
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line____last_update
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite____last_update
@@ -1832,6 +1853,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__write_uid
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__write_uid
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_uid
@@ -1841,6 +1863,7 @@ msgstr ""
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_company_create__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_company__write_date
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_edit_tax_totals_line__write_date
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__write_date
@@ -2275,6 +2298,7 @@ msgid "Payment Date"
 msgstr "תאריך תשלום"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_bankayma_move_change_payment_method__payment_method_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Payment Method"
 msgstr "אמצעי תשלום"
