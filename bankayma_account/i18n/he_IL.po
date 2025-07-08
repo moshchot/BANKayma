@@ -2026,6 +2026,13 @@ msgstr "הזמנת רכש חדשה"
 #. odoo-python
 #: code:addons/bankayma_account/wizards/bankayma_move_change_company.py:0
 #, python-format
+msgid "No equivalent record found for %(record)s in company %(company)s"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/wizards/bankayma_move_change_company.py:0
+#, python-format
 msgid "No equivalent tag found for %(record)s in company %(company)s"
 msgstr ""
 "לא נמצאה תגית %(record)s עבור יוזמה %(company)s ,יש להסיר את התגית ולנסות שוב"
