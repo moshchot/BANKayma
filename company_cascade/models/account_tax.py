@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
 
-from odoo import models
+from odoo import api, models
 
 _logger = logging.getLogger("company_cascade")
 
@@ -11,6 +11,7 @@ class AccountTax(models.Model):
     _inherit = ["account.tax", "company.cascade.mixin"]
     _name = "account.tax"
 
+    @api.model_create_multi
     def create(self, vals_list):
         """
         As the tax model sets defaults for repartition lines, those are created already
