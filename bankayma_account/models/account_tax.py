@@ -28,3 +28,19 @@ class AccountTax(models.Model):
             ],
             limit=1,
         )
+
+
+class AccountTaxRepartitionLine(models.Model):
+    _inherit = "account.tax.repartition.line"
+
+    def _company_cascade_find_candidate(self, company, vals):
+        """Match repartition types only by type"""
+        return self.search(
+            [
+                ("repartition_type", "=", vals.get("repartition_type")),
+                ("invoice_tax_id", "=", vals.get("invoice_tax_id")),
+                ("refund_tax_id", "=", vals.get("refund_tax_id")),
+                ("company_id", "=", company.id),
+            ],
+            limit=1,
+        )
