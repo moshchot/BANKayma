@@ -323,9 +323,7 @@ class CompanyCascadeMixin(models.AbstractModel):
     def _company_cascade_values_equal(self, field, value):
         """Comare values, return True if value is equal to field's value in self"""
         if self._fields[field].comodel_name:
-            return self[field] == self.env[self._fields[field].comodel_name].browse(
-                value
-            )
+            return self[field].ids == self.new({field: value})[field].ids
         return self[field] == value
 
     def _company_cascade_field_names_scalar(self, fields=None):
