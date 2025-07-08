@@ -223,10 +223,19 @@ class CompanyCascadeMixin(models.AbstractModel):
                 for Command, _id, _data in value
             ]
             if isinstance(value[0], Iterable)
-            else [
-                self._company_cascade_value_many2one(company, field, _id)
-                for _id in value
-            ]
+            else list(
+                filter(
+                    None,
+                    [
+                        field.null(self)
+                        .browse(_id)
+                        ._company_cascade_get_all(company)
+                        .id
+                        for _id in value
+                        if field.null(self).browse(_id).exists()
+                    ],
+                )
+            )
         )
 
     def _company_cascade_get_companies(self):
