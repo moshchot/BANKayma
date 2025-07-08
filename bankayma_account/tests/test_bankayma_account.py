@@ -613,6 +613,9 @@ class TestBankaymaAccount(TransactionCase):
         Test that taxes created in child company are created in parent and lateral
         companies
         """
+        child1_tax_account = self.env["account.tax"].search(
+            [("company_id", "=", self.child1.id)], limit=1
+        )
         child1_tax = (
             self.env["account.tax"]
             .with_company(self.child1)
@@ -620,6 +623,17 @@ class TestBankaymaAccount(TransactionCase):
             .create(
                 {
                     "name": "child1 tax",
+                    "invoice_repartition_line_ids": [
+                        (0, 0, {"repartition_type": "base"}),
+                        (
+                            0,
+                            0,
+                            {
+                                "repartition_type": "tax",
+                                "account_id": child1_tax_account.id,
+                            },
+                        ),
+                    ],
                 }
             )
         )
@@ -636,6 +650,19 @@ class TestBankaymaAccount(TransactionCase):
         self.assertEqual(
             child1_tax.invoice_repartition_line_ids.company_cascade_parent_id,
             child2_tax.invoice_repartition_line_ids.company_cascade_parent_id,
+        )
+        self.assertTrue(
+            child2_tax.invoice_repartition_line_ids.filtered(
+                lambda x: x.repartition_type == "tax"
+            ).account_id,
+        )
+        self.assertEqual(
+            child1_tax.invoice_repartition_line_ids.filtered(
+                lambda x: x.repartition_type == "tax"
+            ).account_id.code,
+            child2_tax.invoice_repartition_line_ids.filtered(
+                lambda x: x.repartition_type == "tax"
+            ).account_id.code,
         )
 
         self.assertItemsEqual(
