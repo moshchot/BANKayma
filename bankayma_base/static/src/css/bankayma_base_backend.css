@@ -56,7 +56,7 @@ div.o-scrollbar.vertical {
     animation: vertical-shaking 0.3s 2;
 }
 .o_Message.o-not-discussion:not(.o-notification) .o_Message_prettyBody {
-    background: #d6cdcd91;
+    background-color: #d6cdcd91;
     border-radius: 14px;
     padding: 10px;
     border: 1px solid #beaaaa;
