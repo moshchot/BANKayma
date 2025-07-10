@@ -2028,6 +2028,7 @@ msgstr "הזמנת רכש חדשה"
 #, python-format
 msgid "No equivalent record found for %(record)s in company %(company)s"
 msgstr ""
+"לא נמצאה תגית %(record)s עבור יוזמה %(company)s ,יש להסיר את התגית ולנסות שוב"
 
 #. module: bankayma_account
 #. odoo-python
@@ -2352,7 +2353,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_position_form
 msgid "Payroll"
-msgstr ""
+msgstr "משכורת"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_fiscal_position__bankayma_payroll_product_id
