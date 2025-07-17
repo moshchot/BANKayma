@@ -30,3 +30,18 @@ msgstr ""
 "<i class=\"fa fa-info-circle\"/>\n"
 "       <strong>הועבר לבדיקה, הצוות שלנו עובד על זה.\n </strong>"
 "                תודה על הסבלנות :)"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/components/chatter_topbar/chatter_topbar.xml:0
+#: code:addons/mail/static/src/models/composer_view.js:0
+#, python-format
+msgid "Log note"
+msgstr "הערה פנימית לצוות"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/components/chatter_topbar/chatter_topbar.xml:0
+#, python-format
+msgid "Send message"
+msgstr "הודעה לכולם"
