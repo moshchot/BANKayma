@@ -10,6 +10,7 @@
     "depends": [
         "bankayma_account",
         "website",
+        "website_event",
     ],
     "data": [
         "views/templates.xml",

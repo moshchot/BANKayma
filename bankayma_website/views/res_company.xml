@@ -11,9 +11,10 @@
                     <group>
                         <field name="website_link" widget="url" />
                         <field name="seo_name" required="True" />
-                        <field name="bankayma_website_subtitle" widget="url" />
+                        <field name="bankayma_website_subtitle" />
                         <field name="bankayma_website_opening_hours" />
                         <field name="bankayma_website_geolink" widget="url" />
+                        <field name="bankayma_website_videolink" widget="url" />
                         <field
                             name="bankayma_website_image_ids"
                             widget="many2many_binary"

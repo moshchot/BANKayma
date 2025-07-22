@@ -462,43 +462,19 @@
                                     />&amp;nbsp;(blog posts title+desc+permalink)</span>
                             </span>
                         </p>
-                        <p>
+                        <p
+                            t-foreach="request.env['blog.blog'].search([]).blog_post_ids[:5]"
+                            t-as="blog_post"
+                        >
                             <span
                                 class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
-                                style="animation-delay: 1s;"
+                                t-attf-style="animation-delay: {{blog_post_index + 1}}s;"
                             >
-                                <strong>פתיחת תערוכה חדשה</strong>
-                                : בגלריית ברבור נפתחה תערוכה חדשה בשם "צללים וגבולות," המציגה עבודות של אמנים צעירים מהארץ ומהעולם. התערוכה מתמקדת בחקר מושגי הגבול והזהות בחברה המודרנית.
-                            </span>
-                        </p>
-                        <p />
-                        <p>
-                            <span
-                                class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
-                                style="animation-delay: 2s;"
-                            >
-                                <strong>שיפוץ חלל הגלריה</strong>
-                                : גלריית ברבור עוברת שיפוץ נרחב שיכלול הרחבת חללי התצוגה והקמת סטודיו חדש לאמנים. השיפוץ צפוי להסתיים בחודשים הקרובים ולהגדיל את יכולת הגלריה לארח תערוכות ואירועים.
-                            </span>
-                        </p>
-                        <p />
-                        <p>
-                            <span
-                                class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
-                                style="animation-delay: 3s;"
-                            >
-                                <strong>שיתוף פעולה עם מוסדות חינוך</strong>
-                                : הגלריה החלה בשיתוף פעולה חדש עם בתי ספר לאמנות באזור, במטרה לקדם חינוך לאמנות ולערוך סדנאות יצירה לתלמידים. במסגרת הפרויקט יתקיימו מפגשים חודשיים עם אמנים מובילים.
-                            </span>
-                        </p>
-                        <p />
-                        <p>
-                            <span
-                                class="o_animated_text o_animate o_anim_fade_in o_visible"
-                                style="animation-delay: 4s;"
-                            >
-                                <strong>פרס האמן הצעיר</strong>
-                                : גלריית ברבור הכריזה על פתיחת תחרות לפרס האמן הצעיר. הפרס יוענק לאמן מבטיח מתחת לגיל 30, שיצירתו תיבחר על ידי ועדה מקצועית. הזוכה יקבל מענק כספי והזדמנות להציג תערוכה יחיד בגלריה.
+                                <a t-att-href="blog_post.website_url">
+                                    <strong t-out="blog_post.name" />
+                                    :
+                                    <t t-out="blog_post.teaser" />
+                                </a>
                             </span>
                         </p>
                     </div>
@@ -513,6 +489,7 @@
                     data-masonry-template="default_reversed"
                     id="media-test"
                     data-anchor="true"
+                    t-if="object.bankayma_website_videolink"
                 >
                     <div class="container-fluid">
                         <div class="row o_grid_mode" data-row-count="6">
@@ -521,14 +498,10 @@
                                 data-name="Block"
                                 style="grid-area: 1 / 1 / 7 / 13; z-index: 5; background-image: none;"
                             >
-                                <div
-                                    data-oe-expression="//www.youtube.com/embed/ElAaRpu9Xcg?rel=0&amp;autoplay=0"
-                                    class="mx-auto media_iframe_video"
-                                >
-                                    <div class="css_editable_mode_display" />
+                                <div class="mx-auto media_iframe_video">
                                     <div class="media_iframe_video_size" />
                                     <iframe
-                                        src="//www.youtube.com/embed/ElAaRpu9Xcg?rel=0&amp;autoplay=0"
+                                        t-att-src="object.bankayma_website_videolink"
                                         frameborder="0"
                                         allowfullscreen="allowfullscreen"
                                     />
@@ -635,6 +608,14 @@
                             </font>
                             <font style="font-size: 62px;" />
                         </h2>
+                        <p
+                            t-foreach="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
+                            t-as="event"
+                        >
+                            <a t-att-href="event.website_url">
+                                <strong t-out="event.name" />
+                            </a>
+                        </p>
                     </div>
                 </section>
                 <section
