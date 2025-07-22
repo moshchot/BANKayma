@@ -199,6 +199,19 @@ class CompanyCascadeMixin(models.AbstractModel):
         return (
             [
                 (
+                    fields.Command.LINK,
+                    self.env[field.comodel_name]
+                    .browse(_data["company_cascade_child_ids"])
+                    .filtered(lambda x: x.company_id == company)
+                    .id,
+                    False,
+                )
+                if Command == fields.Command.CREATE
+                and "company_cascade_child_ids" in _data
+                and self.env[field.comodel_name]
+                .browse(_data["company_cascade_child_ids"])
+                .filtered(lambda x: x.company_id == company)
+                else (
                     Command,
                     _id,
                     self.env[field.comodel_name]._company_cascade_values(
@@ -321,6 +334,10 @@ class CompanyCascadeMixin(models.AbstractModel):
                 result += candidate
             else:
                 result += self.sudo().with_company(create_in_company).create(vals)
+        for one2many_field in self._company_cascade_field_names_cascading(
+            values, one2many_only=True
+        ):
+            result[one2many_field].sudo()._company_cascade_set_parent()
         return result
 
     def _company_cascade_write(self, values):
@@ -338,6 +355,10 @@ class CompanyCascadeMixin(models.AbstractModel):
             }
             record.sudo().with_company(self.company_id).write(vals)
             result += record
+        for one2many_field in self._company_cascade_field_names_cascading(
+            values, one2many_only=True
+        ):
+            result[one2many_field].sudo()._company_cascade_set_parent()
         return result
 
     def _company_cascade_values_equal(self, field, value):
@@ -367,7 +388,7 @@ class CompanyCascadeMixin(models.AbstractModel):
             or field_name in self._company_cascade_force_fields
         ]
 
-    def _company_cascade_field_names_cascading(self, fields=None):
+    def _company_cascade_field_names_cascading(self, fields=None, one2many_only=False):
         """
         Return x2many field names that need to be cascaded, but use models that cascade
         themselves
@@ -384,6 +405,7 @@ class CompanyCascadeMixin(models.AbstractModel):
                 and field.type != "many2one"
                 and "company_cascade_parent_id" in self.env[field.comodel_name]._fields
             )
+            and (field.type == "one2many" if one2many_only else True)
         ]
 
     def _company_cascade_set_parent(self):
@@ -391,6 +413,8 @@ class CompanyCascadeMixin(models.AbstractModel):
         Search for a candidate in parent company and set as parent if no parent is set
         """
         for this in self:
+            if this.company_cascade_parent_id:
+                continue
             parent_company = this.company_id.parent_id
             if not parent_company:
                 continue
