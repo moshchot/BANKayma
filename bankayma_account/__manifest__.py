@@ -46,11 +46,11 @@
         "website_payment",
     ],
     "demo": [
+        "demo/tier_definition.xml",
+        "demo/post-config.xml",
         "demo/account_journal.xml",
         "demo/account_tax_group.xml",
         "demo/account_fiscal_position.xml",
-        "demo/tier_definition.xml",
-        "demo/post-config.xml",
     ],
     "data": [
         "data/account_payment_method.xml",

@@ -109,5 +109,9 @@ class CompanyCascadeUpMixin(models.AbstractModel):
                                         load="classic_write",
                                     )
                                 ]
-                        parent_vals["company_cascade_child_ids"] = [this.id]
-                        self.with_company(parent_company).create(parent_vals)
+                        parent = (
+                            self.with_company(parent_company).sudo().create(parent_vals)
+                        )
+                        this.with_context(
+                            company_cascade_up=False, company_cascade=False
+                        ).company_cascade_parent_id = parent
