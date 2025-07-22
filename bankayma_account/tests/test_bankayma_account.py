@@ -157,6 +157,9 @@ class TestBankaymaAccount(TransactionCase):
             }
         )
         cls.analytic_account._company_cascade()
+        cls.env["account.account"].search(
+            [("company_id", "=", cls.env.ref("base.main_company").id)]
+        )._company_cascade()
 
     def test_basic_function(self):
         invoice_child1 = self._create_invoice(self.child1, self.user_child1)
@@ -613,8 +616,12 @@ class TestBankaymaAccount(TransactionCase):
         Test that taxes created in child company are created in parent and lateral
         companies
         """
-        child1_tax_account = self.env["account.tax"].search(
-            [("company_id", "=", self.child1.id)], limit=1
+        child1_tax_account = self.env["account.account"].search(
+            [
+                ("company_id", "=", self.child1.id),
+                ("company_cascade_parent_id.company_id", "=", self.parent.id),
+            ],
+            limit=1,
         )
         child1_tax = (
             self.env["account.tax"]

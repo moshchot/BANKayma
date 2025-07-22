@@ -20,8 +20,19 @@ class AccountTax(models.Model):
         result = super().create(vals_list)
         (
             result.invoice_repartition_line_ids + result.refund_repartition_line_ids
-        )._company_cascade_set_parent()
+        ).sudo()._company_cascade_set_parent()
         return result
+
+    def _check_repartition_lines(self, lines):
+        if self.env.context.get("company_cascade_up"):
+            return
+        return super()._check_repartition_lines(lines)
+
+    @api.constrains("invoice_repartition_line_ids", "refund_repartition_line_ids")
+    def _validate_repartition_lines(self):
+        if self.env.context.get("company_cascade_up"):
+            return
+        return super()._validate_repartition_lines()
 
 
 class AccountTaxRepartitionLine(models.Model):

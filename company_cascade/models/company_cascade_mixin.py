@@ -104,7 +104,18 @@ class CompanyCascadeMixin(models.AbstractModel):
             )[0]
             with self._company_cascade_protect():
                 result += this._company_cascade_write(values)
-                result += this._company_cascade_create(values)
+                result += this._company_cascade_create(
+                    dict(
+                        values,
+                        # disable defaults for cascading fields when creating
+                        **{
+                            field_name: False
+                            for field_name in self._company_cascade_field_names_cascading(
+                                fields
+                            )
+                        }
+                    )
+                )
             for result_record in result:
                 this.copy_translations(result_record)
 
