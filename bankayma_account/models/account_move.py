@@ -589,21 +589,25 @@ class AccountMove(models.Model):
                 )
             )
             for line in this.invoice_line_ids:
-                parent_line = line.with_company(company).copy(
-                    {
-                        "move_id": invoice.id,
-                        "product_id": self.env.ref(
-                            "bankayma_account.product_overhead"
-                        ).id,
-                        "account_id": company.overhead_account_id.id,
-                        "quantity": 1,
-                        "price_unit": line.price_total * fraction,
-                        "name": "%s %s" % (this.name, this.partner_id.name),
-                        "tax_ids": False,
-                        "analytic_distribution": line._equivalent_analytic_distribution(
-                            company
-                        ),
-                    }
+                parent_line = (
+                    self.env["account.move.line"]
+                    .with_company(company)
+                    .create(
+                        {
+                            "move_id": invoice.id,
+                            "product_id": self.env.ref(
+                                "bankayma_account.product_overhead"
+                            ).id,
+                            "account_id": company.overhead_account_id.id,
+                            "quantity": 1,
+                            "price_unit": line.price_total * fraction,
+                            "name": "%s %s" % (this.name, this.partner_id.name),
+                            "tax_ids": False,
+                            "analytic_distribution": line._equivalent_analytic_distribution(
+                                company
+                            ),
+                        }
+                    )
                 )
                 line.bankayma_parent_move_line_id = parent_line
             if post:
