@@ -10,12 +10,13 @@ from odoo.addons.http_routing.models.ir_http import slugify
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    website_description = fields.Html()
+    website_description = fields.Html(translate=True)
     seo_name = fields.Char("Website slug")
     website_link = fields.Char(compute="_compute_website_link")
-    bankayma_website_subtitle = fields.Char("Subtitle")
-    bankayma_website_opening_hours = fields.Html("Opening hours")
+    bankayma_website_subtitle = fields.Char("Subtitle", translate=True)
+    bankayma_website_opening_hours = fields.Html("Opening hours", translate=True)
     bankayma_website_geolink = fields.Char("Geolink")
+    bankayma_website_videolink = fields.Char("Video link")
     bankayma_website_image_ids = fields.Many2many(
         "ir.attachment", "res_company_bankayma_website_image_rel", string="Image slider"
     )
