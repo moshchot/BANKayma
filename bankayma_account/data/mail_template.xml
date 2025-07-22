@@ -74,7 +74,9 @@
                     Your payment request of
                     <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                     for
-                    <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
+                    <t
+                        t-out="', '.join(filter(None, object.mapped('invoice_line_ids.name')))"
+                    />
                     was recieved with this info:
                 </p>
             </div>
@@ -179,7 +181,9 @@
                     Your payment request of
                     <t t-out="sum(object.mapped('invoice_line_ids.price_subtotal'))" />
                     for
-                    <t t-out="', '.join(object.mapped('invoice_line_ids.name'))" />
+                    <t
+                        t-out="', '.join(filter(None, object.mapped('invoice_line_ids.name')))"
+                    />
                     is on hold after checking 1000 system:
                     <t t-foreach="object.review_ids" t-as="review">
                         <t t-out="review.comment" />
@@ -308,7 +312,9 @@
                     on
                     <t t-out="object.bankayma_payment_date or ''" />
                     . for
-                    <t t-out="', '.join(object.mapped('invoice_line_ids.name')) or ''">
+                    <t
+                        t-out="', '.join(filter(None, object.mapped('invoice_line_ids.name'))) or ''"
+                    >
                         description
                     </t>
                     . from
@@ -383,7 +389,9 @@
                     t-field="object.amount_untaxed_signed"
                 />
                 for
-                <t t-out="', '.join(object.mapped('invoice_line_ids.name')) or ''">
+                <t
+                    t-out="', '.join(filter(None, object.mapped('invoice_line_ids.name'))) or ''"
+                >
                     description
                 </t>
                 paid on
