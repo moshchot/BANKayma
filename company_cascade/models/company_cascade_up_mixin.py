@@ -1,7 +1,7 @@
 # Copyright 2025 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import api, fields, models
 
 
 class CompanyCascadeUpMixin(models.AbstractModel):
@@ -86,4 +86,28 @@ class CompanyCascadeUpMixin(models.AbstractModel):
                             company_cascade_up=False, company_cascade=False
                         ).company_cascade_parent_id = candidate
                     else:
-                        self.create(parent_vals)
+                        for field_name in self._company_cascade_field_names_cascading():
+                            field = self._fields[field_name]
+                            if field.type == "one2many":
+                                field_model = self.env[field.comodel_name]
+                                parent_vals[field_name] = [
+                                    fields.Command.create(
+                                        dict(
+                                            field_model._company_cascade_values(
+                                                parent_company, one2many_vals
+                                            ),
+                                            company_cascade_child_ids=[
+                                                one2many_vals["id"]
+                                            ],
+                                        )
+                                    )
+                                    for one2many_vals in this[field_name].read(
+                                        set(
+                                            field_model._company_cascade_field_names_scalar()
+                                        )
+                                        - {field.inverse_name},
+                                        load="classic_write",
+                                    )
+                                ]
+                        parent_vals["company_cascade_child_ids"] = [this.id]
+                        self.with_company(parent_company).create(parent_vals)
