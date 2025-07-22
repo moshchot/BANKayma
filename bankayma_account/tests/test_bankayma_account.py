@@ -262,6 +262,19 @@ class TestBankaymaAccount(TransactionCase):
         )
         draft_invoice = self._create_invoice(self.child1, self.user_child1)
         draft_invoice.with_context(force_delete=True).button_cancel_unlink()
+        invoice_child1_with_negative_line = self._create_invoice(
+            self.child1, self.user_child1, post=False
+        )
+        with Form(
+            invoice_child1_with_negative_line, view="account.view_move_form"
+        ) as invoice_form:
+            with invoice_form.invoice_line_ids.new() as line:
+                line.product_id = self.product.with_company(self.child1)
+                line.name = "product line"
+                line.quantity = 1
+                line.price_unit = -10
+        invoice_child1_with_negative_line.action_post()
+        invoice_child1_with_negative_line.with_user(self.env.user)._bankayma_pay()
 
     def _create_invoice(
         self, company, user, partner=None, post=True, extra_context=None
