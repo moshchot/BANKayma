@@ -84,55 +84,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"o_animated_text o_animate o_anim_fade_in o_visible\" "
-"style=\"animation-delay: 4s;\">\n"
-"                                <strong>פרס האמן הצעיר</strong>\n"
-"                                : גלריית ברבור הכריזה על פתיחת תחרות לפרס "
-"האמן הצעיר. הפרס יוענק לאמן מבטיח מתחת לגיל 30, שיצירתו תיבחר על ידי ועדה "
-"מקצועית. הזוכה יקבל מענק כספי והזדמנות להציג תערוכה יחיד בגלריה.\n"
-"                            </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_right "
-"o_visible\" style=\"animation-delay: 1s;\">\n"
-"                                <strong>פתיחת תערוכה חדשה</strong>\n"
-"                                : בגלריית ברבור נפתחה תערוכה חדשה בשם "
-"\"צללים וגבולות,\" המציגה עבודות של אמנים צעירים מהארץ ומהעולם. התערוכה "
-"מתמקדת בחקר מושגי הגבול והזהות בחברה המודרנית.\n"
-"                            </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_right "
-"o_visible\" style=\"animation-delay: 2s;\">\n"
-"                                <strong>שיפוץ חלל הגלריה</strong>\n"
-"                                : גלריית ברבור עוברת שיפוץ נרחב שיכלול הרחבת "
-"חללי התצוגה והקמת סטודיו חדש לאמנים. השיפוץ צפוי להסתיים בחודשים הקרובים "
-"ולהגדיל את יכולת הגלריה לארח תערוכות ואירועים.\n"
-"                            </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_right "
-"o_visible\" style=\"animation-delay: 3s;\">\n"
-"                                <strong>שיתוף פעולה עם מוסדות חינוך</"
-"strong>\n"
-"                                : הגלריה החלה בשיתוף פעולה חדש עם בתי ספר "
-"לאמנות באזור, במטרה לקדם חינוך לאמנות ולערוך סדנאות יצירה לתלמידים. במסגרת "
-"הפרויקט יתקיימו מפגשים חודשיים עם אמנים מובילים.\n"
-"                            </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span class=\"s_badge badge text-bg-secondary o_animable\" data-name=\"תג\" "
 "data-snippet=\"s_badge\" style=\"\">\n"
 "                                <span style=\"font-size: 18px;\"/>\n"
@@ -207,6 +158,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_subtitle
 msgid "Subtitle"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_videolink
+msgid "Video link"
 msgstr ""
 
 #. module: bankayma_website
