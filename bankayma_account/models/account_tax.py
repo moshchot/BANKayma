@@ -15,7 +15,7 @@ class AccountTax(models.Model):
     bankayma_vendor_specific = fields.Boolean()
 
     def _company_cascade_up(self, vals=None):
-        self = self.sudo()
+        self = self.sudo().with_context(company_cascade_suppress_repartition_check=True)
         return super()._company_cascade_up(vals=vals)
 
     def _company_cascade_find_candidate(self, company, vals):

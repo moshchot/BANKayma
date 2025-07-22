@@ -657,6 +657,7 @@ class TestBankaymaAccount(TransactionCase):
                 }
             )
         )
+        child1_tax._validate_repartition_lines()
         self.assertEqual(child1_tax.company_cascade_parent_id.company_id, self.parent)
         self.assertEqual(
             child1_tax.invoice_repartition_line_ids.company_cascade_parent_id.company_id,

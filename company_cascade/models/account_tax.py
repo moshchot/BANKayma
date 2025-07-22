@@ -13,14 +13,8 @@ class AccountTax(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """
-        As the tax model sets defaults for repartition lines, those are created already
-        during cascading, without proper parents. Set them accordingly
-        """
         result = super().create(vals_list)
-        (
-            result.invoice_repartition_line_ids + result.refund_repartition_line_ids
-        ).sudo()._company_cascade_set_parent()
+        result._validate_repartition_lines()
         return result
 
     def _company_cascade_create(self, values):
@@ -30,10 +24,12 @@ class AccountTax(models.Model):
         self = self.with_context(company_cascade_suppress_repartition_check=True)
         return super()._company_cascade_create(values)
 
-    def _check_repartition_lines(self, lines):
-        if self.env.context.get("company_cascade_suppress_repartition_check"):
-            return
-        return super()._check_repartition_lines(lines)
+    def _company_cascade(self, fields=None, recursive=False, recursive_seen=None):
+        result = super()._company_cascade(
+            fields=fields, recursive=recursive, recursive_seen=recursive_seen
+        )
+        result.company_cascade_child_ids._validate_repartition_lines()
+        return result
 
     @api.constrains("invoice_repartition_line_ids", "refund_repartition_line_ids")
     def _validate_repartition_lines(self):
