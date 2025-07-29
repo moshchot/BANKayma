@@ -235,14 +235,6 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"t-foreach=\"request.env['blog.blog'].search([]).blog_post_ids[:5]\"\n"
-"                            t-as=\"blog_post\"\n"
-"                        &gt;"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "updates"
 msgstr ""
 
