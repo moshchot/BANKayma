@@ -14,11 +14,7 @@
                 >
                     <font class="text-o-color-5">
                         <div class="s_allow_columns container-fluid">
-                            <div
-                                class="row"
-                                style=""
-                                data-row-count="-Infinity"
-                            />
+                            <div class="row" style="" data-row-count="-Infinity" />
                         </div>
                     </font>
                 </section>
@@ -85,20 +81,20 @@
                                         </font>
                                     </span>
                                 </p>
-                            <div
+                                <div
                                     style="text-align: center;"
                                     t-if="object.bankayma_website_opening_hours"
-                            >
+                                >
                                     <span
                                         t-field="object.bankayma_website_opening_hours"
                                     />
-                            </div>
-                            <div
+                                </div>
+                                <div
                                     class="s_social_media o_not_editable text-center no_icon_color"
                                     data-snippet="s_social_media"
                                     data-name="Social Networks"
                                     t-if="object.social_twitter or object.social_facebook or object.social_instagram or object.social_youtube"
-                            >
+                                >
                                     <h4
                                         class="s_social_media_title o_default_snippet_text d-none"
                                     >
@@ -443,7 +439,6 @@
                     data-anchor="true"
                 >
                     <div class="s_allow_columns container-fluid">
-                    
                         <p style="text-align: center;">
                             <span
                                 class="s_badge badge bg-o-color-3 text-o-color-1 o_animable"
@@ -451,7 +446,6 @@
                                 data-snippet="s_badge"
                                 style="font-size: 36px;"
                             >
-                            
                                 <i
                                     class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
                                 />
