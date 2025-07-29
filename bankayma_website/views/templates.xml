@@ -470,13 +470,10 @@
                     </div>
                 </section>
                 <section
-                    class="s_masonry_block o_colored_level"
+                    class="o_colored_level parallax"
                     data-vcss="001"
                     data-vxml="001"
-                    data-snippet="s_masonry_block"
-                    data-name="Masonry"
                     style="background-image: none;"
-                    data-masonry-template="default_reversed"
                     id="media-test"
                     data-anchor="true"
                     t-if="object.bankayma_website_videolink"
@@ -488,15 +485,12 @@
                                 data-name="Block"
                                 style="z-index: 5; background-image: none;"
                             >
-                                <div class="mx-auto media_iframe_video">
+                                <div class="mx-auto media_iframe_video s_parallax_bg">
                                     <div class="media_iframe_video_size" />
                                     <iframe
                                         t-att-src="object.bankayma_website_videolink"
                                         frameborder="0"
                                         allowfullscreen="allowfullscreen"
-                                        width="100%"
-                                        height="100%"
-                                        scrolling="no"
                                         marginheight="0"
                                         marginwidth="0"
                                     />
