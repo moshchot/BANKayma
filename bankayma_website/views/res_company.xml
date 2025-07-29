@@ -19,6 +19,14 @@
                             name="bankayma_website_image_ids"
                             widget="many2many_binary"
                         />
+                        <field
+                            name="bankayma_website_crew_partner_ids"
+                            widget="many2many_tags"
+                        />
+                        <field
+                            name="bankayma_website_backer_partner_ids"
+                            widget="many2many_tags"
+                        />
                     </group>
                     <field
                         name="website_description"

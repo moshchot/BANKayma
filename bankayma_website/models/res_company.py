@@ -20,6 +20,16 @@ class ResCompany(models.Model):
     bankayma_website_image_ids = fields.Many2many(
         "ir.attachment", "res_company_bankayma_website_image_rel", string="Image slider"
     )
+    bankayma_website_crew_partner_ids = fields.Many2many(
+        "res.partner",
+        "res_company_crew_res_partner_rel",
+        string="Crew",
+    )
+    bankayma_website_backer_partner_ids = fields.Many2many(
+        "res.partner",
+        "res_company_backer_res_partner_rel",
+        string="Backers",
+    )
 
     @api.depends("name", "seo_name")
     def _compute_website_link(self):

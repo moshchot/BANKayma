@@ -594,12 +594,17 @@
                         </div>
                     </div>
                 </section>
+                <t
+                    t-set="events"
+                    t-value="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
+                />
                 <section
                     class="s_title pt40 pb40 o_colored_level"
                     data-vcss="001"
                     data-snippet="s_title"
                     data-name="Title"
                     style="background-image: none;"
+                    t-if="events"
                 >
                     <div class="container s_allow_columns">
                         <h2 style="text-align: center;">
@@ -608,10 +613,7 @@
                             </font>
                             <font style="font-size: 62px;" />
                         </h2>
-                        <p
-                            t-foreach="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
-                            t-as="event"
-                        >
+                        <p t-foreach="events" t-as="event">
                             <a t-att-href="event.website_url">
                                 <strong t-out="event.name" />
                             </a>
@@ -756,6 +758,7 @@
                     style="background-image: none;"
                     id="%23team-test"
                     data-anchor="true"
+                    t-if="object.bankayma_website_crew_partner_ids"
                 >
                     <div class="container-fluid">
                         <div class="row s_nb_column_fixed" style="">
@@ -773,98 +776,24 @@
                                 style="animation-delay: 0.0107189s;"
                                 data-scroll-zone-start="0"
                                 data-scroll-zone-end="65"
+                                t-foreach="object.bankayma_website_crew_partner_ids"
+                                t-as="partner"
                             >
                                 <div class="row s_col_no_resize s_col_no_bgcolor">
                                     <div class="col-lg-4 pb16 o_not_editable">
                                         <img
-                                            alt=""
-                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_1"
+                                            t-att-alt="partner.name"
+                                            t-attf-src="/web/image/res.partner/{{partner.id}}/avatar_128"
                                             class="img-fluid rounded-circle mx-auto o_editable_media"
                                             loading="eager"
-                                            data-original-id="97"
-                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_1.png"
-                                            data-mimetype="image/png"
-                                            style=""
                                         />
                                     </div>
                                     <div class="col-lg-8">
-                                        <h4 style="text-align: center;">יונתן לביא</h4>
-                                        <p>מנהל אחזקה ותפעול</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
-                                data-scroll-zone-start="0"
-                                data-scroll-zone-end="65"
-                                style="animation-delay: 0.0107189s;"
-                            >
-                                <div class="row s_col_no_resize s_col_no_bgcolor">
-                                    <div class="col-lg-4 pb16 o_not_editable">
-                                        <img
-                                            alt=""
-                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_2"
-                                            class="img-fluid rounded-circle mx-auto o_editable_media"
-                                            loading="eager"
-                                            data-original-id="98"
-                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_2.png"
-                                            data-mimetype="image/png"
-                                            style=""
+                                        <h4
+                                            style="text-align: center;"
+                                            t-out="partner.name"
                                         />
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <h4>דוד פרידמן</h4>
-                                        <p>האוצר הראשי</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
-                                data-scroll-zone-start="0"
-                                data-scroll-zone-end="65"
-                                style="animation-delay: 0.0107189s;"
-                            >
-                                <div class="row s_col_no_resize s_col_no_bgcolor">
-                                    <div class="col-lg-4 pb16 o_not_editable">
-                                        <img
-                                            alt=""
-                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_3"
-                                            class="img-fluid rounded-circle mx-auto o_editable_media"
-                                            loading="eager"
-                                            data-original-id="99"
-                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_3.png"
-                                            data-mimetype="image/png"
-                                            style=""
-                                        />
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <h4>נעמה לוי</h4>
-                                        <p>מנהלת אמנותית</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
-                                style="animation-delay: 0.0107189s;"
-                                data-scroll-zone-start="0"
-                                data-scroll-zone-end="65"
-                            >
-                                <div class="row s_col_no_resize s_col_no_bgcolor">
-                                    <div class="col-lg-4 pb16 o_not_editable">
-                                        <img
-                                            alt=""
-                                            src="https://dev.bureau.ninja/web/image/website.s_company_team_image_4"
-                                            class="img-fluid o_editable_media rounded-circle mx-auto d-block"
-                                            loading="eager"
-                                            data-original-id="100"
-                                            data-original-src="/website/static/src/img/snippets_demo/s_team_member_4.png"
-                                            data-mimetype="image/png"
-                                            style=""
-                                        />
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <h4>רותם כהן</h4>
-                                        <p>מפיקה ראשית</p>
+                                        <p t-out="partner.function" />
                                     </div>
                                 </div>
                             </div>
@@ -878,6 +807,7 @@
                     style=""
                     id="supporters-test"
                     data-anchor="true"
+                    t-if="object.bankayma_website_backer_partner_ids"
                 >
                     <div class="container">
                         <h5 style="text-align: center;">
@@ -888,88 +818,16 @@
                             </font>
                         </h5>
                         <div class="row">
-                            <div class="col-lg-2 pt16 pb16 o_colored_level" style="">
+                            <div
+                                class="col-lg-2 pt16 pb16 o_colored_level"
+                                t-foreach="object.bankayma_website_backer_partner_ids"
+                                t-as="partner"
+                            >
                                 <img
-                                    src="/web/image/website.s_reference_demo_image_1"
+                                    t-att-alt="partner.name"
+                                    t-attf-src="/web/image/res.partner/{{partner.id}}/avatar_128"
                                     class="img img-fluid mx-auto"
-                                    alt=""
                                     loading="lazy"
-                                    data-original-id="91"
-                                    data-original-src="/website/static/src/img/snippets_demo/s_references_1.png"
-                                    data-mimetype="image/png"
-                                    data-bs-original-title=""
-                                    title=""
-                                    aria-describedby="tooltip52590"
-                                    style=""
-                                />
-                            </div>
-                            <div class="col-lg-2 pt16 pb16 o_colored_level">
-                                <img
-                                    src="/web/image/website.s_reference_demo_image_2"
-                                    class="img img-fluid mx-auto"
-                                    alt=""
-                                    loading="lazy"
-                                    data-original-id="92"
-                                    data-original-src="/website/static/src/img/snippets_demo/s_references_2.png"
-                                    data-mimetype="image/png"
-                                    style=""
-                                    data-bs-original-title=""
-                                    title=""
-                                    aria-describedby="tooltip639487"
-                                />
-                            </div>
-                            <div class="col-lg-2 pt16 pb16 o_colored_level">
-                                <img
-                                    src="/web/image/website.s_reference_demo_image_3"
-                                    class="img img-fluid mx-auto"
-                                    alt=""
-                                    loading="lazy"
-                                    data-original-id="93"
-                                    data-original-src="/website/static/src/img/snippets_demo/s_references_3.png"
-                                    data-mimetype="image/png"
-                                    data-bs-original-title=""
-                                    title=""
-                                    aria-describedby="tooltip969358"
-                                    style=""
-                                />
-                            </div>
-                            <div class="col-lg-2 pt16 pb16 o_colored_level">
-                                <img
-                                    src="/web/image/website.s_reference_demo_image_4"
-                                    class="img img-fluid mx-auto"
-                                    alt=""
-                                    loading="lazy"
-                                    data-original-id="94"
-                                    data-original-src="/website/static/src/img/snippets_demo/s_references_4.png"
-                                    data-mimetype="image/png"
-                                    style=""
-                                />
-                            </div>
-                            <div class="col-lg-2 pt16 pb16 o_colored_level">
-                                <img
-                                    src="/web/image/website.s_reference_demo_image_5"
-                                    class="img img-fluid mx-auto"
-                                    alt=""
-                                    loading="lazy"
-                                    data-original-id="95"
-                                    data-original-src="/website/static/src/img/snippets_demo/s_references_5.png"
-                                    data-mimetype="image/png"
-                                    style=""
-                                    data-bs-original-title=""
-                                    title=""
-                                    aria-describedby="tooltip446135"
-                                />
-                            </div>
-                            <div class="col-lg-2 pt16 pb16 o_colored_level">
-                                <img
-                                    src="/web/image/website.s_reference_default_image_6"
-                                    class="img img-fluid mx-auto"
-                                    alt=""
-                                    loading="lazy"
-                                    data-original-id="96"
-                                    data-original-src="/website/static/src/img/snippets_demo/s_references_6.png"
-                                    data-mimetype="image/png"
-                                    style=""
                                 />
                             </div>
                         </div>
