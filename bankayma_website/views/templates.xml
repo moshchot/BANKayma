@@ -15,7 +15,7 @@
                     <font class="text-o-color-5">
                         <div class="s_allow_columns container-fluid">
                             <div
-                                class="row o_grid_mode"
+                                class="row"
                                 style=""
                                 data-row-count="-Infinity"
                             />
@@ -39,10 +39,10 @@
                         style="background-color: rgba(0, 0, 0, 0.26);"
                     />
                     <div class="s_allow_columns o_container_small">
-                        <div class="row o_grid_mode" style="" data-row-count="12">
+                        <div class="row" style="" data-row-count="12">
                             <div
-                                class="o_colored_level o_grid_item g-col-lg-12 g-height-12 col-lg-12"
-                                style="grid-area: 1 / 1 / 13 / 13; z-index: 1;"
+                                class="o_colored_level g-col-lg-12 g-height-12 col-lg-12"
+                                style="z-index: 1;"
                             >
                                 <h1 style="text-align: center;">
                                     <br />
@@ -443,26 +443,22 @@
                     data-anchor="true"
                 >
                     <div class="s_allow_columns container-fluid">
-                        <p />
+                    
                         <p style="text-align: center;">
                             <span
-                                class="s_badge badge text-bg-secondary o_animable"
+                                class="s_badge badge bg-o-color-3 text-o-color-1 o_animable"
                                 data-name="תג"
                                 data-snippet="s_badge"
-                                style=""
+                                style="font-size: 36px;"
                             >
-                                <span style="font-size: 18px;" />
+                            
                                 <i
                                     class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
-                                    data-bs-original-title=""
-                                    title=""
-                                    aria-describedby="tooltip250290"
                                 />
-                                <span style="font-size: 18px;">updates<br
-                                    />&amp;nbsp;(blog posts title+desc+permalink)</span>
+                                <span>updates</span>
                             </span>
                         </p>
-                        <p
+                        <h4 style="text-align: center;">
                             t-foreach="request.env['blog.blog'].search([]).blog_post_ids[:5]"
                             t-as="blog_post"
                         >
@@ -476,7 +472,7 @@
                                     <t t-out="blog_post.teaser" />
                                 </a>
                             </span>
-                        </p>
+                        </h4>
                     </div>
                 </section>
                 <section
@@ -492,11 +488,11 @@
                     t-if="object.bankayma_website_videolink"
                 >
                     <div class="container-fluid">
-                        <div class="row o_grid_mode" data-row-count="6">
+                        <div class="row" data-row-count="6">
                             <div
-                                class="o_grid_item o_grid_item_image text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
+                                class=_image text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
                                 data-name="Block"
-                                style="grid-area: 1 / 1 / 7 / 13; z-index: 5; background-image: none;"
+                                style="z-index: 5; background-image: none;"
                             >
                                 <div class="mx-auto media_iframe_video">
                                     <div class="media_iframe_video_size" />
