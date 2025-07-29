@@ -11,8 +11,10 @@
         "bankayma_account",
         "website",
         "website_event",
+        "partner_multi_relation",
     ],
     "data": [
+        "data/res_partner_relation_type.xml",
         "views/templates.xml",
         "views/res_company.xml",
     ],

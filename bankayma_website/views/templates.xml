@@ -606,69 +606,13 @@
                     style="background-image: none;"
                     t-if="events"
                 >
-                    <div class="container s_allow_columns">
+                    <div class="container s_allow_columns s_dynamic s_event_event_card">
                         <h2 style="text-align: center;">
-                            <font>
-                                <strong>events</strong>
-                            </font>
-                            <font style="font-size: 62px;" />
+                            <strong>events</strong>
                         </h2>
-                        <p t-foreach="events" t-as="event">
-                            <a t-att-href="event.website_url">
-                                <strong t-out="event.name" />
-                            </a>
-                        </p>
-                    </div>
-                </section>
-                <section
-                    data-snippet="s_events"
-                    class="s_events s_event_upcoming_snippet s_dynamic pt32 pb32 o_colored_level s_event_event_card o_cc o_cc2 o_dynamic_empty"
-                    data-name="אירועים"
-                    style="background-image: none;"
-                    data-number-of-records="4"
-                    data-filter-id="3"
-                    data-template-key="website_event.dynamic_filter_template_event_event_card"
-                    id="events-test"
-                    data-anchor="true"
-                    data-filter-by-tag-ids="[1]"
-                    data-force-minimum-max-limit-to16="1"
-                >
-                    <div class="o_not_editable container-fluid">
-                        <div class="css_non_editable_mode_hidden">
-                            <div
-                                class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text"
-                            >
-                                הקטע הדינמי שלך יוצג כאן... הודעה זו מוצגת מכיוון שלא סיפקת גם מסנן וגם תבנית לשימוש.
-                                <br />
-                            </div>
-                        </div>
-                        <div class="dynamic_snippet_template" />
-                    </div>
-                </section>
-                <section
-                    data-snippet="s_dynamic_snippet_products"
-                    class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level o_cc o_cc3 s_product_product_borderless_1 o_dynamic_empty"
-                    data-name="מוצרים"
-                    style="background-image: none;"
-                    data-product-category-id="all"
-                    data-number-of-records="16"
-                    data-filter-id="4"
-                    data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
-                    data-carousel-interval="5000"
-                    id="store-test"
-                    data-anchor="true"
-                    data-product-tag-ids="[{&quot;id&quot;:1,&quot;name&quot;:&quot;תג מוצר נסיון&quot;,&quot;display_name&quot;:&quot;תג מוצר נסיון&quot;}]"
-                >
-                    <div class="o_not_editable container-fluid">
-                        <div class="css_non_editable_mode_hidden">
-                            <div
-                                class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text"
-                            >
-                                הקטע הדינמי שלך יוצג כאן... הודעה זו מוצגת מכיוון שלא סיפקת גם מסנן וגם תבנית לשימוש.
-                                <br />
-                            </div>
-                        </div>
-                        <div class="dynamic_snippet_template" />
+                        <t
+                            t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
+                        />
                     </div>
                 </section>
                 <section
@@ -800,6 +744,14 @@
                         </div>
                     </div>
                 </section>
+                <t
+                    t-set="rel_type_backer"
+                    t-value="object.env.ref('bankayma_website.rel_type_backer')"
+                />
+                <t
+                    t-set="backers"
+                    t-value="object.partner_id.relation_all_ids.filtered(lambda x: x.type_id == rel_type_backer and x.is_inverse).other_partner_id"
+                />
                 <section
                     class="s_references o_colored_level pb32 pt24 o_cc o_cc1"
                     data-snippet="s_references"
@@ -807,7 +759,7 @@
                     style=""
                     id="supporters-test"
                     data-anchor="true"
-                    t-if="object.bankayma_website_backer_partner_ids"
+                    t-if="backers"
                 >
                     <div class="container">
                         <h5 style="text-align: center;">
@@ -820,7 +772,7 @@
                         <div class="row">
                             <div
                                 class="col-lg-2 pt16 pb16 o_colored_level"
-                                t-foreach="object.bankayma_website_backer_partner_ids"
+                                t-foreach="backers"
                                 t-as="partner"
                             >
                                 <img

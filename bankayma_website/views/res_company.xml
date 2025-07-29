@@ -25,11 +25,6 @@
                             domain="[('user_ids.groups_id', 'in', [%(base.group_user)s, %(bankayma_base.group_vendor)s])]"
                             options="{'no_create': True}"
                         />
-                        <field
-                            name="bankayma_website_backer_partner_ids"
-                            widget="many2many_tags"
-                            options="{'no_create': True}"
-                        />
                     </group>
                     <field
                         name="website_description"
