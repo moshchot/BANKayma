@@ -452,7 +452,7 @@
                                 <span>updates</span>
                             </span>
                         </p>
-                        <h4 style="text-align: center;">
+                        <h4
                             t-foreach="request.env['blog.blog'].search([]).blog_post_ids[:5]"
                             t-as="blog_post"
                         >
