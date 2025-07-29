@@ -494,6 +494,11 @@
                                         t-att-src="object.bankayma_website_videolink"
                                         frameborder="0"
                                         allowfullscreen="allowfullscreen"
+                                        width="100%"
+                                        height="100%"
+                                        scrolling="no"
+                                        marginheight="0"
+                                        marginwidth="0" 
                                     />
                                 </div>
                             </div>
