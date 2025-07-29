@@ -490,7 +490,7 @@
                     <div class="container-fluid">
                         <div class="row" data-row-count="6">
                             <div
-                                class=_image text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
+                                class=״text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
                                 data-name="Block"
                                 style="z-index: 5; background-image: none;"
                             >
