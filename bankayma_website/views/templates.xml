@@ -85,20 +85,20 @@
                                         </font>
                                     </span>
                                 </p>
-                                <div
+                            <div
                                     style="text-align: center;"
                                     t-if="object.bankayma_website_opening_hours"
-                                >
+                            >
                                     <span
                                         t-field="object.bankayma_website_opening_hours"
                                     />
-                                </div>
-                                <div
+                            </div>
+                            <div
                                     class="s_social_media o_not_editable text-center no_icon_color"
                                     data-snippet="s_social_media"
                                     data-name="Social Networks"
                                     t-if="object.social_twitter or object.social_facebook or object.social_instagram or object.social_youtube"
-                                >
+                            >
                                     <h4
                                         class="s_social_media_title o_default_snippet_text d-none"
                                     >
@@ -490,7 +490,7 @@
                     <div class="container-fluid">
                         <div class="row" data-row-count="6">
                             <div
-                                class=״text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
+                                class="text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
                                 data-name="Block"
                                 style="z-index: 5; background-image: none;"
                             >
