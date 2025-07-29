@@ -1,0 +1,6 @@
+<odoo>
+    <record id="rel_type_backer" model="res.partner.relation.type">
+        <field name="name">Is backer of</field>
+        <field name="name_inverse">Has backer</field>
+    </record>
+</odoo>
