@@ -54,7 +54,7 @@ class ResPartner(models.Model):
             this.bankayma_vendor_amount_this_year = -sum(
                 AccountMove.search(
                     [
-                        ("partner_id", "=", this.id),
+                        ("partner_id", "child_of", this.commercial_partner_id.id),
                         ("move_type", "=", "in_invoice"),
                         ("date", ">=", year_start),
                         ("date", "<=", year_end),
