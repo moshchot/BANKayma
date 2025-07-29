@@ -61,15 +61,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<font>\n"
-"                                <strong>events</strong>\n"
-"                            </font>\n"
-"                            <font style=\"font-size: 62px;\"/>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">קודם</span>"
 msgstr ""
@@ -121,8 +112,8 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_website
-#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_backer_partner_ids
-msgid "Backers"
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>events</strong>"
 msgstr ""
 
 #. module: bankayma_website
@@ -146,8 +137,18 @@ msgid "Geolink"
 msgstr ""
 
 #. module: bankayma_website
+#: model:res.partner.relation.type,name_inverse:bankayma_website.rel_type_backer
+msgid "Has backer"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_image_ids
 msgid "Image slider"
+msgstr ""
+
+#. module: bankayma_website
+#: model:res.partner.relation.type,name:bankayma_website.rel_type_backer
+msgid "Is backer of"
 msgstr ""
 
 #. module: bankayma_website
@@ -243,14 +244,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "הבא"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"הקטע הדינמי שלך יוצג כאן... הודעה זו מוצגת מכיוון שלא סיפקת גם מסנן וגם "
-"תבנית לשימוש.\n"
-"                                <br/>"
 msgstr ""
 
 #. module: bankayma_website
