@@ -75,14 +75,12 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"s_badge badge text-bg-secondary o_animable\" data-name=\"תג\" "
-"data-snippet=\"s_badge\" style=\"\">\n"
-"                                <span style=\"font-size: 18px;\"/>\n"
+"<span class=\"s_badge badge bg-o-color-3 text-o-color-1 o_animable\" data-"
+"name=\"תג\" data-snippet=\"s_badge\" style=\"font-size: 36px;\">\n"
+"                            \n"
 "                                <i class=\"fa fa-bullhorn fa-fw o_not-"
-"animable mx-auto d-block fa-2x\" data-bs-original-title=\"\" title=\"\" aria-"
-"describedby=\"tooltip250290\"/>\n"
-"                                <span style=\"font-size: 18px;\">updates<br/"
-">&amp;nbsp;(blog posts title+desc+permalink)</span>\n"
+"animable mx-auto d-block fa-2x\"/>\n"
+"                                <span>updates</span>\n"
 "                            </span>"
 msgstr ""
 
@@ -234,6 +232,14 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "media"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"t-foreach=\"request.env['blog.blog'].search([]).blog_post_ids[:5]\"\n"
+"                            t-as=\"blog_post\"\n"
+"                        &gt;"
 msgstr ""
 
 #. module: bankayma_website
