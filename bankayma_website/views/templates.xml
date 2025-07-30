@@ -12,9 +12,9 @@
                     data-name="Text"
                     style="background-image: none; position: relative;"
                 >
-                        <div class="s_allow_columns container-fluid">
-                            <div class="row" style="" data-row-count="-Infinity" />
-                        </div>
+                    <div class="s_allow_columns container-fluid">
+                        <div class="row" style="" data-row-count="-Infinity" />
+                    </div>
                 </section>
                 <section
                     class="s_title o_colored_level o_cc o_cc3 pb0 pt0 parallax"
@@ -42,7 +42,7 @@
                                     <br />
                                 </h1>
                                 <h1 style="text-align: center;">
-                                        <strong t-out="object.name" />
+                                    <strong t-out="object.name" />
                                 </h1>
                                 <h4 style="text-align: center;">
                                     <font
@@ -67,9 +67,9 @@
                                         class="text-200 bg-o-color-2"
                                         style="font-style: normal; font-weight: 400;"
                                     >
-                                            <span t-field="object.street" />
-                                            ,
-                                            <span t-field="object.city" />
+                                        <span t-field="object.street" />
+                                        ,
+                                        <span t-field="object.city" />
                                     </span>
                                 </p>
                                 <div
@@ -612,7 +612,7 @@
                                 <div
                                     class="s_donation"
                                     data-name="Donation Button"
-                                    data-donation-email="object.email"
+                                    data-donation-email="{{object.email}}"
                                     data-custom-amount="slider"
                                     data-prefilled-options=""
                                     data-descriptions=""
@@ -640,7 +640,7 @@
                                             id="s_donation_description_inputs"
                                             style="font-size: 36px;"
                                         >
-                                                <strong>donations</strong>
+                                            <strong>donations</strong>
                                         </span>
                                         <br />
                                         <div
@@ -687,7 +687,7 @@
                             <div class="o_colored_level col-lg-12" style="">
                                 <p style="text-align: center;">
                                     <span style="font-size: 36px;">
-                                            <strong>our crew</strong>
+                                        <strong>our crew</strong>
                                     </span>
                                 </p>
                             </div>
@@ -739,9 +739,9 @@
                 >
                     <div class="container">
                         <h5 style="text-align: center;">
-                                <span style="font-size: 36px;">
-                                    <strong>backers</strong>
-                                </span>
+                            <span style="font-size: 36px;">
+                                <strong>backers</strong>
+                            </span>
                         </h5>
                         <div class="row">
                             <div
@@ -827,7 +827,7 @@
                                     t-out="object.website"
                                 /> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</span>
                             <span style="font-size: 18px;">
-                                    <a t-att-href="object.email" t-out="object.email" />
+                                <a t-att-href="object.email" t-out="object.email" />
                             </span>
                         </h4>
                     </div>
