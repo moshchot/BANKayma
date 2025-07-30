@@ -79,7 +79,7 @@ msgid ""
 "<span id=\"s_donation_description_inputs\"/>\n"
 "                                        <span "
 "id=\"s_donation_description_inputs\" style=\"font-size: 36px;\">\n"
-"                                                <strong>donations</strong>\n"
+"                                            <strong>donations</strong>\n"
 "                                        </span>\n"
 "                                        <br/>"
 msgstr ""
@@ -88,7 +88,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<span style=\"font-size: 36px;\">\n"
-"                                            <strong>our crew</strong>\n"
+"                                        <strong>our crew</strong>\n"
 "                                    </span>"
 msgstr ""
 
@@ -96,8 +96,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<span style=\"font-size: 36px;\">\n"
-"                                    <strong>backers</strong>\n"
-"                                </span>"
+"                                <strong>backers</strong>\n"
+"                            </span>"
 msgstr ""
 
 #. module: bankayma_website
