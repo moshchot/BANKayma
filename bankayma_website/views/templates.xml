@@ -601,7 +601,6 @@
                     data-snippet="s_title"
                     data-name="Title"
                     style="background-image: none;"
-                    t-if="donation"
                 >
                     <div class="container s_allow_columns s_dynamic s_donation">
                         <h2 style="text-align: center;">
