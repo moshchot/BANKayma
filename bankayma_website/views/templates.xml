@@ -69,7 +69,7 @@
                                     >
                                             <span t-field="object.street" />
                                             ,
-                                            <span t-field="object.city" />  
+                                            <span t-field="object.city" />
                                     </span>
                                 </p>
                                 <div
