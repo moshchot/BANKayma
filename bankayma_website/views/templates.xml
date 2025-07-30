@@ -612,7 +612,7 @@
                                 <div
                                     class="s_donation"
                                     data-name="Donation Button"
-                                    data-donation-email="<t-out="object.email" />"
+                                    data-donation-email="object.email"
                                     data-custom-amount="slider"
                                     data-prefilled-options=""
                                     data-descriptions=""
