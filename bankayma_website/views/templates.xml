@@ -596,19 +596,83 @@
                     </div>
                 </section>
                 <section
-                    class="s_title pt40 pb40 o_colored_level"
-                    data-vcss="001"
-                    data-snippet="s_title"
-                    data-name="Title"
+                    class="pt32 pb32 o_colored_level o_cc o_cc2"
+                    data-snippet="s_donation"
+                    data-name="תרומה"
                     style="background-image: none;"
+                    id="donation-test"
+                    data-anchor="true"
                 >
-                    <div class="container s_allow_columns s_dynamic s_donation">
-                        <h2 style="text-align: center;">
-                            <strong>Donations</strong>
-                        </h2>
-                        <t
-                            t-out="render_dynamic_snippet('website_payment.s_donation', donation)"
-                        />
+                    <div class="o_container_small">
+                        <div class="row" style="">
+                            <div class="o_colored_level col-lg-12" style="">
+                                <h2>
+                                    <br />
+                                </h2>
+                                <div
+                                    class="s_donation"
+                                    data-name="Donation Button"
+                                    data-donation-email="info@yourcompany.example.com"
+                                    data-custom-amount="slider"
+                                    data-prefilled-options=""
+                                    data-descriptions=""
+                                    data-minimum-amount="5"
+                                    data-maximum-amount="1000"
+                                    data-slider-step="10"
+                                    data-default-amount="30"
+                                    data-snippet="s_donation_button"
+                                    data-display-options="true"
+                                    data-donation-amounts="[&quot;100&quot;]"
+                                >
+                                    <form
+                                        class="s_donation_form"
+                                        action="/he/donation/pay"
+                                        method="post"
+                                        enctype="multipart/form-data"
+                                        style="text-align: center;"
+                                    >
+                                        <span id="s_donation_description_inputs" />
+                                        <div
+                                            class="s_donation_prefilled_buttons mb-2"
+                                        />
+                                        <span id="s_donation_description_inputs" />
+                                        <span
+                                            id="s_donation_description_inputs"
+                                            style="font-size: 36px;"
+                                        >
+                                            <font class="bg-o-color-3 text-o-color-1">
+                                                <strong>donations</strong>
+                                            </font>
+                                        </span>
+                                        <br />
+                                        <div
+                                            class="s_donation_range_slider_wrap mb-2 position-relative"
+                                        >
+            <input
+                                                type="range"
+                                                class="form-range"
+                                                min="5"
+                                                max="1000"
+                                                step="10"
+                                                id="s_donation_range_slider"
+                                            />&amp;nbsp;<output
+                                                class="s_range_bubble"
+                                                style="left: calc(3.01508% + 7.51759px);"
+                                            >
+                                                35
+                                            </output>
+        </div>
+                                        <a
+                                            href="#"
+                                            type="button"
+                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2 o_default_snippet_text"
+                                        >
+                                            Donate Now
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <section
