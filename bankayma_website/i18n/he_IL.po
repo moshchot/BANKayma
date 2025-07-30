@@ -42,15 +42,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"&amp;nbsp;<output class=\"s_range_bubble\" style=\"left: calc(3.01508% + "
-"7.51759px);\">\n"
-"                                                35\n"
-"                                            </output>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">קודם</span>"
 msgstr ""
@@ -76,17 +67,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span id=\"s_donation_description_inputs\"/>\n"
-"                                        <span "
-"id=\"s_donation_description_inputs\" style=\"font-size: 36px;\">\n"
-"                                            <strong>donations</strong>\n"
-"                                        </span>\n"
-"                                        <br/>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span style=\"font-size: 36px;\">\n"
 "                                        <strong>our crew</strong>\n"
 "                                    </span>"
@@ -102,6 +82,11 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Donations</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>events</strong>"
 msgstr ""
 
@@ -113,11 +98,6 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_crew_partner_ids
 msgid "Crew"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "Donate Now"
 msgstr ""
 
 #. module: bankayma_website
