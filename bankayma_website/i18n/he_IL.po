@@ -51,16 +51,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<font class=\"text-o-color-1 bg-o-color-3\">\n"
-"                                <span style=\"font-size: 36px;\">\n"
-"                                    <strong>backers</strong>\n"
-"                                </span>\n"
-"                            </font>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">קודם</span>"
 msgstr ""
@@ -89,10 +79,7 @@ msgid ""
 "<span id=\"s_donation_description_inputs\"/>\n"
 "                                        <span "
 "id=\"s_donation_description_inputs\" style=\"font-size: 36px;\">\n"
-"                                            <font class=\"bg-o-color-3 text-"
-"o-color-1\">\n"
 "                                                <strong>donations</strong>\n"
-"                                            </font>\n"
 "                                        </span>\n"
 "                                        <br/>"
 msgstr ""
@@ -101,11 +88,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<span style=\"font-size: 36px;\">\n"
-"                                        <font class=\"bg-o-color-3 text-o-"
-"color-1\">\n"
 "                                            <strong>our crew</strong>\n"
-"                                        </font>\n"
 "                                    </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 36px;\">\n"
+"                                    <strong>backers</strong>\n"
+"                                </span>"
 msgstr ""
 
 #. module: bankayma_website
