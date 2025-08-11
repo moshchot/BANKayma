@@ -772,6 +772,8 @@ class AccountMove(models.Model):
     def _portal_get_or_create_tax(self, company, fpos, tax_percentage, create=True):
         AccountTax = self.env["account.tax"].with_company(company)
         tax_group = fpos.bankayma_deduct_tax_group_id
+        if not fpos.bankayma_deduct_tax or not tax_group:
+            return AccountTax
         result = AccountTax.search(
             [
                 ("type_tax_use", "=", "purchase"),
