@@ -7,8 +7,6 @@ from odoo import fields, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    name = fields.Char(translate=True)
-    invoice_auto_validation = fields.Boolean(default=False)
     intercompany_sale_journal_id = fields.Many2one(
         "account.journal",
         "Intercompany sale journal",
@@ -55,7 +53,7 @@ class ResCompany(models.Model):
     donation_credit_transfer_product_id = fields.Many2one(
         "product.product",
         string="Product for Donations via Credit Transfer",
-        domain=[("detailed_type", "=", "service")],
+        domain=[("type", "=", "service")],
         ondelete="restrict",
     )
 

@@ -5,14 +5,14 @@ class TestBankaymaWebsite(HttpCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.parent_company = cls.env.ref("base.main_company")
-        cls.child_company = cls.env.ref("bankayma_base.child_comp1")
+        cls.parent = cls.env.ref("operating_unit.main_operating_unit")
+        cls.child = cls.env.ref("operating_unit.b2b_operating_unit")
 
     def test_project_listing(self):
         response = self.url_open("/projects")
-        self.assertIn(self.child_company.name, response.text)
-        self.assertNotIn(self.parent_company.name, response.text)
+        self.assertIn(self.child.name, response.text)
+        self.assertNotIn(self.parent.name, response.text)
 
     def test_project_page(self):
-        response = self.url_open("/projects/%s" % self.child_company.id)
-        self.assertIn(self.child_company.name, response.text)
+        response = self.url_open(f"/projects/{self.child.id}")
+        self.assertIn(self.child.name, response.text)

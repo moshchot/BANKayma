@@ -9,17 +9,17 @@
                 <header>
                     <field name="state" widget="statusbar" />
                 </header>
-                <group attrs="{'invisible': [('state', '=', 'draft')]}">
+                <group invisible="state == 'draft'">
                     <field name="export_file" filename="export_file_name" />
                     <field name="export_file_name" invisible="1" />
                 </group>
-                <group attrs="{'invisible': [('state', '!=', 'draft')]}">
+                <group invisible="state != 'draft'">
                     <field name="payment_date" />
                     <div colspan="2">
                         Click below to export your marked moves as MASAV
                     </div>
                 </group>
-                <div attrs="{'invisible': [('state', '!=', 'done')]}">
+                <div invisible="state != 'done'">
                     Please go to
                     <a href="https://masav.co.il" target="_blank">
                         https://masav.co.il
@@ -29,20 +29,20 @@
                 <br />
                 <footer>
                     <button
-                        attrs="{'invisible': [('state', '!=', 'done')]}"
+                        invisible="state != 'done'"
                         special="cancel"
                         string="Close"
                         class="btn btn-primary"
                     />
                     <button
-                        attrs="{'invisible': [('state', '!=', 'draft')]}"
+                        invisible="state != 'draft'"
                         type="object"
                         name="button_export"
                         string="Export"
                         class="btn btn-primary"
                     />
                     <button
-                        attrs="{'invisible': [('state', '=', 'done')]}"
+                        invisible="state == 'done'"
                         special="cancel"
                         string="Cancel"
                         class="btn btn-secondary"

@@ -9,7 +9,7 @@
             ref="account_invoice_inter_company.res_config_settings_view_form"
         />
         <field name="arch" type="xml">
-            <div id="intercompany_invoice_user" position="after">
+            <div id="intercompany_invoice_user_id" position="after">
                 <div id="intercompany_sale_journal_id">
                     <label
                         string="Intercompany sale journal"
@@ -56,7 +56,6 @@
                     />
                     <field
                         name="overhead_account_id"
-                        domain="[('company_id', '=', company_id)]"
                         class="oe_inline"
                     />
                 </div>
@@ -79,7 +78,7 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="account.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <div id="invoicing_settings" position="inside">
+            <block id="invoicing_settings" position="inside">
                 <div class="col-12 col-lg-6 o_setting_box">
                     <div class="o_setting_left_pane">
                         <field name="show_bankayma_tax_totals_out_invoice" />
@@ -88,8 +87,8 @@
                         <label for="show_bankayma_tax_totals_out_invoice" />
                     </div>
                 </div>
-            </div>
-            <div id="account_vendor_bills" position="inside">
+            </block>
+            <block id="account_vendor_bills" position="inside">
                 <div class="col-12 col-lg-6 o_setting_box">
                     <div class="o_setting_left_pane">
                         <field name="show_bankayma_tax_totals_in_invoice" />
@@ -130,7 +129,7 @@
                         />
                     </div>
                 </div>
-            </div>
+            </block>
         </field>
     </record>
 </odoo>

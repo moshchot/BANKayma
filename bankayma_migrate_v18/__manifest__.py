@@ -13,4 +13,5 @@
     "website": "https://github.com/moshchot/BANKayma",
     "pre_init_hook": "pre_init_hook",
     "post_init_hook": "post_init_hook",
+    "installable": False,
 }

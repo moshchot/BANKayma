@@ -6,18 +6,21 @@
             t-att-style="props.action.style || false"
             class="spreadsheet_board-container p-2 m-2"
         >
-            <div class="spreadsheet_board-filters">
-                <t
-                    t-component="spreadsheet_filter_component"
+            <div class="spreadsheet_board-filters" t-if="spreadsheet_filters.length">
+                <div
                     t-foreach="spreadsheet_filters"
                     t-as="filter"
                     t-key="filter.id"
-                    filter="filter"
-                    model="spreadsheet_model"
-                />
+                    class="pe-2"
+                >
+                    <FilterValue
+                        filter="filter"
+                        model="SpreadsheetModel"
+                    />
+                </div>
             </div>
             <div class="spreadsheet_board-wrapper" t-ref="container">
-                <t t-component="spreadsheet_component" model="spreadsheet_model" />
+                <t t-component="SpreadsheetComponent" model="SpreadsheetModel" />
             </div>
         </div>
         <div t-else="">Invalid spreadsheet</div>

@@ -10,6 +10,7 @@ class ContractContrac(models.Model):
     _inherit = "contract.contract"
 
     sumit_details = fields.Json()
+    operating_unit_id = fields.Many2one("operating.unit")
 
     def _sumit_process_invoices(self):
         """

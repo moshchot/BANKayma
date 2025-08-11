@@ -28,7 +28,7 @@ class TestSystem1000Import(TransactionCase):
             .with_user(cls.env.ref("base.user_admin"))
         )
         cls.custom_tax = cls.bill._portal_get_or_create_tax(
-            cls.bill.company_id, cls.bill.fiscal_position_id, 41
+            cls.bill.fiscal_position_id, 41
         )
         cls.bill.invoice_line_ids.write(
             {
@@ -48,24 +48,22 @@ class TestSystem1000Import(TransactionCase):
         return b64encode(
             (
                 "Airrelevant\r\n"
-                "B{:>15}taxidsentvatidsenttaxidrecvvatidrecv                  name"
-                "{}{:>2}00000000{:>8}{:>8}20231230XXX1234567899999999999111111111\r\n"
+                f"B{self.bill.id:>15}taxidsentvatidsenttaxidrecvvatidrecv"
+                "                  name"
+                f"{tax_papers}{deduction:>2}00000000{from_date:>8}{to_date:>8}"
+                "20231230XXX1234567899999999999111111111\r\n"
                 "Zirrelevant\r\n"
-            )
-            .format(self.bill.id, tax_papers, deduction, from_date, to_date)
-            .encode(System1000File.encoding)
+            ).encode(System1000File.encoding)
         )
 
     def _import_file_invalid(self, move_id):
         return b64encode(
             (
                 "Airrelevant\r\n"
-                "B{:>15}taxidsentvatidsent00"
+                f"B{self.bill.id:>15}taxidsentvatidsent00"
                 "                                               name\r\n"
                 "Zirrelevant\r\n"
-            )
-            .format(self.bill.id)
-            .encode(System1000File.encoding)
+            ).encode(System1000File.encoding)
         )
 
     def _run_import(self, **wizard_kwargs):
@@ -92,7 +90,7 @@ class TestSystem1000Import(TransactionCase):
     def test_import_valid_file_auto_confirm(self):
         """Test that we confirm moves when everything matches"""
         custom_tax = self.bill._portal_get_or_create_tax(
-            self.bill.company_id, self.bill.fiscal_position_id, 42
+            self.bill.fiscal_position_id, 42
         )
         self.bill.invoice_line_ids.write(
             {

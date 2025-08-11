@@ -107,6 +107,11 @@ class ResPartner(models.Model):
             "bankayma_account.action_bankayma_vendor_invite_form",
         )
 
+    def _get_signup_url_for_action(self, **kwargs):
+        if self.signup_login_redirect:
+            kwargs["url"] = self.signup_login_redirect
+        return super()._get_signup_url_for_action(**kwargs)
+
     def _compute_total_billed(self):
         for this in self:
             this.total_billed = sum(

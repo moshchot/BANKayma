@@ -4,7 +4,7 @@
 {
     "name": "Masav",
     "summary": "Enables exporting moves as MASAV",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Accounting/Localizations",
     "website": "https://github.com/moshchot/BANKayma",
@@ -12,7 +12,6 @@
     "maintainers": ["hbrunn"],
     "license": "AGPL-3",
     "application": False,
-    "installable": True,
     "preloadable": True,
     "external_dependencies": {
         "python": [
@@ -32,4 +31,5 @@
     "demo": [
         "demo/res_company.xml",
     ],
+    "installable": True,
 }

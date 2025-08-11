@@ -2,56 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <template id="portal_layout" inherit_id="portal.portal_layout">
-        <div class="o_portal_my_details" position="inside">
-            <div style="position: relative">
-                <i
-                    class="fa fa-transgender-alt fa-fw"
-                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
-                    role="img"
-                />
-                <span
-                    style="padding-left: 1.78571429em; display: block"
-                    t-field="user_id.partner_id.property_account_position_id"
-                />
-            </div>
-            <div style="position: relative" t-if="user_id.partner_id.vat">
-                <i
-                    class="fa fa-id-card fa-fw"
-                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
-                    role="img"
-                />
-                <span
-                    style="padding-left: 1.78571429em; display: block"
-                    t-field="user_id.partner_id.vat"
-                />
-            </div>
-            <t t-set="bank_account" t-value="user_id.partner_id.sudo().bank_ids[:1]" />
-            <div style="position: relative" t-if="bank_account">
-                <i
-                    class="fa fa-money fa-fw"
-                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
-                    role="img"
-                />
-                <span
-                    style="padding-left: 1.78571429em; display: block"
-                    t-out="'%s [%s]' % (bank_account.acc_number, bank_account.branch_code)"
-                />
-            </div>
-            <div style="position: relative" t-if="bank_account">
-                <i
-                    class="fa fa-bank fa-fw"
-                    style="position: absolute; top: 0; left: 0; bottom: auto; right: auto; line-height: 1.5"
-                    role="img"
-                />
-                <span
-                    style="padding-left: 1.78571429em; display: block"
-                    t-field="bank_account.bank_id.display_name"
-                />
-            </div>
-        </div>
-    </template>
-
     <template
         id="portal_my_details_fields"
         inherit_id="portal.portal_my_details_fields"
@@ -87,9 +37,8 @@
             </attribute>
         </xpath>
         <xpath expr="//input[@name='vat']" position="attributes">
-            <attribute name="type">number</attribute>
-            <attribute name="max">999999999</attribute>
-            <attribute name="min">1</attribute>
+            <attribute name="inputmode">numeric</attribute>
+            <attribute name="pattern">[0-9]+|/</attribute>
             <attribute name="required">1</attribute>
         </xpath>
         <xpath expr="//label[@for='city']" position="attributes">
@@ -98,14 +47,8 @@
         <xpath expr="//label[@for='street']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
         </xpath>
-        <xpath expr="//select[@name='country_id']" position="attributes">
-            <attribute name="t-attf-class" add="o-select2" separator=" " />
-        </xpath>
         <xpath expr="//label[@for='country_id']" position="attributes">
             <attribute name="class" add="label-optional" separator=" " />
-        </xpath>
-        <xpath expr="//select[@name='state_id']" position="attributes">
-            <attribute name="t-attf-class" add="o-select2" separator=" " />
         </xpath>
         <xpath expr="//div[./select[@name='state_id']]" position="after">
             <div class="clearfix" />
@@ -122,7 +65,7 @@
                         </label>
                         <select
                             name="bank"
-                            t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''} o-select2"
+                            t-attf-class="form-select #{error.get('bank') and 'is-invalid' or ''}"
                             required="required"
                         >
                             <t
@@ -151,8 +94,8 @@
                         </label>
                         <input
                             name="bank_branch_code"
-                            type="number"
-                            min="1"
+                            inputmode="numeric"
+                            pattern="[0-9]+"
                             t-attf-class="form-control #{error.get('bank_branch_code') and 'is-invalid' or ''}"
                             t-att-value="bank_branch_code or partner.bank_ids[:1].branch_code"
                             required="required"
@@ -169,8 +112,8 @@
                         </label>
                         <input
                             name="bank_acc_number"
-                            type="number"
-                            min="1"
+                            inputmode="numeric"
+                            pattern="[0-9]+"
                             t-attf-class="form-control #{error.get('bank_acc_number') and 'is-invalid' or ''}"
                             t-att-value="bank_acc_number or partner.bank_ids[:1].acc_number"
                             required="required"
@@ -189,7 +132,7 @@
                         </label>
                         <select
                             name="property_account_position_id"
-                            t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''} bk-onchange"
+                            t-attf-class="form-select #{error.get('property_account_position_id') and 'is-invalid' or ''}"
                             required="required"
                         >
                             <option value="">Fiscal position...</option>
@@ -215,15 +158,6 @@
                         >
                             Tax deduction
                         </label>
-                        <div class="form-check form-switch">
-                            <input
-                                type="checkbox"
-                                t-attf-class="form-check-input bk-onchange"
-                                value=""
-                                id="bankayma_vendor_tax_deduction"
-                                t-att-checked="(bankayma_vendor_tax_percentage or request.env.user.partner_id.bankayma_vendor_tax_percentage) and True or False"
-                            />
-                        </div>
                         <input
                             type="number"
                             min="0"
@@ -303,7 +237,7 @@
     <template id="portal_my_invoices" inherit_id="account.portal_my_invoices">
         <t t-call="portal.portal_searchbar" position="after">
             <nav
-                class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar"
+                class="navbar navbar-light navbar-expand-lg py-0 mb-2 o_portal_navbar"
                 groups="bankayma_base.group_vendor"
             >
                 <a
@@ -320,30 +254,30 @@
             >
                 <t
                     t-set="amount_in"
-                    t-value='sum(invoices.filtered(lambda x: x.move_type in ("in_refund", "out_invoice")).mapped("amount_total"))'
+                    t-value='sum(all_invoices.filtered(lambda x: x.move_type in ("in_refund", "out_invoice")).mapped("amount_total"))'
                 />
                 <t
                     t-set="amount_out"
-                    t-value='sum(invoices.filtered(lambda x: x.move_type not in ("in_refund", "out_invoice")).mapped("amount_total"))'
+                    t-value='sum(all_invoices.filtered(lambda x: x.move_type not in ("in_refund", "out_invoice")).mapped("amount_total"))'
                 />
-                <t t-set="currency" t-value='invoices[0].currency_id' />
-                <table class="table">
+                <t t-set="currency" t-value='all_invoices[0].currency_id' />
+                <table class="table table-borderless mb-0">
                     <tr>
                         <th>In:</th>
                         <th
-                            t-esc="amount_in if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_out"
+                            t-esc="amount_in if all_invoices.env.user.has_group('bankayma_base.group_vendor') else amount_out"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
                         <th>Out:</th>
                         <th
-                            t-esc="amount_out if invoices.env.user.has_group('bankayma_base.group_vendor') else amount_in"
+                            t-esc="amount_out if all_invoices.env.user.has_group('bankayma_base.group_vendor') else amount_in"
                             t-options='{"widget": "monetary", "display_currency": currency}'
                         />
                     </tr>
                 </table>
             </nav>
         </t>
-        <xpath expr="//td[hasclass('tx_status')]" position="inside">
+        <xpath expr="//td[@name='invoice_status']" position="inside">
             <t t-if="invoice.state == 'draft'">
                 <span class="badge rounded-pill text-bg-info">
                     <i
@@ -390,35 +324,42 @@
         </ol>
     </template>
 
+    <template id="portal_layout" inherit_id="portal.portal_layout">
+        <xpath expr="//t[@t-call='portal.portal_breadcrumbs']/../.." position="attributes">
+            <attribute name="t-if" separator="or" add="bankayma_force_breadcrumbs" />
+        </xpath>
+    </template>
+
     <template id="portal_new_vendor_bill">
         <t t-call="portal.portal_layout">
             <t t-set="additional_title">New vendor bill</t>
             <t t-set="my_details" t-value="True" />
-            <form action="/my/invoices/new" method="post" enctype="multipart/form-data">
+            <t t-set="bankayma_force_breadcrumbs" t-value="True" />
+            <form action="/my/invoices/new" method="post" enctype="multipart/form-data" class="o_portal_new_vendor_bill">
                 <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
                 <div class="mb-3 col-xl-12">
-                    <label class="col-form-label" for="company">Project</label>
+                    <label class="col-form-label" for="operating_unit_id">Project</label>
                     <select
-                        class="form-select o-select2"
-                        id="company"
-                        name="company"
+                        class="form-select"
+                        id="operating_unit_id"
+                        name="operating_unit_id"
                         required="required"
                         data-placeholder="Please select a project"
                     >
                         <option />
                         <t
-                            t-foreach="request.env['res.company'].sudo().search(['|', ('company_id.category_id', '=', False), ('company_id.category_id.available_for_portal', '=', True)])"
-                            t-as="company"
+                            t-foreach="request.env.user.operating_unit_ids"
+                            t-as="operating_unit"
                         >
                             <option
-                                t-att-selected="company.id == int(post.get('company', -1))"
-                                t-att-value="company.id"
+                                t-att-selected="operating_unit.id == int(post.get('operating_unit_id', -1))"
+                                t-att-value="operating_unit.id"
                             >
-                                <t t-out="company.name" />
+                                <t t-out="operating_unit.name" />
                             </option>
                         </t>
                     </select>
@@ -460,10 +401,6 @@
                     <select
                         name="fpos"
                         t-attf-class="form-select #{errors.get('fpos') and 'is-invalid' or ''}"
-                        onchange="
-                            jQuery('#vendor_doc_description').html(jQuery(this.selectedOptions).data('vendor_doc_description'));
-                            jQuery('#upload').prop('required', jQuery(this.selectedOptions).data('vendor_doc_mandatory') == 'True');
-                        "
                     >
                         <option value="">Fiscal position...</option>
                         <t t-foreach="fiscal_positions or []" t-as="fpos">
@@ -596,9 +533,9 @@
         <xpath expr="//div[@name='no_shipping']//address" position="before">
             <div>To:</div>
         </xpath>
-        <xpath expr="//p[@t-field='o.invoice_date_due']/.." position="attributes">
-            <attribute name="style">display: none</attribute>
-        </xpath>
+        <div id="informations" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </div>
         <div id="total" position="attributes">
             <attribute name="t-if">not o.show_bankayma_tax_totals</attribute>
         </div>
@@ -621,15 +558,13 @@
             </div>
         </xpath>
     </template>
-    <template id="payment_checkout" inherit_id="website_payment.payment_checkout">
-        <xpath
-            expr="//t[@t-if='is_donation']//h3[hasclass('o_page_header')]"
-            position="inside"
-        >
+    <template id="donation_information" inherit_id="website_payment.donation_information">
+        <xpath expr="//h3[hasclass('o_page_header')]" position="inside">
             <span>to</span>
-            <t t-out="get_param_company.name" />
+            <t t-out="ou_or_company.name" />
         </xpath>
         <xpath expr="//div[hasclass('o_donation_payment_form')]" position="inside">
+            <input t-if="ou_or_company and ou_or_company._name == 'operating.unit'" type="hidden" name="operating_unit_id" t-att-value="ou_or_company.id" />
             <div class="col-lg-12 px-0" t-if="is_recurrent">
                 <div class="form-check mt-3">
                     <input

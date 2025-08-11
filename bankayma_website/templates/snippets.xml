@@ -1,19 +1,14 @@
 <odoo>
     <template id="snippets" inherit_id="website.snippets">
-        <div id="snippet_feature" position="attributes">
+        <t snippet-group="contact_and_forms" position="attributes">
             <attribute name="groups">
                 bankayma_base.group_org_manager,bankayma_base.group_full
             </attribute>
-        </div>
-        <div id="snippet_effect" position="attributes">
+        </t>
+        <t snippet-group="social" position="attributes">
             <attribute name="groups">
                 bankayma_base.group_org_manager,bankayma_base.group_full
             </attribute>
-        </div>
-        <div id="snippet_content" position="attributes">
-            <attribute name="groups">
-                bankayma_base.group_org_manager,bankayma_base.group_full
-            </attribute>
-        </div>
+        </t>
     </template>
 </odoo>

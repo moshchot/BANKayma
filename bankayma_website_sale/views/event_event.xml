@@ -77,23 +77,23 @@
                     <group>
                         <field name="is_external" />
                     </group>
-                    <group attrs="{'invisible': [('is_external', '=', False)]}">
+                    <group invisible="not is_external">
                         <field
                             name="external_link"
                             widget="url"
-                            attrs="{'required': [('is_external', '=', True)]}"
+                            required="is_external"
                         />
                     </group>
                     <group
                         name="bankayma_main"
-                        attrs="{'invisible': [('is_external', '=', True)]}"
+                        invisible="is_external"
                     >
                         <group name="bankayma_left" />
                         <group name="bankayma_right" />
                     </group>
                     <notebook
                         name="bankayma_notebook"
-                        attrs="{'invisible': [('is_external', '=', True)]}"
+                        invisible="is_external"
                     />
                 </sheet>
             </sheet>

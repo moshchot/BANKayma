@@ -27,8 +27,8 @@ class AccountJournal(models.Model):
     )
     bankayma_charge_overhead = fields.Boolean(
         "Charge overhead",
-        help="When this is checked, payments for moves in child journals will create an "
-        "overhead invoice for the child company",
+        help="When this is checked, payments for moves in child journals will create "
+        "an overhead invoice for the child company",
     )
     bankayma_overhead_percentage = fields.Float(
         "Overhead percentage",
@@ -71,7 +71,8 @@ class AccountJournal(models.Model):
 
     def _check_journal_sequence(self):
         """
-        Defuse constraint from account_move_name_sequence pertaining to squences' companies
+        Defuse constraint from account_move_name_sequence pertaining to squences'
+        companies
         """
 
     @api.constrains(
@@ -85,6 +86,7 @@ class AccountJournal(models.Model):
             ):
                 raise exceptions.ValidationError(
                     _(
-                        "You cannot charge overhead on the company's overhead payment journal"
+                        "You cannot charge overhead on the company's overhead payment "
+                        "journal"
                     )
                 )

@@ -13,6 +13,9 @@
                 </attribute>
                 <attribute name="open_target">new</attribute>
             </field>
+            <xpath expr="//group[@name='right_event_details']//field[@name='company_id']" position="after">
+                <field name="operating_unit_id" groups="operating_unit.group_multi_operating_unit" />
+            </xpath>
         </field>
     </record>
 </odoo>

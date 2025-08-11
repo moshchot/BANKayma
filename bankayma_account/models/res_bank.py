@@ -11,12 +11,16 @@ class ResBank(models.Model):
         """Forbid editing/deleting banks that have been provisioned"""
         if self.env.is_system():
             return
-        if self.env["ir.model.data"].search(
-            [
-                ("res_model", "=", self._name),
-                ("res_id", "in", self.ids),
-                ("name", "not like", "__%"),
-            ]
+        if (
+            self.env["ir.model.data"]
+            .sudo()
+            .search(
+                [
+                    ("model", "=", self._name),
+                    ("res_id", "in", self.ids),
+                    ("name", "not like", "__%"),
+                ]
+            )
         ):
             raise exceptions.AccessError(
                 _(

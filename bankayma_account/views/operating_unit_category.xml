@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_operating_unit_category_form" model="ir.ui.view">
+        <field name="inherit_id" ref="bankayma_base.view_operating_unit_category_form" />
+        <field name="model">operating.unit.category</field>
+        <field name="arch" type="xml">
+            <group name="left" position="inside">
+                <field name="available_for_intercompany_invoices" />
+            </group>
+            <group name="right" position="inside">
+                    <field name="available_for_portal" />
+            </group>
+        </field>
+    </record>
+</odoo>

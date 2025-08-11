@@ -14,7 +14,7 @@
                 <div>
                     <field name="expr_key" widget="ace" options="{'mode': 'python'}" />
                     <div
-                        attrs="{'invisible': [('expr_key_result', '=', False)]}"
+                        invisible="not expr_key_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -39,7 +39,7 @@
                 <div>
                     <field name="expr_name" widget="ace" options="{'mode': 'python'}" />
                     <div
-                        attrs="{'invisible': [('expr_name_result', '=', False)]}"
+                        invisible="not expr_name_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -56,7 +56,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_sort_code_result', '=', False)]}"
+                        invisible="not expr_sort_code_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -73,7 +73,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_filter_result', '=', False)]}"
+                        invisible="not expr_filter_result"
                         role="alert"
                         class="alert alert-danger"
                     >

@@ -10,24 +10,24 @@
                 <div
                     class="alert alert-danger"
                     role="alert"
-                    attrs="{'invisible': [('has_nondraft_moves', '=', False)]}"
+                    invisible="not has_nondraft_moves"
                 >
-                    You cannot change the company of non-draft moves
+                    You cannot change the operating unit of non-draft moves
                 </div>
-                <group attrs="{'invisible': [('has_nondraft_moves', '=', True)]}">
+                <group invisible="has_nondraft_moves">
                     <field
-                        name="company_id"
-                        domain="[('id', '!=', current_company_id)]"
+                        name="operating_unit_id"
+                        domain="[('id', '!=', current_operating_unit_id)]"
                         options="{'no_create': True}"
                     />
-                    <field name="current_company_id" invisible="1" />
+                    <field name="current_operating_unit_id" invisible="1" />
                 </group>
-                <footer attrs="{'invisible': [('has_nondraft_moves', '=', True)]}">
+                <footer invisible="has_nondraft_moves">
                     <button
                         type="object"
-                        name="action_change_company"
+                        name="action_change_operating_unit"
                         class="btn btn-primary"
-                        string="Change company"
+                        string="Change Operating Unit"
                     />
                     <button special="cancel" string="Cancel" />
                 </footer>
@@ -36,7 +36,7 @@
     </record>
 
     <record id="action_bankayma_move_change_company_form" model="ir.actions.act_window">
-        <field name="name">Change company</field>
+        <field name="name">Change Operating Unit</field>
         <field name="res_model">bankayma.move.change.company</field>
         <field name="binding_model_id" ref="account.model_account_move" />
         <field name="target">new</field>

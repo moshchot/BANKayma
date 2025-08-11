@@ -14,13 +14,11 @@
                 <group
                     name="bankayma_overhead"
                     string="Overhead"
-                    attrs="{'invisible': [('company_cascade_child_ids', '=', [])]}"
                 >
-                    <field name="company_cascade_child_ids" invisible="1" />
                     <field name="bankayma_charge_overhead" />
                     <field
                         name="bankayma_overhead_percentage"
-                        attrs="{'invisible': [('bankayma_charge_overhead', '=', False)]}"
+                        invisible="not bankayma_charge_overhead"
                     />
                 </group>
                 <group name="bankayma_mail" string="Mails/Chatter">

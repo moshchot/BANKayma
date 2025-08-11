@@ -10,7 +10,7 @@
                 <field name="use_sumit_journal" invisible="True" />
                 <field
                     name="use_sumit_this_payment"
-                    attrs="{'invisible': [('use_sumit_journal', '=', False)]}"
+                    invisible="not use_sumit_journal"
                 />
             </xpath>
             <xpath expr="./group" position="after">

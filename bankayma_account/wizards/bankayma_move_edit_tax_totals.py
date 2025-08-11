@@ -47,7 +47,7 @@ class BankaymaMoveEditTaxTotals(models.TransientModel):
             if not sum_prices:
                 continue
             for product_line in move.invoice_line_ids.filtered(
-                lambda x: tax_line.tax_line_id in x.tax_ids
+                lambda x, tax_line=tax_line: tax_line.tax_line_id in x.tax_ids
             ):
                 weighted_diff = diff * product_line.price_unit / sum_prices
                 for _dummy, product_line_id, vals in product_lines:

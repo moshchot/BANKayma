@@ -4,18 +4,18 @@
         <field name="inherit_id" ref="loyalty.loyalty_reward_view_form" />
         <field name="arch" type="xml">
             <form position="inside">
-                <field name="bankayma_website_sale_company_id" invisible="False" />
+                <field name="operating_unit_id" />
             </form>
             <field name="discount_product_ids" position="attributes">
                 <attribute name="domain">
-                    [('bankayma_website_sale_company_id', '!=', False), ('bankayma_website_sale_company_id', '=?', bankayma_website_sale_company_id)]
+                    [('operating_unit_id', '!=', False), ('operating_unit_id', '=?', operating_unit_id)]
                 </attribute>
             </field>
             <field name="discount_line_product_id" position="attributes">
                 <attribute name="groups" />
                 <attribute name="required">True</attribute>
                 <attribute name="domain">
-                    [('bankayma_website_sale_company_id', '!=', False), ('bankayma_website_sale_company_id', '=?', bankayma_website_sale_company_id)]
+                    [('operating_unit_id', '!=', False), ('operating_unit_id', '=?', operating_unit_id)]
                 </attribute>
             </field>
             <field name="discount_product_category_id" position="attributes">

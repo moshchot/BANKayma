@@ -10,7 +10,6 @@
                 <field name="show_warning_vat_required" invisible="True" />
                 <field name="duplicated_bank_account_partners_count" invisible="True" />
                 <field name="supplier_rank" invisible="True" />
-                <field name="team_id" invisible="True" />
             </form>
             <page name="accounting" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
@@ -21,55 +20,51 @@
             >
                 <field
                     name="property_account_position_id"
-                    attrs="{'required': [('supplier_rank', '&gt;', 0)]}"
+                    required="supplier_rank &gt; 0"
                 />
                 <field name="bankayma_deduct_tax" invisible="True" />
                 <field
                     name="bankayma_show_tax_deduction"
-                    attrs="{'invisible': [('bankayma_deduct_tax', '=', False)]}"
+                    invisible="not bankayma_deduct_tax"
                 />
                 <field
                     name="bankayma_vendor_tax_percentage"
-                    attrs="{'invisible': [('bankayma_show_tax_deduction', '=', False)]}"
+                    invisible="not bankayma_show_tax_deduction"
                 />
                 <field
                     name="bankayma_vendor_max_amount"
-                    attrs="{'invisible': [('bankayma_show_tax_deduction', '=', False)]}"
+                    invisible="not bankayma_show_tax_deduction"
                 />
                 <field name="bankayma_available_tax_group_ids" invisible="True" />
                 <field
                     name="bankayma_tax_group_id"
                     domain="[('id', 'in', bankayma_available_tax_group_ids)]"
-                    attrs="{'invisible': [('bankayma_available_tax_group_ids', '=', [])]}"
+                    invisible="not bankayma_available_tax_group_ids"
                 />
             </xpath>
             <xpath
                 expr="//group[@name='bankayma_top']//field[@name='vat']"
                 position="attributes"
             >
-                <attribute
-                    name="attrs"
-                >{'required': [('supplier_rank', '&gt;', 0)]}</attribute>
+                <attribute name="required">supplier_rank</attribute>
             </xpath>
             <xpath
                 expr="//group[@name='bankayma_top']//field[@name='bank_ids']"
                 position="attributes"
             >
-                <attribute
-                    name="attrs"
-                >{'required': [('supplier_rank', '&gt;', 0)]}</attribute>
+                <attribute name="required">supplier_rank</attribute>
             </xpath>
             <button name="action_reset_password" position="after">
                 <button
                     string="Invite Vendor"
                     type="object"
                     name="action_invite_vendor"
-                    attrs="{'invisible': [('user_ids', '!=', [])]}"
+                    invisible="not user_ids"
                 />
             </button>
             <button name="action_view_partner_invoices" position="attributes">
-                <attribute name="attrs">
-                    {'invisible': [('total_invoiced', '=', 0)]}
+                <attribute name="invisible">
+                    total_invoiced == 0
                 </attribute>
             </button>
             <button name="action_view_partner_invoices" position="after">
@@ -79,7 +74,7 @@
                     icon="fa-pencil-square-o"
                     name="action_view_partner_bills"
                     groups="account.group_account_invoice,account.group_account_readonly"
-                    context="{'default_partner_id': active_id}"
+                    context="{'default_partner_id': id}"
                 >
                     <div class="o_form_field o_stat_info">
                         <span class="o_stat_value">
@@ -93,27 +88,11 @@
                     </div>
                 </button>
             </button>
+            <!-- prettier-ignore-start -->
             <page name="sales_purchases" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_full,base.group_no_one
-                </attribute>
+                <attribute name="groups">bankayma_base.group_full,base.group_no_one</attribute>
             </page>
-            <xpath
-                expr="(//button[@name='act_show_contract'])[1]"
-                position="attributes"
-            >
-                <attribute name="attrs">
-                    {'invisible': [('sale_contract_count', '=', 0)]}
-                </attribute>
-            </xpath>
-            <xpath
-                expr="(//button[@name='act_show_contract'])[2]"
-                position="attributes"
-            >
-                <attribute name="attrs">
-                    {'invisible': [('purchase_contract_count', '=', 0)]}
-                </attribute>
-            </xpath>
+            <!-- prettier-ignore-end -->
         </field>
     </record>
 </odoo>

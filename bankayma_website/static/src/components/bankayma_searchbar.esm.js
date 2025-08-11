@@ -1,7 +1,8 @@
-/** @odoo-module **/
-import concurrency from "web.concurrency";
-import publicWidget from "web.public.widget";
-import {qweb} from "web.core";
+import {renderToElement, renderToFragment} from "@web/core/utils/render";
+import {KeepLast} from "@web/core/utils/concurrency";
+import {debounce} from "@web/core/utils/timing";
+import publicWidget from "@web/legacy/js/public/public_widget";
+import {rpc} from "@web/core/network/rpc";
 
 publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
     events: {
@@ -14,8 +15,8 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
     selector: ".bankayma_searchbar",
     init: function () {
         this._super.apply(this, arguments);
-        this._drop_previous = new concurrency.DropPrevious();
-        this.onInput = _.debounce(this.onInput, 400);
+        this._keep_last = new KeepLast();
+        this.onInput = debounce(this.onInput, 400);
     },
     start: function () {
         const self = this;
@@ -34,10 +35,10 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
     },
     getSuggestions: function () {
         this.updateForm();
-        return this._rpc({
-            route: this.$("form").data("suggestion-route"),
-            params: Object.fromEntries(new FormData(this.$("form")[0])),
-        });
+        return rpc(
+            this.$("form").data("suggestion-route"),
+            Object.fromEntries(new FormData(this.$("form")[0]))
+        );
     },
     handleSuggestions: function (suggestions) {
         const $container = this.$("form .input-group");
@@ -46,12 +47,12 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
             return;
         }
         const $dropdown = $(
-            qweb.render("bankayma_searchbar.suggestions", {
+            renderToFragment("bankayma_searchbar.suggestions", {
                 suggestions: suggestions,
             })
         );
         $container.append($dropdown);
-        $dropdown.filter("button").click();
+        $container.find("button[data-bs-toggle]").click();
     },
     addBadge: function (field, value, name) {
         if (
@@ -60,7 +61,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
             ).length
         ) {
             $(
-                qweb.render("bankayma_searchbar.badge", {
+                renderToElement("bankayma_searchbar.badge", {
                     field: field,
                     name: name,
                     value: value,
@@ -98,7 +99,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
         }
     },
     onInput: function () {
-        this._drop_previous
+        this._keep_last
             .add(this.getSuggestions())
             .then(this.handleSuggestions.bind(this));
     },

@@ -4,132 +4,23 @@
 <odoo>
     <template id="external_layout_standard" inherit_id="web.external_layout_standard">
         <xpath
-            expr="//div[@t-field='company.report_header']/parent::div"
-            position="attributes"
-        >
-            <attribute name="t-if">not company.parent_id</attribute>
-        </xpath>
-        <xpath
-            expr="//div[@t-field='company.report_header']/parent::div"
+            expr="//div[@t-field='company.report_header']"
             position="after"
         >
-            <div class="row" t-if="company.parent_id">
-                <div class="col-3 mb4">
-                    <img
-                        t-if="company.parent_id.logo"
-                        t-att-src="image_data_uri(company.parent_id.logo)"
-                        style="max-height: 45px;"
-                        alt="Logo"
-                    />
-                </div>
-                <div
-                    class="col-3 text-start"
-                    style="margin-top:22px;"
-                    t-field="company.parent_id.report_header"
-                    name="moto"
-                />
-                <div
-                    class="col-3 text-end"
-                    style="margin-top:22px;"
-                    t-field="company.report_header"
-                    name="moto"
-                />
-                <div class="col-3 mb4">
-                    <img
-                        t-if="company.logo"
-                        t-att-src="image_data_uri(company.logo)"
-                        style="max-height: 45px;"
-                        alt="Child logo"
-                    />
-                    <div t-field="company.name" />
-                </div>
+            <div t-if="ou" class="d-flex flex-column align-items-center">
+                <img t-if="ou.partner_id.avatar_128" t-att-src="image_data_uri(ou.partner_id.avatar_128)" class="o_company_logo_small" />
+                <div t-field="ou.name" />
             </div>
         </xpath>
-        <div t-field="company.report_header" position="attributes">
-            <attribute name="class" />
-            <attribute name="t-att-class">
-                'col-9 text-end' if not company.parent_id else 'col-3 text-start'
-            </attribute>
-        </div>
-        <div t-field="company.report_footer" position="attributes">
-            <attribute name="t-if">not company.parent_id.report_footer</attribute>
-        </div>
-        <div t-field="company.report_footer" position="after">
-            <div
-                t-field="company.parent_id.report_footer"
-                t-if="company.parent_id.report_footer"
-            />
-        </div>
     </template>
 
     <template id="external_layout_striped" inherit_id="web.external_layout_striped">
-        <img t-if="company.logo" position="attributes">
-            <attribute name="t-att-src">
-                image_data_uri(company.parent_id.logo or company.logo)
-            </attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
-        <div t-field="company.report_footer" position="attributes">
-            <attribute name="t-if">not company.parent_id.report_footer</attribute>
+        <div name="company_address" position="after">
+            <div t-if="ou" class="d-flex flex-column align-items-center">
+                <img t-if="ou.partner_id.avatar_128" t-att-src="image_data_uri(ou.partner_id.avatar_128)" class="o_company_logo_small" />
+                <div t-field="ou.name" />
+            </div>
         </div>
-        <div t-field="company.report_footer" position="after">
-            <div
-                t-field="company.parent_id.report_footer"
-                t-if="company.parent_id.report_footer"
-            />
-        </div>
-    </template>
-
-    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
-        <img t-if="company.logo" position="attributes">
-            <attribute name="t-att-src">
-                image_data_uri(company.parent_id.logo or company.logo)
-            </attribute>
-            <attribute name="t-if">company.parent_id.logo or company.logo</attribute>
-        </img>
-    </template>
-
-    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
-        <img t-if="company.logo" position="attributes">
-            <attribute name="t-att-src">
-                image_data_uri(company.parent_id.logo or company.logo)
-            </attribute>
-        </img>
-        <span t-field="company.report_footer" position="attributes">
-            <attribute name="t-if">not company.parent_id.report_footer</attribute>
-        </span>
-        <span t-field="company.report_footer" position="after">
-            <span
-                t-field="company.parent_id.report_footer"
-                t-if="company.parent_id.report_footer"
-            />
-        </span>
-    </template>
-
-    <template id="mail_notification_layout" inherit_id="mail.mail_notification_layout">
-        <body position="attributes">
-            <attribute name="t-att-dir">
-                record and record.env['res.lang']._lang_get_direction(lang)
-            </attribute>
-        </body>
-        <table position="attributes">
-            <attribute name="t-att-dir">
-                record and record.env['res.lang']._lang_get_direction(lang)
-            </attribute>
-        </table>
-    </template>
-
-    <template id="mail_notification_light" inherit_id="mail.mail_notification_light">
-        <body position="attributes">
-            <attribute name="t-att-dir">
-                record and record.env['res.lang']._lang_get_direction(lang)
-            </attribute>
-        </body>
-        <table position="attributes">
-            <attribute name="t-att-dir">
-                record and record.env['res.lang']._lang_get_direction(lang)
-            </attribute>
-        </table>
     </template>
 
     <data noupdate="1">
@@ -137,7 +28,7 @@
             <div
                 id="header"
                 style="padding: 0px;"
-                t-if="'company_id' in object._fields"
+                t-if="'operating_unit_id' in object._fields"
                 t-att-dir="'partner_id' in object._fields and object.partner_id.lang_id.direction"
             >
                 <table
@@ -151,9 +42,9 @@
                         <tr>
                             <td valign="center">
                                 <img
-                                    t-att-src="'/logo.png?company=%s' % (object.company_id.id or 0)"
+                                    t-att-src="image_data_uri(object.operating_unit_id.partner_id.image_1024 or object.company_id.partner_id.image_1024)"
                                     style="padding: 0px; margin: 0px; height: auto; max-width: 200px; max-height: 36px;"
-                                    t-att-alt="'%s' % object.company_id.name"
+                                    t-att-alt="object.operating_unit_id.name"
                                 />
                             </td>
                         </tr>
@@ -195,33 +86,33 @@
                 id="footer"
                 style="margin-top:32px;"
                 t-att-dir="'partner_id' in object._fields and object.partner_id.lang_id.direction"
-                t-if="'company_id' in object._fields"
+                t-if="'operating_unit_id' in object._fields"
             >
                 <hr
                     width="100%"
                     style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"
                 />
-                <b t-out="object.company_id.name" style="font-size:11px;" />
+                <b t-out="object.operating_unit_id.name" style="font-size:11px;" />
                 <br />
                 <p t-attf-style="color: #999999; margin-top:2px; font-size:11px">
-                    <t t-out="object.company_id.phone" />
-                    <t t-if="object.company_id.email and object.company_id.phone">|</t>
+                    <t t-out="object.operating_unit_id.partner_id.phone" />
+                    <t t-if="object.operating_unit_id.partner_id.email and object.operating_unit_id.partner_id.phone">|</t>
                     <a
-                        t-if="object.company_id.email"
-                        t-att-href="'mailto:%s' % object.company_id.email"
+                        t-if="object.operating_unit_id.partner_id.email"
+                        t-att-href="'mailto:%s' % object.operating_unit_id.partner_id.email"
                         style="text-decoration:none; color: #999999;"
-                        t-out="object.company_id.email"
+                        t-out="object.operating_unit_id.partner_id.email"
                     />
                     <t
-                        t-if="object.company_id.website and (object.company_id.phone or object.company_id.email)"
+                        t-if="object.operating_unit_id.partner_id.website and (object.operating_unit_id.partner_id.phone or object.operating_unit_id.partner_id.email)"
                     >
                         |
                     </t>
                     <a
-                        t-if="object.company_id.website"
-                        t-att-href="'%s' % object.company_id.website"
+                        t-if="object.operating_unit_id.partner_id.website"
+                        t-att-href="'%s' % object.operating_unit_id.partner_id.website"
                         style="text-decoration:none; color: #999999;"
-                        t-out="object.company_id.website"
+                        t-out="object.operating_unit_id.partner_id.website"
                     />
                 </p>
             </div>

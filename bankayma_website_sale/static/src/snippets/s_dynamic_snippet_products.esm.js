@@ -1,15 +1,14 @@
-/** @odoo-module **/
-import * as DynamicSnippetProducts from "website_sale.s_dynamic_snippet_products";
+import DynamicSnippetProducts from "@website_sale/snippets/s_dynamic_snippet_products/000";
 
 DynamicSnippetProducts.include({
     _getSearchDomain: function () {
         const domain = this._super();
-        const company_id = this.$el.data("company-id");
-        if (company_id) {
+        const operating_unit_id = this.$el.data("operating-unit-id");
+        if (operating_unit_id) {
             domain.push([
-                "bankayma_website_sale_company_id",
+                "operating_unit_id",
                 "=",
-                Number.parseInt(company_id, 10),
+                Number.parseInt(operating_unit_id, 10),
             ]);
         }
         return domain;

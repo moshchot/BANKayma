@@ -14,13 +14,13 @@
                         string="Send Password Reset Instructions"
                         type="object"
                         name="action_reset_password"
-                        attrs="{'invisible': [('user_ids', '=', [])]}"
+                        invisible="user_ids == []"
                         groups="base.group_erp_manager,bankayma_base.group_manager,bankayma_base.group_org_manager"
                     />
                 </header>
                 <div
                     class="alert alert-success text-center o_form_header alert-dismissible"
-                    attrs="{'invisible': [('signup_valid', '!=', True)]}"
+                    invisible="not signup_valid"
                     role="status"
                 >
                     <button
@@ -28,13 +28,13 @@
                         data-bs-dismiss="alert"
                         aria-label="Close"
                     />
-                    <div attrs="{'invisible': [('user_state', '!=', 'active')]}">
+                    <div invisible="user_state != 'active'">
                         <strong>
                             A password reset has been requested for this user. An
                                 email containing the following link has been sent:
                         </strong>
                     </div>
-                    <div attrs="{'invisible': [('user_state', '!=', 'new')]}">
+                    <div invisible="user_state != 'new'">
                         <strong>
                             An invitation email containing the following
                                 subscription link has been sent:
@@ -71,7 +71,7 @@
                             name="bank_ids"
                             context="{'default_allow_out_payment': True}"
                         >
-                            <tree editable="bottom">
+                            <list editable="bottom">
                                 <field
                                     name="acc_number"
                                     modifiers="{&quot;required&quot;: true}"
@@ -79,7 +79,7 @@
                                 <field name="bank_id" />
                                 <field name="branch_code" />
                                 <field name="acc_holder_name" invisible="1" />
-                            </tree>
+                            </list>
                         </field>
                         <field name="lang" />
                     </group>
@@ -165,7 +165,8 @@
                     <field name="street2" />
                     <field
                         name="city"
-                        attrs="{'invisible': [('id', '=', False)], 'required': [('id', '!=', False)]}"
+                        invisible="not id"
+                        required="id"
                     />
                 </group>
             </form>

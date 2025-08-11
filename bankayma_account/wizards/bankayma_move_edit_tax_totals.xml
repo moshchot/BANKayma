@@ -3,18 +3,18 @@
         <field name="model">bankayma.move.edit.tax.totals</field>
         <field name="arch" type="xml">
             <form>
-                <field name="line_ids" attrs="{'invisible': [('line_ids', '=', [])]}">
-                    <tree delete="false" create="false" editable="top">
+                <field name="line_ids" invisible="not line_ids">
+                    <list delete="false" create="false" editable="top">
                         <field name="name" readonly="1" />
                         <field name="balance" />
                         <field name="line_id" invisible="1" />
                         <field name="currency_id" invisible="1" />
-                    </tree>
+                    </list>
                 </field>
                 <div
                     class="alert alert-danger"
                     role="alert"
-                    attrs="{'invisible': [('line_ids', '!=', [])]}"
+                    invisible="line_ids"
                 >
                     There are no editable taxes
                 </div>

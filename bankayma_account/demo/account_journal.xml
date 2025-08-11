@@ -37,6 +37,17 @@
         <field name="sequence">100</field>
     </record>
 
+    <record id="journal_donations" model="account.journal">
+        <field name="name">Donations</field>
+        <field name="code">DON</field>
+        <field name="type">sale</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="sequence">100</field>
+        <!-- crucial that this is type 4 -->
+        <field name="sumit_type">4</field>
+    </record>
+
+    <!-- oca-hooks:disable=xml-duplicate-record-id -->
     <record id="base.main_company" model="res.company">
         <field name="intercompany_sale_journal_id" ref="journal_intercompany_sales" />
         <field
@@ -45,6 +56,7 @@
         />
         <field name="overhead_journal_id" ref="journal_overhead" />
         <field name="overhead_payment_journal_id" ref="journal_overhead_payment" />
+        <field name="donation_journal_id" ref="journal_donations" />
     </record>
 
     <function name="write" model="account.journal">

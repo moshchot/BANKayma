@@ -1,0 +1,55 @@
+<odoo>
+    <template id="side_content" inherit_id="portal.side_content">
+        <div class="o_portal_my_details" position="inside">
+            <div t-if="user_id.partner_id.property_account_position_id" class="d-flex align-items-baseline gap-1">
+                <i
+                    class="fa fa-transgender-alt fa-fw"
+                    role="img"
+                    aria-label="Fiscal Position"
+                /><span
+                    class="text-break w-100"
+                    t-field="user_id.partner_id.property_account_position_id"
+                />
+            </div>
+            <div t-if="user_id.partner_id.vat" class="d-flex align-items-baseline gap-1">
+                <i
+                    class="fa fa-id-card fa-fw"
+                    role="img"
+                    aria-label="VAT"
+                />
+                <span
+                    class="text-break w-100"
+                    t-field="user_id.partner_id.vat"
+                />
+            </div>
+            <t t-set="bank_account" t-value="user_id.partner_id.sudo().bank_ids[:1]" />
+            <div t-if="bank_account" class="d-flex align-items-baseline gap-1">
+                <i
+                    class="fa fa-money fa-fw"
+                    role="img"
+                    aria-label="Bank Account"
+                />
+                <span
+                    class="text-break w-100"
+                    t-out="'%s [%s]' % (bank_account.acc_number, bank_account.branch_code)"
+                />
+            </div>
+            <div t-if="bank_account" class="d-flex align-items-baseline gap-1">
+                <i
+                    class="fa fa-bank fa-fw"
+                    role="img"
+                    aria-label="Bank"
+                />
+                <span
+                    class="text-break w-100"
+                    t-field="bank_account.bank_id.display_name"
+                />
+            </div>
+        </div>
+    </template>
+    <template id="portal_my_home" inherit_id="account.portal_my_home_invoice">
+        <t t-value="'/my/invoices?filterby=invoices'" position="attributes">
+            <attribute name="t-value">'/my/invoices'</attribute>
+        </t>
+    </template>
+</odoo>

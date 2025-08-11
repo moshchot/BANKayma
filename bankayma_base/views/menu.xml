@@ -2,24 +2,35 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <!-- add own main menu that other customization addons fill -->
+     <record model="ir.actions.act_window" id="open_board_my_dash_action">
+            <field name="name">My Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="path">bankayma-dashboard</field>
+            <!--
+            <field name="context">{'disable_toolbar': True}</field>
+            <field name="usage">menu</field>
+            -->
+            <field name="view_id" ref="board.board_my_dash_view"/>
+        </record>
     <menuitem
         id="menu_bankayma_root"
         name="BANKayma"
         sequence="1"
-        action="board.open_board_my_dash_action"
+        action="open_board_my_dash_action"
         web_icon="bankayma_base,static/description/icon.png"
         groups="group_user,group_full"
     />
     <record id="action_bankayma_contacts" model="ir.actions.act_window">
         <field name="name">Contacts</field>
+        <field name="path">bankayma-contacts</field>
         <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="base.view_res_partner_filter" />
         <field name="context">{'default_is_company': True}</field>
     </record>
     <record id="action_bankayma_contacts_view_tree" model="ir.actions.act_window.view">
         <field name="sequence" eval="1" />
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
         <field name="view_id" ref="base.view_partner_tree" />
         <field name="act_window_id" ref="action_bankayma_contacts" />
     </record>
@@ -43,15 +54,16 @@
         name="Configuration"
     />
     <record id="base.action_res_company_form" model="ir.actions.act_window">
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,list,form</field>
     </record>
     <menuitem
-        id="menu_bankayma_companies"
+        id="menu_bankayma_operating_units"
         parent="menu_bankayma_config"
         sequence="10"
-        action="base.action_res_company_form"
+        action="operating_unit.action_operating_unit_tree"
     />
 
+    <!--TODO check if needed
     <record id="action_simplified_income_company_config" model="ir.actions.act_window">
         <field name="name">Organization config</field>
         <field name="res_model">res.company</field>
@@ -77,6 +89,7 @@
         <field name="view_id" ref="view_company_form_manager" />
         <field name="act_window_id" ref="action_simplified_income_company_config" />
     </record>
+    -->
 
     <!-- assign standard menus to group_full (= hide them) -->
     <record id="mail.menu_root_discuss" model="ir.ui.menu">
@@ -85,7 +98,7 @@
     <record id="base.menu_management" model="ir.ui.menu">
         <field name="groups_id" eval="[Command.set([ref('group_full')])]" />
     </record>
-    <record id="base.menu_board_root" model="ir.ui.menu">
+    <record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
         <field
             name="groups_id"
             eval="[Command.set([ref('group_org_manager'), ref('group_full')])]"
@@ -127,7 +140,9 @@
             eval="[Command.set([ref('group_org_manager'), ref('group_full')])]"
         />
     </record>
+
     <record id="contacts.action_contacts_view_form" model="ir.actions.act_window.view">
         <field name="view_id" ref="bankayma_partner_form" />
     </record>
+
 </odoo>

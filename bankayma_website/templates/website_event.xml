@@ -1,47 +1,53 @@
 <odoo>
     <template id="index_topbar" inherit_id="website_event.index_topbar">
-        <nav position="attributes">
+        <xpath expr="//div[hasclass('o_wevent_index_topbar_filters')]/.." position="attributes">
             <attribute
                 name="class"
                 separator=" "
                 add="bankayma_event_searchbar sticky-top pt16 pb16 o_cc o_cc4"
             />
-        </nav>
-        <xpath expr="//ul[hasclass('o_wevent_index_topbar_filters')]" position="inside">
-            <li class="nav-item dropdown me-2 my-1">
+        </xpath>
+        <xpath expr="//div[hasclass('o_wevent_index_topbar_filters')]/t" position="after">
+            <div class="dropdown d-none d-lg-block">
                 <a
                     href="#"
                     role="button"
-                    class="btn dropdown-toggle"
+                    class="btn btn-light dropdown-toggle"
                     data-bs-toggle="dropdown"
                 >
-                    <i class="fa fa-folder-open" />
-                    Project
+                    <t>Project</t>
+                    <span t-if="ous_selected" t-out="len(ous_selected)" class="badge bg-primary ms-1" />
                 </a>
                 <div class="dropdown-menu">
-                    <t t-foreach="companies_available" t-as="company">
-                        <a
-                            t-att-href="'/event?%s' % keep_query('*', projects=str(((company | companies_selected) if company.id not in companies_selected.ids else (companies_selected - company)).ids))"
-                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id in companies_selected.ids else ''}"
+                    <span
+                        t-att-data-post="'/event?%s' % keep_query('*', projects=None)"
+                        t-attf-class="post_link cursor-pointer dropdown-item d-flex align-items-center justify-content-between #{'active' if not ous_selected.ids else ''}"
+                    >
+                        All
+                    </span>
+                    <t t-foreach="ous_available" t-as="operating_unit">
+                        <span
+                            t-att-data-post="'/event?%s' % keep_query('*', projects=str(((operating_unit | ous_selected) if operating_unit.id not in ous_selected.ids else (ous_selected - operating_unit)).ids))"
+                            t-attf-class="post_link cursor-pointer dropdown-item d-flex align-items-center justify-content-between #{'active' if operating_unit.id in ous_selected.ids else ''}"
                         >
-                            <t t-out="company.name" />
-                        </a>
+                            <t t-out="operating_unit.name" />
+                        </span>
                     </t>
                 </div>
-            </li>
+            </div>
         </xpath>
     </template>
     <template id="searched_tags" inherit_id="website_event.searched_tags">
         <div position="after">
             <div class="d-flex align-items-center mt16">
-                <t t-foreach="companies_selected" t-as="company">
+                <t t-foreach="ous_selected" t-as="operating_unit">
                     <span
                         t-attf-class="align-items-baseline border d-inline-flex ps-2 rounded ml16 mb-2"
                     >
                         <i class="fa fa-tag me-2 text-muted" />
-                        <t t-out="company.name" />
+                        <t t-out="operating_unit.name" />
                         <a
-                            t-att-href="'/event?%s' % keep_query('*', projects=str((companies_selected - company).ids))"
+                            t-att-href="'/event?%s' % keep_query('*', projects=str((ous_selected - operating_unit).ids))"
                             class="btn border-0 py-1"
                         >&#215;</a>
                     </span>
@@ -49,31 +55,20 @@
             </div>
         </div>
     </template>
-    <template id="events_list" inherit_id="website_event.events_list">
-        <div itemprop="location" position="attributes">
-            <attribute name="t-if">False</attribute>
-        </div>
-        <div itemprop="location" position="after">
-            <div itemprop="organizer" t-out="event.sudo().address_id.name" />
-        </div>
-        <wraptext
-            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::span[1]"
-            position="tail"
-        />
-        <xpath
-            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::t[1]"
-            position="replace"
-        />
-        <wraptext expr="(//span[@t-out='event.date_tz'])[1]" position="tail" />
-        <xpath
-            expr="(//span[@t-out='event.date_tz'])[1]/following-sibling::t"
-            position="replace"
-        />
-        <xpath expr="(//span[@t-out='event.date_tz'])[1]" position="attributes">
-            <attribute name="t-if">False</attribute>
+    <template id="events_list" inherit_id="website_event.events_list" priority="100">
+        <!-- don't show location/city, show organizer name instead -->
+        <xpath expr="//div[@t-if='not event.address_id or has_city_or_country']" position="before">
+            <t name="deactivate location" t-if="False" />
         </xpath>
+        <t name="deactivate location" position="inside">
+            <xpath expr="//div[@t-if='not event.address_id or has_city_or_country']" position="move" />
+        </t>
+        <t name="deactivate location" position="after">
+            <div class="d-flex align-items-center" itemprop="organizer" t-out="event.sudo().address_id.name" />
+        </t>
     </template>
     <template id="layout" inherit_id="website_event.layout">
+        <!--TODO
         <a href="/event" position="after">
             <i class="fa fa-chevron-right me-2" />
             <a
@@ -105,64 +100,41 @@
         <xpath expr="//li[@t-if='opt_events_list_categories']" position="attributes">
             <attribute name="t-if" add="and event.event_type_id" separator=" " />
         </xpath>
+        -->
     </template>
     <template
         id="event_description_full"
         inherit_id="website_event.event_description_full"
+        priority="100"
     >
-        <h4 t-field="event.organizer_id" position="before">
+        <div t-field="event.organizer_id" position="before">
             <a
-                t-att-href="event.sudo().company_id.website_link"
-                t-if="event.company_id.logo"
+                t-att-href="event.sudo().operating_unit_id.website_link"
+                t-if="event.sudo().operating_unit_id.logo"
                 style="float: right"
             >
                 <img
-                    t-att-src="image_data_uri(event.company_id.logo)"
+                    t-att-src="image_data_uri(event.sudo().operating_unit_id.logo)"
                     style="width: 5rem"
                 />
             </a>
-        </h4>
-        <!-- remove time zone after dates and their enclosing brackets -->
-        <wraptext expr="(//span[@t-out='event.date_tz'])[1]/.." position="text" />
-        <xpath
-            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::t"
-            position="replace"
-        />
-        <wraptext expr="(//span[@t-out='event.date_tz'])[1]" position="tail" />
-        <xpath
-            expr="(//span[@t-out='event.date_tz'])[1]/following-sibling::t"
-            position="replace"
-        />
-        <xpath expr="(//span[@t-out='event.date_tz'])[1]" position="attributes">
-            <attribute name="t-if">False</attribute>
-        </xpath>
-        <wraptext
-            expr="(//span[@t-out='event.date_tz'])[2]/preceding-sibling::span[1]"
-            position="tail"
-        />
-        <xpath
-            expr="(//span[@t-out='event.date_tz'])[2]/preceding-sibling::t[1]"
-            position="replace"
-        />
-        <wraptext expr="(//span[@t-out='event.date_tz'])[2]" position="tail" />
-        <xpath
-            expr="(//span[@t-out='event.date_tz'])[2]/following-sibling::t"
-            position="replace"
-        />
-        <xpath expr="(//span[@t-out='event.date_tz'])[2]" position="attributes">
-            <attribute name="t-if">False</attribute>
-        </xpath>
+        </div>
         <!-- remove country from contact widget -->
-        <xpath expr="//div[@itemprop='location']" position="attributes">
+        <xpath expr="//small[@t-field='event.address_id']" position="attributes">
             <attribute name="t-options" operation="update">
                 {'bankayma_address_suppress_il': True}
             </attribute>
         </xpath>
         <!-- remove contact details from event page -->
         <xpath
-            expr="//div[@t-field='event.address_id'][hasclass('mb-3')]"
+            expr="//small[@t-field='event.address_id'][contains(@t-options, 'phone')]"
             position="attributes"
         >
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <!-- remove sharing section -->
+        <xpath
+            expr="//t[@t-snippet-call='website.s_share']/.." position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
     </template>
@@ -171,7 +143,7 @@
         inherit_id="website_event.registration_complete"
     >
         <!-- remove country from contact widget -->
-        <xpath expr="//a[@itemprop='location']" position="attributes">
+        <xpath expr="//a[@t-field='event.address_id']" position="attributes">
             <attribute name="t-options" operation="update">
                 {'bankayma_address_suppress_il': True}
             </attribute>
@@ -180,51 +152,13 @@
     <template
         id="dynamic_filter_template_event_event_card"
         inherit_id="website_event.dynamic_filter_template_event_event_card"
+        priority="100"
     >
-        <!-- remove time zone after dates and their enclosing brackets -->
-        <wraptext
-            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::span[1]"
-            position="tail"
-        />
-        <xpath
-            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::t[1]"
-            position="replace"
-        />
-        <wraptext expr="(//span[@t-out='record.date_tz'])[1]" position="tail" />
-        <xpath
-            expr="(//span[@t-out='record.date_tz'])[1]/following-sibling::t"
-            position="replace"
-        />
-        <xpath expr="(//span[@t-out='record.date_tz'])[1]" position="attributes">
-            <attribute name="t-if">False</attribute>
-        </xpath>
         <!-- remove country -->
         <xpath expr="//div[@t-field='record.address_id']" position="attributes">
             <attribute name="t-options" operation="update">
                 {'bankayma_address_suppress_il': True}
             </attribute>
-        </xpath>
-    </template>
-    <template
-        id="dynamic_filter_template_event_event_picture"
-        inherit_id="website_event.dynamic_filter_template_event_event_picture"
-    >
-        <!-- remove time zone after dates and their enclosing brackets -->
-        <wraptext
-            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::span[1]"
-            position="tail"
-        />
-        <xpath
-            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::t[1]"
-            position="replace"
-        />
-        <wraptext expr="(//span[@t-out='record.date_tz'])[1]" position="tail" />
-        <xpath
-            expr="(//span[@t-out='record.date_tz'])[1]/following-sibling::t"
-            position="replace"
-        />
-        <xpath expr="(//span[@t-out='record.date_tz'])[1]" position="attributes">
-            <attribute name="t-if">False</attribute>
         </xpath>
     </template>
     <template

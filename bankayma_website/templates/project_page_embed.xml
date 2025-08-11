@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="company_page_embed" primary="True" inherit_id="project_page" priority="100">
+        <div position="inside">
+            <script type="text/javascript">
+                function _add_target() {
+                    document.querySelectorAll('a[href], form[action]').forEach(function(node) {
+                        node.setAttribute('target', '_blank');
+                    })
+                }
+                window.addEventListener("load", () => {_add_target()});
+                (new MutationObserver(function() {
+                    _add_target();
+                })).observe(document, {childList: true, subtree: true});
+            </script>
+        </div>
+        <xpath expr="//ol[hasclass('breadcrumb')]" position="replace" />
+        <xpath expr="//section[//img[@t-if='object.logo']]" position="replace" />
+        <xpath expr="//section[//a[@href='#about']]" position="replace" />
+        <xpath expr="//section[@id='about']" position="attributes">
+            <attribute name="t-if">show_about</attribute>
+        </xpath>
+        <xpath expr="//section[@id='updates']" position="attributes">
+            <attribute name="t-if">show_updates</attribute>
+        </xpath>
+        <xpath expr="//section[@id='events']" position="attributes">
+            <attribute name="t-if">show_events</attribute>
+        </xpath>
+        <xpath expr="//section[@id='donation']" position="attributes">
+            <attribute name="t-if">show_donation</attribute>
+        </xpath>
+        <xpath expr="//section[@id='gallery']" position="attributes">
+            <attribute name="t-if">show_gallery</attribute>
+        </xpath>
+        <xpath expr="//section[@id='contact']" position="attributes">
+            <attribute name="t-if">show_contact</attribute>
+        </xpath>
+    </template>
+</odoo>

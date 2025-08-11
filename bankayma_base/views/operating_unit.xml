@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_operating_unit_form_manager" model="ir.ui.view">
+        <field name="inherit_id" ref="operating_unit.view_operating_unit_form" />
+        <field name="mode">primary</field>
+        <field name="model">operating.unit</field>
+        <field name="arch" type="xml">
+            <field name="code" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="groups">!bankayma_base.group_org_manager,!bankayma_base.group_full</attribute>
+            </field>
+            <field name="code" position="before">
+                <field
+                    name="code"
+                    groups="bankayma_base.group_org_manager,bankayma_base.group_full"
+                />
+            </field>
+            <field name="name" position="after">
+                <field name="parent_id" />
+                <field name="category_id" />
+                <field name="tag_ids" widget="many2many_tags" />
+            </field>
+            <field name="parent_id" position="attributes">
+                <attribute name="groups">base.group_system</attribute>
+            </field>
+            <!--TODO evaluate what we need here
+            <group name="social_media" position="attributes">
+                <attribute name="groups" />
+            </group>
+            <field name="vat" position="attributes">
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+            </field>
+            <field name="currency_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+            </field>
+            <field name="company_registry" position="attributes">
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+            </field>
+            -->
+            <group name="operating_unit_switch_color">
+                <attribute
+                    name="groups"
+                    add="bankayma_base.group_manager"
+                    separator=","
+                />
+            </group>
+            <field name="category_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

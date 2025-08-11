@@ -9,9 +9,7 @@ class IrQweb(models.AbstractModel):
         main_object = values.get("main_object")
         if main_object:
             values["bankayma_editable"] = bool(
-                main_object.sudo(False)
-                .filtered(lambda x: x.check_access_rights("write", False))
-                ._filter_access_rules("write")
+                main_object.sudo(False).filtered(lambda x: x.has_access("write"))
             )
             if values["bankayma_editable"] and not values.get("translatable"):
                 values["translatable"] = (

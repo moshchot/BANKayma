@@ -1,0 +1,265 @@
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from odoo import _, fields
+from odoo.http import request, route
+from odoo.osv import expression
+from odoo.tools.json import scriptsafe as json_safe
+
+from odoo.addons.payment.controllers import portal as payment_portal
+from odoo.addons.portal.controllers import portal
+
+
+class CustomerPortal(portal.CustomerPortal):
+    BANKAYMA_EXTRA_FIELDS = ["bank", "bank_branch_code", "bank_acc_number"]
+    BANKAYMA_OPTIONAL_FIELDS = ["street", "city", "zip", "country_id"]
+
+    def _get_optional_fields(self):
+        return (
+            super()._get_optional_fields()
+            + [
+                "property_account_position_id",
+                "bankayma_vendor_tax_percentage",
+                "bankayma_vendor_max_amount",
+                "bankayma_tax_group_id",
+            ]
+            + self.BANKAYMA_OPTIONAL_FIELDS
+        )
+
+    def _get_mandatory_fields(self):
+        return list(
+            set(super()._get_mandatory_fields()) - set(self.BANKAYMA_OPTIONAL_FIELDS)
+        )
+
+    def _get_invoices_domain(self, m_type=None):
+        result = super()._get_invoices_domain(m_type)
+        return [
+            leaf
+            if not expression.is_leaf(leaf) or leaf[0] != "state"
+            else ("state", "!=", "cancel")
+            for leaf in result
+        ] + (
+            [
+                "|",
+                ("move_type", "=", "in_invoice"),
+                "&",
+                ("move_type", "=", "out_invoice"),
+                ("state", "=", "posted"),
+            ]
+            if not request.env.user.has_group("bankayma_base.group_full")
+            else []
+        )
+
+    @route()
+    def portal_my_invoices(self, *args, **kwargs):
+        result = super().portal_my_invoices(*args, **kwargs)
+        result.qcontext["all_invoices"] = request.env["account.move"].search(
+            self._get_invoices_domain("in")
+        ) + request.env["account.move"].search(self._get_invoices_domain("out"))
+        return result
+
+    def _bankayma_get_fiscal_positions(self):
+        return (
+            request.env["account.fiscal.position"]
+            .sudo()
+            .search(
+                [
+                    ("company_id", "=", request.env.company.id),
+                ]
+            )
+        )
+
+    def _prepare_portal_layout_values(self):
+        result = super()._prepare_portal_layout_values()
+        result["fiscal_positions"] = self._bankayma_get_fiscal_positions()
+        return result
+
+    def on_account_update(self, values, partner):
+        result = super().on_account_update(values, partner)
+        for field_name in {
+            "property_account_position_id",
+            "bankayma_tax_group_id",
+        } & values.keys():
+            try:
+                values[field_name] = int(values[field_name])
+            except BaseException:
+                values[field_name] = False
+        bank_account_fields = ("bank", "bank_branch_code", "bank_acc_number")
+        bank_vals = {
+            key[len("bank_") :]: request.httprequest.form.get(key)
+            for key in bank_account_fields
+        }
+        if all(bank_vals.values()):
+            bank_vals["bank_id"] = int(bank_vals.pop(""))
+            accounts = request.env.user.partner_id.sudo().bank_ids
+            if accounts:
+                values["bank_ids"] = [(1, accounts[:1].id, bank_vals)]
+            else:
+                values["bank_ids"] = [(0, 0, bank_vals)]
+        return result
+
+    def details_form_validate(self, data, partner_creation=False):
+        if "country_id" not in data:
+            data["country_id"] = request.env.company.country_id.id
+        error, error_message = super().details_form_validate(
+            {
+                key: value
+                for key, value in data.items()
+                if key not in self.BANKAYMA_EXTRA_FIELDS
+            }
+        )
+
+        if request.env.user.has_group("bankayma_base.group_vendor"):
+            if not data.get("vat") and not request.env.user.partner_id.vat:
+                error["vat"] = "error"
+                error_message.append(_("The VAT is mandatory for vendors"))
+            if not data.get("property_account_position_id"):
+                error["property_account_position_id"] = "error"
+                error_message.append(_("The fiscal position is mandatory for vendors"))
+            if not data.get("bank"):
+                error["bank"] = "error"
+                error_message.append(_("Banking information is mandatory for vendors"))
+            if not data.get("bank_branch_code"):
+                error["bank_branch_code"] = "error"
+                error_message.append(_("Banking information is mandatory for vendors"))
+            if not data.get("bank_acc_number"):
+                error["bank_acc_number"] = "error"
+                error_message.append(_("Banking information is mandatory for vendors"))
+        fpos = (
+            request.env["account.fiscal.position"]
+            .sudo()
+            .browse(int(data.get("property_account_position_id") or 0))
+            .exists()
+        )
+        if fpos.bankayma_deduct_tax and data.get("bankayma_vendor_tax_percentage"):
+            if (
+                float(data.get("bankayma_vendor_tax_percentage", 0) or 0) < 0
+                or float(data.get("bankayma_vendor_tax_percentage", 100) or 100) >= 100
+            ):
+                error["bankayma_vendor_tax_percentage"] = "error"
+                error_message.append(_("Fill in a percentage between 0 and 100"))
+        if fpos.bankayma_deduct_tax_use_max_amount:
+            if float(data.get("bankayma_vendor_max_amount", 0) or 0) <= 0:
+                error["bankayma_vendor_max_amount"] = "error"
+                error_message.append(_("Fill in a positive amount"))
+        return error, error_message
+
+    def _get_account_searchbar_filters(self):
+        result = super()._get_account_searchbar_filters()
+        result.update(
+            paid={
+                "label": _("Paid"),
+                "domain": [
+                    ("state", "=", "posted"),
+                    ("payment_state", "in", ("in_payment", "paid")),
+                ],
+            },
+            unpaid={
+                "label": _("Unpaid"),
+                "domain": [
+                    ("state", "=", "posted"),
+                    ("payment_state", "in", ("not_paid", "partial")),
+                ],
+            },
+            late={
+                "label": _("Overdue"),
+                "domain": [
+                    (
+                        "invoice_date_due",
+                        "<",
+                        fields.Date.context_today(request.env.user),
+                    ),
+                    ("state", "=", "posted"),
+                    ("payment_state", "in", ("not_paid", "partial")),
+                ],
+            },
+        )
+        if request.env.user.has_group("bankayma_base.group_vendor"):
+            result = {
+                "all": result["all"],
+                "from_me": {
+                    "label": _("From me"),
+                    "domain": [("move_type", "=", "in_invoice")],
+                },
+                "to_me": {
+                    "label": _("To me"),
+                    "domain": [("move_type", "=", "out_invoice")],
+                },
+            }
+        return result
+
+    @route("/my/invoices/new", auth="user", website=True)
+    def new_vendor_bill(self, **post):
+        vals = self._prepare_portal_layout_values()
+        vals["page_name"] = "new_vendor_bill"
+        vals["post"] = post
+        vals["errors"] = {}
+        if post and request.httprequest.method == "POST":
+            for field_name in ("amount", "description", "fpos"):
+                if not post.get(field_name):
+                    vals["errors"][field_name] = True
+            fpos = (
+                request.env["account.fiscal.position"]
+                .sudo()
+                .browse(
+                    int(post.get("fpos") or 0)
+                    or request.env.user.partner_id.property_account_position_id.id
+                )
+            )
+            if not post.get("upload") and fpos.vendor_doc_mandatory:
+                vals["errors"]["upload"] = True
+            if not vals["errors"]:
+                bill = (
+                    request.env["account.move"]
+                    .sudo()
+                    ._portal_create_vendor_bill(
+                        post,
+                        request.httprequest.files,
+                    )
+                )
+                return request.redirect("/my/invoices/%d" % bill.id)
+        return request.render("bankayma_account.portal_new_vendor_bill", vals)
+
+    @route(csrf=False)
+    def donation_pay(self, **kwargs):
+        """Support recurring payments"""
+        options = json_safe.loads(kwargs.get("donation_options", "{}"))
+        kwargs["is_recurrent"] = options.get("recurrentPayment") == "true"
+        result = super().donation_pay(**kwargs)
+        ou = request.env["operating.unit"].sudo()
+        if "operating_unit_id" in kwargs:
+            ou = ou.browse(int(kwargs["operating_unit_id"]))
+            kwargs["operating_unit_id"] = ou.id
+        result.qcontext["ou_or_company"] = ou or result.qcontext["res_company"]
+        return result
+
+    def _get_extra_payment_form_values(self, is_recurrent=False, **kwargs):
+        result = super()._get_extra_payment_form_values(**kwargs)
+        result["is_recurrent"] = is_recurrent
+        if "partner_details" in result:
+            result["partner_details"]["country_id"] = request.env.ref("base.il").id
+        return result
+
+    def _create_transaction(self, *args, **kwargs):
+        result = super()._create_transaction(*args, **kwargs)
+
+        result.is_recurrent = kwargs.get("is_recurrent")
+        if kwargs.get("tax_number"):
+            result.bankayma_tax_number = kwargs.get("tax_number")
+            if (
+                result.partner_id.user_ids
+                and not result.partner_id.user_ids._is_public()
+                and not result.partner_id.vat
+            ):
+                result.partner_id.vat = result.bankayma_tax_number
+
+        if kwargs.get("operating_unit_id"):
+            result.operating_unit_id = int(kwargs["operating_unit_id"])
+
+        return result
+
+    @staticmethod
+    def _validate_transaction_kwargs(kwargs, additional_allowed_keys=()):
+        return payment_portal.PaymentPortal._validate_transaction_kwargs(
+            kwargs,
+            additional_allowed_keys
+            + ("tax_number", "operating_unit_id", "is_recurrent"),
+        )

@@ -6,9 +6,6 @@ from odoo import api, fields, models
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    bankayma_website_sale_company_id = fields.Many2one(
-        "res.company", string="Company (webshop)"
-    )
     bankayma_website_sale_hide = fields.Boolean(
         "Hide from website",
     )
@@ -18,7 +15,7 @@ class ProductTemplate(models.Model):
         result = super()._search_get_detail(website, order, options)
         if "project" in options:
             result["base_domain"].append(
-                [("bankayma_website_sale_company_id", "=", int(options["project"]))]
+                [("operating_unit_id", "=", int(options["project"]))]
             )
         if "product_tag" in options:
             result["base_domain"].append(

@@ -3,30 +3,28 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record
-        id="user_child_comp1"
+        id="user_b2b"
         model="res.users"
         context="{'no_reset_password': True}"
     >
-        <field name="login">user_child_comp1</field>
-        <field name="email">user@child_comp1</field>
-        <field name="name">User Child Company 1</field>
-        <field name="password">user_child_comp1</field>
-        <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
-        <field name="company_id" ref="child_comp1" />
+        <field name="login">user_b2b</field>
+        <field name="email">user@b2b</field>
+        <field name="name">User B2B</field>
+        <field name="password">user_b2b</field>
+        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.b2b_operating_unit')])]" />
         <field name="groups_id" eval="[Command.link(ref('group_user'))]" />
     </record>
 
     <record
-        id="vendor_child_comp1"
+        id="vendor_b2b"
         model="res.users"
         context="{'no_reset_password': True}"
     >
-        <field name="login">vendor_child_comp1</field>
-        <field name="email">vendor@child_comp1</field>
-        <field name="name">Vendor Child Company 1</field>
-        <field name="password">vendor_child_comp1</field>
-        <field name="company_ids" eval="[Command.link(ref('child_comp1'))]" />
-        <field name="company_id" ref="child_comp1" />
+        <field name="login">vendor_b2b</field>
+        <field name="email">vendor@b2b</field>
+        <field name="name">Vendor B2B</field>
+        <field name="password">vendor_b2b</field>
+        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.b2b_operating_unit')])]" />
         <field
             name="groups_id"
             eval="[Command.link(ref('base.group_portal')), Command.link(ref('group_vendor'))]"
@@ -38,7 +36,8 @@
         <field name="email">projman@main_comp</field>
         <field name="name">Project manager</field>
         <field name="password">projman</field>
-        <field name="company_id" ref="base.main_company" />
+        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.main_operating_unit'), ref('operating_unit.b2b_operating_unit')])]" />
+        <field name="default_operating_unit_id" ref="operating_unit.main_operating_unit" />
         <field name="groups_id" eval="[Command.link(ref('group_manager'))]" />
     </record>
 
@@ -47,7 +46,7 @@
         <field name="email">orgman@main_comp</field>
         <field name="name">Organization manager</field>
         <field name="password">orgman</field>
-        <field name="company_id" ref="base.main_company" />
-        <field name="groups_id" eval="[Command.link(ref('group_org_manager'))]" />
+        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.main_operating_unit'), ref('operating_unit.b2b_operating_unit'), ref('operating_unit.b2c_operating_unit')])]" />
+        <field name="default_operating_unit_id" ref="operating_unit.main_operating_unit" />
     </record>
 </odoo>

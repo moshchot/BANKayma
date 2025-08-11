@@ -24,7 +24,7 @@
         sequence="50"
     />
     <record id="website_blog.action_blog_post" model="ir.actions.act_window">
-        <field name="domain">[('company_id', 'in', allowed_company_ids)]</field>
+        <field name="domain">[('operating_unit_id', 'in', allowed_ou_ids)]</field>
     </record>
     <menuitem
         id="menu_blog_posts"
@@ -34,7 +34,7 @@
         sequence="50"
     />
     <record id="website_event.action_event_pages_list" model="ir.actions.act_window">
-        <field name="domain">[('company_id', 'in', allowed_company_ids)]</field>
+        <field name="domain">[('operating_unit_id', 'in', allowed_ou_ids)]</field>
     </record>
     <menuitem
         id="menu_events"
@@ -50,7 +50,7 @@
             name="domain"
             eval="&quot;[('id', 'in', [%d, %d])]&quot; % (ref('bankayma_website.product_category_webshop_product'), ref('bankayma_website.product_category_webshop_event'))"
         />
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
     <menuitem
         id="menu_categories"
@@ -66,7 +66,7 @@
             name="domain"
             eval="&quot;[('id', 'in', [%d])]&quot; % (ref('bankayma_website.event_type_webshop'),)"
         />
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
     <menuitem
         id="menu_event_types"

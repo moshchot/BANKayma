@@ -83,9 +83,9 @@ class L10nIlSystem1000Export(models.TransientModel):
             if move.state != "draft":
                 move.message_post(body=_("Not touching non-draft record"))
                 continue
-            move.message_post_with_view(
+            move.message_post_with_source(
                 "bankayma_account.system1000_validation_summary",
-                values={"validation": data},
+                render_values={"validation": data},
             )
             if not data.tax_papers:
                 self._reject_cancel(move)
@@ -95,7 +95,6 @@ class L10nIlSystem1000Export(models.TransientModel):
                     "bankayma_vendor_specific"
                 )
                 tax = move._portal_get_or_create_tax(
-                    move.company_id,
                     move.fiscal_position_id,
                     data.tax_deduction_income,
                 )
@@ -111,7 +110,8 @@ class L10nIlSystem1000Export(models.TransientModel):
                     )
                     move.message_post(
                         body=_(
-                            "Replaced existing tax %(taxes)s with %(tax)s from System1000"
+                            "Replaced existing tax %(taxes)s with %(tax)s from "
+                            "System1000"
                         )
                         % {
                             "taxes": ", ".join(taxes.mapped("name")),

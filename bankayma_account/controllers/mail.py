@@ -34,5 +34,5 @@ class MailController(mail.MailController):
                     "bankayma_account.action_bankayma_group_income_move_out_invoice"
                 )
             )
-            response.headers["location"] += "&action=%s&view_type=form" % action.id
+            response.headers["location"] += f"&action={action.id}&view_type=form"
         return response

@@ -8,9 +8,9 @@
         <field name="priority">100</field>
         <field name="arch" type="xml">
             <button name="button_draft" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_base.group_org_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </button>
             <button name="action_register_payment" position="attributes">
                 <attribute name="groups">bankayma_base.group_org_manager</attribute>
@@ -32,8 +32,8 @@
             </xpath>
             <button name="preview_invoice" position="attributes">
                 <!-- prettier-ignore-start -->
-                <attribute name="attrs">
-                    {'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}
+                <attribute name="invisible">
+                    move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')
                 </attribute>
                 <!-- prettier-ignore-end -->
             </button>
@@ -45,13 +45,13 @@
                     string="Delete"
                     type="object"
                     groups="account.group_account_invoice"
-                    attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('need_validation', '=', True), '&amp;', ('state', '=', 'draft'), ('reviewer_ids', '!=', False)]}"
+                    invisible="(state != 'draft') or need_validation or ((state == 'draft') and ('reviewer_ids', '!=', False))"
                 />
             </button>
             <xpath expr="//sheet/*[1]" position="before">
                 <h5>
                     <field
-                        name="company_id"
+                        name="operating_unit_id"
                         widget="many2one"
                         options="{'no_open': True, 'no_create': True}"
                         readonly="1"
@@ -107,9 +107,9 @@
                 expr="//field[@name='invoice_line_ids']//field[@name='tax_ids']"
                 position="attributes"
             >
-                <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </xpath>
             <page id="aml_tab" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
@@ -127,21 +127,21 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_section_control']"
+                expr="//field[@name='invoice_line_ids']/list/control/create[@name='add_section_control']"
                 position="replace"
             />
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/control/create[@name='add_note_control']"
+                expr="//field[@name='invoice_line_ids']/list/control/create[@name='add_note_control']"
                 position="replace"
             />
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='product_id']"
                 position="after"
             >
-                <field name="bankayma_product_domain" invisible="1" />
+                <field name="bankayma_product_domain" column_invisible="1" />
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='product_id']"
                 position="attributes"
             >
                 <attribute name="domain">bankayma_product_domain</attribute>
@@ -150,60 +150,62 @@
                 <attribute name="required">True</attribute>
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='account_id']"
                 position="attributes"
             >
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='account_id']"
                 position="after"
             >
                 <field name="account_id" invisible="1" />
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='name']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='name']"
                 position="attributes"
             >
                 <attribute name="string">Description</attribute>
                 <attribute name="required">True</attribute>
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_distribution']"
                 position="after"
             >
-                <field name="bankayma_edit_buffer" invisible="True" />
+                <field name="bankayma_edit_buffer" column_invisible="True" />
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="string">Tag</attribute>
             </xpath>
-            <field name="partner_id" position="after">
+            <xpath expr="//div/field[@name='partner_id']/.." position="after">
                 <field name="fiscal_position_id" position="move" />
                 <field name="bankayma_partner_domain" invisible="1" />
-            </field>
+            </xpath>
             <field name="fiscal_position_id" position="before">
                 <field name="show_fiscal_position_id" invisible="1" />
             </field>
             <field name="fiscal_position_id" position="attributes">
-                <attribute name="attrs">
-                    {'invisible': [('show_fiscal_position_id', '=', False)]}
+                <attribute name="invisible">
+                    not show_fiscal_position_id
                 </attribute>
                 <attribute name="options">{'no_open': True}</attribute>
             </field>
             <field name="fiscal_position_id" position="after">
                 <div
-                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False), ('bankayma_show_edit_tax_totals', '=', False)]}"
+                    class="o_col"
+                    invisible="not bankayma_tax_removal_label and not bankayma_show_edit_tax_totals"
                 />
                 <div
-                    attrs="{'invisible': [('bankayma_tax_removal_label', '=', False), ('bankayma_show_edit_tax_totals', '=', False)]}"
+                    class="o_col"
+                    invisible="not bankayma_tax_removal_label and not bankayma_show_edit_tax_totals"
                 >
                     <button
                         name="action_bankayma_remove_taxes"
                         type="object"
-                        attrs="{'invisible': [('bankayma_tax_removal_label', '=', False)]}"
+                        invisible="not bankayma_tax_removal_label"
                     >
                         <field name="bankayma_tax_removal_label" />
                     </button>
@@ -213,24 +215,25 @@
                         name="action_bankayma_move_edit_tax_totals"
                         string="Edit taxes"
                         groups="bankayma_base.group_org_manager"
-                        attrs="{'invisible': [('bankayma_show_edit_tax_totals', '=', False)]}"
+                        invisible="not bankayma_show_edit_tax_totals"
                     />
                 </div>
                 <field name="bankayma_deduct_tax" invisible="True" />
                 <field name="bankayma_deduct_tax_use_max_amount" invisible="True" />
                 <label
                     for="bankayma_vendor_tax_percentage"
-                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
+                    invisible="not bankayma_deduct_tax or move_type != 'in_invoice'"
                 />
                 <span
-                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
+                    class="o_col"
+                    invisible="not bankayma_deduct_tax or move_type != 'in_invoice'"
                 >
                     <field name="bankayma_vendor_tax_percentage" readonly="True" />
                     <button
                         name="button_bankayma_vendor_tax_create"
                         type="object"
                         string="Create"
-                        attrs="{'invisible': ['|', '|', '|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice'), ('bankayma_vendor_tax_exists', '=', True), ('bankayma_vendor_tax_percentage', '&lt;=', 0)]}"
+                        invisible="not bankayma_deduct_tax or move_type != 'in_invoice' or bankayma_vendor_tax_exists or bankayma_vendor_tax_percentage &lt;= 0"
                         class="btn btn-secondary"
                         colspan="2"
                     />
@@ -238,10 +241,11 @@
                 <field name="bankayma_vendor_tax_exists" invisible="True" />
                 <label
                     for="bankayma_vendor_max_amount"
-                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
+                    invisible="not bankayma_deduct_tax or move_type != 'in_invoice'"
                 />
                 <div
-                    attrs="{'invisible': ['|', ('bankayma_deduct_tax', '=', False), ('move_type', '!=', 'in_invoice')]}"
+                    class="o_col"
+                    invisible="not bankayma_deduct_tax or move_type != 'in_invoice'"
                 >
                     <field
                         name="bankayma_vendor_max_amount"
@@ -254,7 +258,7 @@
                     <field
                         name="bankayma_vendor_amount_this_year"
                         class="oe_inline"
-                        attrs="{'invisible': [('move_type', '!=', 'in_invoice')]}"
+                        invisible="move_type != 'in_invoice'"
                     />
                     <span>)</span>
                 </div>
@@ -275,8 +279,8 @@
                 </attribute>
             </field>
             <field name="tax_totals" position="attributes">
-                <attribute name="attrs">
-                    {'invisible': [('show_bankayma_tax_totals', '=', True)]}
+                <attribute name="invisible">
+                    show_bankayma_tax_totals
                 </attribute>
             </field>
             <field name="tax_totals" position="after">
@@ -284,7 +288,7 @@
                     name="bankayma_tax_totals"
                     nolabel="1"
                     colspan="2"
-                    attrs="{'invisible': [('show_bankayma_tax_totals', '=', False)]}"
+                    invisible="not show_bankayma_tax_totals"
                 />
                 <field name="show_bankayma_tax_totals" invisible="True" />
             </field>
@@ -295,8 +299,8 @@
                 expr="//field[@name='invoice_line_ids']//button[@name='account_move_update_analytic.action_view_account_move_update_analytic']"
                 position="attributes"
             >
-                <attribute name="attrs">
-                    {'column_invisible': [('parent.state', '!=', 'posted'), ('parent.review_ids', '=', False)]}
+                <attribute name="column_invisible">
+                    parent.state != 'posted' and not parent.review_ids
                 </attribute>
             </xpath>
             <xpath
@@ -304,12 +308,12 @@
                 position="after"
             >
                 <field name="parent_state" invisible="1" />
-                <div attrs="{'invisible': [('parent_state', '!=', 'posted')]}" />
+                <div invisible="parent_state != 'posted'" />
                 <button
                     name="account_move_update_analytic.action_view_account_move_update_analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting"
-                    attrs="{'invisible': [('parent_state', '!=', 'posted')]}"
+                    invisible="parent_state != 'posted'"
                     icon="fa-tags"
                     title="Update analytic distribution"
                     aria-label="Update analytic distribution"
@@ -318,26 +322,26 @@
                 </button>
             </xpath>
             <xpath expr="(//field[@name='ref'])[1]" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </xpath>
             <xpath expr="(//field[@name='ref'])[2]" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </xpath>
             <xpath expr="(//field[@name='ref'])[3]" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </xpath>
             <notebook position="inside">
                 <page
                     name="bankayma_extra"
                     string="Extra settings"
                     groups="bankayma_base.group_org_manager"
-                    attrs="{'invisible': [('move_type', '!=', 'out_invoice')]}"
+                    invisible="move_type != 'out_invoice'"
                 >
                     <group>
                         <field
@@ -360,12 +364,12 @@
                         />
                         <field
                             name="sumit_document_url"
-                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            readonly="state != 'draft'"
                             widget="url"
                         />
                         <field
                             name="sumit_document_number"
-                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            readonly="state != 'draft'"
                         />
                     </group>
                 </page>
@@ -377,7 +381,7 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-            <field name="amount_total_signed" position="after">
+            <field name="amount_total_in_currency_signed" position="after">
                 <field
                     name="bankayma_move_line_analytic_distribution"
                     widget="analytic_distribution"
@@ -415,11 +419,11 @@
         <field name="model">account.move</field>
         <field name="priority">1000</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="partner_id" />
                 <field name="display_name" />
                 <field name="system1000_error_message" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -493,9 +497,6 @@
             <filter name="open" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </filter>
-            <filter name="closed" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </filter>
             <filter name="late" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </filter>
@@ -509,9 +510,6 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </filter>
             <filter name="due_date" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
-            </filter>
-            <filter name="edi_to_process" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </filter>
             <filter name="needs_review" position="attributes">
@@ -553,11 +551,6 @@
                     name="company_id"
                     string="Company"
                     context="{'group_by':'company_id'}"
-                />
-                <filter
-                    name="bankayma_fiscal_position_id"
-                    string="Fiscal position"
-                    context="{'group_by':'bankayma_fiscal_position_id'}"
                 />
             </filter>
             <filter name="payment_mode_groupby" position="attributes">

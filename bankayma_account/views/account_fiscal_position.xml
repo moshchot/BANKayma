@@ -21,25 +21,32 @@
                 </page>
                 <page name="tax_deduction" string="Default tax and deductions">
                     <group>
+                        <!-- TODO: depends on account_fiscal_position_type
                         <field
                             name="bankayma_tax_ids"
                             widget="many2many_tags"
                             domain="[('company_id', '=', company_id), ('type_tax_use', '=', type_position_use)]"
                         />
+                        -->
+                        <field
+                            name="bankayma_tax_ids"
+                            widget="many2many_tags"
+                        />
                         <field name="optional_tax_group_ids" widget="many2many_tags" />
                         <field name="bankayma_deduct_tax" />
                         <field
                             name="bankayma_deduct_tax_account_id"
-                            attrs="{'invisible': [('bankayma_deduct_tax', '=', False)], 'required': [('bankayma_deduct_tax', '!=', False)]}"
-                            domain="[('company_id', '=', company_id)]"
+                            invisible="not bankayma_deduct_tax"
+                            required="bankayma_deduct_tax"
                         />
                         <field
                             name="bankayma_deduct_tax_group_id"
-                            attrs="{'invisible': [('bankayma_deduct_tax', '=', False)], 'required': [('bankayma_deduct_tax', '!=', False)]}"
+                            invisible="not bankayma_deduct_tax"
+                            required="bankayma_deduct_tax"
                         />
                         <field
                             name="bankayma_deduct_tax_use_max_amount"
-                            attrs="{'invisible': [('bankayma_deduct_tax', '=', False)]}"
+                            invisible="not bankayma_deduct_tax"
                         />
                     </group>
                 </page>

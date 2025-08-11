@@ -2,8 +2,6 @@ import json
 
 from odoo import api, fields, http, models
 
-from odoo.addons.http_routing.models.ir_http import slug
-
 
 class BlogPost(models.Model):
     _inherit = ["blog.post", "bankayma.search.drop.company.mixin"]
@@ -12,8 +10,9 @@ class BlogPost(models.Model):
     company_id = fields.Many2one("res.company", default=lambda self: self.env.company)
 
     def _compute_website_url(self):
+        slug = self.env["ir.http"]._slug
         for this in self:
-            this.website_url = "/news/%s" % slug(this)
+            this.website_url = f"/news/{slug(this)}"
 
     @api.model
     def _search_build_domain(self, domain_list, search, fields, extra=None):

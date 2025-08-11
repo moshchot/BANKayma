@@ -21,4 +21,5 @@
             "eve_base/static/src/js/*.js",
         ],
     },
+    "installable": False,
 }

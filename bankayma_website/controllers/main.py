@@ -9,14 +9,23 @@ from markupsafe import Markup
 from odoo import http
 
 
-class CompaniesController(http.Controller):
-    @http.route("/projects/<model(res.company):company>", website=True, auth="public")
-    def render_company_page(self, company):
-        company = company.sudo()
-        Event = company.env["event.event"]
+class ProjectsController(http.Controller):
+    @http.route("/projects/<operating_unit>", website=True, auth="public")
+    def render_project_page(self, operating_unit):
+        routing_map = http.request.env["ir.http"].routing_map()
+        operating_unit = (
+            routing_map.converters["model"](routing_map, "operating.unit")
+            .to_python(operating_unit)
+            .with_env(http.request.env)
+            .sudo()
+        )
+        Event = operating_unit.env["event.event"]
         EVENT_LIMIT = 4
         now = datetime.datetime.utcnow()
-        event_domain = [("is_published", "=", True), ("company_id", "=", company.id)]
+        event_domain = [
+            ("is_published", "=", True),
+            ("operating_unit_id", "=", operating_unit.id),
+        ]
         events = Event.search(
             event_domain + [("date_end", ">=", now)], limit=EVENT_LIMIT
         )
@@ -29,17 +38,21 @@ class CompaniesController(http.Controller):
                 )
                 + events
             )
-        next_object = company
-        prev_object = company
-        if company.category_id:
-            companies = company.category_id.company_ids - company
-            companies = companies.browse(random.sample(companies.ids, len(companies)))
-            next_object = companies[:1] or company
-            prev_object = companies[1:2] or company
+        next_object = operating_unit
+        prev_object = operating_unit
+        if operating_unit.category_id:
+            operating_units = (
+                operating_unit.category_id.operating_unit_ids - operating_unit
+            )
+            operating_units = operating_units.browse(
+                random.sample(operating_units.ids, len(operating_units))
+            )
+            next_object = operating_units[:1] or operating_unit
+            prev_object = operating_units[1:2] or operating_unit
         return http.Response(
-            template="bankayma_website.company_page",
+            template="bankayma_website.project_page",
             qcontext={
-                "object": company,
+                "object": operating_unit,
                 "next_object": next_object,
                 "prev_object": prev_object,
                 "events": events[:EVENT_LIMIT],
@@ -68,7 +81,7 @@ class CompaniesController(http.Controller):
                 {
                     "model_name": records._name,
                     "field_names": ",".join(
-                        {"display_name", "image_512"} & set(records._fields)
+                        {"name", "image_512"} & set(records._fields)
                     ),
                 }
             )
@@ -82,7 +95,8 @@ class CompaniesController(http.Controller):
         output = b'<div class="row my-4">'
         for node in html.fromstring(f"<root>{xml}</root>").getchildren():
             output += (
-                b'<div class="d-flex flex-grow-0 flex-shrink-0 col-12 col-md-%s">%s</div>'
+                b'<div class="d-flex flex-grow-0 flex-shrink-0 col-12 col-md-%s">'
+                b"%s</div>"
                 % (
                     str(col).encode("utf8"),
                     html.tostring(node),
@@ -92,8 +106,8 @@ class CompaniesController(http.Controller):
         return Markup(output.decode("utf8"))
 
     def _search_combined(self, search=None, tags=None, limit=None, **kwargs):
-        ResCompanyTag = http.request.env["res.company.tag"].sudo()
-        ResCompany = http.request.env["res.company"].sudo()
+        OperatingUnitTag = http.request.env["operating.unit.tag"].sudo()
+        OperatingUnit = http.request.env["operating.unit"].sudo()
 
         other_languages = (
             http.request.env["res.lang"]
@@ -103,19 +117,19 @@ class CompaniesController(http.Controller):
         )
         tag_ids = list(map(int, filter(None, (tags or "").split(","))))
 
-        found_tags = ResCompanyTag.browse(
-            ResCompanyTag._name_search(
-                search, args=[("id", "not in", tag_ids)], limit=limit
-            )
+        found_tags = OperatingUnitTag.search(
+            [("display_name", "ilike", search), ("id", "not in", tag_ids)], limit=limit
         )
         for lang in other_languages:
-            found_tags |= ResCompanyTag.browse(
-                ResCompanyTag.with_context(lang=lang)._name_search(
-                    search, args=[("id", "not in", tag_ids)], limit=limit
-                )
+            found_tags |= OperatingUnitTag.with_context(lang=lang).search(
+                [
+                    ("display_name", "ilike", search),
+                    ("id", "not in", tag_ids + found_tags.ids),
+                ],
+                limit=limit,
             )
 
-        companies_domain = [
+        domain = [
             ("parent_id", "!=", False),
             "|",
             ("category_id", "=", False),
@@ -125,46 +139,43 @@ class CompaniesController(http.Controller):
         ]
 
         if tag_ids:
-            companies_domain.append(("tag_ids", "in", tag_ids))
+            domain.append(("tag_ids", "in", tag_ids))
 
-        found_companies = ResCompany.browse(
-            ResCompany._name_search(search, args=companies_domain, limit=limit)
+        found = OperatingUnit.search(
+            [("display_name", "ilike", search)] + domain, limit=limit
         )
+
         for lang in other_languages:
-            found_companies |= ResCompany.browse(
-                ResCompany.with_context(lang=lang)._name_search(
-                    search, args=companies_domain, limit=limit
-                )
+            found |= OperatingUnit.with_context(lang=lang).search(
+                [("display_name", "ilike", search)] + domain, limit=limit
             )
 
-        return found_tags, found_companies
+        return found_tags, found
 
     @http.route("/projects/search", type="json", website=True, auth="public")
-    def search_company(self, search=None, tags=None, limit=5, **kwargs):
-        tags, companies = self._search_combined(
+    def search_projects(self, search=None, tags=None, limit=5, **kwargs):
+        tags, projects = self._search_combined(
             search=search, tags=tags, limit=limit, **kwargs
         )
         return [
             (
                 dict(field="tags", name=record.display_name, value=record.id)
-                if record._name == "res.company.tag"
+                if record._name == "operating.unit.tag"
                 else dict(
                     url=record.website_link,
                     name=record.display_name,
                 )
             )
-            for record in list(itertools.chain(tags, companies))[:limit]
+            for record in list(itertools.chain(tags, projects))[:limit]
         ]
 
     @http.route("/projects", website=True, auth="public")
-    def render_company_list(self, search=None, tags=None):
-        _dummy, companies = self._search_combined(search=search, tags=tags)
+    def render_project_list(self, search=None, tags=None):
+        _dummy, projects = self._search_combined(search=search, tags=tags)
         return http.Response(
-            template="bankayma_website.company_list",
+            template="bankayma_website.project_list",
             qcontext={
-                "objects": companies.browse(
-                    random.sample(companies.ids, len(companies))
-                ),
+                "objects": projects.browse(random.sample(projects.ids, len(projects))),
                 "search": search,
                 "tags": tags,
                 "post_data": {

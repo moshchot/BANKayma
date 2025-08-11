@@ -1,10 +1,15 @@
 from datetime import timedelta
 
-from odoo import api, models
+from odoo import api, fields, models
 
 
 class EventEvent(models.Model):
     _inherit = "event.event"
+
+    operating_unit_id = fields.Many2one(
+        "operating.unit",
+        default=lambda self: self.env.user._get_default_operating_unit(),
+    )
 
     @api.model
     def default_get(self, fields_list):

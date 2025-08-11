@@ -32,26 +32,17 @@
             eval="[Command.set([ref('bankayma_base.group_full')])]"
         />
     </record>
-    <record
-        id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
-        model="ir.ui.menu"
-    >
-        <field
-            name="groups_id"
-            eval="[Command.set([ref('bankayma_base.group_org_manager')])]"
-        />
-    </record>
 
     <record id="action_analytic_accounts" model="ir.actions.act_window">
         <field name="name">Analytic Accounts</field>
         <field name="res_model">account.analytic.account</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">list,kanban,form</field>
         <field
             name="search_view_id"
             ref="analytic.view_account_analytic_account_search"
         />
         <field name="context">{'search_default_active':1}</field>
-        <field name="domain">[('plan_id.company_id', 'in', allowed_company_ids)]</field>
+        <field name="domain">[('operating_unit_ids', 'in', allowed_ou_ids)]</field>
         <field name="view_id" ref="analytic.view_account_analytic_account_list" />
     </record>
     <menuitem
@@ -64,12 +55,10 @@
     <record id="action_analytic_lines" model="ir.actions.act_window">
         <field name="name">Analytic Balance</field>
         <field name="res_model">account.analytic.line</field>
-        <field name="view_mode">tree,pivot</field>
+        <field name="view_mode">list,pivot</field>
         <field name="search_view_id" ref="view_account_analytic_line_search" />
-        <field name="context">{'group_by': ['account_id', 'bankayma_type']}</field>
-        <field name="domain">
-            [('account_id.plan_id.company_id', 'in', allowed_company_ids)]
-        </field>
+        <field name="context">{'group_by': ['bankayma_analytic_account_id', 'bankayma_type']}</field>
+        <field name="domain">[('bankayma_analytic_account_id.operating_unit_ids', 'in', allowed_ou_ids)]</field>
         <field name="view_id" ref="view_account_analytic_line_list" />
     </record>
     <menuitem
@@ -84,8 +73,9 @@
         model="ir.actions.act_window"
     >
         <field name="name">Income</field>
+        <field name="path">bankayma-income</field>
         <field name="res_model">account.move</field>
-        <field name="view_mode">tree,kanban,pivot,form</field>
+        <field name="view_mode">list,kanban,pivot,form</field>
         <field name="view_id" ref="account.view_out_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">
@@ -108,15 +98,16 @@
         model="ir.actions.act_window"
     >
         <field name="name">Internal</field>
+        <field name="path">bankayma-internal</field>
         <field name="res_model">account.move</field>
-        <field name="view_mode">tree,kanban,pivot,form</field>
+        <field name="view_mode">list,kanban,pivot,form</field>
         <field name="view_id" ref="account.view_out_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">
             ['|', '|', ('journal_id.intercompany_sale_company_id', '!=', False), ('journal_id.intercompany_overhead_company_id', '!=', False), ('journal_id.intercompany_purchase_company_id', '!=', False)]
         </field>
         <field name="context">
-            {'bankayma_internal_move': True, 'default_move_type': 'out_invoice', 'group_by': ['bankayma_intercompany_grouping']}
+            {'bankayma_internal_move': True, 'default_move_type': 'entry', 'group_by': ['bankayma_intercompany_grouping']}
         </field>
     </record>
 
@@ -130,8 +121,9 @@
 
     <record id="action_bankayma_group_expense_move" model="ir.actions.act_window">
         <field name="name">Expenses</field>
+        <field name="path">bankayma-expenses</field>
         <field name="res_model">account.move</field>
-        <field name="view_mode">tree,kanban,pivot,form</field>
+        <field name="view_mode">list,kanban,pivot,form</field>
         <field name="view_id" ref="account.view_in_invoice_tree" />
         <field name="search_view_id" ref="account.view_account_invoice_filter" />
         <field name="domain">
@@ -150,12 +142,14 @@
         sequence="3"
     />
 
+    <!--TODO
     <record id="account.action_account_invoice_from_list" model="ir.actions.server">
         <field
             name="groups_id"
             eval="[Command.link(ref('account.group_account_manager')), Command.unlink(ref('account.group_account_invoice'))]"
         />
     </record>
+    -->
 
     <record
         id="account.action_view_account_move_reversal"

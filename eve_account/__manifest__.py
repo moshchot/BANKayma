@@ -22,4 +22,5 @@
     ],
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
+    "installable": False,
 }

@@ -6,13 +6,14 @@
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account.view_account_payment_form" />
         <field name="arch" type="xml">
-            <field name="ref" position="after">
-                <field
-                    name="sumit_document_url"
-                    attrs="{'invisible': [('sumit_document_url', '=', False)]}"
-                    widget="url"
-                />
-            </field>
+            <notebook name="payment_notebook" position="inside">
+                <page invisible="not sumit_document_url" name="sumit" string="Sumit">
+                    <field
+                        name="sumit_document_url"
+                        widget="url"
+                    />
+                </page>
+            </notebook>
         </field>
     </record>
 </data>

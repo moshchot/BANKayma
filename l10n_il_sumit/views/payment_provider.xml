@@ -7,17 +7,17 @@
         <field name="inherit_id" ref="payment.payment_provider_form" />
         <field name="arch" type="xml">
             <group name="provider_credentials" position='inside'>
-                <group name="sumit" attrs="{'invisible': [('code', '!=', 'sumit')]}">
+                <group name="sumit" invisible="code != 'sumit'">
                     <field
                         name="sumit_account_id"
-                        attrs="{'required':[('code', '=', 'sumit'), ('state', '!=', 'disabled')]}"
+                        required="code == 'sumit' and state != 'disabled'"
                     />
                 </group>
             </group>
             <group name="provider_config" position="inside">
                 <group
                     name="sumit_config"
-                    attrs="{'invisible': [('code', '!=', 'sumit')]}"
+                    invisible="code != 'sumit'"
                     string="Sumit"
                 >
                     <field name="sumit_installment_threshold" />

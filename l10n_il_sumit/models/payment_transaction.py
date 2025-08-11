@@ -82,7 +82,7 @@ class PaymentTransaction(models.Model):
             "VATIncluded": invoice_sumit_vals.get("VATIncluded", False),
             "DocumentType": invoice_sumit_vals.get("Details", {}).get(
                 "Type",
-                self.is_donation and "4" or "0",
+                ("is_donation" in self._fields and self.is_donation) and "4" or "0",
             ),
             "DocumentDescription": invoice_sumit_vals.get("Details", {}).get(
                 "Description",
@@ -164,12 +164,9 @@ class PaymentTransaction(models.Model):
 
         return result
 
-    def _reconcile_after_done(self):
-        result = super()._reconcile_after_done()
+    def _create_payment(self, **extra_create_values):
+        payment = super()._create_payment(**extra_create_values)
 
-        for this in self.filtered(
-            lambda x: x.sumit_document_url and not x.payment_id.sumit_document_url
-        ):
-            this.payment_id.sumit_document_url = this.sumit_document_url
+        payment.sumit_document_url = self.sumit_document_url
 
-        return result
+        return payment

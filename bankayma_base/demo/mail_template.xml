@@ -1,0 +1,17 @@
+<odoo>
+    <record id="template_post_to_chatter" model="mail.template">
+        <field name="name">Post to chatter</field>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="post_to_chatter" eval="True" />
+        <field name="email_to">test@test.com</field>
+        <field name="body_html" type="html">
+            <t t-call="bankayma_base.mail_header" />
+            <p>
+            This should be mailed and posted to chatter, without mail header/footer.
+            But in the mail, header and footer should exist if the object has an
+            operating_unit_id field
+            </p>
+            <t t-call="bankayma_base.mail_footer" />
+        </field>
+    </record>
+</odoo>

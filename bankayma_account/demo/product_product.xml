@@ -1,0 +1,10 @@
+<odoo>
+    <record id="product_donation" model="product.product">
+        <field name="name">Donation</field>
+        <field name="type">service</field>
+    </record>
+
+    <record id="base.main_company" model="res.company">
+        <field name="donation_credit_transfer_product_id" ref="product_donation" />
+    </record>
+</odoo>

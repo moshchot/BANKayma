@@ -33,6 +33,12 @@ class AccountAnalyticLine(models.Model):
     bankayma_balance = fields.Monetary(
         "Balance", compute="_compute_bankayma_fields", store=True, compute_sudo=True
     )
+    bankayma_analytic_account_id = fields.Many2one(
+        "account.analytic.account",
+        compute="_compute_bankayma_analytic_account_id",
+        store=True,
+    )
+    operating_unit_id = fields.Many2one(related="move_line_id.operating_unit_id")
     move_id = fields.Many2one(related="move_line_id.move_id")
     fiscal_position_id = fields.Many2one(
         related="move_line_id.move_id.fiscal_position_id"
@@ -61,6 +67,11 @@ class AccountAnalyticLine(models.Model):
                 vals["bankayma_type"] = "income"
                 vals["bankayma_income"] = this.amount
             this.update(vals)
+
+    @api.depends(lambda self: self._get_plan_fnames())
+    def _compute_bankayma_analytic_account_id(self):
+        for this in self:
+            this.bankayma_analytic_account_id = this._get_analytic_accounts()[:1].id
 
     def action_open_move(self):
         return {

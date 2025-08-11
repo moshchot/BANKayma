@@ -12,7 +12,7 @@
         <field name="name">Restrict editing products to own and children</field>
         <field name="model_id" ref="product.model_product_product" />
         <field name="domain_force">
-            [('bankayma_website_sale_company_id', 'in', company_ids), ('membership', '=', True)]
+            [('operating_unit_id', 'in', user.operating_units().ids), ('membership', '=', True)]
         </field>
         <field name="perm_create" eval="True" />
         <field name="perm_read" eval="False" />
@@ -27,7 +27,7 @@
         </field>
         <field name="model_id" ref="product.model_product_template" />
         <field name="domain_force">
-            [('bankayma_website_sale_company_id', 'in', company_ids), ('membership', '=', True)]
+            [('operating_unit_id', 'in', user.operating_units().ids), ('membership', '=', True)]
         </field>
         <field name="perm_create" eval="True" />
         <field name="perm_read" eval="False" />

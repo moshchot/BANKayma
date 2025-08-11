@@ -5,6 +5,10 @@ class LoyaltyProgram(models.Model):
     _inherit = "loyalty.program"
 
     company_id = fields.Many2one(default=lambda self: self.env["res.company"])
+    operating_unit_id = fields.Many2one(
+        "operating.unit",
+        default=lambda self: self.env.user._get_default_operating_unit(),
+    )
     program_type = fields.Selection(default="promo_code")
     bankayma_program_type = fields.Selection(
         selection=[
@@ -35,7 +39,7 @@ class LoyaltyProgram(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         result = super().create(vals_list)
-        for this, vals in zip(result, vals_list):
+        for this, vals in zip(result, vals_list, strict=False):
             if any(key.startswith("bankayma_") for key in vals):
                 this._bankayma_update_rules_rewards()
         return result

@@ -1,12 +1,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-
-from ast import literal_eval
-
-from odoo import http
+from odoo import http, tools
 
 from odoo.addons.website_event.controllers import main
 
-from .main import CompaniesController
+from .main import ProjectsController
 
 
 class WebsiteEventController(main.WebsiteEventController):
@@ -17,12 +14,12 @@ class WebsiteEventController(main.WebsiteEventController):
         )
         result = super().events(page=page, **dict(projects=projects, **searches))
         (
-            company_tags_available,
-            companies_available,
-        ) = CompaniesController._search_combined(self)
-        result.qcontext["companies_available"] = companies_available
-        result.qcontext["companies_selected"] = companies_available.browse(
-            projects and literal_eval(projects) or []
+            ou_tags_available,
+            ous_available,
+        ) = ProjectsController._search_combined(self)
+        result.qcontext["ous_available"] = ous_available
+        result.qcontext["ous_selected"] = ous_available.browse(
+            projects and tools.safe_eval.const_eval(projects) or []
         )
-        result.qcontext["company_tags_available"] = company_tags_available
+        result.qcontext["ous_tags_available"] = ou_tags_available
         return result

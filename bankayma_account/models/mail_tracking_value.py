@@ -23,8 +23,7 @@ class MailTrackingValue(models.Model):
             def format_analytic_distribution(value):
                 return (
                     "".join(
-                        "%s: %s"
-                        % (
+                        "{}: {}".format(
                             self.env["account.analytic.account"]
                             .browse(int(account_id))
                             .display_name,

@@ -1,4 +1,4 @@
-from odoo import fields
+from odoo import fields, tools
 
 
 class TranslatedComputedChar(fields.Char):
@@ -24,3 +24,7 @@ class TranslatedComputedChar(fields.Char):
             super().compute_value(records_with_lang)
 
         return result
+
+    def setup_related(self, model):
+        with tools.mute_logger("odoo.fields"):
+            return super().setup_related(model)

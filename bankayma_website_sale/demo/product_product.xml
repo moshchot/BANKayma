@@ -1,0 +1,14 @@
+<odoo>
+    <record id="product_b2b" model="product.product">
+        <field name="name">Product B2B</field>
+        <field name="operating_unit_id" ref="operating_unit.b2b_operating_unit" />
+        <field name="website_published" eval="True" />
+        <field name="lst_price">4242</field>
+    </record>
+    <record id="product_b2c" model="product.product">
+        <field name="name">Product B2C</field>
+        <field name="operating_unit_id" ref="operating_unit.b2c_operating_unit" />
+        <field name="website_published" eval="True" />
+        <field name="lst_price">42</field>
+    </record>
+</odoo>

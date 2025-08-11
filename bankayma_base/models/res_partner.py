@@ -1,13 +1,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
 
-from .. import fields as bankayma_base_fields
-
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    display_name = bankayma_base_fields.TranslatedComputedChar()
     name = fields.Char(translate=True)
     function = fields.Char(translate=True)
     is_company = fields.Boolean(default=True)
@@ -32,14 +29,14 @@ class ResPartner(models.Model):
     def _get_name(self):
         result = super()._get_name()
         if self.env.context.get("bankayma_partner_address_email") and self.email:
-            result = "%s\n%s" % (result, self.email)
+            result = f"{result}\n{self.email}"
         if self.env.context.get("bankayma_partner_address_language") and self.lang:
-            result = "%s\n%s" % (
+            result = "{}\n{}".format(
                 result,
                 dict(self._fields["lang"]._description_selection(self.env))[self.lang],
             )
         if self.env.context.get("bankayma_partner_address_vat") and self.vat:
-            result = "%s\n%s" % (result, self.vat)
+            result = f"{result}\n{self.vat}"
         return result
 
     @api.model_create_multi

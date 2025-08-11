@@ -14,10 +14,9 @@ class TestBankaymaBase(TransactionCase):
     def test_edit_vat(self):
         self.assertTrue(self.env.ref("bankayma_base.projman").partner_id.can_edit_vat())
 
-    def test_org_manager_companies(self):
+    def test_org_manager_ous(self):
         group = self.env.ref("bankayma_base.group_org_manager")
-        all_companies = self.env["res.company"].search([])
-        main_company = self.env.ref("base.main_company")
+        all_ous = self.env["operating.unit"].search([])
         user = self.env["res.users"].create(
             {
                 "login": "testorgmanager",
@@ -25,17 +24,23 @@ class TestBankaymaBase(TransactionCase):
                 "groups_id": [(4, group.id)],
             }
         )
-        self.assertItemsEqual(user.company_ids, all_companies)
+        self.assertItemsEqual(user.operating_unit_ids, all_ous)
         user = self.env["res.users"].create({"login": "testuser", "name": "testuser"})
-        self.assertEqual(user.company_ids, main_company)
+        self.assertFalse(user.operating_unit_ids)
         user.write(
             {
                 "groups_id": [(4, group.id)],
             }
         )
-        self.assertItemsEqual(user.company_ids, all_companies)
-        new_company = self.env["res.company"].create({"name": "new company"})
-        self.assertItemsEqual(user.company_ids, all_companies + new_company)
+        self.assertItemsEqual(user.operating_unit_ids, all_ous)
+        new_ou = self.env["operating.unit"].create(
+            {
+                "name": "new ou",
+                "code": "new_ou",
+                "partner_id": self.env["res.partner"].create({"name": "new ou"}).id,
+            }
+        )
+        self.assertItemsEqual(user.operating_unit_ids, all_ous + new_ou)
 
     def test_inheritance_with_translation(self):
         """

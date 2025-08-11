@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
+from odoo.tools import SQL
 
 from .account_move import VALIDATED_STATE_SELECTION
 
@@ -21,8 +22,9 @@ class AccountInvoiceReport(models.Model):
     bankayma_payment_date = fields.Date("Payment Date")
 
     @api.model
-    def _select(self):
-        return (
-            super()._select() + ", validated_state, bankayma_analytic_account_id, "
-            "bankayma_analytic_plan_id, bankayma_payment_date"
+    def _select(self) -> SQL:
+        return SQL(
+            "%s, validated_state, bankayma_analytic_account_id, "
+            "bankayma_analytic_plan_id, bankayma_payment_date",
+            super()._select(),
         )

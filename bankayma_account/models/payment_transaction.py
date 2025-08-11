@@ -13,9 +13,12 @@ class PaymentTransaction(models.Model):
 
     is_recurrent = fields.Boolean()
     bankayma_tax_number = fields.Char()
+    operating_unit_id = fields.Many2one("operating.unit", readonly=True)
 
     def _process_notification_data(self, notification_data):
-        """Coerce current company to provider's company for further processing"""
+        """
+        Create invoice for donations
+        """
         for this in self.filtered(lambda x: x.is_donation and not x.invoice_ids):
             partner = this.partner_id
             if (
@@ -29,15 +32,15 @@ class PaymentTransaction(models.Model):
                     }
                 )
             donation_product = (
-                this.company_id.donation_credit_transfer_product_id.with_company(
-                    this.company_id
+                this.company_id.donation_credit_transfer_product_id.with_ou(
+                    this.operating_unit_id
                 )
             )
             donation_account = donation_product.property_account_income_id
             this.invoice_ids = (
                 self.env["account.move"]
                 .sudo()
-                .with_company(this.company_id)
+                .with_ou(this.operating_unit_id)
                 .create(
                     {
                         "move_type": "out_invoice",
@@ -57,12 +60,10 @@ class PaymentTransaction(models.Model):
                     }
                 )
             )
-        return super(
-            PaymentTransaction, self.with_company(self.provider_id.company_id)
-        )._process_notification_data(notification_data)
+        return super()._process_notification_data(notification_data)
 
-    def _reconcile_after_done(self):
-        super()._reconcile_after_done()
+    def _post_process(self):
+        super()._post_process()
 
         if not (self.sumit_details or {}).get("OG-PaymentID"):
             return
@@ -159,7 +160,7 @@ class PaymentTransaction(models.Model):
             partner = line.move_id.partner_id or self.partner_id
             contract = (
                 self.env["contract.contract"]
-                .with_company(line.company_id)
+                .with_ou(line.operating_unit_id)
                 .create(
                     {
                         "name": line.name,
@@ -199,12 +200,6 @@ class PaymentTransaction(models.Model):
                 }
             )
 
-    def _finalize_post_processing(self):
-        """Coerce current company to provider's company for further processing"""
-        return super(
-            PaymentTransaction, self.with_company(self.provider_id.company_id)
-        )._finalize_post_processing()
-
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
         if self.is_donation and len(result.get("Items", [])) == 1:
@@ -219,11 +214,7 @@ class PaymentTransaction(models.Model):
         return result
 
     def _to_sumit_vals_name(self, recurrent):
-        donation_product = (
-            self.company_id.donation_credit_transfer_product_id.with_company(
-                self.company_id
-            )
-        )
+        donation_product = self.company_id.donation_credit_transfer_product_id
         return (
             recurrent
             and _("[%(account_code)s] recurrent donation to %(company_name)s")

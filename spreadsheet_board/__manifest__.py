@@ -4,7 +4,7 @@
 {
     "name": "Spreadsheet in traditional dashboard",
     "summary": "Add spreadsheets to traditional dashboards",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Productivity",
     "website": "https://github.com/moshchot/BANKayma",
@@ -12,7 +12,6 @@
     "maintainers": ["hbrunn"],
     "license": "AGPL-3",
     "application": False,
-    "installable": True,
     "preloadable": True,
     "depends": [
         "spreadsheet_dashboard_oca",

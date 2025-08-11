@@ -5,10 +5,10 @@
     <record id="view_l10n_il_openformat_export_tree" model="ir.ui.view">
         <field name="model">l10n.il.openformat.export</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="create_date" />
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="view_l10n_il_openformat_export_form" model="ir.ui.view">
@@ -16,7 +16,6 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <!--attrs="{'invisible': [('export_file', '!=', False)]}"/-->
                     <button
                         type="object"
                         name="button_export"
@@ -46,7 +45,7 @@
                         <field
                             name="export_file"
                             filename="export_file_name"
-                            attrs="{'invisible': [('export_file', '=', False)]}"
+                            invisible="not export_file"
                         />
                         <field name="export_file_name" invisible="1" />
                     </group>

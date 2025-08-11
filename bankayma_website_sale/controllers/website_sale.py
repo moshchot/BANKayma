@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo.http import request
 
-from odoo.addons.bankayma_website.controllers.main import CompaniesController
+from odoo.addons.bankayma_website.controllers.main import ProjectsController
 from odoo.addons.website_sale.controllers import main
 
 
@@ -26,18 +26,18 @@ class WebsiteSale(main.WebsiteSale):
     def _get_additional_shop_values(self, values):
         result = super()._get_additional_shop_values(values)
         (
-            company_tags_available,
-            companies_available,
-        ) = CompaniesController._search_combined(self)
+            operating_unit_tags_available,
+            operating_units_available,
+        ) = ProjectsController._search_combined(self)
         result.update(
-            company_tags_available=company_tags_available,
-            companies_available=companies_available,
+            operating_unit_tags_available=operating_unit_tags_available,
+            operating_units_available=operating_units_available,
             product_tags_available=request.env["product.tag"].search(
                 [
                     (
-                        "product_template_ids.bankayma_website_sale_company_id",
+                        "product_template_ids.operating_unit_id",
                         "in",
-                        companies_available.ids,
+                        operating_units_available.ids,
                     )
                 ]
             ),

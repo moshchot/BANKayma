@@ -8,7 +8,7 @@
             <form>
                 <group
                     name="domain"
-                    attrs="{'invisible': [('export_file_movin', '!=', False)]}"
+                    invisible="export_file_movin"
                 >
                     <field name="date_start" />
                     <field name="date_end" />
@@ -18,7 +18,7 @@
                 </group>
                 <group
                     name="results"
-                    attrs="{'invisible': [('export_file_movin', '=', False)]}"
+                    invisible="not export_file_movin"
                 >
                     <field
                         name="export_file_movin"
@@ -47,7 +47,7 @@
                 </group>
                 <footer>
                     <button
-                        attrs="{'invisible': [('export_file_movin', '!=', False)]}"
+                        invisible="export_file_movin"
                         name="button_export"
                         string="Export"
                         type="object"

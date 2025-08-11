@@ -1,10 +1,10 @@
 <odoo>
-    <record id="product_product_view_form_add" model="ir.ui.view">
-        <field name="inherit_id" ref="website_sale.product_product_view_form_add" />
+    <record id="product_product_view_form_normalized_website_sale" model="ir.ui.view">
+        <field name="inherit_id" ref="website_sale.product_product_view_form_normalized_website_sale" />
         <field name="model">product.product</field>
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="bankayma_website_sale_company_id" invisible="True" />
+                <field name="operating_unit_id" invisible="True" />
                 <field name="list_price" required="True" widget="monetary" />
                 <field
                     name="product_tag_ids"
@@ -13,12 +13,21 @@
                 />
                 <field name="image_1920" required="True" widget="image" />
             </field>
+            <field name="barcode" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <label for="taxes_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </label>
+            <div name="tax_info" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </div>
         </field>
     </record>
     <record id="website_sale.product_product_action_add" model="ir.actions.act_window">
         <field
             name="context"
-            eval="&quot;{'default_bankayma_website_sale_company_id': allowed_company_ids[0], 'default_categ_id': %d}&quot; % ref('bankayma_website.product_category_webshop_product')"
+            eval="&quot;{'dialog_size': 'medium', 'website_published': True, 'default_categ_id': %d}&quot; % ref('bankayma_website.product_category_webshop_product')"
         />
     </record>
 </odoo>

@@ -44,7 +44,7 @@ class AccountMove(models.Model):
             "Payments": [
                 payment._to_sumit_vals()
                 for payment in self.line_ids.mapped(
-                    "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+                    "full_reconcile_id.reconciled_line_ids.move_id.payment_ids"
                 )
             ],
             "VATIncluded": False,
@@ -60,23 +60,24 @@ class AccountMove(models.Model):
         Create sumit document if journal is configured for it, but only if
         the payment isn't done via sumit anyways
         """
-        payment = self.line_ids.mapped(
-            "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+        payments = self.line_ids.mapped(
+            "full_reconcile_id.reconciled_line_ids.move_id.payment_ids"
         )
         if self._invoice_paid_hook_use_sumit():
             result = self.env["sumit.account"]._request(
                 "/accounting/documents/create",
                 self._to_sumit_vals(),
             )
-            payment.write(
+            payments.write(
                 {
-                    "ref": result.get("DocumentNumber"),
+                    "memo": result.get("DocumentNumber"),
                     "sumit_document_url": result.get("DocumentDownloadURL"),
                 }
             )
             self.message_post(
                 body=_(
-                    'Sumit document: <a href="%(DocumentDownloadURL)s">%(DocumentNumber)s</a>'
+                    "Sumit document: "
+                    '<a href="%(DocumentDownloadURL)s">%(DocumentNumber)s</a>'
                 )
                 % result
             )
@@ -84,8 +85,8 @@ class AccountMove(models.Model):
         return super()._invoice_paid_hook()
 
     def _invoice_paid_hook_use_sumit(self):
-        payment = self.line_ids.mapped(
-            "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+        payments = self.line_ids.mapped(
+            "full_reconcile_id.reconciled_line_ids.move_id.payment_ids"
         )
-        payment_provider = payment.payment_transaction_id.provider_id
+        payment_provider = payments.payment_transaction_id.provider_id
         return self and self.journal_id.use_sumit and payment_provider.code != "sumit"

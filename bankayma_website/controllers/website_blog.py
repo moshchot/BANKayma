@@ -36,7 +36,7 @@ class WebsiteBlog(website_blog.WebsiteBlog):
             tag_id=tag_id,
             page=page,
             enable_editor=enable_editor,
-            **post
+            **post,
         )
 
     @http.route(

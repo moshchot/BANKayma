@@ -38,7 +38,8 @@ class TestPaymentProvider(PaymentCommon):
         )
         cls.invoice = cls.env.ref("account.1_demo_invoice_1")
         cls.amount = cls.invoice.amount_total
-        cls.enable_reconcile_after_done_patcher = False
+        cls.enable_post_process_patcher = False
+        cls.currency = cls.invoice.currency_id
 
     @requests_mock.Mocker()
     def test_transaction(self, requests_mock):
@@ -84,5 +85,5 @@ class TestPaymentProvider(PaymentCommon):
             {"OG-PaymentID": "42", "OG-DocumentNumber": "424242"}
         )
         self.assertEqual(tx.provider_reference, "42")
-        tx._finalize_post_processing()
+        tx._post_process()
         self.assertEqual(self.invoice.payment_state, "paid")

@@ -2,17 +2,18 @@
     <record id="view_account_analytic_line_list" model="ir.ui.view">
         <field name="model">account.analytic.line</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false" action="action_open_move" type="object">
+            <list create="false" delete="false" action="action_open_move" type="object">
                 <field name="name" />
                 <field name="product_id" optional="show" />
-                <field name="company_id" optional="show" />
+                <field name="operating_unit_id" optional="show" />
                 <field name="bankayma_income" sum="sum" />
                 <field name="bankayma_expense" sum="sum" />
                 <field name="bankayma_intercompany" sum="sum" />
                 <field name="bankayma_balance" sum="sum" />
                 <field name="move_line_id" widget="line_open_move_widget" />
                 <field name="partner_id" optional="show" />
-            </tree>
+                <field name="currency_id" invisible="True" />
+            </list>
         </field>
     </record>
     <record id="view_account_analytic_line_search" model="ir.ui.view">
@@ -38,9 +39,6 @@
                 <attribute name="invisible">True</attribute>
             </field>
             <field name="partner_id" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </field>
-            <field name="unit_amount" position="attributes">
                 <attribute name="invisible">True</attribute>
             </field>
             <field name="account_id" position="after">

@@ -52,7 +52,7 @@ class L10nIlSystem1000Export(models.TransientModel):
         return action_dict
 
     def _export_header(self):
-        return "A{:>9}".format(self.env.company.l10n_il_tax_deduction_id)
+        return f"A{self.env.company.l10n_il_tax_deduction_id:>9}"
 
     def _export_lines(self):
         return "\r\n".join(
@@ -64,11 +64,13 @@ class L10nIlSystem1000Export(models.TransientModel):
         )
 
     def _export_line(self, line):
-        return "B{:>15}{:0>9}{:0>9}{:0>9}".format(
-            line.id,
-            line.partner_id.commercial_partner_id.vat,
-            line.partner_id.commercial_partner_id.vat,
-            line.partner_id.commercial_partner_id.vat,
+        return "B" + "".join(
+            [
+                f"{line.id:>15}",
+                f"{line.partner_id.commercial_partner_id.vat:0>9}",
+                f"{line.partner_id.commercial_partner_id.vat:0>9}",
+                f"{line.partner_id.commercial_partner_id.vat:0>9}",
+            ]
         )
 
     def _export_footer(self):

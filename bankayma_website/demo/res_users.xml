@@ -5,10 +5,9 @@
         <field name="name">Website manager</field>
         <field name="password">webman</field>
         <field
-            name="company_ids"
-            eval="[Command.link(ref('bankayma_base.child_comp1'))]"
+            name="operating_unit_ids"
+            eval="[Command.link(ref('operating_unit.main_operating_unit'))]"
         />
-        <field name="company_id" ref="bankayma_base.child_comp1" />
         <field name="groups_id" eval="[Command.link(ref('group_website'))]" />
     </record>
 </odoo>

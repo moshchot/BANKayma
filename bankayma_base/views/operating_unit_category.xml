@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_operating_unit_category_form" model="ir.ui.view">
+        <field name="model">operating.unit.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        invisible="active"
+                    />
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_show_ous" class="oe_stat_button" icon="fa-list" type="object">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="operating_unit_count" />
+                                </span>
+                                <span class="o_stat_text">OUs</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1><field name="name" /></h1>
+                        <label for="parent_id" class="oe_edit_only" />
+                        <h2><field name="parent_id" /></h2>
+                    </div>
+                    <field name="active" invisible="True" />
+                    <group name="main">
+                        <group name="left">
+                            <field name="show_in_ou_selector" />
+                        </group>
+                        <group name="right" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_operating_unit_category_list" model="ir.ui.view">
+        <field name="model">operating.unit.category</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+    <record id="action_operating_unit_category" model="ir.actions.act_window">
+        <field name="name">Operating Unit Categories</field>
+        <field name="res_model">operating.unit.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_operating_unit_category"
+        action="action_operating_unit_category"
+        parent="base.menu_users"
+        sequence="20"
+    />
+ </odoo>
