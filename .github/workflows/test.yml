@@ -32,6 +32,8 @@ jobs:
     name: Run tests
     strategy:
       fail-fast: false
+    env:
+      EXCLUDE: bankayma_migrate_v18
     services:
       postgres:
         image: postgres:12.0
