@@ -4,7 +4,7 @@
 {
     "name": "Openformat",
     "summary": "Enables exports to OPENFORMAT",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Accounting/Localizations",
     "website": "https://github.com/moshchot/BANKayma",

@@ -20,3 +20,27 @@ class ProductTemplate(models.Model):
         string="Recurrence",
     )
     sumit_recurrence_interval = fields.Integer(string="Interval")
+
+    def _get_product_accounts(self):
+        """
+        Implement BK's OU specific accounts
+        """
+        result = super()._get_product_accounts()
+        ou = (
+            self.env["operating.unit"].browse(
+                self.env.context.get("default_operating_unit_id")
+                or self.env.context.get("operating_unit_id")
+                or []
+            )
+            or self.env.user._get_default_operating_unit()
+        )
+        if ou and self.default_code:
+            ou_account = self.env["account.account"].search(
+                [
+                    ("is_ou_specific", "=", True),
+                    ("code", "=", ou.code + self.default_code),
+                ]
+            )
+            for key in ("income", "expense"):
+                result[key] = ou_account or result[key]
+        return result

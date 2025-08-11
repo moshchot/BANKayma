@@ -1,6 +1,4 @@
-from ast import literal_eval
-
-from odoo import api, models
+from odoo import api, models, tools
 
 
 class Event(models.Model):
@@ -10,15 +8,9 @@ class Event(models.Model):
     @api.model
     def _search_get_detail(self, website, order, options):
         result = super()._search_get_detail(website, order, options)
-        companies = website.env.context.get("bankayma_event_projects")
-        search_companies = self.env["res.company"].sudo()
-        if companies:
-            company_ids = literal_eval(companies)
-            if company_ids:
-                result["base_domain"].append([("company_id", "in", company_ids)])
-                search_companies = self.env["res.company"].sudo().browse(company_ids)
-        return dict(result, search_companies=search_companies)
-
-    def _check_website_id(self):
-        # disable check for same company
-        pass
+        ou_ids_context = website.env.context.get("bankayma_event_projects")
+        if ou_ids_context:
+            ou_ids = tools.safe_eval.const_eval(ou_ids_context)
+            if ou_ids:
+                result["base_domain"].append([("operating_unit_id", "in", ou_ids)])
+        return result

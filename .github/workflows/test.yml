@@ -3,10 +3,10 @@ name: tests
 on:
   pull_request:
     branches:
-      - "16.0*"
+      - "18.0*"
   push:
     branches:
-      - "16.0"
+      - "18.0*"
 
 jobs:
   unreleased-deps:
@@ -28,7 +28,7 @@ jobs:
           done
   test:
     runs-on: ubuntu-latest
-    container: ghcr.io/oca/oca-ci/py3.10-ocb16.0:latest
+    container: ghcr.io/oca/oca-ci/py3.10-ocb18.0:latest
     name: Run tests
     strategy:
       fail-fast: false
@@ -49,7 +49,7 @@ jobs:
         id: cache
         with:
           path: /tmp/src
-          key: gitaggregate
+          key: gitaggregate-v18
       - name: Install addons and dependencies
         run: |
           apt update
@@ -73,6 +73,8 @@ jobs:
             pip install ../libreerp-git
           cd $GITHUB_WORKSPACE
           echo "addons_path=/tmp/src/libreerp-git/odoo/addons,/tmp/src/libreerp-git/addons,${ADDONS_PATH},${ADDONS_DIR}" >> ${ODOO_RC}
+          # l10n_il_sumit, not needed in >=py3.11
+          pip install strenum
           cat $ODOO_RC
       - name: Check licenses
         run: manifestoo -d . check-licenses
@@ -82,24 +84,21 @@ jobs:
         continue-on-error: true
       - name: Initialize test db
         run: oca_init_test_database
-      - name: Install COA
-        run: |
-          $(which odoo) -d ${PGDATABASE} --save --stop-after-init
-          echo "env.ref('l10n_il.il_chart_template').try_loading(env.ref('base.main_company')); env.cr.commit()" | $(which odoo) shell
       - name: Run tests
         run: oca_run_tests
       - name: Generate coverage.xml
         run: coverage xml --include '*.py'
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v7
         with:
           files: coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Show files to be cached
         run: du -chsx /tmp/src/*
       - uses: actions/cache/save@v4
         if: steps.cache.outputs.cache-hit != 'true'
         with:
           path: /tmp/src
-          key: gitaggregate
+          key: gitaggregate-v18
       - name: Update .po files
         if: github.event_name == 'pull_request'
         run: |

@@ -13,7 +13,7 @@
         <field name="model">account.tax.group</field>
         <field name="inherit_id" ref="account.view_tax_group_tree" />
         <field name="arch" type="xml">
-            <field name="property_tax_payable_account_id" position="before">
+            <field name="tax_payable_account_id" position="before">
                 <field name="bankayma_offer_removal" />
                 <field name="bankayma_editable" />
             </field>

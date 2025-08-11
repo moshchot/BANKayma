@@ -3,6 +3,7 @@
 }
 .spreadsheet_board-filters {
     display: flex;
+    justify-content: center;
 }
 .spreadsheet_board-container .o-grid {
     background: white;

@@ -6,17 +6,18 @@ from collections import namedtuple
 
 from werkzeug.datastructures import MultiDict
 
-from odoo import exceptions, fields
-from odoo.tests.common import Form, TransactionCase
+from odoo import exceptions, fields, tools
+from odoo.tests import Form, TransactionCase
 
 
 class TestBankaymaAccountPortal(TransactionCase):
     def test_vendor_bill(self):
         self.env.ref("bankayma_account.tier_definition_vendor_bill").active = True
         fake_upload = namedtuple("fake_upload", ["stream", "filename"])
-        user = self.env.ref("bankayma_base.vendor_child_comp1")
-        user.company_ids += self.env.ref("l10n_il.demo_company_il")
-        company = self.env.ref("l10n_il.demo_company_il")
+        user = self.env.ref("bankayma_base.vendor_b2b")
+        user.operating_unit_ids += self.env.ref("operating_unit.b2c_operating_unit")
+        operating_unit = self.env.ref("operating_unit.b2c_operating_unit")
+        company = self.env.company
         fpos = self.env["account.fiscal.position"].search(
             [("company_id", "=", company.id)], limit=1
         )
@@ -30,7 +31,6 @@ class TestBankaymaAccountPortal(TransactionCase):
         fpos.bankayma_deduct_tax = True
         fpos.bankayma_deduct_tax_account_id = self.env["account.account"].search(
             [
-                ("company_id", "=", company.id),
                 ("account_type", "=", "asset_current"),
             ],
             limit=1,
@@ -58,7 +58,7 @@ class TestBankaymaAccountPortal(TransactionCase):
             .sudo()
             ._portal_create_vendor_bill(
                 {
-                    "company": company,
+                    "operating_unit_id": str(operating_unit.id),
                     "amount": "42",
                     "description": "hello world",
                     "fpos": str(fpos.id),
@@ -85,7 +85,7 @@ class TestBankaymaAccountPortal(TransactionCase):
             ]
         )
         self.assertTrue(attachment)
-        self.assertEqual(invoice.company_id, company)
+        self.assertEqual(invoice.operating_unit_id, operating_unit)
         taxes = invoice.invoice_line_ids.tax_ids
         self.assertEqual(len(taxes), 2)
         vendor_tax, imposed_tax = taxes
@@ -97,7 +97,10 @@ class TestBankaymaAccountPortal(TransactionCase):
         self.assertEqual(vendor_tax.amount, 42)
         self.assertEqual(vendor_tax.amount_type, "code")
         self.assertTrue(invoice.bankayma_vendor_max_amount, 424242)
-        with self.assertRaises(exceptions.UserError):
+        with (
+            self.assertRaises(exceptions.UserError),
+            tools.mute_logger("odoo.exceptions.UserError"),
+        ):
             invoice.request_validation()
         with Form(invoice) as invoice_form:
             with invoice_form.invoice_line_ids.edit(0) as line:
@@ -112,7 +115,10 @@ class TestBankaymaAccountPortal(TransactionCase):
         self.assertEqual(taxes, invoice.invoice_line_ids.tax_ids)
         invoice.invoice_date = fields.Date.context_today(invoice)
         self.assertEqual(invoice.validated_state, "0_draft")
-        with self.assertRaises(exceptions.ValidationError):
+        with (
+            self.assertRaises(exceptions.ValidationError),
+            tools.mute_logger("odoo.exceptions.ValidationError"),
+        ):
             invoice.action_post()
         invoice.request_validation()
         self.assertEqual(invoice.validated_state, "1_needs_validation")

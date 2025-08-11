@@ -61,7 +61,7 @@ class L10nIlHashavshevetExport(models.TransientModel):
                         F(15, 12, "right_account1_amount", float),
                         F(16, 12, "right_account2_amount", float),
                     ),
-                    **_data
+                    **_data,
                 )
 
         class ExportRecordHESHIN(Record):
@@ -99,7 +99,7 @@ class L10nIlHashavshevetExport(models.TransientModel):
                         F(29, 0, None),
                         F(30, 9, "filter"),
                     ),
-                    **_data
+                    **_data,
                 )
 
         export_file_movin = HashashevetFile()
@@ -161,7 +161,9 @@ class L10nIlHashavshevetExport(models.TransientModel):
                         export_file.append(record)
 
     def _export_map_file(self, map_file, export_type):
-        map_file.write("%s\r\n" % sum(map(attrgetter("length"), export_type()._fields)))
+        map_file.write(
+            "{}\r\n".format(sum(map(attrgetter("length"), export_type()._fields)))
+        )
         pos = 1
         for field in export_type()._fields:
             map_file.write(

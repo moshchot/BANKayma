@@ -4,7 +4,7 @@
         <field name="inherit_id" ref="membership.membership_products_form" />
         <field name="arch" type="xml">
             <field name="company_id" position="after">
-                <field name="bankayma_website_sale_company_id" required="True" />
+                <field name="operating_unit_id" required="True" />
             </field>
             <field name="company_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
@@ -16,9 +16,9 @@
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <field name="categ_id" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </field>
             <field name="taxes_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>

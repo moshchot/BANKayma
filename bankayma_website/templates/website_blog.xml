@@ -1,22 +1,4 @@
 <odoo>
-    <template id="opt_blog_cover_post" inherit_id="website_blog.opt_blog_cover_post">
-        <xpath
-            expr="//a[@t-attf-href='/blog/#{slug(first_post.blog_id)}/#{slug(first_post)}']"
-            position="attributes"
-        >
-            <attribute name="t-attf-href">{{first_post.website_url}}</attribute>
-        </xpath>
-    </template>
-    <template
-        id="opt_blog_cover_post_fullwidth_design"
-        inherit_id="website_blog.opt_blog_cover_post_fullwidth_design"
-    >
-        <!--
-        <xpath expr="//a[@t-attf-href='/blog/#{slug(first_post.blog_id)}/#{slug(first_post)}']" position="attributes">
-            <attribute name="t-attf-href">{{first_post.website_url}}</attribute>
-        </xpath>
-        -->
-    </template>
     <template
         id="opt_blog_post_comment"
         inherit_id="website_blog.opt_blog_post_comment"
@@ -89,9 +71,9 @@
         id="dynamic_filter_template_blog_post_card"
         inherit_id="website_blog.dynamic_filter_template_blog_post_card"
     >
-        <h4 position="after">
+        <h5 position="after">
             <h6 class="mb-0" t-field="record.subtitle" />
-        </h4>
+        </h5>
         <xpath expr="//span/a[contains(@t-att-href, '/blog')]/.." position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>

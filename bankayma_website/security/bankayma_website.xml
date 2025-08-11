@@ -15,30 +15,4 @@
             eval="[Command.unlink(ref('event.group_event_manager'))]"
         />
     </record>
-
-    <record id="rule_blog_post" model="ir.rule">
-        <field name="name">Blog post multicompany</field>
-        <field name="model_id" ref="website_blog.model_blog_post" />
-        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-        <field name="perm_read" eval="False" />
-        <field name="perm_write" eval="True" />
-        <field name="perm_create" eval="True" />
-        <field name="perm_unlink" eval="True" />
-    </record>
-
-    <record id="event.event_event_company_rule" model="ir.rule">
-        <field name="perm_read" eval="False" />
-    </record>
-
-    <record id="rule_event_event" model="ir.rule">
-        <field name="name">Allow reading published events globally</field>
-        <field name="model_id" ref="event.model_event_event" />
-        <field name="domain_force">
-            ['|', ('website_published', '=', True), ('company_id', 'in', company_ids)]
-        </field>
-        <field name="perm_read" eval="True" />
-        <field name="perm_write" eval="False" />
-        <field name="perm_create" eval="False" />
-        <field name="perm_unlink" eval="False" />
-    </record>
 </odoo>

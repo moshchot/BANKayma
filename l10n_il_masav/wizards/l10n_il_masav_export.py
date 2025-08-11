@@ -131,7 +131,7 @@ class L10nIlMasavExport(models.TransientModel):
         )
 
         self.export_file = b64encode(buffer.getbuffer())
-        self.export_file_name = "%s-%s.msv" % (
+        self.export_file_name = "{}-{}.msv".format(
             masav_id,
             fields.Date.today().strftime("%Y%m%d"),
         )

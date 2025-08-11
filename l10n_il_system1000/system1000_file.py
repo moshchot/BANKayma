@@ -11,7 +11,7 @@ System1000Field = namedtuple(
 )
 
 
-class System1000File(object):
+class System1000File:
     encoding = "ISO-8859-8"
     lines = None
     intro_line = None

@@ -18,7 +18,7 @@ class MassEditingWizard(models.TransientModel):
             "outbound_payment_method_line_ids",
             "inbound_payment_method_line_ids",
         ):
-            for field_node in main_xml_group.xpath("//field[@name='%s']" % field.name):
+            for field_node in main_xml_group.xpath(f"//field[@name='{field.name}']"):
                 journal = self.env["account.journal"].browse(
                     self.env.context.get("active_ids", [models.NewId()])[0]
                 )

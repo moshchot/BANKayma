@@ -1,7 +1,9 @@
 from . import account_payment_register
-from . import account_move_update_analytic
+
+# from . import account_move_update_analytic
 from . import base_document_layout
-from . import bankayma_company_create
+from . import bankayma_ou_create
+
 from . import bankayma_move_change_company
 from . import bankayma_move_change_payment_method
 from . import bankayma_move_edit_tax_totals

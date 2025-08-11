@@ -2,7 +2,7 @@
 {
     "name": "BANKayma (website_sale_loyality)",
     "summary": "BANKayma website_sale_loyality customizations",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",

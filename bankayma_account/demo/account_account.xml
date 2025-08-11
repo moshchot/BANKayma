@@ -1,0 +1,20 @@
+<odoo>
+    <record id="account_main_ou" model="account.account">
+        <field name="name">OU specific</field>
+        <field name="code">MAIN424242</field>
+        <field name="account_type">expense</field>
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="account_b2b" model="account.account">
+        <field name="name">OU specific</field>
+        <field name="code">B2B424242</field>
+        <field name="account_type">expense</field>
+        <field name="operating_unit_id" ref="operating_unit.b2b_operating_unit" />
+    </record>
+    <record id="account_b2c" model="account.account">
+        <field name="name">OU specific</field>
+        <field name="code">B2C424242</field>
+        <field name="account_type">expense</field>
+        <field name="operating_unit_id" ref="operating_unit.b2c_operating_unit" />
+    </record>
+</odoo>

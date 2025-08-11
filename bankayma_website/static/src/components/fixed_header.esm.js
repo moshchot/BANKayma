@@ -1,5 +1,4 @@
-/** @odoo-module **/
-import {extraMenuUpdateCallbacks} from "website.content.menu";
+import {extraMenuUpdateCallbacks} from "@website/js/content/menu";
 
 function resetStickyTop() {
     const $header = jQuery("#top");
@@ -7,11 +6,7 @@ function resetStickyTop() {
         ".bankayma_event_searchbar,.bankayma_searchbar,.bankayma_products_searchbar"
     );
     if ($header.length && $search.length) {
-        if (
-            $header.hasClass("o_header_is_scrolled") &&
-            $header.is(":visible") &&
-            $header.css("opacity") === 1
-        ) {
+        if ($header.hasClass("o_header_is_scrolled") && $header.is(":visible")) {
             $search.css(
                 "transform",
                 `translate(0px, ${$header.outerHeight() + $header.position().top}px)`

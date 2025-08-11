@@ -51,8 +51,7 @@ class L10nIlOpenformatExport(models.Model):
 
     def name_get(self):
         return [
-            (this.id, "%s %s" % (this.company_id.name, this.create_date))
-            for this in self
+            (this.id, f"{this.company_id.name} {this.create_date}") for this in self
         ]
 
     @api.constrains("date_start", "date_end")
@@ -235,11 +234,13 @@ class L10nIlOpenformatExport(models.Model):
                 )
             except ValueError as ex:
                 raise exceptions.UserError(
-                    _("Error exporting %(move_name)s: %(message)s")
-                    % {
-                        "move_name": move_line.name,
-                        "message": "".join(map(str, ex.args)),
-                    }
+                    _(
+                        "Error exporting %(move_name)s: %(message)s",
+                        **{
+                            "move_name": move_line.name,
+                            "message": "".join(map(str, ex.args)),
+                        },
+                    )
                 ) from ex
 
     def _export_data_b110(self, moves, serial):
@@ -249,7 +250,7 @@ class L10nIlOpenformatExport(models.Model):
         opening_balance = {}
 
         move_line_domain = [
-            ("move_id.%s" % field_name, operator, value)
+            (f"move_id.{field_name}", operator, value)
             for field_name, operator, value in self._export_data_get_move_domain()
         ]
 
@@ -286,11 +287,13 @@ class L10nIlOpenformatExport(models.Model):
                 )
             except ValueError as ex:
                 raise exceptions.UserError(
-                    _("Error exporting %(move_name)s: %(message)s")
-                    % {
-                        "move_name": account.name,
-                        "message": "".join(map(str, ex.args)),
-                    }
+                    _(
+                        "Error exporting %(move_name)s: %(message)s",
+                        **{
+                            "move_name": account.name,
+                            "message": "".join(map(str, ex.args)),
+                        },
+                    )
                 ) from ex
 
     def _export_data_c100_document_type(self, move):
@@ -325,11 +328,13 @@ class L10nIlOpenformatExport(models.Model):
                 )
             except ValueError as ex:
                 raise exceptions.UserError(
-                    _("Error exporting %(move_name)s: %(message)s")
-                    % {
-                        "move_name": move.name,
-                        "message": "".join(map(str, ex.args)),
-                    }
+                    _(
+                        "Error exporting %(move_name)s: %(message)s",
+                        **{
+                            "move_name": move.name,
+                            "message": "".join(map(str, ex.args)),
+                        },
+                    )
                 ) from ex
 
     def button_export(self):
@@ -338,11 +343,8 @@ class L10nIlOpenformatExport(models.Model):
         self.export_timestamp = fields.Datetime.now()
         buffer = io.BytesIO()
         path = os.path.join(
-            "%s.%s"
-            % (
-                self.company_id.company_registry,
-                self.export_timestamp.strftime("%y"),
-            ),
+            f"{self.company_id.company_registry}."
+            f"{self.export_timestamp.strftime('%y')}",
             self.export_timestamp.strftime("%m%d%H%M"),
         )
         with zipfile.ZipFile(buffer, "w") as z:

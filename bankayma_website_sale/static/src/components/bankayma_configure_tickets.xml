@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="bankayma_website_sale.BankaymaConfigureTickets" owl="1">
-        <div class="bankayma_configure_tickets">
-            <a href="#" accesskey="t" t-on-click="configureTickets">
-                <span class="fa fa-cog" />
-                <span class="d-none d-md-block ms-2">Configure Tickets</span>
+        <span class="o_website_systray_separator d-none d-md-block w-0 border-start" />
+        <div
+            class="bankayma_configure_tickets o_menu_systray_item o_edit_website_container d-none d-md-flex"
+        >
+            <a
+                href="#"
+                class="o-website-btn-custo-secondary btn position-relative d-flex align-items-center rounded-0 border-0 px-3"
+                accesskey="t"
+                t-on-click="configureTickets"
+            >
+                <span>Configure Tickets</span>
             </a>
         </div>
     </t>

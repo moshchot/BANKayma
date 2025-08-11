@@ -10,7 +10,7 @@
                 <group name="bankayma_options">
                     <field
                         name="bankayma_enforce_fpos_restrictions"
-                        attrs="{'invisible': [('model', '!=', 'account.move')]}"
+                        invisible="model != 'account.move'"
                     />
                 </group>
             </group>

@@ -10,7 +10,7 @@
         <field name="include_base_amount" eval="False" />
         <field name="is_base_affected" eval="False" />
         <field name="tax_group_id" ref="tax_group_social_security" />
-        <field name="python_compute">result = quantity * price_unit * 0.05</field>
+        <field name="formula">quantity * price_unit * 0.05</field>
     </record>
 
     <record id="tax_social_security_70inc" model="account.tax">
@@ -21,7 +21,7 @@
         <field name="include_base_amount" eval="False" />
         <field name="is_base_affected" eval="False" />
         <field name="tax_group_id" ref="tax_group_social_security" />
-        <field name="python_compute">result = quantity * price_unit * 0.07</field>
+        <field name="formula">quantity * price_unit * 0.07</field>
     </record>
 
     <record id="tax_social_security_76ex" model="account.tax">
@@ -32,6 +32,6 @@
         <field name="include_base_amount" eval="False" />
         <field name="is_base_affected" eval="False" />
         <field name="tax_group_id" ref="tax_group_social_security" />
-        <field name="python_compute">result = quantity * price_unit * 0.076</field>
+        <field name="formula">quantity * price_unit * 0.076</field>
     </record>
 </odoo>

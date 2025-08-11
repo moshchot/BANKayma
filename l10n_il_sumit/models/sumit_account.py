@@ -2,12 +2,12 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 
 
+import logging
+
 try:
     from enum import StrEnum
 except ImportError:
     from strenum import StrEnum
-
-import logging
 from urllib.parse import urljoin
 
 import requests

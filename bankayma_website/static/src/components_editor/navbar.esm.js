@@ -1,21 +1,19 @@
-/** @odoo-module **/
-
 import {NavBar} from "@web/webclient/navbar/navbar";
-import {patch} from "web.utils";
+import {patch} from "@web/core/utils/patch";
 import {registry} from "@web/core/registry";
 
 const systrayRegistry = registry.category("systray");
 
-patch(NavBar.prototype, "bankayma_website", {
+patch(NavBar.prototype, {
     get systrayItems() {
-        const result = this._super();
-        const companySwitcher = systrayRegistry.get("SwitchCompanyMenu");
+        const result = super.systrayItems;
+        const ouSwitcher = systrayRegistry.get("SwitchOuMenu");
         return result.map((x) =>
             x.key === "WebsiteSwitcher"
                 ? {
                       ...x,
                       key: "SwitchCompanyMenu",
-                      ...companySwitcher,
+                      ...ouSwitcher,
                   }
                 : x
         );

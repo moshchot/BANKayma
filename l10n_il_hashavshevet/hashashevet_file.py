@@ -11,7 +11,7 @@ FixedLengthField = namedtuple(
 F = FixedLengthField
 
 
-class HashashevetFile(object):
+class HashashevetFile:
     encoding = "ISO-8859-8"
 
     def __init__(self):
@@ -25,44 +25,40 @@ class HashashevetFile(object):
         return result.encode(self.encoding, errors="replace")
 
 
-class Record(object):
+class Record:
     def __init__(self, _fields, **_data):
         self._fields = _fields
         self._field_names = tuple([field.name for field in _fields])
         self._data = _data
         for field in _data:
             if field not in self._field_names:
-                raise ValueError("Unknown field %s for %s given" % (field, self))
+                raise ValueError(f"Unknown field {field} for {self} given")
 
     def _format_field(self, field, data):
         if data is None:
-            return (" " if field.type == str else "0") * field.length
-        if field.type == int:
+            return (" " if field.type is str else "0") * field.length
+        if field.type is int:
             try:
                 number = int(str(data or 0).lstrip("0").strip() or 0)
             except ValueError as ex:
                 raise ValueError(
-                    "Field %(field_name)s must be an integer, got %(value)s"
-                    % {
-                        "field_name": "%s (%s)" % (field.name, field.code),
-                        "value": data,
-                    }
+                    f"Field {field.name} ({field.code}) must be an integer, got {data}"
                 ) from ex
             if number < 0:
-                raise ValueError("Field %(field_name)s cannot be negative")
-            return ("{:0>%dd}" % field.length).format(number % 10**field.length)
-        elif field.type == float:
+                raise ValueError(f"Field {field.name} cannot be negative")
+            return f"{{:0>{field.length}d}}".format(number % 10**field.length)
+        elif field.type is float:
             number = round((data or 0) * 100)
-            return ("{:0=%dd}" % field.length).format(
+            return f"{{:0={field.length}d}}".format(
                 (-1 if number < 0 else 1) * (abs(number) % 10 ** (field.length - 1))
             )
-        elif field.type == date:
+        elif field.type is date:
             data = data or date.min
-            return ("{:0>%dd}" % field.length).format(
+            return f"{{:0>{field.length}d}}".format(
                 data.year * 10000 + data.month * 100 + data.day
             )
         else:
-            return ("{: <%ds}" % field.length).format(str(data or "")[: field.length])
+            return f"{{: <{field.length}s}}".format(str(data or "")[: field.length])
 
     def format(self):
         return "".join(

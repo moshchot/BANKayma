@@ -81,7 +81,6 @@ class AccountMoveLine(models.Model):
             return (
                 imposed_tax or super()._get_computed_taxes()
             ) + self.move_id._portal_get_or_create_tax(
-                self.move_id.company_id,
                 self.move_id.fiscal_position_id,
                 self.move_id.bankayma_vendor_tax_percentage,
                 create=False,
@@ -113,7 +112,7 @@ class AccountMoveLine(models.Model):
         for this in self:
             if this.analytic_distribution:
                 this.bankayma_analytic_account_id = int(
-                    list(this.analytic_distribution.keys())[0]
+                    list(this.analytic_distribution.keys())[0].split(",")[0]
                 )
                 this.bankayma_analytic_plan_id = (
                     this.bankayma_analytic_account_id.plan_id
@@ -140,10 +139,9 @@ class AccountMoveLine(models.Model):
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
         result["Description"] = self.name
-        result["Item"]["Name"] = "[%s] %s: %s" % (
-            self.account_id.code,
-            self.move_id.company_id.name,
-            self.product_id.name or self.name,
+        result["Item"]["Name"] = (
+            f"[{self.account_id.code}] {self.move_id.company_id.name}: "
+            f"{self.product_id.name or self.name}"
         )
         return result
 

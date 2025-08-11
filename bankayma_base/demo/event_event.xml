@@ -1,0 +1,26 @@
+<odoo>
+    <record id="event.event_0" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_1" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_2" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_3" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_4" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_5" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_6" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+    <record id="event.event_7" model="event.event">
+        <field name="operating_unit_id" ref="operating_unit.main_operating_unit" />
+    </record>
+</odoo>

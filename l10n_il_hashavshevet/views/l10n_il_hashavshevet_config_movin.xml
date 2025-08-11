@@ -14,7 +14,7 @@
                 <div>
                     <field name="expr_code" widget="ace" options="{'mode': 'python'}" />
                     <div
-                        attrs="{'invisible': [('expr_code_result', '=', False)]}"
+                        invisible="not expr_code_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -39,7 +39,7 @@
                 <div>
                     <field name="expr_ref1" widget="ace" options="{'mode': 'python'}" />
                     <div
-                        attrs="{'invisible': [('expr_ref1_result', '=', False)]}"
+                        invisible="not expr_ref1_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -69,7 +69,7 @@
                 <div>
                     <field name="expr_ref2" widget="ace" options="{'mode': 'python'}" />
                     <div
-                        attrs="{'invisible': [('expr_ref2_result', '=', False)]}"
+                        invisible="not expr_ref2_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -86,7 +86,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_date_ref_result', '=', False)]}"
+                        invisible="not expr_date_ref_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -112,7 +112,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_date_value_result', '=', False)]}"
+                        invisible="not expr_date_value_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -129,7 +129,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_currency_result', '=', False)]}"
+                        invisible="not expr_currency_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -146,7 +146,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_details_result', '=', False)]}"
+                        invisible="not expr_details_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -163,7 +163,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_left_account1_result', '=', False)]}"
+                        invisible="not expr_left_account1_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -189,7 +189,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_left_account2_result', '=', False)]}"
+                        invisible="not expr_left_account2_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -206,7 +206,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_right_account1_result', '=', False)]}"
+                        invisible="not expr_right_account1_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -223,7 +223,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_right_account2_result', '=', False)]}"
+                        invisible="not expr_right_account2_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -240,7 +240,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_left_account1_amount_result', '=', False)]}"
+                        invisible="not expr_left_account1_amount_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -281,7 +281,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_left_account2_amount_result', '=', False)]}"
+                        invisible="not expr_left_account2_amount_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -298,7 +298,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_right_account1_amount_result', '=', False)]}"
+                        invisible="not expr_right_account1_amount_result"
                         role="alert"
                         class="alert alert-danger"
                     >
@@ -315,7 +315,7 @@
                         options="{'mode': 'python'}"
                     />
                     <div
-                        attrs="{'invisible': [('expr_right_account2_amount_result', '=', False)]}"
+                        invisible="not expr_right_account2_amount_result"
                         role="alert"
                         class="alert alert-danger"
                     >

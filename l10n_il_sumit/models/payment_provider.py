@@ -14,7 +14,8 @@ class PaymentProvider(models.Model):
     sumit_installment_threshold = fields.Monetary(
         "Threshold for installments",
         currency_field="main_currency_id",
-        help="If a transaction amount is above this value, it may be paid in installments",
+        help="If a transaction amount is above this value, it may be paid in "
+        "installments",
     )
     sumit_installment_count = fields.Integer(
         "Maximum installments", help="The maximum amount of installments to allow"

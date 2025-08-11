@@ -4,7 +4,7 @@
 {
     "name": "System 1000",
     "summary": "Enables exports to system 1000",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Accounting/Localizations",
     "website": "https://github.com/moshchot/BANKayma",
@@ -12,7 +12,6 @@
     "maintainers": ["hbrunn"],
     "license": "AGPL-3",
     "application": False,
-    "installable": True,
     "preloadable": True,
     "depends": [
         "account",
@@ -23,4 +22,5 @@
         "views/res_company.xml",
     ],
     "demo": [],
+    "installable": True,
 }

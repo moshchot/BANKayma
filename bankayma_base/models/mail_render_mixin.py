@@ -8,14 +8,8 @@ class MailRenderMixin(models.AbstractModel):
     @api.model
     def _render_eval_context(self):
         result = super()._render_eval_context()
-        catchall_domain = (
-            self.env["ir.config_parameter"].sudo().get_param("mail.catchall.domain")
-        )
-        catchall_alias = (
-            self.env["ir.config_parameter"].sudo().get_param("mail.catchall.alias")
-        )
-        if catchall_domain and catchall_alias:
-            result["catchall_address"] = f"{catchall_alias}@{catchall_domain}"
-        else:
-            result["catchall_address"] = False
+        alias_domain = self.env.company.alias_domain_id or self.env[
+            "mail.alias.domain"
+        ].search([], limit=1)
+        result["catchall_address"] = alias_domain.catchall_alias
         return result

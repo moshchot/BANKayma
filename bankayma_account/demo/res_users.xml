@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record
+        id="bankayma_base.vendor_b2b"
+        model="res.users"
+        context="{'no_reset_password': True}"
+    >
+        <field name="bankayma_vendor_tax_percentage">42</field>
+        <field name="bankayma_vendor_max_amount">424242</field>
+        <field name="property_account_position_id" ref="fpos_tax_deduction_artist" />
+    </record>
+</odoo>

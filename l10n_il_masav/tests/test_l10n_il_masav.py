@@ -9,7 +9,8 @@ class TestL10nIlMasav(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.user = cls.env.ref("base.user_admin")
-        cls.user.company_id = cls.env.ref("l10n_il.demo_company_il")
+        cls.user.groups_id += cls.env.ref("account.group_account_user")
+        cls.user.company_id = cls.env.ref("base.demo_company_il")
         cls.user.company_id.vat = "IL516179157"
 
     def _test_export(self, moves):

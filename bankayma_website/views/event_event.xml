@@ -3,11 +3,11 @@
         <field name="model">event.event</field>
         <field name="inherit_id" ref="event.view_event_form" />
         <field name="arch" type="xml">
+            <!-- prettier-ignore-start -->
             <page name="event_communication" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
-                </attribute>
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
             </page>
+            <!-- prettier-ignore-end -->
         </field>
     </record>
     <record id="event_external_form_inherit" model="ir.ui.view">

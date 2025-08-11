@@ -1,0 +1,10 @@
+<odoo>
+    <record id="sumit_account" model="sumit.account">
+        <field name="company_code">424242</field>
+        <field name="key">42</field>
+    </record>
+    <record id="l10n_il_sumit.payment_provider_sumit" model="payment.provider">
+        <field name="sumit_account_id" ref="sumit_account" />
+        <field name="state">enabled</field>
+    </record>
+</odoo>

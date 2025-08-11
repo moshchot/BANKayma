@@ -1,0 +1,13 @@
+<odoo>
+    <record id="operating_unit.main_operating_unit" model="operating.unit">
+        <field name="code">MAIN</field>
+    </record>
+    <record id="operating_unit.b2b_operating_unit" model="operating.unit">
+        <field name="parent_id" ref="operating_unit.main_operating_unit" />
+        <field name="code">B2B</field>
+    </record>
+    <record id="operating_unit.b2c_operating_unit" model="operating.unit">
+        <field name="parent_id" ref="operating_unit.main_operating_unit" />
+        <field name="code">B2C</field>
+    </record>
+</odoo>

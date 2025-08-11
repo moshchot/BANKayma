@@ -59,9 +59,8 @@ class ResPartner(models.Model):
                         ("date", ">=", year_start),
                         ("date", "<=", year_end),
                         ("state", "=", "posted"),
-                        ("journal_id.intercompany_purchase_company_id", "=", False),
-                        ("journal_id.intercompany_sale_company_id", "=", False),
-                        ("journal_id.intercompany_overhead_company_id", "=", False),
+                        ("journal_id.inter_ou_company_id", "=", False),
+                        ("journal_id.overhead_company_id", "=", False),
                     ]
                 ).mapped("amount_total_signed")
             )
@@ -106,6 +105,11 @@ class ResPartner(models.Model):
         return self.env["ir.actions.actions"]._for_xml_id(
             "bankayma_account.action_bankayma_vendor_invite_form",
         )
+
+    def _get_signup_url_for_action(self, **kwargs):
+        if self.signup_login_redirect:
+            kwargs["url"] = self.signup_login_redirect
+        return super()._get_signup_url_for_action(**kwargs)
 
     def _compute_total_billed(self):
         for this in self:

@@ -2,13 +2,13 @@
     <template id="record_cover" inherit_id="website.record_cover">
         <div t-if="use_filters" position="after">
             <t
-                t-set="company_logo"
-                t-value="'company_id' in _record._fields and _record.company_id.with_context(bin_size=False).logo"
+                t-set="ou_logo"
+                t-value="'operating_unit_id' in _record._fields and _record.operating_unit_id.with_context(bin_size=False).logo"
             />
             <img
-                t-if="company_logo"
-                t-att-src="image_data_uri(company_logo)"
-                class="bk-company-logo-overlay"
+                t-if="ou_logo"
+                t-att-src="image_data_uri(ou_logo)"
+                class="bk-logo-overlay"
             />
         </div>
     </template>

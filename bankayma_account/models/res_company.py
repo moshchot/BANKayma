@@ -7,15 +7,15 @@ from odoo import fields, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    name = fields.Char(translate=True)
-    invoice_auto_validation = fields.Boolean(default=False)
     intercompany_sale_journal_id = fields.Many2one(
+        # left for compatibility with v16 selections
         "account.journal",
         "Intercompany sale journal",
         help="Intercompany invoices will be forced to this journal",
         domain=[("type", "=", "sale")],
     )
     intercompany_purchase_journal_id = fields.Many2one(
+        # left for compatibility with v16 selections
         "account.journal",
         "Intercompany purchase journal",
         help="Intercompany invoices will be forced to this journal",
@@ -27,14 +27,14 @@ class ResCompany(models.Model):
         help="Overhead invoices will be created in this journal",
         domain=[("type", "=", "sale")],
     )
-    overhead_account_id = fields.Many2one(
-        "account.account",
-        "Overhead account",
-        help="Overhead invoice lines will have this account",
+    overhead_product_id = fields.Many2one(
+        "product.product",
+        "Overhead product",
+        help="Overhead invoice lines will have this product",
+        default=lambda self: self.env.ref("bankayma_account.product_overhead", False),
     )
-    # TODO this journal is used for all (semi-)automatic intercompany
-    # payments, so this should be renamed to intercompany_payment_journal_id
     overhead_payment_journal_id = fields.Many2one(
+        # left for compatibility with v16 selections
         "account.journal",
         "Overhead payment journal",
         help="Overhead invoices will be paid in this journal",
@@ -55,8 +55,17 @@ class ResCompany(models.Model):
     donation_credit_transfer_product_id = fields.Many2one(
         "product.product",
         string="Product for Donations via Credit Transfer",
-        domain=[("detailed_type", "=", "service")],
+        domain=[("type", "=", "service")],
         ondelete="restrict",
+    )
+    inter_ou_journal_id = fields.Many2one(
+        "account.journal",
+        "Inter OU journal",
+        domain=[("type", "=", "general")],
+    )
+    inter_ou_product_id = fields.Many2one(
+        "product.product",
+        "Inter OU product",
     )
 
     def _compute_bankayma_overhead_percentage(self):

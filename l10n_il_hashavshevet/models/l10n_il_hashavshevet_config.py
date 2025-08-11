@@ -22,7 +22,12 @@ class L10nIlHashavshevetConfig(models.AbstractModel):
     expr_condition_result = fields.Char(compute="_compute_results")
 
     def _compute_results_depends(self):
-        return ("move_line_id", "move_id", "expr_condition", "base_model",) + tuple(
+        return (
+            "move_line_id",
+            "move_id",
+            "expr_condition",
+            "base_model",
+        ) + tuple(
             field_name
             for field_name, field in self._fields.items()
             if getattr(field, "hashavshevet_name", False)

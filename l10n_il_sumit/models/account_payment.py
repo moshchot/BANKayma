@@ -1,13 +1,15 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models
+from odoo import fields, models
 
 from .sumit_account import SUMIT_PAYMENT_TYPE
 
 
 class AccountPayment(models.Model):
     _inherit = "account.payment"
+
+    sumit_document_url = fields.Char("Sumit document", readonly=True)
 
     def _to_sumit_vals(self):
         self.ensure_one()

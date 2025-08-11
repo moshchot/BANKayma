@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo.http import request
 
-from odoo.addons.bankayma_website.controllers.main import CompaniesController
+from odoo.addons.bankayma_website.controllers.main import ProjectsController
 from odoo.addons.website_sale.controllers import main
 
 
@@ -11,50 +11,43 @@ class WebsiteSale(main.WebsiteSale):
         result = super()._shop_get_query_url_kwargs(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
-        if "product_tag" in kwargs:
-            result["product_tag"] = kwargs["product_tag"]
         return result
 
     def _get_search_options(self, *args, **kwargs):
         result = super()._get_search_options(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
-        if "product_tag" in kwargs:
-            result["product_tag"] = kwargs["product_tag"]
         return result
 
     def _get_additional_shop_values(self, values):
         result = super()._get_additional_shop_values(values)
         (
-            company_tags_available,
-            companies_available,
-        ) = CompaniesController._search_combined(self)
+            operating_unit_tags_available,
+            operating_units_available,
+        ) = ProjectsController._search_combined(self)
         result.update(
-            company_tags_available=company_tags_available,
-            companies_available=companies_available,
-            product_tags_available=request.env["product.tag"].search(
-                [
-                    (
-                        "product_template_ids.bankayma_website_sale_company_id",
-                        "in",
-                        companies_available.ids,
-                    )
-                ]
-            ),
+            operating_unit_tags_available=operating_unit_tags_available,
+            operating_units_available=operating_units_available,
+            all_tags=values["all_tags"].filtered(
+                lambda x: x.product_template_ids.operating_unit_id
+                & operating_units_available
+            )
+            if values.get("project")
+            else values["all_tags"],
         )
         return result
 
     def _get_additional_extra_shop_values(self, values, **post):
         result = super()._get_additional_extra_shop_values(values, **post)
         result.update(
-            project=request.env["res.company"]
+            project=request.env["operating.unit"]
             .sudo()
             .browse(int(post.get("project", 0)) or [])
         )
         result.update(
-            product_tag=request.env["product.tag"]
+            active_tags=request.env["product.tag"]
             .sudo()
-            .browse(int(post.get("product_tag", 0)) or [])
+            .browse(result.get("tags") or [])
         )
         return result
 

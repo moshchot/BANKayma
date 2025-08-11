@@ -9,16 +9,15 @@
             <field name="plan_id" position="after">
                 <field
                     name="plan_id"
-                    attrs="{'readonly': [('plan_id', '!=', False)]}"
+                    readonly="plan_id"
                     groups="bankayma_base.group_user,!bankayma_base.group_org_manager,!bankayma_base.group_full"
-                    domain="[('company_id', '=', company_id)]"
                     options="{'no_open': True, 'no_create': True}"
                 />
             </field>
             <field name="plan_id" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </field>
         </field>
     </record>

@@ -60,14 +60,67 @@
     </record>
 
     <record id="base.group_user" model="res.groups">
-        <!-- enable multi-company globally -->
         <field
             name="implied_ids"
-            eval="[Command.link(ref('base.group_multi_company')), Command.unlink(ref('mail.group_mail_template_editor'))]"
+            eval="[Command.link(ref('operating_unit.group_multi_operating_unit')), Command.unlink(ref('mail.group_mail_template_editor'))]"
         />
     </record>
 
     <record id="base.user_admin" model="res.users">
         <field name="groups_id" eval="[Command.link(ref('group_full'))]" />
+    </record>
+
+    <record id="rule_blog_post" model="ir.rule">
+        <field name="name">Restrict editing blog posts by OU</field>
+        <field name="model_id" ref="website_blog.model_blog_post" />
+        <field name="domain_force">
+            [('operating_unit_id', 'in', operating_unit_ids)]
+        </field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+
+    <record id="rule_event_event" model="ir.rule">
+        <field name="name">Restrict editing events by OU</field>
+        <field name="model_id" ref="event.model_event_event" />
+        <field name="domain_force">
+            [('operating_unit_id', 'in', operating_unit_ids)]
+        </field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+
+    <record id="rule_product_product" model="ir.rule">
+        <field name="name">Restrict editing products by OU</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="domain_force">
+            [('operating_unit_id', 'in', operating_unit_ids)]
+        </field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+
+    <record id="rule_product_template" model="ir.rule">
+        <field name="name">
+            Restrict editing product templates by OU
+        </field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="domain_force">
+            [('operating_unit_id', 'in', operating_unit_ids)]
+        </field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
     </record>
 </odoo>

@@ -2,17 +2,6 @@
 <!-- Copyright 2024 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="view_company_form_manager" model="ir.ui.view">
-        <field name="inherit_id" ref="bankayma_base.view_company_form_manager" />
-        <field name="model">res.company</field>
-        <field name="arch" type="xml">
-            <field name="l10n_il_tax_deduction_id" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_org_manager,bankayma_base.group_full
-                </attribute>
-            </field>
-        </field>
-    </record>
     <record id="view_res_company_kanban" model="ir.ui.view">
         <field name="model">res.company</field>
         <field name="inherit_id" ref="base.view_res_company_kanban" />
@@ -37,6 +26,11 @@
                     readonly="True"
                     groups="!bankayma_base.group_org_manager"
                 />
+            </field>
+            <field name="l10n_il_tax_deduction_id" position="attributes">
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+                <!-- prettier-ignore-end -->
             </field>
         </field>
     </record>

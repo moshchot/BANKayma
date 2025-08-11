@@ -8,7 +8,7 @@
         <t t-esc="name" />
     </div>
     <t t-name="bankayma_searchbar.suggestions">
-        <button class="d-none" data-bs-toggle="dropdown" />
+        <button class="d-none" data-bs-toggle="dropdown" data-bs-reference="parent" />
         <ul class="dropdown-menu w-100">
             <li
                 t-foreach="suggestions"
@@ -16,6 +16,7 @@
                 class="dropdown-item"
                 t-att-data-search-field="suggestion.field"
                 t-att-data-search-value="suggestion.value"
+                t-key="suggestion.value || suggestion.url"
             >
                 <a t-att-href="suggestion.url" t-esc="suggestion.name" />
             </li>

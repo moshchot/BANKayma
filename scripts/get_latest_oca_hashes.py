@@ -14,24 +14,25 @@ if len(sys.argv) != 2 or not os.path.isfile(sys.argv[1]):
     print("Pass a repos.yml")
     sys.exit(1)
 
-with open(sys.argv[1], "r") as repos_file:
+with open(sys.argv[1]) as repos_file:
     repos = yaml.safe_load(repos_file)
     for _repo, repo_config in repos.items():
         remote = repo_config.get("remotes", {}).get(remote_name)
         if not remote:
             continue
         git_call = subprocess.run(
-            "git ls-remote %s %s | cut -f1" % (remote, odoo_version),
+            f"git ls-remote {remote} {odoo_version} | cut -f1",
             shell=True,
             capture_output=True,
             check=True,
         )
         new_hash = git_call.stdout.strip().decode("utf8")
         repo_config["merges"] = [
-            merge if not merge.startswith(remote_name + " ")
+            merge
+            if not merge.startswith(remote_name + " ")
             # PRs
             or merge.startswith(remote_name + " refs/")
-            else "%s %s" % (remote_name, new_hash)
+            else f"{remote_name} {new_hash}"
             for merge in repo_config["merges"]
         ]
 

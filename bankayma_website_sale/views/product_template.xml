@@ -8,7 +8,7 @@
                 position="after"
             >
                 <field
-                    name="bankayma_website_sale_company_id"
+                    name="operating_unit_id"
                     options="{'no_create': True, 'no_open': True}"
                 />
                 <field name="bankayma_website_sale_hide" />
@@ -30,58 +30,58 @@
                 expr="//page[@name='general_information']//field[@name='company_id']"
                 position="attributes"
             >
-                <attribute name="groups">
-                    bankayma_base.group_full,bankayma_base.group_org_manager
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_full,bankayma_base.group_org_manager</attribute>
+                <!-- prettier-ignore-end -->
             </xpath>
             <field name="taxes_id" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_full,bankayma_base.group_org_manager
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_full,bankayma_base.group_org_manager</attribute>
+                <!-- prettier-ignore-end -->
             </field>
             <page name="purchase" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_full,bankayma_base.group_org_manager
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_full,bankayma_base.group_org_manager</attribute>
+                <!-- prettier-ignore-end -->
             </page>
             <page name="invoicing" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_full,bankayma_base.group_org_manager
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_full,bankayma_base.group_org_manager</attribute>
+                <!-- prettier-ignore-end -->
             </page>
             <page name="sumit" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_full,bankayma_base.group_org_manager
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_full,bankayma_base.group_org_manager</attribute>
+                <!-- prettier-ignore-end -->
             </page>
-            <group name="shop" position="attributes">
-                <attribute name="groups">
-                    bankayma_base.group_full,bankayma_base.group_org_manager
-                </attribute>
+            <group name="extra_info" position="attributes">
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_full,bankayma_base.group_org_manager</attribute>
+                <!-- prettier-ignore-end -->
             </group>
             <field name="optional_product_ids" position="attributes">
                 <attribute name="domain" operation="domain_add">
-                    [('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]
+                    [('operating_unit_id', '=', operating_unit_id)]
                 </attribute>
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_website.group_website
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_website.group_website</attribute>
+                <!-- prettier-ignore-end -->
             </field>
             <field name="accessory_product_ids" position="attributes">
                 <attribute name="domain" operation="domain_add">
-                    [('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]
+                    [('operating_unit_id', '=', operating_unit_id)]
                 </attribute>
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_website.group_website
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_website.group_website</attribute>
+                <!-- prettier-ignore-end -->
             </field>
             <field name="alternative_product_ids" position="attributes">
                 <attribute name="domain" operation="domain_add">
-                    [('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]
+                    [('operating_unit_id', '=', operating_unit_id)]
                 </attribute>
-                <attribute name="groups">
-                    bankayma_base.group_manager,bankayma_website.group_website
-                </attribute>
+                <!-- prettier-ignore-start -->
+                <attribute name="groups">bankayma_base.group_manager,bankayma_website.group_website</attribute>
+                <!-- prettier-ignore-end -->
             </field>
             <field name="alternative_product_ids" position="after">
                 <field
@@ -89,14 +89,13 @@
                     groups="!bankayma_base.group_manager,!bankayma_website.group_website"
                     widget="many2many_tags"
                     options="{'color_field': 'color'}"
-                    domain="[('id', '!=', active_id)]"
                     placeholder="Recommend when 'Adding to Cart' or quotation"
-                    attrs="{'invisible': [('sale_ok','=',False)]}"
+                    invisible="not sale_ok"
                 />
                 <field
                     name="accessory_product_ids"
                     widget="many2many_tags"
-                    attrs="{'invisible': [('sale_ok','=',False)]}"
+                    invisible="not sale_ok"
                     groups="!bankayma_base.group_manager,!bankayma_website.group_website"
                     placeholder="Suggested accessories in the eCommerce cart"
                 />
@@ -104,8 +103,8 @@
                     name="alternative_product_ids"
                     widget="many2many_tags"
                     groups="!bankayma_base.group_manager,!bankayma_website.group_website"
-                    domain="[('id', '!=', active_id), '|', ('company_id', '=', company_id), ('company_id', '=', False)]"
-                    attrs="{'invisible': [('sale_ok','=',False)]}"
+                    domain="['|', ('operating_unit_id', '=', operating_unit_id), ('operating_unit_id', '=', False)]"
+                    invisible="not sale_ok"
                     placeholder="Displayed in bottom of product pages"
                 />
             </field>

@@ -6,6 +6,10 @@ class IrModule(models.Model):
     _inherit = "ir.module.module"
 
     @api.model
-    def _load_module_terms(self, modules, langs, overwrite=False):
+    def _load_module_terms(
+        self, modules, langs, overwrite=False, imported_module=False
+    ):
         """Always overwrite translations"""
-        return super()._load_module_terms(modules, langs, overwrite=True)
+        return super()._load_module_terms(
+            modules, langs, overwrite=True, imported_module=imported_module
+        )

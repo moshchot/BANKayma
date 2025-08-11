@@ -4,9 +4,9 @@ from . import blog_blog
 from . import blog_post
 from . import event_event
 from . import event_registration
-from . import res_company
-from . import res_company_category
-from . import res_company_tag
+from . import operating_unit
+from . import operating_unit_category
+from . import operating_unit_tag
 from . import ir_http
 from . import ir_qweb
 from . import ir_qweb_field_contact

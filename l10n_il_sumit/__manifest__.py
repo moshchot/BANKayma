@@ -4,7 +4,7 @@
 {
     "name": "Sumit",
     "summary": "Support for the Sumit accounting suit",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Accounting",
     "website": "https://github.com/moshchot/BANKayma",
@@ -29,11 +29,6 @@
         "views/payment_provider.xml",
     ],
     "demo": [],
-    "external_dependencies": {
-        "python": [
-            "strenum",
-        ],
-    },
     "post_init_hook": "post_init_hook",
     "uninstall_hook": "uninstall_hook",
 }

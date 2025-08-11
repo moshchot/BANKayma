@@ -15,4 +15,4 @@ class L10nIlMasavExport(models.TransientModel):
         moves.read([])
         for move in moves:
             move._cache["company_id"] = self.env.company.id
-        return super(L10nIlMasavExport, self).button_export()
+        return super().button_export()
