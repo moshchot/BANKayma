@@ -62,7 +62,7 @@ def post_init_hook(cr, registry):
             )
             validate_fields = records._validate_fields
             records.__class__._validate_fields = lambda self, *args, **kwargs: None
-            records.write(
+            records.with_context(skip_validation_check=True).write(
                 {
                     "operating_unit_id": ou.id,
                 }
@@ -114,7 +114,7 @@ def post_init_hook(cr, registry):
                 record.id,
                 method="sql",
             )
-
+    # TODO: merge/drop analytic plan columns
     for unique_name_model in ("account.reconcile.model",):
         for record in (
             env[unique_name_model]
