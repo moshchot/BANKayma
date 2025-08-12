@@ -839,7 +839,36 @@
     </template>
     <template id="company_list" name="Company list">
         <t t-call="website.layout">
-            <section class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16">
+            <section class="s_searchbar o_colored_level o_cc o_cc2 pt48 pb0">
+                <div class="o_container_small">
+                    <h2>Search company</h2>
+                    <form
+                        method="get"
+                        class="o_searchbar_form s_searchbar_input"
+                        action="/projects"
+                    >
+                        <div role="search" class="input-group ">
+                            <input
+                                type="search"
+                                name="search"
+                                class="search-query form-control oe_search_box"
+                                placeholder="search..."
+                                t-att-value="search"
+                            />
+                            <button
+                                type="submit"
+                                class="btn oe_search_button btn-primary"
+                            >
+                                <i class="oi oi-search" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section
+                class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16"
+                t-if="objects"
+            >
                 <div class="o_container_small">
                     <div class="row d-flex align-items-stretch">
                         <div
@@ -878,16 +907,24 @@
                                             t-out="object.bankayma_website_subtitle"
                                         />
                                     </h4>
-                                    <span
-                                        class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                                    <a
                                         t-if="object.category_id"
-                                        t-out="object.category_id.name"
-                                    />
+                                        t-attf-href="/projects?category={{object.category_id.id}}"
+                                    >
+                                        <span
+                                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                                            t-out="object.category_id.name"
+                                        />
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+            <section t-if="not objects">
+                No results found for
+                <span t-out="search" />
             </section>
         </t>
     </template>
