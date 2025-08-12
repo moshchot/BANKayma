@@ -40,3 +40,14 @@ class CompaniesController(http.Controller):
             )
         output += b"</div>"
         return Markup(output.decode("utf8"))
+
+    @http.route("/projects", website=True, auth="public")
+    def render_company_list(self):
+        return http.Response(
+            template="bankayma_website.company_list",
+            qcontext={
+                "objects": http.request.env["res.company"]
+                .sudo()
+                .search([("parent_id", "!=", False)]),
+            },
+        )

@@ -33,7 +33,7 @@ class ResCompany(models.Model):
             if not _id:
                 this.website_link = False
                 continue
-            base_url = urlparse(self.get_base_url())
+            base_url = urlparse(this.get_base_url())
             this.website_link = urlunparse(
                 (
                     base_url.scheme,

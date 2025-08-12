@@ -12,6 +12,7 @@
         "website",
         "website_event",
         "partner_multi_relation",
+        "res_company_category",
     ],
     "data": [
         "data/res_partner_relation_type.xml",
