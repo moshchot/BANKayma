@@ -837,4 +837,58 @@
             </div>
         </t>
     </template>
+    <template id="company_list" name="Company list">
+        <t t-call="website.layout">
+            <section class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16">
+                <div class="o_container_small">
+                    <div class="row d-flex align-items-stretch">
+                        <div
+                            class="col-lg-4 s_col_no_bgcolor pt16 pb4"
+                            t-foreach="objects"
+                            t-as="object"
+                        >
+                            <div
+                                class="card text-bg-white h-100"
+                                style="border-style: double !important; border-color: rgb(4, 159, 123) !important;"
+                            >
+                                <img
+                                    t-attf-src="/web/image/res.company/{{object.id}}/logo"
+                                    t-att-alt="object.name"
+                                    class="card-img-top img img-fluid o_we_custom_image mx-auto d-block rounded-circle"
+                                    style="width: 50% !important;"
+                                    loading="lazy"
+                                />
+                                <div class="card-body">
+                                    <h3 class="card-title" style="text-align: center;">
+                                        <span style="font-size: 24px;">
+                                            <b>
+                                                <a
+                                                    t-att-href="object.website_link"
+                                                    t-out="object.name"
+                                                />
+                                            </b>
+                                        </span>
+                                    </h3>
+                                    <h4
+                                        style="text-align: center;"
+                                        t-if="object.bankayma_website_subtitle"
+                                    >
+                                        <span
+                                            style="font-size: 18px;"
+                                            t-out="object.bankayma_website_subtitle"
+                                        />
+                                    </h4>
+                                    <span
+                                        class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                                        t-if="object.category_id"
+                                        t-out="object.category_id.name"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
 </odoo>
