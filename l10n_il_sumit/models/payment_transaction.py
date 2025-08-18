@@ -133,11 +133,12 @@ class PaymentTransaction(models.Model):
                         "DocumentNumber": notification_data["OG-DocumentNumber"],
                     },
                 )
-                self.invoice_ids.message_post(
-                    body=_(
-                        'Sumit document: <a href="%(DocumentDownloadURL)s">'
-                        "%(DocumentNumber)s</a>"
+                if self.invoice_ids:
+                    self.invoice_ids.message_post(
+                        body=_(
+                            'Sumit document: <a href="%(DocumentDownloadURL)s">'
+                            "%(DocumentNumber)s</a>"
+                        )
+                        % details
                     )
-                    % details
-                )
         return result
