@@ -114,6 +114,7 @@ def post_init_hook(cr, registry):
                 record.id,
                 method="sql",
             )
+            env.cr.commit()
     # TODO: merge/drop analytic plan columns
     for unique_name_model in ("account.reconcile.model",):
         for record in (
@@ -131,6 +132,8 @@ def post_init_hook(cr, registry):
                     ]
                 )
             )
+            if not to_merge:
+                continue
             merge_records(env, record._name, to_merge.ids, record.id, method="sql")
 
     merge_records(
