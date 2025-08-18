@@ -44,10 +44,14 @@ class CompaniesController(http.Controller):
     @http.route("/projects", website=True, auth="public")
     def render_company_list(self, search=None, category=None):
         ResCompany = http.request.env["res.company"].sudo()
+        ResCompanyCategory = http.request.env["res.company.category"].sudo()
 
         domain = [("parent_id", "!=", False)]
-        if category and category.isdigit():
-            domain.append(("category_id", "=", int(category)))
+        if category:
+            if category.isdigit() and ResCompanyCategory.browse(int(category)).exists():
+                domain.append(("category_id", "=", int(category)))
+            else:
+                domain.append(("category_id", "ilike", category))
 
         companies = ResCompany.browse(
             ResCompany._name_search(
@@ -60,5 +64,6 @@ class CompaniesController(http.Controller):
             qcontext={
                 "objects": companies,
                 "search": search,
+                "category": category,
             },
         )

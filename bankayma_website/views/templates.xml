@@ -864,6 +864,44 @@
                         </div>
                     </form>
                 </div>
+                <div class="o_container_small">
+                    <h2>Search category</h2>
+                    <form
+                        method="get"
+                        class="o_searchbar_form s_searchbar_input"
+                        action="/projects"
+                    >
+                        <div role="search" class="input-group ">
+                            <input
+                                type="search"
+                                name="category"
+                                class="search-query form-control oe_search_box"
+                                placeholder="search..."
+                                t-att-value="category if not (category or '').isdigit() else None"
+                            />
+                            <button
+                                type="submit"
+                                class="btn oe_search_button btn-primary"
+                            >
+                                <i class="oi oi-search" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="o_colored_level o_cc o_cc2 pt48 pb0">
+                <div class="o_container_small">
+                    <a
+                        t-foreach="objects.env['res.company.category'].search([('company_ids', 'in', objects.ids)])"
+                        t-as="company_category"
+                        t-attf-href="/projects?category={{company_category.id}}"
+                    >
+                        <span
+                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                            t-out="company_category.name"
+                        />
+                    </a>
+                </div>
             </section>
             <section
                 class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16"
@@ -924,7 +962,7 @@
             </section>
             <section t-if="not objects">
                 No results found for
-                <span t-out="search" />
+                <span t-out="search or category" />
             </section>
         </t>
     </template>
