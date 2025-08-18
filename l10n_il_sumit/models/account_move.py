@@ -40,7 +40,8 @@ class AccountMove(models.Model):
                     self.partner_id.lang
                 ),
                 "Currency": self.env["sumit.account"].sumit_currency(self.currency_id),
-                "Type": self.journal_id.sumit_type,
+                "Type": self.journal_id["sumit_type_" + self.move_type]
+                or self.journal_id.sumit_type,
                 "Description": self.name,
                 "ExternalReference": self.name,
                 "OpeningTextHTML": None,
