@@ -94,20 +94,14 @@ class PaymentTransaction(models.Model):
         result = super()._to_sumit_vals()
         if self.is_donation and len(result.get("Items", [])) == 1:
             result["Items"][0]["Item"]["Name"] = (
-                (
-                    "[%s] %s, %s"
-                    % (
-                        self.company_id.donation_account_id.code,
-                        self.company_id.name,
-                        self.company_id.donation_credit_transfer_product_id.name,
-                    )
-                )
-                if self.company_id.donation_credit_transfer_product_id
-                and self.company_id.donation_account_id
-                else (
-                    self.company_id.donation_credit_transfer_product_id.display_name
-                    or self.company_id.donation_account_id.name
-                    or result["Items"][0]["Item"]["Name"]
-                )
-            )
+                self.is_recurrent
+                and "[%(account_code)s] recurrent donation to %(company_name)s"
+                or "[%(account_code)s] donation to %(company_name)s"
+            ) % {
+                "account_code": self.company_id.donation_account_id.code,
+                "company_name": self.company_id.name,
+            }
+            result["DocumentDescription"] = result["Items"][0]["Item"]["Name"]
+            result["Items"][0]["Item"]["Description"] = None
+            result["Items"][0]["Description"] = None
         return result
