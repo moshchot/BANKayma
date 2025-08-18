@@ -72,41 +72,111 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__14
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__14
 msgid "Credit Donation Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__20
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__20
 msgid "Credit Expense Invoice"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__19
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__19
 msgid "Credit Expense Invoice Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__21
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__21
 msgid "Credit Expense Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__5
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__5
 msgid "Credit Invoice"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__6
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__6
 msgid "Credit Invoice And Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__7
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__7
 msgid "Credit Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_out_refund
+msgid ""
+"Customer credit notes in this journal will create a document of the selected "
+"type in sumit"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_out_invoice
+msgid ""
+"Customer invoices in this journal will create a document of the selected "
+"type in sumit"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__9
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__9
 msgid "Delivery Note"
 msgstr ""
 
@@ -122,26 +192,61 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__4
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__4
 msgid "Donation Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__16
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__16
 msgid "Expense Invoice"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__15
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__15
 msgid "Expense Invoice Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__17
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__17
 msgid "Expense Receipt"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__18
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__18
 msgid "Expense Request"
 msgstr ""
 
@@ -152,6 +257,13 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__10
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__10
 msgid "Goods Return Note"
 msgstr ""
 
@@ -162,11 +274,25 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__0
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__0
 msgid "Invoice"
 msgstr "חשבון"
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__1
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__1
 msgid "Invoice And Receipt"
 msgstr "חשבון וקבלה"
 
@@ -207,7 +333,21 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_entry
+msgid ""
+"Moves of type entry in this journal will create a document of the selected "
+"type in sumit"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__8
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__8
 msgid "Order"
 msgstr ""
 
@@ -228,6 +368,13 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__13
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__13
 msgid "Payment Request"
 msgstr ""
 
@@ -243,16 +390,44 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__12
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__12
 msgid "Price Quotation"
 msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__3
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__3
 msgid "Proforma Invoice"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_in_receipt
+msgid ""
+"Purchase receipts in this journal will create a document of the selected "
+"type in sumit"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__11
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__11
 msgid "Purchasing Order"
 msgstr ""
 
@@ -263,8 +438,22 @@ msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_receipt__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_refund__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_invoice__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_receipt__2
+#: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_out_refund__2
 msgid "Receipt"
 msgstr "קבלה"
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_out_receipt
+msgid ""
+"Sales receipts in this journal will create a document of the selected type "
+"in sumit"
+msgstr ""
 
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__sequence
@@ -285,7 +474,6 @@ msgid "Sumit Account"
 msgstr ""
 
 #. module: l10n_il_sumit
-#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_payment_method__sumit_type
 msgid "Sumit Type"
 msgstr ""
@@ -318,6 +506,46 @@ msgid ""
 msgstr "הופק קבלה: <a href=\"%(DocumentDownloadURL)s\">%(DocumentNumber)s</a>"
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_out_refund
+msgid "Sumit type (customer credit note)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_out_invoice
+msgid "Sumit type (customer invoice)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type
+msgid "Sumit type (default)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_entry
+msgid "Sumit type (entry)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_in_receipt
+msgid "Sumit type (purchase receipt)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_out_receipt
+msgid "Sumit type (sales receipt)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_in_invoice
+msgid "Sumit type (vendor bill)"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_account_journal__sumit_type_in_refund
+msgid "Sumit type (vendor credit note)"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_payment_method__sumit_type__7
 msgid "Tax Withholding"
 msgstr ""
@@ -325,6 +553,20 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields,help:l10n_il_sumit.field_payment_provider__code
 msgid "The technical code of this payment provider."
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_in_invoice
+msgid ""
+"Vendor bills in this journal will create a document of the selected type in "
+"sumit"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_account_journal__sumit_type_in_refund
+msgid ""
+"Vendor credit notes in this journal will create a document of the selected "
+"type in sumit"
 msgstr ""
 
 #. module: l10n_il_sumit
