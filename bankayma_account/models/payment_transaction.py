@@ -20,33 +20,34 @@ class PaymentTransaction(models.Model):
         )._process_notification_data(notification_data)
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             if self.is_recurrent:
+                payload = {
+                    "Customer": {
+                        "ID": notification_data["OG-CustomerID"],
+                    },
+                    "PaymentMethod": None,
+                    "Items": [
+                        {
+                            "Item": {
+                                "Name": self._to_sumit_vals_name(True),
+                                "Duration_Months": 1,
+                            },
+                            "UnitPrice": self.amount,
+                            "Date_Start": (
+                                date.today() + relativedelta(months=1)
+                            ).isoformat(),
+                            "Duration_Days": 0,
+                            "Duration_Months": 1,
+                            "Recurrence": 12,
+                        }
+                    ],
+                }
                 result = self.provider_id.sumit_account_id._request(
                     "/billing/recurring/charge",
-                    {
-                        "Customer": {
-                            "ID": notification_data["OG-CustomerID"],
-                        },
-                        "PaymentMethod": None,
-                        "Items": [
-                            {
-                                "Item": {
-                                    "Name": self.display_name,
-                                    "Duration_Months": 1,
-                                },
-                                "UnitPrice": self.amount,
-                                "Date_Start": (
-                                    date.today() + relativedelta(months=1)
-                                ).isoformat(),
-                                "Duration_Days": 0,
-                                "Duration_Months": 1,
-                                "Recurrence": 0,
-                            }
-                        ],
-                    },
+                    payload,
                 )
                 self.env["contract.contract"].create(
                     {
-                        "name": self.display_name,
+                        "name": payload["Items"][0]["Item"]["Name"],
                         "contract_type": "sale",
                         "partner_id": self.env.user.partner_id.id,
                         "invoice_partner_id": self.env.user.partner_id.id,
@@ -69,7 +70,8 @@ class PaymentTransaction(models.Model):
 
     def _create_payment(self, **extra_create_values):
         payment_method_line = None
-        if self.is_donation and self.company_id.donation_account_id:
+        donation_product = self.company_id.donation_credit_transfer_product_id
+        if self.is_donation and donation_product:
             # poison the cache to have super create move line with configured account
             payment_method_line = (
                 self.provider_id.journal_id.inbound_payment_method_line_ids.filtered(
@@ -78,11 +80,9 @@ class PaymentTransaction(models.Model):
             )
             payment_method_line._cache[
                 "payment_account_id"
-            ] = self.company_id.donation_account_id.id
+            ] = donation_product.property_account_income_id.id
             # pass donation product as default
-            self = self.with_context(
-                default_product_id=self.company_id.donation_credit_transfer_product_id.id
-            )
+            self = self.with_context(default_product_id=donation_product.id)
         if self.is_donation and self.company_id.donation_journal_id:
             extra_create_values["journal_id"] = self.company_id.donation_journal_id.id
         result = super(PaymentTransaction, self)._create_payment(**extra_create_values)
@@ -93,15 +93,21 @@ class PaymentTransaction(models.Model):
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
         if self.is_donation and len(result.get("Items", [])) == 1:
-            result["Items"][0]["Item"]["Name"] = (
+            result["Items"][0]["Item"]["Name"] = self._to_sumit_vals_name(
                 self.is_recurrent
-                and "[%(account_code)s] recurrent donation to %(company_name)s"
-                or "[%(account_code)s] donation to %(company_name)s"
-            ) % {
-                "account_code": self.company_id.donation_account_id.code,
-                "company_name": self.company_id.name,
-            }
+            )
             result["DocumentDescription"] = result["Items"][0]["Item"]["Name"]
             result["Items"][0]["Item"]["Description"] = None
             result["Items"][0]["Description"] = None
         return result
+
+    def _to_sumit_vals_name(self, recurrent):
+        donation_product = self.company_id.donation_credit_transfer_product_id
+        return (
+            recurrent
+            and "[%(account_code)s] recurrent donation to %(company_name)s"
+            or "[%(account_code)s] donation to %(company_name)s"
+        ) % {
+            "account_code": donation_product.property_account_income_id.code,
+            "company_name": self.company_id.name,
+        }
