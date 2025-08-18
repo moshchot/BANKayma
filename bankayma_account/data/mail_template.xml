@@ -346,6 +346,43 @@
         </field>
     </record>
     <record
+        id="template_account_move_paid_generic"
+        model="mail.template"
+        forcecreate="1"
+    >
+        <field name="name">BNK: Message after payment</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="lang">{{object.partner_id.lang}}</field>
+        <!-- prettier-ignore-start -->
+        <field name="subject">[Bar-Kayma] {{object.company_id.name}}</field>
+        <field name="email_from">{{object.env.user.name}} &lt;{{catchall_address or object.env.user.email}}&gt;</field>
+        <!-- prettier-ignore-end -->
+        <field name="partner_to">{{object.partner_id.id}}</field>
+        <field name="post_to_chatter" eval="True" />
+        <field name="description">This mail is sent when an invoice is paid</field>
+        <field name="body_html" type="html">
+            <t t-call="bankayma_base.mail_header" />
+            <div>
+                <p t-if="object.move_type == 'out_invoice'">
+                    You've paid your invoice.
+                </p>
+                <p t-if="object.move_type == 'out_refund'">We've paid a credit note.</p>
+                ...
+                <t
+                    t-foreach="object.line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id.mapped('sumit_document_url')"
+                    t-as="sumit_document_url"
+                >
+                    <p t-if="sumit_document_url">
+                        You can download the document
+                        <a t-att-href="sumit_document_url">here</a>
+                        .
+                    </p>
+                </t>
+            </div>
+            <t t-call="bankayma_base.mail_footer" />
+        </field>
+    </record>
+    <record
         id="template_account_move_paid_reminder"
         model="mail.template"
         forcecreate="1"

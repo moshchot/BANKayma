@@ -925,6 +925,8 @@ class AccountMove(models.Model):
         )
         if payment.bankayma_comment:
             result["Details"]["Description"] = payment.bankayma_comment
+        if self.journal_id.bankayma_mail_template_invoice_paid:
+            result["Details"]["SendByEmail"] = None
         return result
 
     def _invoice_paid_hook(self):
@@ -939,12 +941,13 @@ class AccountMove(models.Model):
                     )
                     / 100
                 )
+        result = super()._invoice_paid_hook()
         for this in self:
             if this.journal_id.bankayma_mail_template_invoice_paid:
                 this.journal_id.bankayma_mail_template_invoice_paid.send_mail(
                     this.id,
                 )
-        return super()._invoice_paid_hook()
+        return result
 
     def _export_rows(self, fields, *, _is_toplevel_call=True):
         result = super()._export_rows(fields, _is_toplevel_call=_is_toplevel_call)
