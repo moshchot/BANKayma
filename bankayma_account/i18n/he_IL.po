@@ -425,6 +425,31 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model:mail.template,body_html:bankayma_account.template_account_move_paid_generic
+msgid ""
+"<t t-call=\"bankayma_base.mail_header\"></t>\n"
+"            <div>\n"
+"                <p t-if=\"object.move_type == 'out_invoice'\">\n"
+"                    You've paid your invoice.\n"
+"                </p>\n"
+"                <p t-if=\"object.move_type == 'out_refund'\">We've paid a "
+"credit note.</p>\n"
+"                ...\n"
+"                <t t-foreach=\"object.line_ids.full_reconcile_id."
+"reconciled_line_ids.move_id.payment_id.mapped('sumit_document_url')\" t-"
+"as=\"sumit_document_url\">\n"
+"                    <p t-if=\"sumit_document_url\">\n"
+"                        You can download the document\n"
+"                        <a t-att-href=\"sumit_document_url\">here</a>\n"
+"                        .\n"
+"                    </p>\n"
+"                </t>\n"
+"            </div>\n"
+"            <t t-call=\"bankayma_base.mail_footer\"></t>\n"
+"        "
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,body_html:bankayma_account.template_account_move_paid_reminder
 msgid ""
 "<t t-call=\"bankayma_base.mail_header\"></t>\n"
@@ -645,6 +670,11 @@ msgstr ""
 #. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_account_move_paid_reminder
 msgid "BNK Vendor: reminder to send receipt"
+msgstr ""
+
+#. module: bankayma_account
+#: model:mail.template,name:bankayma_account.template_account_move_paid_generic
+msgid "BNK: Message after payment"
 msgstr ""
 
 #. module: bankayma_account
@@ -2495,6 +2525,11 @@ msgid "This mail is sent when a vendor is invited"
 msgstr ""
 
 #. module: bankayma_account
+#: model:mail.template,description:bankayma_account.template_account_move_paid_generic
+msgid "This mail is sent when an invoice is paid"
+msgstr ""
+
+#. module: bankayma_account
 #. odoo-python
 #: code:addons/bankayma_account/wizards/account_move_update_analytic.py:0
 #, python-format
@@ -2787,6 +2822,11 @@ msgstr ""
 #: model:mail.template,subject:bankayma_account.template_account_move_new_from_portal
 msgid "[BanKayma] Payment request from {{object.company_id.name}}"
 msgstr "[בנקיימא] בקשת תשלום מ{{object.company_id.name}"
+
+#. module: bankayma_account
+#: model:mail.template,subject:bankayma_account.template_account_move_paid_generic
+msgid "[Bar-Kayma] {{object.company_id.name}}"
+msgstr ""
 
 #. module: bankayma_account
 #: model:mail.template,subject:bankayma_account.template_account_move_rejected
