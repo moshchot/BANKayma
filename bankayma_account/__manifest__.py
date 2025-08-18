@@ -41,6 +41,7 @@
         "l10n_il_system1000",
         "l10n_il_masav",
         "mis_builder",
+        "sales_team",
         "web_ir_actions_act_multi",
         "web_ir_actions_act_window_page",
         "website_payment",

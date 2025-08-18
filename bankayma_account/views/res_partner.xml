@@ -10,6 +10,7 @@
                 <field name="show_warning_vat_required" invisible="True" />
                 <field name="duplicated_bank_account_partners_count" invisible="True" />
                 <field name="supplier_rank" invisible="True" />
+                <field name="team_id" invisible="True" />
             </form>
             <page name="accounting" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
@@ -93,7 +94,9 @@
                 </button>
             </button>
             <page name="sales_purchases" position="attributes">
-                <attribute name="groups">bankayma_base.group_full</attribute>
+                <attribute name="groups">
+                    bankayma_base.group_full,base.group_no_one
+                </attribute>
             </page>
             <xpath
                 expr="(//button[@name='act_show_contract'])[1]"
