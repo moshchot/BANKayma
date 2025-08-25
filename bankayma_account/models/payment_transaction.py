@@ -18,8 +18,32 @@ class PaymentTransaction(models.Model):
         result = super(
             PaymentTransaction, self.with_company(self.provider_id.company_id)
         )._process_notification_data(notification_data)
+        donation_product = self.company_id.donation_credit_transfer_product_id
+        donation_account = donation_product.property_account_income_id
+        for this in self.filtered(lambda x: x.is_donation and not x.invoice_ids):
+            this.invoice_ids = (
+                self.env["account.move"]
+                .sudo()
+                .create(
+                    {
+                        "move_type": "out_invoice",
+                        "partner_id": this.partner_id.id,
+                        "invoice_line_ids": [
+                            fields.Command.create(
+                                {
+                                    "product_id": donation_product.id,
+                                    "account_id": donation_account.id,
+                                    "price_unit": this.amount,
+                                    "tax_ids": [fields.Command.set([])],
+                                }
+                            ),
+                        ],
+                        "journal_id": this.company_id.donation_journal_id.id,
+                    }
+                )
+            )
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
-            if self.is_recurrent:
+            if self.is_donation and self.is_recurrent:
                 payload = {
                     "Customer": {
                         "ID": notification_data["OG-CustomerID"],
@@ -45,7 +69,7 @@ class PaymentTransaction(models.Model):
                     "/billing/recurring/charge",
                     payload,
                 )
-                self.env["contract.contract"].create(
+                contract = self.env["contract.contract"].create(
                     {
                         "name": payload["Items"][0]["Item"]["Name"],
                         "contract_type": "sale",
@@ -58,6 +82,21 @@ class PaymentTransaction(models.Model):
                         "recurring_interval": 1,
                         "code": result.get("Data", {}).get("Payment", {}).get("ID")
                         or result.get("Data", {}).get("DocumentID"),
+                        "journal_id": self.company_id.donation_journal_id.id,
+                        "contract_line_fixed_ids": [
+                            fields.Command.create(
+                                {
+                                    "product_id": donation_product.id,
+                                    "price_unit": self.amount,
+                                    "name": self._to_sumit_vals_name(self.is_recurrent),
+                                }
+                            ),
+                        ],
+                    }
+                )
+                self.invoice_ids.invoice_line_ids.write(
+                    {
+                        "contract_line_id": contract.contract_line_fixed_ids.id,
                     }
                 )
         return result
@@ -67,28 +106,6 @@ class PaymentTransaction(models.Model):
         return super(
             PaymentTransaction, self.with_company(self.provider_id.company_id)
         )._finalize_post_processing()
-
-    def _create_payment(self, **extra_create_values):
-        payment_method_line = None
-        donation_product = self.company_id.donation_credit_transfer_product_id
-        if self.is_donation and donation_product:
-            # poison the cache to have super create move line with configured account
-            payment_method_line = (
-                self.provider_id.journal_id.inbound_payment_method_line_ids.filtered(
-                    lambda x, self=self: x.code == self.provider_id.code
-                )
-            )
-            payment_method_line._cache[
-                "payment_account_id"
-            ] = donation_product.property_account_income_id.id
-            # pass donation product as default
-            self = self.with_context(default_product_id=donation_product.id)
-        if self.is_donation and self.company_id.donation_journal_id:
-            extra_create_values["journal_id"] = self.company_id.donation_journal_id.id
-        result = super(PaymentTransaction, self)._create_payment(**extra_create_values)
-        if payment_method_line:
-            payment_method_line.invalidate_recordset(["payment_account_id"])
-        return result
 
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()

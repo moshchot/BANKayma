@@ -240,33 +240,8 @@ class CustomerPortal(portal.CustomerPortal):
             result["partner_details"]["country_id"] = request.env.ref("base.il").id
         return result
 
-    def _create_transaction(
-        self,
-        payment_option_id,
-        reference_prefix,
-        amount,
-        currency_id,
-        partner_id,
-        flow,
-        tokenization_requested,
-        landing_route,
-        is_validation=False,
-        custom_create_values=None,
-        **kwargs
-    ):
-        result = super()._create_transaction(
-            payment_option_id,
-            reference_prefix,
-            amount,
-            currency_id,
-            partner_id,
-            flow,
-            tokenization_requested,
-            landing_route,
-            is_validation=False,
-            custom_create_values=custom_create_values,
-            **kwargs
-        )
+    def _create_transaction(self, *args, **kwargs):
+        result = super()._create_transaction(*args, **kwargs)
 
         result.is_recurrent = kwargs.get("is_recurrent")
 
