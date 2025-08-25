@@ -50,6 +50,7 @@ class ResCompany(models.Model):
     donation_journal_id = fields.Many2one(
         "account.journal",
         "Donation journal",
+        domain=[("type", "=", "sale")],
     )
 
     def _compute_bankayma_overhead_percentage(self):
