@@ -3,11 +3,13 @@
 
 from urllib.parse import urlparse, urlunparse
 
-from odoo import _, models
+from odoo import _, fields, models
 
 
 class PaymentTransaction(models.Model):
     _inherit = "payment.transaction"
+
+    sumit_document_url = fields.Char("Sumit document", readonly=True)
 
     def _get_specific_rendering_values(self, processing_values):
         if self.provider_id.code == "sumit":
@@ -141,4 +143,17 @@ class PaymentTransaction(models.Model):
                         )
                         % details
                     )
+
+                self.sumit_document_url = details["DocumentDownloadURL"]
+
+        return result
+
+    def _reconcile_after_done(self):
+        result = super()._reconcile_after_done()
+
+        for this in self.filtered(
+            lambda x: x.sumit_document_url and not x.payment_id.sumit_document_url
+        ):
+            this.payment_id.sumit_document_url = this.sumit_document_url
+
         return result
