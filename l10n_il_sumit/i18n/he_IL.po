@@ -493,6 +493,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_bank_statement_line__sumit_document_url
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_move__sumit_document_url
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_payment__sumit_document_url
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_transaction__sumit_document_url
 msgid "Sumit document"
 msgstr "הופקה קבלה"
 

@@ -202,6 +202,11 @@ msgid "Only admin can cascade companies"
 msgstr ""
 
 #. module: company_cascade
+#: model:ir.model.fields,field_description:company_cascade.field_payment_provider__journal_id
+msgid "Payment Journal"
+msgstr ""
+
+#. module: company_cascade
 #: model:ir.model,name:company_cascade.model_account_payment_method_line
 msgid "Payment Methods"
 msgstr ""
@@ -249,4 +254,9 @@ msgstr ""
 #. module: company_cascade
 #: model:ir.model,name:company_cascade.model_account_tax_repartition_line
 msgid "Tax Repartition Line"
+msgstr ""
+
+#. module: company_cascade
+#: model:ir.model.fields,help:company_cascade.field_payment_provider__journal_id
+msgid "The journal in which the successful transactions are posted."
 msgstr ""
