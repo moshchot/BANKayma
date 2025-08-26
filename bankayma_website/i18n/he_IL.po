@@ -50,6 +50,11 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "(since"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">קודם</span>"
@@ -119,6 +124,11 @@ msgid "Company Categories"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_cover
+msgid "Cover image"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_crew_partner_ids
 msgid "Crew"
 msgstr ""
@@ -153,6 +163,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_image_ids
 msgid "Image slider"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_inception_year
+msgid "Inception year"
 msgstr ""
 
 #. module: bankayma_website
