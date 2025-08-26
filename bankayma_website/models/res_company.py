@@ -14,6 +14,8 @@ class ResCompany(models.Model):
     seo_name = fields.Char("Website slug")
     website_link = fields.Char(compute="_compute_website_link")
     bankayma_website_subtitle = fields.Char("Subtitle", translate=True)
+    bankayma_inception_year = fields.Integer("Inception year")
+    bankayma_website_cover = fields.Image("Cover image")
     bankayma_website_opening_hours = fields.Html("Opening hours", translate=True)
     bankayma_website_geolink = fields.Char("Geolink")
     bankayma_website_videolink = fields.Char("Video link")
