@@ -653,6 +653,11 @@ msgid "Auto submitting from System1000 import, no deduction"
 msgstr "נבדק במערכת 1000, פטור"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_company_category__available_for_intercompany_invoices
+msgid "Available For Intercompany Invoices"
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_account_move_paid
 msgid "BNK Vendor: Message after payment - send receipt"
 msgstr ""
@@ -931,6 +936,11 @@ msgstr "יוזמות"
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Company"
 msgstr "יוזמה"
+
+#. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_res_company_category
+msgid "Company Categories"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_account__company_code

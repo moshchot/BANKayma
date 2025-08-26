@@ -62,6 +62,11 @@ msgid "Board"
 msgstr ""
 
 #. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_res_company_category_form
+msgid "Category properties"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,help:bankayma_base.field_res_partner__is_company
 #: model:ir.model.fields,help:bankayma_base.field_res_users__is_company
 msgid "Check if the contact is a company, otherwise it is a person"
@@ -96,9 +101,19 @@ msgid "Companies"
 msgstr "יוזמות"
 
 #. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_res_company_category
+msgid "Company Categories"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_company__name
 msgid "Company Name"
 msgstr "שם יוזמה"
+
+#. module: bankayma_base
+#: model_terms:ir.ui.view,arch_db:bankayma_base.view_res_company_category_form
+msgid "Company properties"
+msgstr ""
 
 #. module: bankayma_base
 #: model:ir.ui.menu,name:bankayma_base.menu_bankayma_config
@@ -186,6 +201,11 @@ msgid "Module"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_company_category__name
+msgid "Name"
+msgstr ""
+
+#. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_org_manager
 msgid "Organization Manager"
 msgstr "מנהל ארגון"
@@ -238,6 +258,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
 msgid "Send Password Reset Instructions"
 msgstr "שליחת הוראות לאיפוס סיסמא"
+
+#. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_company_category__show_in_company_selector
+msgid "Show In Company Selector"
+msgstr ""
 
 #. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_partner__signup_valid
