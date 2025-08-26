@@ -6,6 +6,10 @@
         <t t-set="title" t-value="object.name" />
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
+                <t
+                    t-set="events"
+                    t-value="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
+                />
                 <section
                     class="s_text_block o_colored_level pb0 pt0"
                     data-snippet="s_text_block"
@@ -149,8 +153,6 @@
                 </section>
                 <section
                     class="s_text_block o_colored_level pt0 pb0 o_cc o_cc4"
-                    data-snippet="s_text_block"
-                    data-name="טקסט"
                     style="background-image: none;"
                 >
                     <div class="s_allow_columns container-fluid">
@@ -159,251 +161,127 @@
                                 class="o_colored_level col-lg-12 o_cc o_cc2"
                                 style="text-align: center;"
                             >
-                                <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
-                                >
-        <a href="#about-test">
+                                <span class="s_badge badge o_animable bg-white-25">
+                                    <a href="#about">
                                         <i
                                             class="fa fa-info fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a><span
-                                        style="font-size: 18px; font-weight: normal;"
-                                    >
-                                        <a
-                                            href="#about-test"
-                                            data-bs-original-title=""
-                                            title=""
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             about
-                                        </a>
-                                    </span>&amp;nbsp;</span>
-                                <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
-                                >
-                                    <span style="font-size: 18px;" />
-                                    <a
-                                        href="#updates-test"
-                                        data-bs-original-title=""
-                                        title=""
-                                    >
+                                        </span>
+                                    </a>
+                                </span>
+                                <span class="s_badge badge o_animable bg-white-25">
+                                    <a href="#updates">
                                         <i
                                             class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="#updates-test"
-                                            data-bs-original-title=""
-                                            title=""
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             updates
-                                        </a>
-                                    </span>
+                                        </span>
+                                    </a>
                                 </span>
                                 <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="object.bankayma_website_videolink"
                                 >
-                                    <span style="font-size: 18px;" />
-                                    <a
-                                        href="#media-test"
-                                        data-bs-original-title=""
-                                        title=""
-                                    >
+                                    <a href="#media">
                                         <i
                                             class="fa fa-photo fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="#media-test"
-                                            data-bs-original-title=""
-                                            title=""
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             media
-                                        </a>
-                                    </span>
+                                        </span>
+                                    </a>
                                 </span>
                                 <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="events"
                                 >
-                                    <span style="font-size: 18px;" />
-                                    <a
-                                        href="#events-test"
-                                        data-bs-original-title=""
-                                        title=""
-                                    >
+                                    <a href="#events">
                                         <i
                                             class="fa fa-calendar-check-o fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="#events-test"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="popover629867"
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             events
-                                        </a>
-                                    </span>
+                                        </span>
+                                    </a>
                                 </span>
-                                <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
-                                >
-                                    <span style="font-size: 18px;" />
-                                    <a href="#store-test">
+                                <span class="s_badge badge o_animable bg-white-25">
+                                    <a href="#store">
                                         <i
                                             class="fa fa-gift fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
+                                        >
+                                            shop
+                                        </span>
                                     </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a href="#store-test">Shop</a>
-                                    </span>
                                 </span>
-                                <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
-                                >
-                                    <a
-                                        href="#donation-test"
-                                        data-bs-original-title=""
-                                        title=""
-                                    >
-                                        <span style="font-size: 18px;" />
+                                <span class="s_badge badge o_animable bg-white-25">
+                                    <a href="#donation">
                                         <i
                                             class="fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="#donation-test"
-                                            data-bs-original-title=""
-                                            title=""
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             donation
-                                        </a>
-                                    </span>
+                                        </span>
+                                    </a>
                                 </span>
                                 <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="object.bankayma_website_crew_partner_ids"
                                 >
-                                    <span style="font-size: 18px;" />
-                                    <a
-                                        href="#team-test"
-                                        data-bs-original-title=""
-                                        title=""
-                                    >
+                                    <a href="#team">
                                         <i
                                             class="fa fa-user fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="##team-test"
-                                            data-bs-original-title=""
-                                            title=""
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
-                                            crew​
-                                        </a>
-                                    </span>
+                                            crew
+                                        </span>
+                                    </a>
                                 </span>
                                 <span
-                                    class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="object.bankayma_website_backer_partner_ids"
                                 >
-                                    <span style="font-size: 18px;" />
-                                    <a href="#supporters-test">
+                                    <a href="#backers">
                                         <i
                                             class="fa fa-user-circle-o fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="#donators-test"
-                                            data-bs-original-title=""
-                                            title=""
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             backers
-                                        </a>
-                                    </span>
+                                        </span>
+                                    </a>
                                 </span>
                                 <span
                                     class="s_badge badge text-bg-secondary o_animable bg-white-25"
-                                    data-name="תג"
-                                    data-snippet="s_badge"
-                                    style=""
                                 >
-                                    <span
-                                        style="font-size: 18px; font-weight: normal;"
-                                    />
-                                    <a
-                                        href="#contact-test"
-                                        data-bs-original-title=""
-                                        title=""
-                                    >
+                                    <a href="#contact">
                                         <i
                                             class="fa fa-phone fa-fw o_not-animable mx-auto d-block fa-2x"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="tooltip250290"
                                         />
-                                    </a>
-                                    <span style="font-size: 18px; font-weight: normal;">
-                                        <a
-                                            href="#contact-test"
-                                            data-bs-original-title=""
-                                            title=""
-                                            aria-describedby="popover964776"
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
                                         >
                                             contact
-                                        </a>
-                                    </span>
+                                        </span>
+                                    </a>
                                 </span>
                             </div>
                         </div>
@@ -411,15 +289,12 @@
                 </section>
                 <section
                     class="s_text_block o_colored_level pb0 pt0"
-                    data-snippet="s_text_block"
-                    data-name="טקסט"
                     style="background-image: none;"
-                    id="about-test"
-                    data-anchor="true"
+                    id="about"
                 >
                     <div class="s_allow_columns container-fluid">
                         <div class="s_allow_columns container-fluid">
-                            <div style="" class="row">
+                            <div class="row">
                                 <div
                                     data-scroll-zone-end="65"
                                     data-scroll-zone-start="0"
@@ -434,11 +309,8 @@
                 </section>
                 <section
                     class="s_text_block pt40 pb40 o_colored_level o_cc o_cc4"
-                    data-snippet="s_text_block"
-                    data-name="טקסט"
                     style="background-image: none;"
-                    id="updates-test"
-                    data-anchor="true"
+                    id="updates"
                 >
                     <div class="s_allow_columns container-fluid">
                         <p style="text-align: center;">
@@ -473,11 +345,8 @@
                 </section>
                 <section
                     class="o_colored_level parallax"
-                    data-vcss="001"
-                    data-vxml="001"
                     style="background-image: none;"
-                    id="media-test"
-                    data-anchor="true"
+                    id="media"
                     t-if="object.bankayma_website_videolink"
                 >
                     <div class="container-fluid">
@@ -490,7 +359,7 @@
                                 <div class="mx-auto media_iframe_video s_parallax_bg">
                                     <div class="media_iframe_video_size" />
                                     <iframe
-                                        t-att-src="object.bankayma_website_videolink"
+                                        t-att-src="object.bankayma_website_videolink_embed"
                                         frameborder="0"
                                         allowfullscreen="allowfullscreen"
                                         marginheight="0"
@@ -585,16 +454,10 @@
                         </div>
                     </div>
                 </section>
-                <t
-                    t-set="events"
-                    t-value="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
-                />
                 <section
                     class="s_title pt40 pb40 o_colored_level"
-                    data-vcss="001"
-                    data-snippet="s_title"
-                    data-name="Title"
                     style="background-image: none;"
+                    id="events"
                     t-if="events"
                 >
                     <div class="container s_allow_columns s_dynamic s_event_event_card">
@@ -608,22 +471,20 @@
                 </section>
                 <section
                     class="pt32 pb32 o_colored_level o_cc o_cc2"
-                    data-snippet="s_donation"
-                    data-name="תרומה"
                     style="background-image: none;"
-                    id="donation-test"
+                    id="donation"
                     data-anchor="true"
                 >
                     <div class="o_container_small">
+                        <h2 style="text-align: center;">
+                            <strong>donation</strong>
+                        </h2>
                         <div class="row" style="">
                             <div class="o_colored_level col-lg-12" style="">
-                                <h2>
-                                    <br />
-                                </h2>
                                 <div
                                     class="s_donation"
                                     data-name="Donation Button"
-                                    data-donation-email="info@yourcompany.example.com"
+                                    t-att-data-donation-email="object.email"
                                     data-custom-amount="slider"
                                     data-prefilled-options=""
                                     data-descriptions=""
@@ -632,47 +493,33 @@
                                     data-slider-step="10"
                                     data-default-amount="30"
                                     data-snippet="s_donation_button"
-                                    data-display-options="true"
-                                    data-donation-amounts="[&quot;100&quot;]"
                                 >
                                     <form
                                         class="s_donation_form"
-                                        action="/he/donation/pay"
+                                        action="/donation/pay"
                                         method="post"
                                         enctype="multipart/form-data"
                                         style="text-align: center;"
                                     >
-                                        <span id="s_donation_description_inputs" />
-                                        <div
-                                            class="s_donation_prefilled_buttons mb-2"
-                                        />
-                                        <span id="s_donation_description_inputs" />
-                                        <span
-                                            id="s_donation_description_inputs"
-                                            style="font-size: 36px;"
-                                        >
-                                            <font class="bg-o-color-3 text-o-color-1">
-                                                <strong>donations</strong>
-                                            </font>
-                                        </span>
-                                        <br />
                                         <div
                                             class="s_donation_range_slider_wrap mb-2 position-relative"
                                         >
-            <input
+                                            <input
+                                                name="amount"
                                                 type="range"
                                                 class="form-range"
                                                 min="5"
                                                 max="1000"
                                                 step="10"
                                                 id="s_donation_range_slider"
-                                            />&amp;nbsp;<output
+                                            />
+                                            <output
                                                 class="s_range_bubble"
                                                 style="left: calc(3.01508% + 7.51759px);"
                                             >
                                                 35
                                             </output>
-        </div>
+                                        </div>
                                         <a
                                             href="#"
                                             type="button"
@@ -688,11 +535,8 @@
                 </section>
                 <section
                     class="s_company_team o_colored_level pt24 pb32 o_cc o_cc3"
-                    data-snippet="s_company_team"
-                    data-name="Team"
                     style="background-image: none;"
-                    id="%23team-test"
-                    data-anchor="true"
+                    id="team"
                     t-if="object.bankayma_website_crew_partner_ids"
                 >
                     <div class="container-fluid">
@@ -733,22 +577,10 @@
                         </div>
                     </div>
                 </section>
-                <t
-                    t-set="rel_type_backer"
-                    t-value="object.env.ref('bankayma_website.rel_type_backer')"
-                />
-                <t
-                    t-set="backers"
-                    t-value="object.partner_id.relation_all_ids.filtered(lambda x: x.type_id == rel_type_backer and x.is_inverse).other_partner_id"
-                />
                 <section
                     class="s_references o_colored_level pb32 pt24 o_cc o_cc1"
-                    data-snippet="s_references"
-                    data-name="מזהים"
-                    style=""
-                    id="supporters-test"
-                    data-anchor="true"
-                    t-if="backers"
+                    id="backers"
+                    t-if="object.bankayma_website_backer_partner_ids"
                 >
                     <div class="container">
                         <h5 style="text-align: center;">
@@ -759,7 +591,7 @@
                         <div class="row">
                             <div
                                 class="col-lg-2 pt16 pb16 o_colored_level"
-                                t-foreach="backers"
+                                t-foreach="object.bankayma_website_backer_partner_ids"
                                 t-as="partner"
                             >
                                 <img
@@ -778,8 +610,7 @@
                     data-map-zoom="15"
                     data-snippet="s_map"
                     t-attf-data-map-address="{{object.street}} {{object.city}}"
-                    id="maps-test"
-                    data-anchor="true"
+                    id="map"
                     t-if="object.bankayma_website_geolink"
                 >
                     <div class="map_container o_not_editable">
@@ -798,11 +629,8 @@
                 </section>
                 <section
                     class="s_text_block o_colored_level pb0 pt0 o_cc o_cc3"
-                    data-snippet="s_text_block"
-                    data-name="Text"
                     style="background-image: none;"
-                    id="contact-test"
-                    data-anchor="true"
+                    id="contact"
                 >
                     <div class="s_allow_columns container">
                         <h4 class="text-center mb-1" style="text-align: right;">
