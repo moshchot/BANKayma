@@ -26,7 +26,7 @@
                 >
                     <span
                         class="s_parallax_bg oe_img_bg o_bg_img_center"
-                        t-attf-style="background-image: url(&quot;/web/image/res.company/{{object.id}}/logo&quot;)"
+                        t-attf-style="background-image: url(&quot;/web/image/res.company/{{'%s/%s' % (object.id, 'bankayma_website_cover' if object.bankayma_website_cover else 'logo')}}&quot;)"
                     />
                     <div
                         class="o_we_bg_filter"
@@ -52,6 +52,14 @@
                                     />
                                 </h4>
                                 <p style="text-align: center;">
+                                    <span
+                                        t-if="object.bankayma_inception_year"
+                                        style="text-align: center;"
+                                    >
+                                        (since
+                                        <t t-out="object.bankayma_inception_year" />
+                                        )
+                                    </span>
                                     <br />
                                 </p>
                                 <p style="text-align: center;">
@@ -62,7 +70,10 @@
                                         style="padding: 2px;"
                                     />
                                 </p>
-                                <p style="text-align: center;">
+                                <p
+                                    style="text-align: center;"
+                                    t-if="object.street or object.city"
+                                >
                                     <span
                                         class="text-200 bg-o-color-2"
                                         style="font-style: normal; font-weight: 400;"

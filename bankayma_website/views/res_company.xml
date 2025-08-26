@@ -12,7 +12,9 @@
                         <field name="website_link" widget="url" />
                         <field name="seo_name" required="True" />
                         <field name="bankayma_website_subtitle" />
+                        <field name="bankayma_inception_year" />
                         <field name="bankayma_website_opening_hours" />
+                        <field name="bankayma_website_cover" />
                         <field name="bankayma_website_geolink" widget="url" />
                         <field name="bankayma_website_videolink" widget="url" />
                         <field
