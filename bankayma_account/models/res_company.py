@@ -52,6 +52,12 @@ class ResCompany(models.Model):
         "Donation journal",
         domain=[("type", "=", "sale")],
     )
+    donation_credit_transfer_product_id = fields.Many2one(
+        "product.product",
+        string="Product for Donations via Credit Transfer",
+        domain=[("detailed_type", "=", "service")],
+        ondelete="restrict",
+    )
 
     def _compute_bankayma_overhead_percentage(self):
         for this in self:
