@@ -114,8 +114,20 @@ msgid "Companies"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_res_company_category
+msgid "Company Categories"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_crew_partner_ids
 msgid "Crew"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,help:bankayma_website.field_res_company_category__company_hide_without_category
+msgid ""
+"Do not show companies with this category unless the category is explicitly "
+"chosen"
 msgstr ""
 
 #. module: bankayma_website
@@ -131,6 +143,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:res.partner.relation.type,name_inverse:bankayma_website.rel_type_backer
 msgid "Has backer"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company_category__company_hide_without_category
+msgid "Hide without category"
 msgstr ""
 
 #. module: bankayma_website
@@ -166,6 +183,11 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Shop"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_res_company_category__category_show_on_website
+msgid "Show on website"
 msgstr ""
 
 #. module: bankayma_website
