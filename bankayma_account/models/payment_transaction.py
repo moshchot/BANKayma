@@ -15,9 +15,6 @@ class PaymentTransaction(models.Model):
 
     def _process_notification_data(self, notification_data):
         """Coerce current company to provider's company for further processing"""
-        result = super(
-            PaymentTransaction, self.with_company(self.provider_id.company_id)
-        )._process_notification_data(notification_data)
         donation_product = self.company_id.donation_credit_transfer_product_id
         donation_account = donation_product.property_account_income_id
         for this in self.filtered(lambda x: x.is_donation and not x.invoice_ids):
@@ -42,6 +39,9 @@ class PaymentTransaction(models.Model):
                     }
                 )
             )
+        result = super(
+            PaymentTransaction, self.with_company(self.provider_id.company_id)
+        )._process_notification_data(notification_data)
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             if self.is_donation and self.is_recurrent:
                 payload = {
