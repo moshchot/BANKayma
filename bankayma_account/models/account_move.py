@@ -263,7 +263,17 @@ class AccountMove(models.Model):
                         "in",
                         self.env["res.company"]
                         .sudo()
-                        .search([])
+                        .search(
+                            [
+                                "|",
+                                ("category_id", "=", False),
+                                (
+                                    "category_id.available_for_intercompany_invoices",
+                                    "=",
+                                    True,
+                                ),
+                            ]
+                        )
                         .mapped("partner_id.id"),
                     )
                 ]

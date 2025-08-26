@@ -5,5 +5,6 @@ from . import ir_http
 from . import mail_render_mixin
 from . import mail_template
 from . import res_company
+from . import res_company_category
 from . import res_users
 from . import res_partner
