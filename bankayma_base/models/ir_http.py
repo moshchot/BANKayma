@@ -18,3 +18,17 @@ class IrHttp(models.AbstractModel):
             .get_current_website()
             .with_context(request.context)
         )
+
+    def session_info(self):
+        result = super().session_info()
+        if "user_companies" in result:
+            ResCompany = self.env["res.company"]
+            result["user_companies"]["allowed_companies"] = {
+                company_id: company_vals
+                for company_id, company_vals in result["user_companies"][
+                    "allowed_companies"
+                ].items()
+                if not ResCompany.browse(company_id).category_id
+                or ResCompany.browse(company_id).category_id.show_in_company_selector
+            }
+        return result

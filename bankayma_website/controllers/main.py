@@ -52,6 +52,18 @@ class CompaniesController(http.Controller):
                 domain.append(("category_id", "=", int(category)))
             else:
                 domain.append(("category_id", "ilike", category))
+        else:
+            domain += [
+                "|",
+                ("category_id", "=", False),
+                ("category_id.company_hide_without_category", "=", False),
+            ]
+
+        domain += [
+            "|",
+            ("category_id", "=", False),
+            ("category_id.category_show_on_website", "=", True),
+        ]
 
         companies = ResCompany.browse(
             ResCompany._name_search(

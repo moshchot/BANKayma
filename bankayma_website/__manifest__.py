@@ -18,6 +18,7 @@
         "data/res_partner_relation_type.xml",
         "views/templates.xml",
         "views/res_company.xml",
+        "views/res_company_category.xml",
     ],
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",

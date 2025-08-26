@@ -74,6 +74,7 @@
         "views/account_tax_group.xml",
         "views/product_template.xml",
         "views/res_company.xml",
+        "views/res_company_category.xml",
         "views/res_config_settings.xml",
         "views/res_partner.xml",
         "views/snippets.xml",

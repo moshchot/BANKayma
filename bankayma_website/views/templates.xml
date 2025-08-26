@@ -892,7 +892,7 @@
             <section class="o_colored_level o_cc o_cc2 pt48 pb0">
                 <div class="o_container_small">
                     <a
-                        t-foreach="objects.env['res.company.category'].search([('company_ids', 'in', objects.ids)])"
+                        t-foreach="objects.env['res.company.category'].search([('company_ids', '!=', False), ('category_show_on_website', '=', True)])"
                         t-as="company_category"
                         t-attf-href="/projects?category={{company_category.id}}"
                     >
@@ -961,8 +961,12 @@
                 </div>
             </section>
             <section t-if="not objects">
-                No results found for
-                <span t-out="search or category" />
+                <div class="o_container_small">
+                    No results found for
+                    <span
+                        t-out="search or ((category or '').isdigit() and objects.env['res.company.category'].browse(int(category)).display_name or category)"
+                    />
+                </div>
             </section>
         </t>
     </template>
