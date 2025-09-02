@@ -15,9 +15,13 @@ class PaymentTransaction(models.Model):
 
     def _process_notification_data(self, notification_data):
         """Coerce current company to provider's company for further processing"""
-        donation_product = self.company_id.donation_credit_transfer_product_id
-        donation_account = donation_product.property_account_income_id
         for this in self.filtered(lambda x: x.is_donation and not x.invoice_ids):
+            donation_product = (
+                this.company_id.donation_credit_transfer_product_id.with_company(
+                    this.company_id
+                )
+            )
+            donation_account = donation_product.property_account_income_id
             this.invoice_ids = (
                 self.env["account.move"]
                 .sudo()
@@ -44,6 +48,11 @@ class PaymentTransaction(models.Model):
             PaymentTransaction, self.with_company(self.provider_id.company_id)
         )._process_notification_data(notification_data)
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
+            donation_product = (
+                self.company_id.donation_credit_transfer_product_id.with_company(
+                    this.company_id
+                )
+            )
             if self.is_donation and self.is_recurrent:
                 payload = {
                     "Customer": {
