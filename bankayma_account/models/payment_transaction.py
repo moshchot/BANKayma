@@ -30,6 +30,7 @@ class PaymentTransaction(models.Model):
                                 {
                                     "product_id": donation_product.id,
                                     "account_id": donation_account.id,
+                                    "name": this._to_sumit_vals_name(True),
                                     "price_unit": this.amount,
                                     "tax_ids": [fields.Command.set([])],
                                 }
