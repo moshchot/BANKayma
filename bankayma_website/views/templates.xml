@@ -474,6 +474,7 @@
                     style="background-image: none;"
                     id="donation"
                     data-anchor="true"
+                    dir="ltr"
                 >
                     <div class="o_container_small">
                         <h2 style="text-align: center;">
@@ -496,7 +497,7 @@
                                 >
                                     <form
                                         class="s_donation_form"
-                                        action="/donation/pay"
+                                        t-attf-action="/donation/pay?company_id={{object.id}}"
                                         method="post"
                                         enctype="multipart/form-data"
                                         style="text-align: center;"
