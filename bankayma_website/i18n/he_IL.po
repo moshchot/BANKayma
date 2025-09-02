@@ -239,6 +239,11 @@ msgid "Geolink"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_ir_http
+msgid "HTTP Routing"
+msgstr ""
+
+#. module: bankayma_website
 #: model:res.partner.relation.type,name_inverse:bankayma_website.rel_type_backer
 msgid "Has backer"
 msgstr ""
