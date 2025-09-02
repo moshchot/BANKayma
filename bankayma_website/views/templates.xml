@@ -30,7 +30,7 @@
                 >
                     <span
                         class="s_parallax_bg oe_img_bg o_bg_img_center"
-                        t-attf-style="background-image: url(&quot;/web/image/res.company/{{'%s/%s' % (object.id, 'bankayma_website_cover' if object.bankayma_website_cover else 'logo')}}&quot;)"
+                        t-attf-style="background-image: url({{image_data_uri(object.bankayma_website_cover or object.logo)}})"
                     />
                     <div
                         class="o_we_bg_filter"
@@ -68,7 +68,7 @@
                                 </p>
                                 <p style="text-align: center;">
                                     <img
-                                        t-attf-src="/web/image/res.company/{{object.id}}/logo"
+                                        t-att-src="image_data_uri(object.logo)"
                                         class="img-fluid mx-auto d-block rounded-circle img-thumbnail shadow rounded"
                                         loading="lazy"
                                         style="padding: 2px;"
@@ -395,7 +395,7 @@
                                     t-as="image"
                                 >
                                     <img
-                                        t-attf-src="/web/image/{{image.id}}"
+                                        t-att-src="image_data_uri(image.datas)"
                                         alt=""
                                         class="img img-fluid d-block o_we_custom_image shadow"
                                         loading="lazy"
@@ -419,7 +419,7 @@
                                     t-as="image"
                                     data-bs-target="#slideshow_1725973766980"
                                     t-attf-data-bs-slide-to="{{image_index}}"
-                                    t-attf-style="background-image: url(/web/image/{{image.id}})"
+                                    t-attf-style="background-image: url({{image_data_uri(image.datas)}})"
                                     t-att-aria-current="'true' if image_index == 0 else None"
                                     t-att-class="'active' if image_index == 0 else None"
                                 />
@@ -560,7 +560,7 @@
                                     <div class="col-lg-4 pb16 o_not_editable">
                                         <img
                                             t-att-alt="partner.name"
-                                            t-attf-src="/web/image/res.partner/{{partner.id}}/avatar_128"
+                                            t-att-src="image_data_uri(partner.avatar_128)"
                                             class="img-fluid rounded-circle mx-auto o_editable_media"
                                             loading="eager"
                                         />
@@ -596,7 +596,7 @@
                             >
                                 <img
                                     t-att-alt="partner.name"
-                                    t-attf-src="/web/image/res.partner/{{partner.id}}/avatar_128"
+                                    t-att-src="image_data_uri(partner.avatar_128)"
                                     class="img img-fluid mx-auto"
                                     loading="lazy"
                                 />
@@ -758,7 +758,7 @@
                                 style="border-style: double !important; border-color: rgb(4, 159, 123) !important;"
                             >
                                 <img
-                                    t-attf-src="/web/image/res.company/{{object.id}}/logo"
+                                    t-att-src="image_data_uri(object.logo)"
                                     t-att-alt="object.name"
                                     class="card-img-top img img-fluid o_we_custom_image mx-auto d-block rounded-circle"
                                     style="width: 50% !important;"
