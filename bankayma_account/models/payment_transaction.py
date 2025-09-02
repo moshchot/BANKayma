@@ -34,7 +34,7 @@ class PaymentTransaction(models.Model):
                                 {
                                     "product_id": donation_product.id,
                                     "account_id": donation_account.id,
-                                    "name": this._to_sumit_vals_name(True),
+                                    "name": this._to_sumit_vals_name(this.is_recurrent),
                                     "price_unit": this.amount,
                                     "tax_ids": [fields.Command.set([])],
                                 }
@@ -50,7 +50,7 @@ class PaymentTransaction(models.Model):
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             donation_product = (
                 self.company_id.donation_credit_transfer_product_id.with_company(
-                    this.company_id
+                    self.company_id
                 )
             )
             if self.is_donation and self.is_recurrent:
