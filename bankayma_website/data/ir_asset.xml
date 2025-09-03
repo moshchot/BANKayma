@@ -1,0 +1,7 @@
+<odoo>
+    <record id="s_donation_000_scss" model="ir.asset">
+        <field name="name">Donation 000 SCSS, rtl hack</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">bankayma_website/static/src/scss/s_donation.scss</field>
+    </record>
+</odoo>

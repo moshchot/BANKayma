@@ -1,0 +1,16 @@
+.s_donation:not([data-vcss]) {
+    .s_donation_range_slider_wrap {
+        .s_range_bubble {
+            right: auto#{"/*rtl:ignore*/"};
+            left: 0%#{"/*rtl:ignore*/"};
+            transform: translateX(-50%) #{"/*rtl:ignore*/"};
+
+            &::after {
+                left: 50%#{"/*rtl:ignore*/"};
+                right: auto#{"/*rtl:ignore*/"};
+                margin-left: -5px#{"/*rtl:ignore*/"};
+                margin-right: 0#{"/*rtl:ignore*/"};
+            }
+        }
+    }
+}
