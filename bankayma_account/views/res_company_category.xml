@@ -9,6 +9,14 @@
             <group name="bankayma_company_flags" position="inside">
                 <field name="available_for_intercompany_invoices" />
             </group>
+            <group name="bankayma_company_flags" position="after">
+                <group
+                    name="bankayma_company_website_flags"
+                    string="Company properties (website)"
+                >
+                    <field name="available_for_portal" />
+                </group>
+            </group>
         </field>
     </record>
 </odoo>

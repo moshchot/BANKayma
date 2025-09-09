@@ -6,3 +6,4 @@ class ResCompanyCategory(models.Model):
     _inherit = "res.company.category"
 
     available_for_intercompany_invoices = fields.Boolean(default=True)
+    available_for_portal = fields.Boolean(default=True)

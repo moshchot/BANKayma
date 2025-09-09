@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="bankayma_base.view_res_company_category_form" />
         <field name="model">res.company.category</field>
         <field name="arch" type="xml">
-            <group name="bankayma_company_flags" position="inside">
+            <group name="bankayma_company_website_flags" position="inside">
                 <field name="company_hide_without_category" />
             </group>
             <group name="bankayma_category_flags" position="inside">

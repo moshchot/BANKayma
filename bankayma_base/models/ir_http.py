@@ -23,12 +23,10 @@ class IrHttp(models.AbstractModel):
         result = super().session_info()
         if "user_companies" in result:
             ResCompany = self.env["res.company"]
-            result["user_companies"]["allowed_companies"] = {
-                company_id: company_vals
-                for company_id, company_vals in result["user_companies"][
-                    "allowed_companies"
-                ].items()
-                if not ResCompany.browse(company_id).category_id
-                or ResCompany.browse(company_id).category_id.show_in_company_selector
-            }
+            hidden_companies = ResCompany.search(
+                [
+                    ("category_id.show_in_company_selector", "=", False),
+                ]
+            )
+            result["hidden_company_ids"] = hidden_companies.ids
         return result

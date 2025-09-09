@@ -101,9 +101,8 @@
     "assets": {
         "web.assets_backend": [
             "bankayma_base/static/src/css/*backend.css",
-            "bankayma_base/static/src/js/BoardController.esm.js",
-            "bankayma_base/static/src/xml/BoardController.xml",
-            "bankayma_base/static/src/xml/ChatterTopBar.xml",
+            "bankayma_base/static/src/js/*.esm.js",
+            "bankayma_base/static/src/xml/*.xml",
         ],
         "web.assets_frontend": [
             "bankayma_base/static/src/css/*frontend.css",
