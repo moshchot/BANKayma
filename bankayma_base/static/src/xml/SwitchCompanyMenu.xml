@@ -1,0 +1,9 @@
+<templates>
+    <t t-inherit="web.SwitchCompanyMenu" t-inherit-mode="extension">
+        <t t-call="web.SwitchCompanyItem" position="attributes">
+            <attribute name="t-if">
+                !companyService.hidden_company_ids.includes(company.id)
+            </attribute>
+        </t>
+    </t>
+</templates>
