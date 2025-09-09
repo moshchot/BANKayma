@@ -658,6 +658,11 @@ msgid "Available For Intercompany Invoices"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_res_company_category__available_for_portal
+msgid "Available For Portal"
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,name:bankayma_account.template_account_move_paid
 msgid "BNK Vendor: Message after payment - send receipt"
 msgstr ""
@@ -974,6 +979,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_res_company__name
 msgid "Company Name"
 msgstr "שם היוזמה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.view_res_company_category_form
+msgid "Company properties (website)"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__composition_mode
