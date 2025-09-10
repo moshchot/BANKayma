@@ -55,6 +55,7 @@
         "project_timeline",
         "project_type",
         "res_company_category",
+        "res_company_tag",
         "server_action_mass_edit",
         "social_media",
         "web_advanced_search",

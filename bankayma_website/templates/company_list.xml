@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="company_list" name="Company list">
+        <t t-call="website.layout">
+            <section class="s_searchbar o_colored_level o_cc o_cc2 pt48 pb0">
+                <div class="o_container_small">
+                    <form
+                        method="get"
+                        class="o_searchbar_form s_searchbar_input"
+                        action="/projects"
+                    >
+                        <h2>Name</h2>
+                        <div role="search" class="input-group ">
+                            <input
+                                type="search"
+                                name="search"
+                                class="search-query form-control oe_search_box"
+                                placeholder="search..."
+                                t-att-value="search"
+                            />
+                            <button
+                                type="submit"
+                                class="btn oe_search_button btn-primary"
+                            >
+                                <i class="oi oi-search" />
+                            </button>
+                        </div>
+                        <h2>Tags</h2>
+                        <div role="search" class="input-group ">
+                            <input
+                                type="search"
+                                name="tags"
+                                class="search-query form-control oe_search_box"
+                                placeholder="search..."
+                                t-att-value="tags"
+                            />
+                            <button
+                                type="submit"
+                                class="btn oe_search_button btn-primary"
+                            >
+                                <i class="oi oi-search" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="o_colored_level o_cc o_cc2 pt48 pb0">
+                <div class="o_container_small">
+                    <a
+                        t-foreach="objects.env['res.company.category'].search([('company_ids', '!=', False), ('category_show_on_website', '=', True)])"
+                        t-as="company_category"
+                        t-attf-href="/projects?category={{company_category.id}}"
+                    >
+                        <span
+                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                            t-out="company_category.name"
+                        />
+                    </a>
+                    <a href="/projects">Reset filters</a>
+                </div>
+            </section>
+            <section
+                class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16"
+                t-if="objects"
+            >
+                <div class="o_container_small">
+                    <div class="row d-flex align-items-stretch">
+                        <div
+                            class="col-lg-4 s_col_no_bgcolor pt16 pb4"
+                            t-foreach="objects"
+                            t-as="object"
+                        >
+                            <div
+                                class="card text-bg-white h-100"
+                                style="border-style: double !important; border-color: rgb(4, 159, 123) !important;"
+                            >
+                                <img
+                                    t-att-src="image_data_uri(object.logo)"
+                                    t-att-alt="object.name"
+                                    class="card-img-top img img-fluid o_we_custom_image mx-auto d-block rounded-circle"
+                                    style="width: 50% !important;"
+                                    loading="lazy"
+                                />
+                                <div class="card-body">
+                                    <h3 class="card-title" style="text-align: center;">
+                                        <span style="font-size: 24px;">
+                                            <b>
+                                                <a
+                                                    t-att-href="object.website_link"
+                                                    t-out="object.name"
+                                                />
+                                            </b>
+                                        </span>
+                                    </h3>
+                                    <h4
+                                        style="text-align: center;"
+                                        t-if="object.bankayma_website_subtitle"
+                                    >
+                                        <span
+                                            style="font-size: 18px;"
+                                            t-out="object.bankayma_website_subtitle"
+                                        />
+                                    </h4>
+                                    <a
+                                        t-if="object.category_id"
+                                        t-attf-href="/projects?category={{object.category_id.id}}"
+                                    >
+                                        <span
+                                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                                            t-out="object.category_id.name"
+                                        />
+                                    </a>
+                                    <div class="o_container_small">
+                                        <a
+                                            t-foreach="object.tag_ids"
+                                            t-as="company_tag"
+                                            t-attf-href="/projects?tags={{company_tag.name}}"
+                                        >
+                                            <span
+                                                class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                                                t-out="company_tag.name"
+                                            />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section t-if="not objects">
+                <div class="o_container_small">
+                    No results found for
+                    <span
+                        t-out="search or ((category or '').isdigit() and objects.env['res.company.category'].browse(int(category)).display_name or category) or tags"
+                    />
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

@@ -42,7 +42,7 @@ class CompaniesController(http.Controller):
         return Markup(output.decode("utf8"))
 
     @http.route("/projects", website=True, auth="public")
-    def render_company_list(self, search=None, category=None):
+    def render_company_list(self, search=None, category=None, tags=None):
         ResCompany = http.request.env["res.company"].sudo()
         ResCompanyCategory = http.request.env["res.company.category"].sudo()
 
@@ -57,6 +57,11 @@ class CompaniesController(http.Controller):
                 "|",
                 ("category_id", "=", False),
                 ("category_id.company_hide_without_category", "=", False),
+            ]
+
+        if tags:
+            domain += ["|"] * (len(tags.split()) - 1) + [
+                ("tag_ids", "ilike", tag) for tag in tags.split()
             ]
 
         domain += [
@@ -77,5 +82,6 @@ class CompaniesController(http.Controller):
                 "objects": companies,
                 "search": search,
                 "category": category,
+                "tags": tags,
             },
         )
