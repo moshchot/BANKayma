@@ -31,6 +31,7 @@
                     <span
                         class="s_parallax_bg oe_img_bg o_bg_img_center"
                         t-attf-style="background-image: url({{image_data_uri(object.bankayma_website_cover or object.logo)}})"
+                        t-if="object.bankayma_website_cover or object.logo"
                     />
                     <div
                         class="o_we_bg_filter"
@@ -72,6 +73,7 @@
                                         class="img-fluid mx-auto d-block rounded-circle img-thumbnail shadow rounded"
                                         loading="lazy"
                                         style="padding: 2px;"
+                                        t-if="object.logo"
                                     />
                                 </p>
                                 <p
@@ -564,6 +566,7 @@
                                             t-att-src="image_data_uri(partner.avatar_128)"
                                             class="img-fluid rounded-circle mx-auto o_editable_media"
                                             loading="eager"
+                                            t-if="partner.avatar_128"
                                         />
                                     </div>
                                     <div class="col-lg-8">
@@ -600,6 +603,7 @@
                                     t-att-src="image_data_uri(partner.avatar_128)"
                                     class="img img-fluid mx-auto"
                                     loading="lazy"
+                                    t-if="partner.avatar_128"
                                 />
                             </div>
                         </div>
