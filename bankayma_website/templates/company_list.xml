@@ -82,6 +82,7 @@
                                     class="card-img-top img img-fluid o_we_custom_image mx-auto d-block rounded-circle"
                                     style="width: 50% !important;"
                                     loading="lazy"
+                                    t-if="object.logo"
                                 />
                                 <div class="card-body">
                                     <h3 class="card-title" style="text-align: center;">
