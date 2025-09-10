@@ -1,0 +1,29 @@
+<odoo>
+    <record id="tag_color" model="res.company.tag">
+        <field name="name">Color</field>
+    </record>
+    <record id="tag_color_blue" model="res.company.tag">
+        <field name="name">Blue</field>
+        <field name="parent_id" ref="tag_color" />
+    </record>
+    <record id="tag_color_red" model="res.company.tag">
+        <field name="name">Red</field>
+        <field name="parent_id" ref="tag_color" />
+    </record>
+    <record id="tag_color_yellow" model="res.company.tag">
+        <field name="name">Yellow</field>
+        <field name="parent_id" ref="tag_color" />
+    </record>
+    <record id="tag_color_purple" model="res.company.tag">
+        <field name="name">Purple</field>
+        <field name="parent_id" ref="tag_color" />
+    </record>
+    <record id="tag_color_orange" model="res.company.tag">
+        <field name="name">Orange</field>
+        <field name="parent_id" ref="tag_color" />
+    </record>
+    <record id="tag_color_green" model="res.company.tag">
+        <field name="name">Green</field>
+        <field name="parent_id" ref="tag_color" />
+    </record>
+</odoo>
