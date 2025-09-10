@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="tag_ids" widget="many2many_tags" />
+            </field>
+        </field>
+    </record>
+    <record id="view_company_search" model="ir.ui.view">
+        <field
+            name="inherit_id"
+            ref="res_company_search_view.view_res_company_search"
+        />
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="tag_ids" />
+            </field>
+        </field>
+    </record>
+</odoo>
