@@ -17,7 +17,8 @@
     "data": [
         "data/res_partner_relation_type.xml",
         "data/ir_asset.xml",
-        "views/templates.xml",
+        "templates/company_page.xml",
+        "templates/company_list.xml",
         "views/res_company.xml",
         "views/res_company_category.xml",
     ],
