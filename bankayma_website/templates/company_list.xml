@@ -16,7 +16,7 @@
                             <input
                                 type="search"
                                 name="search"
-                                class="search-query form-control oe_search_box"
+                                class="form-control oe_search_box"
                                 placeholder="search..."
                                 t-att-value="search"
                             />
@@ -35,6 +35,9 @@
                                 class="search-query form-control oe_search_box"
                                 placeholder="search..."
                                 t-att-value="tags"
+                                data-limit="10"
+                                data-search-type="res.company.tag"
+                                data-display-image="True"
                             />
                             <button
                                 type="submit"

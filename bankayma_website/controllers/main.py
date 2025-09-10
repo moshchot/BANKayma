@@ -1,4 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from operator import itemgetter
+
 from lxml import html
 from markupsafe import Markup
 
@@ -45,6 +47,7 @@ class CompaniesController(http.Controller):
     def render_company_list(self, search=None, category=None, tags=None):
         ResCompany = http.request.env["res.company"].sudo()
         ResCompanyCategory = http.request.env["res.company.category"].sudo()
+        ResCompanyTag = http.request.env["res.company.tag"].sudo()
 
         domain = [("parent_id", "!=", False)]
         if category:
@@ -60,9 +63,18 @@ class CompaniesController(http.Controller):
             ]
 
         if tags:
-            domain += ["|"] * (len(tags.split()) - 1) + [
-                ("tag_ids", "ilike", tag) for tag in tags.split()
-            ]
+            tags_found = ResCompanyTag.browse(
+                map(
+                    itemgetter(0),
+                    (
+                        name_get
+                        for tag in tags.split()
+                        for name_get in ResCompanyTag.name_search(tag)
+                    ),
+                )
+            )
+
+            domain += [("tag_ids", "child_of", tags_found.ids)]
 
         domain += [
             "|",
