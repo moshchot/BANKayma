@@ -10,7 +10,6 @@
     "depends": [
         "bankayma_account",
         "website",
-        "website_event",
         "partner_multi_relation",
         "res_company_category",
     ],
