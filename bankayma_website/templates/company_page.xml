@@ -5,6 +5,10 @@
     <template id="company_page" name="Company page">
         <t t-set="title" t-value="object.name" />
         <t t-call="website.layout">
+            <t
+                t-set="events"
+                t-value="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
+            />
             <div id="wrap" class="oe_structure oe_empty">
                 <section
                     class="s_text_block o_colored_level pb0 pt0"
@@ -195,6 +199,21 @@
                                             style="font-size: 18px; font-weight: normal;"
                                         >
                                             media
+                                        </span>
+                                    </a>
+                                </span>
+                                <span
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="events"
+                                >
+                                    <a href="#events">
+                                        <i
+                                            class="fa fa-calendar-check-o fa-fw o_not-animable mx-auto d-block fa-2x"
+                                        />
+                                        <span
+                                            style="font-size: 18px; font-weight: normal;"
+                                        >
+                                            events
                                         </span>
                                     </a>
                                 </span>
@@ -424,6 +443,25 @@
                             </a>
                         </div>
                     </div>
+                </section>
+                <section data-snippet="s_image_gallery" position="after">
+                    <section
+                        class="s_title pt40 pb40 o_colored_level"
+                        style="background-image: none;"
+                        id="events"
+                        t-if="events"
+                    >
+                        <div
+                            class="container s_allow_columns s_dynamic s_event_event_card"
+                        >
+                            <h2 style="text-align: center;">
+                                <strong>events</strong>
+                            </h2>
+                            <t
+                                t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
+                            />
+                        </div>
+                    </section>
                 </section>
                 <section
                     class="pt32 pb32 o_colored_level o_cc o_cc2"
