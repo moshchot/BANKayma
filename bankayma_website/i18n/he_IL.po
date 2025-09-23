@@ -52,6 +52,17 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
+"<i class=\"fa fa-calendar-check-o fa-fw o_not-animable mx-auto d-block "
+"fa-2x\"/>\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            events\n"
+"                                        </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
 "<i class=\"fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
 "                                        <span style=\"font-size: 18px; font-"
 "weight: normal;\">\n"
@@ -163,6 +174,11 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>donation</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>events</strong>"
 msgstr ""
 
 #. module: bankayma_website
