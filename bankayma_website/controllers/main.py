@@ -24,7 +24,9 @@ class CompaniesController(http.Controller):
             .new(
                 {
                     "model_name": records._name,
-                    "field_names": "display_name",
+                    "field_names": ",".join(
+                        {"display_name", "image_512"} & set(records._fields)
+                    ),
                 }
             )
             ._filter_records_to_values(records)
