@@ -10,7 +10,7 @@
     "depends": [
         "bankayma_account",
         "bankayma_website",
-        "website_event",
+        "website_event_sale",
     ],
     "data": [
         "data/ir_config_parameter.xml",
