@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template
+        id="company_page"
+        inherit_id="bankayma_website.company_page"
+        name="Company page"
+    >
+        <xpath expr="//a[@href='#events']/.." position="after">
+            <t
+                t-set="products"
+                t-value="request.env['product.product'].search([('is_published', '=', True), ('bankayma_website_sale_company_id', '=', object.id)])"
+            />
+            <span t-if="products" class="s_badge badge o_animable bg-white-25">
+                <a href="#store">
+                    <i class="fa fa-gift fa-fw o_not-animable mx-auto d-block fa-2x" />
+                    <span style="font-size: 18px; font-weight: normal;">shop</span>
+                </a>
+            </span>
+        </xpath>
+        <section id="events" position="after">
+            <section
+                class="s_title pt40 pb40 o_colored_level"
+                style="background-image: none;"
+                id="store"
+                t-if="products"
+            >
+                <div class="container s_allow_columns s_dynamic">
+                    <h2 style="text-align: center;">
+                        <strong>products</strong>
+                    </h2>
+                    <t
+                        t-out="render_dynamic_snippet('website_sale.dynamic_filter_template_product_product_mini_name', products)"
+                    />
+                </div>
+            </section>
+        </section>
+    </template>
+</odoo>

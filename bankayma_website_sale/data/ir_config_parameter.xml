@@ -1,0 +1,6 @@
+<odoo>
+    <function model="ir.config_parameter" name="set_param">
+        <value>sale.automatic_invoice</value>
+        <value>1</value>
+    </function>
+</odoo>
