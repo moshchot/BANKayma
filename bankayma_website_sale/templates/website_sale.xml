@@ -1,0 +1,17 @@
+<odoo>
+    <template id="product" inherit_id="website_sale.product">
+        <a t-att-href="keep(category=0)" position="attributes">
+            <attribute name="t-if">
+                not product.bankayma_website_sale_company_id
+            </attribute>
+        </a>
+        <a t-att-href="keep(category=0)" position="after">
+            <a
+                t-if="product.bankayma_website_sale_company_id"
+                href="keep(category=0, project=product.bankayma_website_sale_company_id.id)"
+                t-att-href="product.bankayma_website_sale_company_id.website_link"
+                t-esc="product.bankayma_website_sale_company_id.name"
+            />
+        </a>
+    </template>
+</odoo>
