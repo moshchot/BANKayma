@@ -9,6 +9,8 @@ def migrate(env, version=None):
     deduction_tax_groups = (
         env["account.fiscal.position"].search([]).bankayma_deduct_tax_group_id
     )
+    if not deduction_tax_groups:
+        return
     # merge duplicate taxes
     env.cr.execute(
         """
