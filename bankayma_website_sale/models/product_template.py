@@ -17,8 +17,4 @@ class ProductTemplate(models.Model):
             result["base_domain"].append(
                 [("bankayma_website_sale_company_id", "=", int(options["project"]))]
             )
-        else:
-            result["base_domain"].append(
-                [("bankayma_website_sale_company_id", "=", False)]
-            )
         return result
