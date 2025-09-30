@@ -1,0 +1,29 @@
+<odoo>
+    <record id="rule_product_product" model="ir.rule">
+        <field name="name">Restrict editing products to own and children</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="domain_force">
+            [('bankayma_website_sale_company_id', 'in', company_ids)]
+        </field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+
+    <record id="rule_product_template" model="ir.rule">
+        <field name="name">
+            Restrict editing product templates to own and children
+        </field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="domain_force">
+            [('bankayma_website_sale_company_id', 'in', company_ids)]
+        </field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+</odoo>
