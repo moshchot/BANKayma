@@ -232,6 +232,30 @@
         <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
     </record>
 
+    <record id="rule_product_product" model="ir.rule">
+        <field name="name">Restrict editing products to own and children</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+
+    <record id="rule_product_template" model="ir.rule">
+        <field name="name">
+            Restrict editing product templates to own and children
+        </field>
+        <field name="model_id" ref="product.model_product_template" />
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="groups" eval="[Command.link(ref('bankayma_base.group_user'))]" />
+    </record>
+
     <!-- organization manager lifts restrictions above -->
 
     <record id="rule_account_analytic_account_manager" model="ir.rule">
@@ -492,6 +516,36 @@
             Lift restricting editing tax lines to own and children
         </field>
         <field name="model_id" ref="account.model_account_tax_repartition_line" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+    </record>
+
+    <record id="rule_product_product_manager" model="ir.rule">
+        <field name="name">Lift restricting editing products to own and children</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_create" eval="True" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field
+            name="groups"
+            eval="[Command.link(ref('bankayma_base.group_org_manager'))]"
+        />
+    </record>
+
+    <record id="rule_product_template_manager" model="ir.rule">
+        <field name="name">
+            Lift restricting editing product templates to own and children
+        </field>
+        <field name="model_id" ref="product.model_product_template" />
         <field name="domain_force">[(1, '=', 1)]</field>
         <field name="perm_create" eval="True" />
         <field name="perm_read" eval="False" />
