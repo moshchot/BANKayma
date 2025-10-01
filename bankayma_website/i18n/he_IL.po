@@ -260,22 +260,12 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
-msgid "Name"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
-msgid "No results found for"
+msgid "No results found"
 msgstr ""
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_opening_hours
 msgid "Opening hours"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
-msgid "Reset filters"
 msgstr ""
 
 #. module: bankayma_website
@@ -291,11 +281,6 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_subtitle
 msgid "Subtitle"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
-msgid "Tags"
 msgstr ""
 
 #. module: bankayma_website
