@@ -24,4 +24,11 @@
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
     "external_dependencies": {"python": []},
+    "assets": {
+        "web.assets_frontend": [
+            "/bankayma_website/static/src/components/*.js",
+            "/bankayma_website/static/src/components/*.xml",
+            "/bankayma_website/static/src/components/*.scss",
+        ],
+    },
 }

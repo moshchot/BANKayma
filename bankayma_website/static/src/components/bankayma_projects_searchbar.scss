@@ -1,0 +1,12 @@
+.bankayma_projects_searchbar {
+    .badge {
+        cursor: pointer;
+    }
+    .badge::after {
+        content: "\f00d";
+        font-family: Fontawesome;
+    }
+    form .dropdown-item {
+        cursor: pointer;
+    }
+}

@@ -2,71 +2,78 @@
 <!-- Copyright 2024 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <template id="company_list_tags">
+        <ul t-att-class="'nav' if not tags.parent_id else 'dropdown-menu'">
+            <li
+                t-foreach="tags"
+                t-as="tag"
+                t-attf-class="nav-item {{'dropdown' if tag.child_ids else None}}"
+            >
+                <a
+                    t-att-data-search-field="'tags' if not tag.child_ids else None"
+                    t-att-data-search-value="tag.id"
+                    t-attf-class="nav-link {{'dropdown-toggle' if tag.child_ids else None}} {{'ps-0' if tag.child_ids and tag_index == 0 else None}}"
+                    t-att-data-bs-toggle="'dropdown' if tag.child_ids else None"
+                    t-esc="tag.name"
+                    data-bs-auto-close="outside"
+                    href="#"
+                />
+                <t t-if="tag.child_ids" t-call="bankayma_website.company_list_tags">
+                    <t t-set="tags" t-value="tag.child_ids" />
+                </t>
+            </li>
+        </ul>
+    </template>
     <template id="company_list" name="Company list">
         <t t-call="website.layout">
-            <section class="s_searchbar o_colored_level o_cc o_cc2 pt48 pb0">
+            <section class="bankayma_projects_searchbar sticky-top bg-body">
                 <div class="o_container_small">
-                    <form
-                        method="get"
-                        class="o_searchbar_form s_searchbar_input"
-                        action="/projects"
-                    >
-                        <h2>Name</h2>
-                        <div role="search" class="input-group ">
-                            <input
-                                type="search"
-                                name="search"
-                                class="form-control oe_search_box"
-                                placeholder="search..."
-                                t-att-value="search"
+                    <div class="navbar px-0">
+                        <t t-call="bankayma_website.company_list_tags">
+                            <t
+                                t-set="tags"
+                                t-value="objects.env['res.company.tag'].search([('parent_id', '=', False)])"
                             />
-                            <button
-                                type="submit"
-                                class="btn oe_search_button btn-primary"
-                            >
-                                <i class="oi oi-search" />
-                            </button>
-                        </div>
-                        <h2>Tags</h2>
-                        <div role="search" class="input-group ">
+                        </t>
+                        <form
+                            class="d-flex flex-grow-1"
+                            role="search"
+                            method="post"
+                            action="/projects"
+                        >
                             <input
-                                type="search"
+                                type="hidden"
+                                name="csrf_token"
+                                t-att-value="request.csrf_token()"
+                            />
+                            <input
+                                type="hidden"
+                                class="badge"
                                 name="tags"
-                                class="search-query form-control oe_search_box"
-                                placeholder="search..."
                                 t-att-value="tags"
-                                data-limit="10"
-                                data-search-type="res.company.tag"
-                                data-display-image="True"
                             />
-                            <button
-                                type="submit"
-                                class="btn oe_search_button btn-primary"
-                            >
-                                <i class="oi oi-search" />
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-            <section class="o_colored_level o_cc o_cc2 pt48 pb0">
-                <div class="o_container_small">
-                    <a
-                        t-foreach="objects.env['res.company.category'].search([('company_ids', '!=', False), ('category_show_on_website', '=', True)])"
-                        t-as="company_category"
-                        t-attf-href="/projects?category={{company_category.id}}"
-                    >
-                        <span
-                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
-                            t-out="company_category.name"
-                        />
-                    </a>
-                    <a href="/projects">Reset filters</a>
+                            <div class="input-group">
+                                <input
+                                    type="search"
+                                    name="search"
+                                    autocomplete="off"
+                                    class="form-control oe_search_box"
+                                    placeholder="search..."
+                                    t-att-value="search"
+                                />
+                                <button
+                                    class="btn btn-primary oe_search_button"
+                                    type="submit"
+                                >
+                                    <i class="oi oi-search" />
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
             <section
-                class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16"
-                t-if="objects"
+                t-attf-class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16 {{'d-none' if not objects else None}}"
             >
                 <div class="o_container_small">
                     <div class="row d-flex align-items-stretch">
@@ -107,20 +114,11 @@
                                             t-out="object.bankayma_website_subtitle"
                                         />
                                     </h4>
-                                    <a
-                                        t-if="object.category_id"
-                                        t-attf-href="/projects?category={{object.category_id.id}}"
-                                    >
-                                        <span
-                                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
-                                            t-out="object.category_id.name"
-                                        />
-                                    </a>
                                     <div class="o_container_small">
                                         <a
                                             t-foreach="object.tag_ids"
                                             t-as="company_tag"
-                                            t-attf-href="/projects?tags={{company_tag.name}}"
+                                            t-attf-href="/projects?tags={{company_tag.id}}"
                                         >
                                             <span
                                                 class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
@@ -134,13 +132,8 @@
                     </div>
                 </div>
             </section>
-            <section t-if="not objects">
-                <div class="o_container_small">
-                    No results found for
-                    <span
-                        t-out="search or ((category or '').isdigit() and objects.env['res.company.category'].browse(int(category)).display_name or category) or tags"
-                    />
-                </div>
+            <section t-att-class="'d-none' if objects else None">
+                <div class="o_container_small">No results found</div>
             </section>
         </t>
     </template>
