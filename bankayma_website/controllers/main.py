@@ -1,5 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from operator import itemgetter
+import itertools
 
 from lxml import html
 from markupsafe import Markup
@@ -45,57 +45,77 @@ class CompaniesController(http.Controller):
         output += b"</div>"
         return Markup(output.decode("utf8"))
 
-    @http.route("/projects", website=True, auth="public")
-    def render_company_list(self, search=None, category=None, tags=None):
-        ResCompany = http.request.env["res.company"].sudo()
-        ResCompanyCategory = http.request.env["res.company.category"].sudo()
+    def _search_combined(self, search=None, tags=None, limit=None, **kwargs):
         ResCompanyTag = http.request.env["res.company.tag"].sudo()
+        ResCompany = http.request.env["res.company"].sudo()
 
-        domain = [("parent_id", "!=", False)]
-        if category:
-            if category.isdigit() and ResCompanyCategory.browse(int(category)).exists():
-                domain.append(("category_id", "=", int(category)))
-            else:
-                domain.append(("category_id", "ilike", category))
-        else:
-            domain += [
-                "|",
-                ("category_id", "=", False),
-                ("category_id.company_hide_without_category", "=", False),
-            ]
+        other_languages = (
+            http.request.env["res.lang"]
+            .sudo()
+            .search([("code", "!=", http.request.env.lang)])
+            .mapped("code")
+        )
+        tag_ids = list(map(int, filter(None, (tags or "").split(","))))
 
-        if tags:
-            tags_found = ResCompanyTag.browse(
-                map(
-                    itemgetter(0),
-                    (
-                        name_get
-                        for tag in tags.split()
-                        for name_get in ResCompanyTag.name_search(tag)
-                    ),
+        found_tags = ResCompanyTag.browse(
+            ResCompanyTag._name_search(
+                search, args=[("id", "not in", tag_ids)], limit=limit
+            )
+        )
+        for lang in other_languages:
+            found_tags |= ResCompanyTag.browse(
+                ResCompanyTag.with_context(lang=lang)._name_search(
+                    search, args=[("id", "not in", tag_ids)], limit=limit
                 )
             )
 
-            domain += [("tag_ids", "child_of", tags_found.ids)]
-
-        domain += [
+        companies_domain = [
+            ("parent_id", "!=", False),
             "|",
             ("category_id", "=", False),
-            ("category_id.category_show_on_website", "=", True),
+            ("category_id.company_hide_without_category", "=", False),
         ]
 
-        companies = ResCompany.browse(
-            ResCompany._name_search(
-                name=search or "",
-                args=domain,
-            )
+        if tag_ids:
+            companies_domain.append(("tag_ids", "in", tag_ids))
+
+        found_companies = ResCompany.browse(
+            ResCompany._name_search(search, args=companies_domain, limit=limit)
         )
+        for lang in other_languages:
+            found_companies |= ResCompany.browse(
+                ResCompany.with_context(lang=lang)._name_search(
+                    search, args=companies_domain, limit=limit
+                )
+            )
+
+        return found_tags, found_companies
+
+    @http.route("/projects/search", type="json", website=True, auth="public")
+    def search_company(self, search=None, tags=None, limit=5, **kwargs):
+        tags, companies = self._search_combined(
+            search=search, tags=tags, limit=limit, **kwargs
+        )
+        return [
+            (
+                dict(field="tags", name=record.display_name, value=record.id)
+                if record._name == "res.company.tag"
+                else dict(
+                    url=record.website_link,
+                    name=record.display_name,
+                )
+            )
+            for record in list(itertools.chain(tags, companies))[:limit]
+        ]
+
+    @http.route("/projects", website=True, auth="public")
+    def render_company_list(self, search=None, tags=None):
+        _dummy, companies = self._search_combined(search=search, tags=tags)
         return http.Response(
             template="bankayma_website.company_list",
             qcontext={
                 "objects": companies,
                 "search": search,
-                "category": category,
                 "tags": tags,
             },
         )
