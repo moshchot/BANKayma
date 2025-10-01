@@ -91,10 +91,10 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
         if ($(ev.currentTarget).data("search-field")) {
             const field = $(ev.currentTarget).data("search-field");
             const value = $(ev.currentTarget).data("search-value");
+            this.$("input[type='search']").val("");
             this.$(
                 `.nav [data-search-field="${field}"][data-search-value="${value}"]`
             ).click();
-            this.$("input[type='search']").val("");
         }
     },
     onInput: function () {
