@@ -506,13 +506,13 @@ class AccountMove(models.Model):
         if self.env.user.has_group(
             "bankayma_base.group_org_manager"
         ) or self.env.user.has_group("bankayma_base.group_user"):
-            to_send = self.filtered(
+            for to_send in self.filtered(
                 lambda x: x.move_type in ("out_invoice", "in_refund", "out_refund")
                 and not x.auto_invoice_id
                 and not self.search([("auto_invoice_id", "=", x.id)])
                 and not x.journal_id.bankayma_inhibit_mails
-            )
-            if to_send:
+                and not x.invoice_line_ids.sale_line_ids
+            ):
                 action = to_send.with_company(
                     to_send[:1].company_id
                 ).action_invoice_sent()
@@ -527,17 +527,19 @@ class AccountMove(models.Model):
                 wizard.onchange_template_id()
                 with Form(wizard, action["view_id"]) as send_form:
                     send_form.save().send_and_print_action()
-            intercompany = len(self) == 1 and self._find_company_from_invoice_partner()
-            if intercompany:
-                # request a review for counterpart of intercompany sales invoice
-                self.with_company(intercompany).sudo().filtered(
-                    lambda x: x.move_type == "out_invoice"
-                    and x.auto_invoice_ids.need_validation
-                ).mapped("auto_invoice_ids").request_validation()
-                self.filtered(lambda x: not x.is_move_sent).write(
-                    {"is_move_sent": True}
-                )
-                result = {"type": "ir.actions.act_window.page.list"}
+
+        for intercompany in self.filtered(
+            lambda x: x._find_company_from_invoice_partner()
+        ):
+            # request a review for counterpart of intercompany sales invoice
+            intercompany.with_company(intercompany).sudo().filtered(
+                lambda x: x.move_type == "out_invoice"
+                and x.auto_invoice_ids.need_validation
+            ).mapped("auto_invoice_ids").request_validation()
+            intercompany.filtered(lambda x: not x.is_move_sent).write(
+                {"is_move_sent": True}
+            )
+            result = {"type": "ir.actions.act_window.page.list"}
         return result
 
     def _inter_company_create_invoice(self, dest_company):
@@ -958,6 +960,13 @@ class AccountMove(models.Model):
                     this.id,
                 )
         return result
+
+    def _invoice_paid_hook_use_sumit(self):
+        return (
+            self
+            and self.journal_id.use_sumit
+            and self.env.context.get("bankayma_force_sumit", True)
+        )
 
     def _export_rows(self, fields, *, _is_toplevel_call=True):
         result = super()._export_rows(fields, _is_toplevel_call=_is_toplevel_call)

@@ -75,13 +75,7 @@ class AccountMove(models.Model):
         payment = self.line_ids.mapped(
             "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
         )
-        payment_provider = payment.payment_transaction_id.provider_id
-        if (
-            self
-            and self.journal_id.use_sumit
-            and payment_provider.code != "sumit"
-            and self.env.context.get("bankayma_force_sumit", True)
-        ):
+        if self._invoice_paid_hook_use_sumit():
             result = self.env["sumit.account"]._request(
                 "/accounting/documents/create",
                 self._to_sumit_vals(),
@@ -100,3 +94,10 @@ class AccountMove(models.Model):
             )
 
         return super()._invoice_paid_hook()
+
+    def _invoice_paid_hook_use_sumit(self):
+        payment = self.line_ids.mapped(
+            "full_reconcile_id.reconciled_line_ids.move_id.payment_id"
+        )
+        payment_provider = payment.payment_transaction_id.provider_id
+        return self and self.journal_id.use_sumit and payment_provider.code != "sumit"
