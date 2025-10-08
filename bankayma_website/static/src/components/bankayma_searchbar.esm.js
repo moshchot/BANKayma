@@ -11,7 +11,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
         "input input[type='search']": "onInput",
         submit: "onSubmit",
     },
-    selector: ".bankayma_projects_searchbar",
+    selector: ".bankayma_searchbar",
     init: function () {
         this._super.apply(this, arguments);
         this._drop_previous = new concurrency.DropPrevious();
@@ -35,7 +35,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
     getSuggestions: function () {
         this.updateForm();
         return this._rpc({
-            route: "/projects/search",
+            route: this.$("form").data("suggestion-route"),
             params: Object.fromEntries(new FormData(this.$("form")[0])),
         });
     },
@@ -46,7 +46,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
             return;
         }
         const $dropdown = $(
-            qweb.render("bankayma_project_searchbar.suggestions", {
+            qweb.render("bankayma_searchbar.suggestions", {
                 suggestions: suggestions,
             })
         );
@@ -60,7 +60,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
             ).length
         ) {
             $(
-                qweb.render("bankayma_project_searchbar.badge", {
+                qweb.render("bankayma_searchbar.badge", {
                     field: field,
                     name: name,
                     value: value,
@@ -105,7 +105,7 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
     onSubmit: function (ev) {
         this.updateForm();
         ev.preventDefault();
-        $.ajax("/projects", {
+        $.ajax(this.$("form").attr("action"), {
             data: new FormData(this.$("form")[0]),
             processData: false,
             contentType: false,

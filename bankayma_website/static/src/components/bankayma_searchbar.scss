@@ -1,4 +1,4 @@
-.bankayma_projects_searchbar {
+.bankayma_searchbar {
     .badge {
         cursor: pointer;
     }
@@ -9,4 +9,5 @@
     form .dropdown-item {
         cursor: pointer;
     }
+    z-index: 1040;
 }
