@@ -18,6 +18,7 @@
         "data/ir_asset.xml",
         "templates/company_page.xml",
         "templates/company_list.xml",
+        "templates/website_event.xml",
         "views/res_company.xml",
         "views/res_company_category.xml",
     ],
@@ -29,6 +30,7 @@
             "/bankayma_website/static/src/components/*.js",
             "/bankayma_website/static/src/components/*.xml",
             "/bankayma_website/static/src/components/*.scss",
+            "/bankayma_website/static/src/scss/website_event.scss",
         ],
     },
 }
