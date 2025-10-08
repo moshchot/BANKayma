@@ -61,6 +61,13 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.index_topbar
+msgid ""
+"<i class=\"fa fa-folder-open\"/>\n"
+"                    Project"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<i class=\"fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
@@ -221,6 +228,11 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donate Now"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_event_event
+msgid "Event"
 msgstr ""
 
 #. module: bankayma_website
