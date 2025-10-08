@@ -15,6 +15,8 @@ class PaymentTransaction(models.Model):
         result = super()._to_sumit_vals()
         if not self.invoice_ids and self.sale_order_ids.website_id:
             result["DocumentType"] = "8"
+            if self.provider_id.journal_id.bankayma_mail_template_invoice_paid:
+                result["SendUpdateByEmailAddress"] = False
         return result
 
     def _create_payment(self, **extra_create_values):
