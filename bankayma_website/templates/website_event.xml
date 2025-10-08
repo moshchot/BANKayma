@@ -1,0 +1,52 @@
+<odoo>
+    <template id="index_topbar" inherit_id="website_event.index_topbar">
+        <nav position="attributes">
+            <attribute
+                name="class"
+                separator=" "
+                add="bankayma_event_searchbar sticky-top bg-body"
+            />
+        </nav>
+        <xpath expr="//ul[hasclass('o_wevent_index_topbar_filters')]" position="inside">
+            <li class="nav-item dropdown me-2 my-1">
+                <a
+                    href="#"
+                    role="button"
+                    class="btn dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                >
+                    <i class="fa fa-folder-open" />
+                    Project
+                </a>
+                <div class="dropdown-menu">
+                    <t t-foreach="companies_available" t-as="company">
+                        <a
+                            t-att-href="'/event?%s' % keep_query('*', projects=str(((company | companies_selected) if company.id not in companies_selected.ids else (companies_selected - company)).ids))"
+                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id in companies_selected.ids else ''}"
+                        >
+                            <t t-out="company.name" />
+                        </a>
+                    </t>
+                </div>
+            </li>
+        </xpath>
+    </template>
+    <template id="searched_tags" inherit_id="website_event.searched_tags">
+        <div position="after">
+            <div class="d-flex align-items-center mt16">
+                <t t-foreach="companies_selected" t-as="company">
+                    <span
+                        t-attf-class="align-items-baseline border d-inline-flex ps-2 rounded ml16 mb-2"
+                    >
+                        <i class="fa fa-tag me-2 text-muted" />
+                        <t t-out="company.name" />
+                        <a
+                            t-att-href="'/event?%s' % keep_query('*', projects=str((companies_selected - company).ids))"
+                            class="btn border-0 py-1"
+                        >&#215;</a>
+                    </span>
+                </t>
+            </div>
+        </div>
+    </template>
+</odoo>
