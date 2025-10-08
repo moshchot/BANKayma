@@ -1,13 +1,13 @@
 <templates>
     <div
-        t-name="bankayma_project_searchbar.badge"
+        t-name="bankayma_searchbar.badge"
         class="badge bg-o-color-1 me-2"
         t-att-data-search-field="field"
         t-att-data-search-value="value"
     >
         <t t-esc="name" />
     </div>
-    <t t-name="bankayma_project_searchbar.suggestions">
+    <t t-name="bankayma_searchbar.suggestions">
         <button class="d-none" data-bs-toggle="dropdown" />
         <ul class="dropdown-menu w-100">
             <li

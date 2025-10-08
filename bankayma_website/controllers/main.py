@@ -117,5 +117,8 @@ class CompaniesController(http.Controller):
                 "objects": companies,
                 "search": search,
                 "tags": tags,
+                "post_data": {
+                    "tags": tags,
+                },
             },
         )

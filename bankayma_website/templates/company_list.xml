@@ -2,7 +2,7 @@
 <!-- Copyright 2024 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <template id="company_list_tags">
+    <template id="bankayma_searchbar_tags">
         <ul t-att-class="'nav' if not tags.parent_id else 'dropdown-menu'">
             <li
                 t-foreach="tags"
@@ -18,60 +18,73 @@
                     data-bs-auto-close="outside"
                     href="#"
                 />
-                <t t-if="tag.child_ids" t-call="bankayma_website.company_list_tags">
+                <t
+                    t-if="tag.child_ids"
+                    t-call="bankayma_website.bankayma_searchbar_tags"
+                >
                     <t t-set="tags" t-value="tag.child_ids" />
                 </t>
             </li>
         </ul>
     </template>
-    <template id="company_list" name="Company list">
-        <t t-call="website.layout">
-            <section class="bankayma_projects_searchbar sticky-top bg-body">
-                <div class="o_container_small">
-                    <div class="navbar px-0">
-                        <t t-call="bankayma_website.company_list_tags">
-                            <t
-                                t-set="tags"
-                                t-value="objects.env['res.company.tag'].search([('parent_id', '=', False)])"
-                            />
+    <template id="bankayma_searchbar">
+        <section class="bankayma_searchbar sticky-top bg-body">
+            <div class="o_container_small">
+                <div class="navbar px-0">
+                    <t t-foreach="config['badges']" t-as="badge">
+                        <t t-call="bankayma_website.bankayma_searchbar_tags">
+                            <t t-set="tags" t-value="config['badges'][badge]" />
                         </t>
-                        <form
-                            class="d-flex flex-grow-1"
-                            role="search"
-                            method="post"
-                            action="/projects"
-                        >
-                            <input
-                                type="hidden"
-                                name="csrf_token"
-                                t-att-value="request.csrf_token()"
-                            />
+                    </t>
+                    <form
+                        class="d-flex flex-grow-1"
+                        role="search"
+                        method="post"
+                        t-att-action="config['action']"
+                        t-att-data-suggestion-route="config['suggestions']"
+                    >
+                        <input
+                            type="hidden"
+                            name="csrf_token"
+                            t-att-value="request.csrf_token()"
+                        />
+                        <t t-foreach="config['badges']" t-as="badge">
                             <input
                                 type="hidden"
                                 class="badge"
-                                name="tags"
-                                t-att-value="tags"
+                                t-att-name="badge"
+                                t-att-value="post_data[badge]"
                             />
-                            <div class="input-group">
-                                <input
-                                    type="search"
-                                    name="search"
-                                    autocomplete="off"
-                                    class="form-control oe_search_box"
-                                    placeholder="search..."
-                                    t-att-value="search"
-                                />
-                                <button
-                                    class="btn btn-primary oe_search_button"
-                                    type="submit"
-                                >
-                                    <i class="oi oi-search" />
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        </t>
+                        <div class="input-group">
+                            <input
+                                type="search"
+                                name="search"
+                                autocomplete="off"
+                                class="form-control oe_search_box"
+                                placeholder="search..."
+                                t-att-value="search"
+                            />
+                            <button
+                                class="btn btn-primary oe_search_button"
+                                type="submit"
+                            >
+                                <i class="oi oi-search" />
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </section>
+            </div>
+        </section>
+    </template>
+    <template id="company_list" name="Company list">
+        <t t-call="website.layout">
+            <t t-call="bankayma_website.bankayma_searchbar">
+                <t
+                    t-set="config"
+                    t-value="{'action': '/projects', 'suggestions': '/projects/search', 'badges': {'tags': objects.env['res.company.tag'].search([('parent_id', '=', False)])}}"
+                />
+            </t>
             <section
                 t-attf-class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16 {{'d-none' if not objects else None}}"
             >
