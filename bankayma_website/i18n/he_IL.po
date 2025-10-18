@@ -66,6 +66,8 @@ msgid ""
 "<i class=\"fa fa-folder-open\"/>\n"
 "                    Project"
 msgstr ""
+"<i class=\"fa fa-folder-open\"/>\n"
+"                    פרוייקט"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -76,6 +78,11 @@ msgid ""
 "                                            donation\n"
 "                                        </span>"
 msgstr ""
+"<i class=\"fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            תרומה\n"
+"                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -86,6 +93,11 @@ msgid ""
 "                                            about\n"
 "                                        </span>"
 msgstr ""
+"<i class=\"fa fa-info fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            אודות\n"
+"                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -96,6 +108,11 @@ msgid ""
 "                                            contact\n"
 "                                        </span>"
 msgstr ""
+"<i class=\"fa fa-phone fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            קשר\n"
+"                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -106,6 +123,11 @@ msgid ""
 "                                            media\n"
 "                                        </span>"
 msgstr ""
+"<i class=\"fa fa-photo fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            מדיה\n"
+"                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -116,6 +138,11 @@ msgid ""
 "                                            crew\n"
 "                                        </span>"
 msgstr ""
+"<i class=\"fa fa-user fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            צוות\n"
+"                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -127,6 +154,12 @@ msgid ""
 "                                            backers\n"
 "                                        </span>"
 msgstr ""
+"<i class=\"fa fa-user-circle-o fa-fw o_not-animable mx-auto d-block fa-2x\"/"
+">\n"
+"                                        <span style=\"font-size: 18px; font-"
+"weight: normal;\">\n"
+"                                            תומכים\n"
+"                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -161,6 +194,12 @@ msgid ""
 "                                <span>updates</span>\n"
 "                            </span>"
 msgstr ""
+"<span class=\"s_badge badge bg-o-color-3 text-o-color-1 o_animable\" data-"
+"name=\"תג\" data-snippet=\"s_badge\" style=\"font-size: 36px;\">\n"
+"                                <i class=\"fa fa-bullhorn fa-fw o_not-"
+"animable mx-auto d-block fa-2x\"/>\n"
+"                                <span>עדכונים</span>\n"
+"                            </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -169,6 +208,9 @@ msgid ""
 "                                        <strong>our crew</strong>\n"
 "                                    </span>"
 msgstr ""
+"<span style=\"font-size: 36px;\">\n"
+"                                        <strong>הצוות שלנו</strong>\n"
+"                                    </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -177,21 +219,24 @@ msgid ""
 "                                <strong>backers</strong>\n"
 "                            </span>"
 msgstr ""
+"<span style=\"font-size: 36px;\">\n"
+"                                <strong>תומכים</strong>\n"
+"                            </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>donation</strong>"
-msgstr ""
+msgstr "<strong>תרומה</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>events</strong>"
-msgstr ""
+msgstr "<strong>אירועים</strong>"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_backer_partner_ids
 msgid "Backers"
-msgstr ""
+msgstr "תומכים"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_videolink_embed
@@ -211,12 +256,12 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_cover
 msgid "Cover image"
-msgstr ""
+msgstr "תמונה ראשית"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_crew_partner_ids
 msgid "Crew"
-msgstr ""
+msgstr "צוות"
 
 #. module: bankayma_website
 #: model:ir.model.fields,help:bankayma_website.field_res_company_category__company_hide_without_category
@@ -228,12 +273,12 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donate Now"
-msgstr ""
+msgstr "תרמו עכשיו"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_event_event
 msgid "Event"
-msgstr ""
+msgstr "אירוע"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_geolink
@@ -263,7 +308,7 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_inception_year
 msgid "Inception year"
-msgstr ""
+msgstr "שנת הקמה"
 
 #. module: bankayma_website
 #: model:res.partner.relation.type,name:bankayma_website.rel_type_backer
@@ -278,7 +323,7 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_opening_hours
 msgid "Opening hours"
-msgstr ""
+msgstr "שעות פתיחה"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company_category__category_show_on_website
@@ -338,7 +383,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.bankayma_searchbar
 msgid "search..."
-msgstr ""
+msgstr "חיפוש.."
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
