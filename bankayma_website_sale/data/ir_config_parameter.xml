@@ -3,4 +3,8 @@
         <value>sale.automatic_invoice</value>
         <value>1</value>
     </function>
+    <function model="ir.config_parameter" name="set_param">
+        <value>sale.default_invoice_email_template</value>
+        <value eval="False" />
+    </function>
 </odoo>
