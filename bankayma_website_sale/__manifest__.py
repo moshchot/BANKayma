@@ -16,9 +16,15 @@
         "data/ir_config_parameter.xml",
         "security/bankayma_website_sale.xml",
         "templates/company_page.xml",
+        "templates/website_event.xml",
         "templates/website_sale.xml",
         "views/product_template.xml",
     ],
+    "assets": {
+        "web.assets_frontend": [
+            "web/static/src/views/fields/many2many_tags/tags_list.scss",
+        ],
+    },
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
     "external_dependencies": {"python": []},
