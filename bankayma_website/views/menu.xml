@@ -1,0 +1,39 @@
+<odoo>
+    <menuitem
+        id="menu_bankayma_website_root"
+        name="BANKayma website"
+        sequence="110"
+        web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
+        groups="bankayma_base.group_org_manager,bankayma_base.group_full"
+    />
+    <record id="action_categories" model="ir.actions.act_window">
+        <field name="name">Product categories</field>
+        <field name="res_model">product.category</field>
+        <field
+            name="domain"
+            eval="&quot;[('id', 'in', [%d, %d])]&quot; % (ref('bankayma_website.product_category_webshop_product'), ref('bankayma_website.product_category_webshop_event'))"
+        />
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="menu_categories"
+        action="action_categories"
+        parent="menu_bankayma_website_root"
+        sequence="10"
+    />
+    <record id="action_event_types" model="ir.actions.act_window">
+        <field name="name">Event templates</field>
+        <field name="res_model">event.type</field>
+        <field
+            name="domain"
+            eval="&quot;[('id', 'in', [%d])]&quot; % (ref('bankayma_website.event_type_webshop'),)"
+        />
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="menu_event_types"
+        action="action_event_types"
+        parent="menu_bankayma_website_root"
+        sequence="20"
+    />
+</odoo>

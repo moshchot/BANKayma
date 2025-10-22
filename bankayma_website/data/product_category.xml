@@ -1,0 +1,10 @@
+<odoo>
+    <record id="product_category_webshop_product" model="product.category">
+        <field name="name">Webshop product</field>
+        <field name="parent_id" ref="product.product_category_1" />
+    </record>
+    <record id="product_category_webshop_event" model="product.category">
+        <field name="name">Webshop event</field>
+        <field name="parent_id" ref="product.product_category_1" />
+    </record>
+</odoo>
