@@ -13,5 +13,15 @@
                 t-esc="product.bankayma_website_sale_company_id.name"
             />
         </a>
+        <p t-field="product.description_sale" position="before">
+            <p t-if="product.product_tag_ids" class="oe-product-tags">
+                <span
+                    t-foreach="product.product_tag_ids"
+                    t-as="tag"
+                    t-field="tag.name"
+                    t-attf-class="o_tag o_tag_color_{{tag.color}} badge"
+                />
+            </p>
+        </p>
     </template>
 </odoo>

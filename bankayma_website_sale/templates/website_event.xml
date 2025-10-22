@@ -1,0 +1,22 @@
+<odoo>
+    <template
+        id="event_description_full"
+        inherit_id="website_event.event_description_full"
+    >
+        <xpath expr="//div[hasclass('o_wevent_sidebar_block')]" position="before">
+            <div class="o_wevent_sidebar_block" t-if="event.tag_ids">
+                <t
+                    t-foreach="event.tag_ids.filtered(lambda tag: tag.category_id.is_published)"
+                    t-as="tag"
+                >
+                    <span
+                        t-if="tag.color"
+                        t-attf-class="badge mr4 #{'o_tag_color_%s' % tag.color if tag.color else ''}"
+                    >
+                        <span t-out="tag.name" />
+                    </span>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>
