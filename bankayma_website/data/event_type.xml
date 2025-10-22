@@ -1,0 +1,5 @@
+<odoo>
+    <record id="event_type_webshop" model="event.type">
+        <field name="name">Website event</field>
+    </record>
+</odoo>
