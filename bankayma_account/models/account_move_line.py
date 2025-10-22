@@ -140,9 +140,8 @@ class AccountMoveLine(models.Model):
     def _to_sumit_vals(self):
         result = super()._to_sumit_vals()
         result["Description"] = self.name
-        result["Item"]["Name"] = "[%s%s] %s: %s" % (
-            self.company_id.code,
-            self.product_id.code,
+        result["Item"]["Name"] = "[%s] %s: %s" % (
+            self.account_id.code,
             self.move_id.company_id.name,
             self.product_id.name or self.name,
         )
