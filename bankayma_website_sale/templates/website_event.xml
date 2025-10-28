@@ -19,4 +19,27 @@
             </div>
         </xpath>
     </template>
+    <template
+        id="registration_template"
+        inherit_id="website_event.registration_template"
+    >
+        <xpath
+            expr="(//t[@t-call='website_event.registration_configure_tickets_button'])[1]"
+            position="attributes"
+        >
+            <attribute name="t-if" separator=" " add=" and False" />
+        </xpath>
+        <xpath
+            expr="(//t[@t-call='website_event.registration_configure_tickets_button'])[2]"
+            position="attributes"
+        >
+            <attribute name="t-if" separator=" " add=" and False" />
+        </xpath>
+        <xpath
+            expr="(//t[@t-call='website_event.registration_configure_tickets_button'])[3]"
+            position="attributes"
+        >
+            <attribute name="t-if" separator=" " add=" and False" />
+        </xpath>
+    </template>
 </odoo>

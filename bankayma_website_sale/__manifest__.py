@@ -13,16 +13,22 @@
         "website_event_sale",
     ],
     "data": [
+        "data/product_product.xml",
         "data/ir_config_parameter.xml",
         "security/bankayma_website_sale.xml",
         "templates/company_page.xml",
         "templates/website_event.xml",
         "templates/website_sale.xml",
+        "views/event_event.xml",
+        "views/product_product.xml",
         "views/product_template.xml",
     ],
     "assets": {
         "web.assets_frontend": [
             "web/static/src/views/fields/many2many_tags/tags_list.scss",
+        ],
+        "website.assets_editor": [
+            "bankayma_website_sale/static/src/components/bankayma_configure_tickets.*",
         ],
     },
     "demo": [],

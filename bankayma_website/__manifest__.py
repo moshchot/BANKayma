@@ -9,7 +9,8 @@
     "application": True,
     "depends": [
         "bankayma_account",
-        "website_event",
+        "website_event_questions",
+        "website_event_track",
         "partner_multi_relation",
         "res_company_category",
     ],
@@ -34,6 +35,9 @@
             "/bankayma_website/static/src/components/*.xml",
             "/bankayma_website/static/src/components/*.scss",
             "/bankayma_website/static/src/scss/website_event.scss",
+        ],
+        "website.assets_editor": [
+            "/bankayma_website/static/src/components_editor/*.js",
         ],
     },
 }

@@ -1,0 +1,90 @@
+<odoo>
+    <record id="event_event_view_form_add" model="ir.ui.view">
+        <field name="inherit_id" ref="website_event.event_event_view_form_add" />
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <field name="address_id" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        'default_category_id': [(6, 0, [%(bankayma_base.res_partner_category_venue)s])],
+                        'form_view_ref': 'bankayma_base.bankayma_partner_venue_form',
+                    }
+                </attribute>
+                <attribute name="domain" operation="domain_add">
+                    [('category_id', '=', %(bankayma_base.res_partner_category_venue)s)]
+                </attribute>
+            </field>
+            <label for="date_begin" position="before">
+                <field name="company_id" invisible="True" />
+                <field
+                    name="date_begin"
+                    widget="daterange"
+                    options="{'related_end_date': 'date_end'}"
+                />
+                <field name="tag_ids" widget="many2many_tags" />
+                <field name="cover_image" widget="image" />
+            </label>
+            <label for="date_begin" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </label>
+            <xpath
+                expr="//label[@for='date_begin']/following-sibling::div"
+                position="attributes"
+            >
+                <attribute name="invisible">True</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="website_event.event_event_action_add" model="ir.actions.act_window">
+        <field
+            name="context"
+            eval="&quot;{'default_address_id': False, 'default_company_id': allowed_company_ids[0], 'default_event_type_id': %d}&quot; % ref('bankayma_website.event_type_webshop')"
+        />
+    </record>
+    <record id="view_event_event_bankayma_configure_tickets" model="ir.ui.view">
+        <field name="inherit_id" ref="event.view_event_form" />
+        <field name="mode">primary</field>
+        <field name="priority">500</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <sheet position="after">
+                <sheet>
+                    <field name="name" invisible="True" />
+                    <group name="bankayma_main">
+                        <group name="bankayma_left" />
+                        <group name="bankayma_right" />
+                    </group>
+                    <notebook name="bankayma_notebook" />
+                </sheet>
+            </sheet>
+            <group name="bankayma_left" position="inside">
+                <field name="auto_confirm" position="move" />
+            </group>
+            <group name="bankayma_right" position="inside">
+                <label for="seats_limited" position="move" />
+                <xpath expr="//div/field[@name='seats_limited']/.." position="move" />
+            </group>
+            <notebook name="bankayma_notebook" position="inside">
+                <page name="tickets" position="move" />
+                <xpath expr="//page/field[@name='question_ids']/.." position="move" />
+            </notebook>
+            <header position="replace" />
+            <sheet position="replace" />
+            <div class="oe_chatter" position="replace" />
+        </field>
+    </record>
+    <record id="action_bankayma_configure_tickets" model="ir.actions.act_window">
+        <field name="name">Configure Tickets</field>
+        <field name="res_model">event.event</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record
+        id="action_bankayma_configure_tickets_form"
+        model="ir.actions.act_window.view"
+    >
+        <field name="view_mode">form</field>
+        <field name="act_window_id" ref="action_bankayma_configure_tickets" />
+        <field name="view_id" ref="view_event_event_bankayma_configure_tickets" />
+    </record>
+</odoo>

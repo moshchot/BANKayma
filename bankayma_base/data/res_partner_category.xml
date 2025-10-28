@@ -1,0 +1,5 @@
+<odoo>
+    <record id="res_partner_category_venue" model="res.partner.category">
+        <field name="name">Venue</field>
+    </record>
+</odoo>

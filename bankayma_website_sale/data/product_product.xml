@@ -1,0 +1,5 @@
+<odoo>
+    <record id="event_sale.product_product_event" model="product.product">
+        <field name="categ_id" ref="bankayma_website.product_category_webshop_event" />
+    </record>
+</odoo>

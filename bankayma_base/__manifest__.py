@@ -74,6 +74,7 @@
     "data": [
         "data/mail_message_subtype.xml",
         "data/res_company.xml",
+        "data/res_partner_category.xml",
         "data/res_users.xml",
         "security/bankayma_base.xml",
         "security/ir.model.access.csv",
