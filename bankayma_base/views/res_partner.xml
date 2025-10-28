@@ -154,4 +154,19 @@
             </xpath>
         </field>
     </record>
+    <record id="bankayma_partner_venue_form" model="ir.ui.view">
+        <field name="priority">510</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" required="True" />
+                    <field name="street" required="True" />
+                    <field name="street2" />
+                    <field name="city" required="True" />
+                    <field name="zip" required="True" />
+                </group>
+            </form>
+        </field>
+    </record>
 </odoo>

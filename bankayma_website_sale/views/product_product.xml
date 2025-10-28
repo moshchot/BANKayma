@@ -1,0 +1,19 @@
+<odoo>
+    <record id="product_product_view_form_add" model="ir.ui.view">
+        <field name="inherit_id" ref="website_sale.product_product_view_form_add" />
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="bankayma_website_sale_company_id" invisible="True" />
+                <field name="list_price" required="True" widget="monetary" />
+                <field name="image_1920" required="True" widget="image" />
+            </field>
+        </field>
+    </record>
+    <record id="website_sale.product_product_action_add" model="ir.actions.act_window">
+        <field
+            name="context"
+            eval="&quot;{'default_bankayma_website_sale_company_id': allowed_company_ids[0], 'default_categ_id': %d}&quot; % ref('bankayma_website.product_category_webshop_product')"
+        />
+    </record>
+</odoo>

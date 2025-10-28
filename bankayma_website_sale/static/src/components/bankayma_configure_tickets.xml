@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="bankayma_website_sale.BankaymaConfigureTickets" owl="1">
+        <div class="bankayma_configure_tickets">
+            <a href="#" accesskey="t" t-on-click="configureTickets">
+                <span class="fa fa-cog" />
+                <span class="d-none d-md-block ms-2">Configure Tickets</span>
+            </a>
+        </div>
+    </t>
+</templates>
