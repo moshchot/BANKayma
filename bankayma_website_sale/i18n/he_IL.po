@@ -40,6 +40,19 @@ msgid "Company (webshop)"
 msgstr ""
 
 #. module: bankayma_website_sale
+#. odoo-javascript
+#: code:addons/bankayma_website_sale/static/src/components/bankayma_configure_tickets.xml:0
+#: model:ir.actions.act_window,name:bankayma_website_sale.action_bankayma_configure_tickets
+#, python-format
+msgid "Configure Tickets"
+msgstr ""
+
+#. module: bankayma_website_sale
+#: model:ir.model,name:bankayma_website_sale.model_event_event
+msgid "Event"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_account_move_line
 msgid "Journal Item"
 msgstr ""
