@@ -330,6 +330,11 @@ msgid "Vendor"
 msgstr "ספק"
 
 #. module: bankayma_base
+#: model:res.partner.category,name:bankayma_base.res_partner_category_venue
+msgid "Venue"
+msgstr ""
+
+#. module: bankayma_base
 #: model_terms:ir.ui.view,arch_db:bankayma_base.mail_header
 msgid "View"
 msgstr ""

@@ -234,6 +234,11 @@ msgid "<strong>events</strong>"
 msgstr "<strong>אירועים</strong>"
 
 #. module: bankayma_website
+#: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_root
+msgid "BANKayma website"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_backer_partner_ids
 msgid "Backers"
 msgstr "תומכים"
@@ -244,13 +249,41 @@ msgid "Bankayma Website Videolink Embed"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_blog_post
+msgid "Blog Post"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.ui.menu,name:bankayma_website.menu_blog_posts
+msgid "Blog Post Pages"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company
 msgid "Companies"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_blog_post__company_id
+msgid "Company"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company_category
 msgid "Company Categories"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_blog_blog__cover_image
+#: model:ir.model.fields,field_description:bankayma_website.field_blog_post__cover_image
+#: model:ir.model.fields,field_description:bankayma_website.field_event_event__cover_image
+#: model:ir.model.fields,field_description:bankayma_website.field_website_cover_properties_mixin__cover_image
+msgid "Cover Image"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_website_cover_properties_mixin
+msgid "Cover Properties Website Mixin"
 msgstr ""
 
 #. module: bankayma_website
@@ -279,6 +312,12 @@ msgstr "תרמו עכשיו"
 #: model:ir.model,name:bankayma_website.model_event_event
 msgid "Event"
 msgstr "אירוע"
+
+#. module: bankayma_website
+#: model:ir.actions.act_window,name:bankayma_website.action_event_types
+#: model:ir.ui.menu,name:bankayma_website.menu_event_types
+msgid "Event templates"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_geolink
@@ -326,6 +365,12 @@ msgid "Opening hours"
 msgstr "שעות פתיחה"
 
 #. module: bankayma_website
+#: model:ir.actions.act_window,name:bankayma_website.action_categories
+#: model:ir.ui.menu,name:bankayma_website.menu_categories
+msgid "Product categories"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company_category__category_show_on_website
 msgid "Show on website"
 msgstr ""
@@ -368,6 +413,11 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website description"
+msgstr ""
+
+#. module: bankayma_website
+#: model:event.type,name:bankayma_website.event_type_webshop
+msgid "Website event"
 msgstr ""
 
 #. module: bankayma_website
