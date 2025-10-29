@@ -16,10 +16,16 @@
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem
+        id="menu_blog_posts"
+        action="website_blog.action_blog_post"
+        parent="menu_bankayma_website_root"
+        sequence="50"
+    />
+    <menuitem
         id="menu_categories"
         action="action_categories"
         parent="menu_bankayma_website_root"
-        sequence="10"
+        sequence="100"
     />
     <record id="action_event_types" model="ir.actions.act_window">
         <field name="name">Event templates</field>
@@ -34,6 +40,6 @@
         id="menu_event_types"
         action="action_event_types"
         parent="menu_bankayma_website_root"
-        sequence="20"
+        sequence="200"
     />
 </odoo>

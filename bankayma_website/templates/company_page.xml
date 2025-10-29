@@ -9,6 +9,10 @@
                 t-set="events"
                 t-value="request.env['event.event'].search([('is_published', '=', True), ('company_id', '=', object.id)])"
             />
+            <t
+                t-set="blog_posts"
+                t-value="request.env['blog.post'].search([('company_id', '=', object.id), ('is_published', '=', True)], limit=5)"
+            />
             <div id="wrap" class="oe_structure oe_empty">
                 <section
                     class="s_text_block o_colored_level pb0 pt0"
@@ -175,7 +179,10 @@
                                         </span>
                                     </a>
                                 </span>
-                                <span class="s_badge badge o_animable bg-white-25">
+                                <span
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="blog_posts"
+                                >
                                     <a href="#updates">
                                         <i
                                             class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
@@ -301,6 +308,7 @@
                     class="s_text_block pt40 pb40 o_colored_level o_cc o_cc4"
                     style="background-image: none;"
                     id="updates"
+                    t-if="blog_posts"
                 >
                     <div class="s_allow_columns container-fluid">
                         <p style="text-align: center;">
@@ -316,10 +324,7 @@
                                 <span>updates</span>
                             </span>
                         </p>
-                        <h4
-                            t-foreach="request.env['blog.blog'].search([]).blog_post_ids[:5]"
-                            t-as="blog_post"
-                        >
+                        <h4 t-foreach="blog_posts" t-as="blog_post">
                             <span
                                 class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
                                 t-attf-style="animation-delay: {{blog_post_index + 1}}s;"
