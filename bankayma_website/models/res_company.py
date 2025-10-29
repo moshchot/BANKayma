@@ -1,6 +1,6 @@
 # Copyright 2024 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from urllib.parse import quote_plus, urlparse, urlunparse
+from urllib.parse import quote_plus
 
 from odoo import api, fields, models
 
@@ -47,17 +47,7 @@ class ResCompany(models.Model):
             if not _id:
                 this.website_link = False
                 continue
-            base_url = urlparse(this.get_base_url())
-            this.website_link = urlunparse(
-                (
-                    base_url.scheme,
-                    base_url.netloc,
-                    f"projects/{slugify(this.seo_name or this.name)}-{_id}",
-                    None,
-                    None,
-                    None,
-                )
-            )
+            this.website_link = f"/projects/{slugify(this.seo_name or this.name)}-{_id}"
 
     @api.depends("street", "city", "country_id")
     def _compute_bankayma_website_geolink(self):
