@@ -6,7 +6,7 @@
     <menuitem
         id="menu_bankayma_root"
         name="BANKayma"
-        sequence="100"
+        sequence="1"
         action="board.open_board_my_dash_action"
         web_icon="bankayma_base,static/description/icon.png"
         groups="group_user,group_full"
