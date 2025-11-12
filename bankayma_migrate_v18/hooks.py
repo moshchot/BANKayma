@@ -1,4 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from openupgradelib.openupgrade import update_module_names
 from openupgradelib.openupgrade_merge_records import merge_records
 
 from odoo import SUPERUSER_ID, api
@@ -28,18 +29,42 @@ def pre_init_hook(cr):
         """
     )
 
+    for table in (
+        "res_company",
+        "res_company_bankayma_website_image_rel",
+        "res_company_crew_res_partner_rel",
+    ):
+        # pylint: disable=sql-injection
+        cr.execute(f"create table {table}_bk_pre_v18 as select * from {table}")
+
+    for table, column in (
+        ("ir_attachment", "res_id"),
+        ("res_company_res_company_tag_rel", "res_company_id"),
+        ("event_event", "company_id"),
+        ("product_template", "bankayma_website_sale_company_id"),
+    ):
+        # pylint: disable=sql-injection
+        cr.execute(f"alter table {table} add column {column}_bk_pre_v18 int")
+        # pylint: disable=sql-injection
+        cr.execute(f"update {table} set {column}_bk_pre_v18={column}")
+
 
 def post_init_hook(cr, registry):
     env = api.Environment(cr, SUPERUSER_ID, {}, su=True)
     main_company = env.ref("base.main_company")
     cr.execute("drop index account_move_unique_name")
+
+    env.ref("operating_unit.main_operating_unit").bankayma_from_company_id = env.ref(
+        "base.main_company"
+    )
+
     for company in (
         env["res.company"]
         .with_context(active_test=False)
         .search(
             [
                 ("id", "!=", main_company.id),
-            ]
+            ],
         )
     ):
         ou = env["operating.unit"].create(
@@ -48,9 +73,13 @@ def post_init_hook(cr, registry):
                 "code": company.code,
                 "name": company.name,
                 "partner_id": company.partner_id.id,
+                "active": company.active,
+                "parent_id": env["operating.unit"]
+                .search([("bankayma_from_company_id", "=", company.parent_id.id)])
+                .id,
             }
         )
-        for model in ("account.move", "account.move.line"):
+        for model in ("account.move", "account.move.line", "account.analytic.account"):
             records = (
                 env[model]
                 .with_context(active_test=False)
@@ -62,16 +91,17 @@ def post_init_hook(cr, registry):
             )
             validate_fields = records._validate_fields
             records.__class__._validate_fields = lambda self, *args, **kwargs: None
-            records.with_context(skip_validation_check=True).write(
+            vals = (
                 {
                     "operating_unit_id": ou.id,
                 }
+                if "operating_unit_id" in records._fields
+                else {
+                    "operating_unit_ids": ou.ids,
+                }
             )
+            records.with_context(skip_validation_check=True).write(vals)
             records.__class__._validate_fields = validate_fields
-
-    env.ref("operating_unit.main_operating_unit").bankayma_from_company_id = env.ref(
-        "base.main_company"
-    )
 
     for user in env["res.users"].with_context(active_test=False).search([]):
         user.default_operating_unit_id = user.company_id.bankayma_to_operating_unit_ids
@@ -107,15 +137,15 @@ def post_init_hook(cr, registry):
             )
         )
         for record in records:
+            other_records = record._company_cascade_get_all() - record
             merge_records(
                 env,
                 record._name,
-                (record._company_cascade_get_all() - record).ids,
+                other_records.ids,
                 record.id,
                 method="sql",
             )
             env.cr.commit()
-    # TODO: merge/drop analytic plan columns
     for unique_name_model in ("account.reconcile.model",):
         for record in (
             env[unique_name_model]
@@ -147,9 +177,23 @@ def post_init_hook(cr, registry):
     )
 
     multicompany_group = env.ref("base.group_multi_company")
+    multi_ou_group = env.ref("operating_unit.group_multi_operating_unit")
     env.ref("base.group_user").implied_ids -= multicompany_group
+    env.ref("base.group_user").implied_ids += multi_ou_group
     env["res.users"].with_context(active_test=False).search([]).write(
         {
-            "groups_id": [Command.unlink(multicompany_group.id)],
+            "groups_id": [
+                Command.unlink(multicompany_group.id),
+                Command.link(multi_ou_group.id),
+            ],
         }
+    )
+    update_module_names(
+        cr,
+        [
+            ("company_cascade", "bankayma_base"),
+            ("company_cascade_category", "bankayma_base"),
+            ("res_company_tag", "bankayma_base"),
+        ],
+        merge_modules=True,
     )
