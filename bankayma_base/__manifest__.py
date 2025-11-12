@@ -78,6 +78,7 @@
         "data/res_users.xml",
         "security/bankayma_base.xml",
         "security/ir.model.access.csv",
+        "security/ir_model_access.xml",
         "data/mailing_list.xml",
         "views/res_company.xml",
         "views/res_company_category.xml",
