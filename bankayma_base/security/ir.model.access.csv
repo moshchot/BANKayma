@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_res_company_projman,access_res_company_projman,base.model_res_company,group_manager,1,1,0,0
 access_res_users_orgman,access_res_users_orgman,base.model_res_users,group_org_manager,1,1,0,0
+access_res_bank_group_full,access_res_bank_group_full,base.model_res_bank,group_full,1,1,1,1
