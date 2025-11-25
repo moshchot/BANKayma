@@ -962,11 +962,9 @@ class AccountMove(models.Model):
         return result
 
     def _invoice_paid_hook_use_sumit(self):
-        return (
-            self
-            and self.journal_id.use_sumit
-            and self.env.context.get("bankayma_force_sumit", True)
-        )
+        if "bankayma_force_sumit" in self.env.context:
+            return self.env.context["bankayma_force_sumit"]
+        return super()._invoice_paid_hook_use_sumit()
 
     def _export_rows(self, fields, *, _is_toplevel_call=True):
         result = super()._export_rows(fields, _is_toplevel_call=_is_toplevel_call)
