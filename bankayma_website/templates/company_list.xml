@@ -109,7 +109,7 @@
                                     t-if="object.logo"
                                 />
                                 <div class="s_features_grid_content">
-                                    <h4 class="card-title" style="text-align: center;">
+                                    <h4 class="card-title" style="">
                                         <span style="font-size: 24px;">
                                             <b>
                                                 <a
@@ -120,7 +120,7 @@
                                         </span>
                                     </h4>
                                     <h4
-                                        style="text-align: center;"
+                                        style=""
                                         t-if="object.bankayma_website_subtitle"
                                     >
                                         <span
