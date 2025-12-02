@@ -88,7 +88,7 @@
             <section
                 t-attf-class="s_features_grid o_colored_level pb0 pt32 {{'d-none' if not objects else None}}"
             >
-                <div class="o_container">
+                <div class="container justify-content-around">
                     <div class="row d-flex align-items-stretch">
                         <div
                             class="s_col_no_bgcolor pb24 col-lg-4"
@@ -98,7 +98,7 @@
                             <div
                                 class="col-lg-12 pt16 pb16 o_colored_level border rounded"
                                 data-name="Box"
-                                style="border-color: rgb(233, 236, 239) !important; border-radius: 50px !important;"
+                                style="min-height:150px; border-color: rgb(233, 236, 239) !important; border-radius: 50px !important;"
                             >
                                 <img
                                     t-att-src="image_data_uri(object.logo)"
@@ -128,7 +128,7 @@
                                             t-out="object.bankayma_website_subtitle"
                                         />
                                     </h4>
-                                    <div class="o_container_small">
+                                    <div class="container justify-content-around">
                                         <a
                                             t-foreach="object.tag_ids"
                                             t-as="company_tag"
