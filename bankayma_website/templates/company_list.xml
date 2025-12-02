@@ -86,29 +86,30 @@
                 />
             </t>
             <section
-                t-attf-class="s_three_columns o_colored_level o_cc o_cc1 pt0 pb16 {{'d-none' if not objects else None}}"
+                t-attf-class="s_features_grid o_colored_level pb0 pt32 {{'d-none' if not objects else None}}"
             >
-                <div class="o_container_small">
+                <div class="o_container">
                     <div class="row d-flex align-items-stretch">
                         <div
-                            class="col-lg-4 s_col_no_bgcolor pt16 pb4"
+                            class="s_col_no_bgcolor pb24 col-lg-4"
                             t-foreach="objects"
                             t-as="object"
                         >
                             <div
-                                class="card text-bg-white h-100"
-                                style="border-style: double !important; border-color: rgb(4, 159, 123) !important;"
+                                class="col-lg-12 pt16 pb16 o_colored_level border rounded"
+                                data-name="Box"
+                                style="border-color: rgb(233, 236, 239) !important; border-radius: 50px !important;"
                             >
                                 <img
                                     t-att-src="image_data_uri(object.logo)"
                                     t-att-alt="object.name"
-                                    class="card-img-top img img-fluid o_we_custom_image mx-auto d-block rounded-circle"
-                                    style="width: 50% !important;"
+                                    class="s_features_grid_icon img img-fluid o_we_custom_image"
+                                    style="width: 25% !important;"
                                     loading="lazy"
                                     t-if="object.logo"
                                 />
-                                <div class="card-body">
-                                    <h3 class="card-title" style="text-align: center;">
+                                <div class="s_features_grid_content">
+                                    <h4 class="card-title" style="text-align: center;">
                                         <span style="font-size: 24px;">
                                             <b>
                                                 <a
@@ -117,7 +118,7 @@
                                                 />
                                             </b>
                                         </span>
-                                    </h3>
+                                    </h4>
                                     <h4
                                         style="text-align: center;"
                                         t-if="object.bankayma_website_subtitle"
