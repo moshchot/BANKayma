@@ -49,14 +49,52 @@ def pre_init_hook(cr):
         cr.execute(f"update {table} set {column}_bk_pre_v18={column}")
 
 
+def post_init_hook_assign_records(env, company, ou, extra_models=None):
+    for model in ("account.move", "account.move.line") + (
+        extra_models and extra_models or ()
+    ):
+        records = (
+            env[model]
+            .with_context(active_test=False)
+            .search(
+                [
+                    ("company_id", "=", company.id),
+                ]
+            )
+        )
+        validate_fields = records._validate_fields
+        records.__class__._validate_fields = lambda self, *args, **kwargs: None
+        vals = (
+            {
+                "operating_unit_id": ou.id,
+            }
+            if "operating_unit_id" in records._fields
+            else {
+                "operating_unit_ids": ou.ids,
+            }
+        )
+        records.with_context(
+            skip_validation_check=True,
+            skip_account_move_synchronization=True,
+        ).write(vals)
+        records.__class__._validate_fields = validate_fields
+
+
 def post_init_hook(cr, registry):
     env = api.Environment(cr, SUPERUSER_ID, {}, su=True)
     main_company = env.ref("base.main_company")
+    main_ou = env.ref("operating_unit.main_operating_unit")
     cr.execute("drop index account_move_unique_name")
 
-    env.ref("operating_unit.main_operating_unit").bankayma_from_company_id = env.ref(
-        "base.main_company"
+    main_ou.write(
+        {
+            "bankayma_from_company_id": env.ref("base.main_company").id,
+            "name": main_company.name,
+            "code": main_company.code,
+        }
     )
+
+    post_init_hook_assign_records(env, main_company, main_ou)
 
     for company in (
         env["res.company"]
@@ -79,29 +117,10 @@ def post_init_hook(cr, registry):
                 .id,
             }
         )
-        for model in ("account.move", "account.move.line", "account.analytic.account"):
-            records = (
-                env[model]
-                .with_context(active_test=False)
-                .search(
-                    [
-                        ("company_id", "=", company.id),
-                    ]
-                )
-            )
-            validate_fields = records._validate_fields
-            records.__class__._validate_fields = lambda self, *args, **kwargs: None
-            vals = (
-                {
-                    "operating_unit_id": ou.id,
-                }
-                if "operating_unit_id" in records._fields
-                else {
-                    "operating_unit_ids": ou.ids,
-                }
-            )
-            records.with_context(skip_validation_check=True).write(vals)
-            records.__class__._validate_fields = validate_fields
+
+        post_init_hook_assign_records(
+            env, company, ou, extra_models=("account.analytic.account",)
+        )
 
     for user in env["res.users"].with_context(active_test=False).search([]):
         user.default_operating_unit_id = user.company_id.bankayma_to_operating_unit_ids
@@ -146,6 +165,7 @@ def post_init_hook(cr, registry):
                 method="sql",
             )
             env.cr.commit()
+
     for unique_name_model in ("account.reconcile.model",):
         for record in (
             env[unique_name_model]
