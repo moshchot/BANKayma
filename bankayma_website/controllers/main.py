@@ -1,5 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import itertools
+import random
 
 from lxml import html
 from markupsafe import Markup
@@ -114,7 +115,9 @@ class CompaniesController(http.Controller):
         return http.Response(
             template="bankayma_website.company_list",
             qcontext={
-                "objects": companies,
+                "objects": companies.browse(
+                    random.sample(companies.ids, len(companies))
+                ),
                 "search": search,
                 "tags": tags,
                 "post_data": {
