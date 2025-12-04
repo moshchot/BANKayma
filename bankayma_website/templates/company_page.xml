@@ -15,147 +15,117 @@
             />
             <div id="wrap" class="oe_structure oe_empty">
                 <section
-                    class="s_text_block o_colored_level pb0 pt0"
-                    data-snippet="s_text_block"
-                    data-name="Text"
-                    style="background-image: none; position: relative;"
-                >
-                    <div class="s_allow_columns container-fluid">
-                        <div class="row" style="" data-row-count="-Infinity" />
-                    </div>
-                </section>
-                <section
-                    class="s_title o_colored_level o_cc o_cc3 pb0 pt0 parallax"
-                    data-vcss="001"
-                    data-snippet="s_title"
-                    data-name="Title"
-                    style="background-image: none;"
-                    data-scroll-background-ratio="0.9"
-                >
+                                    class="s_parallax parallax s_parallax_is_fixed bg-black-50 o_colored_level o_half_screen_height pb0 pt0"
+                                    data-scroll-background-ratio="1"
+                                    data-snippet="s_parallax"
+                                    data-name="Parallax"
+                                    style="background-image: none;"
+                                >
                     <span
-                        class="s_parallax_bg oe_img_bg o_bg_img_center"
-                        t-attf-style="background-image: url({{image_data_uri(object.bankayma_website_cover or object.logo)}})"
-                        t-if="object.bankayma_website_cover or object.logo"
-                    />
-                    <div
-                        class="o_we_bg_filter"
-                        style="background-color: rgba(0, 0, 0, 0.26);"
-                    />
-                    <div class="s_allow_columns o_container_small">
-                        <div class="row" style="" data-row-count="12">
-                            <div
-                                class="o_colored_level g-col-lg-12 g-height-12 col-lg-12"
-                                style="z-index: 1;"
-                            >
-                                <h1 style="text-align: center;">
-                                    <br />
-                                </h1>
-                                <h1 style="text-align: center;">
-                                    <strong t-out="object.name" />
-                                </h1>
-                                <h4 style="text-align: center;">
-                                    <font
-                                        style=""
-                                        class="text-o-color-4"
-                                        t-field="object.bankayma_website_subtitle"
+                                        class="s_parallax_bg oe_img_bg o_bg_img_center o_bg_img_origin_border_box"
+                                        t-attf-style="background-image: url({{image_data_uri(object.bankayma_website_cover or object.logo)}})"
+                                        t-if="object.bankayma_website_cover or object.logo"
+                                        data-mimetype="image/jpeg"
+                                        data-resize-width="1920"
                                     />
-                                </h4>
-                                <p style="text-align: center;">
-                                    <span
-                                        t-if="object.bankayma_inception_year"
-                                        style="text-align: center;"
-                                    >
-                                        (since
-                                        <t t-out="object.bankayma_inception_year" />
-                                        )
-                                    </span>
-                                    <br />
-                                </p>
-                                <p style="text-align: center;">
-                                    <img
-                                        t-att-src="image_data_uri(object.logo)"
-                                        class="img-fluid mx-auto d-block rounded-circle img-thumbnail shadow rounded"
-                                        loading="lazy"
-                                        style="padding: 2px;"
-                                        t-if="object.logo"
-                                    />
-                                </p>
-                                <p
-                                    style="text-align: center;"
-                                    t-if="object.street or object.city"
-                                >
-                                    <span
-                                        class="text-200 bg-o-color-2"
-                                        style="font-style: normal; font-weight: 400;"
-                                    >
-                                        <span t-field="object.street" />
-                                        ,
-                                        <span t-field="object.city" />
-                                    </span>
-                                </p>
-                                <div
-                                    style="text-align: center;"
-                                    t-if="object.bankayma_website_opening_hours"
-                                >
-                                    <span
-                                        t-field="object.bankayma_website_opening_hours"
-                                    />
-                                </div>
-                                <div
-                                    class="s_social_media o_not_editable text-center no_icon_color"
-                                    data-snippet="s_social_media"
-                                    data-name="Social Networks"
-                                    t-if="object.social_twitter or object.social_facebook or object.social_instagram or object.social_youtube"
-                                >
-                                    <h4
-                                        class="s_social_media_title o_default_snippet_text d-none"
-                                    >
-                                        Social Networks
-                                    </h4>
-                                    <a
-                                        t-if="object.social_twitter"
-                                        t-att-href="object.social_twitter"
-                                        class="s_social_media_twitter"
-                                        target="_blank"
-                                    >
-                                        <i
-                                            class="fa fa-twitter rounded-circle shadow-sm"
-                                        />
-                                    </a>
-                                    <a
-                                        t-if="object.social_facebook"
-                                        t-att-href="object.social_facebook"
-                                        class="s_social_media_facebook"
-                                        target="_blank"
-                                    >
-                                        <i
-                                            class="fa fa-facebook rounded-circle shadow-sm"
-                                        />
-                                    </a>
-                                    <a
-                                        t-if="object.social_instagram"
-                                        t-att-href="object.social_instagram"
-                                        class="s_social_media_instagram"
-                                        target="_blank"
-                                    >
-                                        <i
-                                            class="fa fa-instagram rounded-circle shadow-sm"
-                                        />
-                                    </a>
-                                    <a
-                                        t-if="object.social_youtube"
-                                        t-att-href="object.social_youtube"
-                                        class="s_social_media_youtube"
-                                        target="_blank"
-                                    >
-                                        <i
-                                            class="fa fa-youtube rounded-circle shadow-sm"
-                                        />
-                                    </a>
+                    <section
+                                    class="s_features_grid o_colored_level pb0 pt32 s_custom_snippet"
+                                    data-snippet="s_features_grid"
+                                    data-name="company blocks"
+                                    style="background-image: none;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="s_col_no_bgcolor pb24 col-lg-4">
+                                    <div class="row">
+                                        <div
+                                            class="pt16 pb16 o_colored_level border rounded o_cc o_cc1 col-lg-12"
+                                            data-name="Box"
+                                            style="border-color: rgb(233, 236, 239) !important; border-radius: 50px !important;">
+                                            <img
+                                                t-att-src="image_data_uri(object.logo)"
+                                                alt=" " 
+                                                class="s_features_grid_icon img img-fluid o_we_custom_image"
+                                                style="width: 25% !important;"
+                                                loading="lazy"/>
+                                            <div class="s_features_grid_content">
+                                                <h2>
+                                                    <strong t-out="object.name"/>
+                                                </h2>
+                                                <h6>
+                                                    <span
+                                                        style="font-size: 16px;"
+                                                        t-field="object.bankayma_website_subtitle"
+                                                    />
+                                                </h6>
+                                                <h6>
+                                                    <span style="font-size: 16px;" t-if="object.street or object.city">
+                                                        <span
+                                                        class="text-200 bg-o-color-2"
+                                                        style="font-style: normal; font-weight: 400;">כתובת: </span>
+                                                        <span t-field="object.street"/>
+                                                        ,
+                                                        
+                                                        <span t-field="object.city"/></span>
+                                                </h6>
+                                                <h6>
+                                                    <span style="font-size: 16px;" t-if="object.bankayma_website_opening_hours">
+                                                        <span t-field="object.bankayma_website_opening_hours"/>שעות פתיחה: </span>
+                                                    <br/>
+                                                </h6>
+                                                <div class="container justify-content-around">
+                                                    <a
+                                                            t-foreach="object.tag_ids"
+                                                            t-as="company_tag"
+                                                            t-attf-href="/projects?tags={{company_tag.id}}"
+                                                        >
+                                                        <span
+                                                            class="s_badge badge text-bg-secondary o_animable bg-o-color-1"
+                                                            t-out="company_tag.name"
+                                                            />
+                                                    </a>
+                                                </div>
+                                                <h6>
+                                                    <div class="s_social_media text-start o_not_editable" data-snippet="s_social_media">
+                                                        <h4 class="s_social_media_title o_default_snippet_text d-none">
+                                                        Social Networks
+                                                    </h4>
+                                                        <a
+                                                        t-if="object.social_twitter"
+                                                        t-att-href="object.social_twitter"
+                                                        class="s_social_media_twitter"
+                                                        target="_blank">
+                                                            <i class="fa fa-twitter rounded-circle shadow-sm"/>
+                                                        </a>
+                                                        <a
+                                                        t-if="object.social_facebook"
+                                                        t-att-href="object.social_facebook"
+                                                        class="s_social_media_facebook"
+                                                        target="_blank">
+                                                            <i class="fa fa-facebook rounded-circle shadow-sm"/>
+                                                        </a>
+                                                        <a
+                                                        t-if="object.social_instagram"
+                                                        t-att-href="object.social_instagram"
+                                                        class="s_social_media_instagram"
+                                                        target="_blank">
+                                                            <i class="fa fa-instagram rounded-circle shadow-sm"/>
+                                                        </a>
+                                                        <a
+                                                        t-if="object.social_youtube"
+                                                        t-att-href="object.social_youtube"
+                                                        class="s_social_media_youtube"
+                                                        target="_blank">
+                                                            <i class="fa fa-youtube rounded-circle shadow-sm"/>
+                                                        </a>
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </section>
                 <section
                     class="s_text_block o_colored_level pt0 pb0 o_cc o_cc4"
