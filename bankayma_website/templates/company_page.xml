@@ -290,20 +290,39 @@
                     </div>
                 </section>
                 <section
-                    class="s_text_block o_colored_level pb0 pt0"
+                    class="s_text_block pt40 o_colored_level pb40"
                     style="background-image: none;"
                     id="about"
                 >
-                    <div class="s_allow_columns container-fluid">
-                        <div class="s_allow_columns container-fluid">
+                    <div class="s_allow_columns container justify-content-around">
+                        <div class="s_allow_columns container">
                             <div class="row">
                                 <div
-                                    data-scroll-zone-end="65"
-                                    data-scroll-zone-start="0"
-                                    style="animation-delay: -0.249621s;"
-                                    class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll pb40 pt40 col-lg-12 o_cc o_cc3"
+                                    class="o_colored_level pb40 pt40 col-lg-6 o_cc"
                                 >
-                                    <p t-out="object.website_description" />
+                                    <h5 t-out="object.website_description" />
+                                    <br />
+                                    <p style="">
+                                        <span
+                                            t-if="object.bankayma_inception_year"
+                                            style="text-align: center;"
+                                        >
+                                            (since
+                                            <t t-out="object.bankayma_inception_year" />
+                                            )
+                                        </span>
+                                    <br />
+                                    </p>
+                                </div>
+                                <div class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc">
+                                    <div class="media_iframe_video_size" />
+                                    <iframe
+                                        t-att-src="object.bankayma_website_videolink_embed"
+                                        frameborder="0"
+                                        allowfullscreen="allowfullscreen"
+                                        marginheight="0"
+                                        marginwidth="0"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -665,15 +684,13 @@
                         <h4 class="text-center mb-1" style="text-align: right;">
                             <span
                                 style="font-size: 18px;"
-                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 02-1234567&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;<strong
-                                    t-out="object.phone"
-                                /> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</span>
+                                t-out="object.phone"
+                            />                           
                             <span
                                 style="font-size: 18px;"
-                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 02-1234567&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;<a
-                                    t-att-href="object.website"
-                                    t-out="object.website"
-                                /> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</span>
+                                t-att-href="object.website"
+                                t-out="object.website"
+                            />
                             <span style="font-size: 18px;">
                                 <a t-att-href="object.email" t-out="object.email" />
                             </span>
