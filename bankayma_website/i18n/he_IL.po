@@ -200,7 +200,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">כתובת: </span>"
+"weight: 400;\">\n"
+"                                                            כתובת: \n"
+"                                                        </span>"
 msgstr ""
 
 #. module: bankayma_website
