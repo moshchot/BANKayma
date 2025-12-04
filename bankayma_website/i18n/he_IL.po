@@ -17,21 +17,12 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; "
-"02-1234567&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; "
-"&amp;nbsp;&amp;nbsp;"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "(since"
 msgstr ""
 
 #. module: bankayma_website
