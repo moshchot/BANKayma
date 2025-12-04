@@ -297,9 +297,7 @@
                     <div class="s_allow_columns container justify-content-around">
                         <div class="s_allow_columns container">
                             <div class="row">
-                                <div
-                                    class="o_colored_level pb40 pt40 col-lg-6 o_cc"
-                                >
+                                <div class="o_colored_level pb40 pt40 col-lg-6 o_cc">
                                     <h5 t-out="object.website_description" />
                                     <br />
                                     <p style="">
@@ -311,10 +309,12 @@
                                             <t t-out="object.bankayma_inception_year" />
                                             )
                                         </span>
-                                    <br />
+                                        <br />
                                     </p>
                                 </div>
-                                <div class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc">
+                                <div
+                                    class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
+                                >
                                     <div class="media_iframe_video_size" />
                                     <iframe
                                         t-att-src="object.bankayma_website_videolink_embed"
@@ -682,10 +682,7 @@
                             <span t-field="object.bankayma_website_opening_hours" />
                         </h4>
                         <h4 class="text-center mb-1" style="text-align: right;">
-                            <span
-                                style="font-size: 18px;"
-                                t-out="object.phone"
-                            />                           
+                            <span style="font-size: 18px;" t-out="object.phone" />                           
                             <span
                                 style="font-size: 18px;"
                                 t-att-href="object.website"
