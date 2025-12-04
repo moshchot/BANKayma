@@ -682,7 +682,7 @@
                             <span t-field="object.bankayma_website_opening_hours" />
                         </h4>
                         <h4 class="text-center mb-1" style="text-align: right;">
-                            <span style="font-size: 18px;" t-out="object.phone" />                           
+                            <span style="font-size: 18px;" t-out="object.phone" />
                             <span
                                 style="font-size: 18px;"
                                 t-att-href="object.website"
