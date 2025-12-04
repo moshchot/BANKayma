@@ -69,11 +69,10 @@
                                                             class="text-200 bg-o-color-2"
                                                             style="font-style: normal; font-weight: 400;"
                                                         >
-                                                            כתובת: 
+                                                            כתובת:
                                                         </span>
                                                         <span t-field="object.street" />
                                                         ,
-                                                        
                                                         <span t-field="object.city" />
                                                     </span>
                                                 </h6>
