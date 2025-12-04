@@ -36,11 +36,6 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "(since"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<i class=\"fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
 "                                        <span style=\"font-size: 18px; font-"
@@ -200,6 +195,13 @@ msgstr ""
 "animable mx-auto d-block fa-2x\"/>\n"
 "                                <span>עדכונים</span>\n"
 "                            </span>"
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
+"weight: 400;\">כתובת: </span>"
+msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -443,4 +445,9 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "קודם"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "שעות פתיחה:"
 msgstr ""
