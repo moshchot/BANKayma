@@ -201,7 +201,7 @@ msgstr ""
 msgid ""
 "<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
 "weight: 400;\">\n"
-"                                                            כתובת: \n"
+"                                                            כתובת:\n"
 "                                                        </span>"
 msgstr ""
 
