@@ -32,7 +32,8 @@
                         class="s_features_grid o_colored_level pb0 pt32 s_custom_snippet"
                         data-snippet="s_features_grid"
                         data-name="company blocks"
-                        style="background-image: none;">
+                        style="background-image: none;"
+                    >
                         <div class="container">
                             <div class="row">
                                 <div class="s_col_no_bgcolor pb24 col-lg-4">
@@ -44,7 +45,7 @@
                                         >
                                             <img
                                                 t-att-src="image_data_uri(object.logo)"
-                                                alt=" " 
+                                                alt=" "
                                                 class="s_features_grid_icon img img-fluid o_we_custom_image"
                                                 style="width: 25% !important;"
                                                 loading="lazy"
@@ -66,11 +67,15 @@
                                                     >
                                                         <span
                                                             class="text-200 bg-o-color-2"
-                                                            style="font-style: normal; font-weight: 400;">כתובת: </span>
-                                                        <span t-field="object.street"/>
+                                                            style="font-style: normal; font-weight: 400;"
+                                                        >
+                                                            כתובת: 
+                                                        </span>
+                                                        <span t-field="object.street" />
                                                         ,
                                                         
-                                                        <span t-field="object.city"/></span>
+                                                        <span t-field="object.city" />
+                                                    </span>
                                                 </h6>
                                                 <h6>
                                                     <span
@@ -80,9 +85,9 @@
                                                         <span
                                                             t-field="object.bankayma_website_opening_hours"
                                                         />
-                                                        שעות פתיחה: 
+                                                        שעות פתיחה:
                                                     </span>
-                                                    <br/>
+                                                    <br />
                                                 </h6>
                                                 <div
                                                     class="container justify-content-around"
@@ -106,43 +111,47 @@
                                                         <h4
                                                             class="s_social_media_title o_default_snippet_text d-none"
                                                         >
-                                                        Social Networks
+                                                            Social Networks
                                                         </h4>
                                                         <a
                                                             t-if="object.social_twitter"
                                                             t-att-href="object.social_twitter"
                                                             class="s_social_media_twitter"
-                                                            target="_blank">
-                                                                <i
-                                                                    class="fa fa-twitter rounded-circle shadow-sm"
-                                                                />
+                                                            target="_blank"
+                                                        >
+                                                            <i
+                                                                class="fa fa-twitter rounded-circle shadow-sm"
+                                                            />
                                                         </a>
                                                         <a
                                                             t-if="object.social_facebook"
                                                             t-att-href="object.social_facebook"
                                                             class="s_social_media_facebook"
-                                                            target="_blank">
-                                                                <i
-                                                                    class="fa fa-facebook rounded-circle shadow-sm"
-                                                                />
+                                                            target="_blank"
+                                                        >
+                                                            <i
+                                                                class="fa fa-facebook rounded-circle shadow-sm"
+                                                            />
                                                         </a>
                                                         <a
                                                             t-if="object.social_instagram"
                                                             t-att-href="object.social_instagram"
                                                             class="s_social_media_instagram"
-                                                            target="_blank">
-                                                                <i
-                                                                    class="fa fa-instagram rounded-circle shadow-sm"
-                                                                />
+                                                            target="_blank"
+                                                        >
+                                                            <i
+                                                                class="fa fa-instagram rounded-circle shadow-sm"
+                                                            />
                                                         </a>
                                                         <a
                                                             t-if="object.social_youtube"
                                                             t-att-href="object.social_youtube"
                                                             class="s_social_media_youtube"
-                                                            target="_blank">
-                                                                <i
-                                                                    class="fa fa-youtube rounded-circle shadow-sm"
-                                                                />
+                                                            target="_blank"
+                                                        >
+                                                            <i
+                                                                class="fa fa-youtube rounded-circle shadow-sm"
+                                                            />
                                                         </a>
                                                     </div>
                                                 </h6>
