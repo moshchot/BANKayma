@@ -82,9 +82,12 @@
                                                         t-if="object.bankayma_website_opening_hours"
                                                     >
                                                         <span
-                                                            t-field="object.bankayma_website_opening_hours"
-                                                        />
-                                                        שעות פתיחה:
+                                                            class="text-200 bg-o-color-2"
+                                                            style="font-style: normal; font-weight: 400;"
+                                                        >
+                                                            שעות פתיחה: 
+                                                        </span>
+                                                        <span t-field="object.bankayma_website_opening_hours"/>
                                                     </span>
                                                     <br />
                                                 </h6>
@@ -119,7 +122,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-twitter rounded-circle shadow-sm"
+                                                                class="fa fa-twitter rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                         <a
@@ -129,7 +132,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-facebook rounded-circle shadow-sm"
+                                                                class="fa fa-facebook rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                         <a
@@ -139,7 +142,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-instagram rounded-circle shadow-sm"
+                                                                class="fa fa-instagram rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                         <a
@@ -149,7 +152,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-youtube rounded-circle shadow-sm"
+                                                                class="fa fa-youtube rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                     </div>
@@ -301,17 +304,24 @@
                                     <h5 t-out="object.website_description" />
                                     <br />
                                     <p style="">
-                                        <span
-                                            t-if="object.bankayma_inception_year"
-                                            style="text-align: center;"
-                                        >
-                                            (since
-                                            <t t-out="object.bankayma_inception_year" />
-                                            )
+                                        <span t-if="object.bankayma_inception_year" style="">
+                                            <strong>Since:  </strong>
+                                            <t t-out="object.bankayma_inception_year"/>
                                         </span>
-                                        <br />
+                                        <br/>
                                     </p>
-                                </div>
+                                    <div id="team" t-if="object.bankayma_website_crew_partner_ids">
+                                        <p>
+                                            <strong>Our crew:  </strong>
+                                            <span t-foreach="object.bankayma_website_crew_partner_ids" t-as="partner">
+                                        
+                                                <t t-out="partner.name"/>
+                                                ,
+                                                <t t-out="partner.function"/>
+                                            </span>
+                                            <br />
+                                        </p>
+                                    </div>
                                 <div
                                     class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
                                 >
@@ -334,7 +344,7 @@
                     id="updates"
                     t-if="blog_posts"
                 >
-                    <div class="s_allow_columns container-fluid">
+                    <div class="s_allow_columns container justify-content-around">
                         <p style="text-align: center;">
                             <span
                                 class="s_badge badge bg-o-color-3 text-o-color-1 o_animable"
@@ -360,33 +370,6 @@
                                 </a>
                             </span>
                         </h4>
-                    </div>
-                </section>
-                <section
-                    class="o_colored_level parallax"
-                    style="background-image: none;"
-                    id="media"
-                    t-if="object.bankayma_website_videolink"
-                >
-                    <div class="container-fluid">
-                        <div class="row" data-row-count="6">
-                            <div
-                                class="text-center o_colored_level o_anim_fade_in o_animate o_visible g-height-6 g-col-lg-12 col-lg-12"
-                                data-name="Block"
-                                style="z-index: 5; background-image: none;"
-                            >
-                                <div class="mx-auto media_iframe_video s_parallax_bg">
-                                    <div class="media_iframe_video_size" />
-                                    <iframe
-                                        t-att-src="object.bankayma_website_videolink_embed"
-                                        frameborder="0"
-                                        allowfullscreen="allowfullscreen"
-                                        marginheight="0"
-                                        marginwidth="0"
-                                    />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
                 <section
@@ -552,51 +535,6 @@
                                             Donate Now
                                         </a>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section
-                    class="s_company_team o_colored_level pt24 pb32 o_cc o_cc3"
-                    style="background-image: none;"
-                    id="team"
-                    t-if="object.bankayma_website_crew_partner_ids"
-                >
-                    <div class="container-fluid">
-                        <div class="row s_nb_column_fixed" style="">
-                            <div class="o_colored_level col-lg-12" style="">
-                                <p style="text-align: center;">
-                                    <span style="font-size: 36px;">
-                                        <strong>our crew</strong>
-                                    </span>
-                                </p>
-                            </div>
-                            <div
-                                class="o_colored_level o_anim_fade_in o_animate o_animate_on_scroll col-lg-3"
-                                style="animation-delay: 0.0107189s;"
-                                data-scroll-zone-start="0"
-                                data-scroll-zone-end="65"
-                                t-foreach="object.bankayma_website_crew_partner_ids"
-                                t-as="partner"
-                            >
-                                <div class="row s_col_no_resize s_col_no_bgcolor">
-                                    <div class="col-lg-4 pb16 o_not_editable">
-                                        <img
-                                            t-att-alt="partner.name"
-                                            t-att-src="image_data_uri(partner.avatar_128)"
-                                            class="img-fluid rounded-circle mx-auto o_editable_media"
-                                            loading="eager"
-                                            t-if="partner.avatar_128"
-                                        />
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <h4
-                                            style="text-align: center;"
-                                            t-out="partner.name"
-                                        />
-                                        <p t-out="partner.function" />
-                                    </div>
                                 </div>
                             </div>
                         </div>
