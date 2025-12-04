@@ -191,6 +191,11 @@ msgid ""
 "nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
+"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
+"weight: 400;\">\n"
+"                                                            כתובת:&amp;"
+"nbsp;&amp;nbsp;\n"
+"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -201,6 +206,11 @@ msgid ""
 "&amp;nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
+"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
+"weight: 400;\">\n"
+"                                                            שעות פתיחה:"
+"&amp;nbsp;&amp;nbsp;\n"
+"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -216,12 +226,12 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Our crew:  </strong>"
-msgstr ""
+msgstr "<strong>שעות פתיחה:  </strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Since:  </strong>"
-msgstr ""
+msgstr "<strong>שנת יסוד:  </strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
