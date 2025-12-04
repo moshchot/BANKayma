@@ -320,7 +320,8 @@
                                         t-if="object.bankayma_website_crew_partner_ids"
                                     >
                                         <p>
-                                            <strong>Our crew:&amp;nbsp;&amp;nbsp;</strong>
+                                            <strong
+                                            >Our crew:&amp;nbsp;&amp;nbsp;</strong>
                                             <span
                                                 t-foreach="object.bankayma_website_crew_partner_ids"
                                                 t-as="partner"
