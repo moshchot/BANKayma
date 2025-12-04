@@ -226,12 +226,12 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Our crew:&amp;nbsp;&amp;nbsp;</strong>"
-msgstr ""
+msgstr "<strong>הצוות שלנו:&amp;nbsp;&amp;nbsp;</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Since:&amp;nbsp;&amp;nbsp;</strong>"
-msgstr ""
+msgstr "<strong>שנת יסוד:&amp;nbsp;&amp;nbsp;</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
