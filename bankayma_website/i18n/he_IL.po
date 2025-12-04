@@ -22,11 +22,6 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "(since"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<i class=\"fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
 "                                        <span style=\"font-size: 18px; font-"
@@ -192,20 +187,20 @@ msgstr ""
 msgid ""
 "<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
 "weight: 400;\">\n"
-"                                                            כתובת:\n"
+"                                                            Address:&amp;"
+"nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span style=\"font-size: 36px;\">\n"
-"                                        <strong>our crew</strong>\n"
-"                                    </span>"
+"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
+"weight: 400;\">\n"
+"                                                            Opening Hours:"
+"&amp;nbsp;&amp;nbsp;\n"
+"                                                        </span>"
 msgstr ""
-"<span style=\"font-size: 36px;\">\n"
-"                                        <strong>הצוות שלנו</strong>\n"
-"                                    </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -217,6 +212,16 @@ msgstr ""
 "<span style=\"font-size: 36px;\">\n"
 "                                <strong>תומכים</strong>\n"
 "                            </span>"
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Our crew:  </strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Since:  </strong>"
+msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -438,9 +443,4 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "קודם"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "שעות פתיחה:"
 msgstr ""
