@@ -87,7 +87,9 @@
                                                         >
                                                             Opening Hours:&amp;nbsp;&amp;nbsp;
                                                         </span>
-                                                        <span t-field="object.bankayma_website_opening_hours"/>
+                                                        <span
+                                                            t-field="object.bankayma_website_opening_hours"
+                                                        />
                                                     </span>
                                                     <br />
                                                 </h6>
@@ -304,25 +306,34 @@
                                     <h5 t-out="object.website_description" />
                                     <br />
                                     <p style="">
-                                        <span t-if="object.bankayma_inception_year" style="">
-                                            <strong>Since:  </strong>
-                                            <t t-out="object.bankayma_inception_year"/>
+                                        <span
+                                            t-if="object.bankayma_inception_year"
+                                            style=""
+                                        >
+                                            <strong>Since:&amp;nbsp;&amp;nbsp;</strong>
+                                            <t t-out="object.bankayma_inception_year" />
                                         </span>
-                                        <br/>
+                                        <br />
                                     </p>
-                                    <div id="team" t-if="object.bankayma_website_crew_partner_ids">
+                                    <div
+                                        id="team"
+                                        t-if="object.bankayma_website_crew_partner_ids"
+                                    >
                                         <p>
-                                            <strong>Our crew:  </strong>
-                                            <span t-foreach="object.bankayma_website_crew_partner_ids" t-as="partner">
+                                            <strong>Our crew:&amp;nbsp;&amp;nbsp;</strong>
+                                            <span
+                                                t-foreach="object.bankayma_website_crew_partner_ids"
+                                                t-as="partner"
+                                            >
                                         
-                                                <t t-out="partner.name"/>
+                                                <t t-out="partner.name" />
                                                 ,
-                                                <t t-out="partner.function"/>
+                                                <t t-out="partner.function" />
                                             </span>
                                             <br />
                                         </p>
                                     </div>
-                                </div>    
+                                </div>
                                 <div
                                     class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
                                 >
