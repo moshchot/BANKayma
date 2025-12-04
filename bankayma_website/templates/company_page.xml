@@ -69,7 +69,7 @@
                                                             class="text-200 bg-o-color-2"
                                                             style="font-style: normal; font-weight: 400;"
                                                         >
-                                                            כתובת:
+                                                            Address:&amp;nbsp;&amp;nbsp;
                                                         </span>
                                                         <span t-field="object.street" />
                                                         ,
@@ -85,7 +85,7 @@
                                                             class="text-200 bg-o-color-2"
                                                             style="font-style: normal; font-weight: 400;"
                                                         >
-                                                            שעות פתיחה: 
+                                                            Opening Hours:&amp;nbsp;&amp;nbsp;
                                                         </span>
                                                         <span t-field="object.bankayma_website_opening_hours"/>
                                                     </span>
