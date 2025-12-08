@@ -11,7 +11,7 @@
             />
             <t
                 t-set="blog_posts"
-                t-value="request.env['blog.post'].search([('company_id', '=', object.id), ('is_published', '=', True)], limit=5)"
+                t-value="request.env['blog.post'].search([('company_id', '=', object.id), ('is_published', '=', True)], limit=3)"
             />
             <div id="wrap" class="oe_structure oe_empty">
                 <section
@@ -31,7 +31,7 @@
                     <section
                         class="s_features_grid o_colored_level pb0 pt32 s_custom_snippet"
                         data-snippet="s_features_grid"
-                        data-name="company blocks"
+                        data-name="company cover"
                         style="background-image: none;"
                     >
                         <div class="container">
@@ -52,7 +52,7 @@
                                             />
                                             <div class="s_features_grid_content">
                                                 <h2>
-                                                    <strong t-out="object.name" />
+                                                    <t-out="object.name" />
                                                 </h2>
                                                 <h6>
                                                     <span
@@ -66,7 +66,7 @@
                                                         t-if="object.street or object.city"
                                                     >
                                                         <span
-                                                            class="text-200 bg-o-color-2"
+                                                            class="text-200"
                                                             style="font-style: normal; font-weight: 400;"
                                                         >
                                                             Address:&amp;nbsp;&amp;nbsp;
@@ -82,7 +82,7 @@
                                                         t-if="object.bankayma_website_opening_hours"
                                                     >
                                                         <span
-                                                            class="text-200 bg-o-color-2"
+                                                            class="text-200"
                                                             style="font-style: normal; font-weight: 400;"
                                                         >
                                                             Opening Hours:&amp;nbsp;&amp;nbsp;
@@ -124,7 +124,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-twitter rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
+                                                                class="fa fa-twitter shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                         <a
@@ -134,7 +134,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-facebook rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
+                                                                class="fa fa-facebook shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                         <a
@@ -144,7 +144,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-instagram rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
+                                                                class="fa fa-instagram shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                         <a
@@ -154,7 +154,7 @@
                                                             target="_blank"
                                                         >
                                                             <i
-                                                                class="fa fa-youtube rounded-circle shadow-sm text-o-color-1 bg-o-color-3 m-1"
+                                                                class="fa fa-youtube shadow-sm text-o-color-1 bg-o-color-3 m-1"
                                                             />
                                                         </a>
                                                     </div>
@@ -179,9 +179,6 @@
                             >
                                 <span class="s_badge badge o_animable bg-white-25">
                                     <a href="#about">
-                                        <i
-                                            class="fa fa-info fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
                                         >
@@ -194,9 +191,6 @@
                                     t-if="blog_posts"
                                 >
                                     <a href="#updates">
-                                        <i
-                                            class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
                                         >
@@ -206,27 +200,9 @@
                                 </span>
                                 <span
                                     class="s_badge badge o_animable bg-white-25"
-                                    t-if="object.bankayma_website_videolink"
-                                >
-                                    <a href="#media">
-                                        <i
-                                            class="fa fa-photo fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
-                                        <span
-                                            style="font-size: 18px; font-weight: normal;"
-                                        >
-                                            media
-                                        </span>
-                                    </a>
-                                </span>
-                                <span
-                                    class="s_badge badge o_animable bg-white-25"
                                     t-if="events"
                                 >
                                     <a href="#events">
-                                        <i
-                                            class="fa fa-calendar-check-o fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
                                         >
@@ -236,9 +212,6 @@
                                 </span>
                                 <span class="s_badge badge o_animable bg-white-25">
                                     <a href="#donation">
-                                        <i
-                                            class="fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
                                         >
@@ -247,42 +220,9 @@
                                     </a>
                                 </span>
                                 <span
-                                    class="s_badge badge o_animable bg-white-25"
-                                    t-if="object.bankayma_website_crew_partner_ids"
-                                >
-                                    <a href="#team">
-                                        <i
-                                            class="fa fa-user fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
-                                        <span
-                                            style="font-size: 18px; font-weight: normal;"
-                                        >
-                                            crew
-                                        </span>
-                                    </a>
-                                </span>
-                                <span
-                                    class="s_badge badge o_animable bg-white-25"
-                                    t-if="object.bankayma_website_backer_partner_ids"
-                                >
-                                    <a href="#backers">
-                                        <i
-                                            class="fa fa-user-circle-o fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
-                                        <span
-                                            style="font-size: 18px; font-weight: normal;"
-                                        >
-                                            backers
-                                        </span>
-                                    </a>
-                                </span>
-                                <span
                                     class="s_badge badge text-bg-secondary o_animable bg-white-25"
                                 >
                                     <a href="#contact">
-                                        <i
-                                            class="fa fa-phone fa-fw o_not-animable mx-auto d-block fa-2x"
-                                        />
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
                                         >
@@ -334,6 +274,27 @@
                                             <br />
                                         </p>
                                     </div>
+                                    <div id="backers" t-if="object.bankayma_website_backer_partner_ids">
+                                        <p>
+                                            <strong>Our backers:&amp;nbsp;&amp;nbsp;</strong>
+                                            <span t-foreach="object.bankayma_website_backer_partner_ids" t-as="partner">
+                                        
+                                                <t t-out="partner.name"/>
+                                                ,
+                                                <t t-out="partner.function"/>
+                                            </span>
+                                            <br/>
+                                        </p>
+                                    </div>
+                                    <p style="">
+                                        <span t-if="object.website" style="">
+                                            <strong>Website:&amp;nbsp;&amp;nbsp;</strong>
+                                            <a t-att-href="object.website">
+                                            <t t-out="object.website"/>
+                                            </a>
+                                        </span>
+                                        <br/>
+                                    </p>
                                 </div>
                                 <div
                                     class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
@@ -351,42 +312,221 @@
                         </div>
                     </div>
                 </section>
+                <section data-snippet="s_text_block" position="after">
+                    <section
+                        class="s_blog_posts s_dynamic o_colored_level pb40 pt40 o_cc o_cc1 s_blog_post_card"
+                        id="updates"
+                        data-vcss="001"
+                        data-columns="3"
+                        style="overflow: hidden; background-image: none;"
+                        data-snippet="s_blog_posts"
+                        data-name="Blog Posts"
+                        t-if="blog_posts"
+                    >
+                        <div class="container s_allow_columns s_dynamic s_blog_post_card">
+                            <div class="s_hr text-start pt32 pb32" data-snippet="s_hr" data-name="seperator">
+                                <hr class="w-100 mx-auto" style="border-top: 1px solid rgb(130, 109, 140);"/>
+                            </div>
+                            <h2 style="text-align: center;">
+                                <strong>updates</strong>
+                            </h2>
+                            <t t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts)"/>
+                        </div>
+                    </section>
+                </section>
+                <section data-snippet="s_blog_posts" position="after">
+                    <section
+                        class="s_title pt40 pb40 o_colored_level"
+                        style="background-image: none;"
+                        id="events"
+                        t-if="events"
+                    >
+                        <div
+                            class="container s_allow_columns s_dynamic s_event_event_card"
+                        >
+                            <div class="s_hr text-start pt32 pb32" data-snippet="s_hr" data-name="seperator">
+                                <hr class="w-100 mx-auto" style="border-top: 1px solid rgb(130, 109, 140);"/>
+                            </div>
+                            <h2 style="text-align: center;">
+                                <strong>events</strong>
+                            </h2>
+                            <t
+                                t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
+                            />
+                        </div>
+                    </section>
+                </section>
                 <section
-                    class="s_text_block pt40 pb40 o_colored_level o_cc o_cc4"
+                    class="pt40 pb40 o_colored_level o_cc o_cc1"
                     style="background-image: none;"
-                    id="updates"
-                    t-if="blog_posts"
+                    id="donation"
+                    data-anchor="true"
+                    dir="ltr"
                 >
-                    <div class="s_allow_columns container justify-content-around">
-                        <p style="text-align: center;">
-                            <span
-                                class="s_badge badge bg-o-color-3 text-o-color-1 o_animable"
-                                data-name="תג"
-                                data-snippet="s_badge"
-                                style="font-size: 36px;"
-                            >
-                                <i
-                                    class="fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x"
-                                />
-                                <span>updates</span>
-                            </span>
-                        </p>
-                        <h4 t-foreach="blog_posts" t-as="blog_post">
-                            <span
-                                class="o_animated_text o_animate o_anim_slide_in o_anim_from_right o_visible"
-                                t-attf-style="animation-delay: {{blog_post_index + 1}}s;"
-                            >
-                                <a t-att-href="blog_post.website_url">
-                                    <strong t-out="blog_post.name" />
-                                    :
-                                    <t t-out="blog_post.teaser" />
-                                </a>
-                            </span>
-                        </h4>
+                    <div class="o_container_small">
+                        <div class="s_hr text-start pt32 pb32" data-snippet="s_hr" data-name="seperator">
+                                <hr class="w-100 mx-auto" style="border-top: 1px solid rgb(130, 109, 140);"/>
+                            </div>
+                        <h2 style="text-align: center;">
+                            <strong>donation</strong>
+                        </h2>
+                        <<div class="row align-items-center">
+                            <div class="o_colored_level col-lg-6 o_cc o_cc1 pt0 pb0">
+                                <h2 style="text-align: center;">
+                                    <strong>תרומה חד פעמית</strong>
+                                </h2>
+                                <div
+                                    class="s_donation"
+                                    data-name="Donation Button"
+                                    t-att-data-donation-email="object.email"
+                                    data-custom-amount="freeAmount" data-prefilled-options="true"
+                                    data-descriptions="" data-minimum-amount="30"
+                                    data-maximum-amount="360"
+                                    data-slider-step="10"
+                                    data-default-amount="50"
+                                    data-snippet="s_donation_button"
+                                    data-display-options="true"
+                                    data-recurrent-payment=""
+                                    data-donation-amounts="[&quot;100&quot;,&quot;200&quot;,&quot;500&quot;]"
+                                >
+                                    <form
+                                        class="s_donation_form"
+                                        t-attf-action="/donation/pay?company_id={{object.id}}"
+                                        method="post"
+                                        enctype="multipart/form-data"
+                                        style="text-align: center;"
+                                    >
+                                        <span id="s_donation_description_inputs"/>
+                                        <div class="s_donation_prefilled_buttons mb-2">
+                                            <button
+                                                class="s_donation_btn btn btn-outline-primary btn-lg mb-2 me-1 o_not_editable"
+                                                type="button"
+                                                data-donation-value="100"
+                                                contenteditable="false"
+                                            >
+                                                100
+                                            </button>
+                                            <button
+                                                class="s_donation_btn btn btn-outline-primary btn-lg mb-2 me-1 o_not_editable"
+                                                type="button"
+                                                data-donation-value="200"
+                                                contenteditable="false"
+                                            >
+                                                200
+                                            </button>
+                                            <button
+                                                class="s_donation_btn btn btn-outline-primary btn-lg mb-2 me-1 o_not_editable"
+                                                type="button"
+                                                data-donation-value="500"
+                                                contenteditable="false"
+                                            >
+                                                500
+                                            </button>
+                                            <span class="s_donation_btn s_donation_custom_btn btn btn-outline-primary btn-lg mb-2 me-1">
+                                                <input
+                                                    id="s_donation_amount_input"
+                                                    type="number"
+                                                    min="30"
+                                                    placeholder="כמות מותאמת אישית"
+                                                    aria-label="סכום כולל"
+                                                    style=""
+                                                />
+                                            </span>
+                                        </div>
+                                        <a
+                                            href="#"
+                                            type="button"
+                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            לתרומה
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="o_colored_level col-lg-6 o_cc o_cc1">
+                                <h2 style="text-align: center;">
+                                    <strong>תמיכה חדשית</strong>
+                                    <br/>
+                                </h2>
+                                <div
+                                    class="s_donation"
+                                    data-name="Donation Button"
+                                    t-att-data-donation-email="object.email"
+                                    data-custom-amount="freeAmount"
+                                    data-prefilled-options="true"
+                                    data-descriptions=""
+                                    data-minimum-amount="30"
+                                    data-maximum-amount="360"
+                                    data-slider-step="10"
+                                    data-default-amount="50"
+                                    data-snippet="s_donation_button"
+                                    data-display-options="true"
+                                    data-recurrent-payment="true"
+                                    data-donation-amounts="[&quot;30&quot;,&quot;50&quot;,&quot;100&quot;]"
+                                >
+                                    <form
+                                        class="s_donation_form"
+                                        t-attf-action="/donation/pay?company_id={{object.id}}"
+                                        method="post"
+                                        enctype="multipart/form-data"
+                                        style="text-align: center;"
+                                    >
+                                        <span id="s_donation_description_inputs"/>
+                                        <div class="s_donation_prefilled_buttons mb-2">
+                                            <button
+                                                class="s_donation_btn btn btn-outline-primary btn-lg mb-2 me-1 o_not_editable"
+                                                type="button"
+                                                data-donation-value="30"
+                                                contenteditable="false"
+                                            >
+                                                30
+                                            </button>
+                                            <button
+                                                class="s_donation_btn btn btn-outline-primary btn-lg mb-2 me-1 o_not_editable"
+                                                type="button"
+                                                data-donation-value="50"
+                                                contenteditable="false"
+                                            >
+                                                50
+                                            </button>
+                                            <button
+                                                class="s_donation_btn btn btn-outline-primary btn-lg mb-2 me-1 o_not_editable"
+                                                type="button"
+                                                data-donation-value="100"
+                                                contenteditable="false"
+                                            >
+                                                100
+                                            </button>
+                                            <span class="s_donation_btn s_donation_custom_btn btn btn-outline-primary btn-lg mb-2 me-1">
+                                                <input
+                                                    id="s_donation_amount_input"
+                                                    type="number"
+                                                    min="30"
+                                                    placeholder="כמות מותאמת אישית"
+                                                    aria-label="סכום כולל"
+                                                    style=""
+                                                />
+                                            </span>
+                                        </div>
+                                        <a
+                                            href="#"
+                                            type="button"
+                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2"
+                                            data-bs-original-title=""
+                                            title=""
+                                        >
+                                            לתרומה
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <section
-                    class="s_image_gallery pt24 o_colored_level o_slideshow s_image_gallery_indicators_arrows_boxed s_image_gallery_show_indicators s_image_gallery_indicators_dots o_cc o_cc3"
+                    class="s_image_gallery pt24 o_colored_level o_slideshow s_image_gallery_indicators_arrows_boxed s_image_gallery_show_indicators s_image_gallery_indicators_dots o_cc o_cc4"
                     data-vcss="001"
                     data-columns="3"
                     style="overflow: hidden; height: 662px; background-image: none;"
@@ -467,182 +607,6 @@
                                 <span class="visually-hidden">הבא</span>
                             </a>
                         </div>
-                    </div>
-                </section>
-                <section data-snippet="s_image_gallery" position="after">
-                    <section
-                        class="s_title pt40 pb40 o_colored_level"
-                        style="background-image: none;"
-                        id="events"
-                        t-if="events"
-                    >
-                        <div
-                            class="container s_allow_columns s_dynamic s_event_event_card"
-                        >
-                            <h2 style="text-align: center;">
-                                <strong>events</strong>
-                            </h2>
-                            <t
-                                t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
-                            />
-                        </div>
-                    </section>
-                </section>
-                <section
-                    class="pt32 pb32 o_colored_level o_cc o_cc2"
-                    style="background-image: none;"
-                    id="donation"
-                    data-anchor="true"
-                    dir="ltr"
-                >
-                    <div class="o_container_small">
-                        <h2 style="text-align: center;">
-                            <strong>donation</strong>
-                        </h2>
-                        <div class="row" style="">
-                            <div class="o_colored_level col-lg-12" style="">
-                                <div
-                                    class="s_donation"
-                                    data-name="Donation Button"
-                                    t-att-data-donation-email="object.email"
-                                    data-custom-amount="slider"
-                                    data-prefilled-options=""
-                                    data-descriptions=""
-                                    data-minimum-amount="5"
-                                    data-maximum-amount="1000"
-                                    data-slider-step="10"
-                                    data-default-amount="30"
-                                    data-snippet="s_donation_button"
-                                >
-                                    <form
-                                        class="s_donation_form"
-                                        t-attf-action="/donation/pay?company_id={{object.id}}"
-                                        method="post"
-                                        enctype="multipart/form-data"
-                                        style="text-align: center;"
-                                    >
-                                        <div
-                                            class="s_donation_range_slider_wrap mb-2 position-relative"
-                                        >
-                                            <input
-                                                name="amount"
-                                                type="range"
-                                                class="form-range"
-                                                min="5"
-                                                max="1000"
-                                                step="10"
-                                                id="s_donation_range_slider"
-                                            />
-                                            <output
-                                                class="s_range_bubble"
-                                                style="left: calc(3.01508% + 7.51759px);"
-                                            >
-                                                35
-                                            </output>
-                                        </div>
-                                        <a
-                                            href="#"
-                                            type="button"
-                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2 o_default_snippet_text"
-                                        >
-                                            Donate Now
-                                        </a>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section
-                    class="s_references o_colored_level pb32 pt24 o_cc o_cc1"
-                    id="backers"
-                    t-if="object.bankayma_website_backer_partner_ids"
-                >
-                    <div class="container">
-                        <h5 style="text-align: center;">
-                            <span style="font-size: 36px;">
-                                <strong>backers</strong>
-                            </span>
-                        </h5>
-                        <div class="row">
-                            <div
-                                class="col-lg-2 pt16 pb16 o_colored_level"
-                                t-foreach="object.bankayma_website_backer_partner_ids"
-                                t-as="partner"
-                            >
-                                <img
-                                    t-att-alt="partner.name"
-                                    t-att-src="image_data_uri(partner.avatar_128)"
-                                    class="img img-fluid mx-auto"
-                                    loading="lazy"
-                                    t-if="partner.avatar_128"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section
-                    class="s_map pb56 pt56"
-                    data-map-type="m"
-                    data-map-zoom="15"
-                    data-snippet="s_map"
-                    t-attf-data-map-address="{{object.street}} {{object.city}}"
-                    id="map"
-                    t-if="object.bankayma_website_geolink"
-                >
-                    <div class="map_container o_not_editable">
-                        <iframe
-                            class="s_map_embedded o_not_editable"
-                            width="100%"
-                            height="100%"
-                            frameborder="0"
-                            scrolling="no"
-                            marginheight="0"
-                            marginwidth="0"
-                            t-att-src="object.bankayma_website_geolink"
-                        />
-                        <div class="s_map_color_filter" style="" />
-                    </div>
-                </section>
-                <section
-                    class="s_text_block o_colored_level pb0 pt0 o_cc o_cc3"
-                    style="background-image: none;"
-                    id="contact"
-                >
-                    <div class="s_allow_columns container">
-                        <h4 class="text-center mb-1" style="text-align: right;">
-                            <span style="font-size: 16px;">
-                                <a title="" data-bs-original-title="" href="/about">
-                                    <span style="font-size: 16px;" />
-                                </a>
-                            </span>
-                            <span
-                                style="font-size: 18px;"
-                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;
-                                <strong
-                                    t-field="object.partner_id"
-                                    t-options='{"widget": "contact"}'
-                                />
-                            </span>
-                        </h4>
-                        <h4
-                            class="text-center mb-1"
-                            style="text-align: right;"
-                            t-if="object.bankayma_website_opening_hours"
-                        >
-                            <span t-field="object.bankayma_website_opening_hours" />
-                        </h4>
-                        <h4 class="text-center mb-1" style="text-align: right;">
-                            <span style="font-size: 18px;" t-out="object.phone" />
-                            <span
-                                style="font-size: 18px;"
-                                t-att-href="object.website"
-                                t-out="object.website"
-                            />
-                            <span style="font-size: 18px;">
-                                <a t-att-href="object.email" t-out="object.email" />
-                            </span>
-                        </h4>
                     </div>
                 </section>
             </div>
