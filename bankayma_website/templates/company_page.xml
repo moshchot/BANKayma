@@ -52,7 +52,7 @@
                                             />
                                             <div class="s_features_grid_content">
                                                 <h2>
-                                                    <t-out="object.name" />
+                                                    <t t-out="object.name" />
                                                 </h2>
                                                 <h6>
                                                     <span
@@ -266,7 +266,6 @@
                                                 t-foreach="object.bankayma_website_crew_partner_ids"
                                                 t-as="partner"
                                             >
-                                        
                                                 <t t-out="partner.name" />
                                                 ,
                                                 <t t-out="partner.function" />
@@ -277,11 +276,13 @@
                                     <div id="backers" t-if="object.bankayma_website_backer_partner_ids">
                                         <p>
                                             <strong>Our backers:&amp;nbsp;&amp;nbsp;</strong>
-                                            <span t-foreach="object.bankayma_website_backer_partner_ids" t-as="partner">
-                                        
-                                                <t t-out="partner.name"/>
+                                            <span
+                                                t-foreach="object.bankayma_website_backer_partner_ids"
+                                                t-as="partner"
+                                            >
+                                                <t t-out="partner.name" />
                                                 ,
-                                                <t t-out="partner.function"/>
+                                                <t t-out="partner.function" />
                                             </span>
                                             <br/>
                                         </p>
