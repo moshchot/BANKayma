@@ -4,7 +4,7 @@
             <attribute
                 name="class"
                 separator=" "
-                add="bankayma_event_searchbar sticky-top bg-body"
+                add="bankayma_event_searchbar sticky-top pt16 pb16 o_cc o_cc4"
             />
         </nav>
         <xpath expr="//ul[hasclass('o_wevent_index_topbar_filters')]" position="inside">
