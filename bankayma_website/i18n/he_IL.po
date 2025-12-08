@@ -17,28 +17,27 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;"
+msgid "100"
 msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-bullhorn fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            updates\n"
-"                                        </span>"
+msgid "200"
 msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-calendar-check-o fa-fw o_not-animable mx-auto d-block "
-"fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            events\n"
-"                                        </span>"
+msgid "30"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "50"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "500"
 msgstr ""
 
 #. module: bankayma_website
@@ -49,107 +48,6 @@ msgid ""
 msgstr ""
 "<i class=\"fa fa-folder-open\"/>\n"
 "                    פרוייקט"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            donation\n"
-"                                        </span>"
-msgstr ""
-"<i class=\"fa fa-gittip fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            תרומה\n"
-"                                        </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-info fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            about\n"
-"                                        </span>"
-msgstr ""
-"<i class=\"fa fa-info fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            אודות\n"
-"                                        </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-phone fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            contact\n"
-"                                        </span>"
-msgstr ""
-"<i class=\"fa fa-phone fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            קשר\n"
-"                                        </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-photo fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            media\n"
-"                                        </span>"
-msgstr ""
-"<i class=\"fa fa-photo fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            מדיה\n"
-"                                        </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-user fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            crew\n"
-"                                        </span>"
-msgstr ""
-"<i class=\"fa fa-user fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            צוות\n"
-"                                        </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<i class=\"fa fa-user-circle-o fa-fw o_not-animable mx-auto d-block fa-2x\"/"
-">\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            backers\n"
-"                                        </span>"
-msgstr ""
-"<i class=\"fa fa-user-circle-o fa-fw o_not-animable mx-auto d-block fa-2x\"/"
-">\n"
-"                                        <span style=\"font-size: 18px; font-"
-"weight: normal;\">\n"
-"                                            תומכים\n"
-"                                        </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<output class=\"s_range_bubble\" style=\"left: calc(3.01508% + 7.51759px);"
-"\">\n"
-"                                                35\n"
-"                                            </output>"
-msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -168,60 +66,65 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"s_badge badge bg-o-color-3 text-o-color-1 o_animable\" data-"
-"name=\"תג\" data-snippet=\"s_badge\" style=\"font-size: 36px;\">\n"
-"                                <i class=\"fa fa-bullhorn fa-fw o_not-"
-"animable mx-auto d-block fa-2x\"/>\n"
-"                                <span>updates</span>\n"
-"                            </span>"
-msgstr ""
-"<span class=\"s_badge badge bg-o-color-3 text-o-color-1 o_animable\" data-"
-"name=\"תג\" data-snippet=\"s_badge\" style=\"font-size: 36px;\">\n"
-"                                <i class=\"fa fa-bullhorn fa-fw o_not-"
-"animable mx-auto d-block fa-2x\"/>\n"
-"                                <span>עדכונים</span>\n"
-"                            </span>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">\n"
+"<span class=\"text-200\" style=\"font-style: normal; font-weight: 400;\">\n"
 "                                                            Address:&amp;"
 "nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
-"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">\n"
-"                                                            כתובת:&amp;nbsp;"
-"&amp;nbsp;\n"
-"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">\n"
+"<span class=\"text-200\" style=\"font-style: normal; font-weight: 400;\">\n"
 "                                                            Opening Hours:"
 "&amp;nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
-"<span class=\"text-200 bg-o-color-2\" style=\"font-style: normal; font-"
-"weight: 400;\">\n"
-"                                                            שעות פתיחה:&amp;"
-"nbsp;&amp;nbsp;\n"
-"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span style=\"font-size: 36px;\">\n"
-"                                <strong>backers</strong>\n"
-"                            </span>"
+"<span style=\"font-size: 18px; font-weight: normal;\">\n"
+"                                            about\n"
+"                                        </span>"
 msgstr ""
-"<span style=\"font-size: 36px;\">\n"
-"                                <strong>תומכים</strong>\n"
-"                            </span>"
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 18px; font-weight: normal;\">\n"
+"                                            contact\n"
+"                                        </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 18px; font-weight: normal;\">\n"
+"                                            donation\n"
+"                                        </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 18px; font-weight: normal;\">\n"
+"                                            events\n"
+"                                        </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<span style=\"font-size: 18px; font-weight: normal;\">\n"
+"                                            updates\n"
+"                                        </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Our backers:&amp;nbsp;&amp;nbsp;</strong>"
+msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -235,6 +138,11 @@ msgstr "<strong>שנת יסוד:&amp;nbsp;&amp;nbsp;</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Website:&amp;nbsp;&amp;nbsp;</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>donation</strong>"
 msgstr "<strong>תרומה</strong>"
 
@@ -242,6 +150,23 @@ msgstr "<strong>תרומה</strong>"
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>events</strong>"
 msgstr "<strong>אירועים</strong>"
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>updates</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<strong>תמיכה חדשית</strong>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>תרומה חד פעמית</strong>"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_root
@@ -312,11 +237,6 @@ msgid ""
 "Do not show companies with this category unless the category is explicitly "
 "chosen"
 msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "Donate Now"
-msgstr "תרמו עכשיו"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_event_event
@@ -448,6 +368,21 @@ msgstr "חיפוש.."
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "הבא"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "כמות מותאמת אישית"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "לתרומה"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "סכום כולל"
 msgstr ""
 
 #. module: bankayma_website
