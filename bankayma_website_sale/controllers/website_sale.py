@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo.http import request
 
+from odoo.addons.bankayma_website.controllers.main import CompaniesController
 from odoo.addons.website_sale.controllers import main
 
 
@@ -16,6 +17,27 @@ class WebsiteSale(main.WebsiteSale):
         result = super()._get_search_options(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
+        return result
+
+    def _get_additional_shop_values(self, values):
+        result = super()._get_additional_shop_values(values)
+        (
+            company_tags_available,
+            companies_available,
+        ) = CompaniesController._search_combined(self)
+        result.update(
+            company_tags_available=company_tags_available,
+            companies_available=companies_available,
+        )
+        return result
+
+    def _get_additional_extra_shop_values(self, values, **post):
+        result = super()._get_additional_extra_shop_values(values, **post)
+        result.update(
+            project=request.env["res.company"]
+            .sudo()
+            .browse(int(post.get("project", 0)) or [])
+        )
         return result
 
     def _create_or_edit_partner(self, *args, **kwargs):

@@ -8,7 +8,6 @@
         <a t-att-href="keep(category=0)" position="after">
             <a
                 t-if="product.bankayma_website_sale_company_id"
-                href="keep(category=0, project=product.bankayma_website_sale_company_id.id)"
                 t-att-href="product.bankayma_website_sale_company_id.website_link"
                 t-esc="product.bankayma_website_sale_company_id.name"
             />
@@ -23,5 +22,29 @@
                 />
             </p>
         </p>
+    </template>
+    <template id="products" inherit_id="website_sale.products">
+        <t t-call="website_sale.pricelist_list" position="before">
+            <div class="dropdown ms-3">
+                <a
+                    href="#"
+                    role="button"
+                    class="btn dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                >
+                    Project
+                </a>
+                <div class="dropdown-menu">
+                    <t t-foreach="companies_available" t-as="company">
+                        <a
+                            t-att-href="keep(project=company.id)"
+                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
+                        >
+                            <t t-out="company.name" />
+                        </a>
+                    </t>
+                </div>
+            </div>
+        </t>
     </template>
 </odoo>
