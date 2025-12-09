@@ -155,6 +155,8 @@ msgid ""
 "<strong>Monthly Support</strong>\n"
 "                                    <br/>"
 msgstr ""
+"<strong>תמיכה חדשית</strong>\n"
+"                                    <br/>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -269,7 +271,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donate"
-msgstr ""
+msgstr "לתרומה"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_event_event
