@@ -57,6 +57,14 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
+"<span class=\"bg-o-color-3 h6 d-block py-1 px-2 rounded-1\">\n"
+"                                    Previous\n"
+"                                </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">קודם</span>"
 msgstr ""
@@ -196,6 +204,11 @@ msgstr "<strong>עדכונים</strong>"
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>תרומה חד פעמית</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "All Projects"
 msgstr ""
 
 #. module: bankayma_website
