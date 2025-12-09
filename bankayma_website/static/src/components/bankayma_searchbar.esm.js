@@ -113,14 +113,12 @@ publicWidget.registry.bankaymaProjectsSearchbar = publicWidget.Widget.extend({
         }).then(function (html) {
             const $html = $($.parseHTML(html)),
                 $current = $(document);
-            const $new_results_section = $html.find("main section.s_three_columns");
+            const $new_results_section = $html.find("main section#results");
             const $new_no_results_section = $html.find(
-                "main section.s_three_columns + section"
+                "main section#results + section"
             );
-            const $results_section = $current.find("main section.s_three_columns");
-            const $no_results_section = $current.find(
-                "main section.s_three_columns + section"
-            );
+            const $results_section = $current.find("main section#results");
+            const $no_results_section = $current.find("main section#results + section");
             $results_section.replaceWith($new_results_section);
             $no_results_section.replaceWith($new_no_results_section);
         });

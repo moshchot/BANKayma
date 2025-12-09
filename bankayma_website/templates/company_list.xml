@@ -86,6 +86,7 @@
                 />
             </t>
             <section
+                id="results"
                 t-attf-class="s_features_grid o_colored_level pb0 pt32 {{'d-none' if not objects else None}}"
             >
                 <div class="container justify-content-around">

@@ -10,6 +10,20 @@
                 t-value="request.env['blog.post'].search([('company_id', '=', object.id), ('is_published', '=', True)], limit=3)"
             />
             <div id="wrap" class="oe_structure oe_empty">
+                <ol class="breadcrumb mb-0 py-2 flex-grow-1">
+                    <li class="breadcrumb-item ms-1">
+                        <a href="/projects">All Projects</a>
+                    </li>
+                    <li class="breadcrumb-item ms-1" t-if="object.tag_ids.parent_id">
+                        <a
+                            t-attf-href="/projects?tags={{','.join(map(str, object.tag_ids.parent_id[:1].child_ids.ids))}}"
+                            t-out="object.tag_ids.parent_id[:1].name"
+                        />
+                    </li>
+                    <li class="breadcrumb-item ms-1">
+                        <a t-att-href="object.website_link" t-out="object.name" />
+                    </li>
+                </ol>
                 <section
                     class="s_parallax parallax s_parallax_is_fixed bg-black-50 o_colored_level o_half_screen_height pb0 pt0"
                     data-scroll-background-ratio="1"
@@ -684,6 +698,74 @@
                                 <a t-att-href="object.email" t-out="object.email" />
                             </span>
                         </h4>
+                    </div>
+                </section>
+                <section id="footer" class="d-flex">
+                    <div class="container mb-2 d-flex">
+                        <div
+                            class="d-flex flex-grow-1 text-start flex-row"
+                            t-if="prev_object != object"
+                        >
+                            <a
+                                class="w-25"
+                                t-att-href="prev_object.website_link"
+                                t-if="prev_object.bankayma_website_cover or prev_object.logo"
+                            >
+                                <div
+                                    data-name="Cover"
+                                    class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc rounded shadow-sm overflow-hidden h-100"
+                                >
+                                    <div
+                                        class="o_record_cover_component o_record_cover_image"
+                                        t-attf-style="background-image: url({{image_data_uri(prev_object.bankayma_website_cover or prev_object.logo)}});"
+                                    />
+                                </div>
+                            </a>
+                            <div class="pe-3">
+                                <span
+                                    class="bg-o-color-3 h6 d-block py-1 px-2 rounded-1"
+                                >
+                                    Previous
+                                </span>
+                                <a
+                                    class="h2"
+                                    t-att-href="prev_object.website_link"
+                                    t-out="prev_object.name"
+                                />
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex flex-grow-1 text-end flex-row-reverse"
+                            t-if="next_object != object"
+                        >
+                            <a
+                                class="w-25"
+                                t-att-href="next_object.website_link"
+                                t-if="next_object.bankayma_website_cover or next_object.logo"
+                            >
+                                <div
+                                    data-name="Cover"
+                                    class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc rounded shadow-sm overflow-hidden h-100"
+                                >
+                                    <div
+                                        class="o_record_cover_component o_record_cover_image"
+                                        t-attf-style="background-image: url({{image_data_uri(next_object.bankayma_website_cover or next_object.logo)}});"
+                                    />
+                                </div>
+                            </a>
+                            <div class="ps-3">
+                                <span
+                                    class="bg-o-color-3 h6 d-block py-1 px-2 rounded-1"
+                                >
+                                    Previous
+                                </span>
+                                <a
+                                    class="h2"
+                                    t-att-href="next_object.website_link"
+                                    t-out="next_object.name"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
