@@ -1,4 +1,5 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+import datetime
 import itertools
 import random
 
@@ -11,10 +12,27 @@ from odoo import http
 class CompaniesController(http.Controller):
     @http.route("/projects/<model(res.company):company>", website=True, auth="public")
     def render_company_page(self, company):
+        Event = company.sudo().env["event.event"]
+        EVENT_LIMIT = 4
+        now = datetime.datetime.utcnow()
+        event_domain = [("is_published", "=", True), ("company_id", "=", company.id)]
+        events = Event.search(
+            event_domain + [("date_end", ">=", now)], limit=EVENT_LIMIT
+        )
+        if len(events) < EVENT_LIMIT:
+            events = (
+                Event.search(
+                    event_domain + [("date_end", "<", now)],
+                    order=None if events else "date_begin desc",
+                    limit=EVENT_LIMIT - len(events),
+                )
+                + events
+            )
         return http.Response(
             template="bankayma_website.company_page",
             qcontext={
                 "object": company.sudo(),
+                "events": events[:EVENT_LIMIT],
                 "render_dynamic_snippet": self._render_dynamic_snippet,
             },
         )
