@@ -8,11 +8,7 @@
         name="Company page"
     >
         <xpath expr="//a[@href='#events']/.." position="after">
-            <t
-                t-set="products"
-                t-value="request.env['product.product'].search([('is_published', '=', True), ('bankayma_website_sale_company_id', '=', object.id)])"
-            />
-            <span t-if="products" class="s_badge badge o_animable bg-white-25">
+            <span class="s_badge badge o_animable bg-white-25" id="store-header">
                 <a href="#store">
                     <i class="fa fa-gift fa-fw o_not-animable mx-auto d-block fa-2x" />
                     <span style="font-size: 18px; font-weight: normal;">shop</span>
@@ -21,28 +17,24 @@
         </xpath>
         <section id="events" position="after">
             <section
-                class="s_title pt40 pb40 o_colored_level"
-                style="background-image: none;"
                 id="store"
-                t-if="products"
+                data-snippet="s_dynamic_snippet_products"
+                class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level s_product_product_borderless_1 o_dynamic_empty"
+                data-name="Products"
+                style="background-image: none;"
+                data-product-category-id="all"
+                data-number-of-records="16"
+                t-att-data-filter-id="request.env.ref('website_sale.dynamic_filter_newest_products').id"
+                data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
+                data-carousel-interval="5000"
+                t-att-data-company-id="object.id"
+                data-remove-if-empty="#store,#store-header"
             >
-                <div class="container s_allow_columns s_dynamic">
-                    <div
-                        class="s_hr text-start pt32 pb32"
-                        data-snippet="s_hr"
-                        data-name="seperator"
-                    >
-                        <hr
-                            class="w-100 mx-auto"
-                            style="border-top: 1px solid rgb(130, 109, 140);"
-                        />
-                    </div>
-                    <h2 style="text-align: center;">
-                        <strong>products</strong>
-                    </h2>
-                    <t
-                        t-out="render_dynamic_snippet('website_sale.dynamic_filter_template_product_product_mini_name', products)"
-                    />
+                <div class="container o_not_editable">
+                    <div class="dynamic_snippet_template" />
+                </div>
+                <div class="container">
+                    <a t-attf-href="/shop?project={{object.id}}">Read more</a>
                 </div>
             </section>
         </section>

@@ -26,6 +26,7 @@
     "assets": {
         "web.assets_frontend": [
             "web/static/src/views/fields/many2many_tags/tags_list.scss",
+            "bankayma_website_sale/static/src/snippets/*",
         ],
         "website.assets_editor": [
             "bankayma_website_sale/static/src/components/bankayma_configure_tickets.*",
