@@ -1,17 +1,14 @@
 <odoo>
     <template id="product" inherit_id="website_sale.product">
-        <a t-att-href="keep(category=0)" position="attributes">
-            <attribute name="t-if">
-                not product.bankayma_website_sale_company_id
-            </attribute>
-        </a>
-        <a t-att-href="keep(category=0)" position="after">
-            <a
-                t-if="product.bankayma_website_sale_company_id"
-                t-att-href="product.bankayma_website_sale_company_id.website_link"
-                t-esc="product.bankayma_website_sale_company_id.name"
-            />
-        </a>
+        <xpath expr="//a[@t-att-href='keep(category=0)']/.." position="after">
+            <li t-if="product.bankayma_website_sale_company_id" class="breadcrumb-item">
+                <a
+                    t-if="product.bankayma_website_sale_company_id"
+                    t-att-href="product.bankayma_website_sale_company_id.website_link"
+                    t-esc="product.bankayma_website_sale_company_id.name"
+                />
+            </li>
+        </xpath>
         <p t-field="product.description_sale" position="before">
             <p t-if="product.product_tag_ids" class="oe-product-tags">
                 <span
@@ -26,6 +23,14 @@
     <template id="products" inherit_id="website_sale.products">
         <t t-call="website_sale.pricelist_list" position="before">
             <div class="dropdown ms-3">
+                <a
+                    class="badge bg-o-color-1 me-2"
+                    t-if="project"
+                    t-att-href="keep(project=0)"
+                >
+                    <t t-out="project.name" />
+                    ×
+                </a>
                 <a
                     href="#"
                     role="button"

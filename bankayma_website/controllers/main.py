@@ -12,7 +12,8 @@ from odoo import http
 class CompaniesController(http.Controller):
     @http.route("/projects/<model(res.company):company>", website=True, auth="public")
     def render_company_page(self, company):
-        Event = company.sudo().env["event.event"]
+        company = company.sudo()
+        Event = company.env["event.event"]
         EVENT_LIMIT = 4
         now = datetime.datetime.utcnow()
         event_domain = [("is_published", "=", True), ("company_id", "=", company.id)]
@@ -28,10 +29,20 @@ class CompaniesController(http.Controller):
                 )
                 + events
             )
+        next_object = company
+        prev_object = company
+        if company.category_id:
+            companies = company.category_id.company_ids
+            category_index = companies.ids.index(company.id)
+            category_length = len(companies)
+            next_object = companies[(category_index + 1) % category_length]
+            prev_object = companies[(category_index - 1) % category_length]
         return http.Response(
             template="bankayma_website.company_page",
             qcontext={
-                "object": company.sudo(),
+                "object": company,
+                "next_object": next_object,
+                "prev_object": prev_object,
                 "events": events[:EVENT_LIMIT],
                 "render_dynamic_snippet": self._render_dynamic_snippet,
             },
