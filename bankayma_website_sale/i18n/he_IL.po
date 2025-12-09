@@ -63,6 +63,11 @@ msgid "Product"
 msgstr ""
 
 #. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
+msgid "Project"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
 msgid "Read more"
 msgstr ""
