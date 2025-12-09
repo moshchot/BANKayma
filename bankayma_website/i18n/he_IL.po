@@ -336,6 +336,11 @@ msgid "Product categories"
 msgstr ""
 
 #. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "Read more"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company_category__category_show_on_website
 msgid "Show on website"
 msgstr ""
