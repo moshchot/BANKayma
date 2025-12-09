@@ -17,6 +17,11 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "100"
 msgstr ""
 
@@ -146,6 +151,13 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
+"<strong>Monthly Support</strong>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Our backers:&amp;nbsp;&amp;nbsp;</strong>"
 msgstr "<strong>תומכים:&amp;nbsp;&amp;nbsp;</strong>"
 
@@ -178,13 +190,6 @@ msgstr "<strong>אירועים</strong>"
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>updates</strong>"
 msgstr "<strong>עדכונים</strong>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
-"<strong>תמיכה חדשית</strong>\n"
-"                                    <br/>"
-msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -259,6 +264,11 @@ msgstr "צוות"
 msgid ""
 "Do not show companies with this category unless the category is explicitly "
 "chosen"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "Donate"
 msgstr ""
 
 #. module: bankayma_website
