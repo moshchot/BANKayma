@@ -296,7 +296,7 @@
                                             <strong
                                             >Website:&amp;nbsp;&amp;nbsp;</strong>
                                             <a t-att-href="object.website">
-                                                <t t-out="object.website"/>
+                                                <t t-out="object.website" />
                                             </a>
                                         </span>
                                         <br />
@@ -675,20 +675,13 @@
                             <span t-field="object.bankayma_website_opening_hours" />
                         </h4>
                         <h4 class="text-center mb-1" style="text-align: right;">
-                            <span
-                                style="font-size: 16px;"
-                            >
+                            <span  style="font-size: 16px;">
                                 <strong
                                     t-out="object.phone"
                                 />
                             </span>
-                            <span
-                                style="font-size: 16px;"
-                            >
-                                <a
-                                    t-att-href="object.website"
-                                    t-out="object.website"
-                                /> 
+                            <span style="font-size: 16px;">
+                                <a t-att-href="object.website" t-out="object.website" /> 
                             </span>
                             <span style="font-size: 16px;">
                                 <a t-att-href="object.email" t-out="object.email" />
