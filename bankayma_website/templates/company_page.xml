@@ -389,14 +389,14 @@
                 >
                     <div class="o_container_small">
                         <div
-                                class="s_hr text-start pt32 pb32"
-                                data-snippet="s_hr"
-                                data-name="seperator"
-                            >
-                                <hr
-                                    class="w-100 mx-auto"
-                                    style="border-top: 1px solid rgb(130, 109, 140);"
-                                />
+                            class="s_hr text-start pt32 pb32"
+                            data-snippet="s_hr"
+                            data-name="seperator"
+                        >
+                            <hr
+                                class="w-100 mx-auto"
+                                style="border-top: 1px solid rgb(130, 109, 140);"
+                            />
                         </div>
                         <h2 style="text-align: center;">
                             <strong>donation</strong>
@@ -455,7 +455,9 @@
                                             >
                                                 500
                                             </button>
-                                            <span class="s_donation_btn s_donation_custom_btn btn btn-outline-primary btn-lg mb-2 me-1">
+                                            <span
+                                                class="s_donation_btn s_donation_custom_btn btn btn-outline-primary btn-lg mb-2 me-1"
+                                            >
                                                 <input
                                                     id="s_donation_amount_input"
                                                     type="number"
@@ -473,14 +475,14 @@
                                             data-bs-original-title=""
                                             title=""
                                         >
-                                            לתרומה
+                                            Donate
                                         </a>
                                     </form>
                                 </div>
                             </div>
                             <div class="o_colored_level col-lg-6 o_cc o_cc1">
                                 <h2 style="text-align: center;">
-                                    <strong>תמיכה חדשית</strong>
+                                    <strong>Monthly Support</strong>
                                     <br />
                                 </h2>
                                 <div
@@ -642,6 +644,56 @@
                                 <span class="visually-hidden">הבא</span>
                             </a>
                         </div>
+                    </div>
+                </section>
+                <section
+                    class="s_text_block o_colored_level pb16 pt16 o_cc o_cc1"
+                    style="background-image: none;"
+                    id="contact"
+                >
+                    <div class="s_allow_columns o_container_small">
+                        <h4 class="text-center mb-1" style="">
+                            <span style="font-size: 16px;">
+                                <a title="" data-bs-original-title="" href="/about">
+                                    <span style="font-size: 16px;" />
+                                </a>
+                            </span>
+                            <span
+                                style="font-size: 18px;"
+                            >&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;
+                                <strong
+                                    t-field="object.partner_id"
+                                    t-options='{"widget": "contact"}'
+                                />
+                            </span>
+                        </h4>
+                        <h4
+                            class="text-center mb-1"
+                            style="text-align: right;"
+                            t-if="object.bankayma_website_opening_hours"
+                        >
+                            <span t-field="object.bankayma_website_opening_hours" />
+                        </h4>
+                        <h4 class="text-center mb-1" style="text-align: right;">
+                            <span
+                                style="font-size: 16px;"
+                            >
+                                <strong
+                                    t-out="object.phone"
+                                />
+                            </span>
+                            <span
+                                style="font-size: 16px;"
+                            >
+                                <a
+                                    t-att-href="object.website"
+                                    t-out="object.website"
+                                /> 
+                            </span>
+                            <span style="font-size: 16px;">
+                                <a t-att-href="object.email" t-out="object.email" />
+                            </span>
+                        </h4>
                     </div>
                 </section>
             </div>
