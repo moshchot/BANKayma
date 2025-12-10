@@ -67,7 +67,7 @@ class CompaniesController(http.Controller):
             ._render(xmlid, {"records": data})
         )
         output = b'<div class="row my-4">'
-        for node in html.fromstring(xml).getchildren():
+        for node in html.fromstring(f"<root>{xml}</root>").getchildren():
             output += (
                 b'<div class="d-flex flex-grow-0 flex-shrink-0 col-12 col-md-%s">%s</div>'
                 % (
