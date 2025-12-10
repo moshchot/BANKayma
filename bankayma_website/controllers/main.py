@@ -32,11 +32,10 @@ class CompaniesController(http.Controller):
         next_object = company
         prev_object = company
         if company.category_id:
-            companies = company.category_id.company_ids
-            category_index = companies.ids.index(company.id)
-            category_length = len(companies)
-            next_object = companies[(category_index + 1) % category_length]
-            prev_object = companies[(category_index - 1) % category_length]
+            companies = company.category_id.company_ids - company
+            companies = companies.browse(random.sample(companies.ids, len(companies)))
+            next_object = companies[:1] or company
+            prev_object = companies[1:2] or company
         return http.Response(
             template="bankayma_website.company_page",
             qcontext={
