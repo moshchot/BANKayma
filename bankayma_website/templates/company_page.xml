@@ -54,6 +54,7 @@
                                             style="border-color: rgb(233, 236, 239) !important; border-radius: 50px !important;"
                                         >
                                             <img
+                                                t-if="object.logo"
                                                 t-att-src="image_data_uri(object.logo)"
                                                 alt=" "
                                                 class="s_features_grid_icon img img-fluid o_we_custom_image"
