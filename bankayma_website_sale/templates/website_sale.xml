@@ -57,7 +57,7 @@
             <img
                 t-if="product.bankayma_website_sale_company_id.logo"
                 t-att-src="image_data_uri(product.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
-                style="width: 5rem; position: absolute; right: 0.5rem; bottom: 0.5rem"
+                class="bk-company-logo-overlay bk-company-logo-overlay-right"
             />
         </xpath>
     </template>
