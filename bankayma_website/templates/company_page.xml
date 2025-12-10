@@ -347,7 +347,7 @@
                             <strong>updates</strong>
                         </h2>
                         <t
-                            t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts)"
+                            t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts, col=4)"
                         />
                     </div>
                 </section>
