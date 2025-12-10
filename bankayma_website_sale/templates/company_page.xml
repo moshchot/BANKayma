@@ -10,7 +10,6 @@
         <xpath expr="//a[@href='#events']/.." position="after">
             <span class="s_badge badge o_animable bg-white-25" id="store-header">
                 <a href="#store">
-                    <i class="fa fa-gift fa-fw o_not-animable mx-auto d-block fa-2x" />
                     <span style="font-size: 18px; font-weight: normal;">shop</span>
                 </a>
             </span>
