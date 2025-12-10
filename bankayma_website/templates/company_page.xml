@@ -9,8 +9,8 @@
                 t-set="blog_posts"
                 t-value="request.env['blog.post'].search([('company_id', '=', object.id), ('is_published', '=', True)], limit=3)"
             />
-            <div id="wrap" class="oe_structure oe_empty">
-                <ol class="breadcrumb mb-0 py-2 flex-grow-1">
+            <div id="wrap">
+                <ol class="breadcrumb mb-0 py-2">
                     <li class="breadcrumb-item ms-1">
                         <a href="/projects">All Projects</a>
                     </li>
@@ -81,8 +81,9 @@
                                                         >
                                                             Address:&amp;nbsp;&amp;nbsp;
                                                         </span>
-                                                        <span t-field="object.street" />
-                                                        ,
+                                                        <!-- prettier-ignore-start -->
+                                                        <span t-field="object.street" /><span t-if="object.city">, </span>
+                                                        <!-- prettier-ignore-end -->
                                                         <span t-field="object.city" />
                                                     </span>
                                                 </h6>
@@ -95,9 +96,10 @@
                                                             class="text-200"
                                                             style="font-style: normal; font-weight: 400;"
                                                         >
-                                                            Opening Hours:&amp;nbsp;&amp;nbsp;
+                                                            Opening Hours:
                                                         </span>
                                                         <span
+                                                            class="ms-2"
                                                             t-field="object.bankayma_website_opening_hours"
                                                         />
                                                     </span>
@@ -249,149 +251,126 @@
                     style="background-image: none;"
                     id="about"
                 >
-                    <div class="s_allow_columns container justify-content-around">
-                        <div class="s_allow_columns container">
-                            <div class="row">
-                                <div class="o_colored_level pb40 pt40 col-lg-6 o_cc">
-                                    <h5 t-out="object.website_description" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="o_colored_level pb40 pt40 col-lg-6 o_cc">
+                                <h5 t-out="object.website_description" />
+                                <br />
+                                <p>
+                                    <span
+                                        t-if="object.bankayma_inception_year"
+                                        style=""
+                                    >
+                                        <strong>Since:&amp;nbsp;&amp;nbsp;</strong>
+                                        <t t-out="object.bankayma_inception_year" />
+                                    </span>
                                     <br />
-                                    <p style="">
+                                </p>
+                                <div
+                                    id="team"
+                                    t-if="object.bankayma_website_crew_partner_ids"
+                                >
+                                    <p>
+                                        <strong>Our crew:&amp;nbsp;&amp;nbsp;</strong>
                                         <span
-                                            t-if="object.bankayma_inception_year"
-                                            style=""
+                                            t-foreach="object.bankayma_website_crew_partner_ids"
+                                            t-as="partner"
                                         >
-                                            <strong>Since:&amp;nbsp;&amp;nbsp;</strong>
-                                            <t t-out="object.bankayma_inception_year" />
-                                        </span>
-                                        <br />
-                                    </p>
-                                    <div
-                                        id="team"
-                                        t-if="object.bankayma_website_crew_partner_ids"
-                                    >
-                                        <p>
-                                            <strong
-                                            >Our crew:&amp;nbsp;&amp;nbsp;</strong>
-                                            <span
-                                                t-foreach="object.bankayma_website_crew_partner_ids"
-                                                t-as="partner"
-                                            >
-                                                <t t-out="partner.name" />
-                                                ,
-                                                <t t-out="partner.function" />
+                                                <!-- prettier-ignore-start -->
+                                                <t t-out="partner.name" /><span t-if="partner.function">, </span><t t-out="partner.function" />
+                                                <!-- prettier-ignore-end -->
                                             </span>
-                                            <br />
-                                        </p>
-                                    </div>
-                                    <div
-                                        id="backers"
-                                        t-if="object.bankayma_website_backer_partner_ids"
-                                    >
-                                        <p>
-                                            <strong
-                                            >Our backers:&amp;nbsp;&amp;nbsp;</strong>
-                                            <span
-                                                t-foreach="object.bankayma_website_backer_partner_ids"
-                                                t-as="partner"
-                                            >
-                                                <t t-out="partner.name" />
-                                                ,
-                                                <t t-out="partner.function" />
-                                            </span>
-                                            <br />
-                                        </p>
-                                    </div>
-                                    <p style="">
-                                        <span t-if="object.website" style="">
-                                            <strong
-                                            >Website:&amp;nbsp;&amp;nbsp;</strong>
-                                            <a t-att-href="object.website">
-                                                <t t-out="object.website" />
-                                            </a>
-                                        </span>
                                         <br />
                                     </p>
                                 </div>
                                 <div
-                                    class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
+                                    id="backers"
+                                    t-if="object.bankayma_website_backer_partner_ids"
                                 >
-                                    <div class="media_iframe_video_size" />
-                                    <iframe
-                                        t-att-src="object.bankayma_website_videolink_embed"
-                                        frameborder="0"
-                                        allowfullscreen="allowfullscreen"
-                                        marginheight="0"
-                                        marginwidth="0"
-                                    />
+                                    <p>
+                                        <strong
+                                        >Our backers:&amp;nbsp;&amp;nbsp;</strong>
+                                        <span
+                                            t-foreach="object.bankayma_website_backer_partner_ids"
+                                            t-as="partner"
+                                        >
+                                                <!-- prettier-ignore-start -->
+                                                <t t-out="partner.name" /><span t-if="partner.function">, </span><t t-out="partner.function" />
+                                                <!-- prettier-ignore-end -->
+                                            </span>
+                                        <br />
+                                    </p>
                                 </div>
+                                <p>
+                                    <span t-if="object.website" style="">
+                                        <strong>Website:&amp;nbsp;&amp;nbsp;</strong>
+                                        <a t-att-href="object.website">
+                                            <t t-out="object.website" />
+                                        </a>
+                                    </span>
+                                    <br />
+                                </p>
+                            </div>
+                            <div
+                                class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
+                                t-if="object.bankayma_website_videolink_embed"
+                            >
+                                <div class="media_iframe_video_size" />
+                                <iframe
+                                    t-att-src="object.bankayma_website_videolink_embed"
+                                    frameborder="0"
+                                    allowfullscreen="allowfullscreen"
+                                    marginheight="0"
+                                    marginwidth="0"
+                                />
                             </div>
                         </div>
                     </div>
                 </section>
-                <section data-snippet="s_text_block" position="after">
-                    <section
-                        class="s_blog_posts s_dynamic o_colored_level pb40 pt40 o_cc o_cc1 s_blog_post_card"
-                        id="updates"
-                        data-vcss="001"
-                        data-columns="3"
-                        style="overflow: hidden; background-image: none;"
-                        data-snippet="s_blog_posts"
-                        data-name="Blog Posts"
-                        t-if="blog_posts"
-                    >
+                <section
+                    class="s_blog_posts s_dynamic o_colored_level pb40 pt40 o_cc o_cc1 s_blog_post_card"
+                    id="updates"
+                    t-if="blog_posts"
+                >
+                    <div class="container s_blog_post_card">
                         <div
-                            class="container s_allow_columns s_dynamic s_blog_post_card"
+                            class="s_hr text-start pt32 pb32"
+                            data-snippet="s_hr"
+                            data-name="seperator"
                         >
-                            <div
-                                class="s_hr text-start pt32 pb32"
-                                data-snippet="s_hr"
-                                data-name="seperator"
-                            >
-                                <hr
-                                    class="w-100 mx-auto"
-                                    style="border-top: 1px solid rgb(130, 109, 140);"
-                                />
-                            </div>
-                            <h2 style="text-align: center;">
-                                <strong>updates</strong>
-                            </h2>
-                            <t
-                                t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts)"
+                            <hr
+                                class="w-100 mx-auto"
+                                style="border-top: 1px solid rgb(130, 109, 140);"
                             />
                         </div>
-                    </section>
+                        <h2 style="text-align: center;">
+                            <strong>updates</strong>
+                        </h2>
+                        <t
+                            t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts)"
+                        />
+                    </div>
                 </section>
-                <section data-snippet="s_blog_posts" position="after">
-                    <section
-                        class="s_title pt40 pb40 o_colored_level"
-                        style="background-image: none;"
-                        id="events"
-                        t-if="events"
-                    >
+                <section id="events" t-if="events">
+                    <div class="container s_allow_columns s_dynamic s_event_event_card">
                         <div
-                            class="container s_allow_columns s_dynamic s_event_event_card"
+                            class="s_hr text-start pt32 pb32"
+                            data-snippet="s_hr"
+                            data-name="seperator"
                         >
-                            <div
-                                class="s_hr text-start pt32 pb32"
-                                data-snippet="s_hr"
-                                data-name="seperator"
-                            >
-                                <hr
-                                    class="w-100 mx-auto"
-                                    style="border-top: 1px solid rgb(130, 109, 140);"
-                                />
-                            </div>
-                            <h2 style="text-align: center;">
-                                <strong>events</strong>
-                            </h2>
-                            <t
-                                t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
+                            <hr
+                                class="w-100 mx-auto"
+                                style="border-top: 1px solid rgb(130, 109, 140);"
                             />
-                            <a t-attf-href="/events?projects=[{{object.id}}]">
-                                Read more
-                            </a>
                         </div>
-                    </section>
+                        <h2 style="text-align: center;">
+                            <strong>events</strong>
+                        </h2>
+                        <t
+                            t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
+                        />
+                        <a t-attf-href="/events?projects=[{{object.id}}]">Read more</a>
+                    </div>
                 </section>
                 <section
                     class="pt40 pb40 o_colored_level o_cc o_cc1"
