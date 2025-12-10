@@ -24,6 +24,11 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
+msgid "<strong>store</strong>"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_account_move_line__bankayma_website_sale_company_id
 msgid "Bankayma Website Sale Company"
 msgstr ""
