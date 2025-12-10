@@ -48,7 +48,7 @@ class CompaniesController(http.Controller):
             },
         )
 
-    def _render_dynamic_snippet(self, xmlid, records):
+    def _render_dynamic_snippet(self, xmlid, records, col=3):
         data = (
             http.request.env["website.snippet.filter"]
             .new(
@@ -69,8 +69,11 @@ class CompaniesController(http.Controller):
         output = b'<div class="row my-4">'
         for node in html.fromstring(xml).getchildren():
             output += (
-                b'<div class="d-flex flex-grow-0 flex-shrink-0 col-3">%s</div>'
-                % html.tostring(node)
+                b'<div class="d-flex flex-grow-0 flex-shrink-0 col-12 col-md-%s">%s</div>'
+                % (
+                    str(col).encode("utf8"),
+                    html.tostring(node),
+                )
             )
         output += b"</div>"
         return Markup(output.decode("utf8"))
