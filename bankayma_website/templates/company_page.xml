@@ -254,7 +254,13 @@
                 >
                     <div class="container">
                         <div class="row">
-                            <div class="o_colored_level pb40 pt40 col-lg-6 o_cc">
+                            <t
+                                t-set="about_columns"
+                                t-value="'col-12 col-md-6' if object.bankayma_website_videolink_embed else 'col-12'"
+                            />
+                            <div
+                                t-attf-class="o_colored_level pb40 pt40 {{about_columns}} o_cc"
+                            >
                                 <h5 t-out="object.website_description" />
                                 <br />
                                 <p>
@@ -313,7 +319,7 @@
                                 </p>
                             </div>
                             <div
-                                class="mx-auto media_iframe_video pb40 pt40 col-lg-6 o_cc"
+                                t-attf-class="mx-auto media_iframe_video pb40 pt40 {{about_columns}} o_cc"
                                 t-if="object.bankayma_website_videolink_embed"
                             >
                                 <div class="media_iframe_video_size" />
