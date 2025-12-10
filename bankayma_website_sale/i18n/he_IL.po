@@ -17,10 +17,7 @@ msgstr ""
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
-msgid ""
-"<i class=\"fa fa-gift fa-fw o_not-animable mx-auto d-block fa-2x\"/>\n"
-"                    <span style=\"font-size: 18px; font-weight: normal;"
-"\">shop</span>"
+msgid "<span style=\"font-size: 18px; font-weight: normal;\">shop</span>"
 msgstr ""
 
 #. module: bankayma_website_sale
