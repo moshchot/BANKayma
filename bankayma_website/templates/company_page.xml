@@ -400,7 +400,7 @@
                     data-anchor="true"
                     dir="ltr"
                 >
-                    <div class="o_container_small">
+                    <div class="container">
                         <div
                             class="s_hr text-start pt32 pb32"
                             data-snippet="s_hr"
