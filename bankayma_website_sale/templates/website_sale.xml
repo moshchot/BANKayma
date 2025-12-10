@@ -4,7 +4,7 @@
             <li t-if="product.bankayma_website_sale_company_id" class="breadcrumb-item">
                 <a
                     t-if="product.bankayma_website_sale_company_id"
-                    t-att-href="product.bankayma_website_sale_company_id.website_link"
+                    t-attf-href="{{product.bankayma_website_sale_company_id.website_link}}#store"
                     t-esc="product.bankayma_website_sale_company_id.name"
                 />
             </li>
@@ -51,5 +51,14 @@
                 </div>
             </div>
         </t>
+    </template>
+    <template id="products_item" inherit_id="website_sale.products_item">
+        <xpath expr="//div[hasclass('oe_product_image')]" position="inside">
+            <img
+                t-if="product.bankayma_website_sale_company_id.logo"
+                t-att-src="image_data_uri(product.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
+                style="width: 5rem; position: absolute; right: 0.5rem; bottom: 0.5rem"
+            />
+        </xpath>
     </template>
 </odoo>

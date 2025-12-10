@@ -1,0 +1,15 @@
+<odoo>
+    <template id="record_cover" inherit_id="website.record_cover">
+        <div t-if="use_filters" position="after">
+            <t
+                t-set="company_logo"
+                t-value="'company_id' in _record._fields and _record.company_id.with_context(bin_size=False).logo"
+            />
+            <img
+                t-if="company_logo"
+                t-att-src="image_data_uri(company_logo)"
+                style="width: 5rem; position: absolute; left: 0.5rem; bottom: 0.5rem"
+            />
+        </div>
+    </template>
+</odoo>
