@@ -8,7 +8,7 @@
             <img
                 t-if="company_logo"
                 t-att-src="image_data_uri(company_logo)"
-                style="width: 5rem; position: absolute; left: 0.5rem; bottom: 0.5rem"
+                class="bk-company-logo-overlay"
             />
         </div>
     </template>

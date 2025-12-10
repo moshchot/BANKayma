@@ -38,6 +38,7 @@
             "/bankayma_website/static/src/components/*.xml",
             "/bankayma_website/static/src/components/*.scss",
             "/bankayma_website/static/src/scss/website_event.scss",
+            "/bankayma_website/static/src/scss/bankayma_website.scss",
         ],
         "website.assets_editor": [
             "/bankayma_website/static/src/components_editor/*.js",
