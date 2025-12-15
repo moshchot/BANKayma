@@ -18,12 +18,12 @@ msgstr ""
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
 msgid "<span style=\"font-size: 18px; font-weight: normal;\">shop</span>"
-msgstr ""
+msgstr "<span style=\"font-size: 18px; font-weight: normal;\">חנות</span>"
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
 msgid "<strong>Shop</strong>"
-msgstr ""
+msgstr "<strong>חנות</strong>"
 
 #. module: bankayma_website_sale
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_account_move_line__bankayma_website_sale_company_id
