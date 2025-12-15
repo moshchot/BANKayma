@@ -204,7 +204,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "All Projects"
-msgstr ""
+msgstr "כל היוזמות"
 
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_root
