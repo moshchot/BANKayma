@@ -357,7 +357,7 @@
                             t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts, col=4)"
                         />
                         <a
-                            class="btn btn-primary" 
+                            class="btn btn-primary"
                             t-attf-href="/blog/?projects=[{{object.id}}]"
                         >
                             Read More
