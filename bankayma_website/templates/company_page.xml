@@ -77,8 +77,8 @@
                                                         t-if="object.street or object.city"
                                                     >
                                                         <span
-                                                            class="text-200"
-                                                            style="font-style: normal; font-weight: 400;"
+                                                            class="text-black"
+                                                            style="font-style: normal; font-weight: 600;"
                                                         >
                                                             Address:&amp;nbsp;&amp;nbsp;
                                                         </span>
@@ -94,8 +94,8 @@
                                                         t-if="object.bankayma_website_opening_hours"
                                                     >
                                                         <span
-                                                            class="text-200"
-                                                            style="font-style: normal; font-weight: 400;"
+                                                            class="text-black"
+                                                            style="font-style: normal; font-weight: 600;"
                                                         >
                                                             Opening Hours:
                                                         </span>
@@ -356,6 +356,7 @@
                         <t
                             t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts, col=4)"
                         />
+                        <a class="btn btn-primary" t-attf-href="/blog/?projects=[{{object.id}}]">Read More</a>
                     </div>
                 </section>
                 <section id="events" t-if="events">
@@ -376,7 +377,7 @@
                         <t
                             t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
                         />
-                        <a t-attf-href="/events?projects=[{{object.id}}]">Read more</a>
+                        <a class="btn btn-primary" t-attf-href="/events?projects=[{{object.id}}]">More events</a>
                     </div>
                 </section>
                 <section
@@ -470,7 +471,7 @@
                                         <a
                                             href="#"
                                             type="button"
-                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2"
+                                            class="s_donation_donate_btn btn btn-primary btn-lg mb-2"
                                             data-bs-original-title=""
                                             title=""
                                         >
@@ -549,7 +550,7 @@
                                         <a
                                             href="#"
                                             type="button"
-                                            class="s_donation_donate_btn btn btn-secondary btn-lg mb-2"
+                                            class="s_donation_donate_btn btn btn-primary btn-lg mb-2"
                                             data-bs-original-title=""
                                             title=""
                                         >
@@ -711,10 +712,10 @@
                                 <span
                                     class="bg-o-color-3 h6 d-block py-1 px-2 rounded-1"
                                 >
-                                    Previous
+                                    <i class="fa fa-chevron-left" />
                                 </span>
                                 <a
-                                    class="h2"
+                                    class="h5"
                                     t-att-href="prev_object.website_link"
                                     t-out="prev_object.name"
                                 />
@@ -743,10 +744,10 @@
                                 <span
                                     class="bg-o-color-3 h6 d-block py-1 px-2 rounded-1"
                                 >
-                                    Previous
+                                    <i class="fa fa-chevron-right" />
                                 </span>
                                 <a
-                                    class="h2"
+                                    class="h5"
                                     t-att-href="next_object.website_link"
                                     t-out="next_object.name"
                                 />

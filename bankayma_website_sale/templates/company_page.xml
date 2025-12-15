@@ -41,14 +41,14 @@
                         />
                     </div>
                     <h2 style="text-align: center;">
-                        <strong>store</strong>
+                        <strong>Shop</strong>
                     </h2>
                 </div>
                 <div class="container o_not_editable">
                     <div class="dynamic_snippet_template" />
                 </div>
                 <div class="container">
-                    <a t-attf-href="/shop?project={{object.id}}">Read more</a>
+                    <a class="btn btn-primary" t-attf-href="/shop?project={{object.id}}">Shop more</a>
                 </div>
             </section>
         </section>
