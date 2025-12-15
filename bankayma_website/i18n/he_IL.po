@@ -77,8 +77,8 @@ msgid ""
 "                                                        </span>"
 msgstr ""
 "<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
-"                                                            כתובת:&amp;"
-"nbsp;&amp;nbsp;\n"
+"                                                            כתובת:&amp;nbsp;"
+"&amp;nbsp;\n"
 "                                                        </span>"
 
 #. module: bankayma_website
