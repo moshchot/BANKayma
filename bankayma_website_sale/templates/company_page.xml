@@ -48,7 +48,12 @@
                     <div class="dynamic_snippet_template" />
                 </div>
                 <div class="container">
-                    <a class="btn btn-primary" t-attf-href="/shop?project={{object.id}}">Shop more</a>
+                    <a
+                        class="btn btn-primary"
+                        t-attf-href="/shop?project={{object.id}}"
+                    >
+                        Shop more
+                    </a>
                 </div>
             </section>
         </section>
