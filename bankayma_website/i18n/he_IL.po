@@ -76,6 +76,10 @@ msgid ""
 "nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
+"<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
+"                                                            כתובת:&amp;"
+"nbsp;&amp;nbsp;\n"
+"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -84,6 +88,9 @@ msgid ""
 "                                                            Opening Hours:\n"
 "                                                        </span>"
 msgstr ""
+"<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
+"                                                            שעות פתיחה:\n"
+"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -318,7 +325,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "More events"
-msgstr ""
+msgstr "עוד אירועים"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
@@ -339,7 +346,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Read More"
-msgstr ""
+msgstr "עוד עדכונים"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company_category__category_show_on_website

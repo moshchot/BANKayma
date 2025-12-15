@@ -356,7 +356,12 @@
                         <t
                             t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts, col=4)"
                         />
-                        <a class="btn btn-primary" t-attf-href="/blog/?projects=[{{object.id}}]">Read More</a>
+                        <a
+                            class="btn btn-primary" 
+                            t-attf-href="/blog/?projects=[{{object.id}}]"
+                        >
+                            Read More
+                        </a>
                     </div>
                 </section>
                 <section id="events" t-if="events">
@@ -377,7 +382,12 @@
                         <t
                             t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
                         />
-                        <a class="btn btn-primary" t-attf-href="/events?projects=[{{object.id}}]">More events</a>
+                        <a
+                            class="btn btn-primary"
+                            t-attf-href="/events?projects=[{{object.id}}]"
+                        >
+                            More events
+                        </a>
                     </div>
                 </section>
                 <section
@@ -700,10 +710,10 @@
                             >
                                 <div
                                     data-name="Cover"
-                                    class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc rounded shadow-sm overflow-hidden h-100"
+                                    class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc rounded overflow-hidden w-100"
                                 >
                                     <div
-                                        class="o_record_cover_component o_record_cover_image"
+                                        class="o_record_cover_component o_record_cover_image bk-company-logo-overlay"
                                         t-attf-style="background-image: url({{image_data_uri(prev_object.bankayma_website_cover or prev_object.logo)}});"
                                     />
                                 </div>
@@ -732,10 +742,10 @@
                             >
                                 <div
                                     data-name="Cover"
-                                    class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc rounded shadow-sm overflow-hidden h-100"
+                                    class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc rounded overflow-hidden w-100"
                                 >
                                     <div
-                                        class="o_record_cover_component o_record_cover_image"
+                                        class="o_record_cover_component o_record_cover_image bk-company-logo-overlay"
                                         t-attf-style="background-image: url({{image_data_uri(next_object.bankayma_website_cover or next_object.logo)}});"
                                     />
                                 </div>
