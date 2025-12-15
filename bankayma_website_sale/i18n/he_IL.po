@@ -22,8 +22,8 @@ msgstr ""
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
-msgid "<strong>store</strong>"
-msgstr "<strong>חנות</strong>"
+msgid "<strong>Shop</strong>"
+msgstr ""
 
 #. module: bankayma_website_sale
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_account_move_line__bankayma_website_sale_company_id
@@ -70,11 +70,11 @@ msgid "Project"
 msgstr ""
 
 #. module: bankayma_website_sale
-#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
-msgid "Read more"
+#: model:ir.model,name:bankayma_website_sale.model_sale_order
+msgid "Sales Order"
 msgstr ""
 
 #. module: bankayma_website_sale
-#: model:ir.model,name:bankayma_website_sale.model_sale_order
-msgid "Sales Order"
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
+msgid "Shop more"
 msgstr ""

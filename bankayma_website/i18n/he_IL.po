@@ -57,14 +57,6 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"bg-o-color-3 h6 d-block py-1 px-2 rounded-1\">\n"
-"                                    Previous\n"
-"                                </span>"
-msgstr ""
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">קודם</span>"
 msgstr ""
@@ -79,20 +71,16 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"text-200\" style=\"font-style: normal; font-weight: 400;\">\n"
+"<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
 "                                                            Address:&amp;"
 "nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
-"<span class=\"text-200\" style=\"font-style: normal; font-weight: 400;\">\n"
-"                                                            כתובת:&amp;nbsp;"
-"&amp;nbsp;\n"
-"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
-"<span class=\"text-200\" style=\"font-style: normal; font-weight: 400;\">\n"
+"<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
 "                                                            Opening Hours:\n"
 "                                                        </span>"
 msgstr ""
@@ -328,6 +316,11 @@ msgid "Is backer of"
 msgstr ""
 
 #. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "More events"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
 msgid "No results found"
 msgstr ""
@@ -345,7 +338,7 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "Read more"
+msgid "Read More"
 msgstr ""
 
 #. module: bankayma_website
