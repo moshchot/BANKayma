@@ -323,6 +323,11 @@ msgid "Is backer of"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_bankayma_search_drop_company_mixin
+msgid "Mixin to remove company filters in website snippet"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "More events"
 msgstr "עוד אירועים"
@@ -386,6 +391,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_link
 msgid "Website Link"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_website_snippet_filter
+msgid "Website Snippet Filter"
 msgstr ""
 
 #. module: bankayma_website
