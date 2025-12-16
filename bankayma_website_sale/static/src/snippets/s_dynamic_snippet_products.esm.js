@@ -5,7 +5,7 @@ DynamicSnippetProducts.include({
     _getSearchDomain: function () {
         const domain = this._super();
         const company_id = this.$el.data("company-id");
-        if (company_id !== null) {
+        if (company_id) {
             domain.push([
                 "bankayma_website_sale_company_id",
                 "=",
