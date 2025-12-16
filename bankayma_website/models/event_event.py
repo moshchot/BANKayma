@@ -4,7 +4,8 @@ from odoo import api, models
 
 
 class Event(models.Model):
-    _inherit = "event.event"
+    _inherit = ["event.event", "bankayma.search.drop.company.mixin"]
+    _name = "event.event"
 
     @api.model
     def _search_get_detail(self, website, order, options):
