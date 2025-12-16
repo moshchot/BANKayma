@@ -3,7 +3,10 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="company_page" name="Company page">
-        <t t-set="title" t-value="object.name" />
+        <t
+            t-set="title"
+            t-value="&quot;%s | %s&quot; % (object.name, object.parent_id.name)"
+        />
         <t t-call="website.layout">
             <t
                 t-set="blog_posts"
