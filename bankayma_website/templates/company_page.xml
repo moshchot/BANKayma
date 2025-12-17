@@ -362,12 +362,14 @@
                         <t
                             t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts, col=4)"
                         />
-                        <a
-                            class="btn btn-primary"
-                            t-attf-href="/blog/?projects=[{{object.id}}]"
-                        >
-                            Read More
-                        </a>
+                        <h4 style="text-align: center;">
+                            <a
+                                class="btn btn-primary"
+                                t-attf-href="/blog/?projects=[{{object.id}}]"
+                            >
+                                Read More
+                            </a>
+                        </h4>    
                     </div>
                 </section>
                 <section id="events" t-if="events">
@@ -388,12 +390,14 @@
                         <t
                             t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
                         />
-                        <a
-                            class="btn btn-primary"
-                            t-attf-href="/events?projects=[{{object.id}}]"
-                        >
-                            More events
-                        </a>
+                        <h4 style="text-align: center;">
+                            <a
+                                class="btn btn-primary"
+                                t-attf-href="/events?projects=[{{object.id}}]"
+                            >
+                                More events
+                            </a>
+                        </h4>
                     </div>
                 </section>
                 <section
