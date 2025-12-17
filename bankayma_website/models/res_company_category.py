@@ -12,3 +12,4 @@ class ResCompanyCategory(models.Model):
         "explicitly chosen",
         default=False,
     )
+    company_show_donation = fields.Boolean("Show donation section")
