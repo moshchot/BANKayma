@@ -1,0 +1,88 @@
+<odoo>
+    <template id="opt_blog_cover_post" inherit_id="website_blog.opt_blog_cover_post">
+        <xpath
+            expr="//a[@t-attf-href='/blog/#{slug(first_post.blog_id)}/#{slug(first_post)}']"
+            position="attributes"
+        >
+            <attribute name="t-attf-href">{{first_post.website_url}}</attribute>
+        </xpath>
+    </template>
+    <template
+        id="opt_blog_cover_post_fullwidth_design"
+        inherit_id="website_blog.opt_blog_cover_post_fullwidth_design"
+    >
+        <!--
+        <xpath expr="//a[@t-attf-href='/blog/#{slug(first_post.blog_id)}/#{slug(first_post)}']" position="attributes">
+            <attribute name="t-attf-href">{{first_post.website_url}}</attribute>
+        </xpath>
+        -->
+    </template>
+    <template
+        id="opt_blog_post_comment"
+        inherit_id="website_blog.opt_blog_post_comment"
+    >
+        <a
+            t-attf-href="/web/login?redirect=/blog/{{slug(blog_post.blog_id)}}/{{slug(blog_post)}}#discussion"
+            position="attributes"
+        >
+            <attribute name="t-attf-href">
+                /web/login?redirect={{blog_post.website_url}}#discussion
+            </attribute>
+        </a>
+    </template>
+    <template
+        id="opt_blog_post_read_next"
+        inherit_id="website_blog.opt_blog_post_read_next"
+    >
+        <a
+            t-att-href="'/blog/' + slug(next_post.blog_id) + '/' + slug(next_post)"
+            position="attributes"
+        >
+            <attribute name="t-att-href">next_post.website_url</attribute>
+        </a>
+        <a
+            t-att-href="'/blog/' + slug(next_post.blog_id) + '/' + slug(next_post)"
+            position="attributes"
+        >
+            <attribute name="t-att-href">next_post.website_url</attribute>
+        </a>
+        <a
+            t-att-data-url="'/blog/' + slug(next_post.blog_id) + '/' + slug(next_post) + '?anim'"
+            position="attributes"
+        >
+            <attribute name="t-att-data-url">next_post.website_url + '?anim'</attribute>
+        </a>
+    </template>
+    <template id="posts_loop" inherit_id="website_blog.posts_loop">
+        <a
+            t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+            position="attributes"
+        >
+            <attribute name="t-attf-href">{{blog_post.website_url}}</attribute>
+        </a>
+    </template>
+    <template id="post_heading" inherit_id="website_blog.post_heading">
+        <a
+            t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+            position="attributes"
+        >
+            <attribute name="t-attf-href">{{blog_post.website_url}}</attribute>
+        </a>
+    </template>
+    <template id="post_cover_image" inherit_id="website_blog.post_cover_image">
+        <a
+            t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+            position="attributes"
+        >
+            <attribute name="t-attf-href">{{blog_post.website_url}}</attribute>
+        </a>
+    </template>
+    <template id="post_teaser" inherit_id="website_blog.post_teaser">
+        <a
+            t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+            position="attributes"
+        >
+            <attribute name="t-attf-href">{{blog_post.website_url}}</attribute>
+        </a>
+    </template>
+</odoo>
