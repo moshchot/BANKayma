@@ -61,4 +61,40 @@
             />
         </xpath>
     </template>
+    <template
+        id="dynamic_filter_template_product_product_add_to_cart"
+        inherit_id="website_sale.dynamic_filter_template_product_product_add_to_cart"
+    >
+        <xpath expr="//a[hasclass('o_carousel_product_img_link')]" position="inside">
+            <img
+                t-if="record.bankayma_website_sale_company_id.logo"
+                t-att-src="image_data_uri(record.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
+                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+            />
+        </xpath>
+    </template>
+    <template
+        id="dynamic_filter_template_product_product_borderless_1"
+        inherit_id="website_sale.dynamic_filter_template_product_product_borderless_1"
+    >
+        <xpath expr="//a[hasclass('o_carousel_product_img_link')]" position="inside">
+            <img
+                t-if="record.bankayma_website_sale_company_id.logo"
+                t-att-src="image_data_uri(record.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
+                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+            />
+        </xpath>
+    </template>
+    <template
+        id="dynamic_filter_template_product_product_borderless_2"
+        inherit_id="website_sale.dynamic_filter_template_product_product_borderless_2"
+    >
+        <xpath expr="//a[hasclass('o_carousel_product_img_link')]" position="inside">
+            <img
+                t-if="record.bankayma_website_sale_company_id.logo"
+                t-att-src="image_data_uri(record.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
+                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+            />
+        </xpath>
+    </template>
 </odoo>
