@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <group name="bankayma_company_website_flags" position="inside">
                 <field name="company_hide_without_category" />
+                <field name="company_show_donation" />
             </group>
             <group name="bankayma_category_flags" position="inside">
                 <field name="category_show_on_website" />

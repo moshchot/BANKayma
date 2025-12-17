@@ -226,7 +226,10 @@
                                         </span>
                                     </a>
                                 </span>
-                                <span class="s_badge badge o_animable bg-white-25">
+                                <span
+                                    class="s_badge badge o_animable bg-white-25"
+                                    t-if="object.category_id.company_show_donation"
+                                >
                                     <a href="#donation">
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
@@ -399,6 +402,7 @@
                     id="donation"
                     data-anchor="true"
                     dir="ltr"
+                    t-if="object.category_id.company_show_donation"
                 >
                     <div class="container">
                         <div
