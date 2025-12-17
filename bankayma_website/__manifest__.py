@@ -23,6 +23,7 @@
         "templates/company_page.xml",
         "templates/company_list.xml",
         "templates/website.xml",
+        "templates/website_blog.xml",
         "templates/website_event.xml",
         "views/blog_post.xml",
         "views/menu.xml",
