@@ -369,7 +369,7 @@
                             >
                                 Read More
                             </a>
-                        </h4>    
+                        </h4>
                     </div>
                 </section>
                 <section id="events" t-if="events">
