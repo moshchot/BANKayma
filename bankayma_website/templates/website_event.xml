@@ -54,7 +54,7 @@
             <attribute name="t-if">False</attribute>
         </div>
         <div itemprop="location" position="after">
-            <div itemprop="organizer" t-out="event.company_id.name" />
+            <div itemprop="organizer" t-out="event.address_id.name" />
         </div>
     </template>
     <template id="layout" inherit_id="website_event.layout">
