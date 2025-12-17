@@ -51,6 +51,16 @@
                 </div>
             </div>
         </t>
+        <xpath expr="//div[hasclass('products_header')]" position="attributes">
+            <attribute
+                name="class"
+                separator=" "
+                add="sticky-top pt16 pb16 o_cc o_cc4"
+            />
+        </xpath>
+        <div id="wrap" position="before">
+            <xpath expr="//div[hasclass('products_header')]" position="move" />
+        </div>
     </template>
     <template id="products_item" inherit_id="website_sale.products_item">
         <xpath expr="//div[hasclass('oe_product_image')]" position="inside">
