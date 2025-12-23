@@ -14,6 +14,11 @@ class WebsiteBlog(website_blog.WebsiteBlog):
         sitemap=True,
     )
     def blog_post(self, blog_post, tag_id=None, page=1, enable_editor=None, **post):
+        if http.request.env.user.has_group(
+            "bankayma_website.group_website"
+        ) and not http.request.env.user.has_group("website.group_website_designer"):
+            # TODO
+            pass
         return super().blog_post(
             blog_post.blog_id,
             blog_post,

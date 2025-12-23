@@ -20,6 +20,7 @@
         "data/res_partner_relation_type.xml",
         "data/ir_asset.xml",
         "security/bankayma_website.xml",
+        "security/ir.model.access.csv",
         "templates/company_page.xml",
         "templates/company_list.xml",
         "templates/website.xml",
@@ -30,7 +31,9 @@
         "views/res_company.xml",
         "views/res_company_category.xml",
     ],
-    "demo": [],
+    "demo": [
+        "demo/res_users.xml",
+    ],
     "website": "https://github.com/moshchot/BANKayma",
     "external_dependencies": {"python": []},
     "assets": {

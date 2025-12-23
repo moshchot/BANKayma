@@ -4,7 +4,33 @@
         name="BANKayma website"
         sequence="110"
         web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
-        groups="bankayma_base.group_org_manager,bankayma_base.group_full"
+        groups="group_website,bankayma_base.group_org_manager,bankayma_base.group_full"
+    />
+    <menuitem
+        id="menu_bankayma_website_content"
+        parent="menu_bankayma_website_root"
+        name="Content"
+        sequence="50"
+    />
+    <record id="website_blog.action_blog_post" model="ir.actions.act_window">
+        <field name="domain">[('company_id', 'in', allowed_company_ids)]</field>
+    </record>
+    <menuitem
+        id="menu_blog_posts"
+        action="website_blog.action_blog_post"
+        parent="menu_bankayma_website_content"
+        name="Blog posts"
+        sequence="50"
+    />
+    <record id="website_event.action_event_pages_list" model="ir.actions.act_window">
+        <field name="domain">[('company_id', 'in', allowed_company_ids)]</field>
+    </record>
+    <menuitem
+        id="menu_events"
+        action="website_event.action_event_pages_list"
+        parent="menu_bankayma_website_content"
+        name="Events"
+        sequence="100"
     />
     <record id="action_categories" model="ir.actions.act_window">
         <field name="name">Product categories</field>
@@ -16,16 +42,11 @@
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem
-        id="menu_blog_posts"
-        action="website_blog.action_blog_post"
-        parent="menu_bankayma_website_root"
-        sequence="50"
-    />
-    <menuitem
         id="menu_categories"
         action="action_categories"
         parent="menu_bankayma_website_root"
         sequence="100"
+        groups="bankayma_base.group_org_manager"
     />
     <record id="action_event_types" model="ir.actions.act_window">
         <field name="name">Event templates</field>
@@ -41,5 +62,6 @@
         action="action_event_types"
         parent="menu_bankayma_website_root"
         sequence="200"
+        groups="bankayma_base.group_org_manager"
     />
 </odoo>
