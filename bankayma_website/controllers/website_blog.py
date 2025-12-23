@@ -17,8 +17,19 @@ class WebsiteBlog(website_blog.WebsiteBlog):
         if http.request.env.user.has_group(
             "bankayma_website.group_website"
         ) and not http.request.env.user.has_group("website.group_website_designer"):
-            # TODO
-            pass
+            # manipulate cache to pretend current user is website designer
+            cache = http.request.env.user.pool._Registry__cache
+            cache_keys = [
+                k
+                for k in cache.d.keys()
+                if len(k) == 4
+                and k[0] == "res.users"
+                and k[1].__name__ == "_has_group"
+                and k[2] == http.request.env.user.id
+                and k[3] == "website.group_website_designer"
+            ]
+            for key in cache_keys:
+                cache.d[key] = True
         return super().blog_post(
             blog_post.blog_id,
             blog_post,

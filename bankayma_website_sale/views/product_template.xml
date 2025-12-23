@@ -25,6 +25,39 @@
             <field name="categ_id" position="attributes">
                 <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
+            <xpath
+                expr="//page[@name='general_information']//field[@name='company_id']"
+                position="attributes"
+            >
+                <attribute name="groups">
+                    bankayma_base.group_full,bankayma_base.group_org_manager
+                </attribute>
+            </xpath>
+            <field name="taxes_id" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_full,bankayma_base.group_org_manager
+                </attribute>
+            </field>
+            <page name="purchase" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_full,bankayma_base.group_org_manager
+                </attribute>
+            </page>
+            <page name="invoicing" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_full,bankayma_base.group_org_manager
+                </attribute>
+            </page>
+            <page name="sumit" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_full,bankayma_base.group_org_manager
+                </attribute>
+            </page>
+            <group name="shop" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_full,bankayma_base.group_org_manager
+                </attribute>
+            </group>
         </field>
     </record>
 </odoo>
