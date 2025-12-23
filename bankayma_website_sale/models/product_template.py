@@ -18,3 +18,10 @@ class ProductTemplate(models.Model):
                 [("bankayma_website_sale_company_id", "=", int(options["project"]))]
             )
         return result
+
+    def _compute_visible_expense_policy(self):
+        result = super()._compute_visible_expense_policy()
+        is_full_odoo = self.env.user.has_group("bankayma_base.group_full")
+        for this in self:
+            this.visible_expense_policy = is_full_odoo and this.visible_expense_policy
+        return result

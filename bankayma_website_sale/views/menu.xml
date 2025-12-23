@@ -11,4 +11,21 @@
         parent="bankayma_website.menu_bankayma_website_content"
         sequence="150"
     />
+    <record id="action_sales" model="ir.actions.act_window">
+        <field name="name">Sales</field>
+        <field name="res_model">account.move.line</field>
+        <field name="domain">
+            [('product_id.bankayma_website_sale_company_id', 'in', allowed_company_ids)]
+        </field>
+        <field name="context">
+            {'group_by': ['product_id'], 'pivot_column_groupby': ['date:month'], 'pivot_measures': ['price_subtotal', 'quantity']}
+        </field>
+        <field name="view_mode">pivot</field>
+    </record>
+    <menuitem
+        id="menu_sales"
+        action="action_sales"
+        parent="bankayma_website.menu_bankayma_website_root"
+        sequence="60"
+    />
 </odoo>
