@@ -85,4 +85,29 @@
             <attribute name="t-attf-href">{{blog_post.website_url}}</attribute>
         </a>
     </template>
+    <template
+        id="dynamic_filter_template_blog_post_card"
+        inherit_id="website_blog.dynamic_filter_template_blog_post_card"
+    >
+        <h4 position="after">
+            <h6 class="mb-0" t-field="record.subtitle" />
+        </h4>
+        <xpath expr="//span/a[contains(@t-att-href, '/blog')]/.." position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//span/a[contains(@t-att-href, '/blog')]/.." position="after">
+            <div
+                class="o_wblog_post_short_tag_section d-flex align-items-center flex-wrap"
+                t-if="record.tag_ids"
+            >
+                <t t-foreach="record.tag_ids" t-as="tag">
+                    <a
+                        class="badge text-primary border me-1 post_link"
+                        t-attf-href="/news/tag/#{slug(tag)}"
+                        t-esc="tag.name"
+                    />
+                </t>
+            </div>
+        </xpath>
+    </template>
 </odoo>
