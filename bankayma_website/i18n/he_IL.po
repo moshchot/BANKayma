@@ -223,7 +223,7 @@ msgstr ""
 
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_blog_posts
-msgid "Blog Post Pages"
+msgid "Blog posts"
 msgstr ""
 
 #. module: bankayma_website
@@ -239,6 +239,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company_category
 msgid "Company Categories"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_content
+msgid "Content"
 msgstr ""
 
 #. module: bankayma_website
@@ -285,6 +290,11 @@ msgstr "אירוע"
 #: model:ir.actions.act_window,name:bankayma_website.action_event_types
 #: model:ir.ui.menu,name:bankayma_website.menu_event_types
 msgid "Event templates"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.ui.menu,name:bankayma_website.menu_events
+msgid "Events"
 msgstr ""
 
 #. module: bankayma_website
@@ -396,6 +406,11 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_link
 msgid "Website Link"
+msgstr ""
+
+#. module: bankayma_website
+#: model:res.groups,name:bankayma_website.group_website
+msgid "Website Manager"
 msgstr ""
 
 #. module: bankayma_website
