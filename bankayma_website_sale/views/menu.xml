@@ -1,0 +1,14 @@
+<odoo>
+    <record id="website_sale.action_product_pages_list" model="ir.actions.act_window">
+        <field name="domain">
+            [('bankayma_website_sale_company_id', 'in', allowed_company_ids)]
+        </field>
+    </record>
+    <menuitem
+        id="menu_products"
+        name="Products"
+        action="website_sale.action_product_pages_list"
+        parent="bankayma_website.menu_bankayma_website_content"
+        sequence="150"
+    />
+</odoo>

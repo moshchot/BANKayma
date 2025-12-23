@@ -12,6 +12,19 @@
                     options="{'no_create': True, 'no_open': True}"
                 />
             </xpath>
+            <div name="options" position="after">
+                <field name="sale_ok" invisible="True" />
+                <field name="purchase_ok" invisible="True" />
+            </div>
+            <div name="options" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </div>
+            <field name="categ_id" position="after">
+                <field name="categ_id" invisible="True" />
+            </field>
+            <field name="categ_id" position="attributes">
+                <attribute name="groups">bankayma_base.group_full</attribute>
+            </field>
         </field>
     </record>
 </odoo>
