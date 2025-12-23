@@ -22,3 +22,21 @@ class WebsiteBlog(website_blog.WebsiteBlog):
             enable_editor=enable_editor,
             **post
         )
+
+    @http.route(
+        [
+            "/news",
+            "/news/page/<int:page>",
+            "/news/tag/<string:tag>",
+            "/news/tag/<string:tag>/page/<int:page>",
+        ],
+        type="http",
+        auth="public",
+        website=True,
+        sitemap=True,
+    )
+    def news(self, blog=None, tag=None, page=1, search=None, **opt):
+        result = self.blog(blog=blog, tag=tag, page=page, search=search, **opt)
+        if hasattr(result, "qcontext") and result.qcontext.get("blog_url"):
+            result.qcontext["blog_url"].path = "/news"
+        return result
