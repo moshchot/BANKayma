@@ -219,22 +219,22 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_blog_post
 msgid "Blog Post"
-msgstr ""
+msgstr "עדכון"
 
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_blog_posts
 msgid "Blog posts"
-msgstr ""
+msgstr "עדכונים"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "יוזמות"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_blog_post__company_id
 msgid "Company"
-msgstr ""
+msgstr "יוזמה"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company_category
@@ -244,7 +244,7 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_content
 msgid "Content"
-msgstr ""
+msgstr "תוכן"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_blog_blog__cover_image
@@ -252,7 +252,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_website.field_event_event__cover_image
 #: model:ir.model.fields,field_description:bankayma_website.field_website_cover_properties_mixin__cover_image
 msgid "Cover Image"
-msgstr ""
+msgstr "תמונה ראשית"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_website_cover_properties_mixin
@@ -295,7 +295,7 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_events
 msgid "Events"
-msgstr ""
+msgstr "אירועים"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_geolink
@@ -320,7 +320,7 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_image_ids
 msgid "Image slider"
-msgstr ""
+msgstr "תמונות"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_inception_year
@@ -376,12 +376,12 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Social Networks"
-msgstr ""
+msgstr "רשתות חברתיות"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_subtitle
 msgid "Subtitle"
-msgstr ""
+msgstr "כותרת משנה"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company_tag
@@ -391,22 +391,22 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_videolink
 msgid "Video link"
-msgstr ""
+msgstr "קישור וידאו"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_website
 msgid "Website"
-msgstr ""
+msgstr "אתר"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_description
 msgid "Website Description"
-msgstr ""
+msgstr "אודות היוזמה"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__website_link
 msgid "Website Link"
-msgstr ""
+msgstr "קישור לדף יוזמה"
 
 #. module: bankayma_website
 #: model:res.groups,name:bankayma_website.group_website
@@ -421,7 +421,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website description"
-msgstr ""
+msgstr "אודות היוזמה"
 
 #. module: bankayma_website
 #: model:event.type,name:bankayma_website.event_type_webshop
@@ -431,7 +431,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website settings"
-msgstr ""
+msgstr "הגדרות דף יוזמה"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__seo_name
