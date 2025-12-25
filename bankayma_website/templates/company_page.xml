@@ -708,6 +708,7 @@
                         </h4>
                     </div>
                 </section>
+                <!--
                 <section id="footer" class="d-flex">
                     <div class="container mb-2 d-flex">
                         <div
@@ -776,6 +777,7 @@
                         </div>
                     </div>
                 </section>
+                -->
             </div>
         </t>
     </template>
