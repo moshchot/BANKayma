@@ -6,6 +6,11 @@
             <field name="name" position="after">
                 <field name="bankayma_website_sale_company_id" invisible="True" />
                 <field name="list_price" required="True" widget="monetary" />
+                <field
+                    name="product_tag_ids"
+                    widget="many2many_tags"
+                    options="{'no_create': True}"
+                />
                 <field name="image_1920" required="True" widget="image" />
             </field>
         </field>
