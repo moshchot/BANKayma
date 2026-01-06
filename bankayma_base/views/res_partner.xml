@@ -163,8 +163,10 @@
                     <field name="name" required="True" />
                     <field name="street" required="True" />
                     <field name="street2" />
-                    <field name="city" required="True" />
-                    <field name="zip" required="True" />
+                    <field
+                        name="city"
+                        attrs="{'invisible': [('id', '=', False)], 'required': [('id', '!=', False)]}"
+                    />
                 </group>
             </form>
         </field>

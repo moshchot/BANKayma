@@ -80,6 +80,7 @@
         "security/ir.model.access.csv",
         "security/ir_model_access.xml",
         "data/mailing_list.xml",
+        "views/event_event.xml",
         "views/res_company.xml",
         "views/res_company_category.xml",
         "views/res_partner.xml",

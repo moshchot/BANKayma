@@ -7,6 +7,8 @@
                 <attribute name="context" operation="update">
                     {
                         'default_category_id': [(6, 0, [%(bankayma_base.res_partner_category_venue)s])],
+                        'default_country_id': %(base.il)s,
+                        'default_city': 'Jerusalem',
                         'form_view_ref': 'bankayma_base.bankayma_partner_venue_form',
                     }
                 </attribute>
