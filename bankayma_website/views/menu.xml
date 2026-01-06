@@ -5,6 +5,7 @@
         sequence="110"
         web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
         groups="group_website,bankayma_base.group_org_manager,bankayma_base.group_full"
+        action="website.website_preview"
     />
     <menuitem
         id="menu_bankayma_website_content"
