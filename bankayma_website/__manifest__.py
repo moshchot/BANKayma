@@ -2,7 +2,7 @@
 {
     "name": "BANKayma (website)",
     "summary": "BANKayma website customizations",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",

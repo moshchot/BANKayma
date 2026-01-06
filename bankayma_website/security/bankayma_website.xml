@@ -5,9 +5,17 @@
         <field name="comment" />
         <field
             name="implied_ids"
-            eval="[Command.link(ref('base.group_user')), Command.link(ref('website.group_website_restricted_editor')), Command.link(ref('event.group_event_manager'))]"
+            eval="[Command.link(ref('base.group_user')), Command.link(ref('website.group_website_restricted_editor')), Command.link(ref('event.group_event_user'))]"
         />
     </record>
+
+    <record id="base.default_user" model="res.users">
+        <field
+            name="groups_id"
+            eval="[Command.unlink(ref('event.group_event_manager'))]"
+        />
+    </record>
+
     <record id="rule_blog_post" model="ir.rule">
         <field name="name">Blog post multicompany</field>
         <field name="model_id" ref="website_blog.model_blog_post" />
