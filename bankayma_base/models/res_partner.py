@@ -36,6 +36,15 @@ class ResPartner(models.Model):
             result = "%s\n%s" % (result, self.vat)
         return result
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        result = super().create(vals_list)
+        for this in result:
+            # this handles multilingual defaults. come of with something better
+            if this.city == "Jerusalem":
+                this.with_context(lang="he_IL").city = "ירושלים"
+        return result
+
     def action_reset_password(self):
         has = self.env.user.has_group
         if (
