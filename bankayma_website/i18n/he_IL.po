@@ -242,6 +242,11 @@ msgid "Company Categories"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.actions.server,name:bankayma_website.action_bankayma_website_root
+msgid "Company page action"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_content
 msgid "Content"
 msgstr "תוכן"
