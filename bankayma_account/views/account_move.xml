@@ -420,6 +420,8 @@
         <field name="arch" type="xml">
             <field name="journal_id" position="before">
                 <field name="bankayma_move_line_analytic_account_id" />
+                <field name="bankayma_move_line_product_id" />
+                <field name="bankayma_move_line_product_category_id" />
             </field>
             <filter name="myinvoices" position="before">
                 <filter
@@ -444,6 +446,11 @@
                     name="bankayma_move_line_product_id"
                     string="Product"
                     context="{'group_by': 'bankayma_move_line_product_id'}"
+                />
+                <filter
+                    name="bankayma_move_line_product_category_id"
+                    string="Product Category"
+                    context="{'group_by': 'bankayma_move_line_product_category_id'}"
                 />
             </filter>
             <filter name="salesperson" position="before">
