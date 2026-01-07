@@ -75,6 +75,7 @@ class ResPartner(models.Model):
                 or has_group("group_manager")
                 or has_group("group_org_manager")
             )
+            and not self.env.context.get("form_view_ref", "").startswith("bankayma")
         ):
             view_id = self.env.ref("bankayma_base.bankayma_partner_form").id
 
