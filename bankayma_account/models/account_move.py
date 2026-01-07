@@ -51,6 +51,10 @@ class AccountMove(models.Model):
         related="invoice_line_ids.product_id",
         store=True,
     )
+    bankayma_move_line_product_category_id = fields.Many2one(
+        related="invoice_line_ids.product_id.categ_id",
+        store=True,
+    )
     bankayma_move_line_account_id = fields.Many2one(
         related="invoice_line_ids.account_id"
     )
