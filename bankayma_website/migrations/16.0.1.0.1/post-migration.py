@@ -37,3 +37,5 @@ def migrate(env, version=None):
             ):
                 continue
             user.write({"groups_id": [Command.unlink(group.id)]})
+
+    env.ref("event.event_event_company_rule").perm_read = False
