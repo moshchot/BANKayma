@@ -77,7 +77,7 @@
             </div>
         </section>
     </template>
-    <template id="company_list" name="Company list">
+    <template id="company_list" name="Our Projects">
         <t t-call="website.layout">
             <t t-call="bankayma_website.bankayma_searchbar">
                 <t
