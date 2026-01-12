@@ -702,7 +702,6 @@
                             <span style="font-size: 16px;">
                                 <a t-att-href="object.website" t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')" />
                             </span>
-                            <br>
                             <span style="font-size: 16px;">
                                 <a t-att-href="object.email" t-out="object.email" />
                             </span>
