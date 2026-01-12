@@ -318,7 +318,9 @@
                                     <span t-if="object.website" style="">
                                         <strong>Website:&amp;nbsp;&amp;nbsp;</strong>
                                         <a t-att-href="object.website">
-                                            <t t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"/>
+                                            <t
+                                                t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
+                                            />
                                         </a>
                                     </span>
                                     <br />
@@ -700,7 +702,10 @@
                                 <strong t-out="object.phone" />
                             </span>
                             <span style="font-size: 16px;">
-                                <a t-att-href="object.website" t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')" />
+                                <a
+                                    t-att-href="object.website"
+                                    t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
+                                />
                             </span>
                             <span style="font-size: 16px;">
                                 <a t-att-href="object.email" t-out="object.email" />
