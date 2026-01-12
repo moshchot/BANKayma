@@ -188,13 +188,13 @@ msgstr "<strong>אירועים</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "<strong>updates</strong>"
-msgstr "<strong>עדכונים</strong>"
+msgid "<strong>one time donation</strong>"
+msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "<strong>תרומה חד פעמית</strong>"
-msgstr ""
+msgid "<strong>updates</strong>"
+msgstr "<strong>עדכונים</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
