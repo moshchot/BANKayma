@@ -11,12 +11,16 @@ class WebsiteSale(main.WebsiteSale):
         result = super()._shop_get_query_url_kwargs(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
+        if "product_tag" in kwargs:
+            result["product_tag"] = kwargs["product_tag"]
         return result
 
     def _get_search_options(self, *args, **kwargs):
         result = super()._get_search_options(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
+        if "product_tag" in kwargs:
+            result["product_tag"] = kwargs["product_tag"]
         return result
 
     def _get_additional_shop_values(self, values):
@@ -37,6 +41,11 @@ class WebsiteSale(main.WebsiteSale):
             project=request.env["res.company"]
             .sudo()
             .browse(int(post.get("project", 0)) or [])
+        )
+        result.update(
+            product_tag=request.env["product.tag"]
+            .sudo()
+            .browse(int(post.get("product_tag", 0)) or [])
         )
         return result
 

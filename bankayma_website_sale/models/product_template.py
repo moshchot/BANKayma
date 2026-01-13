@@ -17,6 +17,10 @@ class ProductTemplate(models.Model):
             result["base_domain"].append(
                 [("bankayma_website_sale_company_id", "=", int(options["project"]))]
             )
+        if "product_tag" in options:
+            result["base_domain"].append(
+                [("product_tag_ids", "=", int(options["product_tag"]))]
+            )
         return result
 
     def _compute_visible_expense_policy(self):
