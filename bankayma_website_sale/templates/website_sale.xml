@@ -4,8 +4,8 @@
             <li t-if="product.bankayma_website_sale_company_id" class="breadcrumb-item">
                 <a
                     t-if="product.bankayma_website_sale_company_id"
-                    t-attf-href="{{product.bankayma_website_sale_company_id.website_link}}#store"
-                    t-esc="product.bankayma_website_sale_company_id.name"
+                    t-attf-href="{{product.sudo().bankayma_website_sale_company_id.website_link}}#store"
+                    t-out="product.sudo().bankayma_website_sale_company_id.name"
                 />
             </li>
         </xpath>
@@ -14,9 +14,10 @@
                 <span
                     t-foreach="product.product_tag_ids"
                     t-as="tag"
-                    t-field="tag.name"
                     t-attf-class="o_tag o_tag_color_{{tag.color}} badge"
-                />
+                >
+                    <a t-att-href="keep(product_tag=tag.id)" t-field="tag.name" />
+                </span>
             </p>
         </p>
     </template>
@@ -46,6 +47,32 @@
                             t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
                         >
                             <t t-out="company.name" />
+                        </a>
+                    </t>
+                </div>
+                <a
+                    t-attf-class="badge o_tag o_tag_color_{{product_tag.color}} me-2"
+                    t-if="product_tag"
+                    t-att-href="keep(product_tag=0)"
+                >
+                    <t t-out="product_tag.name" />
+                    ×
+                </a>
+                <a
+                    href="#"
+                    role="button"
+                    class="btn dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                >
+                    Tag
+                </a>
+                <div class="dropdown-menu">
+                    <t t-foreach="products.product_tag_ids" t-as="tag">
+                        <a
+                            t-att-href="keep(product_tag=tag.id)"
+                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if False else ''}"
+                        >
+                            <t t-out="tag.name" />
                         </a>
                     </t>
                 </div>
