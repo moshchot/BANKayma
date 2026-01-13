@@ -12,4 +12,12 @@
             />
         </div>
     </template>
+    <template id="website_layout" inherit_id="website.layout">
+        <t t-if="editable or translatable" position="after">
+            <t
+                t-set="nothing"
+                t-value="html_data.update({'data-bankayma_editable': '1' if bankayma_editable else '0'})"
+            />
+        </t>
+    </template>
 </odoo>
