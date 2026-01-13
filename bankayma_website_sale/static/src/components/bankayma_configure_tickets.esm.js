@@ -30,6 +30,7 @@ BankaymaConfigureTickets.template = "bankayma_website_sale.BankaymaConfigureTick
 export const systrayItem = {
     Component: BankaymaConfigureTickets,
     isDisplayed: (env) =>
+        env.services.website.bankayma_editable &&
         env.services.website.currentWebsite &&
         env.services.website.currentWebsite.metadata.mainObject &&
         env.services.website.currentWebsite.metadata.mainObject.model === "event.event",

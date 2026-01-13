@@ -6,6 +6,7 @@ from . import res_company
 from . import res_company_category
 from . import res_company_tag
 from . import ir_http
+from . import ir_qweb
 from . import website
 from . import website_cover_properties_mixin
 from . import website_snippet_filter
