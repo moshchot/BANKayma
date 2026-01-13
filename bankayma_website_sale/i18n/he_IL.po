@@ -89,3 +89,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
 msgid "Shop more"
 msgstr "עוד מוצרים"
+
+#. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
+msgid "Tag"
+msgstr ""
