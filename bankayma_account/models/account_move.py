@@ -35,6 +35,7 @@ class AccountMove(models.Model):
         compute="_compute_amount",
         currency_field="company_currency_id",
         compute_sudo=True,
+        store=True,
     )
     bankayma_payment_method_id = fields.Many2one(
         "account.payment.method",
