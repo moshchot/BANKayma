@@ -290,7 +290,7 @@
                                             t-as="partner"
                                         >
                                                 <!-- prettier-ignore-start -->
-                                                <t t-out="partner.name" />, <span t-if="partner.function">, </span><t t-out="partner.function" />
+                                                <t t-out="partner.name" /><t t-if="partner.function"> </t><span class="fst-italic" t-out="partner.function" /><t t-if="not partner_last">,</t>
                                                 <!-- prettier-ignore-end -->
                                             </span>
                                         <br />
@@ -308,7 +308,7 @@
                                             t-as="partner"
                                         >
                                                 <!-- prettier-ignore-start -->
-                                                <t t-out="partner.name" />, <span t-if="partner.function">, </span><t t-out="partner.function" />
+                                                <t t-out="partner.name" /><t t-if="partner.function"> </t><span class="fst-italic" t-out="partner.function" /><t t-if="not partner_last">,</t>
                                                 <!-- prettier-ignore-end -->
                                             </span>
                                         <br />
