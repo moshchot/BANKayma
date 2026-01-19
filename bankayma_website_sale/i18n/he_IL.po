@@ -34,7 +34,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_product_product__bankayma_website_sale_company_id
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_product_template__bankayma_website_sale_company_id
 msgid "Company (webshop)"
-msgstr ""
+msgstr "יוזמה (אתר)"
 
 #. module: bankayma_website_sale
 #. odoo-javascript
@@ -42,12 +42,12 @@ msgstr ""
 #: model:ir.actions.act_window,name:bankayma_website_sale.action_bankayma_configure_tickets
 #, python-format
 msgid "Configure Tickets"
-msgstr ""
+msgstr "הגדרת כרטיסים"
 
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_event_event
 msgid "Event"
-msgstr ""
+msgstr "אירוע"
 
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_account_move_line
@@ -62,17 +62,17 @@ msgstr ""
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_product_template
 msgid "Product"
-msgstr ""
+msgstr "מוצר"
 
 #. module: bankayma_website_sale
 #: model:ir.ui.menu,name:bankayma_website_sale.menu_products
 msgid "Products"
-msgstr ""
+msgstr "מוצרים"
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
 msgid "Project"
-msgstr ""
+msgstr "יוזמה"
 
 #. module: bankayma_website_sale
 #: model:ir.actions.act_window,name:bankayma_website_sale.action_sales
@@ -93,4 +93,4 @@ msgstr "עוד מוצרים"
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
 msgid "Tag"
-msgstr ""
+msgstr "סוג"

@@ -52,7 +52,7 @@ msgid ""
 "                    Project"
 msgstr ""
 "<i class=\"fa fa-folder-open\"/>\n"
-"                    פרוייקט"
+"                    יוזמה"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -189,7 +189,7 @@ msgstr "<strong>אירועים</strong>"
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>one time donation</strong>"
-msgstr ""
+msgstr "<strong>תרומה חד פעמית</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
