@@ -232,6 +232,7 @@ msgid "Companies"
 msgstr "יוזמות"
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__company_id
 #: model:ir.model.fields,field_description:bankayma_website.field_blog_post__company_id
 msgid "Company"
 msgstr "יוזמה"
@@ -270,9 +271,24 @@ msgid "Cover image"
 msgstr "תמונה ראשית"
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_crew_partner_ids
 msgid "Crew"
 msgstr "צוות"
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__display_name
+msgid "Display Name"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.model.fields,help:bankayma_website.field_res_company_category__company_hide_without_category
@@ -285,6 +301,21 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donate"
 msgstr "לתרומה"
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__embed_code
+msgid "Embed Code"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.actions.act_window,name:bankayma_website.action_bankayma_project_page_embed_code
+msgid "Embed code"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_bankayma_project_page_embed_code_option
+msgid "Embedding option"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_event_event
@@ -301,6 +332,11 @@ msgstr ""
 #: model:ir.ui.menu,name:bankayma_website.menu_events
 msgid "Events"
 msgstr "אירועים"
+
+#. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_bankayma_project_page_embed_code
+msgid "Generate embedding code for project page"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_geolink
@@ -323,6 +359,12 @@ msgid "Hide without category"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__id
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code_option__id
+msgid "ID"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_image_ids
 msgid "Image slider"
 msgstr "תמונות"
@@ -338,6 +380,21 @@ msgid "Is backer of"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_bankayma_search_drop_company_mixin
 msgid "Mixin to remove company filters in website snippet"
 msgstr ""
@@ -348,6 +405,11 @@ msgid "More events"
 msgstr "עוד אירועים"
 
 #. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code_option__name
+msgid "Name"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
 msgid "No results found"
 msgstr ""
@@ -356,6 +418,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_website.field_res_company__bankayma_website_opening_hours
 msgid "Opening hours"
 msgstr "שעות פתיחה"
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__options
+msgid "Options"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__embed_code_html
+msgid "Preview"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.actions.act_window,name:bankayma_website.action_categories
@@ -396,6 +468,11 @@ msgstr "כותרת משנה"
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company_tag
 msgid "Tags for companies"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code_option__value
+msgid "Value"
 msgstr ""
 
 #. module: bankayma_website
