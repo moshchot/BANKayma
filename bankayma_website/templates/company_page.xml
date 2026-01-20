@@ -359,7 +359,7 @@
                             />
                         </div>
                         <h2 style="text-align: center;">
-                            <strong>updates</strong>
+                            <strong>Updates</strong>
                         </h2>
                         <t
                             t-out="render_dynamic_snippet('website_blog.dynamic_filter_template_blog_post_card', blog_posts, col=4)"
@@ -387,7 +387,7 @@
                             />
                         </div>
                         <h2 style="text-align: center;">
-                            <strong>events</strong>
+                            <strong>Events</strong>
                         </h2>
                         <t
                             t-out="render_dynamic_snippet('website_event.dynamic_filter_template_event_event_card', events)"
@@ -422,7 +422,7 @@
                             />
                         </div>
                         <h2 style="text-align: center;">
-                            <strong>donation</strong>
+                            <strong>Donation to <t t-out="object.name"/> </strong>
                         </h2>
                         <div class="row align-items-center">
                             <div class="o_colored_level col-lg-6 o_cc o_cc1 pt0 pb0">
