@@ -16,6 +16,17 @@ class PaymentTransaction(models.Model):
     def _process_notification_data(self, notification_data):
         """Coerce current company to provider's company for further processing"""
         for this in self.filtered(lambda x: x.is_donation and not x.invoice_ids):
+            partner = this.partner_id
+            if (
+                self.env.user._is_public()
+                and self.env.user.partner_id == this.partner_id
+            ):
+                partner = self.env["res.partner"].create(
+                    {
+                        "name": this.partner_name,
+                        "email": this.partner_email,
+                    }
+                )
             donation_product = (
                 this.company_id.donation_credit_transfer_product_id.with_company(
                     this.company_id
@@ -25,10 +36,11 @@ class PaymentTransaction(models.Model):
             this.invoice_ids = (
                 self.env["account.move"]
                 .sudo()
+                .with_company(this.company_id)
                 .create(
                     {
                         "move_type": "out_invoice",
-                        "partner_id": this.partner_id.id,
+                        "partner_id": partner.id,
                         "invoice_line_ids": [
                             fields.Command.create(
                                 {
@@ -79,30 +91,38 @@ class PaymentTransaction(models.Model):
                     "/billing/recurring/charge",
                     payload,
                 )
-                contract = self.env["contract.contract"].create(
-                    {
-                        "name": payload["Items"][0]["Item"]["Name"],
-                        "contract_type": "sale",
-                        "partner_id": self.env.user.partner_id.id,
-                        "invoice_partner_id": self.env.user.partner_id.id,
-                        "date_start": date.today(),
-                        "recurring_next_date": date.today() + relativedelta(months=1),
-                        "recurring_rule_type": "monthly",
-                        "recurring_invoicing_type": "pre-paid",
-                        "recurring_interval": 1,
-                        "code": result.get("Data", {}).get("Payment", {}).get("ID")
-                        or result.get("Data", {}).get("DocumentID"),
-                        "journal_id": self.company_id.donation_journal_id.id,
-                        "contract_line_fixed_ids": [
-                            fields.Command.create(
-                                {
-                                    "product_id": donation_product.id,
-                                    "price_unit": self.amount,
-                                    "name": self._to_sumit_vals_name(self.is_recurrent),
-                                }
-                            ),
-                        ],
-                    }
+                partner = self.invoice_ids.partner_id[:1] or self.partner_id
+                contract = (
+                    self.env["contract.contract"]
+                    .with_company(self.company_id)
+                    .create(
+                        {
+                            "name": payload["Items"][0]["Item"]["Name"],
+                            "contract_type": "sale",
+                            "partner_id": partner.id,
+                            "invoice_partner_id": partner.id,
+                            "date_start": date.today(),
+                            "recurring_next_date": date.today()
+                            + relativedelta(months=1),
+                            "recurring_rule_type": "monthly",
+                            "recurring_invoicing_type": "pre-paid",
+                            "recurring_interval": 1,
+                            "code": result.get("Data", {}).get("Payment", {}).get("ID")
+                            or result.get("Data", {}).get("DocumentID"),
+                            "journal_id": self.company_id.donation_journal_id.id,
+                            "contract_line_fixed_ids": [
+                                fields.Command.create(
+                                    {
+                                        "product_id": donation_product.id,
+                                        "price_unit": self.amount,
+                                        "name": self._to_sumit_vals_name(
+                                            self.is_recurrent
+                                        ),
+                                    }
+                                ),
+                            ],
+                        }
+                    )
                 )
                 self.invoice_ids.invoice_line_ids.write(
                     {
