@@ -2901,8 +2901,8 @@ msgid ""
 "[Bar-Kayma] {{object.company_id.name}} reminder to send receipt (Ref "
 "{{object.ref}})"
 msgstr ""
-"[בר-קיימא] {{object.company_id.name}} תזכורת לשלוח קבלה (סימוכין "
-"{{object.ref}})"
+"[בר-קיימא] {{object.company_id.name}} תזכורת לשלוח קבלה (סימוכין {{object."
+"ref}})"
 
 #. module: bankayma_account
 #: model:mail.template,subject:bankayma_account.template_account_move_paid
