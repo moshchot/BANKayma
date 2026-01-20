@@ -22,6 +22,7 @@
         "security/bankayma_website.xml",
         "security/ir.model.access.csv",
         "templates/company_page.xml",
+        "templates/company_page_embed.xml",
         "templates/company_list.xml",
         "templates/website.xml",
         "templates/website_blog.xml",
@@ -30,6 +31,7 @@
         "views/menu.xml",
         "views/res_company.xml",
         "views/res_company_category.xml",
+        "wizards/bankayma_project_page_embed_code.xml",
     ],
     "demo": [
         "demo/res_users.xml",

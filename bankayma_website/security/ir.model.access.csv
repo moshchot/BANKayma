@@ -3,3 +3,5 @@ access_blog_post,access_blog_post,website_blog.model_blog_post,group_website,1,1
 access_event_tag_category_manager,event.tag.category.manager,event.model_event_tag_category,event.group_event_manager,1,1,1,1
 event.access_event_tag_category_user,event.tag.category.user,event.model_event_tag_category,event.group_event_user,1,0,0,0
 event.access_event_tag_user,event.tag.user,event.model_event_tag,event.group_event_user,1,0,0,0
+access_bankayma_project_page_embed_code,access_bankayma_project_page_embed_code,model_bankayma_project_page_embed_code,base.group_system,1,1,1,1
+access_bankayma_project_page_embed_code_option,access_bankayma_project_page_embed_code_option,model_bankayma_project_page_embed_code_option,base.group_system,1,1,1,1

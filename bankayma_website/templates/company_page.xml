@@ -593,6 +593,7 @@
                     data-snippet="s_image_gallery"
                     data-name="Image Gallery"
                     t-if="object.bankayma_website_image_ids"
+                    id="gallery"
                 >
                     <div class="container">
                         <div

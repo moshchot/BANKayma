@@ -47,6 +47,20 @@ class CompaniesController(http.Controller):
             },
         )
 
+    @http.route(
+        "/projects/<model(res.company):company>/embed", website=True, auth="public"
+    )
+    def render_company_page_embedded(self, company, **kwargs):
+        result = self.render_company_page(company)
+        result.template = "bankayma_website.company_page_embed"
+        result.qcontext["no_header"] = True
+        result.qcontext["no_footer"] = True
+        for _dummy, arg in http.request.env[
+            "bankayma.project.page.embed.code.option"
+        ]._get_options():
+            result.qcontext[f"show_{arg}"] = kwargs.get(arg)
+        return result
+
     def _render_dynamic_snippet(self, xmlid, records, col=3):
         data = (
             http.request.env["website.snippet.filter"]
