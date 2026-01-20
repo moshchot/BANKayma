@@ -2865,6 +2865,20 @@ msgid "You need to set a price for the line with product %s"
 msgstr ""
 
 #. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/payment_transaction.py:0
+#, python-format
+msgid "[%(account_code)s] donation to %(company_name)s"
+msgstr ""
+
+#. module: bankayma_account
+#. odoo-python
+#: code:addons/bankayma_account/models/payment_transaction.py:0
+#, python-format
+msgid "[%(account_code)s] recurrent donation to %(company_name)s"
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,subject:bankayma_account.template_account_move_new_from_portal
 msgid "[BanKayma] Payment request from {{object.company_id.name}}"
 msgstr "[בנקיימא] בקשת תשלום מ{{object.company_id.name}"
