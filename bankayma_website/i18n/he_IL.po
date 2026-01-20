@@ -150,7 +150,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Events</strong>"
-msgstr ""
+msgstr "<strong>אירועים</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -179,7 +179,7 @@ msgstr "<strong>שנת יסוד:&amp;nbsp;&amp;nbsp;</strong>"
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Updates</strong>"
-msgstr ""
+msgstr "<strong>עדכונים</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -300,7 +300,7 @@ msgstr "לתרומה"
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donation to"
-msgstr ""
+msgstr "תרומה ל"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__embed_code
