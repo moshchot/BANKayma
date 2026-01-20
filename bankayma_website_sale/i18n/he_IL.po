@@ -78,7 +78,7 @@ msgstr "יוזמה"
 #: model:ir.actions.act_window,name:bankayma_website_sale.action_sales
 #: model:ir.ui.menu,name:bankayma_website_sale.menu_sales
 msgid "Sales"
-msgstr ""
+msgstr "מכירות אונליין"
 
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_sale_order
