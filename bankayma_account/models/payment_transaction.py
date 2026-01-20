@@ -5,7 +5,7 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import fields, models
+from odoo import _, fields, models
 
 
 class PaymentTransaction(models.Model):
@@ -149,11 +149,15 @@ class PaymentTransaction(models.Model):
         return result
 
     def _to_sumit_vals_name(self, recurrent):
-        donation_product = self.company_id.donation_credit_transfer_product_id
+        donation_product = (
+            self.company_id.donation_credit_transfer_product_id.with_company(
+                self.company_id
+            )
+        )
         return (
             recurrent
-            and "[%(account_code)s] recurrent donation to %(company_name)s"
-            or "[%(account_code)s] donation to %(company_name)s"
+            and _("[%(account_code)s] recurrent donation to %(company_name)s")
+            or _("[%(account_code)s] donation to %(company_name)s")
         ) % {
             "account_code": donation_product.property_account_income_id.code,
             "company_name": self.company_id.name,
