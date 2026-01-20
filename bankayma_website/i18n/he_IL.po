@@ -149,6 +149,11 @@ msgstr ""
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Events</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
 "<strong>Monthly Support</strong>\n"
 "                                    <br/>"
@@ -173,28 +178,18 @@ msgstr "<strong>שנת יסוד:&amp;nbsp;&amp;nbsp;</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "<strong>Updates</strong>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Website:&amp;nbsp;&amp;nbsp;</strong>"
 msgstr "<strong>אתר אינטרנט:&amp;nbsp;&amp;nbsp;</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "<strong>donation</strong>"
-msgstr "<strong>תרומה</strong>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "<strong>events</strong>"
-msgstr "<strong>אירועים</strong>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>one time donation</strong>"
 msgstr "<strong>תרומה חד פעמית</strong>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "<strong>updates</strong>"
-msgstr "<strong>עדכונים</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -301,6 +296,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donate"
 msgstr "לתרומה"
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid "Donation to"
+msgstr ""
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__embed_code
