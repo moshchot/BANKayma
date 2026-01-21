@@ -3,6 +3,19 @@
 License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="company_page_embed" primary="True" inherit_id="company_page">
+        <div position="inside">
+            <script type="text/javascript">
+                function _add_target() {
+                    document.querySelectorAll('a[href], form[action]').forEach(function(node) {
+                        node.setAttribute('target', '_blank');
+                    })
+                }
+                window.addEventListener("load", () => {_add_target()});
+                (new MutationObserver(function() {
+                    _add_target();
+                })).observe(document, {childList: true, subtree: true});
+            </script>
+        </div>
         <xpath expr="//ol[hasclass('breadcrumb')]" position="replace" />
         <xpath expr="//section[//img[@t-if='object.logo']]" position="replace" />
         <xpath expr="//section[//a[@href='#about']]" position="replace" />
