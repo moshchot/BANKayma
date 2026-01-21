@@ -516,6 +516,11 @@ msgid "Website event"
 msgstr ""
 
 #. module: bankayma_website
+#: model:res.partner,name:bankayma_website.webman_res_partner
+msgid "Website manager"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.view_company_form
 msgid "Website settings"
 msgstr "הגדרות דף יוזמה"

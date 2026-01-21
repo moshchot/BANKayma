@@ -183,6 +183,12 @@ msgid "Is a Company"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__function
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__function
+msgid "Job Position"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_partner__lang_id
 #: model:ir.model.fields,field_description:bankayma_base.field_res_users__lang_id
 msgid "Lang"
@@ -210,6 +216,8 @@ msgstr ""
 
 #. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_company_category__name
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__name
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__name
 msgid "Name"
 msgstr ""
 
@@ -222,6 +230,11 @@ msgstr "מנהל ארגון"
 #: model:ir.actions.act_window,name:bankayma_base.action_simplified_income_company_config
 msgid "Organization config"
 msgstr "הגדרות יוזמה"
+
+#. module: bankayma_base
+#: model:res.partner,name:bankayma_base.orgman_res_partner
+msgid "Organization manager"
+msgstr ""
 
 #. module: bankayma_base
 #: model_terms:ir.ui.view,arch_db:bankayma_base.bankayma_partner_form
@@ -249,6 +262,11 @@ msgstr "מנהל פרוייקט"
 #: model:res.groups,name:bankayma_base.group_user
 msgid "Project User"
 msgstr "חבר פרוייקט"
+
+#. module: bankayma_base
+#: model:res.partner,name:bankayma_base.projman_res_partner
+msgid "Project manager"
+msgstr ""
 
 #. module: bankayma_base
 #. odoo-javascript
@@ -325,9 +343,19 @@ msgid "User"
 msgstr "חבר"
 
 #. module: bankayma_base
+#: model:res.partner,name:bankayma_base.user_child_comp1_res_partner
+msgid "User Child Company 1"
+msgstr ""
+
+#. module: bankayma_base
 #: model:res.groups,name:bankayma_base.group_vendor
 msgid "Vendor"
 msgstr "ספק"
+
+#. module: bankayma_base
+#: model:res.partner,name:bankayma_base.vendor_child_comp1_res_partner
+msgid "Vendor Child Company 1"
+msgstr ""
 
 #. module: bankayma_base
 #: model:res.partner.category,name:bankayma_base.res_partner_category_venue
