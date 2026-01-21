@@ -5,6 +5,8 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
+    name = fields.Char(translate=True)
+    function = fields.Char(translate=True)
     is_company = fields.Boolean(default=True)
     user_state = fields.Selection(related="user_ids.state")
     vat = fields.Char(pattern="([0-9]+)|(/)")
