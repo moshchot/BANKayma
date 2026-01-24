@@ -100,6 +100,10 @@ msgid ""
 "nbsp;&amp;nbsp;\n"
 "                                                        </span>"
 msgstr ""
+"<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
+"                                                            אתר:&amp;"
+"nbsp;&amp;nbsp;\n"
+"                                                        </span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -467,7 +471,7 @@ msgstr "כותרת משנה"
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Support"
-msgstr ""
+msgstr "אוהבים את"
 
 #. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_res_company_tag
