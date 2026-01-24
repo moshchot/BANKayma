@@ -95,6 +95,15 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid ""
+"<span class=\"text-black\" style=\"font-style: normal; font-weight: 600;\">\n"
+"                                                            Website:&amp;"
+"nbsp;&amp;nbsp;\n"
+"                                                        </span>"
+msgstr ""
+
+#. module: bankayma_website
+#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
+msgid ""
 "<span style=\"font-size: 18px; font-weight: normal;\">\n"
 "                                            about\n"
 "                                        </span>"
@@ -180,11 +189,6 @@ msgstr "<strong>שנת יסוד:&amp;nbsp;&amp;nbsp;</strong>"
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "<strong>Updates</strong>"
 msgstr "<strong>עדכונים</strong>"
-
-#. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "<strong>Website:&amp;nbsp;&amp;nbsp;</strong>"
-msgstr "<strong>אתר אינטרנט:&amp;nbsp;&amp;nbsp;</strong>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
