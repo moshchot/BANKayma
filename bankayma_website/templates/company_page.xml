@@ -430,7 +430,7 @@
                             <strong>
                                 Support
                                 <t t-out="object.name" />
-                                !
+                                please:)
                             </strong>
                         </h2>
                         <div class="row align-items-center">
