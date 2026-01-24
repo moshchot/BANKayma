@@ -428,8 +428,9 @@
                         </div>
                         <h2 style="text-align: center;">
                             <strong>
-                                Donation to
+                                Support
                                 <t t-out="object.name" />
+                                !
                             </strong>
                         </h2>
                         <div class="row align-items-center">
