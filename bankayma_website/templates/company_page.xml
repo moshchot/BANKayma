@@ -107,7 +107,21 @@
                                                             t-field="object.bankayma_website_opening_hours"
                                                         />
                                                     </span>
-                                                    <br />
+                                                </h6>
+                                                <h6>
+                                                    <span
+                                                        style="font-size: 16px;"
+                                                        t-if="object.website"
+                                                    >
+                                                        <span
+                                                            class="text-black"
+                                                            style="font-style: normal; font-weight: 600;"
+                                                        >
+                                                            Website:&amp;nbsp;&amp;nbsp;
+                                                        </span>
+                                                        <!-- prettier-ignore-start -->
+                                                        <span t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')" />
+                                                    </span>
                                                 </h6>
                                                 <div
                                                     class="container justify-content-around"
@@ -314,17 +328,6 @@
                                         <br />
                                     </p>
                                 </div>
-                                <p>
-                                    <span t-if="object.website" style="">
-                                        <strong>Website:&amp;nbsp;&amp;nbsp;</strong>
-                                        <a t-att-href="object.website">
-                                            <t
-                                                t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
-                                            />
-                                        </a>
-                                    </span>
-                                    <br />
-                                </p>
                             </div>
                             <div
                                 t-attf-class="mx-auto media_iframe_video pb40 pt40 {{about_columns}} o_cc"
@@ -693,13 +696,6 @@
                                     t-options='{"widget": "contact"}'
                                 />
                             </span>
-                        </h4>
-                        <h4
-                            class="text-center mb-1"
-                            style="text-align: right;"
-                            t-if="object.bankayma_website_opening_hours"
-                        >
-                            <span t-field="object.bankayma_website_opening_hours" />
                         </h4>
                         <h4 class="text-center mb-1" style="text-align: right;">
                             <span style="font-size: 16px;">
