@@ -120,7 +120,9 @@
                                                             Website:&amp;nbsp;&amp;nbsp;
                                                         </span>
                                                         <!-- prettier-ignore-start -->
-                                                        <span t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')" />
+                                                        <span
+                                                            t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
+                                                        />
                                                     </span>
                                                 </h6>
                                                 <div
