@@ -13,5 +13,5 @@ h4,
 h5,
 h6,
 ol {
-  text-transform: capitalize !important;
+    text-transform: capitalize !important;
 }
