@@ -120,9 +120,13 @@
                                                             Website:&amp;nbsp;&amp;nbsp;
                                                         </span>
                                                         <!-- prettier-ignore-start -->
-                                                        <span
+                                                        <a
+                                                            t-att-href="object.website"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
                                                             t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
                                                         />
+                                                        <!-- prettier-ignore-end -->
                                                     </span>
                                                 </h6>
                                                 <div
@@ -704,12 +708,14 @@
                             <span style="font-size: 16px;">
                                 <strong t-out="object.phone" />
                             </span>
-                            <span style="font-size: 16px;">
-                                <a
-                                    t-att-href="object.website"
-                                    t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
-                                />
-                            </span>
+                           <!-- prettier-ignore-start -->
+                            <a
+                                t-att-href="object.website"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
+                            />
+                            <!-- prettier-ignore-end -->
                         </h4>
                     </div>
                 </section>
