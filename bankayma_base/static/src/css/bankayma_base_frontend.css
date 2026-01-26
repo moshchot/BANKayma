@@ -6,5 +6,5 @@ form label.label-optional:after {
 }
 .btn,
 .badge {
-      text-transform: capitalize!important;
+    text-transform: capitalize!important;
 }
