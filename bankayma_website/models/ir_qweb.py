@@ -13,4 +13,9 @@ class IrQweb(models.AbstractModel):
                 .filtered(lambda x: x.check_access_rights("write", False))
                 ._filter_access_rules("write")
             )
+            if values["bankayma_editable"] and not values.get("translatable"):
+                values["translatable"] = (
+                    self.env.context.get("lang")
+                    != self.env["ir.http"]._get_default_lang().code
+                )
         return result
