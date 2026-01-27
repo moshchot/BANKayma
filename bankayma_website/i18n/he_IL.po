@@ -539,11 +539,6 @@ msgid "Website slug"
 msgstr ""
 
 #. module: bankayma_website
-#: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
-msgid "please:)"
-msgstr "כן?"
-
-#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.bankayma_searchbar
 msgid "search..."
 msgstr "חיפוש.."
