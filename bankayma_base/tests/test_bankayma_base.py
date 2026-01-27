@@ -1,8 +1,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo.exceptions import AccessError
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase, tagged
 
 
+@tagged("-at_install", "post_install")
 class TestBankaymaBase(TransactionCase):
     def test_board_imposition(self):
         with self.assertRaises(AccessError):
@@ -35,3 +36,19 @@ class TestBankaymaBase(TransactionCase):
         self.assertItemsEqual(user.company_ids, all_companies)
         new_company = self.env["res.company"].create({"name": "new company"})
         self.assertItemsEqual(user.company_ids, all_companies + new_company)
+
+    def test_inheritance_with_translation(self):
+        """
+        for translations, odoo injects <span oe-translation.. /> elements in
+        view archs, which can interfere with inhertiance depending on the xpath
+        """
+        View = self.env["ir.ui.view"].with_context(edit_translations=True)
+        for view in View.search(
+            [
+                ("model_data_id.module", "like", "bankayma%"),
+                ("type", "=", "qweb"),
+                ("inherit_id", "=", False),
+                ("inherit_children_ids", "!=", False),
+            ]
+        ):
+            view.get_combined_arch()

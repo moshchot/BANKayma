@@ -67,7 +67,7 @@
             />
         </a>
         <xpath
-            expr="//a[@href='/event']/i[hasclass('fa-long-arrow-left')]"
+            expr="//a[@href='/event']//i[hasclass('fa-long-arrow-left')]"
             position="attributes"
         >
             <attribute name="t-if">False</attribute>
