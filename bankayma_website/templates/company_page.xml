@@ -108,7 +108,7 @@
                                                         />
                                                     </span>
                                                 </h6>
-                                                <h6>
+                                                <p>
                                                     <span
                                                         style="font-size: 16px;"
                                                         t-if="object.website"
@@ -128,7 +128,7 @@
                                                         />
                                                         <!-- prettier-ignore-end -->
                                                     </span>
-                                                </h6>
+                                                </p>
                                                 <div
                                                     class="container justify-content-around"
                                                 >
@@ -434,7 +434,6 @@
                             <strong>
                                 Support
                                 <t t-out="object.name" />
-                                please:)
                             </strong>
                         </h2>
                         <div class="row align-items-center">
@@ -704,7 +703,7 @@
                                 />
                             </span>
                         </h4>
-                        <h4
+                        <p
                             class="text-center mb-1"
                             style="text-align: right; font-size: 16px; font-weight: 600;"
                         >
@@ -716,7 +715,7 @@
                                 t-out="(object.website or '').replace('https://', '').replace('http://', '').rstrip('/')"
                             />
                             <!-- prettier-ignore-end -->
-                        </h4>
+                        </p>
                     </div>
                 </section>
                 <!--
