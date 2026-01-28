@@ -45,6 +45,11 @@ msgid "Configure Tickets"
 msgstr "הגדרת כרטיסים"
 
 #. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.product_template_form_view
+msgid "Displayed in bottom of product pages"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_event_event
 msgid "Event"
 msgstr "אירוע"
@@ -75,6 +80,11 @@ msgid "Project"
 msgstr "יוזמה"
 
 #. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.product_template_form_view
+msgid "Recommend when 'Adding to Cart' or quotation"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.actions.act_window,name:bankayma_website_sale.action_sales
 #: model:ir.ui.menu,name:bankayma_website_sale.menu_sales
 msgid "Sales"
@@ -89,6 +99,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
 msgid "Shop more"
 msgstr "עוד מוצרים"
+
+#. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.product_template_form_view
+msgid "Suggested accessories in the eCommerce cart"
+msgstr ""
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
