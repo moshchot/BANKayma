@@ -2217,7 +2217,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Product"
-msgstr "סעיף"
+msgstr "מוצר/סעיף"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_category_id
@@ -2225,7 +2225,7 @@ msgstr "סעיף"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_move_line_product_category_id
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_invoice_filter
 msgid "Product Category"
-msgstr ""
+msgstr "סעיף תקציבי"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_res_company__donation_credit_transfer_product_id
