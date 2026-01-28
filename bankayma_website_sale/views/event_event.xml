@@ -15,6 +15,11 @@
                 <attribute name="domain" operation="domain_add">
                     [('category_id', '=', %(bankayma_base.res_partner_category_venue)s)]
                 </attribute>
+                <attribute name="options" operation="update">
+                    {
+                        'no_quick_create': 1
+                    }
+                </attribute>
             </field>
             <label for="date_begin" position="before">
                 <field name="company_id" invisible="True" />
