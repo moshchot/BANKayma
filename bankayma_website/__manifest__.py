@@ -28,6 +28,7 @@
         "templates/website_blog.xml",
         "templates/website_event.xml",
         "views/blog_post.xml",
+        "views/event_event.xml",
         "views/menu.xml",
         "views/res_company.xml",
         "views/res_company_category.xml",
