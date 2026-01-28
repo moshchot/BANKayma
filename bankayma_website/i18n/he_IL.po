@@ -61,6 +61,9 @@ msgid ""
 "                                <span class=\"visually-hidden\">Previous</"
 "span>"
 msgstr ""
+"<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
+"                                <span class=\"visually-hidden\">קודם</"
+"span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -68,6 +71,8 @@ msgid ""
 "<span class=\"fa fa-chevron-right fa-2x text-white\"/>\n"
 "                                <span class=\"visually-hidden\">Next</span>"
 msgstr ""
+"<span class=\"fa fa-chevron-right fa-2x text-white\"/>\n"
+"                                <span class=\"visually-hidden\">הבא</span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
@@ -297,7 +302,7 @@ msgstr "צוות"
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Custom sum"
-msgstr ""
+msgstr "סכום מותאם אישית"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__display_name
@@ -314,7 +319,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Donate Now"
-msgstr ""
+msgstr "לתרומה"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__embed_code
@@ -427,7 +432,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Next"
-msgstr ""
+msgstr "הבא"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_list
@@ -457,7 +462,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Previous"
-msgstr ""
+msgstr "קודם"
 
 #. module: bankayma_website
 #: model:ir.actions.act_window,name:bankayma_website.action_categories
@@ -508,7 +513,7 @@ msgstr ""
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Total sum"
-msgstr ""
+msgstr "סכום כולל"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code_option__value
