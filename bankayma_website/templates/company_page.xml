@@ -497,8 +497,8 @@
                                                     id="s_donation_amount_input"
                                                     type="number"
                                                     min="30"
-                                                    placeholder="כמות מותאמת אישית"
-                                                    aria-label="סכום כולל"
+                                                    placeholder="Custom sum"
+                                                    aria-label="Total sum"
                                                     style=""
                                                 />
                                             </span>
@@ -510,7 +510,7 @@
                                             data-bs-original-title=""
                                             title=""
                                         >
-                                            Donate
+                                            Donate Now
                                         </a>
                                     </form>
                                 </div>
@@ -576,8 +576,8 @@
                                                     id="s_donation_amount_input"
                                                     type="number"
                                                     min="30"
-                                                    placeholder="כמות מותאמת אישית"
-                                                    aria-label="סכום כולל"
+                                                    placeholder="Custom sum"
+                                                    aria-label="Total sum"
                                                     style=""
                                                 />
                                             </span>
@@ -589,7 +589,7 @@
                                             data-bs-original-title=""
                                             title=""
                                         >
-                                            לתרומה
+                                            Donate Now
                                         </a>
                                     </form>
                                 </div>
@@ -636,8 +636,8 @@
                             <ul class="carousel-indicators" style="">
                                 <li
                                     class="o_indicators_left text-center d-none"
-                                    aria-label="קודם"
-                                    title="קודם"
+                                    aria-label="Previous"
+                                    title="Previous"
                                 >
                                     <i class="fa fa-chevron-left" />
                                 </li>
@@ -653,8 +653,8 @@
                                 />
                                 <li
                                     class="o_indicators_right text-center d-none"
-                                    aria-label="הבא"
-                                    title="הבא"
+                                    aria-label="Next"
+                                    title="Next"
                                 >
                                     <i class="fa fa-chevron-right" />
                                 </li>
@@ -663,21 +663,21 @@
                                 class="carousel-control-prev o_we_no_overlay o_not_editable"
                                 href="#slideshow_1725973766980"
                                 data-bs-slide="prev"
-                                aria-label="קודם"
-                                title="קודם"
+                                aria-label="Previous"
+                                title="Previous"
                             >
                                 <span class="fa fa-chevron-left fa-2x text-white" />
-                                <span class="visually-hidden">קודם</span>
+                                <span class="visually-hidden">Previous</span>
                             </a>
                             <a
                                 class="carousel-control-next o_we_no_overlay o_not_editable"
                                 href="#slideshow_1725973766980"
                                 data-bs-slide="next"
-                                aria-label="הבא"
-                                title="הבא"
+                                aria-label="Next"
+                                title="Next"
                             >
                                 <span class="fa fa-chevron-right fa-2x text-white" />
-                                <span class="visually-hidden">הבא</span>
+                                <span class="visually-hidden">Next</span>
                             </a>
                         </div>
                     </div>
