@@ -13,6 +13,7 @@
         <field name="model">blog.post</field>
         <field name="arch" type="xml">
             <field name="name" position="after">
+                <field name="tag_ids" widget="many2many_tags" />
                 <field name="cover_image" widget="image" />
             </field>
         </field>
