@@ -186,6 +186,8 @@ server-tools:
     - oca 9880aa4c3d064821b29b9234a0ea863249c61458
     # module_auto_update shell fixes
     - oca refs/pull/2604/head
+    # base_view_inheritance_extension: wraptext
+    - oca refs/pull/3506/head
   remotes:
     oca: https://github.com/OCA/server-tools.git
 server-ux:

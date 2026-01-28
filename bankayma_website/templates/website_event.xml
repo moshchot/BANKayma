@@ -56,6 +56,22 @@
         <div itemprop="location" position="after">
             <div itemprop="organizer" t-out="event.sudo().address_id.name" />
         </div>
+        <wraptext
+            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='event.date_tz'])[1]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='event.date_tz'])[1]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
     </template>
     <template id="layout" inherit_id="website_event.layout">
         <a href="/event" position="after">
@@ -89,5 +105,79 @@
                 />
             </a>
         </h4>
+        <!-- remove time zone after dates and their enclosing brackets -->
+        <wraptext expr="(//span[@t-out='event.date_tz'])[1]/.." position="text" />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::t"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='event.date_tz'])[1]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='event.date_tz'])[1]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <wraptext
+            expr="(//span[@t-out='event.date_tz'])[2]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[2]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='event.date_tz'])[2]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[2]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='event.date_tz'])[2]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+    <template
+        id="dynamic_filter_template_event_event_card"
+        inherit_id="website_event.dynamic_filter_template_event_event_card"
+    >
+        <!-- remove time zone after dates and their enclosing brackets -->
+        <wraptext
+            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='record.date_tz'])[1]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='record.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='record.date_tz'])[1]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+    <template
+        id="dynamic_filter_template_event_event_picture"
+        inherit_id="website_event.dynamic_filter_template_event_event_picture"
+    >
+        <!-- remove time zone after dates and their enclosing brackets -->
+        <wraptext
+            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='record.date_tz'])[1]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='record.date_tz'])[1]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='record.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='record.date_tz'])[1]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
     </template>
 </odoo>
