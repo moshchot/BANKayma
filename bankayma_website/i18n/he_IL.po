@@ -62,8 +62,7 @@ msgid ""
 "span>"
 msgstr ""
 "<span class=\"fa fa-chevron-left fa-2x text-white\"/>\n"
-"                                <span class=\"visually-hidden\">קודם</"
-"span>"
+"                                <span class=\"visually-hidden\">קודם</span>"
 
 #. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
