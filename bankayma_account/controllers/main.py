@@ -226,7 +226,7 @@ class CustomerPortal(portal.CustomerPortal):
                 return request.redirect("/my/invoices/%d" % bill.id)
         return request.render("bankayma_account.portal_new_vendor_bill", vals)
 
-    @route()
+    @route(csrf=False)
     def donation_pay(self, **kwargs):
         """Support recurring payments"""
         options = json_safe.loads(kwargs.get("donation_options", "{}"))
