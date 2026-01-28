@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_event_form" model="ir.ui.view">
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form" />
+        <field name="arch" type="xml">
+            <page name="event_communication" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </page>
+        </field>
+    </record>
+</odoo>
