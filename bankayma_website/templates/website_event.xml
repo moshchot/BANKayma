@@ -135,6 +135,13 @@
         <xpath expr="(//span[@t-out='event.date_tz'])[2]" position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
+        <!-- remove contact details from event page -->
+        <xpath
+            expr="//div[@t-field='event.address_id'][hasclass('mb-3')]"
+            position="attributes"
+        >
+            <attribute name="t-if">False</attribute>
+        </xpath>
     </template>
     <template
         id="dynamic_filter_template_event_event_card"
