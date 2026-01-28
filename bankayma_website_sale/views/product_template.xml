@@ -58,6 +58,56 @@
                     bankayma_base.group_full,bankayma_base.group_org_manager
                 </attribute>
             </group>
+            <field name="optional_product_ids" position="attributes">
+                <attribute name="domain" operation="domain_add">
+                    [('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]
+                </attribute>
+                <attribute name="groups">
+                    bankayma_base.group_manager,bankayma_website.group_website
+                </attribute>
+            </field>
+            <field name="accessory_product_ids" position="attributes">
+                <attribute name="domain" operation="domain_add">
+                    [('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]
+                </attribute>
+                <attribute name="groups">
+                    bankayma_base.group_manager,bankayma_website.group_website
+                </attribute>
+            </field>
+            <field name="alternative_product_ids" position="attributes">
+                <attribute name="domain" operation="domain_add">
+                    [('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]
+                </attribute>
+                <attribute name="groups">
+                    bankayma_base.group_manager,bankayma_website.group_website
+                </attribute>
+            </field>
+            <field name="alternative_product_ids" position="after">
+                <field
+                    name="optional_product_ids"
+                    groups="!bankayma_base.group_manager,!bankayma_website.group_website"
+                    widget="many2many_tags"
+                    options="{'color_field': 'color'}"
+                    domain="[('id', '!=', active_id)]"
+                    placeholder="Recommend when 'Adding to Cart' or quotation"
+                    attrs="{'invisible': [('sale_ok','=',False)]}"
+                />
+                <field
+                    name="accessory_product_ids"
+                    widget="many2many_tags"
+                    attrs="{'invisible': [('sale_ok','=',False)]}"
+                    groups="!bankayma_base.group_manager,!bankayma_website.group_website"
+                    placeholder="Suggested accessories in the eCommerce cart"
+                />
+                <field
+                    name="alternative_product_ids"
+                    widget="many2many_tags"
+                    groups="!bankayma_base.group_manager,!bankayma_website.group_website"
+                    domain="[('id', '!=', active_id), '|', ('company_id', '=', company_id), ('company_id', '=', False)]"
+                    attrs="{'invisible': [('sale_ok','=',False)]}"
+                    placeholder="Displayed in bottom of product pages"
+                />
+            </field>
         </field>
     </record>
 </odoo>
