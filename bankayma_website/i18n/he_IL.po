@@ -220,6 +220,11 @@ msgid "Bankayma Website Videolink Embed"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_blog_blog
+msgid "Blog"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.model,name:bankayma_website.model_blog_post
 msgid "Blog Post"
 msgstr "עדכון"
