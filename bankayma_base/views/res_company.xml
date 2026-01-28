@@ -53,6 +53,11 @@
                     separator=","
                 />
             </page>
+            <field name="category_id" position="attributes">
+                <attribute name="groups">
+                    bankayma_base.group_org_manager,bankayma_base.group_full
+                </attribute>
+            </field>
         </field>
     </record>
 </odoo>
