@@ -41,5 +41,116 @@
         >
             <attribute name="t-if" separator=" " add=" and False" />
         </xpath>
+        <!-- remove time zone after dates and their enclosing brackets -->
+        <xpath
+            expr="//div[hasclass('alert')]//span[@t-out='event.date_tz']"
+            position="attributes"
+        >
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <wraptext
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[1]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[1]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[1]"
+            position="attributes"
+        >
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <wraptext
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[2]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[2]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[2]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[2]/following-sibling::t"
+            position="replace"
+        />
+        <xpath
+            expr="(//span[@t-out='ticket.event_id.date_tz'])[2]"
+            position="attributes"
+        >
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <wraptext
+            expr="(//span[@t-out='tickets.event_id.date_tz'])[1]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='tickets.event_id.date_tz'])[1]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext
+            expr="(//span[@t-out='tickets.event_id.date_tz'])[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='tickets.event_id.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath
+            expr="(//span[@t-out='tickets.event_id.date_tz'])[1]"
+            position="attributes"
+        >
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+    <template
+        id="registration_complete"
+        inherit_id="website_event.registration_complete"
+    >
+        <!-- remove time zone after dates and their enclosing brackets -->
+        <wraptext
+            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[1]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='event.date_tz'])[1]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[1]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='event.date_tz'])[1]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <wraptext
+            expr="(//span[@t-out='event.date_tz'])[2]/preceding-sibling::span[1]"
+            position="tail"
+        />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[2]/preceding-sibling::t[1]"
+            position="replace"
+        />
+        <wraptext expr="(//span[@t-out='event.date_tz'])[2]" position="tail" />
+        <xpath
+            expr="(//span[@t-out='event.date_tz'])[2]/following-sibling::t"
+            position="replace"
+        />
+        <xpath expr="(//span[@t-out='event.date_tz'])[2]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
     </template>
 </odoo>
