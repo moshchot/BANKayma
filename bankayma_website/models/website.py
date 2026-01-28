@@ -1,9 +1,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import models
+from odoo import fields, models
 
 
 class Website(models.Model):
     _inherit = "website"
+
+    name = fields.Char(translate=True)
 
     def _search_get_details(self, search_type, order, options):
         if search_type == "res.company.tag":
