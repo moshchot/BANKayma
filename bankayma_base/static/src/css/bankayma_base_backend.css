@@ -64,3 +64,6 @@ div.o-scrollbar.vertical {
 .alert-warning .fa-info-circle {
     padding: 0px 5px;
 }
+.modal-dialog .modal-lg {
+    max-width: 88% !important;
+}
