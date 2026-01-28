@@ -1,5 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from . import bankayma_search_drop_company_mixin
+from . import blog_blog
 from . import blog_post
 from . import event_event
 from . import res_company
