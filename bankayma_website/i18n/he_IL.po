@@ -414,6 +414,7 @@ msgstr "עוד אירועים"
 
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code_option__name
+#: model:ir.model.fields,field_description:bankayma_website.field_website_page__name
 msgid "Name"
 msgstr ""
 
@@ -430,6 +431,11 @@ msgstr "שעות פתיחה"
 #. module: bankayma_website
 #: model:ir.model.fields,field_description:bankayma_website.field_bankayma_project_page_embed_code__options
 msgid "Options"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_website_page
+msgid "Page"
 msgstr ""
 
 #. module: bankayma_website
@@ -511,6 +517,11 @@ msgstr "קישור לדף יוזמה"
 #. module: bankayma_website
 #: model:res.groups,name:bankayma_website.group_website
 msgid "Website Manager"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.model.fields,field_description:bankayma_website.field_website__name
+msgid "Website Name"
 msgstr ""
 
 #. module: bankayma_website
