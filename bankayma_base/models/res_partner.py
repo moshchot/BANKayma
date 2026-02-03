@@ -59,6 +59,17 @@ class ResPartner(models.Model):
         """Allow editing vat if there's no vat"""
         return not bool(self.vat) or super().can_edit_vat()
 
+    def _prepare_display_address(self, without_company=False):
+        """Suppress outputting country if asked"""
+        address_format, address_args = super()._prepare_display_address(
+            without_company=without_company
+        )
+        if self.env.context.get(
+            "bankayma_address_suppress_il"
+        ) and self.country_id == self.env.ref("base.il"):
+            address_args["country_name"] = ""
+        return address_format, address_args
+
     @api.model
     def get_view(self, view_id=None, view_type="form", **options):
         """

@@ -475,6 +475,11 @@ msgid "Qweb"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.model,name:bankayma_website.model_ir_qweb_field_contact
+msgid "Qweb Field Contact"
+msgstr ""
+
+#. module: bankayma_website
 #: model_terms:ir.ui.view,arch_db:bankayma_website.company_page
 msgid "Read More"
 msgstr "עוד עדכונים"
