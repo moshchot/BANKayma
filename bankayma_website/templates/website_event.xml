@@ -152,6 +152,12 @@
         <xpath expr="(//span[@t-out='event.date_tz'])[2]" position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
+        <!-- remove country from contact widget -->
+        <xpath expr="//div[@itemprop='location']" position="attributes">
+            <attribute name="t-options" operation="update">
+                {'bankayma_address_suppress_il': True}
+            </attribute>
+        </xpath>
         <!-- remove contact details from event page -->
         <xpath
             expr="//div[@t-field='event.address_id'][hasclass('mb-3')]"
