@@ -109,7 +109,7 @@ donation-repo:
     oca: https://github.com/OCA/donation.git
 event-repo:
   defaults:
-    depth: 1
+    depth: 100
   merges:
     - oca a518e136b634f9cd44e3288d0d88629226beed28
     # website_event_filter_city
