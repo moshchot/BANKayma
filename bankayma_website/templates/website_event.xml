@@ -88,6 +88,23 @@
         >
             <attribute name="t-if">False</attribute>
         </xpath>
+        <xpath expr="//li[@t-if='event.country_id']" position="after">
+            <li t-if="event.sudo().address_id.city" class="nav-item me-3">
+                <a
+                    t-attf-href="/event?city=#{event.sudo().address_id.city}"
+                    class="nav-link"
+                >
+                    <i class="fa fa-map-marker me-2" />
+                    <span t-field="event.sudo().address_id.city" />
+                </a>
+            </li>
+        </xpath>
+        <xpath expr="//li[@t-if='event.country_id']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//li[@t-if='opt_events_list_categories']" position="attributes">
+            <attribute name="t-if" add="and event.event_type_id" separator=" " />
+        </xpath>
     </template>
     <template
         id="event_description_full"

@@ -107,6 +107,14 @@ donation-repo:
     - oca ace890dd2c23f9552041166312879da2ab42d6ed
   remotes:
     oca: https://github.com/OCA/donation.git
+event-repo:
+  defaults: 1
+  merges:
+    - oca a518e136b634f9cd44e3288d0d88629226beed28
+    # website_event_filter_city
+    - oca refs/pull/489/head
+  remotes:
+    oca: https://github.com/OCA/event.git
 knowledge:
   defaults:
     depth: 1
