@@ -197,3 +197,7 @@ msgstr ""
 "       <strong>הועבר לבדיקה, הצוות שלנו עובד על זה.\n </strong>"
 "                תודה על הסבלנות :)"
 
+#: model_terms:ir.ui.view,arch_db:website_event.navbar
+msgid "All Events"
+msgstr "כל האירועים"
+
