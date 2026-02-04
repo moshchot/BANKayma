@@ -256,8 +256,10 @@ website-cms:
     oca: https://github.com/OCA/website-cms.git
 website-repo:
   defaults:
-    depth: 1
+    depth: 100
   merges:
     - oca 47ddd1aeb0441a09a4d541f8d422b6ac57bbac91
+    - hbrunn 16.0-web_editor_clean_url
   remotes:
     oca: https://github.com/OCA/website.git
+    hbrunn: https://github.com/hbrunn/website.git
