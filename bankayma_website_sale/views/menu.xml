@@ -20,12 +20,35 @@
         <field name="context">
             {'group_by': ['product_id'], 'pivot_column_groupby': ['date:month'], 'pivot_measures': ['price_subtotal', 'quantity']}
         </field>
-        <field name="view_mode">pivot</field>
+        <field name="view_mode">tree,pivot</field>
     </record>
     <menuitem
         id="menu_sales"
         action="action_sales"
         parent="bankayma_website.menu_bankayma_website_root"
         sequence="60"
+    />
+    <menuitem
+        id="menu_sales_sales"
+        action="action_sales"
+        parent="menu_sales"
+        sequence="10"
+    />
+    <record id="action_sales_registrations" model="ir.actions.act_window">
+        <field name="name">Attendees</field>
+        <field name="res_model">event.registration</field>
+        <field name="domain">
+            [('event_id.company_id', 'in', allowed_company_ids)]
+        </field>
+        <field name="context">
+            {'search_default_filter_last_month_creation': 1, 'search_default_status': 1, 'search_default_group_by_create_date_day': 1, 'search_default_group_event': 1, 'registration_view_hide_group_by_create_date_week': 1}
+        </field>
+        <field name="view_mode">tree,pivot</field>
+    </record>
+    <menuitem
+        id="menu_sales_registration"
+        action="action_sales_registrations"
+        parent="menu_sales"
+        sequence="20"
     />
 </odoo>
