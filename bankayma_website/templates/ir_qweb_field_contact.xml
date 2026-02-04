@@ -1,0 +1,24 @@
+<odoo>
+    <template id="contact" inherit_id="base.contact">
+        <wraptext
+            expr="//span[@itemprop='addressLocality']"
+            position="tail"
+            element="span"
+        />
+        <xpath
+            expr="//span[@itemprop='addressLocality']/following-sibling::span"
+            position="attributes"
+        >
+            <attribute name="t-if">
+                not object.env.context.get('bankayma_address_suppress_il') or
+                object.country_id != object.env.ref('base.il')
+            </attribute>
+        </xpath>
+        <xpath expr="//span[@itemprop='addressCountry']" position="attributes">
+            <attribute name="t-if">
+                not object.env.context.get('bankayma_address_suppress_il') or
+                object.country_id != object.env.ref('base.il')
+            </attribute>
+        </xpath>
+    </template>
+</odoo>

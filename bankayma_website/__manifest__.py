@@ -25,6 +25,7 @@
         "templates/company_page.xml",
         "templates/company_page_embed.xml",
         "templates/company_list.xml",
+        "templates/ir_qweb_field_contact.xml",
         "templates/snippets.xml",
         "templates/website.xml",
         "templates/website_blog.xml",
