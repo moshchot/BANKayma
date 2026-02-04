@@ -29,7 +29,7 @@ msgstr "<strong>חנות</strong>"
 #: model:ir.actions.act_window,name:bankayma_website_sale.action_sales_registrations
 #: model:ir.ui.menu,name:bankayma_website_sale.menu_sales_registration
 msgid "Attendees"
-msgstr ""
+msgstr "משתתפים"
 
 #. module: bankayma_website_sale
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_account_move_line__bankayma_website_sale_company_id
