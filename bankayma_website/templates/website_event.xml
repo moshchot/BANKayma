@@ -77,7 +77,7 @@
         <a href="/event" position="after">
             <i class="fa fa-chevron-right me-2" />
             <a
-                t-attf-href="{{event.company_id.website_link}}#events"
+                t-attf-href="{{event.sudo().company_id.website_link}}#events"
                 class="navbar-brand h4 my-0 me-0 me-md-4"
                 t-out="event.company_id.name"
             />
@@ -112,7 +112,7 @@
     >
         <h4 t-field="event.organizer_id" position="before">
             <a
-                t-att-href="event.company_id.website_link"
+                t-att-href="event.sudo().company_id.website_link"
                 t-if="event.company_id.logo"
                 style="float: right"
             >
@@ -164,6 +164,17 @@
             position="attributes"
         >
             <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+    <template
+        id="registration_complete"
+        inherit_id="website_event.registration_complete"
+    >
+        <!-- remove country from contact widget -->
+        <xpath expr="//a[@itemprop='location']" position="attributes">
+            <attribute name="t-options" operation="update">
+                {'bankayma_address_suppress_il': True}
+            </attribute>
         </xpath>
     </template>
     <template
