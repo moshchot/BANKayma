@@ -187,6 +187,12 @@
         <xpath expr="(//span[@t-out='record.date_tz'])[1]" position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
+        <!-- remove country -->
+        <xpath expr="//div[@t-field='record.address_id']" position="attributes">
+            <attribute name="t-options" operation="update">
+                {'bankayma_address_suppress_il': True}
+            </attribute>
+        </xpath>
     </template>
     <template
         id="dynamic_filter_template_event_event_picture"
