@@ -3,6 +3,7 @@ from . import bankayma_search_drop_company_mixin
 from . import blog_blog
 from . import blog_post
 from . import event_event
+from . import event_registration
 from . import res_company
 from . import res_company_category
 from . import res_company_tag
