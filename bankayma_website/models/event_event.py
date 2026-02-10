@@ -18,3 +18,7 @@ class Event(models.Model):
                 result["base_domain"].append([("company_id", "in", company_ids)])
                 search_companies = self.env["res.company"].sudo().browse(company_ids)
         return dict(result, search_companies=search_companies)
+
+    def _check_website_id(self):
+        # disable check for same company
+        pass
