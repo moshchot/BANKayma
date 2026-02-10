@@ -646,7 +646,18 @@
                 >
                     IL Tax Number
                 </label>
-                <input class="form-control" id="tax_number" />
+                <input
+                    t-if="not partner.user_ids or partner.user_ids._is_public()"
+                    class="form-control"
+                    id="tax_number"
+                />
+                <input
+                    t-if="partner.user_ids and not partner.user_ids._is_public()"
+                    class="form-control"
+                    id="tax_number"
+                    t-att-readonly="'1' if partner.vat else None"
+                    t-att-value="partner.vat"
+                />
             </div>
         </xpath>
         <xpath expr="//select[@id='country_id']/.." position="attributes">

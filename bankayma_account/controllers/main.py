@@ -244,6 +244,13 @@ class CustomerPortal(portal.CustomerPortal):
         result = super()._create_transaction(*args, **kwargs)
 
         result.is_recurrent = kwargs.get("is_recurrent")
-        result.bankayma_tax_number = kwargs.get("tax_number")
+        if kwargs.get("tax_number"):
+            result.bankayma_tax_number = kwargs.get("tax_number")
+            if (
+                result.partner_id.user_ids
+                and not result.partner_id.user_ids._is_public()
+                and not result.partner_id.vat
+            ):
+                result.partner_id.vat = result.bankayma_tax_number
 
         return result
