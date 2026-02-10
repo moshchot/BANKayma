@@ -107,6 +107,8 @@ msgstr ""
 
 #. module: bankayma_base
 #: model:ir.model.fields,field_description:bankayma_base.field_res_company__name
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__company_name
+#: model:ir.model.fields,field_description:bankayma_base.field_res_users__company_name
 msgid "Company Name"
 msgstr "שם יוזמה"
 
