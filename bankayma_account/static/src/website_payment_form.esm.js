@@ -22,6 +22,9 @@ checkoutForm.include({
     },
     _prepareTransactionRouteParams: function () {
         const result = this._super(...arguments);
+        if (this.$("#tax_number").length) {
+            result.tax_number = this.$("#tax_number").val();
+        }
         return $(".o_donation_payment_form #recurrency_confirmation").length
             ? {
                   ...result,

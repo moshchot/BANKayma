@@ -244,5 +244,6 @@ class CustomerPortal(portal.CustomerPortal):
         result = super()._create_transaction(*args, **kwargs)
 
         result.is_recurrent = kwargs.get("is_recurrent")
+        result.bankayma_tax_number = kwargs.get("tax_number")
 
         return result

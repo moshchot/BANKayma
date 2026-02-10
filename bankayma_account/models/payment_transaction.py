@@ -12,6 +12,7 @@ class PaymentTransaction(models.Model):
     _inherit = "payment.transaction"
 
     is_recurrent = fields.Boolean()
+    bankayma_tax_number = fields.Char()
 
     def _process_notification_data(self, notification_data):
         """Coerce current company to provider's company for further processing"""
@@ -146,6 +147,8 @@ class PaymentTransaction(models.Model):
             result["DocumentDescription"] = result["Items"][0]["Item"]["Name"]
             result["Items"][0]["Item"]["Description"] = None
             result["Items"][0]["Description"] = None
+        if self.bankayma_tax_number:
+            result["Customer"]["CompanyNumber"] = self.bankayma_tax_number
         return result
 
     def _to_sumit_vals_name(self, recurrent):

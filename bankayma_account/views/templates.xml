@@ -637,6 +637,18 @@
                 </div>
             </div>
         </xpath>
+        <xpath expr="//input[@id='donation_comment_checkbox']/../.." position="before">
+            <div class="mb-3 col-lg-6">
+                <label
+                    class="col-form-label fw-bold label-optional"
+                    for="tax_number"
+                    title="For donations recognized by section 46A"
+                >
+                    IL Tax Number
+                </label>
+                <input class="form-control" id="tax_number" />
+            </div>
+        </xpath>
         <xpath expr="//select[@id='country_id']/.." position="attributes">
             <attribute name="style">display: none</attribute>
         </xpath>
