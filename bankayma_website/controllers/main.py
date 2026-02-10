@@ -119,7 +119,9 @@ class CompaniesController(http.Controller):
             ("parent_id", "!=", False),
             "|",
             ("category_id", "=", False),
+            "&",
             ("category_id.company_hide_without_category", "=", False),
+            ("category_id.category_show_on_website", "=", True),
         ]
 
         if tag_ids:
