@@ -1385,7 +1385,7 @@ msgstr ""
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
 msgid "For donations recognized by section 46A"
-msgstr ""
+msgstr "לקבלת זיכוי מס לפי סעיף 46א לרשות המיסים "
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
@@ -1452,7 +1452,7 @@ msgstr "מזהה"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
 msgid "IL Tax Number"
-msgstr ""
+msgstr "מספר ת.ז./ח.פ"
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__mass_mailing_name
