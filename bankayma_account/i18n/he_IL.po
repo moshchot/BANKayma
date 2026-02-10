@@ -772,6 +772,11 @@ msgid "Bankayma Tax Group"
 msgstr "ביטוח לאומי"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_payment_transaction__bankayma_tax_number
+msgid "Bankayma Tax Number"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_tax_removal_label
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_tax_removal_label
 #: model:ir.model.fields,field_description:bankayma_account.field_account_payment__bankayma_tax_removal_label
@@ -1378,6 +1383,11 @@ msgid ""
 msgstr ""
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
+msgid "For donations recognized by section 46A"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__email_from
 msgid "From"
 msgstr "מאת"
@@ -1438,6 +1448,11 @@ msgstr "אני מאשר/ת הוראת קבע חודשית בסכום זה"
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__id
 msgid "ID"
 msgstr "מזהה"
+
+#. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
+msgid "IL Tax Number"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model.fields,help:bankayma_account.field_bankayma_vendor_invite__mass_mailing_name
