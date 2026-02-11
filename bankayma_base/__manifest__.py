@@ -2,7 +2,7 @@
 {
     "name": "BANKayma",
     "summary": "BANKayma base module",
-    "version": "16.0.1.0.2",
+    "version": "16.0.1.0.3",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
