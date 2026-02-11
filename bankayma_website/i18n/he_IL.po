@@ -581,6 +581,7 @@ msgid "Website event"
 msgstr ""
 
 #. module: bankayma_website
+#: model:res.partner,display_name:bankayma_website.webman_res_partner
 #: model:res.partner,name:bankayma_website.webman_res_partner
 msgid "Website manager"
 msgstr ""

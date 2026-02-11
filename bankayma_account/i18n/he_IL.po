@@ -1606,6 +1606,13 @@ msgid "Invoice Auto Validation"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__invoice_partner_display_name
+#: model:ir.model.fields,field_description:bankayma_account.field_account_move__invoice_partner_display_name
+#: model:ir.model.fields,field_description:bankayma_account.field_account_payment__invoice_partner_display_name
+msgid "Invoice Partner Display Name"
+msgstr ""
+
+#. module: bankayma_account
 #: model:mail.template,report_name:bankayma_account.template_account_move_paid
 #: model:mail.template,report_name:bankayma_account.template_account_move_paid_reminder
 msgid "Invoice_{{ (object.name or '').replace('/','_') }}"

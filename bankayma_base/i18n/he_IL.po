@@ -139,6 +139,11 @@ msgid "Details"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: bankayma_base
 #: model:ir.model,name:bankayma_base.model_mail_template
 msgid "Email Templates"
 msgstr ""
@@ -234,6 +239,7 @@ msgid "Organization config"
 msgstr "הגדרות יוזמה"
 
 #. module: bankayma_base
+#: model:res.partner,display_name:bankayma_base.orgman_res_partner
 #: model:res.partner,name:bankayma_base.orgman_res_partner
 msgid "Organization manager"
 msgstr ""
@@ -266,6 +272,7 @@ msgid "Project User"
 msgstr "חבר פרוייקט"
 
 #. module: bankayma_base
+#: model:res.partner,display_name:bankayma_base.projman_res_partner
 #: model:res.partner,name:bankayma_base.projman_res_partner
 msgid "Project manager"
 msgstr ""
@@ -345,6 +352,7 @@ msgid "User"
 msgstr "חבר"
 
 #. module: bankayma_base
+#: model:res.partner,display_name:bankayma_base.user_child_comp1_res_partner
 #: model:res.partner,name:bankayma_base.user_child_comp1_res_partner
 msgid "User Child Company 1"
 msgstr ""
@@ -355,6 +363,7 @@ msgid "Vendor"
 msgstr "ספק"
 
 #. module: bankayma_base
+#: model:res.partner,display_name:bankayma_base.vendor_child_comp1_res_partner
 #: model:res.partner,name:bankayma_base.vendor_child_comp1_res_partner
 msgid "Vendor Child Company 1"
 msgstr ""
