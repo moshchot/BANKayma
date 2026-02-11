@@ -16,6 +16,7 @@ from odoo.tools.safe_eval import const_eval
 from odoo.tools.translate import code_translations
 
 from odoo.addons.account.models.account_move import PAYMENT_STATE_SELECTION
+from odoo.addons.bankayma_base import fields as bankayma_base_fields
 
 VALIDATED_STATE_SELECTION = [
     ("0_draft", "Draft"),
@@ -157,6 +158,7 @@ class AccountMove(models.Model):
         copy=False,
         tracking=True,
     )
+    invoice_partner_display_name = bankayma_base_fields.TranslatedComputedChar()
 
     def _compute_amount(self):
         """

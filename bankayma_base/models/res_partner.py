@@ -1,10 +1,13 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
 
+from .. import fields as bankayma_base_fields
+
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
+    display_name = bankayma_base_fields.TranslatedComputedChar()
     name = fields.Char(translate=True)
     function = fields.Char(translate=True)
     is_company = fields.Boolean(default=True)
@@ -94,3 +97,9 @@ class ResPartner(models.Model):
             view_id = self.env.ref("bankayma_base.bankayma_partner_form").id
 
         return super().get_view(view_id=view_id, view_type=view_type, **options)
+
+    def with_context(self, *args, **kwargs):
+        if len(args) == 1 and not kwargs and not args[0] and self.env.lang:
+            # _compute_display_name calls this with empty context, we need to keep lang
+            args = ({"lang": self.env.lang},)
+        return super().with_context(*args, **kwargs)
