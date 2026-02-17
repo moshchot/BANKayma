@@ -114,6 +114,8 @@ event-repo:
     - oca a518e136b634f9cd44e3288d0d88629226beed28
     # website_event_filter_city
     - oca refs/pull/489/head
+    # website_event_external
+    - oca refs/pull/402/head
   remotes:
     oca: https://github.com/OCA/event.git
 knowledge:
