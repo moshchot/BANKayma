@@ -9,6 +9,9 @@ class ProductTemplate(models.Model):
     bankayma_website_sale_company_id = fields.Many2one(
         "res.company", string="Company (webshop)"
     )
+    bankayma_website_sale_hide = fields.Boolean(
+        "Hide from website",
+    )
 
     @api.model
     def _search_get_detail(self, website, order, options):
