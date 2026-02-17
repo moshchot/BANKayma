@@ -57,11 +57,29 @@
             <sheet position="after">
                 <sheet>
                     <field name="name" invisible="True" />
-                    <group name="bankayma_main">
+                    <field name="is_external" invisible="True" />
+                    <div attrs="{'invisbile': [('is_external', '=', False)]}">
+                        This is an external event, please configure whatever is to
+                        configure on
+                        <field
+                            name="external_link"
+                            widget="url"
+                            class="oe-inline"
+                            readonly="True"
+                        />
+                        .
+                    </div>
+                    <group
+                        name="bankayma_main"
+                        attrs="{'invisbile': [('is_external', '=', True)]}"
+                    >
                         <group name="bankayma_left" />
                         <group name="bankayma_right" />
                     </group>
-                    <notebook name="bankayma_notebook" />
+                    <notebook
+                        name="bankayma_notebook"
+                        attrs="{'invisible': [('is_external', '=', True)]}"
+                    />
                 </sheet>
             </sheet>
             <group name="bankayma_left" position="inside">
