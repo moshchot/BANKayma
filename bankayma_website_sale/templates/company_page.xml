@@ -23,7 +23,7 @@
                 style="background-image: none;"
                 data-product-category-id="all"
                 data-number-of-records="16"
-                t-att-data-filter-id="request.env.ref('website_sale.dynamic_filter_newest_products').id"
+                t-att-data-filter-id="request.env.ref('bankayma_website_sale.snippet_filter_ordered_products').id"
                 data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
                 data-carousel-interval="5000"
                 t-att-data-company-id="object.id"
