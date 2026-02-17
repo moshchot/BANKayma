@@ -61,6 +61,12 @@ msgid "Event"
 msgstr "אירוע"
 
 #. module: bankayma_website_sale
+#: model:ir.model.fields,field_description:bankayma_website_sale.field_product_product__bankayma_website_sale_hide
+#: model:ir.model.fields,field_description:bankayma_website_sale.field_product_template__bankayma_website_sale_hide
+msgid "Hide from website"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_account_move_line
 msgid "Journal Item"
 msgstr ""
@@ -127,4 +133,14 @@ msgstr "סוג"
 msgid ""
 "This is an external event, please configure whatever is to\n"
 "                        configure on"
+msgstr ""
+
+#. module: bankayma_website_sale
+#: model:ir.model,name:bankayma_website_sale.model_website
+msgid "Website"
+msgstr ""
+
+#. module: bankayma_website_sale
+#: model:ir.model,name:bankayma_website_sale.model_website_snippet_filter
+msgid "Website Snippet Filter"
 msgstr ""
