@@ -4,3 +4,4 @@ masav
 odoo_test_helper
 openupgradelib
 strenum
+python-slugify
