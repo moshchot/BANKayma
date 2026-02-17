@@ -11,6 +11,7 @@
                     name="bankayma_website_sale_company_id"
                     options="{'no_create': True, 'no_open': True}"
                 />
+                <field name="bankayma_website_sale_hide" />
             </xpath>
             <div name="options" position="after">
                 <field name="sale_ok" invisible="True" />

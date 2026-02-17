@@ -4,3 +4,5 @@ from . import event_event
 from . import payment_transaction
 from . import product_template
 from . import sale_order
+from . import website
+from . import website_snippet_filter
