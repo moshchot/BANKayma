@@ -15,6 +15,7 @@
     "data": [
         "data/product_product.xml",
         "data/ir_config_parameter.xml",
+        "data/website_snippet_filter.xml",
         "security/bankayma_website_sale.xml",
         "security/ir.model.access.csv",
         "templates/company_page.xml",

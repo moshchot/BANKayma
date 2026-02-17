@@ -1,0 +1,19 @@
+<odoo>
+    <record id="filter_ordered_products" model="ir.filters">
+        <field name="name">Ordered Products</field>
+        <field name="model_id">product.product</field>
+        <field name="user_id" eval="False" />
+        <field name="domain">[('website_published', '=', True)]</field>
+        <field name="context">
+            {'display_default_code': False, 'add2cart_rerender': False}
+        </field>
+        <field name="sort">["website_sequence"]</field>
+        <field name="action_id" ref="website.action_website" />
+    </record>
+    <record id="snippet_filter_ordered_products" model="website.snippet.filter">
+        <field name="filter_id" ref="filter_ordered_products" />
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16" />
+        <field name="name">Newest Products</field>
+    </record>
+</odoo>
