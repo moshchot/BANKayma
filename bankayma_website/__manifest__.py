@@ -9,6 +9,7 @@
     "application": True,
     "depends": [
         "bankayma_account",
+        "website_event_external",
         "website_event_filter_city",
         "website_event_questions",
         "website_event_track",
