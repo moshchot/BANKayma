@@ -66,6 +66,11 @@ msgid "Journal Item"
 msgstr ""
 
 #. module: bankayma_website_sale
+#: model:website.snippet.filter,name:bankayma_website_sale.snippet_filter_ordered_products
+msgid "Newest Products"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_payment_transaction
 msgid "Payment Transaction"
 msgstr ""
