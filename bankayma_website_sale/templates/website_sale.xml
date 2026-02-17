@@ -32,24 +32,20 @@
                     <t t-out="project.name" />
                     ×
                 </a>
-                <a
-                    href="#"
-                    role="button"
-                    class="btn dropdown-toggle"
-                    data-bs-toggle="dropdown"
+                <select
+                    class="btn o-select2"
+                    t-attf-onchange="if (event.currentTarget.selectedOptions.length &amp;&amp; event.currentTarget.selectedOptions[0].attributes.href) window.location = event.currentTarget.selectedOptions[0].attributes.href.value"
                 >
-                    Project
-                </a>
-                <div class="dropdown-menu">
+                    <option>Select project...</option>
                     <t t-foreach="companies_available" t-as="company">
-                        <a
+                        <option
                             t-att-href="keep(project=company.id)"
                             t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
                         >
                             <t t-out="company.name" />
-                        </a>
+                        </option>
                     </t>
-                </div>
+                </select>
                 <a
                     t-attf-class="badge o_tag o_tag_color_{{product_tag.color}} me-2"
                     t-if="product_tag"
