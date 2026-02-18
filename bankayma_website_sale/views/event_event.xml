@@ -71,18 +71,16 @@
             <sheet position="after">
                 <sheet>
                     <field name="name" invisible="True" />
-                    <field name="is_external" invisible="True" />
-                    <div attrs="{'invisible': [('is_external', '=', False)]}">
-                        This is an external event, please configure whatever is to
-                        configure on
+                    <group>
+                        <field name="is_external" />
+                    </group>
+                    <group attrs="{'invisible': [('is_external', '=', False)]}">
                         <field
                             name="external_link"
                             widget="url"
-                            class="oe-inline"
-                            readonly="True"
+                            attrs="{'required': [('is_external', '=', True)]}"
                         />
-                        .
-                    </div>
+                    </group>
                     <group
                         name="bankayma_main"
                         attrs="{'invisible': [('is_external', '=', True)]}"
