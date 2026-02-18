@@ -32,6 +32,15 @@ class WebsiteSale(main.WebsiteSale):
         result.update(
             company_tags_available=company_tags_available,
             companies_available=companies_available,
+            product_tags_available=request.env["product.tag"].search(
+                [
+                    (
+                        "product_template_ids.bankayma_website_sale_company_id",
+                        "in",
+                        companies_available.ids,
+                    )
+                ]
+            ),
         )
         return result
 
