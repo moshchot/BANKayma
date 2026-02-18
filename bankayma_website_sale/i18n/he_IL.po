@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bankayma_website_sale
-#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
-msgid "<option>Select project...</option>"
-msgstr ""
-
-#. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
 msgid "<span style=\"font-size: 18px; font-weight: normal;\">shop</span>"
 msgstr "<span style=\"font-size: 18px; font-weight: normal;\">חנות</span>"
@@ -97,6 +92,11 @@ msgid "Products"
 msgstr "מוצרים"
 
 #. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
+msgid "Project"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.product_template_form_view
 msgid "Recommend when 'Adding to Cart' or quotation"
 msgstr ""
@@ -111,6 +111,11 @@ msgstr "מכירות אונליין"
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_sale_order
 msgid "Sales Order"
+msgstr ""
+
+#. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
+msgid "Search..."
 msgstr ""
 
 #. module: bankayma_website_sale
