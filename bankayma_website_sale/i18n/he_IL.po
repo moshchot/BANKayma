@@ -129,13 +129,6 @@ msgid "Tag"
 msgstr "סוג"
 
 #. module: bankayma_website_sale
-#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.view_event_event_bankayma_configure_tickets
-msgid ""
-"This is an external event, please configure whatever is to\n"
-"                        configure on"
-msgstr ""
-
-#. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_website
 msgid "Website"
 msgstr ""
