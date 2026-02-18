@@ -41,7 +41,9 @@
                 >
                     Tag
                 </a>
-                <div class="dropdown-menu dropdown-menu-start">
+                <div
+                    t-attf-class="dropdown-menu dropdown-menu-{{request.env['res.lang']._lang_get_direction(request.env.lang) == 'rtl' and 'end' or 'start'}}"
+                >
                     <t
                         t-foreach="product_tags_available.filtered(lambda x: (project in x.product_template_ids.bankayma_website_sale_company_id) if project else True)"
                         t-as="tag"
@@ -73,7 +75,9 @@
                 >
                     Project
                 </a>
-                <div t-attf-class="dropdown-menu dropdown-menu-start">
+                <div
+                    t-attf-class="dropdown-menu dropdown-menu-{{request.env['res.lang']._lang_get_direction(request.env.lang) == 'rtl' and 'end' or 'start'}}"
+                >
                     <input
                         class="form-control mx-3 w-auto"
                         style=""
