@@ -1,7 +1,7 @@
 (function () {
     "use strict";
     jQuery(document).ready(function () {
-        jQuery("select[onchange]").change();
+        jQuery(".o_portal select[onchange]").change();
         jQuery(".bk-onchange").change(function () {
             var data = jQuery('select[name="property_account_position_id"]')
                     .find("option:selected")
