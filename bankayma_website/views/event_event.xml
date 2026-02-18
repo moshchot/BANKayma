@@ -10,4 +10,16 @@
             </page>
         </field>
     </record>
+    <record id="event_external_form_inherit" model="ir.ui.view">
+        <field name="model">event.event</field>
+        <field
+            name="inherit_id"
+            ref="website_event_external.event_external_form_inherit"
+        />
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="is_external" position="move" />
+            </field>
+        </field>
+    </record>
 </odoo>
