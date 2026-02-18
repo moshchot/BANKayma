@@ -1,0 +1,21 @@
+<odoo>
+    <record id="loyalty_reward_view_form" model="ir.ui.view">
+        <field name="model">loyalty.reward</field>
+        <field name="inherit_id" ref="loyalty.loyalty_reward_view_form" />
+        <field name="arch" type="xml">
+            <field name="discount_line_product_id" position="attributes">
+                <attribute name="groups" />
+                <attribute name="required">True</attribute>
+                <attribute name="domain">
+                    [('bankayma_website_sale_company_id', '!=', False)]
+                </attribute>
+            </field>
+            <field name="discount_product_category_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="discount_product_tag_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
