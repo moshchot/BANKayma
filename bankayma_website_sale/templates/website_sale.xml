@@ -22,38 +22,8 @@
         </p>
     </template>
     <template id="products" inherit_id="website_sale.products">
-        <t t-call="website_sale.pricelist_list" position="before">
-            <div class="dropdown ms-3 text-center" style="flex-grow: 2">
-                <a
-                    href="#"
-                    role="button"
-                    class="btn dropdown-toggle text-muted"
-                    data-bs-toggle="dropdown"
-                >
-                    <t t-if="not project">Project</t>
-                    <t t-else="" t-out="project.name" />
-                </a>
-                <div class="dropdown-menu">
-                    <input
-                        class="form-control mx-3 w-auto"
-                        style=""
-                        placeholder="Search..."
-                        onkeyup="event.currentTarget.parentElement.querySelectorAll('a').forEach((a) => a.classList.toggle('d-none', event.currentTarget.value &amp;&amp; !a.innerText.toLowerCase().includes(event.currentTarget.value.toLowerCase())))"
-                    />
-                    <div style="max-height: 50vh; overflow-y: scroll;">
-                        <t t-foreach="companies_available" t-as="company">
-                            <a
-                                t-att-href="keep(project=company.id) if company.id != project.id else keep(project=None)"
-                                t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
-                                t-att-checked="'checked' if project.id == company.id else None"
-                            >
-                                <t t-out="company.name" />
-                            </a>
-                        </t>
-                    </div>
-                </div>
-            </div>
-            <div class="dropdown ms-3" t-if="products.product_tag_ids">
+        <t t-call="website_sale.search" position="before">
+            <div class="dropdown ms-3">
                 <a
                     t-attf-class="badge o_tag o_tag_color_{{product_tag.color}} me-2"
                     t-if="product_tag"
@@ -67,18 +37,63 @@
                     role="button"
                     class="btn dropdown-toggle text-muted"
                     data-bs-toggle="dropdown"
+                    data-display="static"
                 >
                     Tag
                 </a>
-                <div class="dropdown-menu">
-                    <t t-foreach="products.product_tag_ids" t-as="tag">
+                <div class="dropdown-menu dropdown-menu-start">
+                    <t
+                        t-foreach="product_tags_available.filtered(lambda x: (project in x.product_template_ids.bankayma_website_sale_company_id) if project else True)"
+                        t-as="tag"
+                    >
                         <a
-                            t-att-href="keep(product_tag=tag.id)"
-                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if False else ''}"
+                            t-att-href="keep(product_tag=tag.id if tag != product_tag else None)"
+                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if tag == product_tag else ''}"
                         >
                             <t t-out="tag.name" />
                         </a>
                     </t>
+                </div>
+            </div>
+            <div class="dropdown ms-3 text-center" style="flex-grow: 2">
+                <a
+                    t-attf-class="badge o_tag me-2"
+                    t-if="project"
+                    t-att-href="keep(project=None)"
+                >
+                    <t t-out="project.name" />
+                    ×
+                </a>
+                <a
+                    href="#"
+                    role="button"
+                    class="btn dropdown-toggle text-muted"
+                    data-bs-toggle="dropdown"
+                    data-display="static"
+                >
+                    Project
+                </a>
+                <div t-attf-class="dropdown-menu dropdown-menu-start">
+                    <input
+                        class="form-control mx-3 w-auto"
+                        style=""
+                        placeholder="Search..."
+                        onkeyup="event.currentTarget.parentElement.querySelectorAll('a').forEach((a) => a.classList.toggle('d-none', event.currentTarget.value &amp;&amp; !a.innerText.toLowerCase().includes(event.currentTarget.value.toLowerCase())))"
+                    />
+                    <div style="max-height: 50vh; overflow-y: scroll;">
+                        <t
+                            t-foreach="product_tag.product_template_ids.bankayma_website_sale_company_id &amp; companies_available or companies_available"
+                            t-as="company"
+                        >
+                            <a
+                                t-att-href="keep(project=company.id if company.id != project.id else None)"
+                                t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
+                                t-att-checked="'checked' if project.id == company.id else None"
+                            >
+                                <t t-out="company.name" />
+                            </a>
+                        </t>
+                    </div>
                 </div>
             </div>
         </t>
