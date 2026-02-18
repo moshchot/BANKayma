@@ -107,6 +107,13 @@ donation-repo:
     - oca ace890dd2c23f9552041166312879da2ab42d6ed
   remotes:
     oca: https://github.com/OCA/donation.git
+e-commerce:
+  defaults:
+    depth: 1
+  merges:
+    - oca ff6f7cfd0d6d9ea22eec1f99211643aceffaafc1
+  remotes:
+    oca: https://github.com/OCA/e-commerce.git
 event-repo:
   defaults:
     depth: 100
