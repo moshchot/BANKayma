@@ -19,6 +19,7 @@
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
                 <field name="is_external" position="move" />
+                <field name="external_link" position="move" />
             </field>
         </field>
     </record>
