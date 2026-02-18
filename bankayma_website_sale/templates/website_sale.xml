@@ -23,29 +23,37 @@
     </template>
     <template id="products" inherit_id="website_sale.products">
         <t t-call="website_sale.pricelist_list" position="before">
-            <div class="dropdown ms-3">
+            <div class="dropdown ms-3 text-center" style="flex-grow: 2">
                 <a
-                    class="badge bg-o-color-1 me-2"
-                    t-if="project"
-                    t-att-href="keep(project=0)"
+                    href="#"
+                    role="button"
+                    class="btn dropdown-toggle text-muted"
+                    data-bs-toggle="dropdown"
                 >
-                    <t t-out="project.name" />
-                    ×
+                    <t t-if="not project">Project</t>
+                    <t t-else="" t-out="project.name" />
                 </a>
-                <select
-                    class="btn o-select2"
-                    t-attf-onchange="if (event.currentTarget.selectedOptions.length &amp;&amp; event.currentTarget.selectedOptions[0].attributes.href) window.location = event.currentTarget.selectedOptions[0].attributes.href.value"
-                >
-                    <option>Select project...</option>
-                    <t t-foreach="companies_available" t-as="company">
-                        <option
-                            t-att-href="keep(project=company.id)"
-                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
-                        >
-                            <t t-out="company.name" />
-                        </option>
-                    </t>
-                </select>
+                <div class="dropdown-menu">
+                    <input
+                        class="form-control mx-3 w-auto"
+                        style=""
+                        placeholder="Search..."
+                        onkeyup="event.currentTarget.parentElement.querySelectorAll('a').forEach((a) => a.classList.toggle('d-none', event.currentTarget.value &amp;&amp; !a.innerText.toLowerCase().includes(event.currentTarget.value.toLowerCase())))"
+                    />
+                    <div style="max-height: 50vh; overflow-y: scroll;">
+                        <t t-foreach="companies_available" t-as="company">
+                            <a
+                                t-att-href="keep(project=company.id) if company.id != project.id else keep(project=None)"
+                                t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
+                                t-att-checked="'checked' if project.id == company.id else None"
+                            >
+                                <t t-out="company.name" />
+                            </a>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown ms-3" t-if="products.product_tag_ids">
                 <a
                     t-attf-class="badge o_tag o_tag_color_{{product_tag.color}} me-2"
                     t-if="product_tag"
@@ -57,7 +65,7 @@
                 <a
                     href="#"
                     role="button"
-                    class="btn dropdown-toggle"
+                    class="btn dropdown-toggle text-muted"
                     data-bs-toggle="dropdown"
                 >
                     Tag
