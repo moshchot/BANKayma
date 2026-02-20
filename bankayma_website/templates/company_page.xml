@@ -415,8 +415,6 @@
                     class="pt40 pb40 o_colored_level o_cc o_cc1"
                     style="background-image: none;"
                     id="donation"
-                    data-anchor="true"
-                    dir="ltr"
                     t-if="object.category_id.company_show_donation"
                 >
                     <div class="container">
