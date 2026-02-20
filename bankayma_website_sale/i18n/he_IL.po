@@ -94,7 +94,7 @@ msgstr "מוצרים"
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
 msgid "Project"
-msgstr ""
+msgstr "יוזמה"
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.product_template_form_view
@@ -116,7 +116,7 @@ msgstr ""
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.products
 msgid "Search..."
-msgstr ""
+msgstr "חיפוש..."
 
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.company_page
@@ -136,7 +136,7 @@ msgstr "סוג"
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_website
 msgid "Website"
-msgstr ""
+msgstr "אתר"
 
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_website_snippet_filter

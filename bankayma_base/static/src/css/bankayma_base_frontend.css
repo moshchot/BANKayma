@@ -4,7 +4,6 @@ form label:after {
 form label.label-optional:after {
     content: "";
 }
-.btn,
-.badge {
+.btn {
     text-transform: capitalize !important;
 }
