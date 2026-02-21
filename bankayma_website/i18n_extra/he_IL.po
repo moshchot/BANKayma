@@ -37,12 +37,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: website_event
-#: model_terms:ir.ui.view,arch_db:website_event.registration_template
-msgid "<span class=\"py-2 o_wevent_registration_title text-start\">Tickets</span>"
-msgstr "<span class=\"py-2 o_wevent_registration_title text-start\">כרטיסים</span>"
-
-
 #. module: website_event_external
 #: model_terms:ir.ui.view,arch_db:website_event_external.website_event_external_link_inherit
 msgid "<em>Registrations are performed on <b>external website : </b></em>"
