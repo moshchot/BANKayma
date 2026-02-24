@@ -1,0 +1,97 @@
+<odoo>
+    <record id="view_loyalty_program_form_bankayma" model="ir.ui.view">
+        <field name="model">loyalty.program</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="currency_id" invisible="True" />
+                <field name="company_id" invisible="True" />
+                <sheet>
+                    <group />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="bankayma_promo_code" required="True" />
+                            <field name="bankayma_discount_name" required="True" />
+                        </group>
+                        <group>
+                            <field
+                                name="bankayma_website_sale_company_id"
+                                required="True"
+                            />
+                            <field
+                                name="bankayma_program_type"
+                                required="True"
+                                widget="radio"
+                                options="{'horizontal': true}"
+                            />
+                            <field
+                                name="bankayma_discount_type"
+                                required="True"
+                                widget="radio"
+                                options="{'horizontal': true}"
+                            />
+                            <field
+                                name="bankayma_discount_value"
+                                string="Percentage"
+                                required="True"
+                                attrs="{'invisible': [('bankayma_discount_type', '!=', 'percentage')]}"
+                            />
+                            <field
+                                name="bankayma_discount_value"
+                                string="Amount"
+                                required="True"
+                                widget="monetary"
+                                attrs="{'invisible': [('bankayma_discount_type', '!=', 'amount')]}"
+                                options="{'currency_field': 'currency_id'}"
+                            />
+                        </group>
+                    </group>
+                    <group
+                        name="promo_code_product"
+                        attrs="{'invisible': [('bankayma_program_type', '!=', 'promo_code_product')]}"
+                    >
+                        <field
+                            name="bankayma_product_ids"
+                            widget="many2many_tags"
+                            domain="[('bankayma_website_sale_company_id', '=', bankayma_website_sale_company_id)]"
+                            attrs="{'required': [('bankayma_program_type', '=', 'promo_code_product')]}"
+                        />
+                    </group>
+                    <group
+                        name="promo_code_company"
+                        attrs="{'invisible': [('bankayma_program_type', '!=', 'promo_code_company')]}"
+                    />
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_loyalty_program_tree_bankayma" model="ir.ui.view">
+        <field name="model">loyalty.program</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_loyalty_program" model="ir.actions.act_window">
+        <field name="name">Coupons</field>
+        <field name="res_model">loyalty.program</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_loyalty_program_tree" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_loyalty_program" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_loyalty_program_tree_bankayma" />
+    </record>
+    <record id="action_loyalty_program_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_loyalty_program" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_loyalty_program_form_bankayma" />
+    </record>
+    <menuitem
+        id="menu_loyalty_program"
+        parent="bankayma_website_sale.menu_sales"
+        action="action_loyalty_program"
+        sequence="200"
+    />
+</odoo>

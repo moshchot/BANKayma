@@ -13,6 +13,7 @@
     ],
     "data": [
         "views/loyalty_reward.xml",
+        "views/loyalty_program.xml",
     ],
     "demo": [],
     "website": "https://github.com/moshchot/BANKayma",
