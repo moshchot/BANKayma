@@ -16,8 +16,65 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bankayma_website_sale_loyalty
-#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_reward__discount_line_product_id
-msgid "Discount Line Product"
+#. odoo-python
+#: code:addons/bankayma_website_sale_loyalty/models/loyalty_program.py:0
+#, python-format
+msgid "%s (Copy)"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields.selection,name:bankayma_website_sale_loyalty.selection__loyalty_program__bankayma_discount_type__amount
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale_loyalty.view_loyalty_program_form_bankayma
+msgid "Amount"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_discount_value
+msgid "Bankayma Discount Value"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_reward__bankayma_website_sale_company_id
+msgid "Bankayma Website Sale Company"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_program_type
+msgid "Coupon Type"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.actions.act_window,name:bankayma_website_sale_loyalty.action_loyalty_program
+#: model:ir.ui.menu,name:bankayma_website_sale_loyalty.menu_loyalty_program
+msgid "Coupons"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_discount_type
+msgid "Discount Type"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields.selection,name:bankayma_website_sale_loyalty.selection__loyalty_program__bankayma_program_type__promo_code_company
+msgid "Discount code for company"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields.selection,name:bankayma_website_sale_loyalty.selection__loyalty_program__bankayma_program_type__promo_code_product
+msgid "Discount code for product(s)"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#. odoo-python
+#: code:addons/bankayma_website_sale_loyalty/models/loyalty_reward.py:0
+#, python-format
+msgid ""
+"Discount product and discounted products must have the same webshop company"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model,name:bankayma_website_sale_loyalty.model_loyalty_program
+msgid "Loyalty Program"
 msgstr ""
 
 #. module: bankayma_website_sale_loyalty
@@ -26,8 +83,42 @@ msgid "Loyalty Reward"
 msgstr ""
 
 #. module: bankayma_website_sale_loyalty
-#: model:ir.model.fields,help:bankayma_website_sale_loyalty.field_loyalty_reward__discount_line_product_id
-msgid ""
-"Product used in the sales order to apply the discount. Each reward has its "
-"own product for reporting purpose"
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_discount_name
+msgid "Name on order"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields.selection,name:bankayma_website_sale_loyalty.selection__loyalty_program__bankayma_discount_type__percentage
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale_loyalty.view_loyalty_program_form_bankayma
+msgid "Percentage"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_product_ids
+msgid "Products"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__program_type
+msgid "Program Type"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_promo_code
+msgid "Promo Code"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model,name:bankayma_website_sale_loyalty.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model,name:bankayma_website_sale_loyalty.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_website_sale_company_id
+msgid "Webshop company"
 msgstr ""
