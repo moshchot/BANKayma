@@ -14,6 +14,6 @@
         <field name="filter_id" ref="filter_ordered_products" />
         <field name="field_names">display_name,description_sale,image_512</field>
         <field name="limit" eval="16" />
-        <field name="name">Newest Products</field>
+        <field name="name">Ordered Products</field>
     </record>
 </odoo>
