@@ -16,4 +16,21 @@
         <field name="limit" eval="16" />
         <field name="name">Ordered Products</field>
     </record>
+    <record id="action_random_products" model="ir.actions.server">
+        <field name="name">Random products</field>
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="state">code</field>
+        <!-- prettier-ignore-start -->
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+response = DynamicFilter._get_products('random', model.env.context)
+        </field>
+        <!-- prettier-ignore-end -->
+    </record>
+    <record id="snippet_filter_random_products" model="website.snippet.filter">
+        <field name="action_server_id" ref="action_random_products" />
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16" />
+        <field name="name">Random Products</field>
+    </record>
 </odoo>
