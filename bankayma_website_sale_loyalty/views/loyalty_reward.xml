@@ -3,18 +3,26 @@
         <field name="model">loyalty.reward</field>
         <field name="inherit_id" ref="loyalty.loyalty_reward_view_form" />
         <field name="arch" type="xml">
+            <form position="inside">
+                <field name="bankayma_website_sale_company_id" invisible="False" />
+            </form>
+            <field name="discount_product_ids" position="attributes">
+                <attribute name="domain">
+                    [('bankayma_website_sale_company_id', '!=', False), ('bankayma_website_sale_company_id', '=?', bankayma_website_sale_company_id)]
+                </attribute>
+            </field>
             <field name="discount_line_product_id" position="attributes">
                 <attribute name="groups" />
                 <attribute name="required">True</attribute>
                 <attribute name="domain">
-                    [('bankayma_website_sale_company_id', '!=', False)]
+                    [('bankayma_website_sale_company_id', '!=', False), ('bankayma_website_sale_company_id', '=?', bankayma_website_sale_company_id)]
                 </attribute>
             </field>
             <field name="discount_product_category_id" position="attributes">
-                <attribute name="invisible">True</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
             <field name="discount_product_tag_id" position="attributes">
-                <attribute name="invisible">True</attribute>
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </field>
         </field>
     </record>
