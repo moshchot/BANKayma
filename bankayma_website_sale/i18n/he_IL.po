@@ -73,7 +73,7 @@ msgstr ""
 
 #. module: bankayma_website_sale
 #: model:website.snippet.filter,name:bankayma_website_sale.snippet_filter_ordered_products
-msgid "Newest Products"
+msgid "Ordered Products"
 msgstr ""
 
 #. module: bankayma_website_sale
