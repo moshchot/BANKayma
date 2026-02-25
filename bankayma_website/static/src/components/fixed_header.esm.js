@@ -10,7 +10,7 @@ function resetStickyTop() {
         if (
             $header.hasClass("o_header_is_scrolled") &&
             $header.is(":visible") &&
-            $header.css("opacity") == 1
+            $header.css("opacity") === 1
         ) {
             $search.css(
                 "transform",
