@@ -29,7 +29,7 @@
     </template>
     <template id="bankayma_searchbar">
         <section class="bankayma_searchbar sticky-top pt16 pb16 o_cc o_cc4">
-            <div class="o_container_small">
+            <div class="container">
                 <div class="navbar px-0">
                     <t t-foreach="config['badges']" t-as="badge">
                         <t t-call="bankayma_website.bankayma_searchbar_tags">
