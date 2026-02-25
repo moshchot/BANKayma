@@ -152,3 +152,10 @@ msgstr "אתר"
 #: model:ir.model,name:bankayma_website_sale.model_website_snippet_filter
 msgid "Website Snippet Filter"
 msgstr ""
+
+#. module: bankayma_website_sale
+#: model_terms:ir.ui.view,arch_db:bankayma_website_sale.address
+msgid ""
+"You have ordered services exclusively, so you do not need to fill in the\n"
+"                address fields, but you can if you need them on your invoice."
+msgstr ""
