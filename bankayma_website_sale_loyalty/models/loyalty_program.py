@@ -4,6 +4,7 @@ from odoo import _, api, fields, models
 class LoyaltyProgram(models.Model):
     _inherit = "loyalty.program"
 
+    company_id = fields.Many2one(default=lambda self: self.env["res.company"])
     program_type = fields.Selection(default="promo_code")
     bankayma_program_type = fields.Selection(
         selection=[
