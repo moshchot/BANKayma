@@ -63,3 +63,8 @@ class SaleOrder(models.Model):
             else:
                 result += move
         return result
+
+    def _bankayma_checkout_address_required(self):
+        return not all(
+            product.detailed_type == "service" for product in self.order_line.product_id
+        )
