@@ -69,3 +69,23 @@ class WebsiteSale(main.WebsiteSale):
         if partner.company_id:
             partner.company_id = False
         return partner_id
+
+    def _get_mandatory_fields_billing(self, country_id=False):
+        return self._bankayma_skip_checkout_address_required_fields(
+            super()._get_mandatory_fields_billing(country_id=country_id)
+        )
+
+    def _get_mandatory_fields_shipping(self, country_id=False):
+        return self._bankayma_skip_checkout_address_required_fields(
+            super()._get_mandatory_fields_shipping(country_id=country_id)
+        )
+
+    def _bankayma_skip_checkout_address_required_fields(self, required_fields):
+        order = request.website.sale_get_order()
+        if not order._bankayma_checkout_address_required():
+            return [
+                field_name
+                for field_name in required_fields
+                if field_name not in ("street", "city", "country_id", "zip")
+            ]
+        return required_fields

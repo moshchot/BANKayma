@@ -121,6 +121,33 @@
             />
         </xpath>
     </template>
+    <template id="address" inherit_id="website_sale.address">
+        <xpath expr="//input[@name='street']/.." position="before">
+            <t
+                t-set="address_required"
+                t-value="website_sale_order._bankayma_checkout_address_required()"
+            />
+            <div class="alert alert-warning" t-if="not address_required">
+                You have ordered services exclusively, so you do not need to fill in the
+                address fields, but you can if you need them on your invoice.
+            </div>
+        </xpath>
+        <label for="street" position="attributes">
+            <attribute name="t-attf-class">
+                col-form-label {{'label-optional' if not address_required else ''}}
+            </attribute>
+        </label>
+        <label for="city" position="attributes">
+            <attribute name="t-attf-class">
+                col-form-label {{'label-optional' if not address_required else ''}}
+            </attribute>
+        </label>
+        <label for="country_id" position="attributes">
+            <attribute name="t-attf-class">
+                col-form-label {{'label-optional' if not address_required else ''}}
+            </attribute>
+        </label>
+    </template>
     <template
         id="dynamic_filter_template_product_product_add_to_cart"
         inherit_id="website_sale.dynamic_filter_template_product_product_add_to_cart"
