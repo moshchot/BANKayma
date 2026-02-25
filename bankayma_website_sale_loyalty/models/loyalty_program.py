@@ -34,8 +34,9 @@ class LoyaltyProgram(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         result = super().create(vals_list)
-        for this in result:
-            this._bankayma_update_rules_rewards()
+        for this, vals in zip(result, vals_list):
+            if any(key.startswith("bankayma_") for key in vals):
+                this._bankayma_update_rules_rewards()
         return result
 
     def write(self, vals):
@@ -72,7 +73,10 @@ class LoyaltyProgram(models.Model):
 
     def _bankayma_update_rules_rewards(self):
         self.ensure_one()
-        rule_vals = {"code": self.bankayma_promo_code}
+        rule_vals = {
+            "code": self.bankayma_promo_code,
+            "reward_point_mode": "unit",
+        }
         reward_vals = {
             "reward_type": "discount",
             "discount": self.bankayma_discount_value,
