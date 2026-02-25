@@ -39,6 +39,11 @@ msgid "Bankayma Website Sale Company"
 msgstr ""
 
 #. module: bankayma_website_sale_loyalty
+#: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__company_id
+msgid "Company"
+msgstr ""
+
+#. module: bankayma_website_sale_loyalty
 #: model:ir.model.fields,field_description:bankayma_website_sale_loyalty.field_loyalty_program__bankayma_program_type
 msgid "Coupon Type"
 msgstr ""
