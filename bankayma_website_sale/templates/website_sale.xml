@@ -102,11 +102,14 @@
             </div>
         </t>
         <xpath expr="//div[hasclass('products_header')]" position="attributes">
-            <attribute
-                name="class"
-                separator=" "
-                add="sticky-top pt16 pb16 o_cc o_cc4"
-            />
+            <attribute name="class" separator=" " add="container" />
+            <attribute name="class" separator=" " remove="mb-3" />
+        </xpath>
+        <div id="wrap" position="before">
+            <div class="bankayma_products_searchbar sticky-top pt16 pb16 o_cc o_cc4" />
+        </div>
+        <xpath expr="//div[hasclass('bankayma_products_searchbar')]" position="inside">
+            <xpath expr="//div[hasclass('products_header')]" position="move" />
         </xpath>
     </template>
     <template id="products_item" inherit_id="website_sale.products_item">

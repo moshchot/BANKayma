@@ -4,7 +4,7 @@ import {extraMenuUpdateCallbacks} from "website.content.menu";
 function resetStickyTop() {
     const $header = jQuery("#top");
     const $search = jQuery(
-        ".bankayma_event_searchbar,.bankayma_searchbar,div.products_header"
+        ".bankayma_event_searchbar,.bankayma_searchbar,.bankayma_products_searchbar"
     );
     if ($header.length && $search.length) {
         if ($header.hasClass("o_header_is_scrolled")) {
