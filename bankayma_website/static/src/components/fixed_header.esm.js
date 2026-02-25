@@ -7,7 +7,11 @@ function resetStickyTop() {
         ".bankayma_event_searchbar,.bankayma_searchbar,.bankayma_products_searchbar"
     );
     if ($header.length && $search.length) {
-        if ($header.hasClass("o_header_is_scrolled") && $header.is(":visible")) {
+        if (
+            $header.hasClass("o_header_is_scrolled") &&
+            $header.is(":visible") &&
+            $header.css("opacity") == 1
+        ) {
             $search.css(
                 "transform",
                 `translate(0px, ${$header.outerHeight() + $header.position().top}px)`
