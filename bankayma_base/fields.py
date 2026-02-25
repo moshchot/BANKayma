@@ -12,6 +12,10 @@ class TranslatedComputedChar(fields.Char):
     def compute_value(self, records):
         result = super().compute_value(records)
 
+        if not records.ids:
+            # don't manipulate cache in onchange
+            return result
+
         langs = {code for code, _dummy in records.env["res.lang"].get_installed()} - {
             records.env.lang or "en_US"
         }
