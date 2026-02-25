@@ -10,7 +10,11 @@ class WebsiteSnippetFilter(models.Model):
 
     def _filter_records_to_values(self, records, is_sample=False):
         website = ir_http.get_request_website()
-        if records._name in ("product.product", "product.template") and website:
+        if (
+            isinstance(records, models.Model)
+            and records._name in ("product.product", "product.template")
+            and website
+        ):
             records = records.filtered_domain(website.sale_product_domain())
         return super()._filter_records_to_values(records, is_sample=is_sample)
 
