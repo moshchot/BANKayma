@@ -92,7 +92,9 @@ class PaymentTransaction(models.Model):
                 )
             ),
             "ExternalIdentifier": self.reference,
-            "MaximumPayments": None,
+            "MaximumPayments": self.provider_id.sumit_installment_count
+            if self.amount >= self.provider_id.sumit_installment_threshold
+            else None,
             "SendUpdateByEmailAddress": invoice_sumit_vals.get("Details", {})
             .get("Customer", {})
             .get("EmailAddress")

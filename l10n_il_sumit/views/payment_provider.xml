@@ -14,6 +14,16 @@
                     />
                 </group>
             </group>
+            <group name="provider_config" position="inside">
+                <group
+                    name="sumit_config"
+                    attrs="{'invisible': [('code', '!=', 'sumit')]}"
+                    string="Sumit"
+                >
+                    <field name="sumit_installment_threshold" />
+                    <field name="sumit_installment_count" />
+                </group>
+            </group>
         </field>
     </record>
 </data>
