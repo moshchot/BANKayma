@@ -273,6 +273,12 @@ msgid "ID"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_payment_provider__sumit_installment_threshold
+msgid ""
+"If a transaction amount is above this value, it may be paid in installments"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type__0
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_entry__0
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__account_journal__sumit_type_in_invoice__0
@@ -330,6 +336,11 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__write_date
 msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_installment_count
+msgid "Maximum installments"
 msgstr ""
 
 #. module: l10n_il_sumit
@@ -464,6 +475,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__payment_provider__code__sumit
 #: model:ir.ui.menu,name:l10n_il_sumit.menu_sumit
 #: model:payment.provider,name:l10n_il_sumit.payment_provider_sumit
+#: model_terms:ir.ui.view,arch_db:l10n_il_sumit.payment_provider_form
 #: model_terms:ir.ui.view,arch_db:l10n_il_sumit.view_account_journal_form
 msgid "Sumit"
 msgstr ""
@@ -471,16 +483,6 @@ msgstr ""
 #. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_account_id
 msgid "Sumit Account"
-msgstr ""
-
-#. module: l10n_il_sumit
-#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_installment_count
-msgid "Sumit Installment Count"
-msgstr ""
-
-#. module: l10n_il_sumit
-#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_installment_threshold
-msgid "Sumit Installment Threshold"
 msgstr ""
 
 #. module: l10n_il_sumit
@@ -562,8 +564,18 @@ msgid "Tax Withholding"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,help:l10n_il_sumit.field_payment_provider__sumit_installment_count
+msgid "The maximum amount of installments to allow"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields,help:l10n_il_sumit.field_payment_provider__code
 msgid "The technical code of this payment provider."
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_installment_threshold
+msgid "Threshold for installments"
 msgstr ""
 
 #. module: l10n_il_sumit
