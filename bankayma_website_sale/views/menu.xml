@@ -51,4 +51,10 @@
         parent="menu_sales"
         sequence="20"
     />
+    <!-- membership menu restrictions, don't really belong here but there's no better place atm -->
+    <record id="membership.action_membership_products" model="ir.actions.act_window">
+        <field name="domain">
+            [('membership','=',True), ('type', '=', 'service'), ('bankayma_website_sale_company_id', 'in', allowed_company_ids)]
+        </field>
+    </record>
 </odoo>

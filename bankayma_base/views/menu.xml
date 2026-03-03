@@ -130,4 +130,9 @@
     <record id="contacts.action_contacts_view_form" model="ir.actions.act_window.view">
         <field name="view_id" ref="bankayma_partner_form" />
     </record>
+    <record id="membership.action_membership_members" model="ir.actions.act_window">
+        <field name="domain">
+            [('member_lines.company_id', 'in', allowed_company_ids)]
+        </field>
+    </record>
 </odoo>
