@@ -474,6 +474,16 @@ msgid "Sumit Account"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_installment_count
+msgid "Sumit Installment Count"
+msgstr ""
+
+#. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_provider__sumit_installment_threshold
+msgid "Sumit Installment Threshold"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_payment_method__sumit_type
 msgid "Sumit Type"
 msgstr ""
