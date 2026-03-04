@@ -1,0 +1,85 @@
+<odoo>
+    <menuitem
+        id="menu_bankayma_membership_root"
+        name="BANKayma membership"
+        sequence="120"
+        web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
+        groups="group_community_manager,bankayma_base.group_org_manager,bankayma_base.group_full"
+    />
+    <record id="action_members" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">
+            ['|', ('member_lines.company_id', 'in', allowed_company_ids), ('free_member', '=', True)]
+        </field>
+        <field name="context">
+            {"search_default_all_members": 1, "default_free_member": True}
+        </field>
+        <field name="search_view_id" ref="membership.view_res_partner_member_filter" />
+    </record>
+    <record model="ir.actions.act_window.view" id="action_members_tree">
+        <field name="sequence" eval="1" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="membership.membership_members_tree" />
+        <field name="act_window_id" ref="action_members" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_members_form">
+        <field name="sequence" eval="2" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="base.view_partner_form" />
+        <field name="act_window_id" ref="action_members" />
+    </record>
+    <record model="ir.actions.act_window.view" id="action_members_kanban">
+        <field name="sequence" eval="3" />
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="base.res_partner_kanban_view" />
+        <field name="act_window_id" ref="action_members" />
+    </record>
+    <menuitem
+        id="menu_members"
+        parent="menu_bankayma_membership_root"
+        sequence="50"
+        action="action_members"
+    />
+    <record id="action_products" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.template</field>
+        <field name="domain">
+            [('membership','=',True), ('type', '=', 'service'), ('bankayma_website_sale_company_id', 'in', allowed_company_ids)]
+        </field>
+        <field
+            name="context"
+            eval="&quot;{'membership':True, 'type':'service', 'default_membership': True, 'default_detailed_type': 'service', 'default_bankayma_website_sale_company_id': allowed_company_ids[0], 'default_categ_id': %s}&quot; % ref('bankayma_website.product_category_webshop_product')"
+        />
+        <field
+            name="search_view_id"
+            ref="membership.membership_product_search_form_view"
+        />
+    </record>
+    <record model="ir.actions.act_window.view" id="action_products_tree">
+        <field name="sequence" eval="1" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="membership.membership_products_tree" />
+        <field name="act_window_id" ref="action_products" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_products_form">
+        <field name="sequence" eval="2" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="membership.membership_products_form" />
+        <field name="act_window_id" ref="action_products" />
+    </record>
+    <record model="ir.actions.act_window.view" id="action_products_kanban">
+        <field name="sequence" eval="3" />
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="membership.membership_products_kanban" />
+        <field name="act_window_id" ref="action_products" />
+    </record>
+    <menuitem
+        id="menu_products"
+        parent="menu_bankayma_membership_root"
+        sequence="60"
+        action="action_products"
+    />
+</odoo>
