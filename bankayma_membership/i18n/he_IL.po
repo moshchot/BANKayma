@@ -35,10 +35,10 @@ msgstr ""
 #: model:ir.actions.act_window,name:bankayma_membership.action_members
 #: model:ir.ui.menu,name:bankayma_membership.menu_members
 msgid "Members"
-msgstr ""
+msgstr "חברים"
 
 #. module: bankayma_membership
 #: model:ir.actions.act_window,name:bankayma_membership.action_products
 #: model:ir.ui.menu,name:bankayma_membership.menu_products
 msgid "Products"
-msgstr ""
+msgstr "מוצרי חברות"
