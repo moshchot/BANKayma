@@ -3,7 +3,7 @@
         id="menu_bankayma_membership_root"
         name="BANKayma membership"
         sequence="120"
-        web_icon="bankayma_account,static/img/odoo_icon_bk_out.png"
+        web_icon="bankayma_account,static/img/bankayma_members.png"
         groups="group_community_manager,bankayma_base.group_org_manager,bankayma_base.group_full"
     />
     <record id="action_members" model="ir.actions.act_window">
