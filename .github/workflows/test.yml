@@ -64,6 +64,7 @@ jobs:
           git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
           git config --global user.name "$GITHUB_ACTOR"
           pip install -r requirements.txt
+          pip install -r test-requirements.txt
           pip install git-aggregator
           mkdir -p /tmp/src/gitaggregate
           cd /tmp/src/gitaggregate

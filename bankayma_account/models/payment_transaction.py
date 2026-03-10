@@ -61,6 +61,48 @@ class PaymentTransaction(models.Model):
             PaymentTransaction, self.with_company(self.provider_id.company_id)
         )._process_notification_data(notification_data)
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
+
+            if not (self.sumit_details or {}).get("Payments"):
+                payment_details = self.provider_id.sumit_account_id._request(
+                    "/billing/payments/get",
+                    {
+                        "PaymentID": notification_data["OG-PaymentID"],
+                    },
+                )
+                payment_method_dict = {}
+                if notification_data.get("OG-PaymentType") == "CreditCard":
+                    installments = 1
+                    if payment_details["Payment"]["NonFirstPaymentAmount"]:
+                        installments = 1 + int(
+                            (
+                                payment_details["Payment"]["Amount"]
+                                - payment_details["Payment"]["FirstPaymentAmount"]
+                            )
+                            / payment_details["Payment"]["NonFirstPaymentAmount"]
+                        )
+                    payment_method_dict["Details_CreditCard"] = {
+                        "Last4Digits": payment_details["Payment"]["PaymentMethod"][
+                            "CreditCard_LastDigits"
+                        ],
+                        "FirstPayment": payment_details["Payment"][
+                            "FirstPaymentAmount"
+                        ],
+                        "EachPayment": payment_details["Payment"][
+                            "NonFirstPaymentAmount"
+                        ],
+                        "Payments": installments,
+                    }
+
+                self.sumit_details = dict(
+                    self.sumit_details or {},
+                    Payments=[
+                        dict(
+                            payment_method_dict,
+                            Amount=payment_details["Payment"]["Amount"],
+                        ),
+                    ],
+                )
+
             donation_product = (
                 self.company_id.donation_credit_transfer_product_id.with_company(
                     self.company_id
