@@ -10,6 +10,7 @@ class PaymentTransaction(models.Model):
     _inherit = "payment.transaction"
 
     sumit_document_url = fields.Char("Sumit document", readonly=True)
+    sumit_details = fields.Json()
 
     def _get_specific_rendering_values(self, processing_values):
         if self.provider_id.code == "sumit":
@@ -137,6 +138,7 @@ class PaymentTransaction(models.Model):
                         "DocumentNumber": notification_data["OG-DocumentNumber"],
                     },
                 )
+                self.sumit_details = details
                 if self.invoice_ids:
                     self.invoice_ids.message_post(
                         body=_(
