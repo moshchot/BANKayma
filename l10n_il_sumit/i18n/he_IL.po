@@ -486,6 +486,11 @@ msgid "Sumit Account"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_payment_transaction__sumit_details
+msgid "Sumit Details"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_account_payment_method__sumit_type
 msgid "Sumit Type"
 msgstr ""
