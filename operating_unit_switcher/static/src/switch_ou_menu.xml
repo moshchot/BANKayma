@@ -1,0 +1,8 @@
+<t t-name="operating_unit_switcher.menu" t-inherit="web.SwitchCompanyMenu">
+    <xpath expr="//div[hasclass('o_switch_company_menu')]" position="attributes">
+        <attribute name="t-if">companiesEntries.length > 0</attribute>
+    </xpath>
+    <xpath expr="//div[hasclass('o_switch_company_menu')]" position="attributes">
+        <attribute name="class" add="o_switch_ou_menu" remove="o_switch_company_menu" separator=" " />
+    </xpath>
+</t>
