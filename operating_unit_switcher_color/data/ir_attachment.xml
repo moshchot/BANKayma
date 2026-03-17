@@ -1,0 +1,8 @@
+<odoo noupdate="1">
+    <record id="attachment_css" model="ir.attachment">
+        <field name="name">OU color CSS</field>
+        <field name="mimetype">text/css</field>
+        <field name="type">binary</field>
+        <field name="raw">// empty</field>
+    </record>
+</odoo>
