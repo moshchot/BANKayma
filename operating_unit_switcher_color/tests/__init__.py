@@ -1,0 +1,1 @@
+from . import test_operating_unit_switcher_color
