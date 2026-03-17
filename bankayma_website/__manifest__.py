@@ -42,11 +42,7 @@
         "demo/res_users.xml",
     ],
     "website": "https://github.com/moshchot/BANKayma",
-    "external_dependencies": {
-        "python": [
-            "python-slugify",
-        ]
-    },
+    "external_dependencies": {"python": []},
     "assets": {
         "web.assets_frontend": [
             "/bankayma_website/static/src/components/*.js",
