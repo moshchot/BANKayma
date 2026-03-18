@@ -54,3 +54,12 @@ msgstr ""
 msgid "Gift card or discount code..."
 msgstr "קוד הנחה או כרטיס מתנה"
 
+#. module: website_sale
+#: model_terms:ir.ui.view,arch_db:website_sale.product_buy_now
+msgid ""
+"<i class=\"fa fa-bolt me-2\"/>\n"
+"                <span style=\"font-weight:bold\">BUY NOW</span>"
+msgstr ""
+"<i class=\"fa fa-bolt me-2\"/>\n"
+"<span style=\"font-weight:bold\">לרכישה מיידית</span>"
+
