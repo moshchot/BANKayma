@@ -358,6 +358,15 @@
                             readonly="True"
                             groups="!bankayma_base.group_org_manager"
                         />
+                        <field
+                            name="sumit_document_url"
+                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            widget="url"
+                        />
+                        <field
+                            name="sumit_document_number"
+                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                        />
                     </group>
                 </page>
             </notebook>

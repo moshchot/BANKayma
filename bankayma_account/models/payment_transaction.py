@@ -152,8 +152,11 @@ class PaymentTransaction(models.Model):
                             "recurring_rule_type": "monthly",
                             "recurring_invoicing_type": "pre-paid",
                             "recurring_interval": 1,
-                            "code": result.get("Data", {}).get("Payment", {}).get("ID")
-                            or result.get("Data", {}).get("DocumentID"),
+                            "code": (result.get("Payment", {}) or {}).get("ID")
+                            or result.get("DocumentID")
+                            or ", ".join(
+                                map(str, result.get("RecurringCustomerItemIDs", []))
+                            ),
                             "journal_id": self.company_id.donation_journal_id.id,
                             "contract_line_fixed_ids": [
                                 fields.Command.create(
@@ -166,6 +169,7 @@ class PaymentTransaction(models.Model):
                                     }
                                 ),
                             ],
+                            "sumit_details": result,
                         }
                     )
                 )
