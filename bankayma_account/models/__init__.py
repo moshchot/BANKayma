@@ -12,6 +12,7 @@ from . import account_payment
 from . import account_tax
 from . import account_tax_group
 from . import company_cascade_mixin
+from . import contract_contract
 from . import mail_template
 from . import mail_tracking_value
 from . import payment_transaction

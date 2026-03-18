@@ -969,6 +969,8 @@ class AccountMove(models.Model):
         return result
 
     def _invoice_paid_hook_use_sumit(self):
+        if all(self.mapped(lambda x: x.sumit_document_url and x.sumit_document_number)):
+            return False
         if "bankayma_force_sumit" in self.env.context:
             return self and self.env.context["bankayma_force_sumit"]
         return super()._invoice_paid_hook_use_sumit()

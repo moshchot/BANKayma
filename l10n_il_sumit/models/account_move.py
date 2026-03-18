@@ -8,7 +8,8 @@ from odoo import _, fields, models
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    sumit_document_url = fields.Char("Sumit document", readonly=True)
+    sumit_document_url = fields.Char("Sumit document url", readonly=True)
+    sumit_document_number = fields.Char("Sumit document number", readonly=True)
 
     def _to_sumit_vals(self):
         """Return a dict describing this invoice for sumit"""
