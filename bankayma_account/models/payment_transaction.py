@@ -129,6 +129,8 @@ class PaymentTransaction(models.Model):
                             "Recurrence": 12,
                         }
                     ],
+                    "UpdateCustomerByEmail": True,
+                    "SendCopyToOrganization": True,
                 }
                 result = self.provider_id.sumit_account_id._request(
                     "/billing/recurring/charge",
