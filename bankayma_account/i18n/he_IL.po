@@ -1030,6 +1030,11 @@ msgid "Contents"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.model,name:bankayma_account.model_contract_contract
+msgid "Contract"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_account_move_form
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_company_create_form
 msgid "Create"
@@ -2442,6 +2447,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:bankayma_account.product_template_form_view
 msgid "Sumit"
 msgstr "סאמיט"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_contract_contract__sumit_details
+msgid "Sumit Details"
+msgstr ""
 
 #. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_l10n_il_system1000_export
