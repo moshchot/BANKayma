@@ -63,3 +63,8 @@ msgstr ""
 "<i class=\"fa fa-bolt me-2\"/>\n"
 "<span style=\"font-weight:bold\">לרכישה מיידית</span>"
 
+#. module: website_sale_loyalty
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty.reduction_coupon_code
+msgid "Discount code or gift card"
+msgstr "קוד הנחה או כרטיס מתנה"
+
