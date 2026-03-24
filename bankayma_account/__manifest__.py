@@ -56,6 +56,7 @@
         "data/account_payment_method.xml",
         "data/account_tax_group.xml",
         "data/account_tax.xml",
+        "data/ir_cron.xml",
         "data/product_product.xml",
         "data/mail_message_subtype.xml",
         "data/mail_template_views.xml",
