@@ -66,5 +66,6 @@ class SaleOrder(models.Model):
 
     def _bankayma_checkout_address_required(self):
         return not all(
-            product.detailed_type in ('event', 'service') for product in self.order_line.product_id
+            product.detailed_type in ('event', 'service')
+            for product in self.order_line.product_id
         )
