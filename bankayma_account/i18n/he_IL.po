@@ -2238,6 +2238,12 @@ msgid "Price Quotation"
 msgstr ""
 
 #. module: bankayma_account
+#: model:ir.actions.server,name:bankayma_account.cron_contract_sumit_process_invoices_ir_actions_server
+#: model:ir.cron,cron_name:bankayma_account.cron_contract_sumit_process_invoices
+msgid "Process recurring payments (sumit)"
+msgstr ""
+
+#. module: bankayma_account
 #: model:ir.model,name:bankayma_account.model_product_template
 #: model:ir.model.fields,field_description:bankayma_account.field_account_bank_statement_line__bankayma_move_line_product_id
 #: model:ir.model.fields,field_description:bankayma_account.field_account_move__bankayma_move_line_product_id
