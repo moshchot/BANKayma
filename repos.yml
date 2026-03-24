@@ -8,8 +8,8 @@
     hbrunn: https://github.com/hbrunn/OCB.git
     oca: https://github.com/OCA/OCB.git
   shell_command_after:
-    "if [ ! -L ../libreerp ]; then mv ../libreerp ../libreerp-default;  ln -s
-    libreerp-git ../libreerp; fi"
+    "app=$(basename $(realpath ..)); if [ ! -L ../$app ]; then mv ../$app
+    ../$app-default;  ln -s libreerp-git ../$app; fi"
 account-analytic:
   defaults:
     depth: 400
