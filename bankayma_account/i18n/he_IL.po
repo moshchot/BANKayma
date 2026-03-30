@@ -524,7 +524,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bankayma_account.field_account_setup_bank_manual_config__acc_number
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner_bank__acc_number
 msgid "Account Number"
-msgstr "מספר חשבון"
+msgstr "חשבון"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.portal_my_details_fields
@@ -823,7 +823,7 @@ msgstr "סניף"
 #: model:ir.model.fields,field_description:bankayma_account.field_account_setup_bank_manual_config__branch_code
 #: model:ir.model.fields,field_description:bankayma_account.field_res_partner_bank__branch_code
 msgid "Branch Code"
-msgstr "מס' סניף"
+msgstr "סניף"
 
 #. module: bankayma_account
 #: model:ir.model.fields,field_description:bankayma_account.field_bankayma_vendor_invite__can_edit_body
