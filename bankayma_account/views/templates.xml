@@ -622,6 +622,13 @@
         </xpath>
     </template>
     <template id="payment_checkout" inherit_id="website_payment.payment_checkout">
+        <xpath
+            expr="//t[@t-if='is_donation']//h3[hasclass('o_page_header')]"
+            position="inside"
+        >
+            <span>to</span>
+            <t t-out="res_company.name" />
+        </xpath>
         <xpath expr="//div[hasclass('o_donation_payment_form')]" position="inside">
             <div class="col-lg-12 px-0" t-if="is_recurrent">
                 <div class="form-check mt-3">
