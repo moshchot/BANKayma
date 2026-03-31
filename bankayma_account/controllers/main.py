@@ -231,7 +231,9 @@ class CustomerPortal(portal.CustomerPortal):
         """Support recurring payments"""
         options = json_safe.loads(kwargs.get("donation_options", "{}"))
         kwargs["is_recurrent"] = options.get("recurrentPayment") == "true"
-        return super().donation_pay(**kwargs)
+        result = super().donation_pay(**kwargs)
+        result.qcontext["get_param_company"] = result.qcontext["res_company"]
+        return result
 
     def _get_custom_rendering_context_values(self, is_recurrent=False, **kwargs):
         result = super()._get_custom_rendering_context_values(**kwargs)
