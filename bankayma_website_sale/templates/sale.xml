@@ -1,0 +1,13 @@
+<odoo>
+    <template
+        id="report_saleorder_document"
+        inherit_id="sale.report_saleorder_document"
+    >
+        <!--
+            hide the div containing note, payment term, fiscal position
+        -->
+        <xpath expr="//p[@t-field='doc.note']/.." position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+</odoo>

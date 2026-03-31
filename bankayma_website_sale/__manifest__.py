@@ -20,6 +20,7 @@
         "security/ir.model.access.csv",
         "templates/company_page.xml",
         "templates/company_page_embed.xml",
+        "templates/sale.xml",
         "templates/website_event.xml",
         "templates/website_sale.xml",
         "views/event_event.xml",
