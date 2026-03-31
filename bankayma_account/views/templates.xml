@@ -627,7 +627,7 @@
             position="inside"
         >
             <span>to</span>
-            <t t-out="res_company.name" />
+            <t t-out="get_param_company.name" />
         </xpath>
         <xpath expr="//div[hasclass('o_donation_payment_form')]" position="inside">
             <div class="col-lg-12 px-0" t-if="is_recurrent">
