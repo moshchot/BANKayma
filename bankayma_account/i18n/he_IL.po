@@ -140,7 +140,7 @@ msgstr "<span>)</span>"
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
 msgid "<span>to</span>"
-msgstr ""
+msgstr "<span>עבור</span>"
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
