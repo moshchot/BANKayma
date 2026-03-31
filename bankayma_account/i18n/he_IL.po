@@ -138,6 +138,11 @@ msgid "<span>)</span>"
 msgstr "<span>)</span>"
 
 #. module: bankayma_account
+#: model_terms:ir.ui.view,arch_db:bankayma_account.payment_checkout
+msgid "<span>to</span>"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "<strong style=\"box-sizing:border-box;font-weight:500;\">For:</strong>"
 msgstr ""
