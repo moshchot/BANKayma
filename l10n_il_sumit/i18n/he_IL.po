@@ -56,6 +56,11 @@ msgid "CompanyId"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model,name:l10n_il_sumit.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_il_sumit
 #: model:ir.model.fields,field_description:l10n_il_sumit.field_sumit_account__create_uid
 msgid "Created by"
 msgstr "נוצרה ע״י"
@@ -472,6 +477,8 @@ msgid "Sequence"
 msgstr ""
 
 #. module: l10n_il_sumit
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_res_partner__sumit_id
+#: model:ir.model.fields,field_description:l10n_il_sumit.field_res_users__sumit_id
 #: model:ir.model.fields.selection,name:l10n_il_sumit.selection__payment_provider__code__sumit
 #: model:ir.ui.menu,name:l10n_il_sumit.menu_sumit
 #: model:payment.provider,name:l10n_il_sumit.payment_provider_sumit
