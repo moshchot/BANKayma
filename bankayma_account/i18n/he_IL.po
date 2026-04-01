@@ -1144,6 +1144,11 @@ msgid "Custom tax"
 msgstr "ניכוי מס הכנסה"
 
 #. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_recurrence__daily
+msgid "Daily"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.qweb_template_edi_invoice
 msgid "Dear"
 msgstr "אהלן"
@@ -1580,6 +1585,12 @@ msgid "Internal"
 msgstr "פנימיות"
 
 #. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_product_product__sumit_recurrence_interval
+#: model:ir.model.fields,field_description:bankayma_account.field_product_template__sumit_recurrence_interval
+msgid "Interval"
+msgstr ""
+
+#. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.view_bankayma_vendor_invite_form
 msgid "Invitation to the vendor portal"
 msgstr "הזמנה לפורטל ספקים"
@@ -1831,6 +1842,11 @@ msgstr ""
 #: code:addons/bankayma_account/models/account_move.py:0
 #, python-format
 msgid "Missing attachment: %s"
+msgstr ""
+
+#. module: bankayma_account
+#: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_recurrence__monthly
+msgid "Monthly"
 msgstr ""
 
 #. module: bankayma_account
@@ -2295,6 +2311,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:bankayma_account.selection__product_template__sumit_type__2
 msgid "Receipt"
 msgstr "קבלה"
+
+#. module: bankayma_account
+#: model:ir.model.fields,field_description:bankayma_account.field_product_product__sumit_recurrence
+#: model:ir.model.fields,field_description:bankayma_account.field_product_template__sumit_recurrence
+msgid "Recurrence"
+msgstr ""
 
 #. module: bankayma_account
 #: model_terms:ir.ui.view,arch_db:bankayma_account.s_donation_options
