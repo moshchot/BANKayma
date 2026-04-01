@@ -30,7 +30,7 @@ class ContractContrac(models.Model):
             )
             contract = invoice.line_ids.contract_line_id.contract_id
             contract_recurring_items = set(
-                (contract.sumit_details or {}).get("RecurringCustomerItemIDs")
+                (contract.sumit_details or {}).get("RecurringCustomerItemIDs") or []
             )
             _logger.debug("invoice has recurring items %s", contract_recurring_items)
             if not contract_recurring_items:
@@ -52,7 +52,7 @@ class ContractContrac(models.Model):
                 _logger.debug(result)
                 for payment in result.get("Payments", []):
                     if not contract_recurring_items & set(
-                        payment.get("RecurringCustomerItemIDs", [])
+                        payment.get("RecurringCustomerItemIDs") or []
                     ):
                         continue
                     if payment["Amount"] != invoice.amount_total:
