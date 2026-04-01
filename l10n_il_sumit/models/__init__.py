@@ -5,4 +5,5 @@ from . import account_payment_method
 from . import account_journal
 from . import payment_provider
 from . import payment_transaction
+from . import res_partner
 from . import sumit_account
