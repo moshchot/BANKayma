@@ -57,128 +57,147 @@ class PaymentTransaction(models.Model):
                     }
                 )
             )
-        result = super(
+        return super(
             PaymentTransaction, self.with_company(self.provider_id.company_id)
         )._process_notification_data(notification_data)
-        if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
 
-            if not (self.sumit_details or {}).get("Payments"):
-                payment_details = self.provider_id.sumit_account_id._request(
-                    "/billing/payments/get",
-                    {
-                        "PaymentID": notification_data["OG-PaymentID"],
-                    },
-                )
-                payment_method_dict = {}
-                if notification_data.get("OG-PaymentType") == "CreditCard":
-                    installments = 1
-                    if payment_details["Payment"]["NonFirstPaymentAmount"]:
-                        installments = 1 + int(
-                            (
-                                payment_details["Payment"]["Amount"]
-                                - payment_details["Payment"]["FirstPaymentAmount"]
-                            )
-                            / payment_details["Payment"]["NonFirstPaymentAmount"]
+    def _reconcile_after_done(self):
+        super()._reconcile_after_done()
+
+        if not (self.sumit_details or {}).get("OG-PaymentID"):
+            return
+
+        if not (self.sumit_details or {}).get("Payments"):
+            payment_details = self.provider_id.sumit_account_id._request(
+                "/billing/payments/get",
+                {
+                    "PaymentID": self.sumit_details["OG-PaymentID"],
+                },
+            )
+            payment_method_dict = {}
+            if self.sumit_details.get("OG-PaymentType") == "CreditCard":
+                installments = 1
+                if payment_details["Payment"]["NonFirstPaymentAmount"]:
+                    installments = 1 + int(
+                        (
+                            payment_details["Payment"]["Amount"]
+                            - payment_details["Payment"]["FirstPaymentAmount"]
                         )
-                    payment_method_dict["Details_CreditCard"] = {
-                        "Last4Digits": payment_details["Payment"]["PaymentMethod"][
-                            "CreditCard_LastDigits"
-                        ],
-                        "FirstPayment": payment_details["Payment"][
-                            "FirstPaymentAmount"
-                        ],
-                        "EachPayment": payment_details["Payment"][
-                            "NonFirstPaymentAmount"
-                        ],
-                        "Payments": installments,
-                    }
-
-                self.sumit_details = dict(
-                    self.sumit_details or {},
-                    Payments=[
-                        dict(
-                            payment_method_dict,
-                            Amount=payment_details["Payment"]["Amount"],
-                        ),
+                        / payment_details["Payment"]["NonFirstPaymentAmount"]
+                    )
+                payment_method_dict["Details_CreditCard"] = {
+                    "Last4Digits": payment_details["Payment"]["PaymentMethod"][
+                        "CreditCard_LastDigits"
                     ],
-                )
+                    "FirstPayment": payment_details["Payment"]["FirstPaymentAmount"],
+                    "EachPayment": payment_details["Payment"]["NonFirstPaymentAmount"],
+                    "Payments": installments,
+                }
 
-            donation_product = (
-                self.company_id.donation_credit_transfer_product_id.with_company(
-                    self.company_id
+            self.sumit_details = dict(
+                self.sumit_details or {},
+                Payments=[
+                    dict(
+                        payment_method_dict,
+                        Amount=payment_details["Payment"]["Amount"],
+                    ),
+                ],
+            )
+
+        for line in self.invoice_ids.invoice_line_ids.filtered(
+            lambda x, self=self: x.product_id.sumit_recurrence
+            or (self.is_donation and self.is_recurrent)
+        ):
+            product = line.product_id
+            if self.is_donation and self.is_recurrent:
+                recurrence_days = 0
+                recurrence_months = 1
+            else:
+                recurrence_days = (
+                    product.sumit_recurrence_interval
+                    if product.sumit_recurrence == "daily"
+                    else 0
+                )
+                recurrence_months = (
+                    product.sumit_recurrence_interval
+                    if product.sumit_recurrence == "monthly"
+                    else 0
+                )
+            if not recurrence_months and not recurrence_days:
+                continue
+            payload = {
+                "Customer": {
+                    "ID": self.sumit_details["OG-CustomerID"],
+                },
+                "PaymentMethod": None,
+                "Items": [
+                    {
+                        "Item": {
+                            "Name": line.name,
+                            "Duration_Days": recurrence_days,
+                            "Duration_Months": recurrence_months,
+                        },
+                        "UnitPrice": line.price_total,
+                        "Date_Start": (
+                            date.today()
+                            + relativedelta(
+                                months=recurrence_months, days=recurrence_days
+                            )
+                        ).isoformat(),
+                        "Duration_Days": recurrence_days,
+                        "Duration_Months": recurrence_months,
+                        "Recurrence": 0,
+                    }
+                ],
+                "UpdateCustomerByEmail": True,
+                "SendCopyToOrganization": True,
+            }
+            result = self.provider_id.sumit_account_id._request(
+                "/billing/recurring/charge",
+                payload,
+            )
+            partner = line.move_id.partner_id or self.partner_id
+            contract = (
+                self.env["contract.contract"]
+                .with_company(line.company_id)
+                .create(
+                    {
+                        "name": line.name,
+                        "contract_type": "sale",
+                        "partner_id": partner.id,
+                        "invoice_partner_id": partner.id,
+                        "date_start": date.today(),
+                        "recurring_next_date": date.today()
+                        + relativedelta(months=recurrence_months, days=recurrence_days),
+                        "recurring_rule_type": "monthly"
+                        if recurrence_months
+                        else "daily",
+                        "recurring_invoicing_type": "pre-paid",
+                        "recurring_interval": recurrence_months or recurrence_days,
+                        "code": (result.get("Payment", {}) or {}).get("ID")
+                        or result.get("DocumentID")
+                        or ", ".join(
+                            map(str, result.get("RecurringCustomerItemIDs", []))
+                        ),
+                        "journal_id": line.move_id.journal_id.id,
+                        "contract_line_fixed_ids": [
+                            fields.Command.create(
+                                {
+                                    "product_id": product.id,
+                                    "price_unit": self.amount,
+                                    "name": line.name,
+                                }
+                            ),
+                        ],
+                        "sumit_details": result,
+                    }
                 )
             )
-            if self.is_donation and self.is_recurrent:
-                payload = {
-                    "Customer": {
-                        "ID": notification_data["OG-CustomerID"],
-                    },
-                    "PaymentMethod": None,
-                    "Items": [
-                        {
-                            "Item": {
-                                "Name": self._to_sumit_vals_name(True),
-                                "Duration_Months": 1,
-                            },
-                            "UnitPrice": self.amount,
-                            "Date_Start": (
-                                date.today() + relativedelta(months=1)
-                            ).isoformat(),
-                            "Duration_Days": 0,
-                            "Duration_Months": 1,
-                            "Recurrence": 12,
-                        }
-                    ],
-                    "UpdateCustomerByEmail": True,
-                    "SendCopyToOrganization": True,
+            line.write(
+                {
+                    "contract_line_id": contract.contract_line_fixed_ids.id,
                 }
-                result = self.provider_id.sumit_account_id._request(
-                    "/billing/recurring/charge",
-                    payload,
-                )
-                partner = self.invoice_ids.partner_id[:1] or self.partner_id
-                contract = (
-                    self.env["contract.contract"]
-                    .with_company(self.company_id)
-                    .create(
-                        {
-                            "name": payload["Items"][0]["Item"]["Name"],
-                            "contract_type": "sale",
-                            "partner_id": partner.id,
-                            "invoice_partner_id": partner.id,
-                            "date_start": date.today(),
-                            "recurring_next_date": date.today()
-                            + relativedelta(months=1),
-                            "recurring_rule_type": "monthly",
-                            "recurring_invoicing_type": "pre-paid",
-                            "recurring_interval": 1,
-                            "code": (result.get("Payment", {}) or {}).get("ID")
-                            or result.get("DocumentID")
-                            or ", ".join(
-                                map(str, result.get("RecurringCustomerItemIDs", []))
-                            ),
-                            "journal_id": self.company_id.donation_journal_id.id,
-                            "contract_line_fixed_ids": [
-                                fields.Command.create(
-                                    {
-                                        "product_id": donation_product.id,
-                                        "price_unit": self.amount,
-                                        "name": self._to_sumit_vals_name(
-                                            self.is_recurrent
-                                        ),
-                                    }
-                                ),
-                            ],
-                            "sumit_details": result,
-                        }
-                    )
-                )
-                self.invoice_ids.invoice_line_ids.write(
-                    {
-                        "contract_line_id": contract.contract_line_fixed_ids.id,
-                    }
-                )
-        return result
+            )
 
     def _finalize_post_processing(self):
         """Coerce current company to provider's company for further processing"""

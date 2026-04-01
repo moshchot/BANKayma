@@ -18,20 +18,7 @@ class AccountMove(models.Model):
             "Details": {
                 "IsDraft": False,
                 "Date": self.date.isoformat(),
-                "Customer": {
-                    "ExternalIdentifier": None,
-                    "NoVAT": None,
-                    "SearchMode": 0,
-                    "Name": self.partner_id.display_name,
-                    "Phone": self.partner_id.phone or None,
-                    "EmailAddress": self.partner_id.email or None,
-                    "City": self.partner_id.city or None,
-                    "Address": self.partner_id.street or None,
-                    "ZipCode": self.partner_id.zip or None,
-                    "CompanyNumber": None,
-                    "ID": None,
-                    "Folder": None,
-                },
+                "Customer": self.partner_id._to_sumit_vals(),
                 "SendByEmail": {
                     "EmailAddress": self.partner_id.email or None,
                     "Original": True,

@@ -15,3 +15,8 @@ class ProductTemplate(models.Model):
         help="If you set a value here, it will override the journal's sumit type for "
         "invoices with this product",
     )
+    sumit_recurrence = fields.Selection(
+        [("daily", "Daily"), ("monthly", "Monthly")],
+        string="Recurrence",
+    )
+    sumit_recurrence_interval = fields.Integer(string="Interval")

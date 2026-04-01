@@ -10,6 +10,8 @@
                 <page name="sumit" string="Sumit">
                     <group name="main">
                         <field name="sumit_type" />
+                        <field name="sumit_recurrence" />
+                        <field name="sumit_recurrence_interval" />
                     </group>
                 </page>
             </notebook>

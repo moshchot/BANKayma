@@ -30,7 +30,6 @@ class PaymentTransaction(models.Model):
             "Customer": invoice_sumit_vals.get("Details", {}).get("Customer", {})
             if invoice_sumit_vals
             else {
-                # TODO: use partner_id._to_sumit_vals() if not partner_id.is_public?
                 "ExternalIdentifier": None,
                 "NoVAT": None,
                 "SearchMode": 0,
@@ -130,6 +129,7 @@ class PaymentTransaction(models.Model):
         if self.provider_code == "sumit" and notification_data.get("OG-PaymentID"):
             self.provider_reference = notification_data["OG-PaymentID"]
             self._set_done()
+            self.sumit_details = notification_data
             if "OG-DocumentNumber" in notification_data:
                 details = self.provider_id.sumit_account_id._request(
                     "/accounting/documents/getdetails",
@@ -138,7 +138,7 @@ class PaymentTransaction(models.Model):
                         "DocumentNumber": notification_data["OG-DocumentNumber"],
                     },
                 )
-                self.sumit_details = details
+                self.sumit_details = dict(self.sumit_details or {}, **details)
                 if self.invoice_ids:
                     self.invoice_ids.message_post(
                         body=_(
@@ -149,6 +149,11 @@ class PaymentTransaction(models.Model):
                     )
 
                 self.sumit_document_url = details["DocumentDownloadURL"]
+
+        if self.provider_code == "sumit" and notification_data.get("OG-CustomerID"):
+            self.invoice_ids.partner_id.filtered(lambda x: not x.sumit_id).write(
+                {"sumit_id": notification_data["OG-CustomerID"]}
+            )
 
         return result
 
