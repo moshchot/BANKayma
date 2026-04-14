@@ -7,7 +7,7 @@
     "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Productivity",
-    "website": "https://github.com/OCA/operating-unit",
+    "website": "https://github.com/moshchot/BANKayma",
     "author": "Hunki Enterprises BV, Moshchot Coop, Odoo Community Association (OCA)",
     "maintainers": ["hbrunn"],
     "license": "AGPL-3",
