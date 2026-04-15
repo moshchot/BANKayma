@@ -1,15 +1,24 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from openupgradelib.openupgrade import update_module_names
+import logging
+
+from openupgradelib.openupgrade import lift_constraints, update_module_names
 from openupgradelib.openupgrade_merge_records import merge_records
 
 from odoo import SUPERUSER_ID, api
 from odoo.fields import Command
+from odoo.tools import mute_logger
+
+_logger = logging.getLogger("bankayma_migrate_v18")
 
 
 def pre_init_hook(cr):
     cr.execute(
         """
-        --- revert multilanguage for res_partner#{city,street,street2}, unused anyways
+        --- revert multilanguage for res_partner#{name,city,function,street,street2}
+        alter table res_partner add column name_unilanguage varchar;
+        update res_partner set name_unilanguage=coalesce(name->>'he_IL', name->>'en_US');
+        alter table res_partner rename column name to name_multilanguage;
+        alter table res_partner rename column name_unilanguage to name;
         alter table res_partner add column street_unilanguage varchar;
         update res_partner set street_unilanguage=coalesce(street->>'he_IL', street->>'en_US');
         alter table res_partner rename column street to street_multilanguage;
@@ -24,6 +33,17 @@ def pre_init_hook(cr):
         update res_partner set city_unilanguage=coalesce(city->>'he_IL', city->>'en_US');
         alter table res_partner rename column city to city_multilanguage;
         alter table res_partner rename column city_unilanguage to city;
+        alter table res_partner add column function_unilanguage varchar;
+        update res_partner set function_unilanguage=coalesce(
+            function->>'he_IL', function->>'en_US'
+        );
+        alter table res_partner rename column function to function_multilanguage;
+        alter table res_partner rename column function_unilanguage to function;
+        --- revert multilanguage for res_company#name
+        alter table res_company add column name_unilanguage varchar;
+        update res_company set name_unilanguage=coalesce(name->>'he_IL', name->>'en_US');
+        alter table res_company rename column name to name_multilanguage;
+        alter table res_company rename column name_unilanguage to name;
         --- set code for all companies
         update res_company set code='code' || id::text where code is null;
         """
@@ -128,6 +148,29 @@ def post_init_hook(cr, registry):
             Command.set(user.company_ids.bankayma_to_operating_unit_ids.ids)
         ]
 
+    # ir.property values are by stipulation the same for all companies
+    lift_constraints(env.cr, "ir_property", "company_cascade_parent_id")
+    env.cr.execute(
+        f"""
+        delete from ir_property
+        where company_id <> {main_company.id}
+        """
+    )
+
+    # eliminate duplicates because otherwise merge_records switches to
+    # row mode which is very slow
+    m2m_with_duplicates = {
+        "account.account": [
+            "tag_ids",
+        ],
+        "account.journal": [
+            "bankayma_restrict_product_ids",
+        ],
+        "account.tax.repartition.line": [
+            "tag_ids",
+        ],
+    }
+
     for model in (
         "account.account",
         "account.analytic.account",
@@ -141,7 +184,6 @@ def post_init_hook(cr, registry):
         "account.payment.term",
         "account.tax",
         "account.tax.repartition.line",
-        "ir.property",
         "ir.sequence",
         "payment.provider",
     ):
@@ -155,16 +197,32 @@ def post_init_hook(cr, registry):
                 ]
             )
         )
+        _logger.info("merging model %s, %d records", model, len(records))
+        lift_constraints(env.cr, env[model]._table, "company_cascade_parent_id")
         for record in records:
             other_records = record._company_cascade_get_all() - record
-            merge_records(
-                env,
-                record._name,
-                other_records.ids,
-                record.id,
-                method="sql",
-            )
-            env.cr.commit()
+            for field_name in m2m_with_duplicates.get(model, []):
+                field = env[model]._fields[field_name]
+                env.cr.execute(
+                    f"""
+                    DELETE from {field.relation}
+                    WHERE {field.column1} in {tuple(other_records.ids)}
+                    AND {field.column2} IN (
+                        SELECT {field.column2} FROM
+                        {field.relation}
+                        WHERE {field.column1} = {record.id}
+                    )
+                    """
+                )
+            with mute_logger("OpenUpgrade"):
+                merge_records(
+                    env,
+                    record._name,
+                    other_records.ids,
+                    record.id,
+                    method="sql",
+                )
+        env.cr.commit()
 
     for unique_name_model in ("account.reconcile.model",):
         for record in (
@@ -184,17 +242,22 @@ def post_init_hook(cr, registry):
             )
             if not to_merge:
                 continue
-            merge_records(env, record._name, to_merge.ids, record.id, method="sql")
+            with mute_logger("OpenUpgrade"):
+                merge_records(env, record._name, to_merge.ids, record.id, method="sql")
 
-    merge_records(
-        env,
-        "res.company",
-        (
-            env["res.company"].with_context(active_test=False).search([]) - main_company
-        ).ids,
-        main_company.id,
-        method="sql",
-    )
+    _logger.info("merging companies")
+    with mute_logger("OpenUpgrade"), mute_logger("odoo.sql_db"):
+        merge_records(
+            env,
+            "res.company",
+            (
+                env["res.company"].with_context(active_test=False).search([])
+                - main_company
+            ).ids,
+            main_company.id,
+            method="sql",
+        )
+    _logger.info("done merging companies")
 
     multicompany_group = env.ref("base.group_multi_company")
     multi_ou_group = env.ref("operating_unit.group_multi_operating_unit")
@@ -213,7 +276,6 @@ def post_init_hook(cr, registry):
         [
             ("company_cascade", "bankayma_base"),
             ("company_cascade_category", "bankayma_base"),
-            ("res_company_tag", "bankayma_base"),
         ],
         merge_modules=True,
     )
