@@ -61,7 +61,7 @@ class ContractContrac(models.Model):
                     page = -1
                     if invoice.state == "draft":
                         invoice._post()
-                    invoice._bankayma_pay()
+                    invoice.with_context(bankayma_force_sumit=False)._bankayma_pay()
                     break
                 if page == -1:
                     break
