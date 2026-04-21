@@ -22,6 +22,7 @@
         "mail_discuss_security",
         "mail_tracking_mass_mailing",
         "mass_mailing_list_dynamic",
+        "mass_mailing_multi_company",
         "mass_mailing_partner",
         "membership",
         "disable_odoo_online",
