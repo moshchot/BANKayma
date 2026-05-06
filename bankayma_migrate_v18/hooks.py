@@ -61,6 +61,7 @@ def pre_init_hook(cr):
         ("ir_attachment", "res_id"),
         ("res_company_res_company_tag_rel", "res_company_id"),
         ("event_event", "company_id"),
+        ("blog_post", "company_id"),
         ("product_template", "bankayma_website_sale_company_id"),
     ):
         # pylint: disable=sql-injection
