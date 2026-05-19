@@ -53,13 +53,13 @@ def pre_init_hook(cr):
         "res_company",
         "res_company_bankayma_website_image_rel",
         "res_company_crew_res_partner_rel",
+        "res_company_res_company_tag_rel",
     ):
         # pylint: disable=sql-injection
         cr.execute(f"create table {table}_bk_pre_v18 as select * from {table}")
 
     for table, column in (
         ("ir_attachment", "res_id"),
-        ("res_company_res_company_tag_rel", "res_company_id"),
         ("event_event", "company_id"),
         ("blog_post", "company_id"),
         ("product_template", "bankayma_website_sale_company_id"),
@@ -95,6 +95,7 @@ def post_init_hook_assign_records(env, company, ou, extra_models=None):
             }
         )
         records.with_context(
+            check_move_validity=False,
             skip_validation_check=True,
             skip_account_move_synchronization=True,
         ).write(vals)
