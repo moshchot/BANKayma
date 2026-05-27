@@ -116,6 +116,10 @@ def post_init_hook(cr, registry):
         }
     )
 
+    company_id2ou_id = {
+        main_company.id: main_ou.id,
+    }
+
     post_init_hook_assign_records(env, main_company, main_ou)
 
     for company in (
@@ -140,6 +144,8 @@ def post_init_hook(cr, registry):
             }
         )
 
+        company_id2ou_id[company.id] = ou.id
+
         post_init_hook_assign_records(
             env, company, ou, extra_models=("account.analytic.account",)
         )
@@ -149,6 +155,23 @@ def post_init_hook(cr, registry):
         user.operating_unit_ids = [
             Command.set(user.company_ids.bankayma_to_operating_unit_ids.ids)
         ]
+
+    # break cascading for accounts with own code
+    for account in (
+        env["account.account"]
+        .with_context(active_test=False)
+        .search([("company_cascade_child_ids", "!=", False)])
+    ):
+        if account.company_id.code and account.code.startswith(account.company_id.code):
+            account.operating_unit_id = company_id2ou_id[account.company_id.id]
+            for child_account in account.company_cascade_child_ids:
+                if child_account.company_id.code and child_account.code.startswith(
+                    child_account.company_id.code
+                ):
+                    child_account.operating_unit_id = company_id2ou_id[
+                        child_account.company_id.id
+                    ]
+                    child_account.company_cascade_parent_id = False
 
     # ir.property values are by stipulation the same for all companies
     lift_constraints(env.cr, "ir_property", "company_cascade_parent_id")
