@@ -668,7 +668,11 @@ class AccountMove(models.Model):
         return invoices
 
     def _bankayma_pay(
-        self, journal=None, payment_communication=None, payment_comment=None
+        self,
+        journal=None,
+        payment_communication=None,
+        payment_comment=None,
+        payment_method_code=None,
     ):
         """Pay an invoice with the payment register wizard"""
         action = self.action_register_payment()
@@ -683,6 +687,18 @@ class AccountMove(models.Model):
             payment_form.communication = payment_communication
         if payment_comment:
             payment_form.comment = payment_comment
+        if payment_method_code:
+            payment_form.payment_method_line_id = (
+                sum(
+                    [
+                        line
+                        for line in payment_form.available_payment_method_line_ids
+                        if line.code == payment_method_code
+                    ],
+                    self.env["account.payment.method.line"],
+                )
+                or payment_form.payment_method_line_id
+            )
         payment_form.save().action_create_payments()
 
     def request_validation(self):
@@ -950,7 +966,18 @@ class AccountMove(models.Model):
 
     def _invoice_paid_hook(self):
         """Invoice overhead if necessary"""
-        for this in self.sudo().with_context(skip_invoice_sync=False):
+        for this in self.sudo().with_context(  # pylint: disable=context-overridden
+            {
+                key: value
+                for key, value in self.env.context.items()
+                if key
+                not in [
+                    "bankayma_force_sumit",
+                    "default_use_sumit_this_payment",
+                    "skip_invoice_sync",
+                ]
+            }
+        ):
             journal = this.journal_id
             if journal.bankayma_charge_overhead:
                 this.with_company(this.company_id)._bankayma_invoice_child_income(

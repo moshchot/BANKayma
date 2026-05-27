@@ -25,9 +25,7 @@ class ContractContrac(models.Model):
             ]
         ):
             _logger.info("searching matches for %s [id %d]", invoice.name, invoice.id)
-            invoice = invoice.with_company(invoice.company_id).with_context(
-                bankayma_force_sumit=False
-            )
+            invoice = invoice.with_company(invoice.company_id)
             contract = invoice.line_ids.contract_line_id.contract_id
             contract_recurring_items = set(
                 (contract.sumit_details or {}).get("RecurringCustomerItemIDs") or []
@@ -61,7 +59,9 @@ class ContractContrac(models.Model):
                     page = -1
                     if invoice.state == "draft":
                         invoice._post()
-                    invoice.with_context(bankayma_force_sumit=False)._bankayma_pay()
+                    invoice.with_context(
+                        default_use_sumit_this_payment=False
+                    )._bankayma_pay(payment_method_code="sumit_defrayal")
                     break
                 if page == -1:
                     break

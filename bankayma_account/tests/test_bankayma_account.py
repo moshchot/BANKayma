@@ -624,6 +624,86 @@ class TestBankaymaAccount(TransactionCase):
             "the payment communication",
         )
 
+    def test_recurring_contract(self):
+        """
+        Test that invoices deriving from recurring contracts are reconciled with
+        the invoices sumit creates, without creating new invoices on the sumit side
+        """
+        journal = self.env["account.journal"].search(
+            [("type", "=", "sale"), ("company_id", "=", self.child1.id)], limit=1
+        )
+        journal.use_sumit = True
+        contract = (
+            self.env["contract.contract"]
+            .with_company(self.child1)
+            .create(
+                {
+                    "name": "Testcontract",
+                    "journal_id": journal.id,
+                    "sumit_details": {
+                        "RecurringCustomerItemIDs": [424242],
+                    },
+                    "partner_id": self.env["res.partner"].search([], limit=1).id,
+                    "contract_line_ids": [
+                        Command.create(
+                            {
+                                "name": "Test contract line",
+                                "date_start": "2026-01-01",
+                                "price_unit": 42,
+                            }
+                        )
+                    ],
+                }
+            )
+        )
+        invoice = contract._recurring_create_invoice()
+
+        def sumit_request(endpoint, payload):
+            if endpoint == "/billing/payments/list":
+                if payload["StartIndex"] == 0:
+                    return {
+                        "Payments": [],
+                        "HasNextPage": True,
+                    }
+                return {
+                    "Payments": [
+                        {
+                            "RecurringCustomerItemIDs": contract.sumit_details[
+                                "RecurringCustomerItemIDs"
+                            ],
+                            "Amount": invoice.amount_total,
+                        }
+                    ]
+                }
+
+        with patch.object(
+            self.env["sumit.account"].__class__, "_request"
+        ) as mock_request:
+            mock_request.side_effect = sumit_request
+            self.env["contract.contract"]._sumit_process_invoices()
+
+        overhead_invoice = invoice.invoice_line_ids.bankayma_parent_move_line_id.move_id
+        self.assertTrue(overhead_invoice)
+        self.assertFalse(overhead_invoice.sumit_document_url)
+
+        payment = (
+            invoice.line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id
+        )
+        self.assertEqual(
+            payment.payment_method_line_id.code,
+            "sumit_defrayal",
+        )
+
+        self.assertEqual(mock_request.call_count, 2)
+        self.assertEqual(
+            mock_request.call_args_list[0].args[0],
+            "/billing/payments/list",
+        )
+        self.assertEqual(
+            mock_request.call_args_list[1].args[0],
+            "/billing/payments/list",
+        )
+
     def test_tax_cascade_up(self):
         """
         Test that taxes created in child company are created in parent and lateral

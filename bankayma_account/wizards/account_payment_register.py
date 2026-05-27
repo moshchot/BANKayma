@@ -41,7 +41,8 @@ class AccountPaymentRegister(models.TransientModel):
             .browse(result.get("line_ids", [(False, False, [])])[0][2])
             .mapped("move_id.journal_id.use_sumit")[0]
         )
-        result["use_sumit_this_payment"] = result["use_sumit_journal"]
+        if "use_sumit_this_payment" not in result:
+            result["use_sumit_this_payment"] = result["use_sumit_journal"]
         return result
 
     def _create_payments(self):
