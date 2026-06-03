@@ -1,7 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from urllib.parse import urlparse, urlunparse
+from urllib.parse import parse_qs, urlparse, urlunparse
 
 from odoo import _, fields, models
 
@@ -15,10 +15,17 @@ class PaymentTransaction(models.Model):
     def _get_specific_rendering_values(self, processing_values):
         if self.provider_id.code == "sumit":
             payload = self._to_sumit_vals()
-            result = self.provider_id.sumit_account_id._request(
+            sumit_result = self.provider_id.sumit_account_id._request(
                 "/billing/payments/beginredirect", payload
             )
-            return result
+            sumit_url = urlparse(sumit_result["RedirectURL"])
+            return {
+                "redirect": urlunparse(sumit_url[:3] + ("", "", "")),
+                "values": {
+                    key: "".join(value)
+                    for key, value in parse_qs(sumit_url.query).items()
+                },
+            }
         return super()._get_specific_rendering_values(processing_values)
 
     def _to_sumit_vals(self):
