@@ -36,7 +36,7 @@ class TestBankaymaBase(TransactionCase):
         new_ou = self.env["operating.unit"].create(
             {
                 "name": "new ou",
-                "code": "new_ou",
+                "code": "new.ou",
                 "partner_id": self.env["res.partner"].create({"name": "new ou"}).id,
             }
         )

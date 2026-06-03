@@ -14,6 +14,7 @@ from . import account_tax_group
 from . import contract_contract
 from . import mail_template
 from . import mail_tracking_value
+from . import operating_unit
 from . import operating_unit_category
 from . import payment_transaction
 from . import product_template

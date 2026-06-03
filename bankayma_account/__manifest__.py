@@ -47,6 +47,7 @@
     ],
     "demo": [
         "demo/tier_definition.xml",
+        "demo/account_account.xml",
         "demo/account_journal.xml",
         "demo/account_tax_group.xml",
         "demo/account_fiscal_position.xml",
@@ -66,6 +67,7 @@
         "security/ir.model.access.csv",
         "security/bankayma_account.xml",
         "templates/portal.xml",
+        "views/account_account.xml",
         "views/account_analytic_account.xml",
         "views/account_analytic_line.xml",
         "views/account_fiscal_position.xml",

@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_account_form" model="ir.ui.view">
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form" />
+        <field name="arch" type="xml">
+            <field name="company_ids" position="after">
+                <field name="operating_unit_id" groups="operating_unit.group_multi_operating_unit" />
+            </field>
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" name="action_open_bankayma_sibling_accounts" type="object" icon="fa-bars" invisible="not is_ou_specific">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">
+                            OU Siblings
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
