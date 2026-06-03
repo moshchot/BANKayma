@@ -68,7 +68,7 @@ class TestPaymentProvider(PaymentCommon):
         )
         self.assertFalse(tx.provider_id._should_build_inline_form())
         vals = tx._get_specific_rendering_values({})
-        self.assertEqual(vals["RedirectURL"], redirect_url)
+        self.assertEqual(vals["redirect"], redirect_url)
         found_tx = self.env["payment.transaction"]._get_tx_from_notification_data(
             "sumit",
             {

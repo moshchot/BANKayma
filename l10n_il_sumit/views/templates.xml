@@ -3,6 +3,10 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
 <data>
     <template id="sumit_payment_redirect">
-        <form t-att-action="RedirectURL" method="post" />
+        <form t-att-action="redirect" method="get">
+            <t t-foreach="values" t-as="name">
+                <input type="hidden" t-att-name="name" t-att-value="values[name]" />
+            </t>
+        </form>
     </template>
 </data>
