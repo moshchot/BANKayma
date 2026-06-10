@@ -33,9 +33,38 @@ class AccountPayment(models.Model):
             result["Details_General"] = {}
         elif sumit_type == SUMIT_PAYMENT_TYPE.CASH:
             result["Details_Cash"] = {}
-            # TODO: implement others
+        elif sumit_type == SUMIT_PAYMENT_TYPE.BANK_TRANSFER:
+            result["Details_BankTransfer"] = {
+                "BankNumber": None,
+                "BranchNumber": None,
+                "AccountNumber": None,
+                "Reference": None,
+                "DueDate": None,
+            }
+        elif sumit_type == SUMIT_PAYMENT_TYPE.CHEQUE:
+            result["Details_Cheque"] = {
+                "BankNumber": None,
+                "BranchNumber": None,
+                "AccountNumber": None,
+                "ChequeNumber": None,
+                "DueDate": None,
+            }
+        elif sumit_type == SUMIT_PAYMENT_TYPE.CREDIT_CARD:
+            result["Details_CreditCard"] = {
+                "CardBrand": None,
+                "Last4Digits": None,
+                "FirstPayment": None,
+                "EachPayment": None,
+                "Payments": None,
+            }
+        elif sumit_type == SUMIT_PAYMENT_TYPE.DIGITAL:
+            result["Details_Digital"] = {
+                "Type": payment_method.code,
+                "Description": payment_method.name,
+            }
+        elif sumit_type == SUMIT_PAYMENT_TYPE.TAX_WITHHOLDING:
+            result["Details_TaxWithholding"] = {}
         else:
-            # TODO: remove next line
             result["Type"] = SUMIT_PAYMENT_TYPE.OTHER
             result["Details_Other"] = {
                 "Type": payment_method.code,
