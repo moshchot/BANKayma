@@ -97,6 +97,7 @@
             "astor",
             "openupgradelib",
             "odoo_test_helper",
+            "pdfminer",
         ]
     },
     "assets": {

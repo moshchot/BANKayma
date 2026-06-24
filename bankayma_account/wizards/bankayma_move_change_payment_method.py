@@ -14,7 +14,9 @@ class BankaymaMoveChangePaymentMethod(models.TransientModel):
         payments = (
             self.env[self.env.context["active_model"]]
             .browse(self.env.context["active_ids"])
-            .mapped("line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id")
+            .mapped(
+                "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_ids"
+            )
         )
         for payment in payments:
             payment.payment_method_line_id = (

@@ -513,7 +513,7 @@ class TestBankaymaAccount(TransactionCase):
         self.assertFalse(overhead_invoice.sumit_document_url)
 
         payment = (
-            invoice.line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_id
+            invoice.line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_ids
         )
         self.assertEqual(
             payment.payment_method_line_id.code,
@@ -528,4 +528,33 @@ class TestBankaymaAccount(TransactionCase):
         self.assertEqual(
             mock_request.call_args_list[1].args[0],
             "/billing/payments/list",
+        )
+
+    def test_00change_payment_method(self):
+        invoice = self._create_invoice(
+            self.child1, self.user_child1, self.child2.partner_id
+        )
+        invoice._bankayma_pay(
+            payment_method_code="sumit_masav",
+        )
+        payment_method = self.env.ref("bankayma_account.payment_method_other_in")
+        wizard = (
+            self.env["bankayma.move.change.payment.method"]
+            .with_context(
+                active_model=invoice._name,
+                active_ids=invoice.ids,
+            )
+            .create(
+                {
+                    "payment_method_id": payment_method.id,
+                }
+            )
+        )
+        wizard.action_change_method()
+        self.assertEqual(
+            invoice.mapped(
+                "line_ids.full_reconcile_id.reconciled_line_ids.move_id.payment_ids"
+                ".payment_method_line_id.payment_method_id"
+            ),
+            payment_method,
         )
