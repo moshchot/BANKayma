@@ -1,8 +1,9 @@
 # Copyright 2026 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
-from odoo.tests.common import HttpCase
+from odoo.tests.common import HttpCase, tagged
 
 
+@tagged("-at_install", "post_install")
 class TestOperatingUnitSwitcherJS(HttpCase):
     def test_ui_company_with_ou(self):
         self.start_tour(
