@@ -94,7 +94,7 @@ class TestBankaymaAccount(TransactionCase):
         )
         bank_account_wizard = (
             cls.env["account.setup.bank.manual.config"]
-            .with_company(cls.parent)
+            .with_ou(cls.parent)
             .create(
                 {
                     "acc_number": "424242",
@@ -181,7 +181,7 @@ class TestBankaymaAccount(TransactionCase):
             invoice_child1_with_negative_line, view="account.view_move_form"
         ) as invoice_form:
             with invoice_form.invoice_line_ids.new() as line:
-                line.product_id = self.product.with_company(self.child1)
+                line.product_id = self.product.with_ou(self.child1)
                 line.name = "product line"
                 line.quantity = 1
                 line.price_unit = -10
@@ -461,7 +461,7 @@ class TestBankaymaAccount(TransactionCase):
         journal.use_sumit = True
         contract = (
             self.env["contract.contract"]
-            .with_company(self.child1)
+            .with_ou(self.child1)
             .create(
                 {
                     "name": "Testcontract",
