@@ -258,9 +258,7 @@
                                         </span>
                                     </a>
                                 </span>
-                                <span
-                                    class="s_badge badge o_animable bg-white-25"
-                                >
+                                <span class="s_badge badge o_animable bg-white-25">
                                     <a href="#contact">
                                         <span
                                             style="font-size: 18px; font-weight: normal;"
@@ -462,7 +460,11 @@
                                         enctype="multipart/form-data"
                                         style="text-align: center;"
                                     >
-                                        <input type="hidden" name="operating_unit_id" t-att-value="object.id" />
+                                        <input
+                                            type="hidden"
+                                            name="operating_unit_id"
+                                            t-att-value="object.id"
+                                        />
                                         <span id="s_donation_description_inputs" />
                                         <div class="s_donation_prefilled_buttons mb-2">
                                             <button
@@ -542,7 +544,11 @@
                                         enctype="multipart/form-data"
                                         style="text-align: center;"
                                     >
-                                        <input type="hidden" name="operating_unit_id" t-att-value="object.id" />
+                                        <input
+                                            type="hidden"
+                                            name="operating_unit_id"
+                                            t-att-value="object.id"
+                                        />
                                         <span id="s_donation_description_inputs" />
                                         <div class="s_donation_prefilled_buttons mb-2">
                                             <button

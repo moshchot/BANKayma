@@ -1,13 +1,19 @@
 <odoo>
     <template id="index_topbar" inherit_id="website_event.index_topbar">
-        <xpath expr="//div[hasclass('o_wevent_index_topbar_filters')]/.." position="attributes">
+        <xpath
+            expr="//div[hasclass('o_wevent_index_topbar_filters')]/.."
+            position="attributes"
+        >
             <attribute
                 name="class"
                 separator=" "
                 add="bankayma_event_searchbar sticky-top pt16 pb16 o_cc o_cc4"
             />
         </xpath>
-        <xpath expr="//div[hasclass('o_wevent_index_topbar_filters')]/t" position="after">
+        <xpath
+            expr="//div[hasclass('o_wevent_index_topbar_filters')]/t"
+            position="after"
+        >
             <div class="dropdown d-none d-lg-block">
                 <a
                     href="#"
@@ -16,7 +22,11 @@
                     data-bs-toggle="dropdown"
                 >
                     <t>Project</t>
-                    <span t-if="ous_selected" t-out="len(ous_selected)" class="badge bg-primary ms-1" />
+                    <span
+                        t-if="ous_selected"
+                        t-out="len(ous_selected)"
+                        class="badge bg-primary ms-1"
+                    />
                 </a>
                 <div class="dropdown-menu">
                     <span
@@ -57,14 +67,24 @@
     </template>
     <template id="events_list" inherit_id="website_event.events_list" priority="100">
         <!-- don't show location/city, show organizer name instead -->
-        <xpath expr="//div[@t-if='not event.address_id or has_city_or_country']" position="before">
+        <xpath
+            expr="//div[@t-if='not event.address_id or has_city_or_country']"
+            position="before"
+        >
             <t name="deactivate location" t-if="False" />
         </xpath>
         <t name="deactivate location" position="inside">
-            <xpath expr="//div[@t-if='not event.address_id or has_city_or_country']" position="move" />
+            <xpath
+                expr="//div[@t-if='not event.address_id or has_city_or_country']"
+                position="move"
+            />
         </t>
         <t name="deactivate location" position="after">
-            <div class="d-flex align-items-center" itemprop="organizer" t-out="event.sudo().address_id.name" />
+            <div
+                class="d-flex align-items-center"
+                itemprop="organizer"
+                t-out="event.sudo().address_id.name"
+            />
         </t>
     </template>
     <template id="layout" inherit_id="website_event.layout">
@@ -133,8 +153,7 @@
             <attribute name="t-if">False</attribute>
         </xpath>
         <!-- remove sharing section -->
-        <xpath
-            expr="//t[@t-snippet-call='website.s_share']/.." position="attributes">
+        <xpath expr="//t[@t-snippet-call='website.s_share']/.." position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
     </template>

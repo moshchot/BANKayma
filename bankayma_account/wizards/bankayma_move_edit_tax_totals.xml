@@ -11,11 +11,7 @@
                         <field name="currency_id" invisible="1" />
                     </list>
                 </field>
-                <div
-                    class="alert alert-danger"
-                    role="alert"
-                    invisible="line_ids"
-                >
+                <div class="alert alert-danger" role="alert" invisible="line_ids">
                     There are no editable taxes
                 </div>
                 <footer>

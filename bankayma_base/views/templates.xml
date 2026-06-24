@@ -3,12 +3,13 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="external_layout_standard" inherit_id="web.external_layout_standard">
-        <xpath
-            expr="//div[@t-field='company.report_header']"
-            position="after"
-        >
+        <xpath expr="//div[@t-field='company.report_header']" position="after">
             <div t-if="ou" class="d-flex flex-column align-items-center">
-                <img t-if="ou.partner_id.avatar_128" t-att-src="image_data_uri(ou.partner_id.avatar_128)" class="o_company_logo_small" />
+                <img
+                    t-if="ou.partner_id.avatar_128"
+                    t-att-src="image_data_uri(ou.partner_id.avatar_128)"
+                    class="o_company_logo_small"
+                />
                 <div t-field="ou.name" />
             </div>
         </xpath>
@@ -17,7 +18,11 @@
     <template id="external_layout_striped" inherit_id="web.external_layout_striped">
         <div name="company_address" position="after">
             <div t-if="ou" class="d-flex flex-column align-items-center">
-                <img t-if="ou.partner_id.avatar_128" t-att-src="image_data_uri(ou.partner_id.avatar_128)" class="o_company_logo_small" />
+                <img
+                    t-if="ou.partner_id.avatar_128"
+                    t-att-src="image_data_uri(ou.partner_id.avatar_128)"
+                    class="o_company_logo_small"
+                />
                 <div t-field="ou.name" />
             </div>
         </div>
@@ -96,7 +101,9 @@
                 <br />
                 <p t-attf-style="color: #999999; margin-top:2px; font-size:11px">
                     <t t-out="object.operating_unit_id.partner_id.phone" />
-                    <t t-if="object.operating_unit_id.partner_id.email and object.operating_unit_id.partner_id.phone">|</t>
+                    <t
+                        t-if="object.operating_unit_id.partner_id.email and object.operating_unit_id.partner_id.phone"
+                    >|</t>
                     <a
                         t-if="object.operating_unit_id.partner_id.email"
                         t-att-href="'mailto:%s' % object.operating_unit_id.partner_id.email"

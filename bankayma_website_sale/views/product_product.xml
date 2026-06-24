@@ -1,6 +1,9 @@
 <odoo>
     <record id="product_product_view_form_normalized_website_sale" model="ir.ui.view">
-        <field name="inherit_id" ref="website_sale.product_product_view_form_normalized_website_sale" />
+        <field
+            name="inherit_id"
+            ref="website_sale.product_product_view_form_normalized_website_sale"
+        />
         <field name="model">product.product</field>
         <field name="arch" type="xml">
             <field name="name" position="after">

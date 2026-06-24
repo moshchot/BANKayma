@@ -15,11 +15,7 @@
                 </group>
             </group>
             <group name="provider_config" position="inside">
-                <group
-                    name="sumit_config"
-                    invisible="code != 'sumit'"
-                    string="Sumit"
-                >
+                <group name="sumit_config" invisible="code != 'sumit'" string="Sumit">
                     <field name="sumit_installment_threshold" />
                     <field name="sumit_installment_count" />
                 </group>

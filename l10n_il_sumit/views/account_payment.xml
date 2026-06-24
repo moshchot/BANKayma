@@ -8,10 +8,7 @@
         <field name="arch" type="xml">
             <notebook name="payment_notebook" position="inside">
                 <page invisible="not sumit_document_url" name="sumit" string="Sumit">
-                    <field
-                        name="sumit_document_url"
-                        widget="url"
-                    />
+                    <field name="sumit_document_url" widget="url" />
                 </page>
             </notebook>
         </field>

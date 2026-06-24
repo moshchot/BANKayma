@@ -2,29 +2,27 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record
-        id="user_b2b"
-        model="res.users"
-        context="{'no_reset_password': True}"
-    >
+    <record id="user_b2b" model="res.users" context="{'no_reset_password': True}">
         <field name="login">user_b2b</field>
         <field name="email">user@b2b</field>
         <field name="name">User B2B</field>
         <field name="password">user_b2b</field>
-        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.b2b_operating_unit')])]" />
+        <field
+            name="operating_unit_ids"
+            eval="[Command.set([ref('operating_unit.b2b_operating_unit')])]"
+        />
         <field name="groups_id" eval="[Command.link(ref('group_user'))]" />
     </record>
 
-    <record
-        id="vendor_b2b"
-        model="res.users"
-        context="{'no_reset_password': True}"
-    >
+    <record id="vendor_b2b" model="res.users" context="{'no_reset_password': True}">
         <field name="login">vendor_b2b</field>
         <field name="email">vendor@b2b</field>
         <field name="name">Vendor B2B</field>
         <field name="password">vendor_b2b</field>
-        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.b2b_operating_unit')])]" />
+        <field
+            name="operating_unit_ids"
+            eval="[Command.set([ref('operating_unit.b2b_operating_unit')])]"
+        />
         <field
             name="groups_id"
             eval="[Command.link(ref('base.group_portal')), Command.link(ref('group_vendor'))]"
@@ -36,8 +34,14 @@
         <field name="email">projman@main_comp</field>
         <field name="name">Project manager</field>
         <field name="password">projman</field>
-        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.main_operating_unit'), ref('operating_unit.b2b_operating_unit')])]" />
-        <field name="default_operating_unit_id" ref="operating_unit.main_operating_unit" />
+        <field
+            name="operating_unit_ids"
+            eval="[Command.set([ref('operating_unit.main_operating_unit'), ref('operating_unit.b2b_operating_unit')])]"
+        />
+        <field
+            name="default_operating_unit_id"
+            ref="operating_unit.main_operating_unit"
+        />
         <field name="groups_id" eval="[Command.link(ref('group_manager'))]" />
     </record>
 
@@ -46,7 +50,13 @@
         <field name="email">orgman@main_comp</field>
         <field name="name">Organization manager</field>
         <field name="password">orgman</field>
-        <field name="operating_unit_ids" eval="[Command.set([ref('operating_unit.main_operating_unit'), ref('operating_unit.b2b_operating_unit'), ref('operating_unit.b2c_operating_unit')])]" />
-        <field name="default_operating_unit_id" ref="operating_unit.main_operating_unit" />
+        <field
+            name="operating_unit_ids"
+            eval="[Command.set([ref('operating_unit.main_operating_unit'), ref('operating_unit.b2b_operating_unit'), ref('operating_unit.b2c_operating_unit')])]"
+        />
+        <field
+            name="default_operating_unit_id"
+            ref="operating_unit.main_operating_unit"
+        />
     </record>
 </odoo>

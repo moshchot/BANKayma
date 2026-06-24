@@ -13,10 +13,7 @@
                     t-key="filter.id"
                     class="pe-2"
                 >
-                    <FilterValue
-                        filter="filter"
-                        model="SpreadsheetModel"
-                    />
+                    <FilterValue filter="filter" model="SpreadsheetModel" />
                 </div>
             </div>
             <div class="spreadsheet_board-wrapper" t-ref="container">

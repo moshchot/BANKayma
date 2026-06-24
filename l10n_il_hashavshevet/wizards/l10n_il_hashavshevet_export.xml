@@ -6,20 +6,14 @@
         <field name="model">l10n.il.hashavshevet.export</field>
         <field name="arch" type="xml">
             <form>
-                <group
-                    name="domain"
-                    invisible="export_file_movin"
-                >
+                <group name="domain" invisible="export_file_movin">
                     <field name="date_start" />
                     <field name="date_end" />
                     <field name="company_id" groups="base.group_multi_company" />
                     <field name="company_id" invisible="1" />
                     <field name="journal_ids" widget="many2many_tags" />
                 </group>
-                <group
-                    name="results"
-                    invisible="not export_file_movin"
-                >
+                <group name="results" invisible="not export_file_movin">
                     <field
                         name="export_file_movin"
                         filename="export_file_movin_name"

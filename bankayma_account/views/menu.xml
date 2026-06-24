@@ -57,8 +57,12 @@
         <field name="res_model">account.analytic.line</field>
         <field name="view_mode">list,pivot</field>
         <field name="search_view_id" ref="view_account_analytic_line_search" />
-        <field name="context">{'group_by': ['bankayma_analytic_account_id', 'bankayma_type']}</field>
-        <field name="domain">[('bankayma_analytic_account_id.operating_unit_ids', 'in', allowed_ou_ids)]</field>
+        <field
+            name="context"
+        >{'group_by': ['bankayma_analytic_account_id', 'bankayma_type']}</field>
+        <field
+            name="domain"
+        >[('bankayma_analytic_account_id.operating_unit_ids', 'in', allowed_ou_ids)]</field>
         <field name="view_id" ref="view_account_analytic_line_list" />
     </record>
     <menuitem

@@ -10,14 +10,8 @@
                     <field name="template_operating_unit_id" />
                     <field name="user_file" />
                     <separator string="or" />
-                    <field
-                        name="ou_code"
-                        required="not user_file"
-                    />
-                    <field
-                        name="ou_name"
-                        required="not user_file"
-                    />
+                    <field name="ou_code" required="not user_file" />
+                    <field name="ou_name" required="not user_file" />
                     <field name="user_function" />
                     <field name="user_login" />
                     <field name="user_name" />

@@ -84,17 +84,11 @@
                             required="is_external"
                         />
                     </group>
-                    <group
-                        name="bankayma_main"
-                        invisible="is_external"
-                    >
+                    <group name="bankayma_main" invisible="is_external">
                         <group name="bankayma_left" />
                         <group name="bankayma_right" />
                     </group>
-                    <notebook
-                        name="bankayma_notebook"
-                        invisible="is_external"
-                    />
+                    <notebook name="bankayma_notebook" invisible="is_external" />
                 </sheet>
             </sheet>
             <group name="bankayma_left" position="inside">

@@ -14,10 +14,7 @@
                             <field name="bankayma_discount_name" required="True" />
                         </group>
                         <group>
-                            <field
-                                name="operating_unit_id"
-                                required="True"
-                            />
+                            <field name="operating_unit_id" required="True" />
                             <field
                                 name="bankayma_program_type"
                                 required="True"

@@ -163,11 +163,7 @@
                     <field name="name" required="True" />
                     <field name="street" required="True" />
                     <field name="street2" />
-                    <field
-                        name="city"
-                        invisible="not id"
-                        required="id"
-                    />
+                    <field name="city" invisible="not id" required="id" />
                 </group>
             </form>
         </field>

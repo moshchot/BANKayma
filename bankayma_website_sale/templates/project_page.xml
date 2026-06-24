@@ -2,10 +2,7 @@
 <!-- Copyright 2024 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <template
-        id="project_page"
-        inherit_id="bankayma_website.project_page"
-    >
+    <template id="project_page" inherit_id="bankayma_website.project_page">
         <xpath expr="//a[@href='#events']/.." position="after">
             <span class="s_badge badge o_animable bg-white-25" id="store-header">
                 <a href="#store">

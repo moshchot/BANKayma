@@ -49,14 +49,10 @@
                             Decide if this configuration is based on moves or move lines
                         </div>
                     </div>
-                    <div
-                        invisible="base_model != 'account.move.line'"
-                    >
+                    <div invisible="base_model != 'account.move.line'">
                         <label for="move_line_id" />
                     </div>
-                    <div
-                        invisible="base_model != 'account.move.line'"
-                    >
+                    <div invisible="base_model != 'account.move.line'">
                         <field name="move_line_id" />
                         <div
                             invisible="move_line_id"

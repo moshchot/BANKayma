@@ -11,10 +11,7 @@
                 <field name="bankayma_restrict_partner" />
             </field>
             <xpath expr="//page[@name='advanced_settings']/group" position="inside">
-                <group
-                    name="bankayma_overhead"
-                    string="Overhead"
-                >
+                <group name="bankayma_overhead" string="Overhead">
                     <field name="bankayma_charge_overhead" />
                     <field
                         name="bankayma_overhead_percentage"

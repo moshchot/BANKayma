@@ -3,7 +3,10 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="view_operating_unit_category_form" model="ir.ui.view">
-        <field name="inherit_id" ref="bankayma_base.view_operating_unit_category_form" />
+        <field
+            name="inherit_id"
+            ref="bankayma_base.view_operating_unit_category_form"
+        />
         <field name="model">operating.unit.category</field>
         <field name="arch" type="xml">
             <group name="left" position="inside">

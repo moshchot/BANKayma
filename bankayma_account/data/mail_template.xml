@@ -31,9 +31,9 @@
                     </t>
                     (
                     <t
-                        t-out="object.partner_id.parent_id.name or ''"
-                        t-translation="off"
-                    >
+                            t-out="object.partner_id.parent_id.name or ''"
+                            t-translation="off"
+                        >
                         Azure Interior
                     </t>
                     ),
@@ -50,20 +50,20 @@
                 <t t-if="object.move_type == 'out_invoice'">
                     invoice
                     <span
-                        style="font-weight:bold;"
-                        t-out="object.name or ''"
-                        t-translation="off"
-                    >
+                            style="font-weight:bold;"
+                            t-out="object.name or ''"
+                            t-translation="off"
+                        >
                         INV/2021/05/0005
                     </span>
                 </t>
                 <t t-else="">
                     bill
                     <span
-                        style="font-weight:bold;"
-                        t-out="object.name or ''"
-                        t-translation="off"
-                    >
+                            style="font-weight:bold;"
+                            t-out="object.name or ''"
+                            t-translation="off"
+                        >
                         INV/2021/05/0005
                     </span>
                 </t>
@@ -76,10 +76,10 @@
                 </t>
                 amounting in
                 <span
-                    style="font-weight:bold;"
-                    t-out="object.currency_id.format(object.amount_total) or ''"
-                    t-translation="off"
-                >
+                        style="font-weight:bold;"
+                        t-out="object.currency_id.format(object.amount_total) or ''"
+                        t-translation="off"
+                    >
                     $ 143,750.00
                 </span>
                 from
@@ -102,10 +102,10 @@
                         <t t-if="object.payment_reference">
                             with following communication for your payment:
                             <span
-                                style="font-weight:bold;"
-                                t-out="object.payment_reference or ''"
-                                t-translation="off"
-                            >
+                                    style="font-weight:bold;"
+                                    t-out="object.payment_reference or ''"
+                                    t-translation="off"
+                                >
                                 INV/2021/05/0005
                             </span>
                             .
@@ -118,9 +118,9 @@
                 Do not hesitate to contact us if you have any questions.
                 <t t-if="object.invoice_user_id.sudo().signature">
                     <t
-                        t-out="object.invoice_user_id.sudo().signature or ''"
-                        t-translation="off"
-                    >
+                            t-out="object.invoice_user_id.sudo().signature or ''"
+                            t-translation="off"
+                        >
                         --Bill Bot
                     </t>
                 </t>
@@ -360,7 +360,10 @@
         <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
-        <field name="report_template_ids" eval="[Command.set([ref('account.account_invoices')])]" />
+        <field
+            name="report_template_ids"
+            eval="[Command.set([ref('account.account_invoices')])]"
+        />
         <field name="description">
             This mail is sent when a payment request is paid
         </field>
@@ -493,7 +496,10 @@
         <!-- prettier-ignore-end -->
         <field name="partner_to">{{object.partner_id.id}}</field>
         <field name="post_to_chatter" eval="True" />
-        <field name="report_template_ids" eval="[Command.set([ref('account.account_invoices')])]" />
+        <field
+            name="report_template_ids"
+            eval="[Command.set([ref('account.account_invoices')])]"
+        />
         <field name="description">
             This mail is sent as reminder to send a receipt
         </field>

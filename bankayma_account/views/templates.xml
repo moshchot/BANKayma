@@ -325,7 +325,10 @@
     </template>
 
     <template id="portal_layout" inherit_id="portal.portal_layout">
-        <xpath expr="//t[@t-call='portal.portal_breadcrumbs']/../.." position="attributes">
+        <xpath
+            expr="//t[@t-call='portal.portal_breadcrumbs']/../.."
+            position="attributes"
+        >
             <attribute name="t-if" separator="or" add="bankayma_force_breadcrumbs" />
         </xpath>
     </template>
@@ -335,14 +338,22 @@
             <t t-set="additional_title">New vendor bill</t>
             <t t-set="my_details" t-value="True" />
             <t t-set="bankayma_force_breadcrumbs" t-value="True" />
-            <form action="/my/invoices/new" method="post" enctype="multipart/form-data" class="o_portal_new_vendor_bill">
+            <form
+                action="/my/invoices/new"
+                method="post"
+                enctype="multipart/form-data"
+                class="o_portal_new_vendor_bill"
+            >
                 <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
                 <div class="mb-3 col-xl-12">
-                    <label class="col-form-label" for="operating_unit_id">Project</label>
+                    <label
+                        class="col-form-label"
+                        for="operating_unit_id"
+                    >Project</label>
                     <select
                         class="form-select"
                         id="operating_unit_id"
@@ -558,13 +569,21 @@
             </div>
         </xpath>
     </template>
-    <template id="donation_information" inherit_id="website_payment.donation_information">
+    <template
+        id="donation_information"
+        inherit_id="website_payment.donation_information"
+    >
         <xpath expr="//h3[hasclass('o_page_header')]" position="inside">
             <span>to</span>
             <t t-out="ou_or_company.name" />
         </xpath>
         <xpath expr="//div[hasclass('o_donation_payment_form')]" position="inside">
-            <input t-if="ou_or_company and ou_or_company._name == 'operating.unit'" type="hidden" name="operating_unit_id" t-att-value="ou_or_company.id" />
+            <input
+                t-if="ou_or_company and ou_or_company._name == 'operating.unit'"
+                type="hidden"
+                name="operating_unit_id"
+                t-att-value="ou_or_company.id"
+            />
             <div class="col-lg-12 px-0" t-if="is_recurrent">
                 <div class="form-check mt-3">
                     <input

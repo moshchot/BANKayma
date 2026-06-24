@@ -5,12 +5,18 @@
     <record id="tag_b2c_child1" model="operating.unit.tag">
         <field name="parent_id" ref="tag_b2c_parent" />
         <field name="name">B2C child1</field>
-        <field name="operating_unit_ids" eval="[(4, ref('operating_unit.b2c_operating_unit'))]" />
+        <field
+            name="operating_unit_ids"
+            eval="[(4, ref('operating_unit.b2c_operating_unit'))]"
+        />
     </record>
     <record id="tag_b2c_child2" model="operating.unit.tag">
         <field name="parent_id" ref="tag_b2c_parent" />
         <field name="name">B2C child2</field>
-        <field name="operating_unit_ids" eval="[(4, ref('operating_unit.b2c_operating_unit'))]" />
+        <field
+            name="operating_unit_ids"
+            eval="[(4, ref('operating_unit.b2c_operating_unit'))]"
+        />
     </record>
     <record id="tag_b2b_parent" model="operating.unit.tag">
         <field name="name">B2B parent</field>
@@ -18,16 +24,25 @@
     <record id="tag_b2b_child1" model="operating.unit.tag">
         <field name="parent_id" ref="tag_b2b_parent" />
         <field name="name">B2B child1</field>
-        <field name="operating_unit_ids" eval="[(4, ref('operating_unit.b2b_operating_unit'))]" />
+        <field
+            name="operating_unit_ids"
+            eval="[(4, ref('operating_unit.b2b_operating_unit'))]"
+        />
     </record>
     <record id="tag_b2b_child2" model="operating.unit.tag">
         <field name="parent_id" ref="tag_b2b_parent" />
         <field name="name">B2B child2</field>
-        <field name="operating_unit_ids" eval="[(4, ref('operating_unit.b2b_operating_unit'))]" />
+        <field
+            name="operating_unit_ids"
+            eval="[(4, ref('operating_unit.b2b_operating_unit'))]"
+        />
     </record>
     <record id="tag_b2b_child3" model="operating.unit.tag">
         <field name="parent_id" ref="tag_b2b_parent" />
         <field name="name">B2B child3</field>
-        <field name="operating_unit_ids" eval="[(4, ref('operating_unit.b2b_operating_unit'))]" />
+        <field
+            name="operating_unit_ids"
+            eval="[(4, ref('operating_unit.b2b_operating_unit'))]"
+        />
     </record>
 </odoo>

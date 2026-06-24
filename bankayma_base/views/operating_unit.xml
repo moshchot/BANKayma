@@ -9,7 +9,9 @@
         <field name="arch" type="xml">
             <field name="code" position="attributes">
                 <attribute name="readonly">1</attribute>
-                <attribute name="groups">!bankayma_base.group_org_manager,!bankayma_base.group_full</attribute>
+                <attribute
+                    name="groups"
+                >!bankayma_base.group_org_manager,!bankayma_base.group_full</attribute>
             </field>
             <field name="code" position="before">
                 <field
@@ -47,7 +49,9 @@
                 />
             </group>
             <field name="category_id" position="attributes">
-                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
+                <attribute
+                    name="groups"
+                >bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
             </field>
         </field>
     </record>

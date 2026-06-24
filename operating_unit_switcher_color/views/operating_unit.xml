@@ -15,15 +15,15 @@
                         <field name="color_link_text" widget="color" />
                         <field name="color_link_text_hover" widget="color" />
                     <button
-                        class="btn-primary"
-                        name="button_compute_color"
-                        type="object"
-                        string="Compute colors from logo"
-                    />
+                            class="btn-primary"
+                            name="button_compute_color"
+                            type="object"
+                            string="Compute colors from logo"
+                        />
                     <div
-                        class="alert alert-info info_icon mt-2 d-flex align-items-center"
-                        role="alert"
-                    >
+                            class="alert alert-info info_icon mt-2 d-flex align-items-center"
+                            role="alert"
+                        >
                         <span class="fa fa-info fa-2x me-2" />
                         In order for the changes to take effect, please refresh
                         the page.

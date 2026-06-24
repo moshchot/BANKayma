@@ -2,6 +2,8 @@
     <record id="asset_css" model="ir.asset">
         <field name="name">OU color CSS</field>
         <field name="bundle">web.assets_backend</field>
-        <field name="path">/web/content/operating_unit_switcher_color.attachment_css/operating_unit_switcher_color.css</field>
+        <field
+            name="path"
+        >/web/content/operating_unit_switcher_color.attachment_css/operating_unit_switcher_color.css</field>
     </record>
 </odoo>
