@@ -5,7 +5,10 @@ export const OuColorService = {
 
     async start(env, {ou_company}) {
         const bodyElement = window.document.body;
-        bodyElement.dataset.ouId = ou_company.currentCompany.id;
+
+        if (ou_company.currentCompany) {
+            bodyElement.dataset.ouId = ou_company.currentCompany.id;
+        }
 
         return {
             bodyElement,
