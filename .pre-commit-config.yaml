@@ -78,8 +78,11 @@ repos:
     hooks:
       - id: prettier
         name: prettier (with plugin-xml)
-        entry: prettier
+        entry:
+          bash -c "prettier --plugin=$NODE_PATH/@prettier/plugin-xml/src/plugin.js $0
+          $*"
         args:
+          - --xml-whitespace-sensitivity=strict
           - --write
           - --list-different
           - --ignore-unknown
