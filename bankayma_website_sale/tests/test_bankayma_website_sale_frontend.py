@@ -8,5 +8,5 @@ class TestBankaymaWebsiteSaleFrontend(odoo.tests.HttpCase):
         """
         Test shop without login
         """
-        self.start_tour("/", "bankayma_website_sale_frontend")
+        self.start_tour("/shop", "bankayma_website_sale_frontend")
         # TODO: assert stuff

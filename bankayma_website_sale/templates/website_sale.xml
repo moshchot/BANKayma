@@ -44,6 +44,7 @@
                     class="btn dropdown-toggle text-muted"
                     data-bs-toggle="dropdown"
                     data-display="static"
+                    id="bk_project_dropdown"
                 >
                     Project
                 </a>
