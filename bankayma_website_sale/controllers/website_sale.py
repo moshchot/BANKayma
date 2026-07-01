@@ -11,16 +11,12 @@ class WebsiteSale(main.WebsiteSale):
         result = super()._shop_get_query_url_kwargs(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
-        if "product_tag" in kwargs:
-            result["product_tag"] = kwargs["product_tag"]
         return result
 
     def _get_search_options(self, *args, **kwargs):
         result = super()._get_search_options(*args, **kwargs)
         if "project" in kwargs:
             result["project"] = kwargs["project"]
-        if "product_tag" in kwargs:
-            result["product_tag"] = kwargs["product_tag"]
         return result
 
     def _get_additional_shop_values(self, values):
@@ -32,29 +28,26 @@ class WebsiteSale(main.WebsiteSale):
         result.update(
             operating_unit_tags_available=operating_unit_tags_available,
             operating_units_available=operating_units_available,
-            product_tags_available=request.env["product.tag"].search(
-                [
-                    (
-                        "product_template_ids.operating_unit_id",
-                        "in",
-                        operating_units_available.ids,
-                    )
-                ]
-            ),
+            all_tags=values["all_tags"].filtered(
+                lambda x: x.product_template_ids.operating_unit_id
+                & operating_units_available
+            )
+            if values.get("project")
+            else values["all_tags"],
         )
         return result
 
     def _get_additional_extra_shop_values(self, values, **post):
         result = super()._get_additional_extra_shop_values(values, **post)
         result.update(
-            project=request.env["res.company"]
+            project=request.env["operating.unit"]
             .sudo()
             .browse(int(post.get("project", 0)) or [])
         )
         result.update(
-            product_tag=request.env["product.tag"]
+            active_tags=request.env["product.tag"]
             .sudo()
-            .browse(int(post.get("product_tag", 0)) or [])
+            .browse(result.get("tags") or [])
         )
         return result
 

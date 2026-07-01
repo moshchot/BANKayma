@@ -1,62 +1,34 @@
 <odoo>
     <template id="product" inherit_id="website_sale.product">
-        <xpath expr="//a[@t-att-href='keep(category=0)']/.." position="after">
-            <li t-if="product.bankayma_website_sale_company_id" class="breadcrumb-item">
+        <xpath
+            expr="//a[@t-att-href='keep(category=0, attribute_value=0, tags=0)']/.."
+            position="after"
+        >
+            <li
+                t-if="product.operating_unit_id"
+                class="o_not_editable breadcrumb-item d-none d-lg-inline-block"
+            >
                 <a
-                    t-if="product.bankayma_website_sale_company_id"
-                    t-attf-href="{{product.sudo().bankayma_website_sale_company_id.website_link}}#store"
-                    t-out="product.sudo().bankayma_website_sale_company_id.name"
+                    t-attf-href="{{product.sudo().operating_unit_id.website_link}}#store"
+                    t-out="product.sudo().operating_unit_id.name"
                 />
             </li>
+            <t t-call="website_sale.product_tags" position="inside">
+                <t t-set="keep" t-value="keep" />
+            </t>
         </xpath>
-        <p t-field="product.description_sale" position="before">
-            <p t-if="product.product_tag_ids" class="oe-product-tags">
-                <span
-                    t-foreach="product.product_tag_ids"
-                    t-as="tag"
-                    t-attf-class="o_tag o_tag_color_{{tag.color}} badge"
-                >
-                    <a t-att-href="keep(product_tag=tag.id)" t-field="tag.name" />
-                </span>
-            </p>
-        </p>
+    </template>
+    <template id="product_tags" inherit_id="website_sale.product_tags">
+        <xpath expr="//t[@t-foreach]" position="inside">
+            <!-- TODO: /website_sale/get_combination_info replaces this with a version that doesnt have keep -->
+            <a t-att-href="keep and keep(tags=tag.id)" />
+        </xpath>
+        <xpath expr="//t[@t-foreach]/a" position="inside">
+            <xpath expr="//t[@t-foreach]/t[@t-if]" position="move" />
+        </xpath>
     </template>
     <template id="products" inherit_id="website_sale.products">
         <t t-call="website_sale.search" position="before">
-            <div class="dropdown ms-3">
-                <a
-                    t-attf-class="badge o_tag o_tag_color_{{product_tag.color}} me-2"
-                    t-if="product_tag"
-                    t-att-href="keep(product_tag=0)"
-                >
-                    <t t-out="product_tag.name" />
-                    ×
-                </a>
-                <a
-                    href="#"
-                    role="button"
-                    class="btn dropdown-toggle text-muted"
-                    data-bs-toggle="dropdown"
-                    data-display="static"
-                >
-                    Tag
-                </a>
-                <div
-                    t-attf-class="dropdown-menu dropdown-menu-{{request.env['res.lang']._lang_get_direction(request.env.lang) == 'rtl' and 'end' or 'start'}}"
-                >
-                    <t
-                        t-foreach="product_tags_available.filtered(lambda x: (project in x.product_template_ids.bankayma_website_sale_company_id) if project else True)"
-                        t-as="tag"
-                    >
-                        <a
-                            t-att-href="keep(product_tag=tag.id if tag != product_tag else None)"
-                            t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if tag == product_tag else ''}"
-                        >
-                            <t t-out="tag.name" />
-                        </a>
-                    </t>
-                </div>
-            </div>
             <div class="dropdown ms-3 text-center" style="flex-grow: 2">
                 <a
                     t-attf-class="badge o_tag me-2"
@@ -76,7 +48,7 @@
                     Project
                 </a>
                 <div
-                    t-attf-class="dropdown-menu dropdown-menu-{{request.env['res.lang']._lang_get_direction(request.env.lang) == 'rtl' and 'end' or 'start'}}"
+                    t-attf-class="dropdown-menu dropdown-menu-{{request.env['res.lang']._lang_get(request.env.lang).direction == 'rtl' and 'end' or 'start'}}"
                 >
                     <input
                         class="form-control mx-3 w-auto"
@@ -86,15 +58,15 @@
                     />
                     <div style="max-height: 50vh; overflow-y: scroll;">
                         <t
-                            t-foreach="product_tag.product_template_ids.bankayma_website_sale_company_id &amp; companies_available or companies_available"
-                            t-as="company"
+                            t-foreach="active_tags.product_template_ids.operating_unit_id &amp; operating_units_available or operating_units_available"
+                            t-as="ou"
                         >
                             <a
-                                t-att-href="keep(project=company.id if company.id != project.id else None)"
-                                t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if company.id == project.id else ''}"
-                                t-att-checked="'checked' if project.id == company.id else None"
+                                t-att-href="keep(project=ou.id if ou.id != project.id else None)"
+                                t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if ou.id == project.id else ''}"
+                                t-att-checked="'checked' if project.id == ou.id else None"
                             >
-                                <t t-out="company.name" />
+                                <t t-out="ou.name" />
                             </a>
                         </t>
                     </div>
@@ -115,9 +87,9 @@
     <template id="products_item" inherit_id="website_sale.products_item">
         <xpath expr="//div[hasclass('oe_product_image')]" position="inside">
             <img
-                t-if="product.bankayma_website_sale_company_id.logo"
-                t-att-src="image_data_uri(product.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
-                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+                t-if="product.operating_unit_id.logo"
+                t-att-src="image_data_uri(product.operating_unit_id.with_context(bin_size=False).logo)"
+                class="bk-logo-overlay bk-logo-overlay-right"
             />
         </xpath>
     </template>
@@ -132,17 +104,17 @@
                 address fields, but you can if you need them on your invoice.
             </div>
         </xpath>
-        <label for="street" position="attributes">
+        <label for="o_street" position="attributes">
             <attribute name="t-attf-class">
                 col-form-label {{'label-optional' if not address_required else ''}}
             </attribute>
         </label>
-        <label for="city" position="attributes">
+        <label for="o_city" position="attributes">
             <attribute name="t-attf-class">
                 col-form-label {{'label-optional' if not address_required else ''}}
             </attribute>
         </label>
-        <label for="country_id" position="attributes">
+        <label for="o_country_id" position="attributes">
             <attribute name="t-attf-class">
                 col-form-label {{'label-optional' if not address_required else ''}}
             </attribute>
@@ -154,9 +126,9 @@
     >
         <xpath expr="//a[hasclass('o_carousel_product_img_link')]" position="inside">
             <img
-                t-if="record.bankayma_website_sale_company_id.logo"
-                t-att-src="image_data_uri(record.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
-                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+                t-if="record.operating_unit_id.logo"
+                t-att-src="image_data_uri(record.operating_unit_id.with_context(bin_size=False).logo)"
+                class="bk-logo-overlay bk-logo-overlay-right"
             />
         </xpath>
     </template>
@@ -166,9 +138,9 @@
     >
         <xpath expr="//a[hasclass('o_carousel_product_img_link')]" position="inside">
             <img
-                t-if="record.bankayma_website_sale_company_id.logo"
-                t-att-src="image_data_uri(record.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
-                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+                t-if="record.operating_unit_id.logo"
+                t-att-src="image_data_uri(record.operating_unit_id.with_context(bin_size=False).logo)"
+                class="bk-logo-overlay bk-logo-overlay-right"
             />
         </xpath>
     </template>
@@ -178,9 +150,9 @@
     >
         <xpath expr="//a[hasclass('o_carousel_product_img_link')]" position="inside">
             <img
-                t-if="record.bankayma_website_sale_company_id.logo"
-                t-att-src="image_data_uri(record.bankayma_website_sale_company_id.with_context(bin_size=False).logo)"
-                class="bk-company-logo-overlay bk-company-logo-overlay-right"
+                t-if="record.operating_unit_id.logo"
+                t-att-src="image_data_uri(record.operating_unit_id.with_context(bin_size=False).logo)"
+                class="bk-logo-overlay bk-logo-overlay-right"
             />
         </xpath>
     </template>

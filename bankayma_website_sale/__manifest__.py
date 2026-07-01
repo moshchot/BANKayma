@@ -22,7 +22,7 @@
         "templates/project_page_embed.xml",
         "templates/sale.xml",
         "templates/website_event.xml",
-        # "templates/website_sale.xml",
+        "templates/website_sale.xml",
         "views/event_event.xml",
         "views/menu.xml",
         "views/product_product.xml",
@@ -32,7 +32,7 @@
         "web.assets_frontend": [
             # "web/static/src/views/fields/many2many_tags/tags_list.scss",
             "bankayma_website_sale/static/src/snippets/*",
-            # "bankayma_website_sale/static/src/scss/bankayma_website_sale.scss",
+            "bankayma_website_sale/static/src/scss/bankayma_website_sale.scss",
         ],
         "website.assets_editor": [
             "bankayma_website_sale/static/src/components/bankayma_configure_tickets.*"
