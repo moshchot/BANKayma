@@ -51,7 +51,7 @@
             "/bankayma_website/static/src/scss/bankayma_website.scss",
         ],
         "website.assets_editor": [
-            #            "/bankayma_website/static/src/components_editor/*.js",
+            "/bankayma_website/static/src/components_editor/*.js",
         ],
     },
     "installable": True,

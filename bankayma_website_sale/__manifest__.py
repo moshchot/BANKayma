@@ -20,10 +20,10 @@
         "security/ir.model.access.csv",
         "templates/project_page.xml",
         "templates/project_page_embed.xml",
-        # "templates/sale.xml",
-        # "templates/website_event.xml",
+        "templates/sale.xml",
+        "templates/website_event.xml",
         # "templates/website_sale.xml",
-        # "views/event_event.xml",
+        "views/event_event.xml",
         "views/menu.xml",
         "views/product_product.xml",
         "views/product_template.xml",
@@ -35,7 +35,10 @@
             # "bankayma_website_sale/static/src/scss/bankayma_website_sale.scss",
         ],
         "website.assets_editor": [
-            # "bankayma_website_sale/static/src/components/bankayma_configure_tickets.*"
+            "bankayma_website_sale/static/src/components/bankayma_configure_tickets.*"
+        ],
+        "web.assets_tests": [
+            "bankayma_website_sale/static/tests/tours/bankayma_website_sale_frontend.esm.js",
         ],
     },
     "demo": [

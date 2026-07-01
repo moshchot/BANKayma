@@ -1,4 +1,5 @@
 from odoo import models
+from odoo.http import request
 
 
 class IrQweb(models.AbstractModel):
@@ -8,6 +9,10 @@ class IrQweb(models.AbstractModel):
         result = super()._prepare_frontend_environment(values)
         main_object = values.get("main_object")
         if main_object:
+            if request and request.cookies.get("ou_ids"):
+                main_object = main_object.with_context(
+                    allowed_ou_ids=list(map(int, request.cookies["ou_ids"].split("-")))
+                )
             values["bankayma_editable"] = bool(
                 main_object.sudo(False).filtered(lambda x: x.has_access("write"))
             )

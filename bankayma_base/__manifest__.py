@@ -86,6 +86,7 @@
         "views/menu.xml",
     ],
     "demo": [
+        "demo/event_event.xml",
         "demo/operating_unit.xml",
         "demo/operating_unit_tag.xml",
         "demo/res_users.xml",
