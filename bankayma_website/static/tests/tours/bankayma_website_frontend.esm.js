@@ -16,7 +16,6 @@ registry.category("web_tour.tours").add("bankayma_website_frontend_news", {
 });
 
 registry.category("web_tour.tours").add("bankayma_website_frontend_event", {
-    url: "/event",
     steps: () => [
         {
             content: "Open event 'Great Reno Ballon Race'",
