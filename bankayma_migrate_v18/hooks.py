@@ -1,7 +1,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
 
-from openupgradelib.openupgrade import lift_constraints, update_module_names
+from openupgradelib.openupgrade import (
+    lift_constraints,
+    table_exists,
+    update_module_names,
+)
 from openupgradelib.openupgrade_merge_records import merge_records
 
 from odoo import SUPERUSER_ID, api
@@ -55,6 +59,8 @@ def pre_init_hook(cr):
         "res_company_crew_res_partner_rel",
         "res_company_res_company_tag_rel",
     ):
+        if not table_exists(cr, table):
+            continue
         # pylint: disable=sql-injection
         cr.execute(f"create table {table}_bk_pre_v18 as select * from {table}")
 
@@ -63,7 +69,10 @@ def pre_init_hook(cr):
         ("event_event", "company_id"),
         ("blog_post", "company_id"),
         ("product_template", "bankayma_website_sale_company_id"),
+        ("loyalty_program", "bankayma_website_sale_company_id"),
     ):
+        if not table_exists(cr, table):
+            continue
         # pylint: disable=sql-injection
         cr.execute(f"alter table {table} add column {column}_bk_pre_v18 int")
         # pylint: disable=sql-injection
