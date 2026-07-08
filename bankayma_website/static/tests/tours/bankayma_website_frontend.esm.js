@@ -16,7 +16,22 @@ registry.category("web_tour.tours").add("bankayma_website_frontend_news", {
 });
 
 registry.category("web_tour.tours").add("bankayma_website_frontend_event", {
+    url: "/event",
     steps: () => [
+        {
+            content: "Search for 'reno'",
+            trigger: ".o_wevent_search input[name='search']",
+            run: "edit reno",
+        },
+        {
+            content: "Wait for result dropdown",
+            trigger: ".o_wevent_search .o_dropdown_menu.show",
+        },
+        {
+            content: "Search",
+            trigger: ".o_wevent_search button[type='submit']",
+            run: "click",
+        },
         {
             content: "Open event 'Great Reno Ballon Race'",
             trigger: "#o_wevent_index_main_col a[href*=reno]",
