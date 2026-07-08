@@ -13,7 +13,7 @@ class LoyaltyProgram(models.Model):
     bankayma_program_type = fields.Selection(
         selection=[
             ("promo_code_product", "Discount code for product(s)"),
-            ("promo_code_company", "Discount code for company"),
+            ("promo_code_ou", "Discount code for OU"),
         ],
         string="Coupon Type",
         default="promo_code_product",
@@ -26,10 +26,6 @@ class LoyaltyProgram(models.Model):
     )
     bankayma_discount_value = fields.Float()
     bankayma_discount_name = fields.Char("Name on order", translate=True)
-    bankayma_website_sale_company_id = fields.Many2one(
-        "res.company",
-        string="Webshop company",
-    )
     bankayma_product_ids = fields.Many2many(
         "product.product",
         relation="bankayma_loyalty_program_product_product",
@@ -89,7 +85,7 @@ class LoyaltyProgram(models.Model):
             if self.bankayma_discount_type == "percentage"
             else "per_order",
             "discount_applicability": "order"
-            if self.bankayma_program_type == "promo_code_company"
+            if self.bankayma_program_type == "promo_code_ou"
             else "specific",
             "description": self.bankayma_discount_name,
             "discount_product_ids": [fields.Command.set(self.bankayma_product_ids.ids)],

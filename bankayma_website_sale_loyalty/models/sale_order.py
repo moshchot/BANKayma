@@ -9,8 +9,7 @@ class SaleOrder(models.Model):
         self._cache["order_line"] = tuple(
             lines.filtered(
                 lambda x: not x.product_id
-                or x.product_id.bankayma_website_sale_company_id
-                == reward.bankayma_website_sale_company_id
+                or x.product_id.operating_unit_id == reward.operating_unit_id
             ).ids
         )
         result = super()._discountable_order(reward)
