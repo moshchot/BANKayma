@@ -2,7 +2,7 @@
 <!-- Copyright 2024 Hunki Enterprises BV
 License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <template id="company_page_embed" inherit_id="bankayma_website.company_page_embed">
+    <template id="project_page_embed" inherit_id="bankayma_website.project_page_embed">
         <xpath expr="//section[@id='store']" position="attributes">
             <attribute name="t-if">show_store</attribute>
         </xpath>
