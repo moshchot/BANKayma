@@ -530,7 +530,7 @@ class TestBankaymaAccount(TransactionCase):
             "/billing/payments/list",
         )
 
-    def test_00change_payment_method(self):
+    def test_change_payment_method(self):
         invoice = self._create_invoice(
             self.child1, self.user_child1, self.child2.partner_id
         )

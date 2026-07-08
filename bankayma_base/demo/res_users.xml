@@ -4,7 +4,7 @@
 <odoo>
     <record id="user_b2b" model="res.users" context="{'no_reset_password': True}">
         <field name="login">user_b2b</field>
-        <field name="email">user@b2b</field>
+        <field name="email">user@b2b.test</field>
         <field name="name">User B2B</field>
         <field name="password">user_b2b</field>
         <field
@@ -16,7 +16,7 @@
 
     <record id="vendor_b2b" model="res.users" context="{'no_reset_password': True}">
         <field name="login">vendor_b2b</field>
-        <field name="email">vendor@b2b</field>
+        <field name="email">vendor@b2b.test</field>
         <field name="name">Vendor B2B</field>
         <field name="password">vendor_b2b</field>
         <field
@@ -31,7 +31,7 @@
 
     <record id="projman" model="res.users" context="{'no_reset_password': True}">
         <field name="login">projman</field>
-        <field name="email">projman@main_comp</field>
+        <field name="email">projman@main_comp.test</field>
         <field name="name">Project manager</field>
         <field name="password">projman</field>
         <field
@@ -47,7 +47,7 @@
 
     <record id="orgman" model="res.users" context="{'no_reset_password': True}">
         <field name="login">orgman</field>
-        <field name="email">orgman@main_comp</field>
+        <field name="email">orgman@main_comp.test</field>
         <field name="name">Organization manager</field>
         <field name="password">orgman</field>
         <field

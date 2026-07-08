@@ -53,6 +53,7 @@
         "demo/account_fiscal_position.xml",
         "demo/payment_provider.xml",
         "demo/product_product.xml",
+        "demo/res_users.xml",
     ],
     "data": [
         "data/account_payment_method.xml",
@@ -102,6 +103,9 @@
         "web.assets_frontend": [
             "bankayma_account/static/src/portal.esm.js",
             "bankayma_account/static/src/website_payment_form.esm.js",
+        ],
+        "web.assets_tests": [
+            "bankayma_account/static/tests/tours/bankayma_account_frontend.esm.js",
         ],
     },
     "website": "https://github.com/moshchot/BANKayma",

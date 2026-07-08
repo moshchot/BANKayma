@@ -1,10 +1,11 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import HttpCase
+from odoo.tests.common import HttpCase, tagged
 from odoo.tools.misc import mute_logger
 
 
+@tagged("-at_install", "post_install")
 class TestBankaymaAccountWeb(HttpCase):
     @mute_logger("odoo.addons.base.models.ir_model", "odoo.http")
     def test_mail_redirect(self):
@@ -22,9 +23,13 @@ class TestBankaymaAccountWeb(HttpCase):
         self.assertEqual(response.status_code, 303)
         self.assertIn("action", response.headers.get("location", ""))
 
-    def test_profile(self):
+    def test_vendor_portal_tour(self):
+        vendor_invoice_domain = [
+            ("partner_id", "=", self.env.ref("bankayma_base.vendor_b2b").partner_id.id)
+        ]
+        AccountMove = self.env["account.move"]
+        self.assertFalse(AccountMove.search(vendor_invoice_domain))
         self.authenticate("vendor_b2b", "vendor_b2b")
-        self.url_open("/my")
-        self.url_open("/my/account")
-        self.url_open("/my/invoices/new")
-        # TODO: actually do something useful here, run a tour or similar
+        self.start_tour("/my", "bankayma_account_vendor_portal")
+        vendor_invoice = AccountMove.search(vendor_invoice_domain)
+        self.assertTrue(vendor_invoice)
