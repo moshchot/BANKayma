@@ -24,8 +24,37 @@ registry.category("web_tour.tours").add("bankayma_website_frontend_event", {
             run: "click",
         },
         {
-            content: "Be sure event is opened",
-            trigger: "#o_wevent_event_main_cover_content",
+            content: "Click register",
+            trigger: "button[data-bs-target='#modal_ticket_registration']",
+            run: "click",
+        },
+        {
+            content: "Submit",
+            trigger: "#o_wevent_tickets button[type='submit']",
+            run: "click",
+        },
+        {
+            content: "Fill in name",
+            trigger: ".modal-body input[name*='-name-']",
+            async run() {
+                this.anchor.value = "Testname";
+            },
+        },
+        {
+            content: "Fill in email",
+            trigger: ".modal-body input[name*='-email-']",
+            async run() {
+                this.anchor.value = "test@test.com";
+            },
+        },
+        {
+            content: "Submit",
+            trigger: "#attendee_registration button[type='submit']",
+            run: "click",
+        },
+        {
+            content: "Wait for registration success page to be shown",
+            trigger: ".o_wereg_confirmed",
         },
     ],
 });

@@ -29,7 +29,6 @@ class TestBankaymaAccountWeb(HttpCase):
         ]
         AccountMove = self.env["account.move"]
         self.assertFalse(AccountMove.search(vendor_invoice_domain))
-        self.authenticate("vendor_b2b", "vendor_b2b")
-        self.start_tour("/my", "bankayma_account_vendor_portal")
+        self.start_tour("/my", "bankayma_account_vendor_portal", login="vendor_b2b")
         vendor_invoice = AccountMove.search(vendor_invoice_domain)
         self.assertTrue(vendor_invoice)
