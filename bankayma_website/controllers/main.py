@@ -60,12 +60,10 @@ class ProjectsController(http.Controller):
             },
         )
 
-    @http.route(
-        "/projects/<model(res.company):company>/embed", website=True, auth="public"
-    )
-    def render_company_page_embedded(self, company, **kwargs):
-        result = self.render_company_page(company)
-        result.template = "bankayma_website.company_page_embed"
+    @http.route("/projects/<operating_unit>/embed", website=True, auth="public")
+    def render_project_page_embedded(self, operating_unit, **kwargs):
+        result = self.render_project_page(operating_unit)
+        result.template = "bankayma_website.project_page_embed"
         result.qcontext["no_header"] = True
         result.qcontext["no_footer"] = True
         for _dummy, arg in http.request.env[

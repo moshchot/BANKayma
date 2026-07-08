@@ -4,7 +4,7 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="company_id" invisible="True" />
+                    <field name="operating_unit_id" invisible="True" />
                     <group>
                         <field name="options" widget="many2many_checkboxes" />
                     </group>
@@ -21,8 +21,10 @@
         <field name="name">Embed code</field>
         <field name="res_model">bankayma.project.page.embed.code</field>
         <field name="view_mode">form</field>
-        <field name="binding_model_id" ref="base.model_res_company" />
-        <field name="context">{'default_company_id': context.get('active_id')}</field>
+        <field name="binding_model_id" ref="operating_unit.model_operating_unit" />
+        <field
+            name="context"
+        >{'default_operating_unit_id': context.get('active_id')}</field>
         <field name="target">new</field>
     </record>
 </odoo>

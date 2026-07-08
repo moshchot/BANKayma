@@ -1,14 +1,14 @@
 from urllib.parse import urlparse, urlunparse
 
-from odoo import api, fields, models
+from odoo import api, fields, models, tools
 
 
 class BankaymaProjectPageEmbedCode(models.TransientModel):
     _name = "bankayma.project.page.embed.code"
     _description = "Generate embedding code for project page"
-    _rec_name = "company_id"
+    _rec_name = "operating_unit_id"
 
-    company_id = fields.Many2one("res.company")
+    operating_unit_id = fields.Many2one("operating.unit")
     options = fields.Many2many(
         "bankayma.project.page.embed.code.option",
         compute="_compute_options",
@@ -50,7 +50,7 @@ class BankaymaProjectPageEmbedCode(models.TransientModel):
                 (
                     "",
                     base_url.netloc,
-                    self.company_id.website_link + "/embed",
+                    self.operating_unit_id.website_link + "/embed",
                     "",
                     options,
                     "",
@@ -64,12 +64,15 @@ class BankaymaProjectPageEmbedCodeLine(models.AbstractModel):
     _description = "Embedding option"
 
     id = fields.Id()
+    display_name = fields.Char(
+        compute="_compute_display_name", search="_search_display_name"
+    )
     name = fields.Char()
     value = fields.Char()
 
     def _get_options(self):
         view = (
-            self.env.ref("bankayma_website.company_page_embed")
+            self.env.ref("bankayma_website.project_page_embed")
             .sudo()
             ._get_combined_arch()
         )
@@ -85,15 +88,15 @@ class BankaymaProjectPageEmbedCodeLine(models.AbstractModel):
         offset=0,
         limit=None,
         order=None,
-        count=False,
-        access_rights_uid=None,
     ):
-        return [_id for _id, _dummy in self._get_options()]
+        query = tools.Query(self.env, "dummy")
+        query._ids = [_id for _id, _dummy in self._get_options()]
+        return query
 
-    def _read(self, field_names):
+    def _fetch_query(self, query, fields):
         options = dict(self._get_options())
-        for this in self:
-            for field_name in field_names:
-                self.env.cache.insert_missing(
-                    this, self._fields[field_name], (options[this.id],)
-                )
+        for _id in query._ids:
+            this = self.browse(_id)
+            for field in fields:
+                self.env.cache.insert_missing(this, field, (options[this.id],))
+        return self.browse(query)

@@ -3,7 +3,7 @@
 License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template
-        id="company_page_embed"
+        id="project_page_embed"
         primary="True"
         inherit_id="project_page"
         priority="100"

@@ -53,6 +53,9 @@
         "website.assets_editor": [
             "/bankayma_website/static/src/components_editor/*.js",
         ],
+        "web.assets_tests": [
+            "bankayma_website/static/tests/tours/bankayma_website_frontend.esm.js",
+        ],
     },
     "installable": True,
 }
