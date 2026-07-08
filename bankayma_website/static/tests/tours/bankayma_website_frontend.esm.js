@@ -19,8 +19,8 @@ registry.category("web_tour.tours").add("bankayma_website_frontend_event", {
     url: "/event",
     steps: () => [
         {
-            content: "Open the first event",
-            trigger: "#o_wevent_index_main_col a",
+            content: "Open event 'Great Reno Ballon Race'",
+            trigger: "#o_wevent_index_main_col a[href*=reno]",
             run: "click",
         },
         {
