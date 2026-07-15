@@ -46,3 +46,9 @@ class TestWebsiteUnicodeSlug(HttpCase):
             headers={"content-type": "application/json"},
         )
         self.assertEqual(result.json()["result"]["phone_code"], aland.phone_code)
+        result = self.url_open(
+            url=f"/website/country_infos/{aland_slug}/",
+            data="{}",
+            headers={"content-type": "application/json"},
+        )
+        self.assertEqual(result.json()["result"]["phone_code"], aland.phone_code)

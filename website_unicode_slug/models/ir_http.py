@@ -14,8 +14,7 @@ from odoo.addons.website.models import ir_http
 class ModelConverter(ir_http.ModelConverter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # TODO: match/test slash, hash, question mark at the end
-        self.regex = r"(.*-)?\d+$"
+        self.regex = r"(?:.*-)?\d+(?=$|\/|#|\?)"
 
     def to_python(self, value):
         _dummy, _id = self.unslug(value)
