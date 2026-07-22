@@ -1,0 +1,20 @@
+<odoo>
+    <record id="event_event_ticket_view_tree_from_event" model="ir.ui.view">
+        <field
+            name="inherit_id"
+            ref="event_sale.event_event_ticket_view_tree_from_event"
+        />
+        <field name="model">event.event.ticket</field>
+        <field name="arch" type="xml">
+            <field name="product_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="start_sale_datetime" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="end_sale_datetime" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
