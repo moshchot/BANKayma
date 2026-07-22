@@ -82,4 +82,17 @@
         sequence="60"
         action="action_products"
     />
+
+    <menuitem
+        id="menu_mailings"
+        parent="menu_bankayma_membership_root"
+        sequence="70"
+        action="mass_mailing.mailing_mailing_action_mail"
+    />
+    <menuitem
+        id="menu_mailinglist"
+        parent="menu_bankayma_membership_root"
+        sequence="80"
+        action="mass_mailing.action_view_mass_mailing_lists"
+    />
 </odoo>
