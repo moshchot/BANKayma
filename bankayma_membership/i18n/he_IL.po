@@ -32,6 +32,16 @@ msgid "Community manager"
 msgstr ""
 
 #. module: bankayma_membership
+#: model:ir.ui.menu,name:bankayma_membership.menu_mailinglist
+msgid "Mailing Lists"
+msgstr ""
+
+#. module: bankayma_membership
+#: model:ir.ui.menu,name:bankayma_membership.menu_mailings
+msgid "Mailings"
+msgstr ""
+
+#. module: bankayma_membership
 #: model:ir.actions.act_window,name:bankayma_membership.action_members
 #: model:ir.ui.menu,name:bankayma_membership.menu_members
 msgid "Members"
