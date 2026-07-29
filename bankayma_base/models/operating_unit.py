@@ -1,11 +1,13 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
 
+from .. import fields as bankayma_base_fields
+
 
 class OperatingUnit(models.Model):
     _inherit = "operating.unit"
 
-    name = fields.Char(translate=True)
+    name = bankayma_base_fields.TranslatedComputedChar(related="partner_id.name")
     parent_id = fields.Many2one("operating.unit")
     category_id = fields.Many2one("operating.unit.category")
     tag_ids = fields.Many2many("operating.unit.tag", string="Tags")

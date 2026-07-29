@@ -66,3 +66,12 @@ def migrate(env, version=None):
         OU.browse(ou_id).write(
             {field_name: company_colors.get(field_name) for field_name in color_fields}
         )
+    # restore OU multilang names
+    env.cr.execute(
+        """
+        update operating_unit
+        set name=res_company.name_multilanguage
+        from res_company_bk_pre_v18 res_company
+        where bankayma_from_company_id=res_company.id
+        """
+    )
