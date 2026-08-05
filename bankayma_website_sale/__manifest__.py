@@ -11,6 +11,7 @@
         "bankayma_account",
         "bankayma_website",
         "website_event_sale",
+        "website_event_sale_registration_multi_qty",
     ],
     "data": [
         "data/product_product.xml",
