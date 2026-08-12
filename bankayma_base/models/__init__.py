@@ -1,5 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from . import board_board
+from . import event_event
 from . import ir_module
 from . import ir_http
 from . import mail_render_mixin
