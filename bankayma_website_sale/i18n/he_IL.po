@@ -26,6 +26,12 @@ msgid "<strong>Shop</strong>"
 msgstr "<strong>חנות</strong>"
 
 #. module: bankayma_website_sale
+#: model:ir.model.fields,field_description:bankayma_website_sale.field_event_event__registration_multi_qty
+#: model:ir.model.fields,field_description:bankayma_website_sale.field_event_type__registration_multi_qty
+msgid "Allow multiple attendees per registration"
+msgstr ""
+
+#. module: bankayma_website_sale
 #: model:ir.actions.act_window,name:bankayma_website_sale.action_sales_registrations
 #: model:ir.ui.menu,name:bankayma_website_sale.menu_sales_registration
 msgid "Attendees"
@@ -63,6 +69,11 @@ msgstr "אירוע"
 #. module: bankayma_website_sale
 #: model:ir.model.fields,field_description:bankayma_website_sale.field_sale_order_line__event_registration_ids
 msgid "Event Registration"
+msgstr ""
+
+#. module: bankayma_website_sale
+#: model:ir.model,name:bankayma_website_sale.model_event_type
+msgid "Event Template"
 msgstr ""
 
 #. module: bankayma_website_sale
