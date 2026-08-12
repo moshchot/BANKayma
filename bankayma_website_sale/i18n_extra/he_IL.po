@@ -94,4 +94,24 @@ msgstr "<strong>הוספה לעגלה</strong>"
 msgid "Add To Cart"
 msgstr "הוספה לעגלה"
 
+#. module: website_event
+#: model_terms:ir.ui.view,arch_db:website_event.registration_attendee_details
+msgid "Email *"
+msgstr "דוא\"ל *"
+
+#. module: website_event
+#: model_terms:ir.ui.view,arch_db:website_event.registration_attendee_details
+msgid "Name *"
+msgstr "שם *"
+
+#. module: website_event
+#. odoo-python
+#: code:addons/website_event/models/website.py:0
+#: model:ir.ui.menu,name:website_event.menu_event_pages
+#: model:website.menu,name:website_event.menu_events
+#: model_terms:ir.ui.view,arch_db:website_event.event_searchbar_input_snippet_options
+#: model_terms:ir.ui.view,arch_db:website_event.snippets
+#, python-format
+msgid "Events"
+msgstr "אירועים"
 
