@@ -125,6 +125,8 @@ event-repo:
     - oca refs/pull/402/head
     # website_event_sale_registration_multi_qty
     - oca refs/pull/528/head
+    # fix permissions reading seats_available
+    - oca refs/pull/536/head
   remotes:
     oca: https://github.com/OCA/event.git
 knowledge:
