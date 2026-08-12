@@ -26,6 +26,7 @@
         "templates/website_sale.xml",
         "views/event_event.xml",
         "views/event_ticket.xml",
+        "views/event_type.xml",
         "views/menu.xml",
         "views/product_product.xml",
         "views/product_template.xml",
