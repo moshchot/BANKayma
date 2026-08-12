@@ -115,3 +115,15 @@ msgstr "שם *"
 msgid "Events"
 msgstr "אירועים"
 
+#. module: website_event
+#. odoo-javascript
+#. odoo-python
+#: code:addons/website_event/models/event_event.py:0
+#: code:addons/website_event/static/src/js/register_toaster_widget.js:0
+#: model:ir.model.fields.selection,name:website_event.selection__website_event_menu__menu_type__register
+#: model_terms:ir.ui.view,arch_db:website_event.layout
+#: model_terms:ir.ui.view,arch_db:website_event.registration_template
+#, python-format
+msgid "Register"
+msgstr "הרשמה"
+
