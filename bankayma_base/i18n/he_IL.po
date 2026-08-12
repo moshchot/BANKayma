@@ -83,6 +83,7 @@ msgid "Child logo"
 msgstr ""
 
 #. module: bankayma_base
+#: model:ir.model.fields,field_description:bankayma_base.field_event_event__city
 #: model:ir.model.fields,field_description:bankayma_base.field_res_company__city
 #: model:ir.model.fields,field_description:bankayma_base.field_res_partner__city
 #: model:ir.model.fields,field_description:bankayma_base.field_res_users__city
@@ -146,6 +147,11 @@ msgstr ""
 #. module: bankayma_base
 #: model:ir.model,name:bankayma_base.model_mail_template
 msgid "Email Templates"
+msgstr ""
+
+#. module: bankayma_base
+#: model:ir.model,name:bankayma_base.model_event_event
+msgid "Event"
 msgstr ""
 
 #. module: bankayma_base
