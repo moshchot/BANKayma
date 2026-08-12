@@ -153,4 +153,33 @@
             <attribute name="t-if">False</attribute>
         </xpath>
     </template>
+    <template
+        id="registration_attendee_details"
+        inherit_id="website_event.registration_attendee_details"
+    >
+        <div
+            t-if="event.registration_multi_qty and ticket['quantity'] &gt; 1 and att_counter == 1"
+            position="attributes"
+        >
+            <!-- never show checkbox to hide multiple tickets -->
+            <attribute name="t-if">False</attribute>
+        </div>
+        <xpath expr="//div[@t-att-data-hide-multi-qty]" position="attributes">
+            <!-- always hide boxes for multiple attendees if multi qty registration is enabled -->
+            <attribute name="t-att-data-hide-multi-qty">None</attribute>
+            <!-- prettier-ignore-start -->
+            <attribute name="t-if">not event.registration_multi_qty or att_counter == 1</attribute>
+            <!-- prettier-ignore-end -->
+        </xpath>
+        <xpath expr="//div[@t-att-data-hide-multi-qty]" position="after">
+            <!-- generate input for ticket counting if multi qty registration is enabled -->
+            <input
+                class="d-none"
+                t-if="event.registration_multi_qty and att_counter &gt; 1"
+                type="text"
+                t-attf-name="#{counter}-event_ticket_id"
+                t-attf-value="#{ticket['id']}"
+            />
+        </xpath>
+    </template>
 </odoo>
