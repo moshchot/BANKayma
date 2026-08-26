@@ -68,9 +68,15 @@ def migrate(env, version=None):
             ou.bankayma_from_company_id=rel.res_company_id
         """
     )
-    # delete all website-specific qweb templates as they will be outdated anyways and
-    # if there are child views, they'll most likely fail when copied to inherit from
-    # the outdated parent templates
+    # hard reset manually changed views
     env["ir.ui.view"].sudo().with_context(active_test=False).search(
-        [("type", "=", "qweb"), ("website_id", "!=", False)]
-    ).unlink()
+        [
+            ("type", "=", "qweb"),
+            (
+                "key",
+                "in",
+                ("website_event.event_description_full", "website_event.index_topbar"),
+            ),
+            ("website_id", "!=", False),
+        ]
+    ).reset_arch(mode="hard")
