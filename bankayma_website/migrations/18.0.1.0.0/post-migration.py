@@ -75,7 +75,12 @@ def migrate(env, version=None):
             (
                 "key",
                 "in",
-                ("website_event.event_description_full", "website_event.index_topbar"),
+                (
+                    "website_event.event_description_full",
+                    "website_event.index_topbar",
+                    "website_event.registration_template",
+                    "website_sale.product",
+                ),
             ),
             ("website_id", "!=", False),
         ]

@@ -18,7 +18,7 @@ class WebsiteSnippetFilter(models.Model):
             records = records.filtered_domain(website.sale_product_domain())
         return super()._filter_records_to_values(records, is_sample=is_sample)
 
-    def _get_products_random(self, website, limit, domain, context):
+    def _get_products_random(self, website, limit, domain, **kwargs):
         products = (
             self.env["product.product"]
             .with_context(display_default_code=False, add2cart_rerender=False)

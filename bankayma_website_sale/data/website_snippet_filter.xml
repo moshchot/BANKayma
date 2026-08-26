@@ -23,7 +23,7 @@
         <!-- prettier-ignore-start -->
         <field name="code">
 DynamicFilter = model.env['website.snippet.filter']
-response = DynamicFilter._get_products('random', model.env.context)
+response = DynamicFilter._get_products('random')
         </field>
         <!-- prettier-ignore-end -->
     </record>
