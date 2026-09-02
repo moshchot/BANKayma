@@ -256,8 +256,19 @@ msgid "Company Categories"
 msgstr ""
 
 #. module: bankayma_website
+#: model:ir.actions.server,name:bankayma_website.action_config_company
+#: model:ir.ui.menu,name:bankayma_website.menu_config_company
+msgid "Company Settings"
+msgstr ""
+
+#. module: bankayma_website
 #: model:ir.actions.server,name:bankayma_website.action_bankayma_website_root
 msgid "Company page action"
+msgstr ""
+
+#. module: bankayma_website
+#: model:ir.ui.menu,name:bankayma_website.menu_config
+msgid "Configuration"
 msgstr ""
 
 #. module: bankayma_website
