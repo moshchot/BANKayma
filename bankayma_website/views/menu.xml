@@ -75,4 +75,30 @@
         sequence="200"
         groups="bankayma_base.group_org_manager"
     />
+    <menuitem
+        id="menu_config"
+        parent="menu_bankayma_website_root"
+        name="Configuration"
+        sequence="1000"
+    />
+    <record id="action_config_company" model="ir.actions.server">
+        <field name="name">Company Settings</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="base.model_res_company" />
+        <field name="code">
+            action = {
+                "name": env.company.name,
+                "type": "ir.actions.act_window",
+                "res_model": model._name,
+                "res_id": env.company.id,
+                "views": [(False, 'form')],
+            }
+        </field>
+    </record>
+    <menuitem
+        id="menu_config_company"
+        action="action_config_company"
+        parent="menu_config"
+        sequence="10"
+    />
 </odoo>
