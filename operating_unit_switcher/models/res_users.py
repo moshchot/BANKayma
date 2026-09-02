@@ -20,9 +20,11 @@ class ResUsers(models.Model):
         result = {
             "operating_units": self.env.user.operating_units()
             .sorted(key=lambda x: x == default_operating_unit and -1 or 0)
-            .read(["name"]),
+            .read(["display_name"]),
             "default_operating_unit_id": default_operating_unit.id,
         }
+        for ou_vals in result["operating_units"]:
+            ou_vals["name"] = ou_vals.pop("display_name")
         return result
 
     def operating_units(self):
