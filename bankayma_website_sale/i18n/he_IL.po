@@ -172,7 +172,7 @@ msgstr "סוג"
 #. module: bankayma_website_sale
 #: model_terms:ir.ui.view,arch_db:bankayma_website_sale.registration_attendee_details
 msgid "Tickets"
-msgstr ""
+msgstr "כרטיסים"
 
 #. module: bankayma_website_sale
 #: model:ir.model,name:bankayma_website_sale.model_website
