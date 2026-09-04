@@ -168,18 +168,38 @@
             <!-- always hide boxes for multiple attendees if multi qty registration is enabled -->
             <attribute name="t-att-data-hide-multi-qty">None</attribute>
             <!-- prettier-ignore-start -->
-            <attribute name="t-if">not event.registration_multi_qty or att_counter == 1</attribute>
+            <attribute name="t-if">not event.registration_multi_qty or counter == 1</attribute>
             <!-- prettier-ignore-end -->
         </xpath>
         <xpath expr="//div[@t-att-data-hide-multi-qty]" position="after">
             <!-- generate input for ticket counting if multi qty registration is enabled -->
             <input
                 class="d-none"
-                t-if="event.registration_multi_qty and att_counter &gt; 1"
+                t-if="event.registration_multi_qty and counter &gt; 1 and att_counter == 1"
                 type="text"
                 t-attf-name="#{counter}-event_ticket_id"
                 t-attf-value="#{ticket['id']}"
             />
+            <!-- generate checkbox for multi tickets if multi qty registration is enabled -->
+            <input
+                class="d-none"
+                t-if="event.registration_multi_qty and att_counter == 1"
+                type="checkbox"
+                checked="checked"
+                t-attf-name="use_multi_qty-#{ticket['id']}"
+                t-att-value="ticket['quantity']"
+            />
         </xpath>
+        <h5 position="attributes">
+            <!-- show standard title only for non-multi_qty events -->
+            <attribute name="t-if">not event.registration_multi_qty</attribute>
+        </h5>
+        <h5 position="after">
+            <!-- show title with ticket count for multi_qty events -->
+            <h5 t-if="event.registration_multi_qty" class="mt-1 pb-2 border-bottom">
+                <span t-out="sum(t['quantity'] for t in tickets)" />
+                Tickets
+            </h5>
+        </h5>
     </template>
 </odoo>

@@ -6,6 +6,15 @@ from .website_sale import WebsiteSale
 
 
 class WebsiteEventSaleController(website_event_sale_main.WebsiteEventSaleController):
+    def _process_attendees_form(self, event, form_details):
+        registration_data = super()._process_attendees_form(event, form_details)
+        last_data = {}
+        for vals in registration_data:
+            for field_name in ("name", "email", "phone"):
+                last_data.setdefault(field_name, vals.get(field_name))
+                vals.setdefault(field_name, last_data[field_name])
+        return registration_data
+
     @http.route()
     def registration_confirm(self, event, **post):
         result = super().registration_confirm(event, **post)
