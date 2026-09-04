@@ -259,7 +259,7 @@ msgstr ""
 #: model:ir.actions.server,name:bankayma_website.action_config_company
 #: model:ir.ui.menu,name:bankayma_website.menu_config_company
 msgid "Company Settings"
-msgstr ""
+msgstr "הגדרות דף יוזמה"
 
 #. module: bankayma_website
 #: model:ir.actions.server,name:bankayma_website.action_bankayma_website_root
@@ -269,7 +269,7 @@ msgstr ""
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_config
 msgid "Configuration"
-msgstr ""
+msgstr "הגדרות"
 
 #. module: bankayma_website
 #: model:ir.ui.menu,name:bankayma_website.menu_bankayma_website_content
