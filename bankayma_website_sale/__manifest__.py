@@ -2,7 +2,7 @@
 {
     "name": "BANKayma (website_sale)",
     "summary": "BANKayma website_sale customizations",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "development_status": "Alpha",
     "author": "Moshchot Coop",
     "license": "AGPL-3",
@@ -11,7 +11,6 @@
         "bankayma_account",
         "bankayma_website",
         "website_event_sale",
-        "website_event_sale_registration_multi_qty",
     ],
     "data": [
         "data/product_product.xml",

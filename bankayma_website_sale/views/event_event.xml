@@ -11,6 +11,9 @@
                     {'search_default_confirmed': True}
                 </attribute>
             </button>
+            <field name="tag_ids" position="after">
+                <field name="registration_single_name" />
+            </field>
         </field>
     </record>
     <record id="event_event_view_form_add" model="ir.ui.view">

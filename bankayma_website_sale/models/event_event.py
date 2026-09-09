@@ -6,8 +6,11 @@ from odoo import api, fields, models
 class EventEvent(models.Model):
     _inherit = "event.event"
 
-    registration_multi_qty = fields.Boolean(
-        compute="_compute_registration_multi_qty", store=True, readonly=False
+    registration_single_name = fields.Boolean(
+        "Multiple registrations with one name",
+        compute="_compute_registration_single_name",
+        store=True,
+        readonly=False,
     )
 
     @api.model
@@ -18,6 +21,6 @@ class EventEvent(models.Model):
         return result
 
     @api.depends("event_type_id")
-    def _compute_registration_multi_qty(self):
+    def _compute_registration_single_name(self):
         for this in self:
-            this.registration_multi_qty = this.event_type_id.registration_multi_qty
+            this.registration_single_name = this.event_type_id.registration_single_name
