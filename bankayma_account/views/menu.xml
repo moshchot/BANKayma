@@ -12,6 +12,7 @@
         <field name="context">
             {'default_move_type': 'out_invoice', 'search_default_closed': True}
         </field>
+        <field name="path">new-invoice</field>
     </record>
 
     <record id="action_move_in_invoice_new" model="ir.actions.act_window">
@@ -24,6 +25,7 @@
         <field name="context">
             {'default_move_type': 'in_invoice', 'search_default_closed': True}
         </field>
+        <field name="path">new-vendor-bill</field>
     </record>
 
     <record id="account.menu_finance" model="ir.ui.menu">
@@ -44,6 +46,7 @@
         <field name="context">{'search_default_active':1}</field>
         <field name="domain">[('operating_unit_ids', 'in', allowed_ou_ids)]</field>
         <field name="view_id" ref="analytic.view_account_analytic_account_list" />
+        <field name="path">analytic-accounts</field>
     </record>
     <menuitem
         id="menu_bankayma_config_analytic_accounts"
@@ -64,6 +67,7 @@
             name="domain"
         >[('bankayma_analytic_account_id.operating_unit_ids', 'in', allowed_ou_ids)]</field>
         <field name="view_id" ref="view_account_analytic_line_list" />
+        <field name="path">analytic-balance</field>
     </record>
     <menuitem
         id="menu_bankayma_group_analytic_line"
