@@ -248,7 +248,7 @@ def post_init_hook(cr, registry):
                     )
                     """
                 )
-            with mute_logger("OpenUpgrade"):
+            with mute_logger("OpenUpgrade"), mute_logger("odoo.sql_db"):
                 merge_records(
                     env,
                     record._name,
@@ -276,7 +276,7 @@ def post_init_hook(cr, registry):
             )
             if not to_merge:
                 continue
-            with mute_logger("OpenUpgrade"):
+            with mute_logger("OpenUpgrade"), mute_logger("odoo.sql_db"):
                 merge_records(env, record._name, to_merge.ids, record.id, method="sql")
 
     _logger.info("merging companies")
