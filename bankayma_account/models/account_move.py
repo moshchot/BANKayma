@@ -6,6 +6,7 @@ from base64 import b64encode
 from datetime import date
 
 from lxml import etree
+from markupsafe import Markup
 
 from odoo import Command, _, api, exceptions, fields, models
 from odoo.exceptions import UserError
@@ -584,9 +585,11 @@ class AccountMove(models.Model):
                 continue
             if this.bankayma_waive_overhead or not fraction:
                 this.message_post(
-                    body=_(
-                        "Overhead of %d%% was waived on this move",
-                        this.journal_id.bankayma_overhead_percentage,
+                    body=Markup(
+                        _(
+                            "Overhead of %d%% was waived on this move",
+                            this.journal_id.bankayma_overhead_percentage,
+                        )
                     )
                 )
                 continue
@@ -596,13 +599,13 @@ class AccountMove(models.Model):
                     self.env["account.move"]
                     .with_context(
                         bankayma_force_intercompany_journal=False,
+                        default_move_type="entry",
+                        default_journal_id=company.overhead_journal_id.id,
                     )
                     .with_ou(parent)
                     .create(
                         {
                             "partner_id": child.partner_id.id,
-                            "move_type": "entry",
-                            "journal_id": company.overhead_journal_id.id,
                             "operating_unit_id": False,
                         }
                     )
@@ -640,18 +643,22 @@ class AccountMove(models.Model):
                 if post:
                     invoice.action_post()
                 invoice.message_post(
-                    body=_(
-                        'Overhead invoice for <a data-oe-model="account.move" '
-                        'data-oe-id="%(id)s" href="#">%(name)s</a>'
+                    body=Markup(
+                        _(
+                            'Overhead invoice for <a data-oe-model="account.move" '
+                            'data-oe-id="%(id)s" href="#">%(display_name)s</a>',
+                        )
+                        % this
                     )
-                    % this
                 )
                 this.message_post(
-                    body=_(
-                        'Overhead created in <a data-oe-model="account.move" '
-                        'data-oe-id="%(id)s" href="#">%(ref)s</a>'
+                    body=Markup(
+                        _(
+                            'Overhead created in <a data-oe-model="account.move" '
+                            'data-oe-id="%(id)s" href="#">%(display_name)s</a>',
+                        )
+                        % invoice
                     )
-                    % invoice
                 )
                 invoices += invoice
         return invoices

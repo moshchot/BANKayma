@@ -3,6 +3,8 @@
 
 from urllib.parse import parse_qs, urlparse, urlunparse
 
+from markupsafe import Markup
+
 from odoo import _, fields, models
 
 
@@ -148,11 +150,13 @@ class PaymentTransaction(models.Model):
                 self.sumit_details = dict(self.sumit_details or {}, **details)
                 if self.invoice_ids:
                     self.invoice_ids.message_post(
-                        body=_(
-                            'Sumit document: <a href="%(DocumentDownloadURL)s">'
-                            "%(DocumentNumber)s</a>"
+                        body=Markup(
+                            _(
+                                'Sumit document: <a href="%(DocumentDownloadURL)s">'
+                                "%(DocumentNumber)s</a>",
+                            )
+                            % details
                         )
-                        % details
                     )
 
                 self.sumit_document_url = details["DocumentDownloadURL"]
