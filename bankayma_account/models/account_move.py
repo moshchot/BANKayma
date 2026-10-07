@@ -509,13 +509,16 @@ class AccountMove(models.Model):
                     and not x.auto_invoice_id
                     and not self.search([("auto_invoice_id", "=", x.id)])
                     and not x.journal_id.bankayma_inhibit_mails
-                    and not x.invoice_line_ids.sale_line_ids
+                    and (
+                        "sale_line_ids" not in x.invoice_line_ids._fields
+                        or not x.invoice_line_ids.sale_line_ids
+                    )
                 )
             ):
                 action = to_send.with_company(
                     to_send[:1].company_id
                 ).action_invoice_sent()
-                if not isinstance(action.get("view_id"), int):
+                if action.get("res_model") != "account.move.send.wizard":
                     # this happens if the document layout isn't configured yet
                     return action
                 wizard = (
