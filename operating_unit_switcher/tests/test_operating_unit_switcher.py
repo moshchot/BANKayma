@@ -47,11 +47,17 @@ class TestOperatingUnitSwitcher(OperatingUnitCommon):
         ou_info = user.operating_unit_switcher_get_ou_info()
         self.assertEqual(
             ou_info["operating_units"],
-            (self.b2c + self.ou1).read(["display_name"]),
+            map(
+                lambda vals: dict(id=vals["id"], name=vals["display_name"]),
+                (self.b2c + self.ou1).read(["display_name"]),
+            ),
         )
         self.user1.default_operating_unit_id = self.ou1
         ou_info = user.operating_unit_switcher_get_ou_info()
         self.assertEqual(
             ou_info["operating_units"],
-            (self.ou1 + self.b2c).read(["display_name"]),
+            map(
+                lambda vals: dict(id=vals["id"], name=vals["display_name"]),
+                (self.ou1 + self.b2c).read(["display_name"]),
+            ),
         )
