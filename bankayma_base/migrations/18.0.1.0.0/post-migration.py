@@ -75,15 +75,3 @@ def migrate(env, version=None):
         where bankayma_from_company_id=res_company.id
         """
     )
-    # uninstall obsolete modules
-    env["ir.module.module"].search(
-        [
-            (
-                "name",
-                "in",
-                [
-                    "account_invoice_inter_company",
-                ],
-            ),
-        ]
-    ).button_uninstall()
