@@ -47,12 +47,6 @@ class TestBankaymaWebsiteSale(common.TransactionCase):
             ]
         )
         cls.sale_journal.bankayma_charge_overhead = True
-        cls.env.company.overhead_account_id = cls.env["account.account"].create(
-            {
-                "name": "Overhead",
-                "code": "4242420",
-            }
-        )
         cls.payment_provider = cls.env.ref("l10n_il_sumit.payment_provider_sumit")
         cls.payment_method = cls.env.ref("payment.payment_method_card")
 

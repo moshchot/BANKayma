@@ -30,4 +30,7 @@ class BankaymaMoveChangeCompany(models.TransientModel):
         moves = self.env["account.move"].browse(self.env.context.get("active_ids", []))
         moves.operating_unit_id = False
         moves.line_ids.operating_unit_id = self.operating_unit_id
+        moves.line_ids.filtered(lambda x: x.display_type == "product").with_ou(
+            self.operating_unit_id
+        )._compute_account_id()
         moves.operating_unit_id = self.operating_unit_id

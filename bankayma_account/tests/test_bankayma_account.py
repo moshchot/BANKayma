@@ -73,12 +73,6 @@ class TestBankaymaAccount(TransactionCase):
                 "bankayma_restrict_partner": "intercompany",
             }
         )
-        cls.env.company.overhead_account_id = cls.env["account.account"].create(
-            {
-                "name": "Overhead",
-                "code": "4242420",
-            }
-        )
         cls.env["account.journal"].search([("type", "=", "sale")], limit=1).write(
             {
                 "bankayma_charge_overhead": True,
@@ -151,9 +145,9 @@ class TestBankaymaAccount(TransactionCase):
                 f"{invoice_child2.name} {invoice_child2.partner_id.name}",
             ],
         )
-        self.assertIn(
-            self.env.company.overhead_account_id,
-            overhead_invoices.mapped("line_ids.account_id"),
+        self.assertEqual(
+            self.env.company.overhead_product_id,
+            overhead_invoices.mapped("line_ids.product_id"),
         )
         self.assertItemsEqual(
             set(

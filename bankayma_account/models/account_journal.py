@@ -52,6 +52,23 @@ class AccountJournal(models.Model):
         "res.company",
         "inter_ou_journal_id",
     )
+    # those are left for compatibility with v16 selections
+    intercompany_sale_company_id = fields.One2many(
+        "res.company",
+        "intercompany_sale_journal_id",
+    )
+    intercompany_purchase_company_id = fields.One2many(
+        "res.company",
+        "intercompany_purchase_journal_id",
+    )
+    intercompany_overhead_company_id = fields.One2many(
+        "res.company",
+        "overhead_journal_id",
+    )
+    intercompany_overhead_payment_company_id = fields.One2many(
+        "res.company",
+        "overhead_payment_journal_id",
+    )
 
     def _check_journal_sequence(self):
         """

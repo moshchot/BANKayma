@@ -10,8 +10,8 @@ class ResConfigSettings(models.TransientModel):
     overhead_journal_id = fields.Many2one(
         related="company_id.overhead_journal_id", readonly=False
     )
-    overhead_account_id = fields.Many2one(
-        related="company_id.overhead_account_id", readonly=False
+    overhead_product_id = fields.Many2one(
+        related="company_id.overhead_product_id", readonly=False
     )
     donation_journal_id = fields.Many2one(
         related="company_id.donation_journal_id", readonly=False

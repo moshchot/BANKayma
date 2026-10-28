@@ -487,13 +487,18 @@ class AccountMove(models.Model):
             return
         this = self.new(vals)
         product = this.company_id.inter_ou_product_id
-        account = product.product_tmpl_id.get_product_accounts()["income"]
+        account_out = product.with_ou(
+            this.inter_ou_source_id._as_ou()
+        ).product_tmpl_id.get_product_accounts()["expense"]
+        account_in = product.with_ou(
+            this.inter_ou_target_id._as_ou()
+        ).product_tmpl_id.get_product_accounts()["income"]
         for line, (_1, _2, line_vals) in zip(
             this.inter_ou_line_ids, vals["inter_ou_line_ids"], strict=False
         ):
             line_vals["balance"] = line.quantity * line.price_unit
             line_vals["product_id"] = product.id
-            line_vals["account_id"] = account.id
+            line_vals["account_id"] = account_out.id
             line_vals["operating_unit_id"] = this.inter_ou_source_id.id
             vals["inter_ou_line_ids"].append(
                 fields.Command.create(
@@ -501,6 +506,7 @@ class AccountMove(models.Model):
                         line_vals,
                         balance=-line_vals["balance"],
                         operating_unit_id=this.inter_ou_target_id.id,
+                        account_id=account_in.id,
                     )
                 )
             )
@@ -630,7 +636,7 @@ class AccountMove(models.Model):
             )
         ):
             company = this.company_id
-            if not company.overhead_journal_id or not company.overhead_account_id:
+            if not company.overhead_journal_id or not company.overhead_product_id:
                 continue
             if this.bankayma_waive_overhead or not fraction:
                 this.message_post(
@@ -643,6 +649,10 @@ class AccountMove(models.Model):
                 )
                 continue
             parent = this._bankayma_invoice_child_income_get_parent()
+            product_parent = company.overhead_product_id.with_ou(parent)
+            account_parent = product_parent.product_tmpl_id.get_product_accounts()[
+                "income"
+            ]
             for child in this.invoice_line_ids.operating_unit_id:
                 invoice = (
                     self.env["account.move"]
@@ -658,6 +668,10 @@ class AccountMove(models.Model):
                         }
                     )
                 )
+                product_child = product_parent.with_ou(child)
+                account_child = product_child.product_tmpl_id.get_product_accounts()[
+                    "expense"
+                ]
                 for line in this.invoice_line_ids.filtered(
                     lambda x, child=child: x.operating_unit_id == child
                 ):
@@ -667,10 +681,8 @@ class AccountMove(models.Model):
                         .create(
                             {
                                 "move_id": invoice.id,
-                                "product_id": self.env.ref(
-                                    "bankayma_account.product_overhead"
-                                ).id,
-                                "account_id": company.overhead_account_id.id,
+                                "product_id": product_child.id,
+                                "account_id": account_child.id,
                                 "quantity": 1,
                                 "balance": line.price_total * fraction,
                                 "name": f"{this.name} {this.partner_id.name}",
@@ -685,6 +697,7 @@ class AccountMove(models.Model):
                             "operating_unit_id": child.id,
                             "balance": -parent_line.balance,
                             "amount_currency": -parent_line.amount_currency,
+                            "account_id": account_parent.id,
                         }
                     )
                     line.bankayma_parent_move_line_id = parent_line
