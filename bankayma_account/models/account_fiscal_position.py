@@ -40,7 +40,3 @@ class AccountFiscalPosition(models.Model):
     bankayma_deduct_tax_group_id = fields.Many2one(
         "account.tax.group", string="Tax group"
     )
-    bankayma_payroll_product_id = fields.Many2one(
-        "product.product",
-        string="Payroll product",
-    )

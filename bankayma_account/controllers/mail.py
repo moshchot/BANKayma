@@ -14,18 +14,14 @@ class MailController(mail.MailController):
         if (
             model == "account.move"
             and response.status_code == 303
-            and "action" not in response.headers.get("location", "action")
+            and "/bankayma" not in response.headers.get("location", "action")
         ):
             move = request.env[model].sudo().browse(res_id)
             action = (
                 request.env.ref(
                     "bankayma_account.action_bankayma_group_income_move_internal"
                 )
-                if (
-                    move.journal_id.intercompany_sale_company_id
-                    or move.journal_id.intercompany_overhead_company_id
-                    or move.journal_id.intercompany_purchase_company_id
-                )
+                if (move.journal_id.inter_ou_company_id)
                 else request.env.ref(
                     "bankayma_account.action_bankayma_group_expense_move"
                 )
@@ -33,6 +29,6 @@ class MailController(mail.MailController):
                 else request.env.ref(
                     "bankayma_account.action_bankayma_group_income_move_out_invoice"
                 )
-            )
-            response.headers["location"] += f"&action={action.id}&view_type=form"
+            ).sudo()
+            response.headers["location"] = f"/odoo/{action.path}/{move.id}"
         return response

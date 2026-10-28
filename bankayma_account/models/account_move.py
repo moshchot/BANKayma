@@ -78,7 +78,6 @@ class AccountMove(models.Model):
         "ir.attachment", "res_id", domain=[("res_model", "=", _inherit)]
     )
     bankayma_partner_domain = fields.Binary(compute="_compute_bankayma_partner_domain")
-    auto_invoice_ids = fields.One2many("account.move", "auto_invoice_id")
     validated_state = fields.Selection(
         VALIDATED_STATE_SELECTION,
         store=True,
@@ -151,6 +150,11 @@ class AccountMove(models.Model):
         tracking=True,
     )
     invoice_partner_display_name = bankayma_base_fields.TranslatedComputedChar()
+    inter_ou_source_id = fields.Many2one("operating.unit.proxy", "Sending Party")
+    inter_ou_target_id = fields.Many2one("operating.unit.proxy", "Receiving Party")
+    inter_ou_line_ids = fields.One2many(
+        "account.move.line", "move_id", domain=[("balance", ">", 0)]
+    )
 
     def _compute_amount(self):
         """
@@ -173,7 +177,7 @@ class AccountMove(models.Model):
     def _search_default_journal(self):
         """React on a context key to choose company's intercompany sale journal"""
         if self.env.context.get("bankayma_internal_move"):
-            return self.env.company.intercompany_sale_journal_id
+            return self.env.company.inter_ou_journal_id
         return super()._search_default_journal()
 
     @api.depends("payment_state", "validated_state")
@@ -340,9 +344,8 @@ class AccountMove(models.Model):
     def _compute_show_fiscal_position_id(self):
         for this in self:
             this.show_fiscal_position_id = (
-                not this.journal_id.intercompany_sale_company_id
-                and not this.journal_id.intercompany_purchase_company_id
-                and not this.journal_id.intercompany_overhead_company_id
+                not this.journal_id.inter_ou_company_id
+                and not this.journal_id.overhead_company_id
                 and this.move_type != "out_invoice"
                 or self.env.context.get("default_show_fiscal_position_id")
                 or self.env.user.has_group("bankayma_base.group_full")
@@ -412,39 +415,38 @@ class AccountMove(models.Model):
                 this.line_ids.tax_ids.tax_group_id.mapped("bankayma_editable")
             )
 
-    @api.onchange("fiscal_position_id")
-    def _onchange_fiscal_position_id_payroll(self):
-        if getattr(self, "_origin", False):
-            prev_product = self._origin.fiscal_position_id.bankayma_payroll_product_id
-            if prev_product:
-                self.invoice_line_ids = self.invoice_line_ids.filtered(
-                    lambda x: x.product_id != prev_product
-                )
-        product = self.fiscal_position_id.bankayma_payroll_product_id
-        if product:
-            self.invoice_line_ids += self.env["account.move.line"].new(
-                {
-                    "product_id": product.id,
-                }
-            )
+    @api.depends_context("bankayma_force_operating_unit_id")
+    def _compute_operating_unit(self):
+        if "bankayma_force_operating_unit_id" in self.env.context:
+            self.operating_unit_id = self.env.context[
+                "bankayma_force_operating_unit_id"
+            ]
+            return
+        else:
+            return super()._compute_operating_unit()
 
-    @api.constrains("fiscal_position_id", "invoice_line_ids")
-    def _check_payroll_price_unit(self):
-        for this in self.filtered("fiscal_position_id.bankayma_payroll_product_id"):
-            if (
-                not this.invoice_line_ids.filtered(
-                    lambda x, this=this: (
-                        x.product_id
-                        == this.fiscal_position_id.bankayma_payroll_product_id
-                        and x.price_unit != 0
-                    )
-                )
-                and this.move_type != "entry"
-            ):
-                raise UserError(
-                    _("You need to set a price for the line with product %s")
-                    % this.fiscal_position_id.bankayma_payroll_product_id.name
-                )
+    @api.onchange("inter_ou_target_id")
+    def _onchange_inter_ou_target_id(self):
+        for line in self.line_ids:
+            if line._origin.operating_unit_id.id == self._origin.inter_ou_target_id.id:
+                line.operating_unit_id = self.inter_ou_target_id.id
+
+    @api.onchange("inter_ou_source_id")
+    def _onchange_inter_ou_source_id(self):
+        for line in self.line_ids:
+            if line._origin.operating_unit_id.id == self._origin.inter_ou_source_id.id:
+                line.operating_unit_id = self.inter_ou_source_id.id
+
+    def default_get(self, fields_list):
+        result = super().default_get(fields_list)
+        if (
+            "bankayma_force_operating_unit_id" in self.env.context
+            and "operating_unit_id" in result
+        ):
+            result["operating_unit_id"] = self.env.context[
+                "bankayma_force_operating_unit_id"
+            ]
+        return result
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -455,12 +457,15 @@ class AccountMove(models.Model):
             "bankayma_account.message_subtype_vendor"
         ) + self.env.ref("mail.mt_comment")
 
+        for vals in vals_list:
+            self._handle_inter_ou_line_ids_create(vals)
         result = super().create(vals_list)
         for this in result:
             this.message_subscribe(this.partner_id.ids, subtypes.ids)
         return result
 
     def write(self, vals):
+        self._handle_inter_ou_line_ids_write(vals)
         result = super().write(vals)
         if "bankayma_vendor_tax_percentage" in vals:
             self.button_bankayma_vendor_tax_create()
@@ -477,10 +482,94 @@ class AccountMove(models.Model):
 
         return result
 
+    def _handle_inter_ou_line_ids_create(self, vals):
+        if "inter_ou_line_ids" not in vals:
+            return
+        this = self.new(vals)
+        product = this.company_id.inter_ou_product_id
+        account = product.product_tmpl_id.get_product_accounts()["income"]
+        for line, (_1, _2, line_vals) in zip(
+            this.inter_ou_line_ids, vals["inter_ou_line_ids"], strict=False
+        ):
+            line_vals["balance"] = line.quantity * line.price_unit
+            line_vals["product_id"] = product.id
+            line_vals["account_id"] = account.id
+            line_vals["operating_unit_id"] = this.inter_ou_source_id.id
+            vals["inter_ou_line_ids"].append(
+                fields.Command.create(
+                    dict(
+                        line_vals,
+                        balance=-line_vals["balance"],
+                        operating_unit_id=this.inter_ou_target_id.id,
+                    )
+                )
+            )
+
+    def _handle_inter_ou_line_ids_write(self, vals):
+        if "inter_ou_line_ids" not in vals:
+            return
+        self.ensure_one()
+
+        new_vals = {
+            field: vals.get(field, self[field])
+            for field in (
+                "inter_ou_line_ids",
+                "company_id",
+                "inter_ou_target_id",
+                "inter_ou_source_id",
+            )
+        }
+        self_new = self.new(new_vals)
+        available_lines = self.line_ids.filtered(
+            lambda x: x not in self.inter_ou_line_ids
+        )
+
+        def _available(line_org, available_lines=available_lines):
+            available = available_lines.filtered(
+                lambda x: x.balance == -line_org.balance and x.name == line_org.name
+            )[:1]
+            available_lines -= available
+            return available
+
+        new_commands = []
+        for command in vals["inter_ou_line_ids"]:
+            if command[0] == fields.Command.UPDATE:
+                line = self_new.inter_ou_line_ids.filtered(
+                    lambda x, command=command: x.id.origin == command[1]
+                )
+                line_vals = command[2]
+                counter_vals = dict(line_vals)
+                if "quantity" or "price_unit" in line_vals:
+                    line_vals["balance"] = line_vals.get(
+                        "quantity", line.quantity
+                    ) * line_vals.get("price_unit", line.price_unit)
+                    counter_vals["balance"] = -line_vals["balance"]
+                line_org = self.inter_ou_line_ids.filtered(
+                    lambda x, command=command: x.id == command[1]
+                )
+                counter_line = _available(line_org)
+                new_commands.append(
+                    fields.Command.update(counter_line.id, counter_vals)
+                )
+
+            elif command[0] == fields.Command.CREATE:
+                tmp_vals = dict(new_vals, inter_ou_line_ids=[command])
+                self._handle_inter_ou_line_ids_create(tmp_vals)
+                new_commands.append(tmp_vals["inter_ou_line_ids"][-1])
+
+            elif command[0] == fields.Command.DELETE:
+                line_org = self.inter_ou_line_ids.filtered(
+                    lambda x, command=command: x.id == command[1]
+                )
+                counter_line = _available(line_org)
+                new_commands.append(fields.Command.unlink(counter_line.id))
+
+        vals["inter_ou_line_ids"].extend(new_commands)
+
     def action_post(self):
         """
-        Enforce intercompany journal on intercompany invoices,
-        mail non-intercompany invoices on post
+        Enforce amount != 0
+        Mail non-inter-ou invoices on post
         """
         for this in self:
             if float_utils.float_is_zero(
@@ -489,17 +578,6 @@ class AccountMove(models.Model):
                 raise exceptions.UserError(
                     _("You cannot post an item with amount zero")
                 )
-            if (
-                this.is_invoice()
-                and this._find_company_from_invoice_partner()
-                and self.env.context.get("bankayma_force_intercompany_journal", True)
-            ):
-                if this.is_sale_document():
-                    journal = this.company_id.intercompany_sale_journal_id
-                else:
-                    journal = this.company_id.intercompany_purchase_journal_id
-                if journal and this.journal_id != journal:
-                    this.journal_id = journal
         result = super().action_post()
         if self.env.user.has_group(
             "bankayma_base.group_org_manager"
@@ -507,8 +585,7 @@ class AccountMove(models.Model):
             for to_send in self.filtered(
                 lambda x: (
                     x.move_type in ("out_invoice", "in_refund", "out_refund")
-                    and not x.auto_invoice_id
-                    and not self.search([("auto_invoice_id", "=", x.id)])
+                    and not x.journal_id.inter_ou_company_id
                     and not x.journal_id.bankayma_inhibit_mails
                     and (
                         "sale_line_ids" not in x.invoice_line_ids._fields
@@ -529,34 +606,6 @@ class AccountMove(models.Model):
                 )
                 wizard.action_send_and_print()
 
-        for intercompany in self.filtered(
-            lambda x: x._find_company_from_invoice_partner()
-        ):
-            # request a review for counterpart of intercompany sales invoice
-            intercompany.with_company(intercompany).sudo().filtered(
-                lambda x: (
-                    x.move_type == "out_invoice" and x.auto_invoice_ids.need_validation
-                )
-            ).mapped("auto_invoice_ids").request_validation()
-            intercompany.filtered(lambda x: not x.is_move_sent).write(
-                {"is_move_sent": True}
-            )
-            result = {"type": "ir.actions.act_window.page.list"}
-        return result
-
-    def _inter_company_create_invoice(self, dest_company):
-        """Allow skipping creation of intercompany invoice"""
-        if self.env.context.get("skip_intercompany_invoice"):
-            return
-        return super()._inter_company_create_invoice(dest_company)
-
-    def _prepare_invoice_data(self, dest_company):
-        """Enforce the intercompany journals"""
-        result = super()._prepare_invoice_data(dest_company)
-        if result.get("move_type") in self.get_sale_types():
-            result["journal_id"] = dest_company.intercompany_sale_journal_id.id
-        elif result.get("move_type") in self.get_purchase_types():
-            result["journal_id"] = dest_company.intercompany_purchase_journal_id.id
         return result
 
     def _bankayma_invoice_child_income_get_parent(self):
@@ -598,7 +647,6 @@ class AccountMove(models.Model):
                 invoice = (
                     self.env["account.move"]
                     .with_context(
-                        bankayma_force_intercompany_journal=False,
                         default_move_type="entry",
                         default_journal_id=company.overhead_journal_id.id,
                     )

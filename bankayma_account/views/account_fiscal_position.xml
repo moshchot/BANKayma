@@ -21,13 +21,11 @@
                 </page>
                 <page name="tax_deduction" string="Default tax and deductions">
                     <group>
-                        <!-- TODO: depends on account_fiscal_position_type
                         <field
                             name="bankayma_tax_ids"
                             widget="many2many_tags"
                             domain="[('company_id', '=', company_id), ('type_tax_use', '=', type_position_use)]"
                         />
-                        -->
                         <field name="bankayma_tax_ids" widget="many2many_tags" />
                         <field name="optional_tax_group_ids" widget="many2many_tags" />
                         <field name="bankayma_deduct_tax" />
@@ -45,11 +43,6 @@
                             name="bankayma_deduct_tax_use_max_amount"
                             invisible="not bankayma_deduct_tax"
                         />
-                    </group>
-                </page>
-                <page name="payroll" string="Payroll">
-                    <group>
-                        <field name="bankayma_payroll_product_id" />
                     </group>
                 </page>
             </notebook>

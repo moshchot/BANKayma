@@ -8,6 +8,7 @@ from odoo.fields import Command
 from odoo.tests import Form
 from odoo.tests.common import TransactionCase
 from odoo.tools.misc import mute_logger
+from odoo.tools.safe_eval import safe_eval
 
 USER_FILE_TEMPLATE = """empty,line
 empty,line
@@ -76,14 +77,6 @@ class TestBankaymaAccount(TransactionCase):
             {
                 "name": "Overhead",
                 "code": "4242420",
-            }
-        )
-        cls.env.company.overhead_payment_journal_id = cls.env["account.journal"].create(
-            {
-                "name": "Overhead Payments",
-                "code": "OVHP",
-                "type": "bank",
-                "sequence": 200,
             }
         )
         cls.env["account.journal"].search([("type", "=", "sale")], limit=1).write(
@@ -213,49 +206,84 @@ class TestBankaymaAccount(TransactionCase):
             invoice.action_post()
         return invoice
 
-    def test_constraints(self):
-        with self.assertRaises(exceptions.ValidationError):
-            self.env.company.overhead_payment_journal_id.bankayma_charge_overhead = True
+    def test_intercompany(self):
+        action = self.env.ref(
+            "bankayma_account.action_bankayma_group_income_move_internal"
+        )
+        self.user_child1.groups_id += self.env.ref("bankayma_base.group_manager")
+        self.user_child2.groups_id += self.env.ref("bankayma_base.group_manager")
+        AccountMoveChild1 = (
+            self.env["account.move"]
+            .with_context(**safe_eval(action.context, action._get_eval_context()))
+            .with_ou(self.child1)
+        )
+        OperatingUnitProxyChild1 = AccountMoveChild1.env["operating.unit.proxy"]
+        with Form(AccountMoveChild1) as move_form:
+            move_form.inter_ou_source_id = OperatingUnitProxyChild1.browse(
+                self.child2.ids
+            )
+            move_form.inter_ou_target_id = OperatingUnitProxyChild1.browse(
+                self.child1.ids
+            )
+            with move_form.inter_ou_line_ids.new() as line_form:
+                line_form.name = "from ch2 to ch1"
+                line_form.price_unit = 20
+                line_form.analytic_distribution = {self.analytic_account.id: 100}
+            move = move_form.save()
 
-    def _test_intercompany(self):
-        # TODO: verify this
-        invoice_child1 = self._create_invoice(
-            self.child1, self.user_child1, self.child2.partner_id
+        self.assertItemsEqual(
+            move.line_ids.mapped(lambda x: (x.operating_unit_id, x.debit, x.credit)),
+            (
+                (self.child1, 0, 20),
+                (self.child2, 20, 0),
+            ),
         )
-        invoice_child2 = self.env["account.move"].search(
-            [("auto_invoice_id", "=", invoice_child1.id)]
-        )
+
+        self.assertTrue(move.need_validation)
+        self.assertFalse(move.can_review)
         self.assertEqual(
-            self.child1.intercompany_sale_journal_id, invoice_child1.journal_id
+            move.journal_id, self.env.ref("bankayma_account.journal_inter_ou")
         )
-        self.assertEqual(
-            self.child2.intercompany_purchase_journal_id,
-            invoice_child2.journal_id,
+        self.assertEqual(move.bankayma_intercompany_grouping, "draft")
+        move.request_validation()
+        self.assertEqual(move.bankayma_intercompany_grouping, "expected")
+
+        move_as_child2 = move.with_user(self.user_child2).with_ou(self.child2)
+        self.assertTrue(move_as_child2.can_review)
+        move_as_child2.validate_tier()
+        self.assertEqual(move_as_child2.state, "posted")
+
+        move2 = move_as_child2.copy()
+        OperatingUnitProxyChild2 = move2.env["operating.unit.proxy"]
+        with Form(move2) as move_form:
+            move_form.inter_ou_source_id = OperatingUnitProxyChild2.browse(
+                self.child1.ids
+            )
+            move_form.inter_ou_target_id = OperatingUnitProxyChild2.browse(
+                self.child2.ids
+            )
+            with move_form.inter_ou_line_ids.edit(0) as line_form:
+                line_form.name = "from child1 to child2"
+                line_form.price_unit = 30
+
+        self.assertItemsEqual(
+            move2.line_ids.mapped(lambda x: (x.operating_unit_id, x.debit, x.credit)),
+            (
+                (self.child1, 30, 0),
+                (self.child2, 0, 30),
+            ),
         )
-        invoice_child2_as_child2 = invoice_child2.with_user(self.user_child2)
-        invoice_child2_as_child2.review_ids.invalidate_model()
-        self.assertEqual(invoice_child2.validated_state, "1_needs_validation")
-        self.assertTrue(invoice_child2_as_child2.need_validation)
-        self.assertTrue(invoice_child2_as_child2.can_review)
-        invoice_child2_as_child2.validate_tier()
-        self.assertEqual(invoice_child1.payment_state, "paid")
-        self.assertEqual(invoice_child2.payment_state, "paid")
-        invoice_child1 = invoice_child1.copy()
-        self.assertEqual(invoice_child1.validated_state, "0_draft")
-        invoice_child1.action_post()
-        invoice_child2 = self.env["account.move"].search(
-            [("auto_invoice_id", "=", invoice_child1.id)]
+        move2.request_validation()
+        action = move2.with_user(self.user_child1).with_ou(self.child1).reject_tier()
+        wizard = (
+            self.env[action["res_model"]]
+            .with_context(**action["context"])
+            .with_user(self.user_child1)
+            .create({})
         )
-        invoice_child2_as_child2 = invoice_child2.with_user(self.user_child2)
-        invoice_child2_as_child2.review_ids.invalidate_model()
-        self.assertTrue(invoice_child2_as_child2.need_validation)
-        self.assertTrue(invoice_child2_as_child2.can_review)
-        self.env.ref(
-            "bankayma_account.tier_definition_intercompany_purchase"
-        ).has_comment = False
-        invoice_child2_as_child2.reject_tier()
-        self.assertEqual(invoice_child1.state, "draft")
-        self.assertEqual(invoice_child2.state, "cancel")
+        wizard.comment = "rejected"
+        wizard.add_comment()
+        self.assertEqual(move2.state, "cancel")
 
     def test_same_sequence(self):
         journal_parent = self.env["account.journal"].create(

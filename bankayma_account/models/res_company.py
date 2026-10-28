@@ -7,18 +7,6 @@ from odoo import fields, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    intercompany_sale_journal_id = fields.Many2one(
-        "account.journal",
-        "Intercompany sale journal",
-        help="Intercompany invoices will be forced to this journal",
-        domain=[("type", "=", "sale")],
-    )
-    intercompany_purchase_journal_id = fields.Many2one(
-        "account.journal",
-        "Intercompany purchase journal",
-        help="Intercompany invoices will be forced to this journal",
-        domain=[("type", "=", "purchase")],
-    )
     overhead_journal_id = fields.Many2one(
         "account.journal",
         "Overhead journal",
@@ -29,14 +17,6 @@ class ResCompany(models.Model):
         "account.account",
         "Overhead account",
         help="Overhead invoice lines will have this account",
-    )
-    # TODO this journal is used for all (semi-)automatic intercompany
-    # payments, so this should be renamed to intercompany_payment_journal_id
-    overhead_payment_journal_id = fields.Many2one(
-        "account.journal",
-        "Overhead payment journal",
-        help="Overhead invoices will be paid in this journal",
-        domain=[("type", "=", "bank")],
     )
     bankayma_overhead_percentage = fields.Float(
         "Overhead percentage",
@@ -55,6 +35,15 @@ class ResCompany(models.Model):
         string="Product for Donations via Credit Transfer",
         domain=[("type", "=", "service")],
         ondelete="restrict",
+    )
+    inter_ou_journal_id = fields.Many2one(
+        "account.journal",
+        "Inter OU journal",
+        domain=[("type", "=", "general")],
+    )
+    inter_ou_product_id = fields.Many2one(
+        "product.product",
+        "Inter OU product",
     )
 
     def _compute_bankayma_overhead_percentage(self):

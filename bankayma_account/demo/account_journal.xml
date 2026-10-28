@@ -2,24 +2,6 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="journal_intercompany_sales" model="account.journal">
-        <field name="name">Intercompany sales</field>
-        <field name="code">INS</field>
-        <field name="type">sale</field>
-        <field name="company_id" ref="base.main_company" />
-        <field name="sequence">100</field>
-        <field name="bankayma_restrict_partner">intercompany</field>
-    </record>
-
-    <record id="journal_intercompany_purchases" model="account.journal">
-        <field name="name">Intercompany purchases</field>
-        <field name="code">INP</field>
-        <field name="type">purchase</field>
-        <field name="company_id" ref="base.main_company" />
-        <field name="sequence">100</field>
-        <field name="bankayma_restrict_partner">intercompany</field>
-    </record>
-
     <record id="journal_overhead" model="account.journal">
         <field name="name">Overhead</field>
         <field name="code">OVR</field>
@@ -27,14 +9,6 @@
         <field name="company_id" ref="base.main_company" />
         <field name="sequence">100</field>
         <field name="bankayma_restrict_partner">intercompany</field>
-    </record>
-
-    <record id="journal_overhead_payment" model="account.journal">
-        <field name="name">Overhead payments</field>
-        <field name="code">OVRP</field>
-        <field name="type">bank</field>
-        <field name="company_id" ref="base.main_company" />
-        <field name="sequence">100</field>
     </record>
 
     <record id="journal_donations" model="account.journal">
@@ -47,16 +21,19 @@
         <field name="sumit_type">4</field>
     </record>
 
+    <record id="journal_inter_ou" model="account.journal">
+        <field name="name">Inter OU</field>
+        <field name="code">INT</field>
+        <field name="type">general</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="sequence">100</field>
+    </record>
+
     <!-- oca-hooks:disable=xml-duplicate-record-id -->
     <record id="base.main_company" model="res.company">
-        <field name="intercompany_sale_journal_id" ref="journal_intercompany_sales" />
-        <field
-            name="intercompany_purchase_journal_id"
-            ref="journal_intercompany_purchases"
-        />
         <field name="overhead_journal_id" ref="journal_overhead" />
-        <field name="overhead_payment_journal_id" ref="journal_overhead_payment" />
         <field name="donation_journal_id" ref="journal_donations" />
+        <field name="inter_ou_journal_id" ref="journal_inter_ou" />
     </record>
 
     <function name="write" model="account.journal">

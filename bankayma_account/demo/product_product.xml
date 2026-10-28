@@ -1,10 +1,20 @@
 <odoo>
     <record id="product_donation" model="product.product">
-        <field name="name">Donation</field>
+        <field name="name">BK Donation</field>
         <field name="type">service</field>
+    </record>
+
+    <record id="product_expense" model="product.product">
+        <field name="name">BK expense</field>
+        <field name="default_code">424242</field>
+    </record>
+
+    <record id="product_inter_ou" model="product.product">
+        <field name="name">Inter OU</field>
     </record>
 
     <record id="base.main_company" model="res.company">
         <field name="donation_credit_transfer_product_id" ref="product_donation" />
+        <field name="inter_ou_product_id" ref="product_inter_ou" />
     </record>
 </odoo>

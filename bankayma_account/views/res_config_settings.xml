@@ -2,130 +2,91 @@
 <!-- Copyright 2023 Hunki Enterprises BV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="res_config_settings_view_form" model="ir.ui.view">
-        <field name="model">res.config.settings</field>
-        <field
-            name="inherit_id"
-            ref="account_invoice_inter_company.res_config_settings_view_form"
-        />
-        <field name="arch" type="xml">
-            <div id="intercompany_invoice_user_id" position="after">
-                <div id="intercompany_sale_journal_id">
-                    <label
-                        string="Intercompany sale journal"
-                        class="o_light_label"
-                        for="intercompany_sale_journal_id"
-                    />
-                    <field
-                        required="True"
-                        name="intercompany_sale_journal_id"
-                        domain="[('company_id', '=', company_id)]"
-                        class="oe_inline"
-                    />
-                </div>
-                <div id="intercompany_purchase_journal_id">
-                    <label
-                        string="Intercompany purchase journal"
-                        class="o_light_label"
-                        for="intercompany_purchase_journal_id"
-                    />
-                    <field
-                        required="True"
-                        name="intercompany_purchase_journal_id"
-                        domain="[('company_id', '=', company_id)]"
-                        class="oe_inline"
-                    />
-                </div>
-                <div id="overhead_journal_id">
-                    <label
-                        string="Overhead journal"
-                        class="o_light_label"
-                        for="overhead_journal_id"
-                    />
-                    <field
-                        name="overhead_journal_id"
-                        domain="[('company_id', '=', company_id)]"
-                        class="oe_inline"
-                    />
-                </div>
-                <div id="overhead_account_id">
-                    <label
-                        string="Overhead account"
-                        class="o_light_label"
-                        for="overhead_account_id"
-                    />
-                    <field name="overhead_account_id" class="oe_inline" />
-                </div>
-                <div id="overhead_payment_journal_id">
-                    <label
-                        string="Overhead payment journal"
-                        class="o_light_label"
-                        for="overhead_payment_journal_id"
-                    />
-                    <field
-                        name="overhead_payment_journal_id"
-                        domain="[('company_id', '=', company_id)]"
-                        class="oe_inline"
-                    />
-                </div>
-            </div>
-        </field>
-    </record>
     <record id="res_config_settings_view_form_account" model="ir.ui.view">
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="account.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <block id="invoicing_settings" position="inside">
-                <div class="col-12 col-lg-6 o_setting_box">
-                    <div class="o_setting_left_pane">
+            <block name="fiscal_localization_setting_container" position="after">
+                <block name="bankayma_account" title="Bankayma-specific">
+                    <setting string="Overhead">
+                        <div class="content-group">
+                        <div class="row">
+                            <label
+                                    string="Journal"
+                                    class="o_light_label col-lg-3"
+                                    for="overhead_journal_id"
+                                />
+                            <field
+                                    name="overhead_journal_id"
+                                    domain="[('company_id', '=', company_id)]"
+                                    required="True"
+                                />
+                        </div>
+                        <div class="row">
+                            <label
+                                    string="Account"
+                                    class="o_light_label col-lg-3"
+                                    for="overhead_account_id"
+                                />
+                            <field name="overhead_account_id" required="True" />
+                        </div>
+                        </div>
+                    </setting>
+                    <setting string="Inter OU">
+                        <div class="content-group">
+                        <div class="row">
+                            <label
+                                    string="Journal"
+                                    class="o_light_label col-lg-3"
+                                    for="inter_ou_journal_id"
+                                />
+                            <field name="inter_ou_journal_id" required="True" />
+                        </div>
+                        <div class="row">
+                            <label
+                                    string="Product"
+                                    for="inter_ou_product_id"
+                                    class="o_light_label col-lg-3"
+                                />
+                            <field name="inter_ou_product_id" required="True" />
+                        </div>
+                        </div>
+                    </setting>
+                    <setting string="Donations">
+                        <div class="content-group">
+                        <div class="row">
+                            <label
+                                    string="Journal"
+                                    class="o_light_label col-lg-3"
+                                    for="donation_journal_id"
+                                />
+                        <field
+                                    name="donation_journal_id"
+                                    required="True"
+                                    domain="[('company_id', '=', company_id)]"
+                                />
+                        </div>
+                        <div class="row">
+                            <label
+                                    string="Product"
+                                    for="donation_credit_transfer_product_id"
+                                    class="o_light_label col-lg-3"
+                                />
+                            <field
+                                    name="donation_credit_transfer_product_id"
+                                    required="True"
+                                />
+                        </div>
+                        </div>
+                    </setting>
+                    <setting />
+                    <setting>
                         <field name="show_bankayma_tax_totals_out_invoice" />
-                    </div>
-                    <div class="o_setting_right_pane">
-                        <label for="show_bankayma_tax_totals_out_invoice" />
-                    </div>
-                </div>
-            </block>
-            <block id="account_vendor_bills" position="inside">
-                <div class="col-12 col-lg-6 o_setting_box">
-                    <div class="o_setting_left_pane">
+                    </setting>
+                    <setting>
                         <field name="show_bankayma_tax_totals_in_invoice" />
-                    </div>
-                    <div class="o_setting_right_pane">
-                        <label for="show_bankayma_tax_totals_in_invoice" />
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 o_setting_box">
-                    <div class="o_setting_left_pane" />
-                    <div class="o_setting_right_pane">
-                        <div>
-                            <label for="donation_credit_transfer_product_id" />
-                        </div>
-                        <div class="text-muted">
-                            This product will be put on invoices generated by donations
-                        </div>
-                        <field
-                            name="donation_credit_transfer_product_id"
-                            required="True"
-                        />
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 o_setting_box">
-                    <div class="o_setting_left_pane" />
-                    <div class="o_setting_right_pane">
-                        <div>
-                            <label for="donation_journal_id" />
-                        </div>
-                        <div class="text-muted">
-                            Invoices generated by donations will be put into this
-                            journal
-                        </div>
-                        <field
-                            name="donation_journal_id"
-                            required="True"
-                            domain="[('company_id', '=', company_id)]"
-                        />
-                    </div>
-                </div>
+                    </setting>
+                </block>
             </block>
         </field>
     </record>

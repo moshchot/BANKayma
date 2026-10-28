@@ -54,10 +54,7 @@ class AccountAnalyticLine(models.Model):
                 "bankayma_balance": this.amount,
             }
             journal = this.move_line_id.journal_id
-            if (
-                journal.intercompany_sale_company_id
-                or journal.intercompany_purchase_company_id
-            ):
+            if journal.inter_ou_company_id:
                 vals["bankayma_type"] = "intercompany"
                 vals["bankayma_intercompany"] = this.amount
             elif this.amount < 0:

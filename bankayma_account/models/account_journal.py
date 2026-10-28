@@ -1,19 +1,11 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, exceptions, fields, models
+from odoo import fields, models
 
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"
-    _company_cascade_exclude_fields = tuple(
-        [
-            "intercompany_sale_company_id",
-            "intercompany_purchase_company_id",
-            "intercompany_overhead_company_id",
-            "intercompany_overhead_payment_company_id",
-        ]
-    )
 
     bankayma_restrict_partner = fields.Selection(
         [("no_intercompany", "No intercompany"), ("intercompany", "Only intercompany")],
@@ -52,21 +44,13 @@ class AccountJournal(models.Model):
         string="Paid",
         domain=[("model", "=", "account.move")],
     )
-    intercompany_sale_company_id = fields.One2many(
-        "res.company",
-        "intercompany_sale_journal_id",
-    )
-    intercompany_purchase_company_id = fields.One2many(
-        "res.company",
-        "intercompany_purchase_journal_id",
-    )
-    intercompany_overhead_company_id = fields.One2many(
+    overhead_company_id = fields.One2many(
         "res.company",
         "overhead_journal_id",
     )
-    intercompany_overhead_payment_company_id = fields.One2many(
+    inter_ou_company_id = fields.One2many(
         "res.company",
-        "overhead_payment_journal_id",
+        "inter_ou_journal_id",
     )
 
     def _check_journal_sequence(self):
@@ -74,19 +58,3 @@ class AccountJournal(models.Model):
         Defuse constraint from account_move_name_sequence pertaining to squences'
         companies
         """
-
-    @api.constrains(
-        "bankayma_charge_overhead", "intercompany_overhead_payment_company_id"
-    )
-    def _check_bankayma_charge_overhead(self):
-        for this in self:
-            if (
-                this.bankayma_charge_overhead
-                and this.intercompany_overhead_payment_company_id
-            ):
-                raise exceptions.ValidationError(
-                    _(
-                        "You cannot charge overhead on the company's overhead payment "
-                        "journal"
-                    )
-                )

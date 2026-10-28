@@ -48,6 +48,11 @@
                     invisible="(state != 'draft') or need_validation or ((state == 'draft') and ('reviewer_ids', '!=', False))"
                 />
             </button>
+            <field name="operating_unit_id" position="attributes">
+                <attribute
+                    name="invisible"
+                >context.get('bankayma_internal_move')</attribute>
+            </field>
             <xpath expr="//sheet/*[1]" position="before">
                 <h5>
                     <field
@@ -278,6 +283,21 @@
                 }
                 </attribute>
             </field>
+            <xpath expr="//group[@id='header_left_group']/label" position="before">
+                <field
+                    name="inter_ou_source_id"
+                    invisible="not context.get('bankayma_internal_move')"
+                    required="context.get('bankayma_internal_move')"
+                    domain="[('id', '!=', inter_ou_target_id)]"
+                />
+                <field
+                    name="inter_ou_target_id"
+                    invisible="not context.get('bankayma_internal_move')"
+                    required="context.get('bankayma_internal_move')"
+                    domain="[('id', '!=', inter_ou_source_id)]"
+                />
+                <field name="line_ids" invisible="True" />
+            </xpath>
             <field name="tax_totals" position="attributes">
                 <attribute name="invisible">
                     show_bankayma_tax_totals
@@ -374,6 +394,26 @@
                     </group>
                 </page>
             </notebook>
+            <page name="invoice_tab" position="before">
+                <page
+                    name="inter_ou"
+                    string="Inter OU"
+                    invisible="not context.get('bankayma_internal_move')"
+                >
+                    <field name="inter_ou_line_ids">
+                        <list editable="bottom">
+                            <field name="name" required="True" />
+                            <field
+                                name="analytic_distribution"
+                                widget="analytic_distribution"
+                            />
+                            <field name="quantity" required="True" />
+                            <field name="price_unit" required="True" />
+                            <field name="price_subtotal" />
+                        </list>
+                    </field>
+                </page>
+            </page>
         </field>
     </record>
 

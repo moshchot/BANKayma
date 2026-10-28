@@ -21,7 +21,7 @@ class TestBankaymaAccountWeb(HttpCase):
             "/mail/view?model=account.move&res_id=%d" % move.id, allow_redirects=False
         )
         self.assertEqual(response.status_code, 303)
-        self.assertIn("action", response.headers.get("location", ""))
+        self.assertIn("odoo/bankayma-", response.headers.get("location", ""))
 
     def test_vendor_portal_tour(self):
         vendor_invoice_domain = [
