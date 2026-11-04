@@ -152,8 +152,17 @@ class AccountMove(models.Model):
         tracking=True,
     )
     invoice_partner_display_name = bankayma_base_fields.TranslatedComputedChar()
-    inter_ou_source_id = fields.Many2one("operating.unit.proxy", "Sending Party")
-    inter_ou_target_id = fields.Many2one("operating.unit.proxy", "Receiving Party")
+    inter_ou_source_id = fields.Many2one(
+        "operating.unit.proxy", "Sending Party", help="The party that gives money"
+    )
+    inter_ou_target_id = fields.Many2one(
+        "operating.unit.proxy",
+        "Receiving Party",
+        help="The party that receives money",
+        default=lambda self: self.env["operating.unit.proxy"].browse(
+            self.env.context.get("default_operating_unit_id") or []
+        ),
+    )
     inter_ou_line_ids = fields.One2many(
         "account.move.line", "move_id", domain=[("balance", ">", 0)]
     )
@@ -437,13 +446,19 @@ class AccountMove(models.Model):
     @api.onchange("inter_ou_target_id")
     def _onchange_inter_ou_target_id(self):
         for line in self.line_ids:
-            if line._origin.operating_unit_id.id == self._origin.inter_ou_target_id.id:
+            if (
+                line._origin.sudo().operating_unit_id.id
+                == self._origin.inter_ou_target_id.id
+            ):
                 line.operating_unit_id = self.inter_ou_target_id.id
 
     @api.onchange("inter_ou_source_id")
     def _onchange_inter_ou_source_id(self):
         for line in self.line_ids:
-            if line._origin.operating_unit_id.id == self._origin.inter_ou_source_id.id:
+            if (
+                line._origin.sudo().operating_unit_id.id
+                == self._origin.inter_ou_source_id.id
+            ):
                 line.operating_unit_id = self.inter_ou_source_id.id
 
     def default_get(self, fields_list):
@@ -495,12 +510,12 @@ class AccountMove(models.Model):
         if "inter_ou_line_ids" not in vals:
             return
         this = self.new(vals)
-        product = this.company_id.inter_ou_product_id
+        product = this.company_id.inter_ou_product_id.sudo()
         account_out = product.with_ou(
             this.inter_ou_source_id._as_ou()
         ).product_tmpl_id.get_product_accounts()["expense"]
         account_in = product.with_ou(
-            this.inter_ou_target_id._as_ou()
+            this.inter_ou_target_id._as_ou().sudo()
         ).product_tmpl_id.get_product_accounts()["income"]
         for line, (_1, _2, line_vals) in zip(
             this.inter_ou_line_ids, vals["inter_ou_line_ids"], strict=False
@@ -674,8 +689,8 @@ class AccountMove(models.Model):
                         {
                             "partner_id": child.partner_id.id,
                             "operating_unit_id": False,
-                            "inter_ou_source_id": parent.id,
-                            "inter_ou_target_id": child.id,
+                            "inter_ou_source_id": child.id,
+                            "inter_ou_target_id": parent.id,
                         }
                     )
                 )
