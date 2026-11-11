@@ -108,6 +108,9 @@
             <field name="name" position="attributes">
                 <attribute name="readonly">1</attribute>
             </field>
+            <field name="invoice_line_ids" position="attributes">
+                <attribute name="widget">one2many</attribute>
+            </field>
             <xpath
                 expr="//field[@name='invoice_line_ids']//field[@name='tax_ids']"
                 position="attributes"
@@ -140,6 +143,10 @@
                 position="replace"
             />
             <xpath
+                expr="//field[@name='invoice_line_ids']/list/control/button[@name='action_add_from_catalog']"
+                position="replace"
+            />
+            <xpath
                 expr="//field[@name='invoice_line_ids']/list/field[@name='product_id']"
                 position="after"
             >
@@ -153,6 +160,7 @@
                 <attribute name="string">Item</attribute>
                 <attribute name="options">{'no_open': True}</attribute>
                 <attribute name="required">True</attribute>
+                <attribute name="widget">many2one</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/list/field[@name='account_id']"
@@ -164,14 +172,22 @@
                 expr="//field[@name='invoice_line_ids']/list/field[@name='account_id']"
                 position="after"
             >
-                <field name="account_id" invisible="1" />
+                <field name="account_id" column_invisible="1" />
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/list/field[@name='name']"
                 position="attributes"
             >
+                <attribute name="widget">char</attribute>
                 <attribute name="string">Description</attribute>
                 <attribute name="required">True</attribute>
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/list/field[@name='operating_unit_id']"
+                position="attributes"
+            >
+                <attribute name="groups">bankayma_base.group_full</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_distribution']"
