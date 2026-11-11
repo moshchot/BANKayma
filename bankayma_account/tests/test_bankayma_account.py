@@ -226,10 +226,10 @@ class TestBankaymaAccount(TransactionCase):
             move = move_form.save()
 
         self.assertItemsEqual(
-            move.line_ids.mapped(lambda x: (x.operating_unit_id, x.debit, x.credit)),
+            move.line_ids.mapped(lambda x: (x.operating_unit_id, x.balance)),
             (
-                (self.child1, 0, 20),
-                (self.child2, 20, 0),
+                (self.child1, -20),
+                (self.child2, 20),
             ),
         )
 
@@ -250,21 +250,30 @@ class TestBankaymaAccount(TransactionCase):
         move2 = move_as_child2.copy()
         OperatingUnitProxyChild2 = move2.env["operating.unit.proxy"]
         with Form(move2) as move_form:
-            move_form.inter_ou_source_id = OperatingUnitProxyChild2.browse(
-                self.child1.ids
-            )
+            move_form.inter_ou_source_id = OperatingUnitProxyChild2.browse()
             move_form.inter_ou_target_id = OperatingUnitProxyChild2.browse(
                 self.child2.ids
             )
+            move_form.inter_ou_source_id = OperatingUnitProxyChild2.browse(
+                self.child1.ids
+            )
+        self.assertItemsEqual(
+            move2.line_ids.mapped(lambda x: (x.operating_unit_id, x.balance)),
+            (
+                (self.child1, 20),
+                (self.child2, -20),
+            ),
+        )
+        with Form(move2) as move_form:
             with move_form.inter_ou_line_ids.edit(0) as line_form:
                 line_form.name = "from child1 to child2"
                 line_form.price_unit = 30
 
         self.assertItemsEqual(
-            move2.line_ids.mapped(lambda x: (x.operating_unit_id, x.debit, x.credit)),
+            move2.line_ids.mapped(lambda x: (x.operating_unit_id, x.balance)),
             (
-                (self.child1, 30, 0),
-                (self.child2, 0, 30),
+                (self.child1, 30),
+                (self.child2, -30),
             ),
         )
         move2.request_validation()

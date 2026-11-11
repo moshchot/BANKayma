@@ -434,7 +434,7 @@ class AccountMove(models.Model):
         for line in self.line_ids:
             if (
                 line._origin.sudo().operating_unit_id.id
-                == self._origin.inter_ou_target_id.id
+                == self._origin.sudo().inter_ou_target_id.id
             ):
                 line.operating_unit_id = self.inter_ou_target_id.id
 
@@ -443,7 +443,7 @@ class AccountMove(models.Model):
         for line in self.line_ids:
             if (
                 line._origin.sudo().operating_unit_id.id
-                == self._origin.inter_ou_source_id.id
+                == self._origin.sudo().inter_ou_source_id.id
             ):
                 line.operating_unit_id = self.inter_ou_source_id.id
 
@@ -498,7 +498,7 @@ class AccountMove(models.Model):
         this = self.new(vals)
         product = this.company_id.inter_ou_product_id.sudo()
         account_out = product.with_ou(
-            this.inter_ou_source_id._as_ou()
+            this.inter_ou_source_id._as_ou().sudo()
         ).product_tmpl_id.get_product_accounts()["expense"]
         account_in = product.with_ou(
             this.inter_ou_target_id._as_ou().sudo()

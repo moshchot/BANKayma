@@ -428,6 +428,7 @@
                             <field name="price_subtotal" />
                         </list>
                     </field>
+                    <field name="line_ids" invisible="True" />
                 </page>
             </page>
         </field>

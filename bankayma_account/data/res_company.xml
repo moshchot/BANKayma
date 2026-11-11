@@ -6,5 +6,6 @@
         <field name="country_id" ref="base.il" />
         <field name="account_sale_tax_id" eval="False" />
         <field name="account_purchase_tax_id" eval="False" />
+        <field name="overhead_product_id" ref="product_overhead" />
     </record>
 </odoo>
