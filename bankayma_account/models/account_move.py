@@ -152,6 +152,7 @@ class AccountMove(models.Model):
         tracking=True,
     )
     invoice_partner_display_name = bankayma_base_fields.TranslatedComputedChar()
+    invoice_date = fields.Date(default=fields.Date.context_today)
     inter_ou_source_id = fields.Many2one(
         "operating.unit.proxy",
         "Sending Party",

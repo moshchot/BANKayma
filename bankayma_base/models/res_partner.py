@@ -26,17 +26,22 @@ class ResPartner(models.Model):
                 ]
             ) or self.env.ref("base.lang_en")
 
-    def _get_name(self):
-        result = super()._get_name()
-        if self.env.context.get("bankayma_partner_address_email") and self.email:
-            result = f"{result}\n{self.email}"
-        if self.env.context.get("bankayma_partner_address_language") and self.lang:
-            result = "{}\n{}".format(
-                result,
-                dict(self._fields["lang"]._description_selection(self.env))[self.lang],
-            )
-        if self.env.context.get("bankayma_partner_address_vat") and self.vat:
-            result = f"{result}\n{self.vat}"
+    @api.depends()
+    @api.depends_context()
+    def _compute_display_name(self):
+        result = super()._compute_display_name()
+        for this in self:
+            if self.env.context.get("bankayma_partner_address_email") and this.email:
+                this.display_name = f"{this.display_name}\n{this.email}"
+            if self.env.context.get("bankayma_partner_address_language") and this.lang:
+                this.display_name = "{}\n{}".format(
+                    this.display_name,
+                    dict(self._fields["lang"]._description_selection(self.env))[
+                        this.lang
+                    ],
+                )
+            if self.env.context.get("bankayma_partner_address_vat") and this.vat:
+                this.display_name = f"{this.display_name}\n{this.vat}"
         return result
 
     @api.model_create_multi
