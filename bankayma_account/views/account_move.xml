@@ -304,7 +304,7 @@
                     name="inter_ou_source_id"
                     invisible="not context.get('bankayma_internal_move')"
                     required="context.get('bankayma_internal_move')"
-                    domain="[('id', '!=', inter_ou_target_id)]"
+                    domain="[('id', '!=', inter_ou_target_id), ('id', 'in', context.get('allowed_ou_ids', []))]"
                 />
                 <field
                     name="inter_ou_target_id"
