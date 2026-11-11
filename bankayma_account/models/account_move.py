@@ -157,14 +157,14 @@ class AccountMove(models.Model):
         "operating.unit.proxy",
         "Sending Party",
         help="The party that gives money",
-        default=lambda self: self.env["operating.unit.proxy"].browse(
-            self.env.context.get("default_operating_unit_id") or []
-        ),
     )
     inter_ou_target_id = fields.Many2one(
         "operating.unit.proxy",
         "Receiving Party",
         help="The party that receives money",
+        default=lambda self: self.env["operating.unit.proxy"].browse(
+            self.env.context.get("default_operating_unit_id") or []
+        ),
     )
     inter_ou_line_ids = fields.One2many(
         "account.move.line", "move_id", domain=[("balance", ">", 0)]

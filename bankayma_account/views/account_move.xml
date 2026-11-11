@@ -301,16 +301,16 @@
             </field>
             <xpath expr="//group[@id='header_left_group']/label" position="before">
                 <field
-                    name="inter_ou_source_id"
-                    invisible="not context.get('bankayma_internal_move')"
-                    required="context.get('bankayma_internal_move')"
-                    domain="[('id', '!=', inter_ou_target_id), ('id', 'in', context.get('allowed_ou_ids', []))]"
-                />
-                <field
                     name="inter_ou_target_id"
                     invisible="not context.get('bankayma_internal_move')"
                     required="context.get('bankayma_internal_move')"
-                    domain="[('id', '!=', inter_ou_source_id)]"
+                    domain="[('id', '!=', inter_ou_source_id), ('id', 'in', context.get('allowed_ou_ids', []))]"
+                />
+                <field
+                    name="inter_ou_source_id"
+                    invisible="not context.get('bankayma_internal_move')"
+                    required="context.get('bankayma_internal_move')"
+                    domain="[('id', '!=', inter_ou_target_id)]"
                 />
                 <field name="line_ids" invisible="True" />
             </xpath>
