@@ -1,28 +1,26 @@
-/** @odoo-module
+/*
  * Copyright 2023 Hunki Enterprises BV
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
 
+import {AccountPaymentField} from "@account/components/account_payment_field/account_payment_field";
 import {onWillStart} from "@odoo/owl";
 import {patch} from "@web/core/utils/patch";
-import {registry} from "@web/core/registry";
-import session from "web.session";
+import {user} from "@web/core/user";
 
-patch(registry.category("fields").get("payment").prototype, "hide unreconcile button", {
+patch(AccountPaymentField.prototype, {
     setup() {
         onWillStart(async () => {
             this.show_unreconcile_button =
-                (await session.user_has_group("bankayma_base.group_org_manager")) ||
-                (await session.user_has_group("bankayma_base.group_full"));
+                (await user.hasGroup("bankayma_base.group_org_manager")) ||
+                (await user.hasGroup("bankayma_base.group_full"));
         });
-        var result = this._super.apply();
-        var original_add = this.popover.add;
+        var result = super.setup();
+        var original_open = this.popover.open;
         var self = this;
-        this.popover.add = function (target, Component, props, options = {}) {
-            return original_add.apply(this, [
+        this.popover.open = function (target, props) {
+            return original_open.apply(this, [
                 target,
-                Component,
                 {show_unreconcile_button: self.show_unreconcile_button, ...props},
-                options,
             ]);
         };
         return result;

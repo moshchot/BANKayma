@@ -97,8 +97,8 @@
     ],
     "assets": {
         "web.assets_backend": [
-            #            "bankayma_account/static/src/*.xml",
-            #            "bankayma_account/static/src/account_payment_field.esm.js",
+            "bankayma_account/static/src/*.xml",
+            "bankayma_account/static/src/account_payment_field.esm.js",
         ],
         "web.assets_frontend": [
             "bankayma_account/static/src/portal.esm.js",

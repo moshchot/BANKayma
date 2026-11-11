@@ -217,20 +217,11 @@ class AccountMove(models.Model):
         for this in self:
             if not this.tax_totals:
                 continue
-            this.tax_totals["groups_by_subtotal"] = {
-                key: [
-                    dict(
-                        tax_group,
-                        bankayma_editable=AccountTaxGroup.browse(
-                            tax_group["tax_group_id"]
-                        ).bankayma_editable,
-                    )
-                    for tax_group in tax_groups
-                ]
-                for key, tax_groups in this.tax_totals.get(
-                    "groups_by_subtotal", {}
-                ).items()
-            }
+            for subtotal in this.tax_totals.get("subtotals", []):
+                for tax_group in subtotal.get("tax_groups", []):
+                    tax_group["bankayma_editable"] = AccountTaxGroup.browse(
+                        tax_group["id"]
+                    ).bankayma_editable
         return result
 
     @api.depends(
@@ -412,11 +403,6 @@ class AccountMove(models.Model):
     def _compute_bankayma_tax_totals(self):
         get_param = self.env["ir.config_parameter"].sudo().get_param
         for this in self:
-            this.bankayma_tax_totals = False
-            this.show_bankayma_tax_totals = False
-            continue
-            # TODO
-            # pylint: disable=unreachable
             this.bankayma_tax_totals = self.env["ir.qweb"]._render(
                 "bankayma_account.template_tax_totals", {"object": this}
             )
