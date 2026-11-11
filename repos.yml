@@ -213,6 +213,7 @@ server-ux:
   merges:
     - oca 18.0
     - hbrunn 18.0-base_tier_validation_comment_required
+    - hbrunn 18.0-base_tier_validation-validation_flag
   remotes:
     hbrunn: https://github.com/hbrunn/server-ux.git
     oca: https://github.com/OCA/server-ux.git

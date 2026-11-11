@@ -772,7 +772,7 @@ class AccountMove(models.Model):
         payment.action_create_payments()
 
     def request_validation(self):
-        """Set invoice_date before rquesting validation"""
+        """Set invoice_date before requesting validation"""
         for this in self:
             if this.is_invoice(include_receipts=True) and not this.invoice_date:
                 this.invoice_date = fields.Date.context_today(this)
