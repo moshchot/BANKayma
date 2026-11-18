@@ -4,7 +4,11 @@ from odoo import api, fields, models
 class OperatingUnit(models.Model):
     _inherit = "operating.unit"
 
-    bankayma_overhead_percentage = fields.Float("Overhead Percentage")
+    bankayma_overhead_percentage = fields.Float(
+        "Overhead Percentage",
+        default=7,
+        help="The percentage of the amount to be charged as overhead",
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
