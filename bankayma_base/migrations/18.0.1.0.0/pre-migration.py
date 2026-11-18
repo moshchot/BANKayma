@@ -263,6 +263,15 @@ def migrate(env, version=None):  # noqa: C901
             RENAME COLUMN {field_name}_multilanguage TO {field_name};
             """
         )
+    for field_name in ("name",):
+        env.cr.execute(
+            f"""
+            ALTER TABLE res_company
+            RENAME COLUMN {field_name} TO {field_name}_unilanguage;
+            ALTER TABLE res_company
+            RENAME COLUMN {field_name}_multilanguage TO {field_name};
+            """
+        )
 
     # rename misc fields
     rename_fields(
