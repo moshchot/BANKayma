@@ -619,6 +619,11 @@
                     name="bankayma_payment_method_id"
                     context="{'group_by': 'bankayma_payment_method_id'}"
                 />
+                <filter
+                    string="Fiscal Position"
+                    name="group_by_fiscal_position_id"
+                    context="{'group_by': 'fiscal_position_id'}"
+                />
             </filter>
         </field>
     </record>

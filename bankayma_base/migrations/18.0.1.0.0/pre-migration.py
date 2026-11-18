@@ -8,11 +8,12 @@ def update_context_or_domain(  # noqa: C901
     context_or_domain, update_name_func=None, update_value_func=None
 ):
     """
-    Given a string containing a domain, this function
+    Given a string containing a context or a domain, this function
     returns a text representation of it modified as executed by the
     update_* functions passed.
 
-    :param domain: an Odoo domain like "[('some_field', '=', value)]"
+    :param context_or_domain: an Odoo domain like "[('some_field', '=', value)]" or a
+    context like "{'some_key': value}"
     :param update_name_func: function being passed a field name as string, returning a
     replacement string.
 
@@ -34,10 +35,11 @@ def update_context_or_domain(  # noqa: C901
 
         "[('company_id2', '=', 42), ('other_field', '=', value)]"
 
-    :param update_value_func: function being passed a domain field name as string, and a
-    value as string, int, list or ast.Expression if the right hand side of a domain leaf
-    cannot be parsed as one of the former. Return one of the aformentioned types to
-    replace the right hand side of the domain leaf.
+    :param update_value_func: function being passed a domain tuple's left hand side
+    (key for the context case) as string, and a value (right hand side of the domain
+    tuple or the key's value) as string, int, list or ast.Expression if it cannot be
+    parsed as one of the former. Return one of the aformentioned types to replace the
+    right hand side of the domain leaf/key value.
 
     Example:
 
@@ -218,6 +220,38 @@ def migrate(env, version=None):  # noqa: C901
             ir_filter.context,
             update_value_func=change_company_id,
         )
+
+    renamed_fields_per_model = {
+        "account.move": {
+            "bankayma_fiscal_position_id": "fiscal_position_id",
+        },
+    }
+
+    for model_name, renamed_fields in renamed_fields_per_model.items():
+        # pylint: disable=dangerous-default-value
+        def update_name_func(name, renamed_fields=renamed_fields):
+            return renamed_fields.get(name, name)
+
+        def update_value_func(name, value, renamed_fields=renamed_fields):
+            if name == "group_by":
+                if isinstance(value, list | tuple):
+                    return [renamed_fields.get(val, val) for val in value]
+            return value
+
+        for ir_filter in (
+            env["ir.filters"]
+            .with_context(active_test=False)
+            .search([("model_id", "=", model_name)])
+        ):
+            ir_filter.domain = update_context_or_domain(
+                ir_filter.domain,
+                update_name_func=update_name_func,
+                update_value_func=update_value_func,
+            )
+            ir_filter.context = update_context_or_domain(
+                ir_filter.context,
+                update_value_func=update_value_func,
+            )
 
     # in dashboards:
     # change [('plan_id', 'like', ...)] to [('auto_account_id.plan_id', ...)
