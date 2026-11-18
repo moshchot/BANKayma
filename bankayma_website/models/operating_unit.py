@@ -41,12 +41,6 @@ class OperatingUnit(models.Model):
         string="Backers",
     )
     logo = fields.Image(related="partner_id.avatar_128")
-    street = fields.Char(related="partner_id.street")
-    city = fields.Char(related="partner_id.city")
-    country_id = fields.Many2one(related="partner_id.country_id")
-    email = fields.Char(related="partner_id.email")
-    phone = fields.Char(related="partner_id.phone")
-    website = fields.Char(related="partner_id.website")
     social_twitter = fields.Char()
     social_facebook = fields.Char()
     social_instagram = fields.Char()

@@ -53,7 +53,10 @@
         groups="group_manager,group_full"
         name="Configuration"
     />
-    <record id="base.action_res_company_form" model="ir.actions.act_window">
+    <record
+        id="operating_unit.action_operating_unit_tree"
+        model="ir.actions.act_window"
+    >
         <field name="view_mode">kanban,list,form</field>
     </record>
     <menuitem
@@ -62,34 +65,6 @@
         sequence="10"
         action="operating_unit.action_operating_unit_tree"
     />
-
-    <!--TODO check if needed
-    <record id="action_simplified_income_company_config" model="ir.actions.act_window">
-        <field name="name">Organization config</field>
-        <field name="res_model">res.company</field>
-        <field name="view_mode">kanban,form</field>
-    </record>
-
-    <record
-        id="action_simplified_income_company_config_tree"
-        model="ir.actions.act_window.view"
-    >
-        <field name="sequence">1</field>
-        <field name="view_mode">kanban</field>
-        <field name="view_id" ref="base.view_res_company_kanban" />
-        <field name="act_window_id" ref="action_simplified_income_company_config" />
-    </record>
-
-    <record
-        id="action_simplified_income_company_config_form"
-        model="ir.actions.act_window.view"
-    >
-        <field name="sequence">2</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_company_form_manager" />
-        <field name="act_window_id" ref="action_simplified_income_company_config" />
-    </record>
-    -->
 
     <!-- assign standard menus to group_full (= hide them) -->
     <record id="mail.menu_root_discuss" model="ir.ui.menu">

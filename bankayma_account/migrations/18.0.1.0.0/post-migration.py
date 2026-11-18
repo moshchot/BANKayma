@@ -37,3 +37,29 @@ def migrate(env, version=None):
             ),
         ]
     ).allowed_journal_ids += inter_ou_journal
+    # set overhead percentage
+    env.cr.execute(
+        """
+        UPDATE operating_unit
+        SET bankayma_overhead_percentage=max_percentage.percentage
+        FROM (
+            SELECT MAX(bankayma_overhead_percentage) as percentage FROM account_journal
+        ) max_percentage
+        """
+    )
+    # deactivate unused standard taxes
+    env.cr.execute(
+        """
+        UPDATE account_tax
+        SET active=False
+        WHERE id IN (
+            SELECT res_id FROM ir_model_data
+            WHERE model='account.tax' AND module='account' AND name NOT IN (
+                '1_il_vat_sales_exempt',
+                '1_il_vat_inputs_17',
+                '1_il_vat_inputs_2_3_17',
+                '1_il_vat_purchase_exempt'
+            )
+        )
+        """
+    )

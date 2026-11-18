@@ -1,8 +1,10 @@
-from odoo import api, models
+from odoo import api, fields, models
 
 
 class OperatingUnit(models.Model):
     _inherit = "operating.unit"
+
+    bankayma_overhead_percentage = fields.Float("Overhead Percentage")
 
     @api.model_create_multi
     def create(self, vals_list):

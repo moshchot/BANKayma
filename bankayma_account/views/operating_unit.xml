@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_operating_unit_form_manager" model="ir.ui.view">
+        <field name="inherit_id" ref="bankayma_base.view_operating_unit_form_manager" />
+        <field name="model">operating.unit</field>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field
+                    name="bankayma_overhead_percentage"
+                    groups="bankayma_base.group_org_manager"
+                />
+                <field
+                    name="bankayma_overhead_percentage"
+                    readonly="True"
+                    groups="!bankayma_base.group_org_manager"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_operating_unit_kanban" model="ir.ui.view">
+        <field name="inherit_id" ref="bankayma_base.view_operating_unit_kanban" />
+        <field name="model">operating.unit</field>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='card']//field[@name='name']" position="after">
+                <field name="parent_id" invisible="True" />
+                <t t-if="record.parent_id.value">
+                    <field name="bankayma_overhead_percentage" class="ms-2" /><span
+                    >%</span>
+                </t>
+            </xpath>
+        </field>
+    </record>
+</odoo>

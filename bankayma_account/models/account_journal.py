@@ -22,12 +22,6 @@ class AccountJournal(models.Model):
         help="When this is checked, payments for moves in child journals will create "
         "an overhead invoice for the child company",
     )
-    bankayma_overhead_percentage = fields.Float(
-        "Overhead percentage",
-        default=7,
-        help="The percentage of the amount to be charged as overhead",
-        tracking=True,
-    )
     bankayma_inhibit_mails = fields.Boolean("Inhibit mails")
     bankayma_mail_template_portal_vendor_bill = fields.Many2one(
         "mail.template",

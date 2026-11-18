@@ -8,6 +8,15 @@ class OperatingUnit(models.Model):
     _inherit = "operating.unit"
 
     name = bankayma_base_fields.TranslatedComputedChar(related="partner_id.name")
+    street = bankayma_base_fields.TranslatedComputedChar(related="partner_id.street")
+    street2 = bankayma_base_fields.TranslatedComputedChar(related="partner_id.street2")
+    city = bankayma_base_fields.TranslatedComputedChar(related="partner_id.city")
+    zip = fields.Char(related="partner_id.zip")
+    country_id = fields.Many2one(related="partner_id.country_id")
+    phone = fields.Char(related="partner_id.phone")
+    mobile = fields.Char(related="partner_id.mobile")
+    email = fields.Char(related="partner_id.email")
+    website = fields.Char(related="partner_id.website")
     parent_id = fields.Many2one("operating.unit")
     category_id = fields.Many2one("operating.unit.category")
     tag_ids = fields.Many2many("operating.unit.tag", string="Tags")

@@ -13,10 +13,6 @@
             <xpath expr="//page[@name='advanced_settings']/group" position="inside">
                 <group name="bankayma_overhead" string="Overhead">
                     <field name="bankayma_charge_overhead" />
-                    <field
-                        name="bankayma_overhead_percentage"
-                        invisible="not bankayma_charge_overhead"
-                    />
                 </group>
                 <group name="bankayma_mail" string="Mails/Chatter">
                     <field name="bankayma_inhibit_mails" />

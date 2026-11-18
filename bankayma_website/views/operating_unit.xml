@@ -3,13 +3,14 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="view_operating_unit_form" model="ir.ui.view">
-        <field name="inherit_id" ref="operating_unit.view_operating_unit_form" />
+        <field name="inherit_id" ref="bankayma_base.view_operating_unit_form_manager" />
         <field name="model">operating.unit</field>
         <field name="arch" type="xml">
-            <form position="inside">
-                <group name="bankayma_website" string="Website settings">
-                    <group>
-                        <field name="website_link" widget="url" />
+            <notebook position="inside">
+                <page name="bankayma_website" string="Website settings">
+                    <field name="website_link" widget="url" />
+                    <group name="bankayma_website_main">
+                        <group name="bankayma_website_left">
                         <field name="seo_name" required="True" />
                         <field name="bankayma_website_subtitle" />
                         <field name="bankayma_inception_year" />
@@ -17,28 +18,35 @@
                         <field name="bankayma_website_cover" widget="image" />
                         <field name="bankayma_website_videolink" widget="url" />
                         <field
-                            name="bankayma_website_image_ids"
-                            widget="many2many_binary"
-                        />
+                                name="bankayma_website_image_ids"
+                                widget="many2many_binary"
+                            />
                         <field
-                            name="bankayma_website_crew_partner_ids"
-                            widget="many2many_tags"
-                            domain="[('user_ids.groups_id', 'in', [%(base.group_user)s, %(bankayma_base.group_vendor)s])]"
-                            options="{'no_create': True}"
-                        />
+                                name="bankayma_website_crew_partner_ids"
+                                widget="many2many_tags"
+                                domain="[('user_ids.groups_id', 'in', [%(base.group_user)s, %(bankayma_base.group_vendor)s])]"
+                                options="{'no_create': True}"
+                            />
                         <field
-                            name="bankayma_website_backer_partner_ids"
-                            domain="[('parent_id', '=', False), ('is_company', '=', True)]"
-                            widget="many2many_tags"
-                        />
+                                name="bankayma_website_backer_partner_ids"
+                                domain="[('parent_id', '=', False), ('is_company', '=', True)]"
+                                widget="many2many_tags"
+                            />
+                        </group>
+                        <group name="bankayma_website_right">
+                            <field name="social_twitter" />
+                            <field name="social_facebook" />
+                            <field name="social_instagram" />
+                            <field name="social_youtube" />
+                        </group>
                     </group>
                     <field
                         name="website_description"
                         placeholder="Website description"
                         required="True"
                     />
-                </group>
-            </form>
+                </page>
+            </notebook>
         </field>
     </record>
 </odoo>

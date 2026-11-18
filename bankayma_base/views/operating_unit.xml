@@ -27,6 +27,33 @@
             <field name="parent_id" position="attributes">
                 <attribute name="groups">base.group_system</attribute>
             </field>
+            <group name="main_group" position="before">
+                <group name="bankayma_top" />
+                <notebook>
+                    <page
+                        name="operating_unit_switch_color"
+                        string="Colors"
+                        groups="bankayma_base.group_full,bankayma_base.group_manager"
+                    />
+                </notebook>
+            </group>
+            <group name="bankayma_top" position="inside">
+                <group name="main_group" position="move" />
+                <group name="address">
+                    <field name="street" readonly="False" />
+                    <field name="street2" readonly="False" />
+                    <field name="zip" readonly="False" />
+                    <field name="city" readonly="False" />
+                    <field name="country_id" readonly="False" />
+                    <field name="phone" widget="phone" readonly="False" />
+                    <field name="mobile" widget="phone" readonly="False" />
+                    <field name="email" widget="email" readonly="False" />
+                    <field name="website" widget="url" readonly="False" />
+                </group>
+            </group>
+            <page name="operating_unit_switch_color" position="inside">
+                <group name="operating_unit_switch_color" position="move" />
+            </page>
             <!--TODO evaluate what we need here
             <group name="social_media" position="attributes">
                 <attribute name="groups" />
@@ -47,12 +74,45 @@
                     add="bankayma_base.group_manager"
                     separator=","
                 />
+                <attribute name="string" />
             </group>
             <field name="category_id" position="attributes">
                 <attribute
                     name="groups"
                 >bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
             </field>
+        </field>
+    </record>
+    <record id="view_operating_unit_kanban" model="ir.ui.view">
+        <field name="model">operating.unit</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="card">
+                        <div class="text-center">
+                            <field class="fw-bold fs-5" name="name" />
+                        </div>
+                        <hr class="mt4 mb4" />
+                        <div class="row">
+                            <div t-if="record.email.value" class="col-6 text-center">
+                                <strong>Email:</strong>
+                            </div>
+                            <div t-if="record.phone.value" class="col-6 text-center">
+                                <strong>Phone:</strong>
+                            </div>
+                            <div t-if="record.email.value" class="col-6 text-center">
+                                <field name="email" />
+                            </div>
+                            <div
+                                t-if="record.phone.value"
+                                class="col-6 text-center o_force_ltr"
+                            >
+                                <field name="phone" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 </odoo>

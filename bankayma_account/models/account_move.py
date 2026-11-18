@@ -656,7 +656,7 @@ class AccountMove(models.Model):
                     body=Markup(
                         _(
                             "Overhead of %d%% was waived on this move",
-                            this.journal_id.bankayma_overhead_percentage,
+                            this.operating_unit_id.bankayma_overhead_percentage,
                         )
                     )
                 )
@@ -1052,7 +1052,7 @@ class AccountMove(models.Model):
                 this.with_ou(this.operating_unit_id)._bankayma_invoice_child_income(
                     fraction=(
                         this.bankayma_overhead_percentage
-                        or journal.bankayma_overhead_percentage
+                        or this.operating_unit_id.bankayma_overhead_percentage
                     )
                     / 100
                 )
