@@ -63,3 +63,22 @@ def migrate(env, version=None):
         )
         """
     )
+    # write body_html of email_template_edi_invoice because it's noupdate
+    # data and we can't force load it because we don't have translations
+    # for the field (was a view before which only has translation fragments)
+    env.cr.execute(
+        """
+        UPDATE mail_template
+        SET body_html=(
+            SELECT arch_db FROM ir_ui_view
+            WHERE id IN (
+                SELECT res_id FROM ir_model_data
+                WHERE module='bankayma_account' AND name='qweb_template_edi_invoice'
+            )
+        )
+        WHERE id IN (
+            SELECT res_id FROM ir_model_data
+            WHERE module='account' AND name='email_template_edi_invoice'
+        )
+        """
+    )

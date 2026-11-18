@@ -636,7 +636,6 @@ class AccountMove(models.Model):
 
     def _bankayma_invoice_child_income(
         self,
-        fraction=0.07,
         post=True,
     ):
         """Create invoices for income if self is eligible"""
@@ -651,22 +650,26 @@ class AccountMove(models.Model):
             company = this.company_id
             if not company.overhead_journal_id or not company.overhead_product_id:
                 continue
-            if this.bankayma_waive_overhead or not fraction:
-                this.message_post(
-                    body=Markup(
-                        _(
-                            "Overhead of %d%% was waived on this move",
-                            this.operating_unit_id.bankayma_overhead_percentage,
-                        )
-                    )
-                )
-                continue
             parent = this._bankayma_invoice_child_income_get_parent()
             product_parent = company.overhead_product_id.with_ou(parent)
             account_parent = product_parent.product_tmpl_id.get_product_accounts()[
                 "income"
             ]
             for child in this.invoice_line_ids.operating_unit_id:
+                fraction = (
+                    this.bankayma_overhead_percentage
+                    or child.bankayma_overhead_percentage
+                ) / 100
+                if this.bankayma_waive_overhead or not fraction:
+                    this.message_post(
+                        body=Markup(
+                            _(
+                                "Overhead of %d%% was waived on this move",
+                                child.bankayma_overhead_percentage,
+                            )
+                        )
+                    )
+                    continue
                 invoice = (
                     self.env["account.move"]
                     .with_context(
@@ -1049,13 +1052,7 @@ class AccountMove(models.Model):
         ):
             journal = this.journal_id
             if journal.bankayma_charge_overhead:
-                this.with_ou(this.operating_unit_id)._bankayma_invoice_child_income(
-                    fraction=(
-                        this.bankayma_overhead_percentage
-                        or this.operating_unit_id.bankayma_overhead_percentage
-                    )
-                    / 100
-                )
+                this.with_ou(this.operating_unit_id)._bankayma_invoice_child_income()
         result = super()._invoice_paid_hook()
         for this in self:
             if this.journal_id.bankayma_mail_template_invoice_paid:
