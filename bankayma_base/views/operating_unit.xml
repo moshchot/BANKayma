@@ -7,6 +7,18 @@
         <field name="mode">primary</field>
         <field name="model">operating.unit</field>
         <field name="arch" type="xml">
+            <form position="inside">
+                <sheet>
+                    <group name="bankayma_top" />
+                    <notebook>
+                        <page
+                            name="operating_unit_switch_color"
+                            string="Colors"
+                            groups="bankayma_base.group_full,bankayma_base.group_manager"
+                        />
+                    </notebook>
+                </sheet>
+            </form>
             <field name="code" position="attributes">
                 <attribute name="readonly">1</attribute>
                 <attribute
@@ -27,16 +39,6 @@
             <field name="parent_id" position="attributes">
                 <attribute name="groups">base.group_system</attribute>
             </field>
-            <group name="main_group" position="before">
-                <group name="bankayma_top" />
-                <notebook>
-                    <page
-                        name="operating_unit_switch_color"
-                        string="Colors"
-                        groups="bankayma_base.group_full,bankayma_base.group_manager"
-                    />
-                </notebook>
-            </group>
             <group name="bankayma_top" position="inside">
                 <group name="main_group" position="move" />
                 <group name="address">
@@ -54,20 +56,6 @@
             <page name="operating_unit_switch_color" position="inside">
                 <group name="operating_unit_switch_color" position="move" />
             </page>
-            <!--TODO evaluate what we need here
-            <group name="social_media" position="attributes">
-                <attribute name="groups" />
-            </group>
-            <field name="vat" position="attributes">
-                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
-            </field>
-            <field name="currency_id" position="attributes">
-                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
-            </field>
-            <field name="company_registry" position="attributes">
-                <attribute name="groups">bankayma_base.group_org_manager,bankayma_base.group_full</attribute>
-            </field>
-            -->
             <group name="operating_unit_switch_color">
                 <attribute
                     name="groups"
