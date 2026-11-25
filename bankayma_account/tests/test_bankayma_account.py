@@ -219,7 +219,7 @@ class TestBankaymaAccount(TransactionCase):
             move_form.inter_ou_target_id = OperatingUnitProxyChild1.browse(
                 self.child1.ids
             )
-            with move_form.inter_ou_line_ids.new() as line_form:
+            with move_form.inter_ou_line_ids.edit(0) as line_form:
                 line_form.name = "from ch2 to ch1"
                 line_form.price_unit = 20
                 line_form.analytic_distribution = {self.analytic_account.id: 100}
