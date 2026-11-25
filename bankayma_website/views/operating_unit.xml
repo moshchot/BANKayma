@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="bankayma_base.view_operating_unit_form_manager" />
         <field name="model">operating.unit</field>
         <field name="arch" type="xml">
-            <notebook position="inside">
+            <xpath expr="//notebook/page" position="before">
                 <page name="bankayma_website" string="Website settings">
                     <field name="website_link" widget="url" />
                     <group name="bankayma_website_main">
@@ -46,7 +46,7 @@
                         required="True"
                     />
                 </page>
-            </notebook>
+            </xpath>
         </field>
     </record>
 </odoo>
