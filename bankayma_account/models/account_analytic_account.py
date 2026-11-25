@@ -28,3 +28,10 @@ class AccountAnalyticAccount(models.Model):
             ],
             limit=1,
         )
+
+    def read(self, fields=None, load="_classic_read"):
+        if set(fields or [None]) <= {"id", "display_name", "root_plan_id", "color"}:
+            # allow reading fields necessary for analytic distribution widget for all
+            # records
+            self = self.sudo()
+        return super().read(fields=fields, load=load)

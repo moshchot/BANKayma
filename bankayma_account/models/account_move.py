@@ -513,16 +513,14 @@ class AccountMove(models.Model):
             line_vals["product_id"] = product.id
             line_vals["account_id"] = account_out.id
             line_vals["operating_unit_id"] = this.inter_ou_source_id.id
-            vals["inter_ou_line_ids"].append(
-                fields.Command.create(
-                    dict(
-                        line_vals,
-                        balance=-line_vals["balance"],
-                        operating_unit_id=this.inter_ou_target_id.id,
-                        account_id=account_in.id,
-                    )
-                )
+            counter_vals = dict(
+                line_vals,
+                balance=-line_vals["balance"],
+                operating_unit_id=this.inter_ou_target_id.id,
+                account_id=account_in.id,
             )
+            counter_vals.pop("analytic_distribution", False)
+            vals["inter_ou_line_ids"].append(fields.Command.create(counter_vals))
 
     def _handle_inter_ou_line_ids_write(self, vals):
         if "inter_ou_line_ids" not in vals:
@@ -558,6 +556,7 @@ class AccountMove(models.Model):
                 )
                 line_vals = command[2]
                 counter_vals = dict(line_vals)
+                counter_vals.pop("analytic_distribution", False)
                 if "quantity" or "price_unit" in line_vals:
                     line_vals["balance"] = line_vals.get(
                         "quantity", line.quantity
