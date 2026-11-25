@@ -115,7 +115,7 @@
             ['|', '|', '|', ('journal_id.overhead_company_id', '!=', False), ('journal_id.intercompany_sale_company_id', '!=', False), ('journal_id.intercompany_purchase_company_id', '!=', False), ('journal_id.inter_ou_company_id', '!=', False)]
         </field>
         <field name="context">
-            {'bankayma_internal_move': True, 'default_move_type': 'entry', 'group_by': ['bankayma_intercompany_grouping'], 'bankayma_force_operating_unit_id': False}
+            {'bankayma_internal_move': True, 'default_move_type': 'entry', 'group_by': ['bankayma_intercompany_grouping'], 'bankayma_force_operating_unit_id': False, 'default_inter_ou_line_ids': [(0, 0, {})]}
         </field>
     </record>
 

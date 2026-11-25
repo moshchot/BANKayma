@@ -784,6 +784,8 @@ class AccountMove(models.Model):
             for product in self.mapped("invoice_line_ids.product_id")
         ):
             raise UserError(_("Please set up proper product to request validation"))
+        if not all(self.mapped("amount_total")):
+            raise UserError(_("You need to fill in at least one amount"))
         result = super().request_validation()
         for tier_review in result:
             if tier_review.definition_id.bankayma_enforce_fpos_restrictions:
